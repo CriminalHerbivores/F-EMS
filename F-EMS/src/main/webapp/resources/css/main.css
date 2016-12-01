@@ -73,10 +73,9 @@ a.select a:hover{	/* hover 밑줄 안 생기도록 */
 	margin: 0 auto;
 }
 
-
 .array-center{
 	box-sizing: inherit;
-	margin:17% auto;
+	margin:10% auto;
 }
 
 .array-center-step1 {
@@ -111,6 +110,11 @@ a.select a:hover{	/* hover 밑줄 안 생기도록 */
 .text-left{text-align:left !important }
 .text-right{text-align:right !important}
 .text-center{text-align:center !important}
+
+.vertical-top{vertical-align: top !important}
+.vertical-mid{vertical-align: middle !important}
+.vertical-bottom{vertical-align: bottom !important}
+
 
 .def-input-text-full {
 	width: 100%;

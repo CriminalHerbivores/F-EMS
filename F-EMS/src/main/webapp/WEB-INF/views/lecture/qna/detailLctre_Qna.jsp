@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
@@ -45,6 +46,7 @@
 				<th>답변</th>
 				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
 			</tr>
+				<sec:authorize access="hasRole('ROLE_PRO')">
 			<tr>
 				<td colspan="4" style="text-align: center;">
 				<a href="updateLctre_Qna_Reply?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> 
@@ -61,6 +63,7 @@
 				</a>
 				</td>
 			</tr>
+				</sec:authorize>
 
 		</table>
 		<br>
@@ -68,11 +71,16 @@
 
 	<!--버튼들  -->
 	<div id="buttons" style="float: right">
+	<sec:authorize access="hasRole('ROLE_STD')">
 		<a href="updateLctre_Qna?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> <a
-			href="qnaList?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }"> <input
+			data-toggle="modal" value="삭제"> 
+			</sec:authorize>
+			<a
+			href="qnaList?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }"> 
+			
+			<input
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>

@@ -21,8 +21,7 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
-	<h2>학과 / 등록금 조회</h2>
+	<h2>학과 / 등록금 조회</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>단과</th>
@@ -49,11 +48,12 @@
 	</tr>
 	</table>
 	<form name="searchForm">
+	<table class="def-table-full"><tr><td style="text-align: right;">
 		<input type="text" name="sit_Subjct" class="def-input-text-lg custom-form-control"/>
-		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
+		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
 	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
 	<a href="stdTuitionList"><input type="button" value="등록금 납부 내역 조회" class="def-btn btn-color"></a>
+	</td></tr></table>
 	</form>
-</td></tr></table>
 </body>
 </html>

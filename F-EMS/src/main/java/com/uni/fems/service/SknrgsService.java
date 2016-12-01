@@ -100,4 +100,9 @@ public interface SknrgsService {
 	 * </pre>
 	 */
 	void updateUseynSknrgs(SknrgsVO sknrgs) throws SQLException;
+	
+	List<SknrgsViewVO> listAllSknrgs(int tpage, SknrgsViewVO sknrgsView)
+			throws SQLException;
+	String pageNumberSknrgs(int tpage, SknrgsViewVO sknrgsView)
+			throws SQLException;
 }

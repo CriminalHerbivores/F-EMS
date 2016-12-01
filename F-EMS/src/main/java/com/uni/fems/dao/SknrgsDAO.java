@@ -89,4 +89,9 @@ public interface SknrgsDAO {
 	 * </pre>
 	 */
 	void updateUseynSknrgs(SknrgsVO sknrgs) throws SQLException;
+	
+	
+	int totalSknrgs(SknrgsViewVO sknrgsView) throws SQLException;
+	List<SknrgsViewVO> listAllSknrgs(SknrgsViewVO sknrgsView, int tpage,
+			int totalRecord) throws SQLException;
 }

@@ -22,13 +22,12 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
-	<h2>학과 / 등록금 조회</h2>
+	<h2>학과 / 등록금 조회</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>단과</th>
 		<th>등록금</th>
-		<th>납부기한</th>
+		<th width="200">납부기한</th>
 		<th>납부일자</th>
 	</tr>
 	<c:forEach var="tut" items="${tuitionList}">
@@ -47,6 +46,5 @@
 		<input type="number" name="tu_Dt" placeholder="날짜입력(20170302)"/>
 		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
 	</form> -->
-</td></tr></table>
 </body>
 </html>

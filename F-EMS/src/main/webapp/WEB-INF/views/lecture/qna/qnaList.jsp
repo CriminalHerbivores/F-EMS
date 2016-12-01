@@ -86,10 +86,13 @@
 
 
 					</table>
+					<sec:authorize access="hasRole('ROLE_STD')">
 					<div id="buttons" style="float: right">
 						<a href="writeLctre_Qna?table_Nm=${lctre_Qna_Gnt.table_Nm}"> <input
 							type="button" class="def-btn btn-md btn-color" value="등록"></a>
 					</div>
+					</sec:authorize>
+					
 				</td>
 			</tr>
 		</table>

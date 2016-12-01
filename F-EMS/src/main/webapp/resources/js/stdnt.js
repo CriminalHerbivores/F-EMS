@@ -3,5 +3,7 @@ function go_stdnt() {
 	var st_Pw_on = document.formm.st_Pw_on.value;
 	if(st_Pw == st_Pw_on){
 		document.formm.submit();
+	}else{
+		alert("비밀번호가 맞지 않습니다.");
 	}
 }

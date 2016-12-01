@@ -185,21 +185,27 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO, @RequestParam("f")MultipartFile uploadfile, Model model){
+	String stdntInsert(StdntVO stdntVO, @RequestParam String subjct_Code, @RequestParam("f")MultipartFile uploadfile, Model model){
 		String url = "redirect:stdntInsert";
 		if(!uploadfile.isEmpty()){
 			FilesVO vo = fileDownload.uploadFile(uploadfile);
 			
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
+			System.out.println(fileDownload.filePath+"/"+vo.getFl_File_Nm());
 			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N");	//배열 명 입력
 			ro.setStartRow(2);
 			
 			List<Map<String, String>> result = ExcelRead.read(ro);
 			
 			for(Map<String, String> map : result) {
+				if(map.get("A").equals("")|| map.get("A")==null){
+					continue;
+				}
+				System.out.println("A : "+map.get("A"));
 				stdntVO.setSt_Stdnt_No(map.get("A")); // 학생번호
 				stdntVO.setSt_Subjct_Code(map.get("B")); //학과코드
+				System.out.println("B : "+stdntVO.getSt_Subjct_Code());
 				stdntVO.setSt_Pw(map.get("C")); //비밀번호
 				stdntVO.setSt_Nm(map.get("D")); //이름
 				stdntVO.setSt_Eng_Nm(map.get("E")); //영문이름
@@ -230,6 +236,8 @@ public class SklstfController {
 			
 		}else{
 			try {
+				stdntVO.setSt_Stdnt_No(supporter.getDay()[0]+subjct_Code+stdntVO.getSt_Stdnt_No());
+				stdntVO.setSt_Subjct_Code(subjct_Code);
 				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
 				stdntService.insertStdnt(stdntVO);
 			} catch (SQLException e) {
@@ -473,7 +481,7 @@ public class SklstfController {
 	 */
 	@RequestMapping(value="toStdTuition")
 	public String toStdTuition(@Value("")String sit_Subjct, String tpage){
-		String url="redirect:tuitionList?sit_Subjct="+sit_Subjct+"&tpage="+tpage;
+		String url="redirect:stdTuitionList?tpage="+tpage;
 		try {
 			tuitionService.toStdTuition();
 		} catch (SQLException e) {
@@ -533,7 +541,7 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping("stdTuitionList")
-	public String stdTuitionList(String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
+	public String stdTuitionList(@RequestParam(defaultValue="1")String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
 		String url="manager/tuition/stdTuitionList";
 		tuitionVO.setTu_Stdnt_No("");
 		if(tuitionVO.getKey()==null)
@@ -552,6 +560,7 @@ public class SklstfController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		model.addAttribute("tpage",tpage);
 		model.addAttribute("paging",paging);
 		model.addAttribute("tuitionList",list);
 		return url;
@@ -884,20 +893,43 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.GET)
-	public String sknrgListForm(Model model, HttpSession session) {
+	@RequestMapping("/sknrgListForm")
+	public String sknrgListForm(Model model, HttpServletRequest request, HttpSession session) {
 		String url = "manager/student/sknrgsListForm";
-		String skn_Type = (String) session.getAttribute("skn_Type");
-		List<SknrgsViewVO> sknrgsVOList = null;
-		if (skn_Type != null) {
-			skn_Type = "%";
+		String tpage = request.getParameter("tpage");
+		String skn_Type = request.getParameter("skn_Type");
+		String st_Stdnt_No = request.getParameter("st_Stdnt_No");
+		String skn_Useyn = request.getParameter("skn_Useyn");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
 		}
+		model.addAttribute("tpage",tpage);
+		
+		SknrgsViewVO sknrgsView = new SknrgsViewVO();
+		List<SknrgsViewVO> sknrgsVOList = null;
+		if (skn_Type == null) {
+			sknrgsView.setSkn_Type("%");
+			sknrgsView.setSkn_Useyn("%");
+			sknrgsView.setSt_Stdnt_No("%");
+		}else{
+			sknrgsView.setSkn_Type(skn_Type);
+			sknrgsView.setSkn_Useyn(skn_Useyn);
+			sknrgsView.setSt_Stdnt_No(st_Stdnt_No);
+		}
+		String paging = null;
 		try {
-			sknrgsVOList = sknrgs_Svc.getSknrgsType(skn_Type);
+			sknrgsVOList = sknrgs_Svc.listAllSknrgs(Integer.parseInt(tpage), sknrgsView);
+			paging = sknrgs_Svc.pageNumberSknrgs(Integer.parseInt(tpage), sknrgsView);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("sknrgsVOList", sknrgsVOList);
+		int n = sknrgsVOList.size();
+		model.addAttribute("sknrgsVOListSize", n);
+		model.addAttribute("paging", paging);
 		return url;
 	}
 
@@ -913,7 +945,7 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.POST)
+	@RequestMapping(value = "/sknrgListFormk", method = RequestMethod.POST)
 	public String sknrgList(@RequestParam(value = "skn_No") String[] skn_Nos,
 			@RequestParam(value = "skn_Useyn") String[] skn_Useyns,
 			Model model, HttpSession session) {

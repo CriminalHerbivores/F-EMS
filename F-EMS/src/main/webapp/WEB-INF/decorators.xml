@@ -19,7 +19,7 @@
 		<pattern>/admin/layoutPreview</pattern>
 		<pattern>/layout_type/login**</pattern>
 		<pattern>/layout_type/access**</pattern>
-		<pattern>/index</pattern>
+		<!-- <pattern>/index</pattern> -->
 	</decorator>
 		
 	<excludes>

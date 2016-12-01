@@ -110,7 +110,7 @@ public class FileDownload implements ApplicationContextAware {
 //			return null;
 //		}
 //		return new ModelAndView("download", "downloadFile", downloadFile);
-		File downloadFile = new File(filePath, filename);
+		File downloadFile = new File(filePath+"/"+ filename);
 		response.setCharacterEncoding("utf-8");
 		if (downloadFile == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);

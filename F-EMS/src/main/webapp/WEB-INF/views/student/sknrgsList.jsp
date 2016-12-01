@@ -21,7 +21,6 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
 		<c:forEach var="sknrgs" items="${sknrgsList}" begin="0" end="0" step="1">
 			<c:if test="${flag}">
 
@@ -30,7 +29,7 @@
 					<input type="hidden" name="skn_Stdnt_No" value="${loginUser}">
 					<table class="def-table-full tb-border table-hover">
 						<tr>
-							<th>학적상태</th>
+							<th>상태</th>
 							<td><c:choose>
 									<c:when test="${type=='졸업'}">
 								      졸업
@@ -40,10 +39,10 @@
 								      </c:otherwise>
 								</c:choose></td>
 							<th>학적상세</th>
-							<td>${type}</td>
+							<td width="100">${type}</td>
 						</tr>
 						<tr>
-							<th>학적변동 구분</th>
+							<th>구분</th>
 							<td colspan="3"><c:choose>
 									<c:when test="${type=='졸업'}">
 								   	졸업
@@ -83,8 +82,10 @@
 							</td>
 						</tr>
 					</table>
+					<table class="def-table-full"><tr><td style="text-align: right;">
 					<input type="button" class="def-btn btn-sm btn-color" id="selAll"
 						disabled value="신청하기" onclick="submitForm(this.form);">
+					</td></tr></table>
 				</form>
 			</c:if>
 		</c:forEach>
@@ -122,6 +123,6 @@
 				<td colspan="5" style="text-align: center;">${paging }</td>
 			</tr>
 		</table>
-</td></tr></table>
+		<br/><br/><br/>
 </body>
 </html>

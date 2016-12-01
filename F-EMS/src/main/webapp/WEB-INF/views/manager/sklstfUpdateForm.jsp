@@ -20,65 +20,64 @@
 <title></title>
 </head>
 <body>
+<h2>직원 정보 수정</h2><br/>
 <form method="post" name="formm">
-
- <table class="table table-bordered">
+<input type="hidden" name="tpage" value="${tpage}">
+<table class="def-table-auto tb-border table-hover">
       <tr>
-        <td>직원 번호</td>
-        <td><input type="text" class="form-control" id="stf_Sklstf_No" name="stf_Sklstf_No" value="${sklstfVO.stf_Sklstf_No}"></td>
-        <td>이름</td>
-        <td><input type="text" class="form-control" id="stf_Nm" name="stf_Nm" value="${sklstfVO.stf_Nm }"></td>
-        <td>영문이름</td>
-        <td><input type="text" class="form-control" id="stf_Eng_Nm" name="stf_Eng_Nm" value="${sklstfVO.stf_Eng_Nm }"></td>
-      
-      <tr>
-      	<td>단과</td>
-        <td><select name="fc_Coleg_Code" class="combobox-lg custom-form-control">
-        		<c:forEach var="colegVO" items="${colegList }">
-			  		<option value="${colegVO.coleg_Code }">${colegVO.coleg_Nm }</option>
-			  	</c:forEach>
-			</select></td>
-      	<td>학부</td>
-        <td><select name="sit_Faculty" class="combobox-lg custom-form-control">
-        		<c:forEach var="facultyVO" items="${colegList }">
-			  		<option value="${facultyVO.fc_Faculty_Code }">${facultyVO.fc_Faculty_Nm }</option>
-			  	</c:forEach>
-			</select></td>
-        <td>학과</td>
-        <td><select name="st_Subjct_Code" class="combobox-lg custom-form-control">
-			  	<c:forEach var="subjctVO" items="${subjctList }">
-			  		<option value="${subjctVO.sit_Subjct_Code }">${subjctVO.sit_Subjct }</option>
-			  	</c:forEach>
-			</select></td></td>
+        <th>직원 번호</th>
+        <td colspan="3"><input type="text" class="def-input-text-lg custom-form-control" id="stf_Sklstf_No" name="stf_Sklstf_No" value="${sklstfVO.stf_Sklstf_No}" readonly></td>
+        <th>학과 검색</th>
+        <td>
+		<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()">
+		<input type="hidden" id="subjct_Code" name="stf_Subject_Code" value="${sklstfVO.stf_Subject_Code}" class="def-input-text-lg custom-form-control" readonly>
+		</td>
       </tr>
       <tr>
-        <td>비밀번호</td>
-        <td><input type="password" class="form-control" id="stf_Pw" name="stf_Pw" value="${sklstfVO.stf_Pw }"></td>
-        <td>비밀번호 확인</td>
-        <td><input type="password" class="form-control" id="stf_Pw_on" name="stf_Pw_on" value="${sklstfVO.stf_Pw }"></td>
-        <td>이메일</td>
-        <td><input type="text" class="form-control" id="stf_Email" name="stf_Email" value="${sklstfVO.stf_Email }"></td>
+        <th>단과</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="coleg_Nm" name="coleg_Nm" value="${sklstfVO.coleg_Nm}" readonly></td>
+        <th>학부</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="faculty_Nm" name="fc_Faculty_Nm" value="${sklstfVO.fc_Faculty_Nm}" readonly></td>
+        <th>학과</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id ="subjct_Nm" name="sit_Subjct" value="${sklstfVO.sit_Subjct}" readonly></td>
       </tr>
       <tr>
-      <td>생년월일</td>
-        <td><input type="text" class="form-control" id="stf_Ihidnum" name="stf_Ihidnum" value="${sklstfVO.stf_Ihidnum }"></td>
-        <td>핸드폰 번호</td>
-        <td><input type="text" class="form-control" id="stf_Moblphon_No" name="stf_Moblphon_No" value="${sklstfVO.stf_Moblphon_No }"></td>
-        <td>집 전화번호</td>
-        <td><input type="text" class="form-control" id="stf_House_Tlphon_No" name="stf_House_Tlphon_No" value="${sklstfVO.stf_House_Tlphon_No }"></td>
+      	<th>이름</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Nm" name="stf_Nm" value="${sklstfVO.stf_Nm }"></td>
+        <th>영문이름</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Eng_Nm" name="stf_Eng_Nm" value="${sklstfVO.stf_Eng_Nm }"></td>
+        <th>이메일</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Email" name="stf_Email" value="${sklstfVO.stf_Email }"></td>
       </tr>
       <tr>
-        <td>우편번호</td>
-        <td><input type="text" class="form-control" id="stf_Post_No" name="stf_Post_No" value="${sklstfVO.stf_Post_No }"></td>
-        <td>주소</td>
-        <td><input type="text" class="form-control" id="stf_Adres1" name="stf_Adres1" value="${sklstfVO.stf_Adres1 }"></td>
-        <td>상세주소</td>
-        <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
+        <th>비밀번호</th>
+        <td><input type="password" class="def-input-text-lg custom-form-control" id="stf_Pw" name="stf_Pw" value="${sklstfVO.stf_Pw }"></td>
+        <th>비밀번호 확인</th>
+        <td><input type="password" class="def-input-text-lg custom-form-control" id="stf_Pw_on" name="stf_Pw_on" value=""></td>
+        <th>주민번호</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Ihidnum" name="stf_Ihidnum" value="${sklstfVO.stf_Ihidnum }" readonly></td>
+      </tr>
+      <tr>
+        <th>우편번호</th>
+        <td><input type="text" class="def-input-text-md custom-form-control" id="zipNum" name="stf_Post_No" value="${sklstfVO.stf_Post_No }" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
+        <th>주소</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="addres1" name="stf_Adres1" value="${sklstfVO.stf_Adres1 }" readonly></td>
+        <th>상세주소</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
+      </tr>
+      <tr>
+        <th>핸드폰 번호</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Moblphon_No" name="stf_Moblphon_No" value="${sklstfVO.stf_Moblphon_No }"></td>
+        <th>집 전화번호</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_House_Tlphon_No" name="stf_House_Tlphon_No" value="${sklstfVO.stf_House_Tlphon_No }"></td>
+        <th>직원 전화번호</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="stf_Sklstf_Tlphon_No" name="stf_Sklstf_Tlphon_No" value="${sklstfVO.stf_Sklstf_Tlphon_No }"></td>
       </tr>
   </table>
-    <input type="button" class="btn btn-default" onclick="go_sklstf()" value="수정">
-    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
-
+  <table class="def-table-full"><tr><td style="text-align: right;">
+    <input type="button" class="def-btn btn-sm btn-color" onclick="go_sklstf()" value="수정">
+    <button type="button" class="def-btn btn-sm btn-color" onclick="history.go(-1)">취소</button>
+  </td></tr></table>
 </form>
 </body>
 </html>

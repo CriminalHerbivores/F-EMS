@@ -18,60 +18,42 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/stdnt.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../js/notice_bbs.js"></script>
 </head>
 <body>
-	<div class="container">
-		<h2>학생 관리</h2>
-			<form name="formm">
-		<table>
+	<h2>학생 관리</h2><br/>
+<table class="def-table-full tb-border table-hover">
 		<tr>
-				<td colspan="5" class="text-right">
-				<select name="선택" class="combobox-sm">
-						<option value="st_Stdnt_No">학생 번호</option>
-						<option value="st_Subjct_Code">학과</option>
-						<option value="st_Nm">이름</option>
-						<option value="st_Ihidnum">생년월일</option>
-				</select>&nbsp;&nbsp; <input type="text"  name="key" class="def-input-text-sm">&nbsp;&nbsp;
-					<input type="button" class="def-btn" value="조회">&nbsp;&nbsp;
-				</td>
+			<th>학번</th>
+			<th>이름</th>
+			<th>전화번호</th>
+			<th>학과</th>
+			<th>이메일</th>
 		</tr>
-		</table>
-			</form>
-		<table class="table table-bordered">
+
+		<c:forEach var="stdnt" items="${stdntList }">
 			<tr>
-				<th>학번</th>
-				<th>이름</th>
-				<th>전화번호</th>
-				<th>학과</th>
-				<th>이메일</th>
+				<td>${stdnt.st_Stdnt_No}</td>
+				<td><a href="stdntDetail?st_Stdnt_No=${stdnt.st_Stdnt_No}&tpage=${tpage}">${stdnt.st_Nm}</a></td>
+				<td>${stdnt.st_Moblphon_No}</td>
+				<td>${stdnt.st_Subjct_Code}</td>
+				<td>${stdnt.st_Email}</td>
 			</tr>
-
-			<c:forEach var="stdnt" items="${stdntList }">
-				<tr>
-					<td>${stdnt.st_Stdnt_No}</td>
-					<td><a href="stdntDetail?st_Stdnt_No=${stdnt.st_Stdnt_No}&tpage=${tpage}">
-							${stdnt.st_Nm} </a></td>
-					<td>${stdnt.st_Moblphon_No}</td>
-					<td>${stdnt.st_Subjct_Code}</td>
-					<td>${stdnt.st_Email}</td>
-
-				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="5" style="text-align: center;">${paging }</td>
-			</tr>
-
-		</table>
-	</div>
+		</c:forEach>
+		<tr>
+			<td colspan="5" style="text-align: center;">${paging }</td>
+		</tr>
+	</table>
+	<form name="searchForm">
+	<table class="def-table-full"><tr><td style="text-align: right;">
+		<select name="key" class="combobox-md custom-form-control">
+			<option value="st_Stdnt_No">학생 번호</option>
+			<option value="st_Subjct_Code">학과</option>
+			<option value="st_Nm">이름</option>
+			<option value="st_Ihidnum">생년월일</option>
+		</select>&nbsp;&nbsp; <input type="text" name="value" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
+		<input type="button" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color" value="조회">&nbsp;&nbsp;
+		<a href="<%=request.getContextPath()%>/sklstf/stdntInsert"><input type="button" class="def-btn btn-sm btn-color" value="등록"></a>
+	</td></tr></table>
+	</form>
 </body>
 </html>

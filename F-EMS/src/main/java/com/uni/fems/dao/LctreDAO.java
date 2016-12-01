@@ -31,6 +31,17 @@ public interface LctreDAO {
 	
 	/**
 	 * <pre>
+	 * 강의번호로 하나의 강의를 선택하여 강의상세(강의계획서) 조회
+	 * </pre>
+	 * <pre>
+	 * @param lc_Lctre_No
+	 * @throws SQLException
+	 * </pre>
+	 */
+	Lctre_SearchVO getDetailLctre(int lc_Lctre_No) throws SQLException;
+	
+	/**
+	 * <pre>
 	 * 현재 개설된 강의 목록 조회
 	 * 수강신청 첫 페이지에서 검색어 없이 모든 강의목록 가져온다
 	 * </pre>

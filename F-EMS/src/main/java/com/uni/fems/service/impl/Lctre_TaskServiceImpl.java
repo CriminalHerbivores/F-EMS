@@ -70,6 +70,8 @@ public class Lctre_TaskServiceImpl implements Lctre_TaskService{
 	public void insertLctre_Task(Lctre_Task_GntVO lctre_Task_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
 		
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
+			//임시
+			lctre_FlpthVO.setLf_Lctre_No(38);
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
 			lctre_Task_Gnt.setLt_Flpth_No(maxNo+"");
@@ -80,6 +82,8 @@ public class Lctre_TaskServiceImpl implements Lctre_TaskService{
 	public int updateLctre_Task(Lctre_Task_GntVO lctre_Task_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
 		
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
+			//임시
+			lctre_FlpthVO.setLf_Lctre_No(38);
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
 			lctre_Task_Gnt.setLt_Flpth_No(maxNo+"");

@@ -20,27 +20,10 @@
 <title></title>
 </head>
 <body>
-
-<form name="formm" mehtod="post">
-<table class="non-border margin-auto">	
-<tr><td>
-<div class="text-left">
-<h2>직원 조회</h2>
+<h2>직원 조회</h2><br/>
+<form name="formm" method="post">
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
-	<table class="def-table-auto">
-	<tr><td class="text-right">
-				<select name="key" class="combobox-md custom-form-control">
-					<option value="stf_Sklstf_No">직원번호</option>
-					<option value="stf_Nm">직원이름</option>
-					<option value="sit_Subjct">학과</option>
-					<option value="fc_Faculty_Nm">학부</option>
-					<option value="coleg_Nm">단과대학</option>
-				</select>&nbsp;&nbsp;
-					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
-	</td></tr>
-	</table>
 			<table class="def-table-full tb-border table-hover">
 				<!-- <tr>
 					<td colspan="12"  class="text-right">
@@ -80,10 +63,18 @@
 				<tr>
       		<td colspan="8" style="text-align: center;">${paging }</td>
       	</tr>
-			</table>
-</div>
-</td></tr>
 </table>
+<table class="def-table-full"><tr><td style="text-align: right;">
+				<select name="key" class="combobox-md custom-form-control">
+					<option value="stf_Sklstf_No">직원번호</option>
+					<option value="stf_Nm">직원이름</option>
+					<option value="sit_Subjct">학과</option>
+					<option value="fc_Faculty_Nm">학부</option>
+					<option value="coleg_Nm">단과대학</option>
+				</select>&nbsp;&nbsp;
+					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
+					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
+</td></tr></table>
 	</form>
 </body>
 </html>

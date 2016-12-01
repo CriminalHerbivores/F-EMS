@@ -20,20 +20,7 @@
 <title></title>
 </head>
 <body>
-	<div class="container">
-<table class="non-border margin-auto"><tr><td>
-		<h2>장학금 관리</h2>
-		<form name="search">
-		<table>
-		<tr>
-			<td>
-				장학금 명 : 
-					<input type="text"  name="key" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
-					<input type="button" class="def-btn" value="조회">&nbsp;&nbsp;
-			</td>
-		</tr>
-		</table>
-		</form>
+		<h2>장학금 관리</h2><br/>
 		<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>장학금 명</th>
@@ -61,11 +48,13 @@
 				<td colspan="7" style="text-align: center;">${paging}</td>
 			</tr>
 		</table>
-		<div id="buttons" style="float:right">
-	  	<input type="button" class="def-btn btn-sm btn-color" value="등록하기" onclick="writeschlshipForm()">
-	  	<a href="<%=request.getContextPath()%>/sklstf/requestschlship"><input type="button" value="장학금 신청 내역" class="def-btn btn-sm btn-color"></a>
-	  </div>
+<form name="search">
+<table class="def-table-full"><tr><td style="text-align: right;">
+<input type="text"  name="key" class="def-input-text-lg custom-form-control" placeholder="장학금명">&nbsp;&nbsp;
+<input type="button" class="def-btn btn-sm btn-color" value="조회">&nbsp;&nbsp;
+<input type="button" class="def-btn btn-sm btn-color" value="등록하기" onclick="writeschlshipForm()">
+<a href="<%=request.getContextPath()%>/sklstf/requestschlship"><input type="button" value="장학금 신청 내역" class="def-btn btn-sm btn-color"></a>
 </td></tr></table>
-	</div>
+</form>
 </body>
 </html>
