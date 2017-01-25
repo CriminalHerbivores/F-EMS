@@ -17,7 +17,7 @@
 	</repositories>
 	
 	
-	<properties>
+	<properties> 
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.0.4.RELEASE</org.springframework-version>
 		<springframework-security-version>3.2.4.RELEASE</springframework-security-version>
