@@ -19,7 +19,7 @@
 	
 	<bean id="sqlMapClient"	
 		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
-		p:configLocation="classpath:com/test/db/sqlConfig/SqlMapConfig.xml"
+		p:configLocation="classpath:com/uni/db/sqlConfig/SqlMapConfig.xml"
 		p:dataSource-ref="dataSource"		
 	/>
 		
