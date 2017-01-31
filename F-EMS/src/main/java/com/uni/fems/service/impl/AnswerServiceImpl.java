@@ -1,7 +1,20 @@
 package com.uni.fems.service.impl;
 
-import com.uni.fems.service.AnswerService;
+import java.sql.SQLException;
+import java.util.List;
 
-public class AnswerServiceImpl implements AnswerService{
+//import com.uni.fems.dao.AnswerDAO;
+import com.uni.fems.dto.AnswerVO;
+//import com.uni.fems.service.AnswerService;
 
+public class AnswerServiceImpl implements AnswerService {
+ 
+ private AnswerDAO answerDAO;
+ public void setAnswerDAO(AnswerDAO answerDAO){
+  this.answerDAO=answerDAO;
+ }
+ 
+ 
 }
+
+
