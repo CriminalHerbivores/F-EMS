@@ -1,5 +1,7 @@
 package com.uni.fems.service.impl;
 
-public class AnswerServiceImpl {
+import com.uni.fems.service.AnswerService;
+
+public class AnswerServiceImpl implements AnswerService{
 
 }
