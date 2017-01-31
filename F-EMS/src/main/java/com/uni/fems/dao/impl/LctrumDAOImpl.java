@@ -1,8 +1,9 @@
 package com.uni.fems.dao.impl;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.dao.LctrumDAO;
 
-public class LctrumDAOImpl {
+public class LctrumDAOImpl implements LctrumDAO {
 
 	private SqlMapClient client;
 	public void setClient(SqlMapClient client){
