@@ -1,5 +1,20 @@
 package com.uni.fems.service.impl;
 
-public class SknrgsServiceImpl {
+import java.sql.SQLException;
+import java.util.List;
 
+import com.uni.fems.dao.SknrgsDAO;
+import com.uni.fems.dto.SknrgsVO;
+import com.uni.fems.service.SknrgsService;
+
+public class SknrgsServiceImpl implements SknrgsService {
+ 
+ private SknrgsDAO sknrgsDAO;
+ public void setSknrgsDAO(SknrgsDAO sknrgsDAO){
+  this.sknrgsDAO=sknrgsDAO;
+ }
+ 
+ 
 }
+
+
