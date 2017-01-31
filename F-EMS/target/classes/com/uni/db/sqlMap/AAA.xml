@@ -8,14 +8,14 @@
 
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="member" type="com.uni.fems.dto.MemberVO" />
+	<typeAlias alias="answer" type="com.uni.fems.dto.AnswerVO" />
 	
-	<select id="getMemberList" parameterClass="str" resultClass="member">
+	<select id="getMemberList" parameterClass="str" resultClass="answer">
 		select * 
 		from member_view
 		where name like '%'||#name#||'%'		
 	</select>
-	
+	<!-- 
 	<select id="getMember" parameterClass="str" resultClass="member" >
 		select *
 		from member_view
@@ -52,7 +52,7 @@
 		delete from authorities
 		where userid=#userid#	
 	</update>
-	
+	 -->
 </sqlMap>
 
 

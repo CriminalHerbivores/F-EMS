@@ -4,7 +4,8 @@
      "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 
 <sqlMapConfig>
-	<sqlMap resource="com/uni/db/sqlMap/Answer.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/AAA.xml" />
+	<!-- <sqlMap resource="com/uni/db/sqlMap/Answer.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Attendance.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Bbs_Atrty.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Bbs_Flpth.xml" />
@@ -46,5 +47,5 @@
 	<sqlMap resource="com/uni/db/sqlMap/Lctre_Unq_No.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Lctre_Actpln.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Users.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Cnslt_Bbs.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/Cnslt_Bbs.xml" /> -->
 </sqlMapConfig>
