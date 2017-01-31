@@ -328,7 +328,7 @@
 
 	<aop:config>
 		<aop:pointcut
-			expression="execution(public * com.test.board.service.impl..*ServiceImpl.*(..))"
+			expression="execution(public * com.uni.fems.service.impl.*ServiceImpl.*(..))"
 			id="servicePublicMethod" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod" />
 	</aop:config>
@@ -340,16 +340,5 @@
 		pointcut-ref="publicMethod2" method="trace" /> <aop:around pointcut-ref="publicMethod3" 
 		method="trace" /> </aop:aspect> </aop:config> -->
 </beans>
-
-
-
-
-
-
-
-
-
-
-
 
 
