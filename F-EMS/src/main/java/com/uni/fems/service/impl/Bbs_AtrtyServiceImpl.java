@@ -9,9 +9,9 @@ import com.uni.fems.service.Bbs_AtrtyService;
 
 public class Bbs_AtrtyServiceImpl implements Bbs_AtrtyService {
  
- private Bbs_AtrtyDAO bbs_atrtyDAO;
- public void setBbs_AtrtyDAO(Bbs_AtrtyDAO bbs_atrtyDAO){
-  this.bbs_atrtyDAO=bbs_atrtyDAO;
+ private Bbs_AtrtyDAO bbs_AtrtyDAO;
+ public void setBbs_AtrtyDAO(Bbs_AtrtyDAO bbs_AtrtyDAO){
+  this.bbs_AtrtyDAO=bbs_AtrtyDAO;
  }
  
  

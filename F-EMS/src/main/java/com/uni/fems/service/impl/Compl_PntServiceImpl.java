@@ -9,9 +9,9 @@ import com.uni.fems.service.Compl_PntService;
 
 public class Compl_PntServiceImpl implements Compl_PntService {
  
- private Compl_PntDAO compl_pntDAO;
- public void setCompl_PntDAO(Compl_PntDAO compl_pntDAO){
-  this.compl_pntDAO=compl_pntDAO;
+ private Compl_PntDAO compl_PntDAO;
+ public void setCompl_PntDAO(Compl_PntDAO compl_PntDAO){
+  this.compl_PntDAO=compl_PntDAO;
  }
  
  

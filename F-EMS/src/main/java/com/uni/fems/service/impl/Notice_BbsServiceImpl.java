@@ -9,9 +9,9 @@ import com.uni.fems.service.Notice_BbsService;
 
 public class Notice_BbsServiceImpl implements Notice_BbsService {
  
- private Notice_BbsDAO notice_bbsDAO;
- public void setNotice_BbsDAO(Notice_BbsDAO notice_bbsDAO){
-  this.notice_bbsDAO=notice_bbsDAO;
+ private Notice_BbsDAO notice_BbsDAO;
+ public void setNotice_BbsDAO(Notice_BbsDAO notice_BbsDAO){
+  this.notice_BbsDAO=notice_BbsDAO;
  }
  
  

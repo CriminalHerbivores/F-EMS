@@ -9,9 +9,9 @@ import com.uni.fems.service.Bbs_FlpthService;
 
 public class Bbs_FlpthServiceImpl implements Bbs_FlpthService {
  
- private Bbs_FlpthDAO bbs_flpthDAO;
- public void setBbs_FlpthDAO(Bbs_FlpthDAO bbs_flpthDAO){
-  this.bbs_flpthDAO=bbs_flpthDAO;
+ private Bbs_FlpthDAO bbs_FlpthDAO;
+ public void setBbs_FlpthDAO(Bbs_FlpthDAO bbs_FlpthDAO){
+  this.bbs_FlpthDAO=bbs_FlpthDAO;
  }
  
  

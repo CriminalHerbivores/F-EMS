@@ -9,9 +9,9 @@ import com.uni.fems.service.Subjct_Info_TableService;
 
 public class Subjct_Info_TableServiceImpl implements Subjct_Info_TableService {
  
- private Subjct_Info_TableDAO subjct_info_tableDAO;
- public void setSubjct_Info_TableDAO(Subjct_Info_TableDAO subjct_info_tableDAO){
-  this.subjct_info_tableDAO=subjct_info_tableDAO;
+ private Subjct_Info_TableDAO subjct_Info_TableDAO;
+ public void setSubjct_Info_TableDAO(Subjct_Info_TableDAO subjct_Info_TableDAO){
+  this.subjct_Info_TableDAO=subjct_Info_TableDAO;
  }
  
  

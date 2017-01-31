@@ -9,9 +9,9 @@ import com.uni.fems.service.Sklstf_AtrtyService;
 
 public class Sklstf_AtrtyServiceImpl implements Sklstf_AtrtyService {
  
- private Sklstf_AtrtyDAO sklstf_atrtyDAO;
- public void setSklstf_AtrtyDAO(Sklstf_AtrtyDAO sklstf_atrtyDAO){
-  this.sklstf_atrtyDAO=sklstf_atrtyDAO;
+ private Sklstf_AtrtyDAO sklstf_AtrtyDAO;
+ public void setSklstf_AtrtyDAO(Sklstf_AtrtyDAO sklstf_AtrtyDAO){
+  this.sklstf_AtrtyDAO=sklstf_AtrtyDAO;
  }
  
  

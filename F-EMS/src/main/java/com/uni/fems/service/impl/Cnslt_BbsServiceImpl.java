@@ -9,9 +9,9 @@ import com.uni.fems.service.Cnslt_BbsService;
 
 public class Cnslt_BbsServiceImpl implements Cnslt_BbsService {
  
- private Cnslt_BbsDAO cnslt_bbsDAO;
- public void setCnslt_BbsDAO(Cnslt_BbsDAO cnslt_bbsDAO){
-  this.cnslt_bbsDAO=cnslt_bbsDAO;
+ private Cnslt_BbsDAO cnslt_BbsDAO;
+ public void setCnslt_BbsDAO(Cnslt_BbsDAO cnslt_BbsDAO){
+  this.cnslt_BbsDAO=cnslt_BbsDAO;
  }
  
  

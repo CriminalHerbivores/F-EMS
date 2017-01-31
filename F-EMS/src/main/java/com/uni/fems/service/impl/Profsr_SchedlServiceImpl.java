@@ -9,9 +9,9 @@ import com.uni.fems.service.Profsr_SchedlService;
 
 public class Profsr_SchedlServiceImpl implements Profsr_SchedlService {
  
- private Profsr_SchedlDAO profsr_schedlDAO;
- public void setProfsr_SchedlDAO(Profsr_SchedlDAO profsr_schedlDAO){
-  this.profsr_schedlDAO=profsr_schedlDAO;
+ private Profsr_SchedlDAO profsr_SchedlDAO;
+ public void setProfsr_SchedlDAO(Profsr_SchedlDAO profsr_SchedlDAO){
+  this.profsr_SchedlDAO=profsr_SchedlDAO;
  }
  
  

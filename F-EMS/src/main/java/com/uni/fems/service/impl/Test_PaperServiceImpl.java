@@ -9,9 +9,9 @@ import com.uni.fems.service.Test_PaperService;
 
 public class Test_PaperServiceImpl implements Test_PaperService {
  
- private Test_PaperDAO test_paperDAO;
- public void setTest_PaperDAO(Test_PaperDAO test_paperDAO){
-  this.test_paperDAO=test_paperDAO;
+ private Test_PaperDAO test_PaperDAO;
+ public void setTest_PaperDAO(Test_PaperDAO test_PaperDAO){
+  this.test_PaperDAO=test_PaperDAO;
  }
  
  

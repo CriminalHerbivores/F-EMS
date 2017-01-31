@@ -9,9 +9,9 @@ import com.uni.fems.service.Lctre_Unq_NoService;
 
 public class Lctre_Unq_NoServiceImpl implements Lctre_Unq_NoService {
  
- private Lctre_Unq_NoDAO lctre_unq_noDAO;
- public void setLctre_Unq_NoDAO(Lctre_Unq_NoDAO lctre_unq_noDAO){
-  this.lctre_unq_noDAO=lctre_unq_noDAO;
+ private Lctre_Unq_NoDAO lctre_Unq_NoDAO;
+ public void setLctre_Unq_NoDAO(Lctre_Unq_NoDAO lctre_Unq_NoDAO){
+  this.lctre_Unq_NoDAO=lctre_Unq_NoDAO;
  }
  
  

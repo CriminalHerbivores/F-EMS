@@ -1,5 +1,10 @@
 package com.uni.fems.dao.impl;
 
-public class Lctre_Unq_NoDAOImpl {
+import com.ibatis.sqlmap.client.SqlMapClient;
 
+public class Lctre_Unq_NoDAOImpl {
+	private SqlMapClient client;
+	public void setClient(SqlMapClient client){
+		this.client=client;
+	}
 }
