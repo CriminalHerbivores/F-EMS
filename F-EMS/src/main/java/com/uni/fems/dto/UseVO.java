@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class UseVO {
 	private int us_No;   // 번호
 	private String us_Lctrum_No;   // 강의실 번호
+	private String us_User_No;   // 사용자 번호
 	private String us_User;   // 사용자
 	private String us_Cttpc;   // 연락처
 	private String us_Cn;   // 상태
@@ -22,6 +23,12 @@ public class UseVO {
 	}
 	public void setUs_Lctrum_No(String us_Lctrum_No) {
 		this.us_Lctrum_No = us_Lctrum_No;
+	}
+	public String getUs_User_No() {
+		return us_User_No;
+	}
+	public void setUs_User_No(String us_User_No) {
+		this.us_User_No = us_User_No;
 	}
 	public String getUs_User() {
 		return us_User;
@@ -62,9 +69,10 @@ public class UseVO {
 	@Override
 	public String toString() {
 		return "UseVO [us_No=" + us_No + ", us_Lctrum_No=" + us_Lctrum_No
-				+ ", us_User=" + us_User + ", us_Cttpc=" + us_Cttpc
-				+ ", us_Cn=" + us_Cn + ", us_Period=" + us_Period
-				+ ", us_Sklstf_No=" + us_Sklstf_No + "]";
+				+ ", us_User_No=" + us_User_No + ", us_User=" + us_User
+				+ ", us_Cttpc=" + us_Cttpc + ", us_Cn=" + us_Cn + ", us_Dt="
+				+ us_Dt + ", us_Period=" + us_Period + ", us_Sklstf_No="
+				+ us_Sklstf_No + "]";
 	}
 
 }
