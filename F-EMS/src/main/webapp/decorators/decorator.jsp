@@ -1,70 +1,206 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="decorator"
-	uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<%
-	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-cache");
-	response.addHeader("Cache-Control", "no-store");
-	response.setDateHeader("Expires", 1L);
-%>
+
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title><decorator:title /></title>
-<link rel="stylesheet" type="text/css" href="../css/main.css" />
-<link rel="stylesheet" type="text/css" href="../css/board.css" />
-<decorator:head />
+<title>decorator</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-div#headWrap {
-	position: relative;
-	width: 80%;
-	height: 100px;
-	min-width: 450px;
-	max-width: 850px;
-	margin: 0 auto;
-	overflow: hidden;
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
 }
 
-div#topMenu {
-	float: right;
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+	height: 450px
 }
 
-div#adminMenu {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
 }
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+#topnav {
+	background-color: white;
+	height: 65px;
+}
+
+#secondnav {
+	background-color: #363636;
+	height: 50px;
+}
+
+#toptable {
+	width: 100%
+}
+
+.dropdown{
+ display:inline;
+  position: relative;
+    display: inline-block;
+}
+
+ #topnav-table{
+ display:inline;
+} 
+
+#logo{
+width: 170px;
+margin-top: 8px
+}
+
+#category{
+margin-left: 230px;
+margin-top: 15px;
+}
+
 </style>
 </head>
 <body>
-	<div id="headWrap">
-		<sec:authorize access="isAuthenticated()">
 
-			<div id="topMenu">
-				<span>${loginUser}님 반갑습니다.</span> <a
-					href="<%=request.getContextPath()%>/member/logout">
-					<button>로그아웃</button>
-				</a>
+
+	<nav class="navbar navbar-inverse" id="topnav">
+		<div class="container-fluid" id="toptable">
+			<div class="navbar-header" style="width: 100%;">
+				<table id="topnav-table">
+					<tr>
+						<td><img src="resources/images/logo.png" id="logo"></td>
+						<td></td>
+					</tr>
+				</table>
+				<a href="#" style="float:right;"><span class="glyphicon glyphicon-log-in"></span>
+								Logout</a>
 			</div>
+		</div>
+	</nav>
 
-			<div id="adminMenu">
-				<a href="<%=request.getContextPath()%>
-			/member/memberList"><button>회원관리</button></a>
-				<a href="<%=request.getContextPath()%>
-			/product/productList"><button>상품관리</button></a>
-				<a href="<%=request.getContextPath()%>
-			/order/orderList"><button>주문관리</button></a>
+	<nav class="navbar navbar-inverse" id="secondnav">
+		<div class="collapse navbar-collapse" id="category">
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					학생 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
 			</div>
-		</sec:authorize>
+		<!-- </div>
+		<div class="collapse navbar-collapse" id="myNavbar"> -->
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					학사 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
+			</div>
+		
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					수강신청 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
+			</div>
+	
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					강의 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
+			</div>
+		
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					커뮤니티 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
 
+			</div>
+		</div>
+		<!-- <ul class="nav navbar-nav">
+        <li style="margin-left: 300px;"><a href="#">학생</a></li>
+        <li><a href="#">학사</a></li>
+        <li><a href="#">수강신청</a></li>
+        <li><a href="#">강의</a></li>
+        <li><a href="#">커뮤니티</a></li>
+        
+      </ul> -->
+		
+
+	</nav>
+
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-2 sidenav">
+				<h4>John's Blog</h4>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#section1">Home</a></li>
+					<li><a href="#section2">Friends</a></li>
+					<li><a href="#section3">Family</a></li>
+					<li><a href="#section3">Photos</a></li>
+				</ul>
+				<br>
+			</div>
+		</div>
 	</div>
 
-	<decorator:body />
+	<footer class="container-fluid text-center">
+		<p>Footer Text</p>
+	</footer>
+
 </body>
 </html>
