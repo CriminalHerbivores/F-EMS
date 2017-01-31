@@ -1,5 +1,7 @@
 package com.uni.fems.dao.impl;
 
-public class AttendanceDAOImpl {
+import com.uni.fems.dao.AttendanceDAO;
+
+public class AttendanceDAOImpl implements AttendanceDAO{
 
 }

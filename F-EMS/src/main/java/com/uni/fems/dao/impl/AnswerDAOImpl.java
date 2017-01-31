@@ -1,5 +1,7 @@
 package com.uni.fems.dao.impl;
 
-public class AnswerDAOImpl {
+import com.uni.fems.dao.AnswerDAO;
+
+public class AnswerDAOImpl implements AnswerDAO  {
 
 }

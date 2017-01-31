@@ -2,6 +2,7 @@ package com.uni.fems.dto;
 
 public class Bbs_FlpthVO {
 	private int bf_No;   // 번호
+	private String bf_File_Type_Code;   // 파일유형코드
 	private int bf_Bbs_Code;   // 게시판 코드
 	private int bf_Bbs_No;   // 게시판 번호
 	private String bf_File_Type;   // 파일 경로
@@ -11,6 +12,12 @@ public class Bbs_FlpthVO {
 	}
 	public void setBf_No(int bf_No) {
 		this.bf_No = bf_No;
+	}
+	public String getBf_File_Type_Code() {
+		return bf_File_Type_Code;
+	}
+	public void setBf_File_Type_Code(String bf_File_Type_Code) {
+		this.bf_File_Type_Code = bf_File_Type_Code;
 	}
 	public int getBf_Bbs_Code() {
 		return bf_Bbs_Code;
@@ -38,7 +45,8 @@ public class Bbs_FlpthVO {
 	}
 	@Override
 	public String toString() {
-		return "Bbs_FlpthVO [bf_No=" + bf_No + ", bf_Bbs_Code=" + bf_Bbs_Code
+		return "Bbs_FlpthVO [bf_No=" + bf_No + ", bf_File_Type_Code="
+				+ bf_File_Type_Code + ", bf_Bbs_Code=" + bf_Bbs_Code
 				+ ", bf_Bbs_No=" + bf_Bbs_No + ", bf_File_Type=" + bf_File_Type
 				+ ", bf_Flpth=" + bf_Flpth + "]";
 	}

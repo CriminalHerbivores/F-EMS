@@ -3,16 +3,12 @@ package com.uni.fems.dto;
 import java.sql.Timestamp;
 
 public class LctreVO {
+
 	private int lc_Lctre_No;   // 강의번호
 	private String lc_Profsr_No;   // 교수번호
-	private String lc_Lctre_Nm;   // 강의명
+	private String lc_Lctre_Code;   // 강의코드
 	private Timestamp lc_Lctrbgn_Dt;   // 강의개강일
 	private int lc_Lctre_Nmpr;   // 강의 인원
-	private String lc_Indvdl_Task_Ennc;   // 개인 과제 유무
-	private String lc_Team_Task_Ennc;   // 팀별과제 유무
-	private String lc_Midex_Ennc;   // 중간고사 유무
-	private String lc_Fnex_Ennc;   // 기말고사 유무
-	private String lc_Presnatn_Ennc;   // 발표 유무
 	private String lc_Wik_Lctre_Dayweek;   // 주간 강의 요일
 	private String lc_Lctre_Time;   // 강의 시간
 	private String lc_Pnt;   // 학점
@@ -21,6 +17,7 @@ public class LctreVO {
 	private String lc_Open_At;   // 개설여부
 	private String lc_Lctre_Org;   // 강의 원본
 	private String lc_Lctre_Evl_Score;   // 강의 평가 점수
+	private String lc_Split;   // 분반
 	public int getLc_Lctre_No() {
 		return lc_Lctre_No;
 	}
@@ -33,11 +30,11 @@ public class LctreVO {
 	public void setLc_Profsr_No(String lc_Profsr_No) {
 		this.lc_Profsr_No = lc_Profsr_No;
 	}
-	public String getLc_Lctre_Nm() {
-		return lc_Lctre_Nm;
+	public String getLc_Lctre_Code() {
+		return lc_Lctre_Code;
 	}
-	public void setLc_Lctre_Nm(String lc_Lctre_Nm) {
-		this.lc_Lctre_Nm = lc_Lctre_Nm;
+	public void setLc_Lctre_Code(String lc_Lctre_Code) {
+		this.lc_Lctre_Code = lc_Lctre_Code;
 	}
 	public Timestamp getLc_Lctrbgn_Dt() {
 		return lc_Lctrbgn_Dt;
@@ -50,36 +47,6 @@ public class LctreVO {
 	}
 	public void setLc_Lctre_Nmpr(int lc_Lctre_Nmpr) {
 		this.lc_Lctre_Nmpr = lc_Lctre_Nmpr;
-	}
-	public String getLc_Indvdl_Task_Ennc() {
-		return lc_Indvdl_Task_Ennc;
-	}
-	public void setLc_Indvdl_Task_Ennc(String lc_Indvdl_Task_Ennc) {
-		this.lc_Indvdl_Task_Ennc = lc_Indvdl_Task_Ennc;
-	}
-	public String getLc_Team_Task_Ennc() {
-		return lc_Team_Task_Ennc;
-	}
-	public void setLc_Team_Task_Ennc(String lc_Team_Task_Ennc) {
-		this.lc_Team_Task_Ennc = lc_Team_Task_Ennc;
-	}
-	public String getLc_Midex_Ennc() {
-		return lc_Midex_Ennc;
-	}
-	public void setLc_Midex_Ennc(String lc_Midex_Ennc) {
-		this.lc_Midex_Ennc = lc_Midex_Ennc;
-	}
-	public String getLc_Fnex_Ennc() {
-		return lc_Fnex_Ennc;
-	}
-	public void setLc_Fnex_Ennc(String lc_Fnex_Ennc) {
-		this.lc_Fnex_Ennc = lc_Fnex_Ennc;
-	}
-	public String getLc_Presnatn_Ennc() {
-		return lc_Presnatn_Ennc;
-	}
-	public void setLc_Presnatn_Ennc(String lc_Presnatn_Ennc) {
-		this.lc_Presnatn_Ennc = lc_Presnatn_Ennc;
 	}
 	public String getLc_Wik_Lctre_Dayweek() {
 		return lc_Wik_Lctre_Dayweek;
@@ -129,20 +96,25 @@ public class LctreVO {
 	public void setLc_Lctre_Evl_Score(String lc_Lctre_Evl_Score) {
 		this.lc_Lctre_Evl_Score = lc_Lctre_Evl_Score;
 	}
+	public String getLc_Split() {
+		return lc_Split;
+	}
+	public void setLc_Split(String lc_Split) {
+		this.lc_Split = lc_Split;
+	}
 	@Override
 	public String toString() {
 		return "LctreVO [lc_Lctre_No=" + lc_Lctre_No + ", lc_Profsr_No="
-				+ lc_Profsr_No + ", lc_Lctre_Nm=" + lc_Lctre_Nm
-				+ ", lc_Lctre_Nmpr=" + lc_Lctre_Nmpr + ", lc_Indvdl_Task_Ennc="
-				+ lc_Indvdl_Task_Ennc + ", lc_Team_Task_Ennc="
-				+ lc_Team_Task_Ennc + ", lc_Midex_Ennc=" + lc_Midex_Ennc
-				+ ", lc_Fnex_Ennc=" + lc_Fnex_Ennc + ", lc_Presnatn_Ennc="
-				+ lc_Presnatn_Ennc + ", lc_Wik_Lctre_Dayweek="
+				+ lc_Profsr_No + ", lc_Lctre_Code=" + lc_Lctre_Code
+				+ ", lc_Lctrbgn_Dt=" + lc_Lctrbgn_Dt + ", lc_Lctre_Nmpr="
+				+ lc_Lctre_Nmpr + ", lc_Wik_Lctre_Dayweek="
 				+ lc_Wik_Lctre_Dayweek + ", lc_Lctre_Time=" + lc_Lctre_Time
 				+ ", lc_Pnt=" + lc_Pnt + ", lc_Grade=" + lc_Grade
 				+ ", lc_Lctrum_No=" + lc_Lctrum_No + ", lc_Open_At="
 				+ lc_Open_At + ", lc_Lctre_Org=" + lc_Lctre_Org
-				+ ", lc_Lctre_Evl_Score=" + lc_Lctre_Evl_Score + "]";
+				+ ", lc_Lctre_Evl_Score=" + lc_Lctre_Evl_Score + ", lc_Split="
+				+ lc_Split + "]";
 	}
 
+	
 }
