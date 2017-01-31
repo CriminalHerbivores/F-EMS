@@ -9,9 +9,9 @@ import com.uni.fems.service.Schafs_SchdulService;
 
 public class Schafs_SchdulServiceImpl implements Schafs_SchdulService {
  
- private Schafs_SchdulDAO schafs_schdulDAO;
- public void setSchafs_SchdulDAO(Schafs_SchdulDAO schafs_schdulDAO){
-  this.schafs_schdulDAO=schafs_schdulDAO;
+ private Schafs_SchdulDAO schafs_SchdulDAO;
+ public void setSchafs_SchdulDAO(Schafs_SchdulDAO schafs_SchdulDAO){
+  this.schafs_SchdulDAO=schafs_SchdulDAO;
  }
  
  

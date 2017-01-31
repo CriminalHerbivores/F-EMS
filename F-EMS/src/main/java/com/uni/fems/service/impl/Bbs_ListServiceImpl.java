@@ -9,9 +9,9 @@ import com.uni.fems.service.Bbs_ListService;
 
 public class Bbs_ListServiceImpl implements Bbs_ListService {
  
- private Bbs_ListDAO bbs_listDAO;
- public void setBbs_ListDAO(Bbs_ListDAO bbs_listDAO){
-  this.bbs_listDAO=bbs_listDAO;
+ private Bbs_ListDAO bbs_ListDAO;
+ public void setBbs_ListDAO(Bbs_ListDAO bbs_ListDAO){
+  this.bbs_ListDAO=bbs_ListDAO;
  }
  
  

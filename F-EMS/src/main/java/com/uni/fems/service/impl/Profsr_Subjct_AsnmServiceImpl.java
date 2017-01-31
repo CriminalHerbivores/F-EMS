@@ -9,9 +9,9 @@ import com.uni.fems.service.Profsr_Subjct_AsnmService;
 
 public class Profsr_Subjct_AsnmServiceImpl implements Profsr_Subjct_AsnmService {
  
- private Profsr_Subjct_AsnmDAO profsr_subjct_asnmDAO;
- public void setProfsr_Subjct_AsnmDAO(Profsr_Subjct_AsnmDAO profsr_subjct_asnmDAO){
-  this.profsr_subjct_asnmDAO=profsr_subjct_asnmDAO;
+ private Profsr_Subjct_AsnmDAO profsr_Subjct_AsnmDAO;
+ public void setProfsr_Subjct_AsnmDAO(Profsr_Subjct_AsnmDAO profsr_Subjct_AsnmDAO){
+  this.profsr_Subjct_AsnmDAO=profsr_Subjct_AsnmDAO;
  }
  
  

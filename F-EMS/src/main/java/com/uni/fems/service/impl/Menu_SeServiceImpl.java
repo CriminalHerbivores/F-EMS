@@ -9,9 +9,9 @@ import com.uni.fems.service.Menu_SeService;
 
 public class Menu_SeServiceImpl implements Menu_SeService {
  
- private Menu_SeDAO menu_seDAO;
- public void setMenu_SeDAO(Menu_SeDAO menu_seDAO){
-  this.menu_seDAO=menu_seDAO;
+ private Menu_SeDAO menu_SeDAO;
+ public void setMenu_SeDAO(Menu_SeDAO menu_SeDAO){
+  this.menu_SeDAO=menu_SeDAO;
  }
  
  

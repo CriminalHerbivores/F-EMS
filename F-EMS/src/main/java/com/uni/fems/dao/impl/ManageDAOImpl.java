@@ -1,5 +1,10 @@
 package com.uni.fems.dao.impl;
 
-public class ManageDAOImpl {
+import com.ibatis.sqlmap.client.SqlMapClient;
 
+public class ManageDAOImpl {
+	private SqlMapClient client;
+	public void setClient(SqlMapClient client){
+		this.client=client;
+	}
 }

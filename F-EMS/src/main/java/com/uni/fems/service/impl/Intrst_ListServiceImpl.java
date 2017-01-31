@@ -9,9 +9,9 @@ import com.uni.fems.service.Intrst_ListService;
 
 public class Intrst_ListServiceImpl implements Intrst_ListService {
  
- private Intrst_ListDAO intrst_listDAO;
- public void setIntrst_ListDAO(Intrst_ListDAO intrst_listDAO){
-  this.intrst_listDAO=intrst_listDAO;
+ private Intrst_ListDAO intrst_ListDAO;
+ public void setIntrst_ListDAO(Intrst_ListDAO intrst_ListDAO){
+  this.intrst_ListDAO=intrst_ListDAO;
  }
  
  
