@@ -140,7 +140,7 @@ float:right;
 			<ul class="nav navbar-nav navbar-left">
 			
 			
-			<!-- 시큐리트 추후에 설정 -->	
+			<!-- 권한 관련 추후에 설정 -->	
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">직원 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -299,10 +299,14 @@ float:right;
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
-				<p id="pmenu"></p>
-			<p class="sidemeun">
-				<a href="#">메뉴</a>
-			</p>
+				<p>1</p>
+				<p class="main_menu">
+				<a href="#">상위메뉴</a></p>
+				
+				<p class="sub_meun">
+				<a href="#">하위메뉴</a>
+				</p>
+				<p>2</p>
 			</div>
 			
 			<div class="col-sm-10 text-left">

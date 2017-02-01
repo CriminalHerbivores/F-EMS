@@ -27,20 +27,21 @@
 			submenu = $('.dropdown-menu li a', this).text();
 
 			$.ajax({
-				url : 'menu.jsp',
+				url : 'decorators/menu.jsp',
 				type : 'post',
 				data : {
 					'menu' : menu,
 					'submenu' : submenu
 				},
 				success : function(res) {
-					$('.sidenav p#pmenu').text(menu);
+					$('.sidenav .main_menu').html(menu);
+					/* $('.sidenav p#main_menu').text(menu); */
 					var code = "";
 					$.each(res, function(i) {
 						code += "<a href='#'>" + res[i].item + "</a><br>";
 
 					})
-					$('.sidenav .sidemeun').html(code);
+					$('.sidenav .sub_meun').html(code);
 				},
 				dataType : 'json'
 			})
