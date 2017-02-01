@@ -12,6 +12,13 @@
 
    <bean id="answerService" class="com.uni.fems.service.impl.AnswerServiceImpl"
       p:answerDAO-ref="answerDAO" />
+      
+<bean id="atrtyDAO" class="com.uni.fems.dao.impl.AtrtyDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="atrtyService" class="com.uni.fems.service.impl.AtrtyServiceImpl"
+      p:atrtyDAO-ref="atrtyDAO" />      
+      
 
 
 <bean id="attendanceDAO" class="com.uni.fems.dao.impl.AttendanceDAOImpl"
