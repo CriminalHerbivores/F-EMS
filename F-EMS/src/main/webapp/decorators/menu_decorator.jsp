@@ -100,7 +100,44 @@ float:right;
     color: #336799;
 }  */
 
+
+/* 좌측 아코디언 메뉴 */
+#accordionMenu1 {
+			margin:100px;
+			width:300px;
+		}
+
+
 </style>
+<!-- 아코디언 시작 -->
+<script src="../libs/jquery-1.11.0.min.js"></script>
+	<script src="../libs/jquery.easing.1.3.js"></script>
+	<script src="accordion.js"></script>
+<script>
+$(document).ready(function(){
+	// step #07-01
+	// 폴더 아코디언 메뉴 플러그인 실행
+	$("#accordionMenu1").folderAccordionMenu();
+
+	// 이벤트 등록
+	$("#accordionMenu1").on("open",function(e){
+		console.log("open", e.$target.find(".main-title a").text());
+	})
+
+	$("#accordionMenu1").on("close",function(e){
+		console.log("close", e.$target.find(".main-title a").text());
+	})
+
+	$("#accordionMenu1").on("select",function(e){
+		var oldText = "없음";
+		if(e.$oldItem)
+			oldText = e.$oldItem.text();
+		console.log("select old = ", oldText+", new = "+e.$newItem.text());
+	})
+})
+</script>
+
+<!-- 아코디언 끝 -->
 
 
 </head>
@@ -299,14 +336,51 @@ float:right;
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
-				<p>1</p>
+				<!-- <p>1</p>
 				<p class="main_menu">
 				<a href="#">상위메뉴</a></p>
 				
 				<p class="sub_meun">
 				<a href="#">하위메뉴</a>
 				</p>
-				<p>2</p>
+				<p>2</p> -->
+				
+			<!-- ////////////////// -->	
+	<ul class="accordion-menu" id="accordionMenu1">
+		<li data-extension="open">
+		
+			<div class="main-title"><span class="folder main_menu"> </span><a>직원</a></div>
+			<ul class="sub sub_meun">
+			</ul>
+		</li>		
+		
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a>menu2</a></div>
+			<ul class="sub sub_meun">
+				<li><a>sub2-1</a></li>
+				<li><a>sub2-2</a></li>
+			</ul>
+		</li>	
+		<li data-extension="open">
+			<div class="main-title"><span class="folder main_menu"> </span><a>menu3</a> </div>
+			<ul class="sub sub_meun">
+				<li><a>sub3-1</a></li>
+				<li><a>sub3-2</a></li>
+				<li><a>sub3-3</a></li>
+				<li><a>sub3-4</a></li>
+				<li><a>sub3-5</a></li>
+				<li><a>sub3-6</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a>menu4</a></div>
+		</li>
+	</ul> 
+	<!-- ////////////////// -->
+				
+				
+				
+				
 			</div>
 			
 			<div class="col-sm-10 text-left">
