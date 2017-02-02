@@ -21,4 +21,17 @@ public class StdntServiceImpl implements StdntService {
 
 	}
 
+	@Override
+	public List<StdntVO> selectNameAllPage(int tpage, String st_Nm)
+			throws SQLException {
+		List<StdntVO> list = stdntDAO.selectNameAllPage(tpage, st_Nm);
+		return list;
+	}
+
+	@Override
+	public String pageNumber(int tpage, String st_Nm) throws SQLException {
+		String page = stdntDAO.pageNumber(tpage, st_Nm);
+		return page;
+	}
+
 }

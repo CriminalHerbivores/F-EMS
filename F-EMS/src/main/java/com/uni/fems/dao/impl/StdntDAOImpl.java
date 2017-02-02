@@ -25,6 +25,7 @@ public class StdntDAOImpl implements StdntDAO {
 		client.update("insertStdnt", stdntVO);
 	}
 	
+	@Override
 	public int totalRecord(String st_Nm) throws SQLException {
 		int total_pages = 0;
 		if (st_Nm.equals("")) {
@@ -34,6 +35,7 @@ public class StdntDAOImpl implements StdntDAO {
 		return total_pages;
 	}
 	
+	@Override
 	public List<StdntVO> selectNameAllPage(int tpage,String st_Nm) throws SQLException {
 	      List<StdntVO> list=null;
 	      
@@ -54,7 +56,7 @@ public class StdntDAOImpl implements StdntDAO {
 	      return list;
 	   }
 	
-	
+	@Override
 	public String pageNumber(int tpage, String st_Nm) throws SQLException {
 		String str = "";
 
