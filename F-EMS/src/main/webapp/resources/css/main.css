@@ -23,7 +23,14 @@ article{
 } */
 
 
+.no-uline {
+	text-decoration:none;
+	text-decoration:none !important;
+}
 
+.text-indentation{
+margin-left:2em;
+}
 
 
 .def-input-text-lg{

@@ -12,17 +12,20 @@
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/accordion.css">
 <style>
-    * {
-        padding:0;
-        margin:0;
-    }
+* {
+	padding:0;
+	margin:0;
+}
     
-    body{
-        font-size:9pt;
-    
-    }	
+body{
+	font-size:9pt;
+}	
 
     
+.no-uline {
+	text-decoration:none;
+	text-decoration:none !important;
+}
 
 
 </style>
@@ -30,7 +33,7 @@
 
 <script src="<%=request.getContextPath()%>/js/jquery-1.11.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
-<%-- <script src="<%=request.getContextPath()%>/js/accordion.js"></script> --%>
+<script src="<%=request.getContextPath()%>/js/accordion.js"></script>
 <script>
 $(document).ready(function(){
 	 $("#accordionMenu1").folderAccordionMenu();
@@ -374,8 +377,8 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">직원 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">직원메뉴1 </a></li>
-						<li><a href="#">메뉴2 </a></li>
+						<li><a href="#" class="no-uline">직원메뉴1 </a></li>
+						<li><a href="#" class="no-uline">메뉴2 </a></li>
 					</ul></li>
 				
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -437,7 +440,7 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 <!-- 상단 메뉴 끝 -->	
 
 <!-- 좌측메뉴 시작 -->
-	<div class="container-fluid text-center">
+	<div class="container-fluid">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<!-- <p>1</p>
@@ -452,27 +455,27 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 			<!-- ////////////////// -->	
 	<ul class="accordion-menu" id="accordionMenu1">
 		<li data-extension="close">
-			<div class="main-title"><span class="folder main_menu"> </span><a>직원</a></div>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">직원</a></div>
 			<ul class="sub sub_meun">
-				<li><a>직원메뉴1 </a></li>
-				<li><a>메뉴2 </a></li>
+				<li><a href="#" class="no-uline">직원메뉴1 </a></li>
+				<li><a href="#" class="no-uline">메뉴2 </a></li>
 			
 			</ul>
 		</li>		
 		
 		<li>
-			<div class="main-title"><span class="folder main_menu"> </span><a>교수</a></div>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">교수</a></div>
 			<ul class="sub sub_meun">
-				<li><a>교수메뉴1 </a></li>
-				<li><a>메뉴2 </a></li>
+				<li><a href="#" class="no-uline">교수메뉴1 </a></li>
+				<li><a href="#" class="no-uline">메뉴2 </a></li>
 			</ul>	
 		</li>
 			
 		<li>
-			<div class="main-title"><span class="folder main_menu"> </span><a>학생</a> </div>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">학생</a> </div>
 			<ul class="sub sub_meun">
-				<li><a>학생메뉴1 </a></li>
-				<li><a>메뉴2 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">학생메뉴1 </a></li>
+				<li class="text-indentation"><a href="#" class="no-uline text-indentation">메뉴2 </a></li>
 			</ul>
 		</li>
 		

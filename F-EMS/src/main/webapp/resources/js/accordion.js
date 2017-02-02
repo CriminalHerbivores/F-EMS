@@ -1,4 +1,4 @@
-/*$(function() {
+$(function() {
 		$('.dropdown').click(function(event) {
 			event.preventDefault();
 			menu = $('.dropdown-toggle', this).text();
@@ -24,7 +24,7 @@
 				dataType : 'json'
 			})
 		})
-	})*/
+	})
 
 
 	
