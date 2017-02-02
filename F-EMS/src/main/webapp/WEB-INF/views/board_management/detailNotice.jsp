@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
@@ -20,17 +20,51 @@
 	 <tr>
 	 	<th>작성날짜</th>
 	 	<td>${notice.nb_Writng_Dt}</td>
+	 	<th>조회수</th>
+	 	<td>${notice.nb_Rdcnt} </td> 
 	 </tr>
 	 <tr>
 	 	<th>내용</th>
 	 	<td>${notice.nb_Cn}</td>
 	 </tr>
 </table>
+
+<!--버튼들  -->
 <div id="buttons" style="float:right">
-	<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" value="수정"> </a>
-	<a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" value="삭제"> </a>
-	<a href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" value="목록"> </a>
-</div>	
+	<%-- <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="삭제"> </a> --%>
+	<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn"> </a>
+	<input type="button" class="def-btn" data-target="#layerpop" data-toggle="modal" value="삭제">
+	<a href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
+</div>
+
+<!--모달부분  -->
+<div class="modal fade" id="layerpop" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header">
+        <!-- 닫기(x) 버튼 -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <!-- header title -->
+        <h4 class="modal-title" style="text-align: center">삭제확인</h4>
+      </div>
+      <!-- body -->
+      <div class="modal-body" style="text-align: center">
+            삭제하시겠습니까?
+      </div>
+      <!-- Footer -->
+      <div class="modal-footer" style="text-align:center;">
+        <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <!--삭제 모달  -->
+        <input type="button" class="btn btn-default" value="예">
+        </a>
+        <input type="button" class="btn btn-default" data-dismiss="modal" value="아니오">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 </body>
 </html>

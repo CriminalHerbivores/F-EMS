@@ -115,6 +115,11 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 		List<Notice_BbsVO> listAllNotice_Bbs = client.queryForList("listAllNotice_Bbs",null);
 		return listAllNotice_Bbs;
 	}
+	@Override
+	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException {
+		client.update("countNotice_Bbs",notice_BbsVO);
+		return 0;
+	}
 	
 	
 	

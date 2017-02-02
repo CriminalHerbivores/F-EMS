@@ -7,9 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title></title>
-<script src="../js/notice_bbs.js"></script>
 </head>
 <body>
 
@@ -23,8 +22,8 @@
 			</fieldset>   
 		<div class="clear"></div>
 		 <div id="buttons" style="float:right">
-			<input type="submit"  value="등록" class="submit"> 
-			<input type="button"  value="목록"  class="submit"  onclick="goNoticeList();">	
+			<input type="button"  value="등록" class="def-btn" onclick="writeNotice();" > 
+			<input type="button"  value="목록"  class="def-btn"  onclick="goNoticeList();">	
 		  </div>
 		  
 		</form>

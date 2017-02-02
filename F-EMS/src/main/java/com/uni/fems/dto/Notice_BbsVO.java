@@ -8,6 +8,14 @@ public class Notice_BbsVO {
 	private String nb_Sj;   // 제목
 	private String nb_Cn;   // 내용
 	private Timestamp nb_Writng_Dt;   // 작성 날짜
+	private int nb_Rdcnt; // 조회수
+	
+	public int getNb_Rdcnt() {
+		return nb_Rdcnt;
+	}
+	public void setNb_Rdcnt(int nb_Rdcnt) {
+		this.nb_Rdcnt = nb_Rdcnt;
+	}
 	public int getNb_Bbs_No() {
 		return nb_Bbs_No;
 	}

@@ -1,12 +1,18 @@
-function writeNotice() {
+function writeNoticeForm() {
    location.href="writeNotice"
+}
+
+function writeNotice(){
+	document.formm.submit();
 }
 
 function goNoticeList() {
    location.href="noticeList"
 }
 
+
 function updateNotice(){
-	var frm = document.formm;
-	frm.submit();
+	document.formm.submit();
 }
+
+

@@ -19,13 +19,11 @@
 			    <textarea rows="8" cols="65" name="nb_Cn">${notice.nb_Cn }</textarea><br>
 			</fieldset>   
 		<div class="clear"></div>
-		 <div id="buttons" style="float:right">
-		 <input type="hidden" name="tpage" value=${tpage }>
-		 <input type="hidden" name="nb_Bbs_No" value=${notice.nb_Bbs_No }>
-		 <input type="button" value="수정" onclick="updateNotice();">
-		 <a href="noticeList?tpage=${tpage}"> <input type="button" value="목록"> </a>
-			<!-- <input type="submit"  value="수정" class="submit"> 
-			<input type="button"  value="목록"  class="submit"  onclick="goNoticeList();">	 -->
+			 <div id="buttons" style="float:right">
+			 <input type="hidden" name="tpage" value=${tpage }>
+			 <input type="hidden" name="nb_Bbs_No" value=${notice.nb_Bbs_No }>
+			 <input type="button" class="def-btn" value="수정" onclick="updateNotice();">
+			 <a href="noticeList?tpage=${tpage}"> <input type="button" value="목록"> </a>
 		  </div>
 		  
 		</form>

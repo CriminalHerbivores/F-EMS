@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../js/notice_bbs.js"></script>
 </head>
 <body>
 
@@ -35,7 +34,7 @@
       		 ${notice.nb_Sj} </a>
       		</td>
       		<td><fmt:formatDate value="${notice.nb_Writng_Dt}" /> </td>
-      		<td> ${notice.nb_Bbs_No}</td> <!-- 조회수 -->
+      		<td> ${notice.nb_Rdcnt}</td> <!-- 조회수 -->
       		
       	</tr>
       </c:forEach>
@@ -47,11 +46,10 @@
      
      
   </table>
-	  <div id="buttons" style="float:left">
-	  	
-	  	<input type="button" value="등록하기" onclick="writeNotice();">
+	  <div id="buttons" style="float:right">
+	  	<input type="button" class="def-btn" value="등록하기" onclick="writeNoticeForm();">
 	  </div>
 </div>
-
+ 
 </body>
 </html>

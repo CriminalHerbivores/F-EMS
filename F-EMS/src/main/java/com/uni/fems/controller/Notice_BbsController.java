@@ -107,6 +107,8 @@ public class Notice_BbsController {
 		Notice_BbsVO notice = null;
 		try {
 			notice = (Notice_BbsVO)notice_BbsSvc.getNotice_Bbs(no);
+			notice_BbsSvc.countNotice_Bbs(notice);
+			notice.setNb_Rdcnt(notice.getNb_Rdcnt()+1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
