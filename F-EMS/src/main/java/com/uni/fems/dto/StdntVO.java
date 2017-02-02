@@ -11,7 +11,7 @@ public class StdntVO {
 	private String st_Ihidnum;   // 주민번호
 	private String st_Moblphon_No;   // 핸드폰 번호
 	private String st_House_Tlphon_No;   // 집 전화 번호
-	private Timestamp st_Entsch_Dt;   // 입학 일자
+	private String st_Entsch_Dt;   // 입학 일자
 	private String st_Prtctor_Nm;   // 보호자 이름
 	private String st_Family_Relate;   // 가족 관계
 	private String st_Post_No;   // 우편 번호
@@ -21,7 +21,7 @@ public class StdntVO {
 	private String st_Email;   // 이메일
 	private String st_Brhs_At;   // 기숙사 여부
 	private String st_Profsr_No;   // 교수 번호
-	private String st_Grdtn_De;   // 졸업 일자
+	private String st_Grdtn_Dt;   // 졸업 일자
 	public String getSt_Stdnt_No() {
 		return st_Stdnt_No;
 	}
@@ -70,10 +70,10 @@ public class StdntVO {
 	public void setSt_House_Tlphon_No(String st_House_Tlphon_No) {
 		this.st_House_Tlphon_No = st_House_Tlphon_No;
 	}
-	public Timestamp getSt_Entsch_Dt() {
+	public String getSt_Entsch_Dt() {
 		return st_Entsch_Dt;
 	}
-	public void setSt_Entsch_Dt(Timestamp st_Entsch_Dt) {
+	public void setSt_Entsch_Dt(String st_Entsch_Dt) {
 		this.st_Entsch_Dt = st_Entsch_Dt;
 	}
 	public String getSt_Prtctor_Nm() {
@@ -130,11 +130,11 @@ public class StdntVO {
 	public void setSt_Profsr_No(String st_Profsr_No) {
 		this.st_Profsr_No = st_Profsr_No;
 	}
-	public String getSt_Grdtn_De() {
-		return st_Grdtn_De;
+	public String getSt_Grdtn_Dt() {
+		return st_Grdtn_Dt;
 	}
-	public void setSt_Grdtn_De(String st_Grdtn_De) {
-		this.st_Grdtn_De = st_Grdtn_De;
+	public void setSt_Grdtn_Dt(String st_Grdtn_Dt) {
+		this.st_Grdtn_Dt = st_Grdtn_Dt;
 	}
 	@Override
 	public String toString() {
@@ -143,12 +143,16 @@ public class StdntVO {
 				+ ", st_Eng_Nm=" + st_Eng_Nm + ", st_Ihidnum=" + st_Ihidnum
 				+ ", st_Moblphon_No=" + st_Moblphon_No
 				+ ", st_House_Tlphon_No=" + st_House_Tlphon_No
-				+ ", st_Prtctor_Nm=" + st_Prtctor_Nm + ", st_Family_Relate="
-				+ st_Family_Relate + ", st_Post_No=" + st_Post_No
-				+ ", st_Adres1=" + st_Adres1 + ", st_Adres2=" + st_Adres2
-				+ ", st_Cnslt_At=" + st_Cnslt_At + ", st_Email=" + st_Email
-				+ ", st_Brhs_At=" + st_Brhs_At + ", st_Profsr_No="
-				+ st_Profsr_No + ", st_Grdtn_De=" + st_Grdtn_De + "]";
+				+ ", st_Entsch_Dt=" + st_Entsch_Dt + ", st_Prtctor_Nm="
+				+ st_Prtctor_Nm + ", st_Family_Relate=" + st_Family_Relate
+				+ ", st_Post_No=" + st_Post_No + ", st_Adres1=" + st_Adres1
+				+ ", st_Adres2=" + st_Adres2 + ", st_Cnslt_At=" + st_Cnslt_At
+				+ ", st_Email=" + st_Email + ", st_Brhs_At=" + st_Brhs_At
+				+ ", st_Profsr_No=" + st_Profsr_No + ", st_Grdtn_Dt="
+				+ st_Grdtn_Dt + "]";
 	}
 
+	
+
+	
 }

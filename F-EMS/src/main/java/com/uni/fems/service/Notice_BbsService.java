@@ -1,5 +1,6 @@
 package com.uni.fems.service;
 
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +29,5 @@ public interface Notice_BbsService {
 	public String pageNumber(int tpage) throws SQLException;
 	
 	
+
 }

@@ -5,9 +5,7 @@
 
 <sqlMapConfig>
 	<sqlMap resource="com/uni/db/sqlMap/AAA.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Notice_Bbs.xml" />
 	<!-- <sqlMap resource="com/uni/db/sqlMap/Answer.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Atrty.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Attendance.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Bbs_Atrty.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Bbs_Flpth.xml" />
@@ -24,18 +22,19 @@
 	<sqlMap resource="com/uni/db/sqlMap/Lctre.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Lctre_Flpth.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Lctrum.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/Notice_Bbs.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Profsr.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Profsr_Schedl.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Profsr_Subjct_Asnm.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Pymnt.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Reqst.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Schafs_Schdul.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Schlship.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/Schlship.xml" />-->
 	<sqlMap resource="com/uni/db/sqlMap/Sklstf.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Sklstf_Atrty.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Sknrgs.xml" />
+	<!--<sqlMap resource="com/uni/db/sqlMap/Sklstf_Atrty.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/Sknrgs.xml" />-->
 	<sqlMap resource="com/uni/db/sqlMap/Stdnt.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Subjct_Info_Table.xml" />
+	<!--<sqlMap resource="com/uni/db/sqlMap/Subjct_Info_Table.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Test.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Test_Paper.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Tuition.xml" />

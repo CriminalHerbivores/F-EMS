@@ -106,6 +106,6 @@ public class Notice_BbsController {
 		String url="board_management/detailNotice"
 	}
 	*/
-	
+
 
 }
