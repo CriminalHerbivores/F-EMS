@@ -83,7 +83,3 @@
 <script src="<%=request.getContextPath()%>/js/users.js"></script>
 <script src="<%=request.getContextPath()%>/js/work.js"></script>
 <!-- //////////////////////////////////// -->
-
-
-
-
