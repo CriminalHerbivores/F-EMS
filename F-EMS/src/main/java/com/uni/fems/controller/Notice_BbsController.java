@@ -6,13 +6,13 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.service.Notice_BbsService;
@@ -101,11 +101,64 @@ public class Notice_BbsController {
 		return url;
 	}
 	
-	/*@RequestMapping(value="/detailNotice")
-	public String detailNotice(@RequestParam int nb_Bbs_No,Model model){
-		String url="board_management/detailNotice"
+	@RequestMapping(value="/detailNotice")
+	public String detailNotice(@RequestParam int no,@RequestParam int tpage, Model model){
+		String url="board_management/detailNotice";
+		Notice_BbsVO notice = null;
+		try {
+			notice = (Notice_BbsVO)notice_BbsSvc.getNotice_Bbs(no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("notice",notice);
+		model.addAttribute("tpage",tpage);
+		return url;
 	}
-	*/
+	
+	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
+	public String updateNoticeForm(@RequestParam int no, Model model){
+		String url="board_management/updateNotice";
+		Notice_BbsVO notice = null;
+		
+		try {
+			notice = notice_BbsSvc.getNotice_Bbs(no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("notice",notice);
+		return url;
+	}
+	
+	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
+	public String updateNotice(@RequestParam int tpage,Notice_BbsVO notice_BbsVO, HttpServletRequest request){
+		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
+		notice_BbsVO.setNb_Sklstf_No("1111");
+		try {
+			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
+	
+	@RequestMapping(value="/deleteNotice")
+	public String deleteNotice(@RequestParam int no,@RequestParam int tpage){
+		String url = "redirect:noticeList?tpage="+tpage;
+		
+		try {
+			notice_BbsSvc.deleteNotice_Bbs(no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return url;
+	}
+	
 	
 
 }

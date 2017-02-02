@@ -31,7 +31,9 @@
       <c:forEach var="notice" items="${noticeList }">
       	<tr>
       		<td> ${notice.nb_Bbs_No}</td>
-      		<td> ${notice.nb_Sj}</td>
+      		<td><a href="detailNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}">
+      		 ${notice.nb_Sj} </a>
+      		</td>
       		<td><fmt:formatDate value="${notice.nb_Writng_Dt}" /> </td>
       		<td> ${notice.nb_Bbs_No}</td> <!-- 조회수 -->
       		
