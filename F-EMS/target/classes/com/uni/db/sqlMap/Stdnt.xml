@@ -16,8 +16,7 @@
 	
 	<!-- 상품 페이지로 출력 -->
 	<select id="selectAllStdntPage" parameterClass="str" resultClass="stdnt">
-		select * from stdnt where st_nm like '%$st_nm$%' order by
-		prod_id desc
+		select * from stdnt where st_nm like '%$st_nm$%'
 	</select>
 	
 

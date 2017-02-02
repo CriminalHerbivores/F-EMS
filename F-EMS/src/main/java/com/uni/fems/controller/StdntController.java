@@ -53,7 +53,7 @@ public class StdntController {
 	
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
 	String stdntInsert(StdntVO stdntVO, @RequestParam String file, Model model){
-		String url = "redirect:/index";
+		String url = "/manager/index";
 		if(file != null && !file.equals("")){
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(file);		//경로 입력
@@ -108,6 +108,7 @@ public class StdntController {
 		String key = request.getParameter("key");
 		String tpage = request.getParameter("tpage");
 		
+		System.out.println("11111111111111");
 		if (key ==null){
 			key = "";
 		}
@@ -123,8 +124,12 @@ public class StdntController {
 		List<StdntVO> stdntList = null;
 		String paging = null;
 		try {
+			System.out.println("222222222222222222");
 			stdntList = stdntService.selectNameAllPage(Integer.parseInt(tpage), key);
+			System.out.println("3333333333333333");
 			paging = stdntService.pageNumber(Integer.parseInt(tpage), key);
+			System.out.println("stdntList : "+stdntList);
+			System.out.println("paging : "+paging);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

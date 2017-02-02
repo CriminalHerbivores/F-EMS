@@ -77,27 +77,27 @@ public class StdntDAOImpl implements StdntDAO {
 			end_page = page_count;
 		}
 		if (start_page > view_rows) {
-			str += "<a href='ProdStart.do?tpage=1&key="
+			str += "<a href='stdntList?tpage=1&key="
 					+ st_Nm + "'>&lt;&lt;</a>&nbsp;&nbsp;";
-			str += "<a href='ProdStart.do?tpage="
+			str += "<a href='stdntList?tpage="
 					+ (start_page - 1);
-			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
+			str += "&key=<%=st_Nm%>'>&lt;</a>&nbsp;&nbsp;";
 		}
 
 		for (int i = start_page; i <= end_page; i++) {
 			if (i == tpage) {
 				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
 			} else {
-				str += "<a href='ProdStart.do?tpage="
+				str += "<a href='stdntList?tpage="
 						+ i + "&key=" + st_Nm + "'>[" + i + "]</a>&nbsp;&nbsp;";
 			}
 		}
 
 		if (page_count > end_page) {
-			str += "<a href='ProdStart.do?tpage="
+			str += "<a href='stdntList?tpage="
 					+ (end_page + 1) + "&key=" + st_Nm
 					+ "'> &gt; </a>&nbsp;&nbsp;";
-			str += "<a href='ProdStart.do?tpage="
+			str += "<a href='stdntList?tpage="
 					+ page_count + "&key=" + st_Nm
 					+ "'> &gt; &gt; </a>&nbsp;&nbsp;";
 		}

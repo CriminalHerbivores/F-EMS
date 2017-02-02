@@ -9,6 +9,11 @@
 <meta charset="UTF-8">
 <title></title>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/stdnt.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/notice_bbs.js"></script>
 </head>
 <body>
 <div class="container">
@@ -24,25 +29,20 @@
       
       <c:forEach var="stdnt" items="${stdntList }">
       	<tr>
-      		<td> ${notice.nb_Bbs_No}</td>
-      		<td> ${notice.nb_Sj}</td>
-      		<td>${notice.nb_Writng_Dt} </td>
-      		<td> ${notice.nb_Bbs_No}</td> 
+      		<td> ${stdnt.st_Stdnt_No}</td>
+      		<td><a href="detailNotice?no=&tpage=${tpage}">
+      		 ${stdnt.st_Nm} </a></td>
+      		<td>${stdnt.st_Moblphon_No} </td>
+      		<td> ${stdnt.st_Subjct_Code}</td> 
+      		<td> ${stdnt.st_Email}</td> 
       		
       	</tr>
       </c:forEach>
       	<tr>
-      		<td colspan="4" style="text-align: center;">${paging }</td>
+      		<td colspan="5" style="text-align: center;">${paging }</td>
       	</tr>
-      	
-     
-     
-     
+
   </table>
-	  <div id="buttons" style="float:left">
-	  	
-	  	<input type="button" value="등록하기" onclick="writeNotice();">
-	  </div>
 </div>
 </body>
 </html>
