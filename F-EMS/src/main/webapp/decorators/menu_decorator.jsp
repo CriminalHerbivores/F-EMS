@@ -5,119 +5,14 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>decorator</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- -->
- 
- 
- 
- <style>
-/* Remove the navbar's default margin-bottom and rounded borders */
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0;
-}
+<title></title>
 
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {
-	height: 450px; /* 중앙 높이 */
-}
-
-/* Set gray background color and 100% height */
-.sidenav {
-	padding-top: 20px;
-	background-color: #f1f1f1; /* 좌측 메뉴 바탕 */
-	height: 100%;
-}
-
-/* Set black background color, white text and some padding */
-footer {
-	background-color: #555; /* Footer 바탕 */
-	color: white;
-	padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-	.sidenav {
-		height: auto;
-		padding: 15px;
-	}
-	.row.content {
-		height: auto;
-	}
-}
-
-#topnav {
-	background-color: white;
-	height: 65px;
-}
-
-#secondnav {
-	background-color: #363636;
-	height: 50px;
-}
-
-#toptable {
-	width: 100%
-}
-
-.dropdown{
- display:inline;
-  position: relative;
-    display: inline-block;
-}
-
- #topnav-table{
- display:inline;
-} 
-
-#logo{
-width: 150px;
-margin-top: 10px
-}
-
-#category{
-margin-left: 230px;
-margin-top: 15px;
-}
-
-.float-r{
-float:right;
-}
-/* .navbar-left > li > a:hover, .navbar-left > li > a:focus {
-    background-color: #339955;
-    color: #336799;
-}  */
-
-
-/* 좌측 아코디언 메뉴 */
-#accordionMenu1 {
-			margin:100px;
-			width:300px;
-}
-
-
-		
-		
-
-
-</style>
 <!-- 아코디언 시작 -->
-<script src="../libs/jquery-1.11.0.min.js"></script>
-	<script src="../libs/jquery.easing.1.3.js"></script>
-	<script src="accordion.js"></script>
-<script>
+
+<!-- <script>
 $(document).ready(function(){
 	// step #07-01
 	// 폴더 아코디언 메뉴 플러그인 실행
@@ -139,7 +34,7 @@ $(document).ready(function(){
 		console.log("select old = ", oldText+", new = "+e.$newItem.text());
 	})
 })
-</script>
+</script> -->
 
 <!-- 아코디언 끝 -->
 
@@ -153,7 +48,7 @@ $(document).ready(function(){
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table">
 					<tr>
-						<td><a href="#"><img src="resources/images/logo.png" id="logo"></a></td>
+						<td><a href="#"><img src="<%=request.getContextPath()%>/images/logo.png" id="logo"></a></td>
 						<td></td>
 					</tr>
 				</table>
@@ -354,31 +249,20 @@ $(document).ready(function(){
 		<li data-extension="open">
 		
 			<div class="main-title"><span class="folder main_menu"> </span><a>직원</a></div>
-			<ul class="sub sub_meun">
-			</ul>
+			<ul class="sub sub_meun"></ul>
 		</li>		
 		
 		<li>
-			<div class="main-title"><span class="folder main_menu"> </span><a>menu2</a></div>
-			<ul class="sub sub_meun">
-				<li><a>sub2-1</a></li>
-				<li><a>sub2-2</a></li>
-			</ul>
-		</li>	
-		<li data-extension="open">
-			<div class="main-title"><span class="folder main_menu"> </span><a>menu3</a> </div>
-			<ul class="sub sub_meun">
-				<li><a>sub3-1</a></li>
-				<li><a>sub3-2</a></li>
-				<li><a>sub3-3</a></li>
-				<li><a>sub3-4</a></li>
-				<li><a>sub3-5</a></li>
-				<li><a>sub3-6</a></li>
-			</ul>
+			<div class="main-title"><span class="folder main_menu"> </span><a>교수</a></div>
+			<ul class="sub sub_meun"></ul>
 		</li>
+			
 		<li>
-			<div class="main-title"><span class="folder main_menu"> </span><a>menu4</a></div>
+			<div class="main-title"><span class="folder main_menu"> </span><a>학생</a> </div>
+			<ul class="sub sub_meun"></ul>
 		</li>
+		
+		
 	</ul> 
 	<!-- ////////////////// -->
 				
@@ -401,11 +285,8 @@ $(document).ready(function(){
 
 
 <!-- Footer 시작 -->
-	<footer class="deco">
+	<footer class="footer">
 		<p>Footer Text</p>
-		
-		
-		
 	</footer>
 <!-- Footer 끝 -->
 

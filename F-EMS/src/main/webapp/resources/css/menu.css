@@ -1,0 +1,79 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+	height: 450px; /* 중앙 높이 */
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1; /* 좌측 메뉴 바탕 */
+	height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+.footer {
+	background-color: #555; /* Footer 바탕 */
+	color: white;
+	padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+#topnav {
+	background-color: white;
+	height: 65px;
+}
+
+#secondnav {
+	background-color: #363636;
+	height: 50px;
+}
+
+#toptable {
+	width: 100%
+}
+
+.dropdown{
+ display:inline;
+  position: relative;
+    display: inline-block;
+}
+
+ #topnav-table{
+ display:inline;
+} 
+
+#logo{
+width: 150px;
+margin-top: 10px
+}
+
+#category{
+margin-left: 230px;
+margin-top: 15px;
+}
+
+.float-r{
+float:right;
+}
+
+/* .navbar-left > li > a:hover, .navbar-left > li > a:focus {
+    background-color: #339955;
+    color: #336799;
+}  */
+

@@ -1,4 +1,34 @@
+$(function() {
+		$('.dropdown').click(function(event) {
+			event.preventDefault();
+			menu = $('.dropdown-toggle', this).text();
+			submenu = $('.dropdown-menu li a', this).text();
 
+			$.ajax({
+				url : 'decorators/menu.jsp',
+				type : 'post',
+				data : {
+					'menu' : menu,
+					'submenu' : submenu
+				},
+				success : function(res) {
+					$('.sidenav .main_menu').html(menu);
+					/* $('.sidenav p#main_menu').text(menu); */
+					var code = "";
+					$.each(res, function(i) {
+						code += "<a href='#'>" + res[i].item + "</a><br>";
+
+					})
+					$('.sidenav .sub_meun').html(code);
+				},
+				dataType : 'json'
+			})
+		})
+	})
+
+
+	
+	
 (function($){
     // step #07-01  
     // folderAccordionMenu 플러그인
@@ -7,11 +37,23 @@
         this.each(function(index){
             var $this = $(this);
             var menu = new FolderAccordionMenu($this);
-            
+            $this.data("folderAccorionMenu", menu);   
         });
         
         return this;
     }
+    
+    // step #07-02
+    // n번째 메뉴 선택
+    $.fn.selectFolderAccordionMenu=function(mainIndex, subIndex, animation){
+        this.each(function(index){
+            var accordionMenu = $(this).data("folderAccorionMenu");
+            accordionMenu.selectMenu(mainIndex, subIndex, animation);
+        });
+        
+        return this;
+    }
+    
 })(jQuery);
 
 
