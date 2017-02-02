@@ -48,6 +48,10 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	public List<Notice_BbsVO> listAllNotice_Bbs1() throws SQLException {
 		return notice_bbsDAO.listAllNotice_Bbs1();
 	}
+	@Override
+	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException {
+		return notice_bbsDAO.countNotice_Bbs(notice_BbsVO);
+	}
 	
 
 	

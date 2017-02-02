@@ -40,4 +40,9 @@
 		select count(*) from notice_bbs
 	</select>
 	
+	<update id="countNotice_Bbs" parameterClass="notice_bbs">
+		update notice_bbs set nb_rdcnt = #nb_Rdcnt#+1
+		where nb_bbs_no=#nb_Bbs_No#
+	</update>
+	
 </sqlMap>

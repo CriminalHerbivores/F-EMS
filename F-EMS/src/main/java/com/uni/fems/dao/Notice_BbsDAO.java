@@ -28,6 +28,8 @@ public interface Notice_BbsDAO {
 	
 	public String pageNumber(int tpage) throws SQLException;
 	
+	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
+	
 
 
 }
