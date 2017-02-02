@@ -19,6 +19,9 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfWriter;
 import com.uni.fems.dto.LctreVO;
 
+/**
+ * pdf 샘플 코드
+ */
 public class ListPdfView extends AbstractPdfView{
 	
 	private String fontPath="c:\\windows\\Fonts\\malgun.ttf";
