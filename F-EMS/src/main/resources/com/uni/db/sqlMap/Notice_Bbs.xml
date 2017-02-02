@@ -1,1 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Notice_Bbs">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="notice_bbs" type="com.uni.fems.dto.Notice_BbsVO" />
+	
+	<select id="listAllNotice_Bbs" resultClass="notice_bbs">
+		select * from notice_bbs order by nb_writng_dt desc
+	</select>
+	
+	<select id="listNotice_Bbs" parameterClass="str" resultClass="notice_bbs">
+		select * from notice_bbs where nb_Sklstf_No=#nb_Sklstf_No#
+	</select>
+	
+	<select id="getNotice_Bbs" parameterClass="int" resultClass="notice_bbs">
+		select * from notice_bbs where nb_bbs_no=#nb_Bbs_No#
+	</select>
+	
+	<update id="insertNotice_Bbs" parameterClass="notice_bbs">
+		insert into notice_bbs(nb_bbs_no,nb_Sklstf_No,nb_sj,nb_cn) 
+		values(nb_seq.nextval,#nb_Sklstf_No#,#nb_Sj#,#nb_Cn#)
+	</update>
+	
+	<update id="updateNotice_Bbs" parameterClass="notice_bbs">
+		update notice_bbs set nb_sj=#nb_Sj#,nb_Cn=#nb_Cn# 
+		where nb_bbs_no=#nb_Bbs_No#
+	</update>
+	
+	<update id="deleteNotice_Bbs" parameterClass="int">
+		delete from notice_bbs where nb_bbs_no=#nb_Bbs_No#
+	</update>
+	
+	<select id="totalNotice_Bbs" resultClass="int">
+		select count(*) from notice_bbs
+	</select>
+	
+</sqlMap>

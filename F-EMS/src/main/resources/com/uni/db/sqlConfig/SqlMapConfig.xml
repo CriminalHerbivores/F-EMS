@@ -5,6 +5,7 @@
 
 <sqlMapConfig>
 	<sqlMap resource="com/uni/db/sqlMap/AAA.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/Notice_Bbs.xml" />
 	<!-- <sqlMap resource="com/uni/db/sqlMap/Answer.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Atrty.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Attendance.xml" />
@@ -23,7 +24,6 @@
 	<sqlMap resource="com/uni/db/sqlMap/Lctre.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Lctre_Flpth.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Lctrum.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Notice_Bbs.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Profsr.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Profsr_Schedl.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Profsr_Subjct_Asnm.xml" />
