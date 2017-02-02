@@ -1,5 +1,6 @@
 package com.uni.fems.dao;
 
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,6 @@ public interface Notice_BbsDAO {
 	
 	public String pageNumber(int tpage) throws SQLException;
 	
-	
+
 
 }

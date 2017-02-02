@@ -2,7 +2,7 @@ package com.uni.fems.dto;
 
 public class SklstfVO {
 	private String stf_Sklstf_No;   // 직원 번호
-	private String stf_Subjct_Code;   // 학과 코드
+	private String stf_Subject_Code;   // 학과 번호
 	private String stf_Nm;   // 이름
 	private String stf_Eng_Nm;   // 영문 이름
 	private String stf_Ihidnum;   // 주민 번호
@@ -13,18 +13,17 @@ public class SklstfVO {
 	private String stf_Adres1;   // 주소1
 	private String stf_Adres2;   // 주소2
 	private String stf_Email;   // 이메일
-	private String stf_Useyn;   // 사용여부
 	public String getStf_Sklstf_No() {
 		return stf_Sklstf_No;
 	}
 	public void setStf_Sklstf_No(String stf_Sklstf_No) {
 		this.stf_Sklstf_No = stf_Sklstf_No;
 	}
-	public String getStf_Subjct_Code() {
-		return stf_Subjct_Code;
+	public String getStf_Subject_Code() {
+		return stf_Subject_Code;
 	}
-	public void setStf_Subjct_Code(String stf_Subjct_Code) {
-		this.stf_Subjct_Code = stf_Subjct_Code;
+	public void setStf_Subject_Code(String stf_Subject_Code) {
+		this.stf_Subject_Code = stf_Subject_Code;
 	}
 	public String getStf_Nm() {
 		return stf_Nm;
@@ -86,23 +85,17 @@ public class SklstfVO {
 	public void setStf_Email(String stf_Email) {
 		this.stf_Email = stf_Email;
 	}
-	public String getStf_Useyn() {
-		return stf_Useyn;
-	}
-	public void setStf_Useyn(String stf_Useyn) {
-		this.stf_Useyn = stf_Useyn;
-	}
 	@Override
 	public String toString() {
 		return "SklstfVO [stf_Sklstf_No=" + stf_Sklstf_No
-				+ ", stf_Subjct_Code=" + stf_Subjct_Code + ", stf_Nm=" + stf_Nm
-				+ ", stf_Eng_Nm=" + stf_Eng_Nm + ", stf_Ihidnum=" + stf_Ihidnum
-				+ ", stf_Moblphon_No=" + stf_Moblphon_No
+				+ ", stf_Subject_Code=" + stf_Subject_Code + ", stf_Nm="
+				+ stf_Nm + ", stf_Eng_Nm=" + stf_Eng_Nm + ", stf_Ihidnum="
+				+ stf_Ihidnum + ", stf_Moblphon_No=" + stf_Moblphon_No
 				+ ", stf_House_Tlphon_No=" + stf_House_Tlphon_No + ", stf_Pw="
 				+ stf_Pw + ", stf_Post_No=" + stf_Post_No + ", stf_Adres1="
 				+ stf_Adres1 + ", stf_Adres2=" + stf_Adres2 + ", stf_Email="
-				+ stf_Email + ", stf_Useyn=" + stf_Useyn + "]";
+				+ stf_Email + "]";
 	}
 
-
+	
 }

@@ -13,6 +13,18 @@ public class SklstfServiceImpl implements SklstfService {
  public void setSklstfDAO(SklstfDAO sklstfDAO){
   this.sklstfDAO=sklstfDAO;
  }
+
+	@Override
+	public SklstfVO getSklstf(String stf_Sklstf_No) throws SQLException {
+		SklstfVO sklstfVo = sklstfDAO.getSklstf(stf_Sklstf_No); 
+		return sklstfVo;
+	}
+
+	@Override
+	public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
+		sklstfDAO.updateSklstf(sklstfVo);
+	}
+
  
  
 }

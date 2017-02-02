@@ -60,3 +60,4 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 
 
 }
+

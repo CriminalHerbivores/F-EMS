@@ -105,7 +105,11 @@ float:right;
 #accordionMenu1 {
 			margin:100px;
 			width:300px;
-		}
+}
+
+
+		
+		
 
 
 </style>
