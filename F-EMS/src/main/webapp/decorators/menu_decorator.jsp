@@ -457,27 +457,67 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 		<li data-extension="close">
 			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">직원</a></div>
 			<ul class="sub sub_meun">
-				<li><a href="#" class="no-uline">직원메뉴1 </a></li>
-				<li><a href="#" class="no-uline">메뉴2 </a></li>
-			
+				<li style="margin-left:2em;"><a href="#" class="no-uline">직원메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
 			</ul>
 		</li>		
 		
 		<li>
-			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">교수</a></div>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">교수</a> </div>
 			<ul class="sub sub_meun">
-				<li><a href="#" class="no-uline">교수메뉴1 </a></li>
-				<li><a href="#" class="no-uline">메뉴2 </a></li>
-			</ul>	
+				<li style="margin-left:2em;"><a href="#" class="no-uline">학생메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
+			</ul>
 		</li>
 			
 		<li>
 			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">학생</a> </div>
 			<ul class="sub sub_meun">
 				<li style="margin-left:2em;"><a href="#" class="no-uline">학생메뉴1 </a></li>
-				<li class="text-indentation"><a href="#" class="no-uline text-indentation">메뉴2 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
 			</ul>
 		</li>
+		
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">학사</a> </div>
+			<ul class="sub sub_meun">
+				<li style="margin-left:2em;"><a href="#" class="no-uline">학사메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
+			</ul>
+		</li>
+		
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">수강신청</a> </div>
+			<ul class="sub sub_meun">
+				<li style="margin-left:2em;"><a href="#" class="no-uline">수강신청메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
+			</ul>
+		</li>
+		
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">강의</a> </div>
+			<ul class="sub sub_meun">
+				<li style="margin-left:2em;"><a href="#" class="no-uline">강의메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
+			</ul>
+		</li>
+		
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">커뮤니티</a> </div>
+			<ul class="sub sub_meun">
+				<li style="margin-left:2em;"><a href="#" class="no-uline">커뮤니티메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
+			</ul>
+		</li>
+		
+		<li>
+			<div class="main-title"><span class="folder main_menu"> </span><a href="#" class="no-uline">관리자</a> </div>
+			<ul class="sub sub_meun">
+				<li style="margin-left:2em;"><a href="#" class="no-uline">관리자메뉴1 </a></li>
+				<li style="margin-left:2em;"><a href="#" class="no-uline">메뉴2 </a></li>
+			</ul>
+		</li>
+		
 		
 		
 	</ul> 

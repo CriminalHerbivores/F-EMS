@@ -1,30 +1,30 @@
-$(function() {
-		$('.dropdown').click(function(event) {
-			event.preventDefault();
-			menu = $('.dropdown-toggle', this).text();
-			submenu = $('.dropdown-menu li a', this).text();
-
-			$.ajax({
-				url : 'decorators/menu.jsp',
-				type : 'post',
-				data : {
-					'menu' : menu,
-					'submenu' : submenu
-				},
-				success : function(res) {
-					$('.sidenav .main_menu').html(menu);
-					 $('.sidenav p#main_menu').text(menu); 
-					var code = "";
-					$.each(res, function(i) {
-						code += "<a href='#'>" + res[i].item + "</a><br>";
-
-					})
-					$('.sidenav .sub_meun').html(code);
-				},
-				dataType : 'json'
-			})
-		})
-	})
+//$(function() {
+//		$('.dropdown').click(function(event) {
+//			event.preventDefault();
+//			menu = $('.dropdown-toggle', this).text();
+//			submenu = $('.dropdown-menu li a', this).text();
+//
+//			$.ajax({
+//				url : 'decorators/menu.jsp',
+//				type : 'post',
+//				data : {
+//					'menu' : menu,
+//					'submenu' : submenu
+//				},
+//				success : function(res) {
+//					$('.sidenav .main_menu').html(menu);
+//					 $('.sidenav p#main_menu').text(menu); 
+//					var code = "";
+//					$.each(res, function(i) {
+//						code += "<a href='#'>" + res[i].item + "</a><br>";
+//
+//					})
+//					$('.sidenav .sub_meun').html(code);
+//				},
+//				dataType : 'json'
+//			})
+//		})
+//	})
 
 
 	
