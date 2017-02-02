@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+     
+<sqlMap namespace="Sklstf">
+	<typeAlias alias = "int" type="java.lang.Integer" />
+	<typeAlias alias = "str" type="java.lang.String" />
+	<typeAlias alias = "sklstf" type="com.uni.fems.dto.SklstfVO" />
+	
+	<select id="getSklstfList" parameterClass="str" resultClass="sklstf">
+		select * 
+		from sklstf
+		where STF_SKLSTF_NO like '%$stf_Sklstf_No$%'		
+	</select>
+	
+	<!-- 1명의 직원 정보 받아오기 -->
+	<select id="getSklstf" parameterClass="str" resultClass="sklstf">
+		select * 
+		from sklstf
+		where STF_SKLSTF_NO = #stf_Sklstf_No$#		
+	</select>
+
+	<!-- 직원 정보 수정 -->
+	<update id="updateSklstf" parameterClass="sklstf">
+		update sklstf set 
+		STF_SUBJECT_CODE = #stf_Subject_Code#,
+		STF_ENG_NM = #stf_Eng_Nm#, 
+		STF_MOBLPHON_NO = #stf_Moblphon_No#,
+		STF_HOUSE_TLPHON_NO = #stf_House_Tlphon_No#,
+		STF_PW = #stf_Pw#,
+		STF_POST_NO = #stf_Post_No#,
+		STF_ADRES1 = #stf_Adres1#,
+		STF_ADRES2 = #stf_Adres2#,
+		STF_EMAIL = #stf_Email#
+		where STF_SKLSTF_NO = #stf_Sklstf_No#
+		
+	</update>
+	
+</sqlMap>

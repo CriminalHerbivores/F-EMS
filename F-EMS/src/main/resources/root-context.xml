@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+<bean id="answerDAO" class="com.uni.fems.dao.impl.AnswerDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="answerService" class="com.uni.fems.service.impl.AnswerServiceImpl"
+      p:answerDAO-ref="answerDAO" />
+
+
+<bean id="attendanceDAO" class="com.uni.fems.dao.impl.AttendanceDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="attendanceService" class="com.uni.fems.service.impl.AttendanceServiceImpl"
+      p:attendanceDAO-ref="attendanceDAO" />
+
+
+<bean id="bbs_AtrtyDAO" class="com.uni.fems.dao.impl.Bbs_AtrtyDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="bbs_AtrtyService" class="com.uni.fems.service.impl.Bbs_AtrtyServiceImpl"
+      p:bbs_AtrtyDAO-ref="bbs_AtrtyDAO" />
+
+
+<bean id="bbs_FlpthDAO" class="com.uni.fems.dao.impl.Bbs_FlpthDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="bbs_FlpthService" class="com.uni.fems.service.impl.Bbs_FlpthServiceImpl"
+      p:bbs_FlpthDAO-ref="bbs_FlpthDAO" />
+
+
+<bean id="bbs_ListDAO" class="com.uni.fems.dao.impl.Bbs_ListDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="bbs_ListService" class="com.uni.fems.service.impl.Bbs_ListServiceImpl"
+      p:bbs_ListDAO-ref="bbs_ListDAO" />
+
+
+<bean id="buildingDAO" class="com.uni.fems.dao.impl.BuildingDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="buildingService" class="com.uni.fems.service.impl.BuildingServiceImpl"
+      p:buildingDAO-ref="buildingDAO" />
+
+
+<bean id="chattingDAO" class="com.uni.fems.dao.impl.ChattingDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="chattingService" class="com.uni.fems.service.impl.ChattingServiceImpl"
+      p:chattingDAO-ref="chattingDAO" />
+
+
+<bean id="compl_PntDAO" class="com.uni.fems.dao.impl.Compl_PntDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="compl_PntService" class="com.uni.fems.service.impl.Compl_PntServiceImpl"
+      p:compl_PntDAO-ref="compl_PntDAO" />
+
+
+<bean id="consultationDAO" class="com.uni.fems.dao.impl.ConsultationDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="consultationService" class="com.uni.fems.service.impl.ConsultationServiceImpl"
+      p:consultationDAO-ref="consultationDAO" />
+
+
+<bean id="facultyDAO" class="com.uni.fems.dao.impl.FacultyDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="facultyService" class="com.uni.fems.service.impl.FacultyServiceImpl"
+      p:facultyDAO-ref="facultyDAO" />
+
+
+<bean id="filesDAO" class="com.uni.fems.dao.impl.FilesDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="filesService" class="com.uni.fems.service.impl.FilesServiceImpl"
+      p:filesDAO-ref="filesDAO" />
+
+
+<bean id="gradeDAO" class="com.uni.fems.dao.impl.GradeDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="gradeService" class="com.uni.fems.service.impl.GradeServiceImpl"
+      p:gradeDAO-ref="gradeDAO" />
+
+
+<bean id="intrst_ListDAO" class="com.uni.fems.dao.impl.Intrst_ListDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="intrst_ListService" class="com.uni.fems.service.impl.Intrst_ListServiceImpl"
+      p:intrst_ListDAO-ref="intrst_ListDAO" />
+
+
+<bean id="kindDAO" class="com.uni.fems.dao.impl.KindDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="kindService" class="com.uni.fems.service.impl.KindServiceImpl"
+      p:kindDAO-ref="kindDAO" />
+
+
+<bean id="lctreDAO" class="com.uni.fems.dao.impl.LctreDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="lctreService" class="com.uni.fems.service.impl.LctreServiceImpl"
+      p:lctreDAO-ref="lctreDAO" />
+
+
+<bean id="lctre_FlpthDAO" class="com.uni.fems.dao.impl.Lctre_FlpthDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="lctre_FlpthService" class="com.uni.fems.service.impl.Lctre_FlpthServiceImpl"
+      p:lctre_FlpthDAO-ref="lctre_FlpthDAO" />
+
+
+<bean id="lctrumDAO" class="com.uni.fems.dao.impl.LctrumDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="lctrumService" class="com.uni.fems.service.impl.LctrumServiceImpl"
+      p:lctrumDAO-ref="lctrumDAO" />
+
+
+<bean id="notice_BbsDAO" class="com.uni.fems.dao.impl.Notice_BbsDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="notice_BbsService" class="com.uni.fems.service.impl.Notice_BbsServiceImpl"
+      p:notice_BbsDAO-ref="notice_BbsDAO" />
+
+
+<bean id="profsrDAO" class="com.uni.fems.dao.impl.ProfsrDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="profsrService" class="com.uni.fems.service.impl.ProfsrServiceImpl"
+      p:profsrDAO-ref="profsrDAO" />
+
+
+<bean id="profsr_SchedlDAO" class="com.uni.fems.dao.impl.Profsr_SchedlDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="profsr_SchedlService" class="com.uni.fems.service.impl.Profsr_SchedlServiceImpl"
+      p:profsr_SchedlDAO-ref="profsr_SchedlDAO" />
+
+
+<bean id="profsr_Subjct_AsnmDAO" class="com.uni.fems.dao.impl.Profsr_Subjct_AsnmDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="profsr_Subjct_AsnmService" class="com.uni.fems.service.impl.Profsr_Subjct_AsnmServiceImpl"
+      p:profsr_Subjct_AsnmDAO-ref="profsr_Subjct_AsnmDAO" />
+
+
+<bean id="pymntDAO" class="com.uni.fems.dao.impl.PymntDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="pymntService" class="com.uni.fems.service.impl.PymntServiceImpl"
+      p:pymntDAO-ref="pymntDAO" />
+
+
+<bean id="reqstDAO" class="com.uni.fems.dao.impl.ReqstDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="reqstService" class="com.uni.fems.service.impl.ReqstServiceImpl"
+      p:reqstDAO-ref="reqstDAO" />
+
+
+<bean id="schafs_SchdulDAO" class="com.uni.fems.dao.impl.Schafs_SchdulDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="schafs_SchdulService" class="com.uni.fems.service.impl.Schafs_SchdulServiceImpl"
+      p:schafs_SchdulDAO-ref="schafs_SchdulDAO" />
+
+
+<bean id="schlshipDAO" class="com.uni.fems.dao.impl.SchlshipDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="schlshipService" class="com.uni.fems.service.impl.SchlshipServiceImpl"
+      p:schlshipDAO-ref="schlshipDAO" />
+
+
+<bean id="sklstfDAO" class="com.uni.fems.dao.impl.SklstfDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="sklstfService" class="com.uni.fems.service.impl.SklstfServiceImpl"
+      p:sklstfDAO-ref="sklstfDAO" />
+
+
+<bean id="sklstf_AtrtyDAO" class="com.uni.fems.dao.impl.Sklstf_AtrtyDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="sklstf_AtrtyService" class="com.uni.fems.service.impl.Sklstf_AtrtyServiceImpl"
+      p:sklstf_AtrtyDAO-ref="sklstf_AtrtyDAO" />
+
+
+<bean id="sknrgsDAO" class="com.uni.fems.dao.impl.SknrgsDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="sknrgsService" class="com.uni.fems.service.impl.SknrgsServiceImpl"
+      p:sknrgsDAO-ref="sknrgsDAO" />
+
+
+<bean id="stdntDAO" class="com.uni.fems.dao.impl.StdntDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="stdntService" class="com.uni.fems.service.impl.StdntServiceImpl"
+      p:stdntDAO-ref="stdntDAO" />
+
+
+<bean id="subjct_Info_TableDAO" class="com.uni.fems.dao.impl.Subjct_Info_TableDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="subjct_Info_TableService" class="com.uni.fems.service.impl.Subjct_Info_TableServiceImpl"
+      p:subjct_Info_TableDAO-ref="subjct_Info_TableDAO" />
+
+
+<bean id="testDAO" class="com.uni.fems.dao.impl.TestDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="testService" class="com.uni.fems.service.impl.TestServiceImpl"
+      p:testDAO-ref="testDAO" />
+
+
+<bean id="test_PaperDAO" class="com.uni.fems.dao.impl.Test_PaperDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="test_PaperService" class="com.uni.fems.service.impl.Test_PaperServiceImpl"
+      p:test_PaperDAO-ref="test_PaperDAO" />
+
+
+<bean id="tuitionDAO" class="com.uni.fems.dao.impl.TuitionDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="tuitionService" class="com.uni.fems.service.impl.TuitionServiceImpl"
+      p:tuitionDAO-ref="tuitionDAO" />
+
+
+<bean id="useDAO" class="com.uni.fems.dao.impl.UseDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="useService" class="com.uni.fems.service.impl.UseServiceImpl"
+      p:useDAO-ref="useDAO" />
+
+
+<bean id="workDAO" class="com.uni.fems.dao.impl.WorkDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="workService" class="com.uni.fems.service.impl.WorkServiceImpl"
+      p:workDAO-ref="workDAO" />
+
+
+<bean id="manageDAO" class="com.uni.fems.dao.impl.ManageDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="manageService" class="com.uni.fems.service.impl.ManageServiceImpl"
+      p:manageDAO-ref="manageDAO" />
+
+
+<bean id="menuDAO" class="com.uni.fems.dao.impl.MenuDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="menuService" class="com.uni.fems.service.impl.MenuServiceImpl"
+      p:menuDAO-ref="menuDAO" />
+
+
+<bean id="menu_SeDAO" class="com.uni.fems.dao.impl.Menu_SeDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="menu_SeService" class="com.uni.fems.service.impl.Menu_SeServiceImpl"
+      p:menu_SeDAO-ref="menu_SeDAO" />
+
+
+<bean id="colegeDAO" class="com.uni.fems.dao.impl.ColegeDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="colegeService" class="com.uni.fems.service.impl.ColegeServiceImpl"
+      p:colegeDAO-ref="colegeDAO" />
+
+
+<bean id="lctre_Unq_NoDAO" class="com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="lctre_Unq_NoService" class="com.uni.fems.service.impl.Lctre_Unq_NoServiceImpl"
+      p:lctre_Unq_NoDAO-ref="lctre_Unq_NoDAO" />
+
+
+<bean id="lctre_ActplnDAO" class="com.uni.fems.dao.impl.Lctre_ActplnDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="lctre_ActplnService" class="com.uni.fems.service.impl.Lctre_ActplnServiceImpl"
+      p:lctre_ActplnDAO-ref="lctre_ActplnDAO" />
+
+
+<bean id="usersDAO" class="com.uni.fems.dao.impl.UsersDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="usersService" class="com.uni.fems.service.impl.UsersServiceImpl"
+      p:usersDAO-ref="usersDAO" />
+
+
+<bean id="cnslt_BbsDAO" class="com.uni.fems.dao.impl.Cnslt_BbsDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="cnslt_BbsService" class="com.uni.fems.service.impl.Cnslt_BbsServiceImpl"
+      p:cnslt_BbsDAO-ref="cnslt_BbsDAO" />
+      
+      
+      
+	<bean id="serviceProfiler" class="com.uni.fems.aop.ServiceProfiler"
+		p:client-ref="sqlMapClient" />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+			<tx:method name="insert*" rollback-for="Exception" />
+			<tx:method name="update*" rollback-for="Exception" />
+			<tx:method name="delete*" rollback-for="Exception" />
+			<tx:method name="get*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut
+			expression="execution(public * com.uni.fems.service.impl.*ServiceImpl.*(..))"
+			id="servicePublicMethod" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod" />
+	</aop:config>
+	<!-- <aop:config> <aop:aspect id="serviceAspect" ref="serviceProfiler"> 
+		<aop:pointcut id="publicMethod1" expression="execution(public * com.test.board.service.impl..insert*(..))" 
+		/> <aop:pointcut id="publicMethod2" expression="execution(public * com.test.board.service.impl..update*(..))" 
+		/> <aop:pointcut id="publicMethod3" expression="execution(public * com.test.board.service.impl..delete*(..))" 
+		/> <aop:around pointcut-ref="publicMethod1" method="trace" /> <aop:around 
+		pointcut-ref="publicMethod2" method="trace" /> <aop:around pointcut-ref="publicMethod3" 
+		method="trace" /> </aop:aspect> </aop:config> -->
+</beans>
+
+
