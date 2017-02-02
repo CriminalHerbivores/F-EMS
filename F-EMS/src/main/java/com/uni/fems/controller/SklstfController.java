@@ -39,7 +39,7 @@ public class SklstfController {
 	
 	@RequestMapping(value="/sklstfUpdate", method = RequestMethod.POST)
 	public String sklstfUpdate(SklstfVO sklstfVO){
-		String url = "redirect:/index";
+		String url = "redirect:/manager/index";
 		
 		try {
 			sklstfService.updateSklstf(sklstfVO);

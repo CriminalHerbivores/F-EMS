@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AaaController {
 
 	
-	@RequestMapping("/index")
+	@RequestMapping("/a")
 	String indexForm(HttpSession session){
-		String url = "index";
+		String url = "manager/index";
 		session.setAttribute("userid", "1111");
 		
 		return url;
