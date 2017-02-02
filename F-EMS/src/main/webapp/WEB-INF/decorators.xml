@@ -8,6 +8,7 @@
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
+		<pattern>/admin/step1_add</pattern>
 	</excludes>
 	
 </decorators>
