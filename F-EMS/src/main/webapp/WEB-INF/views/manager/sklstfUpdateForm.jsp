@@ -57,7 +57,7 @@
         <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
       </tr>
   </table>
-    <button type="button" class="btn btn-default" onclick="go_sklstfUpdate()">수정</button>
+    <button type="button" class="btn btn-default" onclick="go_sklstfUpdate('<%=request.getContextPath() %>')">수정</button>
     <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
 
 </form>
