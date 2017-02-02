@@ -6,38 +6,332 @@
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title></title>
 
-<!-- 아코디언 시작 -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/accordion.css">
+<style>
+    * {
+        padding:0;
+        margin:0;
+    }
+    
+    body{
+        font-size:9pt;
+    
+    }	
 
-<!-- <script>
+    
+
+
+</style>
+
+
+<script src="<%=request.getContextPath()%>/js/jquery-1.11.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
+<%-- <script src="<%=request.getContextPath()%>/js/accordion.js"></script> --%>
+<script>
 $(document).ready(function(){
-	// step #07-01
-	// 폴더 아코디언 메뉴 플러그인 실행
-	$("#accordionMenu1").folderAccordionMenu();
+	 $("#accordionMenu1").folderAccordionMenu();
+     
+     // 이벤트 등록
+     $("#accordionMenu1").on("open",function(e){
+     console.log("open", e.$target.find(".main-title a").text());
+     })
+     
+     $("#accordionMenu1").on("close",function(e){
+     console.log("close", e.$target.find(".main-title a").text());
+     })
+     
+     $("#accordionMenu1").on("select",function(e){
+     var oldText = "없음";
+     if(e.$oldItem)
+         oldText = e.$oldItem.text();
+     console.log("select old = ", oldText+", new = "+e.$newItem.text());
+     })  
+     
+     // step #07-02
+     $("#accordionMenu1").selectFolderAccordionMenu(0,1);
+ 	
+ })
 
-	// 이벤트 등록
-	$("#accordionMenu1").on("open",function(e){
-		console.log("open", e.$target.find(".main-title a").text());
-	})
 
-	$("#accordionMenu1").on("close",function(e){
-		console.log("close", e.$target.find(".main-title a").text());
-	})
+/*//////////////////////////////////////// */
+(function($){
+    // step #07-01  
+    // folderAccordionMenu 플러그인
+    $.fn.folderAccordionMenu=function(){
+        // 선택자에 해당하는 요소 개수 만큼 FolderAccordionMenu 객체 생성
+        this.each(function(index){
+            var $this = $(this);
+            var menu = new FolderAccordionMenu($this);
+            $this.data("folderAccorionMenu", menu);   
+        });
+        
+        return this;
+    }
+    
+    // step #07-02
+    // n번째 메뉴 선택
+    $.fn.selectFolderAccordionMenu=function(mainIndex, subIndex, animation){
+        this.each(function(index){
+            var accordionMenu = $(this).data("folderAccorionMenu");
+            accordionMenu.selectMenu(mainIndex, subIndex, animation);
+        });
+        
+        return this;
+    }
+    
+})(jQuery);
 
-	$("#accordionMenu1").on("select",function(e){
-		var oldText = "없음";
-		if(e.$oldItem)
-			oldText = e.$oldItem.text();
-		console.log("select old = ", oldText+", new = "+e.$newItem.text());
-	})
-})
-</script> -->
 
-<!-- 아코디언 끝 -->
+// step #02-01
+function FolderAccordionMenu(selector){
+    this.$accordionMenu = null;
+    this._$mainMenuItems = null;
+    
+    // step #03
+    // 선택 서브 메뉴 아이템 
+    this._$selectSubItem = null;
+    
+    
+    this._init(selector);
+    this._initSubMenuPanel();
+    
+    // step #02-03
+    this._initEvent();
 
+}
+
+/* step #02-01
+* 요소 초기화
+*/
+FolderAccordionMenu.prototype._init=function(selector){
+    this.$accordionMenu = $(selector);
+    this._$mainMenuItems = this.$accordionMenu.children("li");   
+}
+    
+    /* step #02-03
+    * 이벤트 초기화
+    */
+FolderAccordionMenu.prototype._initEvent=function(){
+    var objThis = this;
+    this._$mainMenuItems.children(".main-title").click(function(e){
+        var $item = $(this).parent();
+        objThis.toggleSubMenuPanel($item);
+    })
+    
+    // step #03
+    this._$mainMenuItems.find(".sub li").click(function(e){
+        objThis._selectSubMenuItem($(this));
+    })
+}
+
+/* step #02-01
+*  서브 패널 초기화 - 초기 시작히 닫힌 상태로 만들기 
+*/
+FolderAccordionMenu.prototype._initSubMenuPanel=function(){  
+    var objThis =  this;
+    this._$mainMenuItems.each(function(index){
+        var $item = $(this);
+        var $subMenu = $item.find(".sub");
+        
+        // 서브가 없는 경우 
+        if($subMenu.length==0){
+            $item.attr("data-extension","empty");           
+            objThis._setFolderState($item, "empty");
+        
+        }else {
+            if($item.attr("data-extension")=="open"){                           
+                objThis.openSubMenu($item, false);
+                
+            }else{
+                objThis.closeSubMenu($item,false);
+            }
+        }
+    })
+}
+
+/* step #02-01
+* 폴더 상태 설정
+*/  
+FolderAccordionMenu.prototype._setFolderState=function($item,state){
+    var $folder = $item.find(".main-title .folder");
+    // 기존 클래스를 모두 제거
+    $folder.removeClass();
+    $folder.addClass("folder "+state);
+
+}
+
+/*
+* step #02-02
+* 서브 메뉴 패널 열기 
+* animation 기본 값은 true
+*/
+FolderAccordionMenu.prototype.openSubMenu=function($item, animation){
+
+    if($item != null){
+        $item.attr("data-extension", "open");
+        
+        var $subMenu = $item.find(".sub");
+        
+        // step #02-04
+        if(animation==false){
+            $subMenu.css({
+                marginTop:0
+            });
+        }else {
+            $subMenu.stop().animate({
+                    marginTop:0
+                },300,"easeInCubic"
+            );
+        }
+        
+        this._setFolderState($item, "open");
+        
+        // step #05-01
+        // open 이벤트 발생
+        this._dispatchOpenCloseEvent($item, "open");
+    }
+}
+
+/*
+* step #02-02
+* 서브 메뉴 패널 닫기
+* animation 기본 값은 true
+*/
+FolderAccordionMenu.prototype.closeSubMenu=function($item, animation){
+    if($item != null){
+        $item.attr("data-extension", "close");
+        
+        var $subMenu = $item.find(".sub");
+        
+        // step #02-04
+        var subMenuPanelHeight = -$subMenu.outerHeight(true);
+        if(animation==false){
+            $subMenu.css({
+                marginTop:subMenuPanelHeight
+            });
+        }else {
+            $subMenu.stop().animate({
+                    marginTop:subMenuPanelHeight
+                },300,"easeInCubic"
+            );
+        }
+        
+        this._setFolderState($item, "close");
+        
+        // step #05-01
+        // close 이벤트 발생
+        this._dispatchOpenCloseEvent($item, "close");
+    }
+}
+
+/*
+* step #02-03
+* 서브메뉴 패널 열고 닫기 
+*/
+FolderAccordionMenu.prototype.toggleSubMenuPanel=function($item){
+    var extension = $item.attr("data-extension");
+    
+    // 서브가 없는 경우 취소
+    if(extension=="empty"){
+        return;
+    }
+
+    if(extension=="open"){      
+        this.closeSubMenu($item);
+    }else{
+        this.openSubMenu($item);
+    }
+}
+
+/*
+ * step #02-05
+ * index 메뉴의 서브 메뉴 패널 닫기
+ */
+FolderAccordionMenu.prototype.closeSubMenuAt=function(index, animation){
+    var $item = this._$mainMenuItems.eq(index);
+    this.closeSubMenu($item, animation);
+}
+
+/*
+ * step #02-05
+ * index 메뉴의 서브 메뉴 패널 열기
+ */
+FolderAccordionMenu.prototype.openSubMenuAt=function(index, animation){
+    var $item = this._$mainMenuItems.eq(index);
+    this.openSubMenu($item, animation);
+}
+
+/*
+ * step #03
+ * 서브 메뉴 아이템 선택 
+ */
+FolderAccordionMenu.prototype._selectSubMenuItem=function($item){
+    
+    var $oldItem = this._$selectSubItem; 
+        
+    if(this._$selectSubItem != null){
+        this._$selectSubItem.removeClass("select");
+    }
+    
+    this._$selectSubItem = $item;
+    this._$selectSubItem.addClass("select");
+    
+    // step #05-02
+    // 선택 이벤트 발생
+    this._dispatchSelectEvent($oldItem, this._$selectSubItem);
+}
+
+/* 
+ * step #04
+ * 메뉴 선택 기능 
+ * @mainIndex : 메인 메뉴 아이템 index
+ * @subIndex : 서브 메뉴 아이템 index
+ * @animation : 애니메이션 실행 유무 
+ */
+FolderAccordionMenu.prototype.selectMenu=function(mainIndex,subIndex, animation){
+    
+    // 메인 메뉴 아이템 
+    var $item = this._$mainMenuItems.eq(mainIndex);
+    // 서브 메뉴 아이템
+    var $subMenuItem = $item.find(".sub li").eq(subIndex);
+    if($subMenuItem){
+        // 서브 메뉴 패널 열기
+        this.openSubMenu($item, animation);
+        
+        // 서브 메뉴 아이템 서택
+        this._selectSubMenuItem($subMenuItem);
+    }
+}
+
+// step #05-01
+// open, close 이벤트 발생
+FolderAccordionMenu.prototype._dispatchOpenCloseEvent=function($item, eventName){
+    
+    var event = jQuery.Event(eventName);
+    event.$target=$item;
+    
+    this.$accordionMenu.trigger(event);
+}
+
+// step #05-02
+// select 이벤트 발생
+FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
+    
+    var event = jQuery.Event("select");
+    event.$oldItem = $oldItem;
+    event.$newItem = $newItem;
+    
+    this.$accordionMenu.trigger(event);
+}
+
+
+
+
+</script>
 
 </head>
 <body>
@@ -140,95 +434,6 @@ $(document).ready(function(){
 </nav>
 
 
-<!-- 	<nav class="navbar navbar-inverse" id="secondnav">
-		<div class="collapse navbar-collapse" id="category">
-				
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button"
-					data-toggle="dropdown">
-					학생 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button"
-					data-toggle="dropdown">
-					학사 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-				</ul>
-			</div>
-		
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button"
-					data-toggle="dropdown">
-					수강신청 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-				</ul>
-			</div>
-	
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button"
-					data-toggle="dropdown">
-					강의 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-				</ul>
-			</div>
-		
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button"
-					data-toggle="dropdown">
-					커뮤니티 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-				</ul>
-				
-	<form class="navbar-form navbar-left">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-			
-			</div>
-		
-	
-		
-		
-			
-			
-		</div>
-		<ul class="nav navbar-nav">
-        <li style="margin-left: 300px;"><a href="#">학생</a></li>
-        <li><a href="#">학사</a></li>
-        <li><a href="#">수강신청</a></li>
-        <li><a href="#">강의</a></li>
-        <li><a href="#">커뮤니티</a></li>
-        
-      </ul>
-		
-
-	</nav> -->
 <!-- 상단 메뉴 끝 -->	
 
 <!-- 좌측메뉴 시작 -->
@@ -246,20 +451,29 @@ $(document).ready(function(){
 				
 			<!-- ////////////////// -->	
 	<ul class="accordion-menu" id="accordionMenu1">
-		<li data-extension="open">
-		
+		<li data-extension="close">
 			<div class="main-title"><span class="folder main_menu"> </span><a>직원</a></div>
-			<ul class="sub sub_meun"></ul>
+			<ul class="sub sub_meun">
+				<li><a>직원메뉴1 </a></li>
+				<li><a>메뉴2 </a></li>
+			
+			</ul>
 		</li>		
 		
 		<li>
 			<div class="main-title"><span class="folder main_menu"> </span><a>교수</a></div>
-			<ul class="sub sub_meun"></ul>
+			<ul class="sub sub_meun">
+				<li><a>교수메뉴1 </a></li>
+				<li><a>메뉴2 </a></li>
+			</ul>	
 		</li>
 			
 		<li>
 			<div class="main-title"><span class="folder main_menu"> </span><a>학생</a> </div>
-			<ul class="sub sub_meun"></ul>
+			<ul class="sub sub_meun">
+				<li><a>학생메뉴1 </a></li>
+				<li><a>메뉴2 </a></li>
+			</ul>
 		</li>
 		
 		

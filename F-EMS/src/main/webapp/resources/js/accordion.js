@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 		$('.dropdown').click(function(event) {
 			event.preventDefault();
 			menu = $('.dropdown-toggle', this).text();
@@ -13,7 +13,7 @@ $(function() {
 				},
 				success : function(res) {
 					$('.sidenav .main_menu').html(menu);
-					/* $('.sidenav p#main_menu').text(menu); */
+					 $('.sidenav p#main_menu').text(menu); 
 					var code = "";
 					$.each(res, function(i) {
 						code += "<a href='#'>" + res[i].item + "</a><br>";
@@ -24,10 +24,9 @@ $(function() {
 				dataType : 'json'
 			})
 		})
-	})
+	})*/
 
 
-	
 	
 (function($){
     // step #07-01  
