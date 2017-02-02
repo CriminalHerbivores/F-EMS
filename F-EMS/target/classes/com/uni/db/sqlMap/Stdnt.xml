@@ -1,1 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Stdnt">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias = "stdnt" type="com.uni.fems.dto.StdntVO" />
+
+	<update id="insertStdnt" parameterClass="stdnt">
+	insert into stdnt(
+	st_stdnt_no,
+	st_subjct_code,
+	st_pw,
+	st_nm,
+	st_eng_nm,
+	st_ihidnum,
+	st_moblphon_no,
+	st_house_tlphon_no,
+	st_entsch_dt,
+	st_prtctor_nm,
+	st_family_relate,
+	st_post_no,
+	st_adres1,
+	st_adres2,
+	st_cnslt_at,
+	st_email,
+	st_brhs_at,
+	st_profsr_no,
+	st_grdtn_dt)
+	values
+	(
+	#st_Stdnt_No#,
+	#st_Subjct_Code#,
+	#st_Pw#,
+	#st_Nm#,
+	#st_Entsch_Dt#,
+	#st_Ihidnum#,
+	#st_Moblphon_No#,
+	#st_House_Tlphon_No#,
+	#st_Entsch_Dt#,
+	#st_Prtctor_Nm#,
+	#st_Family_Relate#,
+	#st_Post_No#,
+	#st_Adres1#,
+	#st_Adres2#,
+	#st_Cnslt_At#,
+	#st_Email#,
+	#st_Brhs_At#,
+	#st_Profsr_No#,
+	#st_Grdtn_Dt#) 
+	</update>
+	
+	
+</sqlMap>

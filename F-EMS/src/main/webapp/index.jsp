@@ -13,5 +13,6 @@
 
 	<a href="<%=request.getContextPath() %>/index">메인으로 가기</a>
 	<a href="<%=request.getContextPath()%>/notice_bbs/noticeList">공지게시판</a>
+	<a href="<%=request.getContextPath() %>/a">직원 페이지</a>
 </body>
 </html>

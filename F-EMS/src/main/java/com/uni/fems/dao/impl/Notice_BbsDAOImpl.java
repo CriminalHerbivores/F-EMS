@@ -124,5 +124,6 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 	
 	
 
+
 	
 }

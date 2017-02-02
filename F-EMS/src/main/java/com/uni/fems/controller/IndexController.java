@@ -21,11 +21,11 @@ public class IndexController {
 		return url;
 	}
 
-	@RequestMapping("/a")
+	/*@RequestMapping("/a")
 	public String a(){
 		String url = "index";
 		return url;
-	}
+	}*/
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {

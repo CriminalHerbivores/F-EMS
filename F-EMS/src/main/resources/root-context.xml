@@ -21,6 +21,7 @@
       
 
 
+
 <bean id="attendanceDAO" class="com.uni.fems.dao.impl.AttendanceDAOImpl"
       p:client-ref="sqlMapClient" />
 
