@@ -6,6 +6,8 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
+import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.ProfsrService;
 import com.uni.fems.service.SklstfService;
@@ -15,7 +17,7 @@ public class SimpleRegistrationNotifier{
 	
 	private StdntService studentSvc;
 	private ProfsrService professorSvc;
-	private SklstfService StaffSvc;
+	private SklstfService staffSvc;
 	
 	private MailSender mailSender;
 	
@@ -29,10 +31,10 @@ public class SimpleRegistrationNotifier{
 		this.professorSvc = professorSvc;
 	}
 	public void setStaffSvc(SklstfService staffSvc) {
-		StaffSvc = staffSvc;
+		staffSvc = staffSvc;
 	}
 	
-	public void sendMail(MailRequest mailReq) {
+	public void sendToStudent(MailRequest mailReq) {
 		SimpleMailMessage message = new SimpleMailMessage();
 		for(String userid:mailReq.getUserid()){
 			StdntVO stdnt=null;
@@ -45,6 +47,46 @@ public class SimpleRegistrationNotifier{
 			message.setFrom("보내는사람메일주소"); //보내는 사람 메일 주소
 			message.setText(mailReq.getMessage());
 			message.setTo(stdnt.getSt_Email());
+			try {
+				mailSender.send(message);
+			} catch (MailException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	public void sendToProfessor(MailRequest mailReq) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		for(String userid:mailReq.getUserid()){
+			ProfsrVO profsr=null;
+//			try {
+//				profsr = professorSvc.getProfsr(userid); //메소드 필요
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+			message.setSubject(mailReq.getTitle());
+			message.setFrom("보내는사람메일주소"); //보내는 사람 메일 주소
+			message.setText(mailReq.getMessage());
+			message.setTo(profsr.getPr_Email());
+			try {
+				mailSender.send(message);
+			} catch (MailException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	public void sendToStaff(MailRequest mailReq) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		for(String userid:mailReq.getUserid()){
+			SklstfVO sklstf=null;
+//			try {
+//				sklstf = staffSvc.getSklstf(userid); //메소드 필요
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+			message.setSubject(mailReq.getTitle());
+			message.setFrom("보내는사람메일주소"); //보내는 사람 메일 주소
+			message.setText(mailReq.getMessage());
+			message.setTo(sklstf.getStf_Email());
 			try {
 				mailSender.send(message);
 			} catch (MailException ex) {
