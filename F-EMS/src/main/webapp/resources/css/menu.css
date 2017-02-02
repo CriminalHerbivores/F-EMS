@@ -51,8 +51,9 @@
 .dropdown{
  display:inline;
   position: relative;
-    display: inline-block;
+  display: inline-block;
 }
+
 
  #topnav-table{
  display:inline;

@@ -370,8 +370,8 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 			</button>
 		</div> -->
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav navbar-left">
 			
+			<ul class="nav navbar-nav navbar-left">
 			
 			<!-- 권한 관련 추후에 설정 -->	
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -380,6 +380,14 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 						<li><a href="#" class="no-uline">직원메뉴1 </a></li>
 						<li><a href="#" class="no-uline">메뉴2 </a></li>
 					</ul></li>
+					
+					
+					
+
+					
+					
+					
+					
 				
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">교수 <span class="caret"></span></a>
