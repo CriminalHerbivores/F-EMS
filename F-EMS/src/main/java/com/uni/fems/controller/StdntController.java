@@ -1,9 +1,13 @@
 package com.uni.fems.controller;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sun.tracing.dtrace.Attributes;
 import com.uni.fems.dao.StdntDAO;
+import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
@@ -45,6 +50,7 @@ public class StdntController {
 		
 		return url;
 	}*/
+	
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
 	String stdntInsert(StdntVO stdntVO, @RequestParam String file, Model model){
 		String url = "/manager/index";
@@ -94,5 +100,45 @@ public class StdntController {
 		
 		
 		return url;
+	}
+	
+	@RequestMapping("/stdntList")
+	public String stdntList(Model model,HttpServletRequest request) throws ServletException, IOException{
+		String url="manager/student/stdntListForm";
+		String key = request.getParameter("key");
+		String tpage = request.getParameter("tpage");
+		
+		System.out.println("11111111111111");
+		if (key ==null){
+			key = "";
+		}
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("key", key);
+		model.addAttribute("tpage",tpage);
+		
+		
+		List<StdntVO> stdntList = null;
+		String paging = null;
+		try {
+			System.out.println("222222222222222222");
+			stdntList = stdntService.selectNameAllPage(Integer.parseInt(tpage), key);
+			System.out.println("3333333333333333");
+			paging = stdntService.pageNumber(Integer.parseInt(tpage), key);
+			System.out.println("stdntList : "+stdntList);
+			System.out.println("paging : "+paging);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("stdntList", stdntList);
+		int n = stdntList.size();
+		model.addAttribute("stdntListSize", n);
+		model.addAttribute("paging", paging);
+		return url;
+		
 	}
 }

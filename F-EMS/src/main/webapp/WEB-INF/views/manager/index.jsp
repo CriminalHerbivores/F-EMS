@@ -13,7 +13,7 @@
 <body>
 <a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate">직원 정보 수정</a><br>
 <a href="<%=request.getContextPath() %>/stdnt/stdntInsert">학생 등록</a><br>
-<a href="<%=request.getContextPath() %>/index">메인으로 가기</a><br>
+<a href="<%=request.getContextPath() %>/stdnt/stdntList">메인으로 가기</a><br>
 <a href="<%=request.getContextPath() %>/index">메인으로 가기</a><br>
 <a href="<%=request.getContextPath() %>/index">메인으로 가기</a><br>
 <a href="<%=request.getContextPath() %>/index">메인으로 가기</a><br>

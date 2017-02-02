@@ -9,6 +9,17 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias = "stdnt" type="com.uni.fems.dto.StdntVO" />
 
+	<!-- 상품 개수 등록 -->
+	<select id="totalStdnt" parameterClass="str" resultClass="int">
+		select count(*) from stdnt where st_stdnt_no like '%$st_Stdnt_No$%'
+	</select>
+	
+	<!-- 상품 페이지로 출력 -->
+	<select id="selectAllStdntPage" parameterClass="str" resultClass="stdnt">
+		select * from stdnt where st_nm like '%$st_nm$%'
+	</select>
+	
+
 	<update id="insertStdnt" parameterClass="stdnt">
 	insert into stdnt(
 	st_stdnt_no,
