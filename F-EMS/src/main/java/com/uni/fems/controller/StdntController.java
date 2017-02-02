@@ -47,7 +47,7 @@ public class StdntController {
 	}*/
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
 	String stdntInsert(StdntVO stdntVO, @RequestParam String file, Model model){
-		String url = "redirect:/index";
+		String url = "/manager/index";
 		if(file != null && !file.equals("")){
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(file);		//경로 입력
