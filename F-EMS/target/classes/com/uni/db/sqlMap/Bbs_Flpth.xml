@@ -1,1 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bbs_Flpth">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="bbs_flpth" type="com.uni.fems.dto.Bbs_FlpthVO" />
+	
+	
+	<select id="getBbs_Flpth" parameterClass="int" resultClass="bbs_flpth">
+		select * from bbs_flpth where bf_no=#bf_No#
+	</select>
+	
+	<update id="insertBbs_Flpth" parameterClass="bbs_flpth">
+		insert into bbs_flpth(bf_no,bf_file_type_code,bf_bbs_code,bf_file_type) 
+		values(bf_seq.nextval,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Type#)
+	</update>
+	
+	<update id="updateBbs_Flpth" parameterClass="bbs_flpth">
+		update bbs_flpth set bf_file_type_code=#bf_File_Type_Code#,bf_file_type=#bf_File_Type#,bf_Flpth=#bf_Flpth# 
+		where bf_no=#bf_No#
+	</update>
+	
+	<update id="deleteBbs_Flpth" parameterClass="int">
+		delete from bbs_flpth where bf_no=#bf_No# 
+	</update>
+	
+	
+	
+	
+</sqlMap>
