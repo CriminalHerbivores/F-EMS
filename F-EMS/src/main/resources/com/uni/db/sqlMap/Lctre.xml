@@ -13,7 +13,8 @@
 	</select>
 	
 	<select id="selectLctre" resultClass="lctre">
-		select * from lctre where boardnum=#boardNum#
+		select * from lctre 
+		where lc_Lctre_No like '%'||#lc_Lctre_No#||'%' order by lc_Lctre_No desc
 	</select>
 	
 	<select id="selectCount" resultClass="int">
@@ -21,17 +22,17 @@
 	</select>
 	
 	<update id="insertLctre" parameterClass="lctre">
-		insert into lctre(boardnum,title,writer,content)
-			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Grade#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
+		insert into lctre(lc_Lctre_No,lc_Profsr_No,lc_Lctre_Code,lc_Lctrbgn_Dt,lc_Lctre_Nmpr,lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Pnt,lc_Grade,lc_Lctrum_No,lc_Open_At,lc_Lctre_Org,lc_Lctre_Evl_Score,lc_Split)
+			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctrbgn_Dt#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Grade#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
 	</update>
 	
 	<update id="updateLctre" parameterClass="lctre">
-		update lctre set title=#title#,writer=#writer#,content=#content#
-		where boardnum=#boardNum#
+		update lctre set lc_Lctre_No=#lc_Lctre_No#,lc_Profsr_No=#lc_Profsr_No#,lc_Lctre_Code=#lc_Lctre_Code#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Pnt=#lc_Pnt#,lc_Grade=#lc_Grade#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
+		where lc_Lctre_No=#lc_Lctre_No#
 	</update>
 	
 	<update id="deleteLctre" parameterClass="str">
-		delete from lctre where boardnum=#boardNum#
+		delete from lctre where lc_Lctre_No=#lc_Lctre_No#
 	</update>
 	
 </sqlMap>
