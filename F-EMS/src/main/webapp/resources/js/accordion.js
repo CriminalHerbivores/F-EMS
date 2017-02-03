@@ -27,7 +27,30 @@
 //	})
 
 
-	
+$(document).ready(function(){
+	 $("#accordionMenu1").folderAccordionMenu();
+     
+     // 이벤트 등록
+     $("#accordionMenu1").on("open",function(e){
+     console.log("open", e.$target.find(".main-title a").text());
+     })
+     
+     $("#accordionMenu1").on("close",function(e){
+     console.log("close", e.$target.find(".main-title a").text());
+     })
+     
+     $("#accordionMenu1").on("select",function(e){
+     var oldText = "없음";
+     if(e.$oldItem)
+         oldText = e.$oldItem.text();
+     console.log("select old = ", oldText+", new = "+e.$newItem.text());
+     })  
+     
+     // step #07-02
+     $("#accordionMenu1").selectFolderAccordionMenu(0,1);
+ 	
+ });
+/*//////////////////////////////////////// */
 (function($){
     // step #07-01  
     // folderAccordionMenu 플러그인
@@ -54,8 +77,6 @@
     }
     
 })(jQuery);
-
-
 // step #02-01
 function FolderAccordionMenu(selector){
     this.$accordionMenu = null;
@@ -71,9 +92,7 @@ function FolderAccordionMenu(selector){
     
     // step #02-03
     this._initEvent();
-
 }
-
 /* step #02-01
 * 요소 초기화
 */
@@ -97,9 +116,8 @@ FolderAccordionMenu.prototype._initEvent=function(){
         objThis._selectSubMenuItem($(this));
     })
 }
-
 /* step #02-01
-*  서브 패널 초기화 - 초기 시작히 닫힌 상태로 만들기 
+*  서브 패널 초기화 - 초기 시작시 닫힌 상태로 만들기 
 */
 FolderAccordionMenu.prototype._initSubMenuPanel=function(){  
     var objThis =  this;
@@ -122,7 +140,6 @@ FolderAccordionMenu.prototype._initSubMenuPanel=function(){
         }
     })
 }
-
 /* step #02-01
 * 폴더 상태 설정
 */  
@@ -131,16 +148,13 @@ FolderAccordionMenu.prototype._setFolderState=function($item,state){
     // 기존 클래스를 모두 제거
     $folder.removeClass();
     $folder.addClass("folder "+state);
-
 }
-
 /*
 * step #02-02
 * 서브 메뉴 패널 열기 
 * animation 기본 값은 true
 */
 FolderAccordionMenu.prototype.openSubMenu=function($item, animation){
-
     if($item != null){
         $item.attr("data-extension", "open");
         
@@ -165,7 +179,6 @@ FolderAccordionMenu.prototype.openSubMenu=function($item, animation){
         this._dispatchOpenCloseEvent($item, "open");
     }
 }
-
 /*
 * step #02-02
 * 서브 메뉴 패널 닫기
@@ -197,7 +210,6 @@ FolderAccordionMenu.prototype.closeSubMenu=function($item, animation){
         this._dispatchOpenCloseEvent($item, "close");
     }
 }
-
 /*
 * step #02-03
 * 서브메뉴 패널 열고 닫기 
@@ -209,14 +221,12 @@ FolderAccordionMenu.prototype.toggleSubMenuPanel=function($item){
     if(extension=="empty"){
         return;
     }
-
     if(extension=="open"){      
         this.closeSubMenu($item);
     }else{
         this.openSubMenu($item);
     }
 }
-
 /*
  * step #02-05
  * index 메뉴의 서브 메뉴 패널 닫기
@@ -225,7 +235,6 @@ FolderAccordionMenu.prototype.closeSubMenuAt=function(index, animation){
     var $item = this._$mainMenuItems.eq(index);
     this.closeSubMenu($item, animation);
 }
-
 /*
  * step #02-05
  * index 메뉴의 서브 메뉴 패널 열기
@@ -234,7 +243,6 @@ FolderAccordionMenu.prototype.openSubMenuAt=function(index, animation){
     var $item = this._$mainMenuItems.eq(index);
     this.openSubMenu($item, animation);
 }
-
 /*
  * step #03
  * 서브 메뉴 아이템 선택 
@@ -254,7 +262,6 @@ FolderAccordionMenu.prototype._selectSubMenuItem=function($item){
     // 선택 이벤트 발생
     this._dispatchSelectEvent($oldItem, this._$selectSubItem);
 }
-
 /* 
  * step #04
  * 메뉴 선택 기능 
@@ -276,7 +283,6 @@ FolderAccordionMenu.prototype.selectMenu=function(mainIndex,subIndex, animation)
         this._selectSubMenuItem($subMenuItem);
     }
 }
-
 // step #05-01
 // open, close 이벤트 발생
 FolderAccordionMenu.prototype._dispatchOpenCloseEvent=function($item, eventName){
@@ -286,7 +292,6 @@ FolderAccordionMenu.prototype._dispatchOpenCloseEvent=function($item, eventName)
     
     this.$accordionMenu.trigger(event);
 }
-
 // step #05-02
 // select 이벤트 발생
 FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
