@@ -19,6 +19,7 @@
 			    <input type="text" name="nb_Sj"  size="64" ><br>
 				<label>내용</label>
 			    <textarea rows="8" cols="65" name="nb_Cn"></textarea><br>
+			    <input type="file" name="">
 			</fieldset>   
 		<div class="clear"></div>
 		 <div id="buttons" style="float:right">

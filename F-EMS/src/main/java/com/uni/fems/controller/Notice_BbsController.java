@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.service.Notice_BbsService;
 
@@ -85,14 +86,17 @@ public class Notice_BbsController {
 	}
 	
 	@RequestMapping(value="/writeNotice", method=RequestMethod.POST)
-	public String writeNotice(Notice_BbsVO notice_BbsVO, HttpServletRequest request) throws ServletException, IOException{
+	public String writeNotice(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request) throws ServletException, IOException{
 		
 		String url = "redirect:noticeList";
 		/*HttpSession session = request.getSession();*/
-		
+				
 		notice_BbsVO.setNb_Sklstf_No("1111");
+		
+		String savePath
+		
 		try {
-			notice_BbsSvc.insertNotice_Bbs(notice_BbsVO);
+			notice_BbsSvc.insertNotice_Bbs(notice_BbsVO,bbs_FlpthVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,11 +139,11 @@ public class Notice_BbsController {
 	}
 	
 	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
-	public String updateNotice(@RequestParam int tpage,Notice_BbsVO notice_BbsVO, HttpServletRequest request){
+	public String updateNotice(@RequestParam int tpage,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request){
 		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
 		notice_BbsVO.setNb_Sklstf_No("1111");
 		try {
-			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO);
+			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO, bbs_FlpthVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
