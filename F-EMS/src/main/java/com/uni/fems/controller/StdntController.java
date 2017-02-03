@@ -108,7 +108,6 @@ public class StdntController {
 		String key = request.getParameter("key");
 		String tpage = request.getParameter("tpage");
 		
-		System.out.println("11111111111111");
 		if (key ==null){
 			key = "";
 		}
@@ -120,18 +119,12 @@ public class StdntController {
 		model.addAttribute("key", key);
 		model.addAttribute("tpage",tpage);
 		
-		
 		List<StdntVO> stdntList = null;
 		String paging = null;
 		try {
-			System.out.println("222222222222222222");
 			stdntList = stdntService.selectNameAllPage(Integer.parseInt(tpage), key);
-			System.out.println("3333333333333333");
 			paging = stdntService.pageNumber(Integer.parseInt(tpage), key);
-			System.out.println("stdntList : "+stdntList);
-			System.out.println("paging : "+paging);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("stdntList", stdntList);

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.uni.fems.dao.StdntDAO;
+import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.StdntService;
 
@@ -24,13 +25,15 @@ public class StdntServiceImpl implements StdntService {
 	@Override
 	public List<StdntVO> selectNameAllPage(int tpage, String st_Nm)
 			throws SQLException {
-		List<StdntVO> list = stdntDAO.selectNameAllPage(tpage, st_Nm);
+		int totalRecord = stdntDAO.totalRecord(st_Nm);
+		List<StdntVO> list = stdntDAO.selectNameAllPage(tpage, totalRecord,st_Nm);
 		return list;
 	}
 
 	@Override
 	public String pageNumber(int tpage, String st_Nm) throws SQLException {
-		String page = stdntDAO.pageNumber(tpage, st_Nm);
+		int totalRecord = stdntDAO.totalRecord(st_Nm);
+		String page = new Paging().pageNumber(tpage,totalRecord,"stdntList", "&key="+st_Nm);
 		return page;
 	}
 
