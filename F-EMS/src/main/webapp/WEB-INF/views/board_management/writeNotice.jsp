@@ -13,7 +13,7 @@
 <body>
 
 	    <h2> 공지 게시판 </h2>
-		<form name="formm" method="post">
+		<form name="formm" method="post" enctype="multipart/form-data">
 			<fieldset>	
 			    <label>제목</label>
 			    <input type="text" name="nb_Sj"  size="64" ><br>
