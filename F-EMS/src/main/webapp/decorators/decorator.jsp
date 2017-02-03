@@ -34,10 +34,15 @@
 </body>
 
 <!--  ============= css =============  -->
-<script src="<%=request.getContextPath()%>/css/accordion.css"></script>
+<%-- <script src="<%=request.getContextPath()%>/css/accordion.css"></script>
 <script src="<%=request.getContextPath()%>/css/board.css"></script>
 <script src="<%=request.getContextPath()%>/css/main.css"></script>
-<script src="<%=request.getContextPath()%>/css/menu.css"></script>
+<script src="<%=request.getContextPath()%>/css/menu.css"></script> --%>
+
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/accordion.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/menu.css" />
 <!--  ============= css =============  -->
 
 
