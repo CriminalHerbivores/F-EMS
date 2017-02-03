@@ -34,7 +34,7 @@ body{
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table">
 					<tr>
-						<td><a href="<%=request.getContextPath()%>/index"><img
+						<td><a href="<%=request.getContextPath()%>/"><img
 								src="<%=request.getContextPath()%>/resources/images/logo.png"
 								id="logo"></a></td>
 						<td></td>
@@ -97,7 +97,7 @@ body{
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">수강신청 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">수강신청메뉴1 </a></li>
+							<li><a href="<%=request.getContextPath() %>/course/course_list">수강신청목록</a></li>
 							<li><a href="#">메뉴2 </a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -203,7 +203,7 @@ body{
 								class="no-uline">수강신청</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">수강신청메뉴1
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/course/course_list" class="no-uline">수강신청 목록
 							</a></li>
 							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
 							</a></li>

@@ -1,1 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Lctre">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="lctre" type="com.uni.fems.dto.LctreVO" />
+	
+	<select id="selectAllLctre" resultClass="lctre">
+		select * from lctre order by lc_Lctre_No desc
+	</select>
+	
+	<select id="selectLctre" resultClass="lctre">
+		select * from lctre where boardnum=#boardNum#
+	</select>
+	
+	<select id="selectCount" resultClass="int">
+		select count(*) from lctre
+	</select>
+	
+	<update id="insertLctre" parameterClass="lctre">
+		insert into lctre(boardnum,title,writer,content)
+			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Grade#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
+	</update>
+	
+	<update id="updateLctre" parameterClass="lctre">
+		update lctre set title=#title#,writer=#writer#,content=#content#
+		where boardnum=#boardNum#
+	</update>
+	
+	<update id="deleteLctre" parameterClass="str">
+		delete from lctre where boardnum=#boardNum#
+	</update>
+	
+</sqlMap>
