@@ -13,7 +13,7 @@ public interface Notice_BbsService {
 	
 	public Notice_BbsVO getNotice_Bbs(int nb_Bbs_No) throws SQLException; //게시판 vo클래스 하나 가져오기
 	
-	public int insertNotice_Bbs(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO) throws SQLException; // 공지게시판 insert
+	public void insertNotice_Bbs(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO) throws SQLException; // 공지게시판 insert
 	
 	
 	

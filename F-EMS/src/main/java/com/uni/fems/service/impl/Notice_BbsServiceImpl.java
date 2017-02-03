@@ -31,10 +31,13 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 		return notice_bbsDAO.getNotice_Bbs(nb_Bbs_No);
 	}
 	@Override
-	public int insertNotice_Bbs(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO) throws SQLException {
+	public void insertNotice_Bbs(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO) throws SQLException {
+		
 		notice_bbsDAO.insertNotice_Bbs(notice_BbsVO);
+		
+		if(bbs_FlpthDAO==null) System.out.println("-------------------");
+		
 		bbs_FlpthDAO.insertBbs_Flpth(bbs_FlpthVO);
-		return 0;   
 	}
 	@Override
 	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException {

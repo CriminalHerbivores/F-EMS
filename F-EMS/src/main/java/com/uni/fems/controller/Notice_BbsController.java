@@ -106,7 +106,7 @@ public class Notice_BbsController {
 		String uploadFilePath = context.getRealPath(savePath);
 	
 		if(!uploadfile.isEmpty()){
-			File file = new File(uploadFilePath, uploadfile.getOriginalFilename()+"$$"+System.currentTimeMillis());
+			File file = new File(uploadFilePath, "$$"+System.currentTimeMillis()+uploadfile.getOriginalFilename());
 			String fileName = file.getName();
 			int pos = fileName.lastIndexOf(".");
 			try{
@@ -120,8 +120,6 @@ public class Notice_BbsController {
 			bbs_FlpthVO.setBf_Bbs_Code("notice_bbs");
 			bbs_FlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
 			bbs_FlpthVO.setBf_File_Type(file.getAbsolutePath());
-			
-			
 		}
 		
 		try {
