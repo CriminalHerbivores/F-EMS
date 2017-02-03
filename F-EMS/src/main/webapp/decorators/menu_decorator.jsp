@@ -68,8 +68,9 @@ body{
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">직원 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#" class="no-uline">직원메뉴1 </a></li>
-							<li><a href="#" class="no-uline">메뉴2 </a></li>
+							<li><a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a></li>
+							<li><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 수정 </a></li>
+							<li><a href="#" class="no-uline">메뉴1 </a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -91,7 +92,7 @@ body{
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">학사 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">학사메뉴1 </a></li>
+							<li><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a></li>
 							<li><a href="#">메뉴2 </a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -151,9 +152,12 @@ body{
 								class="no-uline">직원</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">직원메뉴1
+							<li style="margin-left: 2em;">
+								<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록
+							</a></li>
+							<li style="margin-left: 2em;"><a href="#" class="no-uline">직원 메뉴1
 							</a></li>
 						</ul>
 					</li>
@@ -190,7 +194,7 @@ body{
 								class="no-uline">학사</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">학사메뉴1
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판
 							</a></li>
 							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
 							</a></li>
