@@ -70,7 +70,7 @@ public class Notice_BbsController {
 		String paging = null;
 		try {
 			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage));
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage));
+			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),key);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
