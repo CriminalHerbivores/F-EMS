@@ -41,7 +41,7 @@
 
    <bean id="bbs_FlpthService" class="com.uni.fems.service.impl.Bbs_FlpthServiceImpl"
       p:bbs_FlpthDAO-ref="bbs_FlpthDAO" />
-
+   
 
 <bean id="bbs_ListDAO" class="com.uni.fems.dao.impl.Bbs_ListDAOImpl"
       p:client-ref="sqlMapClient" />
@@ -138,7 +138,9 @@
       p:client-ref="sqlMapClient" />
 
    <bean id="notice_BbsService" class="com.uni.fems.service.impl.Notice_BbsServiceImpl"
-      p:notice_BbsDAO-ref="notice_BbsDAO" />
+      p:notice_BbsDAO-ref="notice_BbsDAO" 
+      p:bbs_FlpthDAO-ref="bbs_FlpthDAO"
+      />
 
 
 <bean id="profsrDAO" class="com.uni.fems.dao.impl.ProfsrDAOImpl"
