@@ -9,9 +9,11 @@
 <meta charset="UTF-8">
 <title></title>
 <style>
-.tb-layout{
-	width : 70%;
-	border:1px black solid;
+
+.navbar-inverse{
+background-color:#fff;
+border-color:#fff;
+border:0;
 }
 </style>
 
@@ -26,7 +28,7 @@
     <div class="navbar-header">
 	
 	<div class="set-layout-top">
-	<img scr="images/step1.png">
+	<img src="<%=request.getContextPath()%>/resources/images/step1.png">
 	<h1>STEP1. 대학 정보 설정</h1>
 	</div>
 	</div>

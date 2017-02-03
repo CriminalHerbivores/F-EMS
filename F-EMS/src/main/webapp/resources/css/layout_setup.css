@@ -1,18 +1,23 @@
-@CHARSET "UTF-8";
+.set-layout{
+	margin: auto;
+}
 
 
-
-/* ////////////////////////// */
 .tb-layout{
 	width : 70%;
 	border:1px black solid;
-	
 }
-
 
 .preview-logo{
-	width: 300px;
-	height:200px;
-	background:#555;
-	
+	width: 200px;
+	height:30px;
+	background:#ddd;
 }
+
+.set-layout-top{
+	margin:10px;
+	padding: 10px;
+}
+
+
+

@@ -17,6 +17,7 @@
 <html>
 <head>
 <title>
+<decorator:title default="F-EMS 시작하기"/>
 </title>
 
 <meta charset="utf-8">
@@ -25,31 +26,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+<decorator:head />
 </head>  
 
 
 <body>
-<jsp:include page="menu_decorator.jsp"></jsp:include>
+<decorator:body />
 </body>
 
 <!--  ============= css =============  -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/accordion.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/layout_setup.css" />
 <!--  ============= css =============  -->
 
 
 <!--  ============= js =============  -->
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 <!--  ============= js =============  -->
 
 
 <!-- //////////////////////////////////// -->
-<script src="<%=request.getContextPath()%>/js/answer.js"></script>
+<%-- <script src="<%=request.getContextPath()%>/js/answer.js"></script>
 <script src="<%=request.getContextPath()%>/js/atrty.js"></script>
 <script src="<%=request.getContextPath()%>/js/atrty.js"></script>
 <script src="<%=request.getContextPath()%>/js/attendance.js"></script>
@@ -93,7 +92,7 @@
 <script src="<%=request.getContextPath()%>/js/tuition.js"></script>
 <script src="<%=request.getContextPath()%>/js/use.js"></script>
 <script src="<%=request.getContextPath()%>/js/users.js"></script>
-<script src="<%=request.getContextPath()%>/js/work.js"></script>
+<script src="<%=request.getContextPath()%>/js/work.js"></script> --%>
 <!-- //////////////////////////////////// -->
 
 
