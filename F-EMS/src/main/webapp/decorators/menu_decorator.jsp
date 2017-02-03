@@ -118,7 +118,7 @@ body{
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">관리자 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">관리자메뉴1 </a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/step1_add">레이아웃 설정</a></li>
 							<li><a href="#">메뉴2 </a></li>
 						</ul></li>
 
@@ -246,7 +246,7 @@ body{
 								class="no-uline">관리자</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">관리자메뉴1
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/admin/step1_add" class="no-uline">레이아웃 설정
 							</a></li>
 							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
 							</a></li>
