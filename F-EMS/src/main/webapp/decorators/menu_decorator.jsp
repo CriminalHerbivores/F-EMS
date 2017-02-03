@@ -8,7 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<title>
+<decorator:title default="F-EMS"/>
+</title>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/accordion.css">
 <style>
@@ -20,14 +22,11 @@
 body{
 	font-size:9pt;
 }	
-
     
 .no-uline {
 	text-decoration:none;
 	text-decoration:none !important;
 }
-
-
 </style>
 
 
@@ -58,8 +57,6 @@ $(document).ready(function(){
      $("#accordionMenu1").selectFolderAccordionMenu(0,1);
  	
  })
-
-
 /*//////////////////////////////////////// */
 (function($){
     // step #07-01  
@@ -87,8 +84,6 @@ $(document).ready(function(){
     }
     
 })(jQuery);
-
-
 // step #02-01
 function FolderAccordionMenu(selector){
     this.$accordionMenu = null;
@@ -104,9 +99,7 @@ function FolderAccordionMenu(selector){
     
     // step #02-03
     this._initEvent();
-
 }
-
 /* step #02-01
 * 요소 초기화
 */
@@ -130,7 +123,6 @@ FolderAccordionMenu.prototype._initEvent=function(){
         objThis._selectSubMenuItem($(this));
     })
 }
-
 /* step #02-01
 *  서브 패널 초기화 - 초기 시작히 닫힌 상태로 만들기 
 */
@@ -155,7 +147,6 @@ FolderAccordionMenu.prototype._initSubMenuPanel=function(){
         }
     })
 }
-
 /* step #02-01
 * 폴더 상태 설정
 */  
@@ -164,16 +155,13 @@ FolderAccordionMenu.prototype._setFolderState=function($item,state){
     // 기존 클래스를 모두 제거
     $folder.removeClass();
     $folder.addClass("folder "+state);
-
 }
-
 /*
 * step #02-02
 * 서브 메뉴 패널 열기 
 * animation 기본 값은 true
 */
 FolderAccordionMenu.prototype.openSubMenu=function($item, animation){
-
     if($item != null){
         $item.attr("data-extension", "open");
         
@@ -198,7 +186,6 @@ FolderAccordionMenu.prototype.openSubMenu=function($item, animation){
         this._dispatchOpenCloseEvent($item, "open");
     }
 }
-
 /*
 * step #02-02
 * 서브 메뉴 패널 닫기
@@ -230,7 +217,6 @@ FolderAccordionMenu.prototype.closeSubMenu=function($item, animation){
         this._dispatchOpenCloseEvent($item, "close");
     }
 }
-
 /*
 * step #02-03
 * 서브메뉴 패널 열고 닫기 
@@ -242,14 +228,12 @@ FolderAccordionMenu.prototype.toggleSubMenuPanel=function($item){
     if(extension=="empty"){
         return;
     }
-
     if(extension=="open"){      
         this.closeSubMenu($item);
     }else{
         this.openSubMenu($item);
     }
 }
-
 /*
  * step #02-05
  * index 메뉴의 서브 메뉴 패널 닫기
@@ -258,7 +242,6 @@ FolderAccordionMenu.prototype.closeSubMenuAt=function(index, animation){
     var $item = this._$mainMenuItems.eq(index);
     this.closeSubMenu($item, animation);
 }
-
 /*
  * step #02-05
  * index 메뉴의 서브 메뉴 패널 열기
@@ -267,7 +250,6 @@ FolderAccordionMenu.prototype.openSubMenuAt=function(index, animation){
     var $item = this._$mainMenuItems.eq(index);
     this.openSubMenu($item, animation);
 }
-
 /*
  * step #03
  * 서브 메뉴 아이템 선택 
@@ -287,7 +269,6 @@ FolderAccordionMenu.prototype._selectSubMenuItem=function($item){
     // 선택 이벤트 발생
     this._dispatchSelectEvent($oldItem, this._$selectSubItem);
 }
-
 /* 
  * step #04
  * 메뉴 선택 기능 
@@ -309,7 +290,6 @@ FolderAccordionMenu.prototype.selectMenu=function(mainIndex,subIndex, animation)
         this._selectSubMenuItem($subMenuItem);
     }
 }
-
 // step #05-01
 // open, close 이벤트 발생
 FolderAccordionMenu.prototype._dispatchOpenCloseEvent=function($item, eventName){
@@ -319,7 +299,6 @@ FolderAccordionMenu.prototype._dispatchOpenCloseEvent=function($item, eventName)
     
     this.$accordionMenu.trigger(event);
 }
-
 // step #05-02
 // select 이벤트 발생
 FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
@@ -330,12 +309,8 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
     
     this.$accordionMenu.trigger(event);
 }
-
-
-
-
 </script>
-
+<decorator:head />
 </head>
 <body>
 
@@ -345,7 +320,7 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table">
 					<tr>
-						<td><a href="#"><img src="<%=request.getContextPath()%>/images/logo.png" id="logo"></a></td>
+						<td><a href="#"><img src="<%=request.getContextPath()%>/resources/images/logo.png" id="logo"></a></td>
 						<td></td>
 					</tr>
 				</table>
