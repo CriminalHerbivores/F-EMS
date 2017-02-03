@@ -31,8 +31,8 @@
 	<sqlMap resource="com/uni/db/sqlMap/Schafs_Schdul.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Schlship.xml" />-->
 	<sqlMap resource="com/uni/db/sqlMap/Sklstf.xml" />
-	<!--<sqlMap resource="com/uni/db/sqlMap/Sklstf_Atrty.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Sknrgs.xml" />-->
+	<!--<sqlMap resource="com/uni/db/sqlMap/Sklstf_Atrty.xml" />-->
+	<sqlMap resource="com/uni/db/sqlMap/Sknrgs.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Stdnt.xml" />
 	<!--<sqlMap resource="com/uni/db/sqlMap/Subjct_Info_Table.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Test.xml" />
