@@ -11,29 +11,35 @@
 	<typeAlias alias="bbs_flpth" type="com.uni.fems.dto.Bbs_FlpthVO" />
 	
 	
-	<select id="getBbs_Flpth" parameterClass="int" resultClass="bbs_flpth">
-		select * from bbs_flpth where bf_no=#bf_No#
+	<select id="getBbs_Flpth" parameterClass="bbs_flpth" resultClass="bbs_flpth">
+		select * from bbs_flpth where bf_bbs_no_no=#bf_Bbs_No_No# and bf_bbs_code=#bf_Bbs_Code#
+	</select>
+	
+	<select id="getBbs_Flpth_gen" parameterClass="bbs_flpth" resultClass="bbs_flpth">
+		select * from bbs_flpth where bf_bbs_no_no=#bf_Bbs_No_No# and bf_bbs_code=#bf_Bbs_Code# and bf_bbs_no=#bf_Bbs_No#
 	</select>
 	
 	<update id="insertBbs_Flpth" parameterClass="bbs_flpth">
-		insert into bbs_flpth(bf_no,bf_file_type_code,bf_bbs_code,bf_file_type) 
-		values(bf_seq.nextval,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Type#)
+		insert into bbs_flpth(bf_no,bf_bbs_no_no,bf_file_type_code,bf_bbs_code,bf_file_path) 
+		values(bf_seq.nextval,#bf_Bbs_No_No#,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Path#)
 	</update>
 	
 	<update id="insertBbs_Flpth_gen" parameterClass="bbs_flpth">
-		insert into bbs_flpth(bf_no,bf_file_type_code,bf_bbs_no,bf_bbs_code,bf_file_type) 
-		values(bf_seq.nextval,#bf_File_Type_Code#,#bf_Bbs_No#,#bf_Bbs_Code#,#bf_File_Type#)
-	</update>
-	
-	<update id="updateBbs_Flpth" parameterClass="bbs_flpth">
-		update bbs_flpth set bf_file_type_code=#bf_File_Type_Code#,bf_file_type=#bf_File_Type#,bf_Flpth=#bf_Flpth# 
-		where bf_no=#bf_No#
+		insert into bbs_flpth(bf_no,bf_bbs_no_no,bf_file_type_code,bf_bbs_code,bf_file_path,bf_bbs_no) 
+		values(bf_seq.nextval,#bf_Bbs_No_No#,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Path#,#bf_Bbs_No#)
 	</update>
 	
 	<update id="deleteBbs_Flpth" parameterClass="int">
-		delete from bbs_flpth where bf_no=#bf_No# 
+		delete from bbs_flpth where bf_no=#bf_No#
 	</update>
 	
+	<update id="deleteBbs_Flpth_bbs" parameterClass="bbs_flpth">
+		delete from bbs_flpth where bf_bbs_code=#bf_Bbs_Code# and bf_bbs_no_no=#bf_Bbs_No_No#
+	</update>
+	
+	<update id="deleteBbs_Flpth_bbs_gen" parameterClass="bbs_flpth">
+		delete from bbs_flpth where bf_bbs_code=#bf_Bbs_Code# and bf_bbs_no_no=#bf_Bbs_No_No# and bf_bbs_no=#bf_Bbs_No#
+	</update>
 	
 	
 	

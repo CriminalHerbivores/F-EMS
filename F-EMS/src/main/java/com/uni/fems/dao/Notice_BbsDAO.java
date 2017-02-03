@@ -15,6 +15,8 @@ public interface Notice_BbsDAO {
 	
 	public int insertNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException; // 공지게시판 insert
 	
+	public int maxNotice_No() throws SQLException; //공지게시판 Max NO값 가져오기
+	
 	
 	
 	//////////////////////////////////// 관리자 ///////////////////////////////////////////////

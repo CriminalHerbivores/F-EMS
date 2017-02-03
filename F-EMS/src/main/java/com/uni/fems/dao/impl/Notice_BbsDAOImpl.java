@@ -75,11 +75,11 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 		return 0;
 	}
 
-	
-	
-	
-	
-	
+	@Override
+	public int maxNotice_No() throws SQLException {
+		int result = (Integer) client.queryForObject("maxNotice_No");
+		return result;
+	}
 	
 	
 
