@@ -20,15 +20,15 @@ public interface Notice_BbsDAO {
 	//////////////////////////////////// 관리자 ///////////////////////////////////////////////
 	public List<Notice_BbsVO> listAllNotice_Bbs1() throws SQLException;
 	
-	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException;
+	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage, int totalRecord,String key) throws SQLException;
 	
 	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
 	
 	public int deleteNotice_Bbs(int nb_Bbs_No) throws SQLException;
 	
-	public String pageNumber(int tpage) throws SQLException;
-	
 	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
+	
+	public int totalNotice_Bbs() throws SQLException;
 	
 
 
