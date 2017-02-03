@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -119,7 +120,8 @@ public class Notice_BbsController {
 			
 			bbs_FlpthVO.setBf_Bbs_Code("notice_bbs");
 			bbs_FlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
-			bbs_FlpthVO.setBf_File_Type(file.getAbsolutePath());
+			bbs_FlpthVO.setBf_File_Path(file.getAbsolutePath());
+			
 		}
 		
 		try {
@@ -180,11 +182,21 @@ public class Notice_BbsController {
 	}
 	
 	@RequestMapping(value="/deleteNotice")
-	public String deleteNotice(@RequestParam int no,@RequestParam int tpage){
+	public String deleteNotice(@RequestParam int no,@RequestParam int tpage,HttpServletRequest request){
 		String url = "redirect:noticeList?tpage="+tpage;
 		
+		String bbs_code = request.getServletPath();
+		String[] values = bbs_code.split("/");
+		
+		Bbs_FlpthVO bbs_flpthVO = new Bbs_FlpthVO();
+		 
+		 bbs_flpthVO.setBf_Bbs_No_No(no);
+		 bbs_flpthVO.setBf_Bbs_Code(values[1]);
+		 
+		
+		
 		try {
-			notice_BbsSvc.deleteNotice_Bbs(no);
+			notice_BbsSvc.deleteNotice_Bbs(no, bbs_flpthVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

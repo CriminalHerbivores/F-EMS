@@ -14,6 +14,10 @@
 		select * from notice_bbs order by nb_writng_dt desc
 	</select>
 	
+	<select id="maxNotice_No" resultClass="int">
+		select max(nb_bbs_no) from notice_bbs
+	</select>
+	
 	<select id="listNotice_Bbs" parameterClass="str" resultClass="notice_bbs">
 		select * from notice_bbs where nb_Sklstf_No=#nb_Sklstf_No#
 	</select>
@@ -44,5 +48,7 @@
 		update notice_bbs set nb_rdcnt = #nb_Rdcnt#+1
 		where nb_bbs_no=#nb_Bbs_No#
 	</update>
+	
+	
 	
 </sqlMap>

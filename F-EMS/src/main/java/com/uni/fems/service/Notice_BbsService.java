@@ -22,13 +22,14 @@ public interface Notice_BbsService {
 	
 	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException;
 	
-	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
+	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No) throws SQLException;
 	
-	public int deleteNotice_Bbs(int nb_Bbs_No, int bf_No) throws SQLException;
+	public int deleteNotice_Bbs(int nb_Bbs_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	
 	public String pageNumber(int tpage,String key) throws SQLException;
 	
 	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
+	
 	
 	/*public Bbs_FlpthVO getBbs_Flpth(int bf_No) throws SQLException;*/
 	
