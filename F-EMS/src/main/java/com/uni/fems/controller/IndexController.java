@@ -17,7 +17,7 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index(){
-		String url = "index";
+		String url = "/index";
 		return url;
 	}
 
