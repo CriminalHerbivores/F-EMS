@@ -26,7 +26,7 @@ public interface Notice_BbsService {
 	
 	public int deleteNotice_Bbs(int nb_Bbs_No, int bf_No) throws SQLException;
 	
-	public String pageNumber(int tpage) throws SQLException;
+	public String pageNumber(int tpage,String key) throws SQLException;
 	
 	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
 	
