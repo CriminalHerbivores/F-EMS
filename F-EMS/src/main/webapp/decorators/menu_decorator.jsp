@@ -23,10 +23,16 @@ body{
 	font-size:9pt;
 }	
     
-.no-uline {
+/* .no-uline {
 	text-decoration:none;
 	text-decoration:none !important;
+} */
+
+.content-set{
+	/* margin:100%; */
+	
 }
+
 </style>
 
 
@@ -505,27 +511,26 @@ FolderAccordionMenu.prototype._dispatchSelectEvent=function($oldItem, $newItem){
 		
 	</ul> 
 	<!-- ////////////////// -->
-				
-				
-				
-				
-			</div>
-			
-			<div class="col-sm-10 text-left">
-			
-<decorator:body />
-			</div>
-			
 			
 		</div>
+			
+			
+			<div class="col-sm-10 text-left">
+			<div class="content-set">
+					<decorator:body />
+			</div>
+		</div>
+			</div>
+			
 	</div>
+
 <!-- 좌측메뉴 끝 -->
 
 
 
 
 <!-- Footer 시작 -->
-	<footer class="footer">
+	<footer class="footer container-fluid text-center">
 		<p>Footer Text</p>
 	</footer>
 <!-- Footer 끝 -->

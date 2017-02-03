@@ -42,7 +42,7 @@
     vertical-align:middle;
     margin-right:5px;
     text-indent: -100px;
-    background-image:url("../resources/images/folder.png");
+    background-image:url("http://localhost:8181/fems/resources/images/folder.png");
 /*     기본은 .close */
     background-position : 0px -40px; 
 	
