@@ -20,6 +20,11 @@
 		values(bf_seq.nextval,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Type#)
 	</update>
 	
+	<update id="insertBbs_Flpth_gen" parameterClass="bbs_flpth">
+		insert into bbs_flpth(bf_no,bf_file_type_code,bf_bbs_no,bf_bbs_code,bf_file_type) 
+		values(bf_seq.nextval,#bf_File_Type_Code#,#bf_Bbs_No#,#bf_Bbs_Code#,#bf_File_Type#)
+	</update>
+	
 	<update id="updateBbs_Flpth" parameterClass="bbs_flpth">
 		update bbs_flpth set bf_file_type_code=#bf_File_Type_Code#,bf_file_type=#bf_File_Type#,bf_Flpth=#bf_Flpth# 
 		where bf_no=#bf_No#
