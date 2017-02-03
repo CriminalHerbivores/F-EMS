@@ -1,11 +1,14 @@
 package com.uni.fems.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Notice_BbsVO;
@@ -86,14 +90,39 @@ public class Notice_BbsController {
 	}
 	
 	@RequestMapping(value="/writeNotice", method=RequestMethod.POST)
-	public String writeNotice(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request) throws ServletException, IOException{
+	public String writeNotice(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request,
+								@RequestParam("uploadfile")MultipartFile uploadfile, HttpSession session, Model model)
+								throws ServletException, IOException{
 		
 		String url = "redirect:noticeList";
 		/*HttpSession session = request.getSession();*/
-				
+		
+		
+		
 		notice_BbsVO.setNb_Sklstf_No("1111");
 		
-		String savePath
+		String savePath="resources/files";
+		ServletContext context = session.getServletContext();
+		String uploadFilePath = context.getRealPath(savePath);
+	
+		if(!uploadfile.isEmpty()){
+			File file = new File(uploadFilePath, uploadfile.getOriginalFilename()+"$$"+System.currentTimeMillis());
+			String fileName = file.getName();
+			int pos = fileName.lastIndexOf(".");
+			try{
+			uploadfile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			bbs_FlpthVO.setBf_Bbs_Code("notice_bbs");
+			bbs_FlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
+			bbs_FlpthVO.setBf_File_Type(file.getAbsolutePath());
+			
+			
+		}
 		
 		try {
 			notice_BbsSvc.insertNotice_Bbs(notice_BbsVO,bbs_FlpthVO);
