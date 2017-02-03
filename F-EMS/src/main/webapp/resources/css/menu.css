@@ -78,3 +78,26 @@ float:right;
     color: #336799;
 }  */
 
+
+
+.custom-col-sm-2, .custom-col-sm-10{
+position:relative;
+min-height:1px;
+margin:0px;
+padding-right:15px;
+padding-left:15px
+float:left;
+}
+
+.custom-col-sm-10{
+width:80%;
+background:#eee;
+float : right;
+}
+
+.custom-col-sm-2{
+width:19%;
+background:#aaa;
+float : left;
+margin : 3px;
+}
