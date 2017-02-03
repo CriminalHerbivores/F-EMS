@@ -1,5 +1,9 @@
 package com.uni.fems.dao;
 
-public interface SknrgsDAO {
+import java.sql.SQLException;
 
+import com.uni.fems.dto.SknrgsVO;
+
+public interface SknrgsDAO {
+	SknrgsVO getStudentSknrgs(String skn_Stdnt_No) throws SQLException;
 }
