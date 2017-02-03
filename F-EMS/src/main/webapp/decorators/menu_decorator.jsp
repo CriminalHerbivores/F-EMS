@@ -145,8 +145,7 @@ body{
 
 				<!-- ////////////////// -->
 				<ul class="accordion-menu" id="accordionMenu1">
-					<!-- <li data-extension="open"> -->
-						<li>
+					<li data-extension="open">
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
 								class="no-uline">직원</a>
