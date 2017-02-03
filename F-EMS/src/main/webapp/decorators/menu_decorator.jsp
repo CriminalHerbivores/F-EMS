@@ -97,11 +97,7 @@ body{
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">수강신청 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-<<<<<<< HEAD
 							<li><a href="<%=request.getContextPath() %>/course/course_list">수강신청목록</a></li>
-=======
-							<li><a href="#">수강신청메뉴1 </a></li>
->>>>>>> branch 'hotfix' of https://github.com/CriminalHerbivores/F-EMS.git
 							<li><a href="#">메뉴2 </a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -207,11 +203,7 @@ body{
 								class="no-uline">수강신청</a>
 						</div>
 						<ul class="sub sub_meun">
-<<<<<<< HEAD
 							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/course/course_list" class="no-uline">수강신청 목록
-=======
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">수강신청메뉴1
->>>>>>> branch 'hotfix' of https://github.com/CriminalHerbivores/F-EMS.git
 							</a></li>
 							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
 							</a></li>
