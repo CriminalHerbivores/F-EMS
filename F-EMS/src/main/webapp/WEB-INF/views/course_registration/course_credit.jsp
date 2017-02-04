@@ -18,7 +18,20 @@ body{
 <body>
 <form>
 <article>
-수강신청한 목록
+<table>
+	<tr>신청 가능 학점<td>
+	</td></tr>
+	<tr>값 가져와야함<td>
+	</td></tr>
+</table>
+
+<table>
+	<tr>수강 신청 학점<td>
+	</td></tr>
+	<tr>값 가져와야함<td>
+	</td></tr>
+</table>
+
 </article>
 </form>
 </body>

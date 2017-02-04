@@ -21,30 +21,6 @@
 	background: #aaa;
 }
 
-/* .div-course-list-top {
-	folat: left;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 60%;
-	text-align: left;
-	vertical-align: top;
-	display: table-cell;
-	background: #aaa;
-}
-
-.div-course-list-bottom {
-	folat: left;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 40%;
-	text-align: left;
-	vertical-align: top;
-	display: table-cell;
-	background: #ccc;
-} */
-
 .div-course-list-right {
 	folat: right;
 	margin: 0;
@@ -93,15 +69,11 @@
 </head>
 <body>
 	<div class="div-course-list-left">
-<!-- 		<div class="div-course-list-top"> -->
 			<iframe src="<%=request.getContextPath()%>/course/course_able"
 				class="course-list-l-top"></iframe>
-<!-- 		</div> -->
-<!-- 		<div class="div-course-list-bottom"> -->
 			<iframe src="<%=request.getContextPath()%>/course/course_complete"
 				class="course-list-l-bottom"></iframe>
 		</div>
-<!-- 	</div> -->
 	
 	<div class="div-course-list-right">
 		<iframe src="<%=request.getContextPath()%>/course/course_interest"
