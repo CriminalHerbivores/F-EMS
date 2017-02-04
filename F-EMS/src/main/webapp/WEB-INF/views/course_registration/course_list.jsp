@@ -57,7 +57,7 @@
 	background: #eee;
 }
 
-.course-list-top {
+.course-list-l-top {
 	width: 100%;
 	height: 55%;
 	border: 0px;
@@ -65,7 +65,7 @@
 	align:top;
 }
 
-.course-list-bottom {
+.course-list-l-bottom {
 	width: 100%;
 	height: 45%;
 	border: 0px;
@@ -73,30 +73,41 @@
 	align:middle;
 }
 
-.course-list-right {
+.course-list-r-top {
 	width: 100%;
-	height: 100%;
+	height: 55%;
 	border: 0px;
 	overflow:auto;
 	align:right;
 }
+
+.course-list-r-bottom {
+	width: 100%;
+	height: 45%;
+	border: 0px;
+	overflow:auto;
+	align:right;
+}
+
 </style>
 </head>
 <body>
 	<div class="div-course-list-left">
 <!-- 		<div class="div-course-list-top"> -->
 			<iframe src="<%=request.getContextPath()%>/course/course_able"
-				class="course-list-top"></iframe>
+				class="course-list-l-top"></iframe>
 <!-- 		</div> -->
 <!-- 		<div class="div-course-list-bottom"> -->
 			<iframe src="<%=request.getContextPath()%>/course/course_complete"
-				class="course-list-bottom"></iframe>
+				class="course-list-l-bottom"></iframe>
 		</div>
 <!-- 	</div> -->
 	
 	<div class="div-course-list-right">
 		<iframe src="<%=request.getContextPath()%>/course/course_interest"
-			class="course-list-right"></iframe>
+			class="course-list-r-top"></iframe>
+		<iframe src="<%=request.getContextPath()%>/course/course_credit"
+			class="course-list-r-bottom"></iframe>
 	</div>
 </body>
 </html>

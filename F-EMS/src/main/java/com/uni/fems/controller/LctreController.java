@@ -31,13 +31,20 @@ public class LctreController {
 		return url;
 	}
 	
-	// 관심과목 및 수강 가능 학점
+	// 관심과목
 	@RequestMapping("/course_interest")
 	public String courseInterestForm(HttpServletRequest request,HttpSession session) {
 		String url = "course_registration/course_interest";	
 		return url;
 	}
 	
+	// 수강가능학점
+		@RequestMapping("/course_credit")
+		public String courseCreditForm(HttpServletRequest request,HttpSession session) {
+			String url = "course_registration/course_credit";	
+			return url;
+		}
+
 	
 	
 	

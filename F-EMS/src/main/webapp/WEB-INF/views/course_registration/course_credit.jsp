@@ -10,7 +10,7 @@
 <title></title>
 <style>
 body{
-	 background:#CEFBC9;
+	 background:#FFFFB3;
 }
 </style>
 
@@ -18,21 +18,7 @@ body{
 <body>
 <form>
 <article>
-
-<input type="button" class="" value="시간표"><br/>
-
-<table>
-	<tr><td>
-	</td></tr>
-	
-	<tr><td>
-	</td></tr>
-	
-</table>
-
-
-
-
+수강신청한 목록
 </article>
 </form>
 </body>
