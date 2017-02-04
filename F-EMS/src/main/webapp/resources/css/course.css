@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+.div-course-list-left {
+	folat: left;
+	margin: 0;
+	padding: 0;
+	width: 75%;
+	height: 100%;
+	text-align: left;
+	vertical-align: top;
+	display: table-cell;
+	background: #aaa;
+}
+
+.div-course-list-right {
+	folat: right;
+	margin: 0;
+	padding: 0;
+	width: 25%;
+	height: 100%;
+	text-align: left;
+	vertical-align: top;
+	display: table-cell;
+	background: #eee;
+}
+
+.course-list-l-top {
+	width: 100%;
+	height: 55%;
+	border: 0px;
+	overflow:auto;
+	align:top;
+}
+
+.course-list-l-bottom {
+	width: 100%;
+	height: 45%;
+	border: 0px;
+	overflow:auto;
+	align:middle;
+}
+
+.course-list-r-top {
+	width: 100%;
+	height: 55%;
+	border: 0px;
+	overflow:auto;
+	align:right;
+}
+
+.course-list-r-bottom {
+	width: 100%;
+	height: 45%;
+	border: 0px;
+	overflow:auto;
+	align:right;
+}

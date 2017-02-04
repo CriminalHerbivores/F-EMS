@@ -13,11 +13,6 @@
 </title>
 
 <style>
-* {
-	padding:0;
-	margin:0;
-}
-    
 body{
 	font-size:9pt;
 }	
@@ -50,8 +45,8 @@ body{
 	</nav>
 	<!-- 상단바 끝 -->
 
-	<!-- 상단메뉴 시작 -->
 
+	<!-- 상단메뉴 시작 -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -134,6 +129,7 @@ body{
 	<!-- 좌측메뉴 시작 -->
 	<div class="container-fluid">
 		<div class="row content">
+			
 			<div class="custom-col-sm-2 sidenav">
 				<!-- <p>1</p>
 				<p class="main_menu">

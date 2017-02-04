@@ -17,7 +17,54 @@ body {
 </head>
 <body>
 	<form>
-		<article>수강신청가능목록</article>
+		<article>
+			<table class="def-table">
+				<tr>
+					<td colspan="12"  class="text-right">
+					<select name="선택" class="combobox-sm">
+					<option value="032">전공</option>
+					<option value="033">교양</option>
+					<option value="02">강의</option>
+					<option value="031">학과</option>
+					<option value="041">담당교수</option>
+				</select>&nbsp;&nbsp;
+					<input type="text" class="def-input-text-sm">&nbsp;&nbsp;
+					<input type="button" class="def-btn" value="조회">&nbsp;&nbsp;
+					<input type="button" class="def-btn" value="상세검색">&nbsp;&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>수강신청</td>
+					<td>관심삭제</td>
+					<td>강의번호</td>
+					<td>강의명</td>
+					<td>시수학점</td>
+					<td>이수구분</td>
+					<td>담당교수</td>
+					<td>강의시간</td>
+					<td>수강인원</td>
+					<td>정원</td>
+					<td>암거나</td>
+					<td>비고</td>
+				</tr>
+				<tr>
+					<td>값</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+
+
+		</article>
 	</form>
 </body>
 </html>

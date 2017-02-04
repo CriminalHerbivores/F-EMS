@@ -69,10 +69,6 @@ margin-left: 230px;
 margin-top: 15px;
 }
 
-.float-r{
-float:right;
-}
-
 /* .navbar-left > li > a:hover, .navbar-left > li > a:focus {
     background-color: #339955;
     color: #336799;
@@ -91,12 +87,14 @@ float:left;
 
 .custom-col-sm-10{
 width:80%;
+height:800px;
 background:#eee;
 float : right;
 }
 
 .custom-col-sm-2{
 width:19%;
+height:800px;
 background:#aaa;
 float : left;
 margin : 3px;

@@ -39,6 +39,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/menu.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
 <!--  ============= css =============  -->
 
 

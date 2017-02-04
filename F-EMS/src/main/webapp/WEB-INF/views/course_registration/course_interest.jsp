@@ -19,10 +19,10 @@ body{
 <form>
 <article>
 
-<input type="button" class="" value="시간표"><br/>
+<input type="button" class="def-btn" value="시간표"><br/>
 
-<table>
-	<tr><td>
+<table  class="def-table">
+	<tr><td>관심 강의 목록
 	</td></tr>
 	
 	<tr><td>

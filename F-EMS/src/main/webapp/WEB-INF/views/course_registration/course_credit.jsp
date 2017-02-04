@@ -18,17 +18,17 @@ body{
 <body>
 <form>
 <article>
-<table>
-	<tr>신청 가능 학점<td>
+<table  class="def-table">
+	<tr><td>신청 가능 학점
 	</td></tr>
-	<tr>값 가져와야함<td>
+	<tr><td>값 가져와야함
 	</td></tr>
 </table>
-
-<table>
-	<tr>수강 신청 학점<td>
+<br/>
+<table  class="def-table">
+	<tr><td>수강 신청 학점
 	</td></tr>
-	<tr>값 가져와야함<td>
+	<tr><td>값 가져와야함
 	</td></tr>
 </table>
 
