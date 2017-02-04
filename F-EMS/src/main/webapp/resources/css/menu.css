@@ -21,6 +21,7 @@
 	background-color: #555; /* Footer 바탕 */
 	color: white;
 	padding: 15px;
+	
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -87,9 +88,10 @@ float:left;
 
 .custom-col-sm-10{
 width:80%;
-height:100%;
+height:800px;
 background:#eee;
 float : right;
+margin : 3px;
 }
 
 .custom-col-sm-2{

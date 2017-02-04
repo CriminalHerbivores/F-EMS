@@ -18,14 +18,14 @@ body{
 <body>
 <form>
 <article>
-<table  class="def-table">
+<table  class="def-table tb-border">
 	<tr><td>신청 가능 학점
 	</td></tr>
 	<tr><td>값 가져와야함
 	</td></tr>
 </table>
 <br/>
-<table  class="def-table">
+<table  class="def-table tb-border">
 	<tr><td>수강 신청 학점
 	</td></tr>
 	<tr><td>값 가져와야함

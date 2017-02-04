@@ -19,7 +19,7 @@ body {
 	<form>
 		<article>
 
-			<table  class="def-table">
+			<table  class="def-table tb-border">
 				<tr>
 					<td colspan="12">수강신청한 목록</td>
 				</tr>

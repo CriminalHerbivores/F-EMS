@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/stdnt.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/stdnt.js"></script>
 </head>
 <body>
 <%-- <form action="multipartFile" method="POST"enctype="multipart/form-data" name="frm"> --%>

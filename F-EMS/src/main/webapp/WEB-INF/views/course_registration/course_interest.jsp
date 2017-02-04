@@ -21,7 +21,7 @@ body{
 
 <input type="button" class="def-btn" value="시간표"><br/>
 
-<table  class="def-table">
+<table  class="def-table tb-border">
 	<tr><td>관심 강의 목록
 	</td></tr>
 	

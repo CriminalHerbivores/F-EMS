@@ -18,7 +18,7 @@ body {
 <body>
 	<form>
 		<article>
-			<table class="def-table">
+			<table class="def-table tb-border">
 				<tr>
 					<td colspan="12"  class="text-right">
 					<select name="선택" class="combobox-sm">
@@ -63,7 +63,7 @@ body {
 				</tr>
 			</table>
 
-
+	
 		</article>
 	</form>
 </body>
