@@ -9,11 +9,11 @@
 	text-decoration:none !important;
 }
 
-.float-l{
+.float-left{
 float:left;
 }
 
-.float-r{
+.float-right{
 float:right;
 }
 
@@ -43,8 +43,8 @@ margin-left:2em;
 
 .def-table{
 	margin:5px;
-	width:100%;
-	height:100%;
+	width:98%;
+	height:98%;
 	border:1px solid #000;
 }
 /* .def-table>tr{

@@ -39,7 +39,7 @@ body{
 				<!-- 로그인한 사용자 정보 받아오는건 추후에 쿼리로 받아오거나 해야함 -->
 
 				<a href="<%=request.getContextPath()%>/logout"><button
-						class="def-btn float-r">Logout</button></a>
+						class="def-btn float-right">Logout</button></a>
 			</div>
 		</div>
 	</nav>
@@ -256,7 +256,7 @@ body{
 			</div>
 			<!-- ////////////////// -->
 
-			<div class="custom-col-sm-10 text-left">
+			<div class="custom-col-sm-10 sidenav text-left">
 				<decorator:body />
 			</div>
 		</div>
