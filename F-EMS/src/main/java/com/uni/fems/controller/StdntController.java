@@ -134,4 +134,38 @@ public class StdntController {
 		return url;
 		
 	}
+	
+	@RequestMapping("/stdntDitail")
+	public String stdntDitail(Model model,HttpServletRequest request) throws ServletException, IOException{
+		String url="manager/student/stdntListForm";
+		String key = request.getParameter("key");
+		String tpage = request.getParameter("tpage");
+		
+		if (key ==null){
+			key = "";
+		}
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("key", key);
+		model.addAttribute("tpage",tpage);
+		
+		List<StdntVO> stdntList = null;
+		String paging = null;
+		try {
+			stdntList = stdntService.selectNameAllPage(Integer.parseInt(tpage), key);
+			paging = stdntService.pageNumber(Integer.parseInt(tpage), key);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("stdntList", stdntList);
+		int n = stdntList.size();
+		model.addAttribute("stdntListSize", n);
+		model.addAttribute("paging", paging);
+		return url;
+		
+	}
+	
 }
