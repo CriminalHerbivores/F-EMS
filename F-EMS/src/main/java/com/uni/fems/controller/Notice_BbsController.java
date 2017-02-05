@@ -102,9 +102,14 @@ public class Notice_BbsController {
 		
 		notice_BbsVO.setNb_Sklstf_No("1111");
 		
-		String savePath="resources/files";
+		/*String savePath="resources/files";
 		ServletContext context = session.getServletContext();
-		String uploadFilePath = context.getRealPath(savePath);
+		String uploadFilePath = context.getRealPath(savePath);*/ //업로드파일 저장경로가 이상 ㅠㅠ;
+		
+		
+		String uploadFilePath ="D:/Fems_local/F-EMS/F-EMS/src/main/webapp/resources/files";
+	
+	
 	
 		if(!uploadfile.isEmpty()){
 			File file = new File(uploadFilePath, "$$"+System.currentTimeMillis()+uploadfile.getOriginalFilename());
@@ -117,10 +122,14 @@ public class Notice_BbsController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			String bbs_code = request.getServletPath();
+			String[] values = bbs_code.split("/");
 			
-			bbs_FlpthVO.setBf_Bbs_Code("notice_bbs");
+			
+			bbs_FlpthVO.setBf_Bbs_Code(values[1]);
 			bbs_FlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
 			bbs_FlpthVO.setBf_File_Path(file.getAbsolutePath());
+			bbs_FlpthVO.setBf_File_Nm(fileName);
 			
 		}
 		
@@ -135,20 +144,31 @@ public class Notice_BbsController {
 	}
 	
 	@RequestMapping(value="/detailNotice")
-	public String detailNotice(@RequestParam int no,@RequestParam int tpage, Model model){
+	public String detailNotice(@RequestParam int no,@RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="board_management/detailNotice";
 		Notice_BbsVO notice = null;
+		Bbs_FlpthVO flpth = new Bbs_FlpthVO();
+		List<Bbs_FlpthVO> flpthList = null;
+		String bbs_code = request.getServletPath();
+		String[] values = bbs_code.split("/");
 		try {
 			notice = (Notice_BbsVO)notice_BbsSvc.getNotice_Bbs(no);
 			notice_BbsSvc.countNotice_Bbs(notice);
 			notice.setNb_Rdcnt(notice.getNb_Rdcnt()+1);
+			
+			flpth.setBf_Bbs_No_No(no);
+			flpth.setBf_Bbs_Code(values[1]);
+			
+			flpthList = notice_BbsSvc.getBbs_Flpth(flpth);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		
 		model.addAttribute("notice",notice);
 		model.addAttribute("tpage",tpage);
+		model.addAttribute("flpthList",flpthList);
 		return url;
 	}
 	
