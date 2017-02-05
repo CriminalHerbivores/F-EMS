@@ -25,7 +25,7 @@ public interface Notice_BbsService {
 	
 	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException;
 	
-	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No) throws SQLException;
+	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	
 	public int deleteNotice_Bbs(int nb_Bbs_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	

@@ -160,13 +160,13 @@ public class Notice_BbsController implements ApplicationContextAware{
 		List<Bbs_FlpthVO> flpthList = null;
 		String bbs_code = request.getServletPath();
 		String[] values = bbs_code.split("/");
+		flpth.setBf_Bbs_No_No(no);
+		flpth.setBf_Bbs_Code(values[1]);
 		try {
 			notice = (Notice_BbsVO)notice_BbsSvc.getNotice_Bbs(no);
 			notice_BbsSvc.countNotice_Bbs(notice);
 			notice.setNb_Rdcnt(notice.getNb_Rdcnt()+1);
 			
-			flpth.setBf_Bbs_No_No(no);
-			flpth.setBf_Bbs_Code(values[1]);
 			
 			flpthList = notice_BbsSvc.getBbs_Flpth(flpth);
 		} catch (SQLException e) {
@@ -184,26 +184,64 @@ public class Notice_BbsController implements ApplicationContextAware{
 	}
 	
 	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
-	public String updateNoticeForm(@RequestParam int no, Model model){
+	public String updateNoticeForm(@RequestParam int no, Model model, HttpServletRequest request){
 		String url="board_management/updateNotice";
 		Notice_BbsVO notice = null;
-		
+		Bbs_FlpthVO flpth = new Bbs_FlpthVO();
+		List<Bbs_FlpthVO> flpthList = null;
+		String bbs_code = request.getServletPath();
+		String[] values = bbs_code.split("/");
+		flpth.setBf_Bbs_No_No(no);
+		flpth.setBf_Bbs_Code(values[1]);
 		try {
 			notice = notice_BbsSvc.getNotice_Bbs(no);
+			flpthList = notice_BbsSvc.getBbs_Flpth(flpth);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		model.addAttribute("notice",notice);
+		model.addAttribute("flpthList",flpthList);
 		return url;
 	}
 	
 	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
-	public String updateNotice(@RequestParam int tpage,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request){
+	public String updateNotice(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request){
 		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
 		notice_BbsVO.setNb_Sklstf_No("1111");
+		
+		String uploadFilePath ="D:/Fems_local/F-EMS/F-EMS/src/main/webapp/resources/files";
+
+		Bbs_FlpthVO updateFlpthVO = new Bbs_FlpthVO();
+		
+		if(!uploadfile.isEmpty()){
+			File file = new File(uploadFilePath, "$$"+System.currentTimeMillis()+uploadfile.getOriginalFilename());
+			String fileName = file.getName();
+			int pos = fileName.lastIndexOf(".");
+			try{
+			uploadfile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			String bbs_code = request.getServletPath();
+			String[] values = bbs_code.split("/");
+			
+			updateFlpthVO.setBf_Bbs_No_No(notice_BbsVO.getNb_Bbs_No());
+			updateFlpthVO.setBf_Bbs_Code(values[1]);
+			updateFlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
+			updateFlpthVO.setBf_File_Path(file.getAbsolutePath());
+			updateFlpthVO.setBf_File_Nm(fileName);
+			
+		}
+
+		
 		try {
-			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO, bbs_FlpthVO);
+			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO, bbs_FlpthVO.getBf_No(), updateFlpthVO);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
