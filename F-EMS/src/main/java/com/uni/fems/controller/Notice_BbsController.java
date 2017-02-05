@@ -4,20 +4,25 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.StringTokenizer;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Notice_BbsVO;
@@ -26,7 +31,11 @@ import com.uni.fems.service.Notice_BbsService;
 
 @Controller
 @RequestMapping("/notice_bbs")
-public class Notice_BbsController {
+public class Notice_BbsController implements ApplicationContextAware{
+	
+	
+	
+	private WebApplicationContext context = null;
 	
 	@Autowired
 	private Notice_BbsService notice_BbsSvc;
@@ -170,6 +179,8 @@ public class Notice_BbsController {
 		model.addAttribute("tpage",tpage);
 		model.addAttribute("flpthList",flpthList);
 		return url;
+		
+		
 	}
 	
 	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
@@ -225,6 +236,44 @@ public class Notice_BbsController {
 	}
 	
 	
+	   @RequestMapping("/file/{fileId}")
+	   public ModelAndView download(@PathVariable String fileId,
+	         HttpServletResponse response, @RequestParam String filename) throws IOException {
+		   
+		   String downloadFilePath ="D:/Fems_local/F-EMS/F-EMS/src/main/webapp/resources/files";
+		   File downloadFile =  new File(downloadFilePath, filename);
+		  
+		   response.setCharacterEncoding("utf-8");
+	      
+	      if(downloadFile == null) {
+	         response.sendError(HttpServletResponse.SC_NOT_FOUND);
+	         return null;
+	      }
+	      return new ModelAndView("download", "downloadFile", downloadFile);
+	   }
+	   
+	   @Override
+	   public void setApplicationContext(ApplicationContext applicationContext)
+	         throws BeansException {
+	      this.context = (WebApplicationContext) applicationContext;
+	   }
+	
+	
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
