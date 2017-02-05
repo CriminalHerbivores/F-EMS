@@ -27,6 +27,12 @@
 	 	<th>내용</th>
 	 	<td>${notice.nb_Cn}</td>
 	 </tr>
+	  <c:forEach var="flpth" items="${flpthList }">
+	 <tr>
+	 	<th>파일첨부</th>
+	 	<td>${flpth.bf_File_Nm}</td>
+	 </tr>
+	 </c:forEach>
 </table>
 
 <!--버튼들  -->

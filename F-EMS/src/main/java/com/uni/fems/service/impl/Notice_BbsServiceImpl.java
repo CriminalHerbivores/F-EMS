@@ -37,6 +37,7 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 		int maxNo = notice_bbsDAO.maxNotice_No();
 		notice_BbsVO.setNb_Bbs_No(maxNo);
 		bbs_FlpthVO.setBf_Bbs_No_No(notice_BbsVO.getNb_Bbs_No());
+		if(!(bbs_FlpthVO.getBf_File_Path()==null))
 		bbs_FlpthDAO.insertBbs_Flpth(bbs_FlpthVO);
 	}
 	@Override
@@ -75,6 +76,11 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 			throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public List<Bbs_FlpthVO> getBbs_Flpth(Bbs_FlpthVO bbs_flpthVO)
+			throws SQLException {
+		return bbs_FlpthDAO.getBbs_Flpth(bbs_flpthVO);
 	}
 	
 
