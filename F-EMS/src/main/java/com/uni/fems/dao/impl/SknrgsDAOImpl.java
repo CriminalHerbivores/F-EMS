@@ -1,6 +1,8 @@
 package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.SknrgsDAO;
@@ -12,13 +14,11 @@ public class SknrgsDAOImpl implements SknrgsDAO {
 	public void setClient(SqlMapClient client){
 		this.client=client;
 	}
-	static int view_rows = 5; 	// 페이지의 개수
-	static int counts = 10;		// 한 페이지에 나타낼 상품의 개수
 	
 	@Override
-	public SknrgsVO getStudentSknrgs(String skn_Stdnt_No) throws SQLException {
-		SknrgsVO sknrgs = new SknrgsVO();
-		sknrgs = (SknrgsVO) client.queryForObject("getStudentSknrgs",skn_Stdnt_No);
+	public List<SknrgsVO> getStudentSknrgs(String skn_Stdnt_No) throws SQLException {
+		List<SknrgsVO> sknrgs = new ArrayList<SknrgsVO>();
+		sknrgs = (List<SknrgsVO>) client.queryForObject("getStudentSknrgs",skn_Stdnt_No);
 		return sknrgs;
 	}
 	
