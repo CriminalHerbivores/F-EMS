@@ -10,9 +10,18 @@
 <title></title>
 </head>
 <body>
-<h1>
-	수강신청 리스트
-</h1>
-
+	<div class="div-course-list-left">
+			<iframe src="<%=request.getContextPath()%>/course/course_able"
+				class="course-list-l-top"></iframe>
+			<iframe src="<%=request.getContextPath()%>/course/course_complete"
+				class="course-list-l-bottom"></iframe>
+		</div>
+	
+	<div class="div-course-list-right">
+		<iframe src="<%=request.getContextPath()%>/course/course_interest"
+			class="course-list-r-top"></iframe>
+		<iframe src="<%=request.getContextPath()%>/course/course_credit"
+			class="course-list-r-bottom"></iframe>
+	</div>
 </body>
 </html>

@@ -13,11 +13,6 @@
 </title>
 
 <style>
-* {
-	padding:0;
-	margin:0;
-}
-    
 body{
 	font-size:9pt;
 }	
@@ -44,14 +39,14 @@ body{
 				<!-- 로그인한 사용자 정보 받아오는건 추후에 쿼리로 받아오거나 해야함 -->
 
 				<a href="<%=request.getContextPath()%>/logout"><button
-						class="def-btn float-r">Logout</button></a>
+						class="def-btn float-right">Logout</button></a>
 			</div>
 		</div>
 	</nav>
 	<!-- 상단바 끝 -->
 
-	<!-- 상단메뉴 시작 -->
 
+	<!-- 상단메뉴 시작 -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -134,6 +129,7 @@ body{
 	<!-- 좌측메뉴 시작 -->
 	<div class="container-fluid">
 		<div class="row content">
+			
 			<div class="custom-col-sm-2 sidenav">
 				<!-- <p>1</p>
 				<p class="main_menu">
@@ -260,7 +256,7 @@ body{
 			</div>
 			<!-- ////////////////// -->
 
-			<div class="custom-col-sm-10 text-left">
+			<div class="custom-col-sm-10 sidenav text-left">
 				<decorator:body />
 			</div>
 		</div>

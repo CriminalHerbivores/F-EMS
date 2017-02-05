@@ -91,6 +91,7 @@ border:0;
 				<input type="text" class="def-input-text-sm"></td></tr> 
 				<tr><td>저작권 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
 </table>
+<a href="<%=request.getContextPath()%>/">메인</a><br/>
 			</div>
 		</div>
 <!-- 오른쪽 -->	

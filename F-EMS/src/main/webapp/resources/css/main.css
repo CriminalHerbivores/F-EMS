@@ -4,28 +4,17 @@
 	
 }
 
-/* ul li{
-	list-style:none;
-	
-	line-height:50px;
-}
-
-input[type=button],input[type=submit],button{
-	color:#000088;
-	font-weight:bold;
-	width:100px;
-	height:35px;
-	background:#eeeeff;
-}
-article{
-	width:80%;
-	margin:0 auto;
-} */
-
-
 .no-uline {
 	text-decoration:none;
 	text-decoration:none !important;
+}
+
+.float-left{
+float:left;
+}
+
+.float-right{
+float:right;
 }
 
 .text-indentation{
@@ -46,6 +35,24 @@ margin-left:2em;
 .def-input-text-sm{
 	width:50px;
 	height:20px;
+}
+
+.def-btn{
+	
+}
+
+.def-table{
+	margin:5px;
+	width:98%;
+	height:98%;
+	/* border:1px solid #000; */
+}
+.def-table td{
+	padding:5px;
+}
+
+.tb-border td{
+	border:1px solid #555!important;
 }
 
 .combobox-sm{
