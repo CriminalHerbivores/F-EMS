@@ -13,6 +13,9 @@ public interface Notice_BbsService {
 	
 	public Notice_BbsVO getNotice_Bbs(int nb_Bbs_No) throws SQLException; //게시판 vo클래스 하나 가져오기
 	
+	public List<Bbs_FlpthVO> getBbs_Flpth(Bbs_FlpthVO bbs_flpthVO) throws SQLException;
+	
+	
 	public void insertNotice_Bbs(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO) throws SQLException; // 공지게시판 insert
 	
 	
@@ -22,7 +25,7 @@ public interface Notice_BbsService {
 	
 	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException;
 	
-	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No) throws SQLException;
+	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	
 	public int deleteNotice_Bbs(int nb_Bbs_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	

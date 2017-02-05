@@ -11,12 +11,16 @@
 </head>
 <body>
 	    <h2> 공지 게시판 </h2>
-		<form name="formm" method="post">
+		<form name="formm" method="post" enctype="multipart/form-data">
 			<fieldset>	
 			    <label>제목</label>
 			    <input type="text" name="nb_Sj" value=${notice.nb_Sj }  size="64" ><br>
 				<label>내용</label>
 			    <textarea rows="8" cols="65" name="nb_Cn">${notice.nb_Cn }</textarea><br>
+			   <c:forEach var="flpth" items="${flpthList }">
+			   <input type="hidden" name="bf_No" value=${flpth.bf_No }>
+			   </c:forEach>
+			   <input type="file" name="uploadfile">
 			</fieldset>   
 		<div class="clear"></div>
 			 <div id="buttons" style="float:right">

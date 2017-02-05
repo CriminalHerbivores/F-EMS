@@ -23,10 +23,17 @@
 	 	<th>조회수</th>
 	 	<td>${notice.nb_Rdcnt} </td> 
 	 </tr>
+	<c:forEach var="flpth" items="${flpthList }">
+	 <tr>
+	 	<th>파일첨부</th>
+	 	<td><a href="file/notice?filename=${flpth.bf_File_Nm }">${flpth.bf_File_Nm}</a></td>
+	 </tr>
+	</c:forEach>
 	 <tr>
 	 	<th>내용</th>
 	 	<td>${notice.nb_Cn}</td>
 	 </tr>
+
 </table>
 
 <!--버튼들  -->

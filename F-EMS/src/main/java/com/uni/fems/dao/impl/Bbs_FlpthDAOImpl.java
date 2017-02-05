@@ -15,12 +15,12 @@ public class Bbs_FlpthDAOImpl implements Bbs_FlpthDAO {
 	}
 	@Override
 	public List<Bbs_FlpthVO> getBbs_Flpth(Bbs_FlpthVO bbs_flpthVO) throws SQLException{
-			List<Bbs_FlpthVO> result = (List<Bbs_FlpthVO>)client.queryForObject("getBbs_Flpth",bbs_flpthVO);
+			List<Bbs_FlpthVO> result = (List<Bbs_FlpthVO>)client.queryForList("getBbs_Flpth",bbs_flpthVO);
 		return result;
 	}
 	@Override
 	public List<Bbs_FlpthVO> getBbs_Flpth_gen(Bbs_FlpthVO bbs_flpthVO) throws SQLException {
-		List<Bbs_FlpthVO> result = (List<Bbs_FlpthVO>)client.queryForObject("getBbs_Flpth",bbs_flpthVO);
+		List<Bbs_FlpthVO> result = (List<Bbs_FlpthVO>)client.queryForList("getBbs_Flpth",bbs_flpthVO);
 		return result;
 	}
 	@Override
