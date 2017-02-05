@@ -10,13 +10,44 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="sknrgs" type="com.uni.fems.dto.SknrgsVO" />
 	
+	<select id="getSknrgs" parameterClass="str" resultClass="str">
+		select * from(
+		select SKN_TYPE from sknrgs
+		where skn_stdnt_no = #skn_Stdnt_No#
+		and SKN_USEYN='y'
+		ORDER BY SKN_REQST_DT desc)
+		where rownum=1
+	</select>
 	<select id="getStudentSknrgs" parameterClass="str" resultClass="sknrgs">
-		select * 
+		select rownum as SKN_NO, SKN_TYPE ,SKN_REQST_DT,skn_Content,skn_Useyn
+		from sknrgs
+		where skn_stdnt_no = #skn_Stdnt_No#
+		ORDER BY ROWNUM DESC
+	</select>
+	<select id="countStudentSknrgs" parameterClass="str"
+		resultClass="int">
+		select count(*)
 		from sknrgs
 		where skn_stdnt_no = #skn_Stdnt_No#
 	</select>
+
 	<update id="insertStudentSknrgs" parameterClass="sknrgs">
-		insert into SKNRGS(skn_No,skn_Stdnt_No,skn_Type,skn_Reqst_Dt) 
-		values(skn_seq.nextval,#skn_Stdnt_No#,#skn_Type#,sysdate)
+		insert into
+		SKNRGS(
+			skn_No,
+			skn_Type,
+			skn_Reqst_Dt,
+			skn_Stdnt_No,
+			skn_Content,
+			skn_file
+			)
+		values(
+			skn_seq.nextval,
+			#skn_Type#,
+			sysdate,
+			#skn_Stdnt_No#,
+			#skn_Content#,
+			#skn_File#
+			)
 	</update>
 </sqlMap>

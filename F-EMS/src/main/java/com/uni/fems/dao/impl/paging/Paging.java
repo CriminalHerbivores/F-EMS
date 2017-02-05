@@ -3,6 +3,7 @@ package com.uni.fems.dao.impl.paging;
 import java.sql.SQLException;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.dto.request.PageRequest;
 
 public class Paging {
 	
@@ -91,5 +92,44 @@ public class Paging {
 		}
 		return str;
 	}
-	
+	public String pageNumber(PageRequest p)	throws SQLException {
+		
+		if(p.getKey()==null){
+			p.setKey("");;
+		}
+		
+		int page_count = p.getTotalRecord() / counts;
+
+		if (p.getTotalRecord() % counts != 0)
+			page_count++;
+
+		int page = p.getTpage();
+		if (p.getTpage() % view_rows == 0)
+			page--;
+
+		int start_page = page - (page % view_rows) + 1;
+		int end_page = start_page + (view_rows - 1);
+
+		if (end_page > page_count)
+			end_page = page_count;
+
+		String str = "";
+		
+		if (start_page > view_rows) {
+			str += "<a href='"+p.getPath()+"?tpage=1" + p.getKey() + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='"+p.getPath()+"?tpage=" + (start_page - 1) + p.getKey() + "'>&lt;</a>&nbsp;&nbsp;";
+		}
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == p.getTpage()) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='"+p.getPath()+"?tpage=" + i + p.getKey() + "'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+		if (page_count > end_page) {
+			str += "<a href='"+p.getPath()+"?tpage=" + (end_page + 1) + p.getKey() + "'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='"+p.getPath()+"?tpage=" + page_count + p.getKey() + "'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;
+	}
 }

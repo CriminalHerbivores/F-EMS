@@ -1,8 +1,11 @@
 package com.uni.fems.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.dto.SknrgsVO;
+import com.uni.fems.dto.request.PageRequest;
 import com.uni.fems.service.SknrgsService;
 
 @Controller
@@ -24,9 +31,9 @@ public class SknrgsController {
 		this.sknrgs_Svc = sknrgs_Svc;
 	}
 
-	@RequestMapping("sknrgsList")
+	@RequestMapping(value="/sknrgsList", method=RequestMethod.GET)
 	public String list(Model model,HttpServletRequest request){
-		String url="sknrgsList/sknrgsList";
+		String url="student/sknrgsList";
 		String key = request.getParameter("key");
 		String tpage = request.getParameter("tpage");
 		if (key ==null){
@@ -47,18 +54,58 @@ public class SknrgsController {
 		String[] path = servletPath.split("/");
 		
 		List<SknrgsVO> sknrgsList = null;
-		String paging = null;
+		String paging="";
+		String type="";
+		PageRequest p = new PageRequest();
+		p.setTpage(Integer.parseInt(tpage));
+		p.setTotalRecord(0);
+		p.setPath(path[2]);
+		p.setKey(skn_Stdnt_No);
+		
 		try {
-			sknrgsList = (List<SknrgsVO>) sknrgs_Svc.getStudentSknrgs(skn_Stdnt_No);
-			paging = sknrgs_Svc.pageNumber(Integer.parseInt(tpage),key, path[1]);
+			p.setTotalRecord(sknrgs_Svc.totalRecord(p));
+			sknrgsList = sknrgs_Svc.getStudentSknrgs(p);
+			paging = sknrgs_Svc.pageNumber(p);
+			type = sknrgs_Svc.getSknrgs(skn_Stdnt_No);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		model.addAttribute("sknrgsList", sknrgsList);
-		int n = sknrgsList.size();
-		model.addAttribute("noticeListSize", n);
 		model.addAttribute("paging", paging);
+		model.addAttribute("type",type);
+		return url;
+	}
+	
+	@RequestMapping(value="/sknrgsList", method=RequestMethod.POST)
+	public String write(SknrgsVO sknrgs,@RequestParam("sknFile")MultipartFile uploadfile,HttpSession session){
+		String url="redirect:sknrgsList";
+		
+		sknrgs.setSkn_Useyn("n");
+		
+		if(!sknrgs.getSkn_Type().equals("복학")) sknrgs.setSkn_Type("휴학");
+		
+		String savePath="resources/files";
+		ServletContext context = session.getServletContext();
+		String uploadFilePath = context.getRealPath(savePath);
+	
+		if(!uploadfile.isEmpty()){
+			File file = new File(uploadFilePath, "$$"+System.currentTimeMillis()+uploadfile.getOriginalFilename());
+			try{
+			uploadfile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			sknrgs.setSkn_File(file.getName()); //파일이름
+			sknrgs.setSkn_File(file.getAbsolutePath()); //경로
+		}
+		try {
+			sknrgs_Svc.writeSknrgs(sknrgs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return url;
 	}
 	
