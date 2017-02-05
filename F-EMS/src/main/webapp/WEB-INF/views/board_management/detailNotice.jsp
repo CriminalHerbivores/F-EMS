@@ -26,7 +26,7 @@
 	<c:forEach var="flpth" items="${flpthList }">
 	 <tr>
 	 	<th>파일첨부</th>
-	 	<td>${flpth.bf_File_Nm}</td>
+	 	<td><a href="file/notice?filename=${flpth.bf_File_Nm }">${flpth.bf_File_Nm}</a></td>
 	 </tr>
 	</c:forEach>
 	 <tr>

@@ -7,7 +7,7 @@
 	<name>F-EMS</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
+
 	<properties>
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.0.4.RELEASE</org.springframework-version>
@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework-version}</version>			
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -139,7 +139,7 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-		
+
 
 
 		<!-- AspectJ -->
@@ -231,6 +231,18 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- JSON으로 응답하기 위해 필요한 라이브러리 -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
