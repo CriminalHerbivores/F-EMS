@@ -23,16 +23,17 @@
 	 	<th>조회수</th>
 	 	<td>${notice.nb_Rdcnt} </td> 
 	 </tr>
-	 <tr>
-	 	<th>내용</th>
-	 	<td>${notice.nb_Cn}</td>
-	 </tr>
-	  <c:forEach var="flpth" items="${flpthList }">
+	<c:forEach var="flpth" items="${flpthList }">
 	 <tr>
 	 	<th>파일첨부</th>
 	 	<td>${flpth.bf_File_Nm}</td>
 	 </tr>
-	 </c:forEach>
+	</c:forEach>
+	 <tr>
+	 	<th>내용</th>
+	 	<td>${notice.nb_Cn}</td>
+	 </tr>
+
 </table>
 
 <!--버튼들  -->
