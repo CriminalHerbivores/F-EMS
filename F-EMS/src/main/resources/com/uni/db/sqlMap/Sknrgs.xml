@@ -9,6 +9,12 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="sknrgs" type="com.uni.fems.dto.SknrgsVO" />
+	<typeAlias alias="sknrgsdto" type="com.uni.fems.dto.SknrgsDTO" />
+	
+	<select id="getSknrgs" parameterClass="str" resultClass="sknrgsdto">
+		select * from sknrgs_view
+		where SKN_TYPE = #skn_Typen#
+	</select>
 	
 	<select id="getSknrgs" parameterClass="str" resultClass="str">
 		select * from(
