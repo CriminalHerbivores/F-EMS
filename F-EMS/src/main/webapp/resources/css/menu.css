@@ -88,15 +88,15 @@ float:left;
 
 .custom-col-sm-10{
 width:80%;
-height:800px;
+height:750px; /* 추후 없애는 걸로 */
 background:#eee;
 float : right;
-margin : 3px;
+padding : 10px;
 }
 
 .custom-col-sm-2{
 width:19%;
 background:#aaa;
 float : left;
-margin : 3px;
+padding : 10px;
 }
