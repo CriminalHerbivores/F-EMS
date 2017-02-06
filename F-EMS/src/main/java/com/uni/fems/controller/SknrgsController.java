@@ -99,7 +99,6 @@ public class SknrgsController {
 				e.printStackTrace();
 			}
 			sknrgs.setSkn_File(file.getName()); //파일이름
-			sknrgs.setSkn_File(file.getAbsolutePath()); //경로
 		}
 		try {
 			sknrgs_Svc.writeSknrgs(sknrgs);
