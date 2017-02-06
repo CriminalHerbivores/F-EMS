@@ -1,1 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Stdnt">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="profsr" type="com.uni.fems.dto.ProfsrVO" />
+	
+	<!-- 교수 개수 등록 -->
+	<select id="totalProfsr" parameterClass="str" resultClass="int">
+		select count(*) from profsr where pr_profsr_no like '%$pr_profsr_no$%'
+	</select>
+	
+	<!-- 교수 페이지로 출력 -->
+	<select id="selectAllProfsrPage" parameterClass="str" resultClass="profsr">
+		select * from profsr where pr_nm like '%$pr_nm$%'
+	</select>
+	
+	<!-- 교수 한명 출력 -->
+	<select id="selectProfsr" parameterClass="str" resultClass="profsr">
+		select * from profsr where pr_profsr_no = #pr_profsr_no#
+	</select>
+	
+	<update id="insertStdnt" parameterClass="stdnt">
+	insert into profsr(
+	pr_Profsr_No,
+	pr_Pw,
+	pr_Nm,
+	pr_Eng_Nm,
+	pr_Ihidnum,
+	pr_Moblphon_No,
+	pr_House_Tlphon_No,
+	pr_Profsr_Tlphon_No,
+	pr_Post_No,
+	pr_Adres1,
+	pr_Adres2,
+	pr_Email)
+	values(
+	#pr_Profsr_No#,
+	#pr_Pw#,
+	#pr_Nm#,
+	#pr_Eng_Nm#,
+	#pr_Ihidnum#,
+	#pr_Moblphon_No#,
+	#pr_House_Tlphon_No#,
+	#r_Profsr_Tlphon_No#,
+	#pr_Post_No#,
+	#pr_Adres1#,
+	#pr_Adres2#,
+	#pr_Email#
+	) 
+	</update>
+</sqlMap>

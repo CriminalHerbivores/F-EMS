@@ -63,7 +63,7 @@ body{
 						data-toggle="dropdown" href="#">직원 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a></li>
-							<li><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 수정 </a></li>
+							<li><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록 </a></li>
 							<li><a href="<%=request.getContextPath() %>/stdnt/stdntList" class="no-uline">학생 조회 </a></li>
 							<li><a href="<%=request.getContextPath() %>/stdnt/sknrgListForm" class="no-uline">학적 관리 </a></li>
 							<li><a href="#" class="no-uline">메뉴1 </a></li>
@@ -74,6 +74,8 @@ body{
 						<ul class="dropdown-menu">
 							<li><a href="#">교수메뉴1 </a></li>
 							<li><a href="#">메뉴2 </a></li>
+							<li><a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a></li>
+							<li><a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
