@@ -11,9 +11,9 @@
 	<typeAlias alias="sknrgs" type="com.uni.fems.dto.SknrgsVO" />
 	<typeAlias alias="sknrgsdto" type="com.uni.fems.dto.SknrgsDTO" />
 	
-	<select id="getSknrgs" parameterClass="str" resultClass="sknrgsdto">
+	<select id="getSknrgsType" parameterClass="str" resultClass="sknrgsdto">
 		select * from sknrgs_view
-		where SKN_TYPE = #skn_Typen#
+		<!-- where SKN_TYPE LIKE '%$skn_Type$%' -->
 	</select>
 	
 	<select id="getSknrgs" parameterClass="str" resultClass="str">
@@ -56,4 +56,11 @@
 			#skn_File#
 			)
 	</update>
+	
+	<update id="updateUseynSknrgs" parameterClass="sknrgs">
+		update SKNRGS set
+			skn_useyn = #skn_Useyn#
+			where skn_no = #skn_No#
+	</update>
+	
 </sqlMap>
