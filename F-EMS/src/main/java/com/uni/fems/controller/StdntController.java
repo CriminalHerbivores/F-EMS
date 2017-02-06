@@ -135,35 +135,51 @@ public class StdntController {
 		
 	}
 	
-	@RequestMapping("/stdntDitail")
-	public String stdntDitail(Model model,HttpServletRequest request) throws ServletException, IOException{
-		String url="manager/student/stdntListForm";
-		String key = request.getParameter("key");
-		String tpage = request.getParameter("tpage");
+	@RequestMapping("/stdntDetail")
+	public String stdntDitail(@RequestParam String st_Stdnt_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
+		String url="manager/student/stdntDetail";
 		
-		if (key ==null){
-			key = "";
-		}
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("key", key);
 		model.addAttribute("tpage",tpage);
 		
-		List<StdntVO> stdntList = null;
-		String paging = null;
+		StdntVO stdntVO = null;
 		try {
-			stdntList = stdntService.selectNameAllPage(Integer.parseInt(tpage), key);
-			paging = stdntService.pageNumber(Integer.parseInt(tpage), key);
+			stdntVO = stdntService.selectStdnt(st_Stdnt_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("stdntList", stdntList);
-		int n = stdntList.size();
-		model.addAttribute("stdntListSize", n);
-		model.addAttribute("paging", paging);
+		model.addAttribute("stdntVO", stdntVO);
+		return url;
+		
+	}
+	
+	@RequestMapping(value="/stdntUpdate", method = RequestMethod.GET)
+	public String stdntUpdateForm(@RequestParam String st_Stdnt_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
+		String url="manager/student/stdntUpdate";
+		
+		model.addAttribute("tpage",tpage);
+		
+		StdntVO stdntVO = null;
+		try {
+			stdntVO = stdntService.selectStdnt(st_Stdnt_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("stdntVO", stdntVO);
+		return url;
+		
+	}
+	@RequestMapping(value="/stdntUpdate", method = RequestMethod.POST)
+	public String stdntUpdate(StdntVO stdntVO,@RequestParam int tpage, Model model) throws ServletException, IOException{
+		String url="redirect:stdntDetail";
+		
+//		model.addAttribute("tpage",tpage);
+		System.out.println(" stdntVO : "+stdntVO);
+		try {
+			stdntService.updateStdnt(stdntVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+//		model.addAttribute("st_Stdnt_No", stdntVO.getSt_Stdnt_No());
 		return url;
 		
 	}
