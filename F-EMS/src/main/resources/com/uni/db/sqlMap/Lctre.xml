@@ -9,15 +9,30 @@
 	<typeAlias alias="lctre" type="com.uni.fems.dto.LctreVO" />
 	
 		
-	<!-- 조건 강의 목록 -->
+	<!-- 한개 강의 가져오기 -->
 	<select id="getLctre" parameterClass="int" resultClass="lctre">
 		select * from lctre_view 
-		where lc_Lctre_No like '%'||#lc_Lctre_No#||'%' order by lc_Lctre_No desc
+		where lc_Lctre_No=#lc_Lctre_No# 
 	</select>
 	
-	<!-- 강의 코드별 목록 -->
+	
+	<!-- 강의 콤보박스로 검색 -->
 	<select id="listCodeLctre" parameterClass="str" resultClass="lctre">
-		select * from lctre_view where lc_Lctre_Code=#lc_Lctre_Code#
+		select * from lctre_view
+		where upper(lu_lctre_nm) like '%'||upper(#lu_lctre_nm#)||'%'
+		and upper(lu_lctre_code) like '%'||upper(#lu_lctre_code#)||'%'
+		and upper(pr_nm) like '%'||upper(#pr_nm#)||'%'
+		and upper(coleg_nm) like '%'||upper(#coleg_nm#)||'%'
+		and upper(fc_faculty_nm) like '%'||upper(#fc_faculty_nm#)||'%'
+		and upper(sit_subjct) like '%'||upper(#sit_subjct#)||'%'
+		order by lu_Lctre_code asc, lc_split asc 
+	</select>
+	
+	<!-- 강의 상세 검색 -->
+	<select id="listDetailLctre" parameterClass="str" resultClass="lctre">
+		select * from lctre_view
+		
+		order by LCTRE_UNQ_NO.lu_Lctre_code asc, LCTRE.lc_split asc
 	</select>
 	
 	
@@ -26,10 +41,11 @@
 		select * from lctre_view order by lu_Lctre_code asc, lc_split asc 
 	</select>
 	
-	<!-- 전체 강의 갯수? -->
+	<!-- [수강신청] 현재 학기의 전체 강의 갯수 : 페이징 안 함 -->
 	<select id="selectCount" resultClass="int">
-		select count(*) from lctre
+		select count(*) from lctre where lc_Lctrbgn_Dt=to_date(#lc_Lctrbgn_Dt#)
 	</select>
+		<!-- 쿼리 손 볼것...현재 학기를 갖고와야 하니까 -->
 	
 	<!-- 강의 등록 -->
 	<update id="insertLctre" parameterClass="lctre">
