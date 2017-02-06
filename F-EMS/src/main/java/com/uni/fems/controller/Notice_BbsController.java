@@ -137,7 +137,6 @@ public class Notice_BbsController implements ApplicationContextAware{
 			
 			bbs_FlpthVO.setBf_Bbs_Code(values[1]);
 			bbs_FlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
-			bbs_FlpthVO.setBf_File_Path(file.getAbsolutePath());
 			bbs_FlpthVO.setBf_File_Nm(fileName);
 			
 		}
@@ -184,7 +183,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 	}
 	
 	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
-	public String updateNoticeForm(@RequestParam int no, Model model, HttpServletRequest request){
+	public String updateNoticeForm(@RequestParam int no,@RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="board_management/updateNotice";
 		Notice_BbsVO notice = null;
 		Bbs_FlpthVO flpth = new Bbs_FlpthVO();
@@ -201,7 +200,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		
-		
+		model.addAttribute("tpage",tpage);
 		model.addAttribute("notice",notice);
 		model.addAttribute("flpthList",flpthList);
 		return url;
@@ -233,12 +232,9 @@ public class Notice_BbsController implements ApplicationContextAware{
 			updateFlpthVO.setBf_Bbs_No_No(notice_BbsVO.getNb_Bbs_No());
 			updateFlpthVO.setBf_Bbs_Code(values[1]);
 			updateFlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
-			updateFlpthVO.setBf_File_Path(file.getAbsolutePath());
 			updateFlpthVO.setBf_File_Nm(fileName);
 			
 		}
-
-		
 		try {
 			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO, bbs_FlpthVO.getBf_No(), updateFlpthVO);
 			

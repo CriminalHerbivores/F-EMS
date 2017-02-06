@@ -20,13 +20,13 @@
 	</select>
 	
 	<update id="insertBbs_Flpth" parameterClass="bbs_flpth">
-		insert into bbs_flpth(bf_no,bf_bbs_no_no,bf_file_type_code,bf_bbs_code,bf_file_path,bf_file_nm) 
-		values(bf_seq.nextval,#bf_Bbs_No_No#,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Path#,#bf_File_Nm#)
+		insert into bbs_flpth(bf_no,bf_bbs_no_no,bf_file_type_code,bf_bbs_code,bf_file_nm) 
+		values(bf_seq.nextval,#bf_Bbs_No_No#,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Nm#)
 	</update>
 	
 	<update id="insertBbs_Flpth_gen" parameterClass="bbs_flpth">
-		insert into bbs_flpth(bf_no,bf_bbs_no_no,bf_file_type_code,bf_bbs_code,bf_file_path,bf_bbs_no,bf_file_nm) 
-		values(bf_seq.nextval,#bf_Bbs_No_No#,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_File_Path#,#bf_Bbs_No#,#bf_File_Nm#)
+		insert into bbs_flpth(bf_no,bf_bbs_no_no,bf_file_type_code,bf_bbs_code,bf_bbs_no,bf_file_nm) 
+		values(bf_seq.nextval,#bf_Bbs_No_No#,#bf_File_Type_Code#,#bf_Bbs_Code#,#bf_Bbs_No#,#bf_File_Nm#)
 	</update>
 	
 	<update id="deleteBbs_Flpth" parameterClass="int">
