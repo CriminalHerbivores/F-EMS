@@ -10,62 +10,56 @@
 <title></title>
 </head>
 <body>
+<article>
+<form id="step4_add" action="/fems/admin/layout_preview" method="post" name="formm">
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
-	<img scr="">
-	<h1>STEP1. 대학 정보 설정</h1>
+	<img src="<%=request.getContextPath()%>/resources/images/step4.png">
+	<h1>STEP4. 컬러 테마 설정</h1>
 	</div>
 	
+	<div class="col-sm-2 sidenav">
 	<div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
+<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="history.go(-1);">	</div>
 	</div>
 	
+	
+	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
-			대학 이름 : <input type="text" class=".def-input-text-lg"><br /> 
-			대학 영문 이름 : <input type="text" class=".def-input-text-lg"><br /> 
-			대학 로고 등록 : <input type="text" class=".def-input-text-lg"><input type="button" class="def-btn" value="찾기"><br /> 
-				※ 첨부 파일 이미지 크기는 170*15px 권장
-
-			<div class="preview-logo">
-				우편번호 : <input type="text" class=".def-input-text-lg"><input type="button" class="def-btn" value="검색"><br /> 
-				주소 : <input type="text" class=".def-input-text-lg"><br /> 
-				전화번호 : <select name="선택" class="combobox-sm">
-					<option value="02">02</option>
-					<option value="031">031</option>
-					<option value="032">032</option>
-					<option value="033">033</option>
-					<option value="041">041</option>
-					<option value="042">042</option>
-					<option value="043">043</option>
-					<option value="051">051</option>
-					<option value="052">052</option>
-					<option value="053">053</option>
-					<option value="054">054</option>
-					<option value="055">055</option>
-					<option value="061">061</option>
-					<option value="062">062</option>
-					<option value="063">063</option>
-					<option value="064">064</option>
-					<option value="010">010</option>
-					<option value="012">012</option>
-					<option value="017">017</option>
-					<option value="018">018</option>
-					<option value="019">019</option>
-				</select> 
-				<input type="text" class="def-input-text-sm">
-				<input type="text" class="def-input-text-sm"><br /> 
-				저작권 : <input type="text" class=".def-input-text-lg"><br />
-
-			</div>
-		</div>
 			
+			<table class="tb-layout def-table tb-border">
+				<tr><td>메인 컬러</td><td>R:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>G:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>B:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>색상코드</td></tr>
+				<tr><td>보조 컬러1</td><td>R:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>G:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>B:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>색상코드</td></tr>
+				<tr><td>보조 컬러2</td><td>R:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>G:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>B:<input type="text" class="def-input-text-sm" value=""></td>
+									<td>색상코드</td></tr>					
+				<tr><td colspan="5"><div class="preview-layout">여기에 미리보기</div></td></tr>
+			</table>			
+			
+
+		</div>
+		</div>
+		
+		
+<div class="col-sm-2 sidenav">			
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="layout_preview()">
 	</div>
 	</div>
 
+</div>
 
-
+</form>
+</article>
 </body>
 </html>

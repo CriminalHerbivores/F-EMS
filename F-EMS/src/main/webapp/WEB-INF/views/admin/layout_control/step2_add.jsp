@@ -10,63 +10,76 @@
 <title></title>
 </head>
 <body>
+<article>
+
+<form id="step2_add" action="/fems/admin/step3_add" method="post" name="formm">
+
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
-	<img scr="">
+<img src="<%=request.getContextPath()%>/resources/images/step2.png">
 	<h1>STEP2. 메뉴 사용 설정</h1>
 	</div>
 	
+	<div class="col-sm-2 sidenav">
 	<div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<img src="images/go_left">
+<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="history.go(-1);">	</div>
 	</div>
 	
+	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
-			대학 이름 : <input type="text" class=".def-input-text-lg"><br /> 
-			대학 영문 이름 : <input type="text" class=".def-input-text-lg"><br /> 
-			대학 로고 등록 : <input type="text" class=".def-input-text-lg"><input type="button" class="def-btn" value="찾기"><br /> 
-				※ 첨부 파일 이미지 크기는 170*15px 권장
-
-			<div class="preview-logo">
-				우편번호 : <input type="text" class=".def-input-text-lg"><input type="button" class="def-btn" value="검색"><br /> 
-				주소 : <input type="text" class=".def-input-text-lg"><br /> 
-				전화번호 : <select name="선택" class="combobox-sm">
-					<option value="02">02</option>
-					<option value="031">031</option>
-					<option value="032">032</option>
-					<option value="033">033</option>
-					<option value="041">041</option>
-					<option value="042">042</option>
-					<option value="043">043</option>
-					<option value="051">051</option>
-					<option value="052">052</option>
-					<option value="053">053</option>
-					<option value="054">054</option>
-					<option value="055">055</option>
-					<option value="061">061</option>
-					<option value="062">062</option>
-					<option value="063">063</option>
-					<option value="064">064</option>
-					<option value="010">010</option>
-					<option value="012">012</option>
-					<option value="017">017</option>
-					<option value="018">018</option>
-					<option value="019">019</option>
-				</select> 
-				<input type="text" class="def-input-text-sm">
-				<input type="text" class="def-input-text-sm"><br /> 
-				저작권 : <input type="text" class=".def-input-text-lg"><br />
-
-			</div>
-		</div>
+			<table class="tb-layout def-table tb-border">
+			<tr><td>
+			왼쪽 메뉴 사용</td><td colspan="5"><input type="radio" name="sub-menu" value="use" checked="checked">사용&nbsp;&nbsp;
+						<input type="radio" name="sub-menu" value="unuse">사용 안함</td></tr>
 			
+			<tr><td>게시판 추가</td><td colspan="5"><input type="text" class=".def-input-text-md">&nbsp;>&nbsp;<input type="button" class="def-btn" value="추가" onclick=""></td></tr>
+			<tr><td colspan="6">
+			<table class="def-table tb-border">
+				<tr><td>사용</td>
+				<td></td>
+				<td>미사용</td>
+				<td></td>
+				</tr>
+				<tr><td>ㅇㅇ게시판</td>
+				<td>▷</td>
+				<td>ㅇㅇ게시판</td>
+				<td>△</td>
+				</tr>
+				<tr><td>ㅇㅇ게시판</td>
+				<td>◁</td>
+				<td>ㅇㅇ게시판</td>
+				<td>▽</td>
+				</tr>
+			</table>
+			
+			</td></tr>
+			<tr><td><input type="text" class=".def-input-text-md"></td><td>댓글 사용</td><td colspan="4"> 
+				<input type="radio" name="sub-menu" value="use">사용&nbsp;&nbsp;
+						<input type="radio" name="sub-menu" value="unuse">사용 안함</td></tr>
+			<tr><td rowspan="5"></td><td>권한 설정</td><td></td><td>읽기</td><td>쓰기</td><td>댓글</td></tr>
+			<tr><td rowspan="4"></td><td>학생</td><td><input type="checkbox" name="student" value="read"></td><td><input type="checkbox" name="student" value="write"></td><td><input type="checkbox" name="student" value="comment"></td></tr>
+			<tr><td>교수</td><td><input type="checkbox" name="professor" value="read"></td><td><input type="checkbox" name="professor" value="write"></td><td><input type="checkbox" name="professor" value="comment"></td></tr>
+			<tr><td>직원</td><td><input type="checkbox" name="manager" value="read"></td><td><input type="checkbox" name="manager" value="write"></td><td><input type="checkbox" name="manager" value="comment"></td></tr>
+			
+			</table>
+		</div>
+	</div>	
+		
+			
+	<div class="col-sm-2 sidenav">		
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step3_add()">
 	</div>
 	</div>
+	
+	
+	</div>
 
 
-
+</form>
+</article>
 </body>
 </html>

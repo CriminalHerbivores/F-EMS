@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title></title>
 <style>
 body {
@@ -47,20 +47,29 @@ body {
 					<td>암거나</td>
 					<td>비고</td>
 				</tr>
+				
+				<%-- <c:forEach items="${memberList}" var="memberVO">
 				<tr>
-					<td>값</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>${memberVO.id}<c:choose>
+							<c:when test='${memberVO.useyn=="y"}'>
+								<input type="checkbox" name="useyn" disabled="disabled">
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" name="useyn" checked="checked"
+									disabled="disabled">
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td>${memberVO.name}</td>
+					<td>${memberVO.email}</td>
+					<td>${memberVO.phone}</td>
+					<td>${memberVO.authority }
 				</tr>
+			</c:forEach> --%>
+				
+				
+				
+				
 			</table>
 
 	

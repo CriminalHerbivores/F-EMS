@@ -19,6 +19,9 @@ border:0;
 
 </head>
 <body>
+<article>
+
+<form id="step1_add" action="/fems/admin/step2_add" method="post" name="formm">
 	
 	<div class="set-layout">
 	
@@ -44,14 +47,13 @@ border:0;
     <div class="col-sm-2 sidenav">
 	<div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<img scr="images/left-arrow.png">
-	
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="history.go(-1);">
 	</div>
 </div>	
 	
 	
 	<!-- 중앙 -->
-	<div class="col-sm-8 text-left"> 
+	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
 		<table class="tb-layout">
 		<tr><td>대학 이름 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
@@ -91,14 +93,14 @@ border:0;
 				<input type="text" class="def-input-text-sm"></td></tr> 
 				<tr><td>저작권 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
 </table>
-<a href="<%=request.getContextPath()%>/">메인</a><br/>
+<a href="<%=request.getContextPath()%>/">메인으로 가기</a><br/>
 			</div>
 		</div>
 <!-- 오른쪽 -->	
 <div class="col-sm-2 sidenav">		
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<img scr="images/right-arrow.png">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2_add()">
 	</div>
 	</div>
 </div>
@@ -109,6 +111,7 @@ border:0;
 
 
 </div>
-
+</form>
+</article>
 </body>
 </html>
