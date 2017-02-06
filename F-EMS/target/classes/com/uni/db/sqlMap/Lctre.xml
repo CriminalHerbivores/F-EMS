@@ -9,7 +9,6 @@
 	<typeAlias alias="lctre" type="com.uni.fems.dto.LctreVO" />
 	<typeAlias alias="lctre_search" type="com.uni.fems.dto.Lctre_SearchVO" />
 	
-	Lctre_SearchVO
 		
 	<!-- 한개 강의 가져오기 -->
 	<select id="getLctre" parameterClass="int" resultClass="lctre">
