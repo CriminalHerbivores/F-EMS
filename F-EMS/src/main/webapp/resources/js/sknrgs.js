@@ -31,5 +31,5 @@ $(function(){
 	$('#sknSelect').change(sknSelected);
 })
 function writeSknrgs(form){
-	$('#myModal').modal('toggle');
+	document.formm.submit();
 }
