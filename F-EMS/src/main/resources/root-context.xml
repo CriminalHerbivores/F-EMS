@@ -19,6 +19,8 @@
    <bean id="atrtyService" class="com.uni.fems.service.impl.AtrtyServiceImpl"
       p:atrtyDAO-ref="atrtyDAO" />      
       
+      
+      
 
 
 
@@ -136,10 +138,14 @@
 
 <bean id="notice_BbsDAO" class="com.uni.fems.dao.impl.Notice_BbsDAOImpl"
       p:client-ref="sqlMapClient" />
+      
+    <bean id="bbs_CommentDAO" class="com.uni.fems.dao.impl.Bbs_CommentDAOImpl"
+      p:client-ref="sqlMapClient" />
 
    <bean id="notice_BbsService" class="com.uni.fems.service.impl.Notice_BbsServiceImpl"
       p:notice_BbsDAO-ref="notice_BbsDAO" 
       p:bbs_FlpthDAO-ref="bbs_FlpthDAO"
+      p:bbs_CommentDAO-ref="bbs_CommentDAO"
       />
 
 

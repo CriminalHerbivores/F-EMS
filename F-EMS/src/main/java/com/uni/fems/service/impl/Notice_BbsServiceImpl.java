@@ -3,6 +3,7 @@ package com.uni.fems.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dao.Bbs_CommentDAO;
 import com.uni.fems.dao.Bbs_FlpthDAO;
 import com.uni.fems.dao.Notice_BbsDAO;
 import com.uni.fems.dao.impl.paging.Paging;
@@ -14,7 +15,12 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	
 	private Notice_BbsDAO notice_bbsDAO;
 	private Bbs_FlpthDAO bbs_FlpthDAO;
+	private Bbs_CommentDAO bbs_CommentDAO;
 	
+
+	public void setBbs_CommentDAO(Bbs_CommentDAO bbs_CommentDAO) {
+		this.bbs_CommentDAO = bbs_CommentDAO;
+	}
 	public void setBbs_FlpthDAO(Bbs_FlpthDAO bbs_FlpthDAO) {
 		this.bbs_FlpthDAO = bbs_FlpthDAO;
 	}

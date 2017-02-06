@@ -8,6 +8,28 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
+<script>
+$(document).ready(function(){ // 웹페이지가 로딩되면
+	$("#btnSave").click(function(){ // 버튼 클릭 이벤트 등록 
+		var param="content="+$("#comment_content").val();
+	// 비동기방식으로 댓글 쓰기, 결과값은 json 형식으로 리턴받음
+		$.ajax({
+			type: "post",
+			contentType: "application/json",
+			data: param,
+			url : "${path}/notice_bbs/commentInsert",
+			success: function(json){
+				//서버에서 넘겨받은 json 값을 파싱하여 목록 출력	
+			}
+		});
+	});
+	
+});
+</script>
+
+
+
 </head>
 <body>
 <h2> 공지 게시판 </h2>
@@ -34,6 +56,18 @@
 	 	<td>${notice.nb_Cn}</td>
 	 </tr>
 
+</table>
+
+<table>
+	<tr>
+		<td><textarea rows="3" cols="60"
+			id="comment_content"></textarea></td>
+		<td>
+			<
+			<input type="button" vlaue="확인" id="btnSave"></td>
+			
+	</tr>
+	
 </table>
 
 <!--버튼들  -->
