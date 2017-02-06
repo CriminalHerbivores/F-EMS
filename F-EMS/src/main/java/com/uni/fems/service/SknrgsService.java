@@ -3,6 +3,7 @@ package com.uni.fems.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dto.SknrgsDTO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.request.PageRequest;
 
@@ -12,4 +13,6 @@ public interface SknrgsService {
 	List<SknrgsVO> getStudentSknrgs(PageRequest p) throws SQLException;
 	String pageNumber(PageRequest p) throws SQLException;
 	void writeSknrgs(SknrgsVO sknrgs) throws SQLException;
+	List<SknrgsDTO> getSknrgsType(String skn_Typen) throws SQLException;
+	void updateUseynSknrgs(SknrgsVO sknrgs) throws SQLException;
 }

@@ -37,4 +37,15 @@ public class StdntServiceImpl implements StdntService {
 		return page;
 	}
 
+	@Override
+	public StdntVO selectStdnt(String st_Stdnt_No) throws SQLException {
+		StdntVO stdntVO = stdntDAO.selectStdnt(st_Stdnt_No);
+		return stdntVO;
+	}
+
+	@Override
+	public void updateStdnt(StdntVO stdntVO) throws SQLException {
+		stdntDAO.updateStdnt(stdntVO);
+	}
+
 }

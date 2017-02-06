@@ -8,13 +8,13 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="lctre_unq_no" type="com.uni.fems.dto.Lctre_Unq_NoVO" />
 
-강의계획서 등록
+	<!-- 강의계획서 등록 -->
 	<update id="insertLctre_Unq_No" parameterClass="lctre_unq_no">
 		insert into lctre_unq_no(lu_lctre_code,lu_lctre_nm,lu_pnt,lu_compl_se,lu_presubjct)
 			values(#lu_lctre_code#,#lu_lctre_nm#,#lu_pnt#,#lu_compl_se#,#lu_presubjct#)
 	</update>
 	
-	강의계획서 수정
+	<!-- 강의계획서 수정 -->
 	<update id="updateLctre_Unq_No" parameterClass="lctre_unq_no">
 		update lctre_unq_no set lu_lctre_code=#lu_lctre_code#,lu_lctre_nm=#lu_lctre_nm#,lu_pnt=#lu_pnt#,lu_compl_se=#lu_compl_se#,lu_presubjct=#lu_presubjct# 
 		where lu_lctre_code=#lu_lctre_code#

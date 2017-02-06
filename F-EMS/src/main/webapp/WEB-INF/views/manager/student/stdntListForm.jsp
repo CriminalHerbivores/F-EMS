@@ -47,7 +47,7 @@
 			<c:forEach var="stdnt" items="${stdntList }">
 				<tr>
 					<td>${stdnt.st_Stdnt_No}</td>
-					<td><a href="stdntDetail?no=&tpage=${tpage}">
+					<td><a href="stdntDetail?st_Stdnt_No=${stdnt.st_Stdnt_No}&tpage=${tpage}">
 							${stdnt.st_Nm} </a></td>
 					<td>${stdnt.st_Moblphon_No}</td>
 					<td>${stdnt.st_Subjct_Code}</td>

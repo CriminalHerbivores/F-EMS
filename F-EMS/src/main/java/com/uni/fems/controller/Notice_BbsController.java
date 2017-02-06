@@ -292,6 +292,10 @@ public class Notice_BbsController implements ApplicationContextAware{
 	      this.context = (WebApplicationContext) applicationContext;
 	   }
 	
+/*	   @RequestMapping("/commentInsert")*/
+	   
+	   
+	   
 	
 
 
