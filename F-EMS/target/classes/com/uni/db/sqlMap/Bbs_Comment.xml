@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bbs_Comment">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="bbs_comment" type="com.uni.fems.dto.Bbs_CommentVO" />
+	
+	<select id="listAllBbs_Comment" resultClass="bbs_comment">
+		select * from bbs_comment order by bc_writng_dt desc
+	</select>
+	
+	<select id="getBbs_Comment" parameterClass="bbs_comment" resultClass="bbs_comment">
+		select * from bbs_comment where bc_bbs_no=#bc_Bbs_No# 
+	</select>
+	
+	<update id="insertBbs_Comment" parameterClass="bbs_comment">
+		insert into bbs_comment(bc_comnt_no,bc_bbs_code,bc_bbs_no,bc_user_id,bc_comnt_content) 
+		values(bc_seq.nextval,#bc_Bbs_Code#,#bc_Bbs_No#,#bc_User_Id#,#bc_Comnt_Content#)
+	</update>
+	
+	<update id="updateBbs_Comment" parameterClass="bbs_comment">
+		update bbs_comment set bc_comnt_content=#bc_Comnt_Content# 
+		where bc_comnt_no=#bc_Comnt_No#
+	</update>
+	
+	<update id="deleteBbs_Comment" parameterClass="int">
+		delete from bbs_comment where bc_comnt_no=#bc_Comnt_No#
+	</update>
+	
+	<select id="totalBbs_Comment" resultClass="int">
+		select count(*) from bbs_comment
+	</select>
+	
+	
+	
+</sqlMap>
