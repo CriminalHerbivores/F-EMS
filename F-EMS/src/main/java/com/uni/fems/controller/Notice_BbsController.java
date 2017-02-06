@@ -116,7 +116,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 		String uploadFilePath = context.getRealPath(savePath);*/ //업로드파일 저장경로가 이상 ㅠㅠ;
 		
 		
-		String uploadFilePath ="D:/Fems_local/F-EMS/F-EMS/src/main/webapp/resources/files";
+		String uploadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 	
 	
 	
@@ -212,7 +212,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
 		notice_BbsVO.setNb_Sklstf_No("1111");
 		
-		String uploadFilePath ="D:/Fems_local/F-EMS/F-EMS/src/main/webapp/resources/files";
+		String uploadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 
 		Bbs_FlpthVO updateFlpthVO = new Bbs_FlpthVO();
 		
@@ -278,7 +278,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 	   public ModelAndView download(@PathVariable String fileId,
 	         HttpServletResponse response, @RequestParam String filename) throws IOException {
 		   
-		   String downloadFilePath ="D:/Fems_local/F-EMS/F-EMS/src/main/webapp/resources/files";
+		   String downloadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 		   File downloadFile =  new File(downloadFilePath, filename);
 		  
 		   response.setCharacterEncoding("utf-8");
