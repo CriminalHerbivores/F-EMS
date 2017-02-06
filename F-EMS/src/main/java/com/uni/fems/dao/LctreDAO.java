@@ -8,7 +8,6 @@ import com.uni.fems.dto.LctreVO;
 
 public interface LctreDAO {
 
-	public int confirmNO(int new_lctre_No) throws SQLException;		//강의코드 중복체크
 	public LctreVO getLctre(int lc_lctre_No) throws SQLException;	// 강의 하나 가져오기
 	public ArrayList<LctreVO> listCodeLctre(String lc_Lctre_Code) throws SQLException; // 강의 코드별 강의 리스트 가져오기
 	
