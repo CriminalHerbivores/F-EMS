@@ -20,7 +20,7 @@
         <td>학부</td>
         <td><input type="text" class="form-control" id="" name="" value=""></td>
         <td>학과</td>
-        <td><input type="text" class="form-control" id="st_Subjct_Code" name="st_Subjct_Code" value=""></td>
+        <td><input type="text" class="form-control" id="st_Subjct_Code" name="st_Subjct_Code"></td>
       </tr>
       
       <tr>
@@ -50,7 +50,7 @@
       </tr>
       <tr>
         <td>핸드폰 번호</td>
-        <td><input type="text" class="form-control" id="st_Moblphon_No" name="st_Moblphon_No" value=""></td>
+        <td><input type="text" class="form-control" id="st_Moblphon_No" name="st_Moblphon_No"></td>
         <td>집 전화번호</td>
         <td><input type="text" class="form-control" id="st_House_Tlphon_No" name="st_House_Tlphon_No"></td>
         <td>교수 번호</td>
@@ -58,7 +58,7 @@
       </tr>
       <tr>
         <td>보호자 이름</td>
-        <td><input type="text" class="form-control" id="st_Prtctor_Nm" name="st_Prtctor_Nm" value=""></td>
+        <td><input type="text" class="form-control" id="st_Prtctor_Nm" name="st_Prtctor_Nm" ></td>
         <td>가족관계</td>
         <td><input type="text" class="form-control" id="st_Family_Relate" name="st_Family_Relate"></td>
         <td>입학일</td>
