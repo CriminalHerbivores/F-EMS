@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
@@ -38,11 +38,11 @@
   <div class="dropdown">
    <button class="dropbtn">강의실 관리</button>
   <div class="dropdown-content">
-    <a href="#">건물 등록</a>
-    <a href="#">건물 수정</a>
-    <a href="#">강의실 등록</a>
-    <a href="#">강의실 수정</a>
-    <a href="#">강의실 설정</a>
+    <a href="<%=request.getContextPath()%>/admin/add_building">건물 등록</a>
+    <a href="<%=request.getContextPath()%>/admin/modify_building">건물 수정</a>
+    <a href="<%=request.getContextPath()%>/admin/add_classroom">강의실 등록</a>
+    <a href="<%=request.getContextPath()%>/admin/modify_classroom">강의실 수정</a>
+    <a href="<%=request.getContextPath()%>/admin/set_classroom">강의실 설정</a>
   </div>
 </div>
 <br/>
@@ -50,9 +50,9 @@
   <div class="dropdown">
    <button class="dropbtn">학부·학과 관리</button>
   <div class="dropdown-content">
-    <a href="#">학부·학과 등록</a>
-    <a href="#">학부·학과 수정</a>
-    <a href="#">학부·학과 설정</a>
+    <a href="<%=request.getContextPath()%>/admin/add_subject">학부·학과 등록</a>
+    <a href="<%=request.getContextPath()%>/admin/modify_subject">학부·학과 수정</a>
+    <a href="<%=request.getContextPath()%>/admin/set_subject">학부·학과 설정</a>
   </div>
 </div>
 <br/>

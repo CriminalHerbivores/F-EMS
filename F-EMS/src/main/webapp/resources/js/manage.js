@@ -71,6 +71,10 @@ function go_step4_modify() {
 	document.formm.submit();
 }
 
-
+/* 관리자 페이지 */
+function go_admin_page() {
+	document.formm.action = "/fems/admin/main";
+	document.formm.submit();
+}
 
 
