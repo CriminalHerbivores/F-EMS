@@ -22,8 +22,7 @@ body{
 <decorator:head />
 </head>
 <body>
-
-	<!-- 상단바 시작 -->
+<!-- 상단바 시작 -->
 	<nav class="navbar navbar-inverse" id="topnav">
 		<div class="container-fluid" id="toptable">
 			<div class="navbar-header" style="width: 100%;">
@@ -65,11 +64,7 @@ body{
 						<ul class="dropdown-menu">
 							<li><a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a></li>
 							<li><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 수정 </a></li>
-<<<<<<< HEAD
 							<li><a href="<%=request.getContextPath() %>//stdnt/stdntList" class="no-uline">학생 조회 </a></li>
-=======
-							<li><a href="<%=request.getContextPath() %>/stdnt/stdntList" class="no-uline">학생 조회 </a></li>
->>>>>>> refs/heads/kjs
 							<li><a href="#" class="no-uline">메뉴1 </a></li>
 						</ul></li>
 
@@ -119,6 +114,7 @@ body{
 						data-toggle="dropdown" href="#">관리자 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<%=request.getContextPath()%>/admin/step1_add">레이아웃 설정</a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a></li>
 							<li><a href="#">메뉴2 </a></li>
 						</ul></li>
 
@@ -249,6 +245,7 @@ body{
 						<ul class="sub sub_meun">
 							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/admin/step1_add" class="no-uline">레이아웃 설정
 							</a></li>
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a></li>
 							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
 							</a></li>
 						</ul>

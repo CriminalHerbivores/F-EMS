@@ -14,10 +14,55 @@
 	background:#ddd;
 }
 
+.preview-layout{
+	width: 600px;
+	height:400px;
+	background:#ddd;
+}
+
 .set-layout-top{
 	margin:10px;
 	padding: 10px;
 }
 
+.set-layout-side{
+	margin:auto;	
+}
 
 
+
+
+
+
+/* ////////////////////////////////////// */
+.menu-control{
+	background:#ddd;
+	width:100px;
+}
+
+.menu-set-control {
+	background : #efefef;
+	bottom : 0;
+	display : none;
+	left : 0;
+	padding : 10px;
+	position : fixed;
+	text-align : center;
+	width : 100%;
+	height : 120px;
+	z-index : 10;
+}
+
+.preview_layout_btn {
+	/* bottom : 0;
+	z-index : 100; */
+	position:fixed;
+	background:#ddd; 
+	text-align : right;
+	z-index:-1;
+}
+    
+/* .preview_layout_btn {
+	margin-bottom : 20px;
+	padding : 5px;
+} */

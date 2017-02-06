@@ -1,1 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Lctre">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="lctre_actpln" type="com.uni.fems.dto.Lctre_ActplnVO" />
+
+	<!-- 강의계획서 등록 -->
+	<update id="insertLctre_Actpln" parameterClass="lctre_actpln">
+		insert into lctre_actpln(la_lctre_no,la_main_txtbook,la_sub_txtbook,la_lctre_goal,la_lctre_progrs_form,la_midex,la_fnex,la_indvdl_task,la_team_task,la_presnatn,la_atend,la_attd,la_week1,la_week2,la_week3,la_week4,la_week5,la_week6,la_week7,la_week8,la_week9,la_week10,la_week11,la_week12,la_week13,la_week14,la_week15)
+			values(#la_lctre_no#,#la_main_txtbook#,#la_sub_txtbook#,#la_lctre_goal#,#la_lctre_progrs_form#,#la_midex#,#la_fnex#,#la_indvdl_task#,#la_team_task#,#la_presnatn#,#la_atend#,#la_attd#,#la_week1#,#la_week2#,#la_week3#,#la_week4#,#la_week5#,#la_week6#,#la_week7#,#la_week8#,#la_week9#,#la_week10#,#la_week11#,#la_week12#,#la_week13#,#la_week14#,#la_week15#)
+	</update>
+	
+	<!-- 강의계획서 수정 -->
+	<update id="updateLctre_Actpln" parameterClass="lctre_actpln">
+		update lctre_actpln set la_lctre_no=#la_lctre_no#,la_main_txtbook=#la_main_txtbook#,la_sub_txtbook=#la_sub_txtbook#,la_lctre_goal=#la_lctre_goal#,la_lctre_progrs_form=#la_lctre_progrs_form#,la_midex=#la_midex#,la_fnex=#la_fnex#,la_indvdl_task=#la_indvdl_task#,la_team_task=#la_team_task#,la_presnatn=#la_presnatn#,la_atend=#la_atend#,la_attd=#la_attd#,la_week1=#la_week1#,la_week2=#la_week2#,la_week3=#la_week3#,la_week4=#la_week4#,la_week5=#la_week5#,la_week6=#la_week6#,la_week7=#la_week7#,la_week8=#la_week8#,la_week9=#la_week9#,la_week10=#la_week10#,la_week11=#la_week11#,la_week12=#la_week12#,la_week13=#la_week13#,la_week14=#la_week14#,la_week15=#la_week15#
+		where la_lctre_no=#la_lctre_no#
+	</update>
+	
+	</sqlMap>

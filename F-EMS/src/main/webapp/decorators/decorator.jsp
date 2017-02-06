@@ -26,12 +26,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-
-
 </head>  
 
 
 <body>
+
 <jsp:include page="menu_decorator.jsp"></jsp:include>
 </body>
 
