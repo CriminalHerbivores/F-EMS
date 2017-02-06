@@ -26,8 +26,11 @@ public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	}
 
 	@Override
-	public Bbs_CommentVO getBbs_Comment(int bc_Comnt_No) throws SQLException {
-		return (Bbs_CommentVO) client.queryForObject("getBbs_Comment", bc_Comnt_No);
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No, int tpage, int totalRecord, String key) throws SQLException {
+		Paging p = new Paging();
+		key = p.key(key);
+		int[] rows = p.row(tpage, totalRecord);
+		return (List<Bbs_CommentVO>) client.queryForList("getBbs_Comment", bc_Bbs_No, rows[1],rows[0]);
 	}
 
 	@Override
