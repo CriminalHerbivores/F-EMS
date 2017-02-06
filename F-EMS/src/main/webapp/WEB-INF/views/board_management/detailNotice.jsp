@@ -11,8 +11,12 @@
 
 <script>
 $(document).ready(function(){ // 웹페이지가 로딩되면
-	$("#btnSave").click(function(){ // 버튼 클릭 이벤트 등록 
-		var param="content="+$("#comment_content").val();
+	commentList(); //댓글목록 가져오기
+	
+	$("#btnSave").click(function(){ // 버튼 클릭 이벤트 등록
+		//bc_bbs_no = 게시물 번호
+		//${comment.bbs} = 
+		var param="bc_bbs_no=${notice.nb_Bbs_No}&content="+$("#comment_content").val();
 	// 비동기방식으로 댓글 쓰기, 결과값은 json 형식으로 리턴받음
 		$.ajax({
 			type: "post",
@@ -26,6 +30,20 @@ $(document).ready(function(){ // 웹페이지가 로딩되면
 	});
 	
 });
+// 댓글 목록 가져오기
+function comment_list(){
+	var param="bc_bbs_no=${notice.nb_Bbs_No}";
+		$.ajax({
+			type: "post",
+			contentType: "application/json",
+			data: param,
+			url : "${path}/notice_bbs/commentList",
+			success: function(json){
+				//서버에서 넘겨받은 json 값을 파싱하여 목록 출력
+				alert(json);
+			}
+		});
+}
 </script>
 
 
