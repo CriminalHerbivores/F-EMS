@@ -94,7 +94,7 @@
 				<td colspan="3">
 					<div id="sknContent">
 					</div>
-					<div id="toSknrgsRest" class="noneDis">
+					<div id="toSknrgsRest" class="non-disp">
 					<select id="sknSelect" class="combobox-md" name="skn_Content" size="1">
 					<option value="선택">선택</option>
 					<option value="경제사정">경제사정</option>

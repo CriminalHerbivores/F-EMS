@@ -8,13 +8,13 @@ $(function(){
 		if(a=='군입대휴학'){
 			sel='<input type="hidden" name="skn_Content" value="군입대휴학">군입대휴학';
 			$("#selAll").attr("disabled",false);
-			$("#toSknrgsRest").addClass("non");
+			$("#toSknrgsRest").addClass("non-disp");
 		}else if(a=='복학'){
 			sel='<input type="hidden" name="skn_Content" value="복학">복학';
 			$("#selAll").attr("disabled",false);
-			$("#toSknrgsRest").addClass("non");
+			$("#toSknrgsRest").addClass("non-disp");
 		}else if(a=='일반휴학'){
-			$("#toSknrgsRest").removeClass("non");
+			$("#toSknrgsRest").removeClass("non-disp");
 		}
 		$("#sknContent").html(sel);
 	}
