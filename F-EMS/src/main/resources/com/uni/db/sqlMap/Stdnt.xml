@@ -19,6 +19,21 @@
 		select * from stdnt where st_nm like '%$st_nm$%'
 	</select>
 	
+	<!-- 학생 한명 출력 -->
+	<select id="selectStdnt" parameterClass="str" resultClass="stdnt">
+		select * from stdnt where st_Stdnt_No = #st_Stdnt_No#
+	</select>
+	
+	
+	<!-- 학생 페이지로 출력 -->
+<!-- 	<select id="selectNameStdntPage" parameterClass="str" resultClass="stdnt">
+		select * from stdnt where st_nm like '%$st_nm$%'
+		<isNotEqual prepend="st_Stdnt_No"></isNotEqual>
+		<isNotEqual prepend="st_Subjct_Code"></isNotEqual>
+		<isNotEqual prepend="st_Nm"></isNotEqual>
+		<isNotEqual prepend="st_Ihidnum"></isNotEqual>
+	</select> -->
+	
 	<!-- 학생 페이지로 출력 -->
 	<select id="selectNameStdntPage" parameterClass="str" resultClass="stdnt">
 		select * from stdnt where st_nm like '%$st_nm$%'
@@ -71,6 +86,29 @@
 	#st_Brhs_At#,
 	#st_Profsr_No#,
 	#st_Grdtn_Dt#) 
+	</update>
+	
+	<update id="updateStdnt" parameterClass="stdnt">
+	update stdnt set 
+	st_subjct_code = #st_Subjct_Code#,
+	st_pw = #st_Pw#,
+	st_nm = #st_Nm#,
+	st_eng_nm = #st_Entsch_Dt#,
+	st_ihidnum = #st_Ihidnum#,
+	st_moblphon_no = #st_Moblphon_No#,
+	st_house_tlphon_no = #st_House_Tlphon_No#,
+	st_entsch_dt = #st_Entsch_Dt#,
+	st_prtctor_nm = #st_Prtctor_Nm#,
+	st_family_relate = #st_Family_Relate#,
+	st_post_no = #st_Post_No#,
+	st_adres1 = #st_Adres1#,
+	st_adres2 = #st_Adres2#,
+	st_cnslt_at = #st_Cnslt_At#,
+	st_email = #st_Email#,
+	st_brhs_at = #st_Brhs_At#,
+	st_profsr_no = #st_Profsr_No#,
+	st_grdtn_dt = #st_Grdtn_Dt#
+	where st_stdnt_no = #st_Stdnt_No#
 	</update>
 	
 	

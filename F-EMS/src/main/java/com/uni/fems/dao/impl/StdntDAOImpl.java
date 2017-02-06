@@ -44,4 +44,15 @@ public class StdntDAOImpl implements StdntDAO {
 		return list;
 	}
 
+	@Override
+	public StdntVO selectStdnt(String st_Stdnt_No) throws SQLException {
+		StdntVO stdntVO = (StdntVO) client.queryForObject("selectStdnt", st_Stdnt_No);
+		return stdntVO;
+	}
+
+	@Override
+	public void updateStdnt(StdntVO stdntVO) throws SQLException {
+		client.update("updateStdnt", stdntVO);
+	}
+
 }
