@@ -6,6 +6,7 @@ public class LctrumVO {
 	private int lr_Floor;   // 층수
 	private int lr_Roomno;   // 호실
 	private int lr_Accept_Nmpr;   // 수용인원
+	private String lr_useyn;   // 강의실 사용유무
 	public String getLr_Lctrum_No() {
 		return lr_Lctrum_No;
 	}
@@ -36,11 +37,20 @@ public class LctrumVO {
 	public void setLr_Accept_Nmpr(int lr_Accept_Nmpr) {
 		this.lr_Accept_Nmpr = lr_Accept_Nmpr;
 	}
+	public String getLr_useyn() {
+		return lr_useyn;
+	}
+	public void setLr_useyn(String lr_useyn) {
+		this.lr_useyn = lr_useyn;
+	}
 	@Override
 	public String toString() {
 		return "LctrumVO [lr_Lctrum_No=" + lr_Lctrum_No + ", lr_Bd_No="
 				+ lr_Bd_No + ", lr_Floor=" + lr_Floor + ", lr_Roomno="
-				+ lr_Roomno + ", lr_Accept_Nmpr=" + lr_Accept_Nmpr + "]";
+				+ lr_Roomno + ", lr_Accept_Nmpr=" + lr_Accept_Nmpr
+				+ ", lr_useyn=" + lr_useyn + "]";
 	}
+	
+	
 
 }
