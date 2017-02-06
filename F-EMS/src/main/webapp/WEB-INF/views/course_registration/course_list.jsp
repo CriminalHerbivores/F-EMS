@@ -24,7 +24,7 @@ $(document).ready(function(){
 <body>
 
 <!-- 
-1. iframe : modal 영역이 프레임 내에만 적용되는 문제가 있었음
+1. iframe : modal 영역이 프레임 내에만 적용되는 문제가 있었음 <<이걸로 하고싶긴 함
 2. jsp include: 제대로 jsp페이지가 안 들어옴 (브라우저 F12 눌러보면 이상함)
 3. jquery로 포함 : modal이 제대로 활용되지 않음
 
