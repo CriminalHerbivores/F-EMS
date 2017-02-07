@@ -26,11 +26,11 @@ public class Bbs_CommentServiceImpl implements Bbs_CommentService{
 	}
 
 	@Override
-	public List<Bbs_CommentVO> getBbs_Comment(int tpage, int bc_Bbs_No) throws SQLException {
-		
-		int totalRecord = bbs_CommentDAO.totalBbs_Comment();
-		return (List<Bbs_CommentVO>) bbs_CommentDAO.getBbs_Comment(bc_Bbs_No, tpage, totalRecord, "");
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No)
+			throws SQLException {
+		return bbs_CommentDAO.getBbs_Comment(bc_Bbs_No);
 	}
+	
 
 	@Override
 	public int insertBbs_Comment(Bbs_CommentVO bbs_Comment) throws SQLException {
@@ -61,5 +61,6 @@ public class Bbs_CommentServiceImpl implements Bbs_CommentService{
 		String page = new Paging().pageNumber(tpage,totalRecord,"commentList", "&key="+key);
 		return page;
 	}
+
 
 }
