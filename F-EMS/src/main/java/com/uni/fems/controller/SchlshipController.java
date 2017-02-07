@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.service.SchlshipService;
@@ -101,7 +102,6 @@ public class SchlshipController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("schlshipList : " + schlshipList);
 		model.addAttribute("schlshipList", schlshipList);
 		int n = schlshipList.size();
 		model.addAttribute("schlshipListSize", n);
@@ -110,6 +110,23 @@ public class SchlshipController {
 
 	}
 
+	@RequestMapping("/fileDownload1")
+	public ModelAndView fileDownload1(HttpServletRequest request) throws Exception{
+	    		
+		String of = request.getParameter("name");
+		of = new String(of.getBytes("ISO8859_1"),"UTF-8"); 
+		of = "1486450785194$$excelFile.xlsx";
+		
+		String path = request.getServletContext().getRealPath("upload");
+		path = "D:\\spring_workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\F-EMS\\resources\\upload";
+		String fullPath = path+"/"+of;
+		fullPath = "D:\\spring_workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\F-EMS\\resources\\upload\\1486450785194$$excelFile.xlsx";
+//		File downloadFile = new File(fullPath);
+		File downloadFile = new File(path,of);
+			    
+	    return new ModelAndView("download", "downloadFile", downloadFile);
+	}
+	
 	@RequestMapping("/schlshipDetail")
 	public String schlshipDitail(@RequestParam String st_Schlship_No,
 			@RequestParam int tpage, Model model) throws ServletException,

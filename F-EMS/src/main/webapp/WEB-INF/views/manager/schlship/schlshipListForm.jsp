@@ -34,7 +34,7 @@
 					<td>${schlship.ss_Schlship_Nm}</td>
 					<td>${schlship.ss_Schlship_Type}</td>
 					<td>${schlship.ss_Amount}</td>
-					<td>${schlship.ss_Papers_Content}</td>
+					<td><a href="fileDownload1?name=${schlship.ss_Papers_Content}">${schlship.ss_Papers_Content}</a></td>
 					<td>$수정/삭제</td>
 				</tr>
 			</c:forEach>
