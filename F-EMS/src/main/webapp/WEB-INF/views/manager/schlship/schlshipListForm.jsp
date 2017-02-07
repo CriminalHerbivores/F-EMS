@@ -26,24 +26,25 @@
 				<th>유형</th>
 				<th>금액</th>
 				<th>다운로드</th>
+				<th>수정/삭제</th>
 			</tr>
-
 			<c:forEach var="schlship" items="${schlshipList }">
 				<tr>
 					<td>${schlship.ss_Schlship_Code}</td>
-					<td><a href="stdntDetail?ss_Schlship_Code=${schlship.ss_Schlship_Code}&tpage=${tpage}">
-							${schlship.ss_Schlship_Type} </a></td>
-					<td>${schlship.ss_Amount}</td>
+					<td>${schlship.ss_Schlship_Nm}</td>
+					<td>${schlship.ss_Schlship_Type}</td>
 					<td>${schlship.ss_Amount}</td>
 					<td>${schlship.ss_Papers_Content}</td>
-
+					<td>$수정/삭제</td>
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="5" style="text-align: center;">${paging }</td>
+				<td colspan="6" style="text-align: center;">${paging }</td>
 			</tr>
-
 		</table>
+		<div id="buttons" style="float:right">
+	  	<input type="button" class="def-btn" value="등록하기" onclick="writeschlshipForm()">
+	  </div>
 	</div>
 </body>
 </html>
