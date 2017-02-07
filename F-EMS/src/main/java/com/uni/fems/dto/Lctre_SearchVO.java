@@ -54,6 +54,10 @@ public class Lctre_SearchVO {
 	private String Lu_Compl_Se;   // 이수구분
 	private String Lu_Presubjct;   // 선수과목
 	
+	// 종류 KIND
+	private int knd_Lctre_No;   // 강의번호
+	private String knd_Lctre_Knd;   // 강의종류
+	
 	// 관심목록 INTRST_LIST
 	private String in_Stdnt_No;   // 학생번호
 	private int in_Lctre_No;   // 강의번호
