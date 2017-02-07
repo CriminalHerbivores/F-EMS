@@ -1,6 +1,7 @@
 package com.uni.fems.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.Bbs_CommentVO;
@@ -55,8 +57,8 @@ public class CommentController {
 	public List<Bbs_CommentVO> insertComment(@RequestBody Map<String, Object> jsonMap,
 	HttpSession session){
 		Bbs_CommentVO bbs_commentVO=new Bbs_CommentVO();
-		/*String user_id = session.getAttribute("loginUser);*/
-		bbs_commentVO.setBc_User_Id("1111");
+		String user_id = (String) session.getAttribute("loginUser");
+		bbs_commentVO.setBc_User_Id(user_id);
 		int bc_bbs_no = Integer.parseInt((String) jsonMap.get("bbs_no"));
 		
 		bbs_commentVO.setBc_Bbs_Code("notice_bbs");
@@ -75,23 +77,46 @@ public class CommentController {
 		
 	}
 		
-//		@RequestMapping(value="/deleteComment", method=RequestMethod.POST)
-//		@ResponseBody
-//		public Map<String, Object> deleteComment(Model model, HttpServletRequest request){
-//			int bc_comcnt_no = Integer.parseInt(request.getParameter("result"));
-//			System.out.println(commentNo);
-//			Map<String,Object> map1 = null;
-//			
-//			List<Bbs_CommentVO> listlist = null;
-//			
-//			bbs_CommentSvc.deleteBbs_Comment(bc_Comnt_No)
-//			
-//			
-//			
-//		}
+		@RequestMapping(value="/deleteComment", method=RequestMethod.POST)
+		@ResponseBody
+		public List<Bbs_CommentVO> deleteComment(@RequestParam int bc_bbs_no, HttpServletRequest request){
+			int bc_comcnt_no = Integer.parseInt(request.getParameter("result"));
 			
+			List<Bbs_CommentVO> listlist = null;
+			
+			try {
+				bbs_CommentSvc.deleteBbs_Comment(bc_comcnt_no);
+				listlist = bbs_CommentSvc.getBbs_Comment(bc_bbs_no);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return listlist;
+		}
 		
-		
+		@RequestMapping(value="/updateComment", method=RequestMethod.POST)
+		@ResponseBody
+		public List<Bbs_CommentVO> updateComment(String content,int bbs_no, int cmntNo, HttpServletRequest request){
+			
+			List<Bbs_CommentVO> listlist = null;
+			Bbs_CommentVO bbs_commentVO = new Bbs_CommentVO();
+			
+			bbs_commentVO.setBc_Comnt_Content(content);
+			bbs_commentVO.setBc_Bbs_No(cmntNo);
+			
+			try {
+				bbs_CommentSvc.updateBbs_Comment(bbs_commentVO);
+				listlist = bbs_CommentSvc.getBbs_Comment(bbs_no);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return listlist;
+			
+			// 게시판 내용 set, where
+			
+		}
 		
 	}
 	
