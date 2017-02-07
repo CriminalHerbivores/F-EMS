@@ -31,6 +31,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
 		p:order="0" 
 	/>
+	<beans:bean id="download" class="com.uni.fems.download.DownloadView" />
 <!-- 	<beans:bean id="productListExcel" class="com.test.board.view.ProductListExcelView" />
 	<beans:bean id="productListPdf" class="com.test.board.view.ProductListPdfView" /> -->
 	
@@ -39,7 +40,6 @@
 		p:defaultEncoding="utf-8"
 	/>
 	
-	<beans:bean id="download" class="com.uni.fems.controller.DownloadView" />
 	
 	<context:component-scan base-package="com.uni" />
 	<context:annotation-config />
