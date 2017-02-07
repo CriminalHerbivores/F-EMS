@@ -3,6 +3,7 @@ package com.uni.fems.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dao.Bbs_CommentDAO;
 import com.uni.fems.dao.Bbs_FlpthDAO;
 import com.uni.fems.dao.Notice_BbsDAO;
 import com.uni.fems.dao.impl.paging.Paging;
@@ -14,7 +15,12 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	
 	private Notice_BbsDAO notice_bbsDAO;
 	private Bbs_FlpthDAO bbs_FlpthDAO;
+	private Bbs_CommentDAO bbs_CommentDAO;
 	
+
+	public void setBbs_CommentDAO(Bbs_CommentDAO bbs_CommentDAO) {
+		this.bbs_CommentDAO = bbs_CommentDAO;
+	}
 	public void setBbs_FlpthDAO(Bbs_FlpthDAO bbs_FlpthDAO) {
 		this.bbs_FlpthDAO = bbs_FlpthDAO;
 	}
@@ -37,7 +43,8 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 		int maxNo = notice_bbsDAO.maxNotice_No();
 		notice_BbsVO.setNb_Bbs_No(maxNo);
 		bbs_FlpthVO.setBf_Bbs_No_No(notice_BbsVO.getNb_Bbs_No());
-		if(!(bbs_FlpthVO.getBf_File_Path()==null))
+		
+		if(!(bbs_FlpthVO.getBf_File_Nm()==null))
 		bbs_FlpthDAO.insertBbs_Flpth(bbs_FlpthVO);
 	}
 	@Override
@@ -48,10 +55,10 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	@Override
 	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No,Bbs_FlpthVO bbs_FlpthVO) throws SQLException {
 		 notice_bbsDAO.updateNotice_Bbs(notice_BbsVO);
-		 bbs_FlpthDAO.deleteBbs_Flpth(bf_No); // 수정할 때
+		 bbs_FlpthDAO.deleteBbs_Flpth(bf_No); // 수정할 때 먼저 삭제하고
 		 
-		 if(!(bbs_FlpthVO.getBf_File_Path()==null))
-		 bbs_FlpthDAO.insertBbs_Flpth(bbs_FlpthVO);
+		 if(!(bbs_FlpthVO.getBf_File_Nm()==null)) //파일이 있을 때(null)이 아니면
+		 bbs_FlpthDAO.insertBbs_Flpth(bbs_FlpthVO); // 생성
 		return 0;
 	}
 	@Override

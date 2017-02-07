@@ -9,6 +9,10 @@
 	text-decoration:none !important;
 }
 
+.non-disp{
+	display:none;
+}
+
 .float-left{
 float:left;
 }
@@ -61,12 +65,17 @@ margin-left:2em;
 
 .combobox-sm{
 	width:50px;
-	height:20px;
+	height:25px;
 }
 
 .combobox-md{
 	width:100px;
-	height:20px;
+	height:25px;
+}
+
+.combobox-lg{
+	width:150px;
+	height:25px;
 }
 
 

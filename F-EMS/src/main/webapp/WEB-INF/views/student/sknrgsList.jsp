@@ -8,14 +8,14 @@
 
 <html>
 <head>
-<meta charset="${encoding}">
-<title>${cursor}</title>
+<meta charset="UTF-8">
+<title></title>
 </head>
 <body>
 
 	<div class="container">
 		<h3>학적 변동 내역</h3>
-		<table class="table table-bordered">
+		<table class="tb-layout">
 			<tr>
 				<th>No</th>
 				<th>학적변동</th>
@@ -37,13 +37,13 @@
 			</tr>
 		</table>
 		
-		<%-- <c:forEach var="sknrgs" items="${sknrgsList}" begin="2" end="2" step="1">
-		<c:if test="${not empty sknrgs.skn_Useyn}"> --%>
+		<c:forEach var="sknrgs" items="${sknrgsList}" begin="0" end="0" step="1">
+		<c:if test="${not empty sknrgs.skn_Useyn}">
 		
 		<h3>학적 변동 신청 상세</h3>
 		<form name="formm" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="skn_Stdnt_No" value="${loginUser}">
-		<table>
+		<table class="tb-layout">
 			<tr>
 				<th>
 					학적상태
@@ -71,41 +71,54 @@
 				</th>
 				<td colspan="3">
 					<c:choose>
+						<c:when test="${type=='졸업'}">
+						졸업
+						</c:when>
 						<c:when test="${type=='휴학'}">
 							<input type="radio" name="skn_Type" value="복학" id="b">
 							<label for="b">복학</label>
 						</c:when>
-						<c:when test="${type=='복학'}">
+						<c:otherwise>
 							<input type="radio" name="skn_Type" value="일반휴학" id="r">
 							<label for="r">일반휴학</label>
 							<input type="radio" name="skn_Type" value="군입대휴학" id="m">
 							<label for="m">군입대휴학</label>
-						</c:when>
-						<c:otherwise>
-						변동 불가
 						</c:otherwise>
 					</c:choose>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					휴학사유
+					사유
 				</th>
-				<td id="sknContent" colspan="2">
-					
+				<td colspan="3">
+					<div id="sknContent">
+					</div>
+					<div id="toSknrgsRest" class="non-disp">
+					<select id="sknSelect" class="combobox-md" name="skn_Content" size="1">
+					<option value="선택">선택</option>
+					<option value="경제사정">경제사정</option>
+					<option value="업무부담">업무부담</option>
+					<option value="애경사">애경사</option>
+					<option value="자녀양육">자녀양육</option>
+					<option value="건강문제">건강문제</option>
+					<option value="간병">간병</option>
+					<option value="수험">수험</option>
+					<option value="해외거주">해외거주</option>
+					<option value="기타">기타</option>
+					</select>
+					</div>
 				</td>
 				<td>
-					<input type="file" name="sknFile" value="첨부파일">
+					<input type="file" class="def-btn" name="sknFile" value="첨부파일">
 				</td>
-				<th>
-				</th>
 			</tr>
 		</table>
-		<input type="button" id="selAll" value="신청하기" onclick="writeSknrgs()">
+		<input type="button" class="def-btn" id="selAll" disabled value="신청하기" onclick="writeSknrgs(this.form)">
 		</form>
 		
-		<%-- </c:if>
-		</c:forEach> --%>
+		</c:if>
+		</c:forEach>
 		
 		<%-- 휴학기간 (시작/끝) 복학예정일자 (2015년도 1학기~2015년도1학기까지 2015-03-01~2015-08-31) : 학기 단위라서 생략 --%>
 		<h3>안내</h3>

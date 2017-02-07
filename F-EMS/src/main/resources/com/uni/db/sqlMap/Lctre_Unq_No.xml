@@ -20,4 +20,5 @@
 		where lu_lctre_code=#lu_lctre_code#
 	</update>
 	
+	
 	</sqlMap>

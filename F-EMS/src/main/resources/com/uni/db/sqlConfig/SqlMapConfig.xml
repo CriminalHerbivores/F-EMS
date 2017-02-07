@@ -6,6 +6,8 @@
 <sqlMapConfig>
 	<sqlMap resource="com/uni/db/sqlMap/AAA.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Bbs_Flpth.xml" />
+	<sqlMap resource="com/uni/db/sqlMap/Bbs_Comment.xml" />
+	
 	<!-- <sqlMap resource="com/uni/db/sqlMap/Answer.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Attendance.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Bbs_Atrty.xml" />
