@@ -48,4 +48,9 @@ public class StdntServiceImpl implements StdntService {
 		stdntDAO.updateStdnt(stdntVO);
 	}
 
+	@Override
+	public void registBrhs(StdntVO stdntVO) throws SQLException {
+		stdntDAO.registBrhs(stdntVO);
+	}
+
 }

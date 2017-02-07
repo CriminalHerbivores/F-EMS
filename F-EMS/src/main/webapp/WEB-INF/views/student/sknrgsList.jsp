@@ -15,7 +15,7 @@
 
 	<div class="container">
 		<h3>학적 변동 내역</h3>
-		<table class="tb-layout">
+		<table class="def-table tb-border">
 			<tr>
 				<th>No</th>
 				<th>학적변동</th>
