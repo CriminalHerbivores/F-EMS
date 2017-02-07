@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/sklstf.js"></script>
 </head>
 <body>
 <form method="post" name="frm">
@@ -57,7 +56,7 @@
         <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
       </tr>
   </table>
-    <button type="button" class="btn btn-default" onclick="go_sklstfUpdate('<%=request.getContextPath() %>')">수정</button>
+    <input type="button" class="btn btn-default" onclick="go_sklstfUpdate('<%=request.getContextPath() %>')" value="수정">
     <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
 
 </form>
