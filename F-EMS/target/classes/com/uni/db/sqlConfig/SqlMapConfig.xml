@@ -30,8 +30,8 @@
 	<sqlMap resource="com/uni/db/sqlMap/Profsr_Subjct_Asnm.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Pymnt.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Reqst.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Schafs_Schdul.xml" />
-	<sqlMap resource="com/uni/db/sqlMap/Schlship.xml" />-->
+	<sqlMap resource="com/uni/db/sqlMap/Schafs_Schdul.xml" />-->
+	<sqlMap resource="com/uni/db/sqlMap/Schlship.xml" />
 	<sqlMap resource="com/uni/db/sqlMap/Sklstf.xml" />
 	<!--<sqlMap resource="com/uni/db/sqlMap/Sklstf_Atrty.xml" />-->
 	<sqlMap resource="com/uni/db/sqlMap/Sknrgs.xml" />
