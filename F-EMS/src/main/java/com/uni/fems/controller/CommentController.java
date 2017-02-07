@@ -38,7 +38,7 @@ public class CommentController {
 	public List<Bbs_CommentVO> commentList(@RequestBody Map<String, Object> jsonMap,
 				Model model, HttpServletResponse response){
 		List<Bbs_CommentVO> commentList = null;
-		String bc_bbs_no = (String) jsonMap.get("bc_bbs_no");
+		String bc_bbs_no = (String) jsonMap.get("bbs_no");
 		try {
 			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no));
 		} catch (NumberFormatException e) {
@@ -56,7 +56,7 @@ public class CommentController {
 	@ResponseBody
 	public List<Bbs_CommentVO> insertComment(@RequestBody Bbs_CommentVO bbs_commentVO, HttpSession session){
 		/*String user_id = session.getAttribute("loginUser);*/
-		bbs_commentVO.setBc_Bbs_Code("1111");
+		bbs_commentVO.setBc_User_Id("1111");
 		
 		List<Bbs_CommentVO> commentList = null;
 		
@@ -72,20 +72,20 @@ public class CommentController {
 		
 	}
 		
-		@RequestMapping(value="/deleteComment", method=RequestMethod.POST)
-		@ResponseBody
-		public Map<String, Object> deleteComment(Model model, HttpServletRequest request){
-			int bc_comcnt_no = Integer.parseInt(request.getParameter("result"));
-			System.out.println(commentNo);
-			Map<String,Object> map1 = null;
-			
-			List<Bbs_CommentVO> listlist = null;
-			
-			bbs_CommentSvc.deleteBbs_Comment(bc_Comnt_No)
-			
-			
-			
-		}
+//		@RequestMapping(value="/deleteComment", method=RequestMethod.POST)
+//		@ResponseBody
+//		public Map<String, Object> deleteComment(Model model, HttpServletRequest request){
+//			int bc_comcnt_no = Integer.parseInt(request.getParameter("result"));
+//			System.out.println(commentNo);
+//			Map<String,Object> map1 = null;
+//			
+//			List<Bbs_CommentVO> listlist = null;
+//			
+//			bbs_CommentSvc.deleteBbs_Comment(bc_Comnt_No)
+//			
+//			
+//			
+//		}
 			
 		
 		
@@ -109,66 +109,6 @@ public class CommentController {
 	
 	
 	
+
 	
-	
-	/*@RequestMapping(value="/insertComment", method=RequestMethod.POST) // 댓글 insert(POST)
-	public ResponseEntity<String> register(@RequestBody Bbs_CommentVO bbs_Comment){
-		ResponseEntity<String> entity = null;
-		
-		try {
-			bbs_CommentSvc.insertBbs_Comment(bbs_Comment);
-			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
-	
-	@RequestMapping(value= "/commentList", method=RequestMethod.POST) //해당 게시판 댓글 list 가져오기
-	@ResponseBody
-	public ResponseEntity<List<Bbs_CommentVO>> list(@PathVariable("bc_bbs_no") int bc_bbs_no){
-		
-		ResponseEntity<List<Bbs_CommentVO>> entity = null;
-		try {
-			entity = new ResponseEntity<List<Bbs_CommentVO>>(bbs_CommentSvc.getBbs_Comment(bc_bbs_no),HttpStatus.OK);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<List<Bbs_CommentVO>>(HttpStatus.BAD_REQUEST);
-		}
-	
-	return entity;
-	
-	}
-	
-	@RequestMapping(value="/{bc_comnt_no}", method={RequestMethod.PUT, RequestMethod.PATCH})
-		public ResponseEntity<String> update(@PathVariable("bc_comnt_no") int bc_comnt_no, @RequestBody Bbs_CommentVO bbs_Comment){
-		
-		ResponseEntity<String> entity = null;
-		bbs_Comment.setBc_Comnt_No(bc_comnt_no);
-		try {
-			bbs_CommentSvc.updateBbs_Comment(bbs_Comment);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		
-		return entity;
-	}
-	
-	@RequestMapping(value="/{bc_comnt_no}", method={RequestMethod.PUT, RequestMethod.DELETE})
-	public ResponseEntity<String> delete(@PathVariable("bc_comnt_no") int bc_comnt_no){
-		
-		ResponseEntity<String> entity = null;
-		
-		try {
-			bbs_CommentSvc.deleteBbs_Comment(bc_comnt_no);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
-		
-		return entity;
-	}*/
-	
-}
+

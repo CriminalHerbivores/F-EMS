@@ -10,6 +10,117 @@
 <title></title>
 
 <script>
+$(document).ready(function() {
+	var bbs_no = $('#bbs_no').val();
+    var data ={'bbs_no' : bbs_no};
+    
+    $.ajax({
+       url:'<%=request.getContextPath()%>/notice_bbs/commentList',
+       contentType:'application/json',
+       dataType:'json',
+       data:JSON.stringify(data),
+       type:'post',
+       success : function(data){
+          $.each(data, function(i) {
+             var date = new Date(
+                   data[i].Writng_Dt);
+             var year = date.getFullYear();
+             var month = (1 + date.getMonth());
+             month = month >= 10 ? month : '0'
+                   + month;
+             var day = date.getDate();
+             day = day >= 10 ? day : '0' + day;
+             var fullD = year + '년' + month
+                   + '월' + day + '일';
+             var commentList = '<div id="'
+                 + data[i].Comnt_No   
+                 + '">아이디 : '
+                 + data[i].User_Id
+                 + '  /  ' + '작성 날짜 : '
+              + fullD
+              +'<a href="" id="'
+                 +data[i].Comnt_No
+                 +'" ' 
+                 +'class="deleteComment" name="deleteComment">삭제</a>'
+              + '<div>  ->'
+                 + data[i].comment_content
+                 +'</div></div><br><br>';
+           $('div #comment').append(commentList);
+        });
+     },
+       error:function(error){
+       alert(error);   
+       }
+    });
+});
+
+
+
+
+function commm_go(){
+	var bbs_no = $('#bbs_no').val();
+	var comment_content = $('#comment_content').val();
+	var dataWrite={
+			'bbs_no' : bbs_no,
+			'comment_content' : comment_content
+	};
+	$.ajax({
+		url : '<%=request.getContextPath()%>/notice_bbs/insertComment',
+		data : JSON.stringify(dataWrite),
+		type : 'post',
+		contentType : 'application/json',
+		success : function(data){
+			$('#comment_content').val('');
+			$('div #comment').empty();
+			$.each(data, function(i){
+				var date = new Date(data[i].Writng_Dt);
+				var year = date.getFullYear();
+				month = month >= 10 ? month : '0' + month;
+		        var day = date.getDate();
+		        day = day >= 10 ? day : '0' + day;
+		        var fullD = year + '년' + month + '월' + day + '일';
+		        var commentList = '<div id="'
+	                  + data[i].Comnt_No   
+	                  + '">아이디 : '
+	                  + data[i].User_Id
+	                  + '  /  ' + '작성 날짜 : '
+	               + fullD
+	               +'<a href="" id="'
+	                  +data[i].Comnt_No
+	                  +'" ' 
+	                  +'class="deleteComment" name="deleteComment">삭제</a>'
+	               + '<div>  ->'
+	                  + data[i].comment_content
+	                  +'</div></div><br><br>';
+	            $('div #comment').append(commentList);
+	         });
+	      },
+	      error : function() {
+	         alert('댓글 등록 실패');
+	      }
+	   });
+	}
+
+
+$(document).on('click','.deleteComment',function(e){
+    e.preventDefault();
+    var result = $(this).attr('id');
+    $.ajax({
+       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
+       data: {"result" : result},
+       dataType:'json',
+       type:'post',
+       
+       success:function(map1){
+          freeMap = jQuery.map(map1 , function(a){
+             return a;
+          })
+          $('#'+freeMap).remove();
+       }
+    });
+ });
+
+
 
 
 
@@ -46,10 +157,11 @@
 
 </table>
 
-<div> <!-- 댓글부분 --> 
+<div id="comment"></div> <!-- 댓글부분 --> 
+	<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no" name="bbs_no">
 	<textarea rows="3" cols="60" id="comment_content" name="comment_content"></textarea></td>
-	<input type="button" vlaue="확인" id="btnSave"></td>
-</div>
+	<input type="button" value="확인" id="btnSave" onclick="commm_go();"></td>
+
 
 </form>
 
