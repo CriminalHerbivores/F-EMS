@@ -69,5 +69,5 @@
 		pr_Email = #pr_Email#
 		where pr_Profsr_No = #pr_Profsr_No#
 	</update>
-</sqlMap>
 
+</sqlMap>

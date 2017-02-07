@@ -9,7 +9,7 @@ public interface Bbs_CommentService {
 	
 	public List<Bbs_CommentVO> listAllBbs_Comment(int tpage) throws SQLException;
 	
-	public List<Bbs_CommentVO> getBbs_Comment(int tpage, int bc_Bbs_No) throws SQLException;
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No) throws SQLException;
 	
 	public int insertBbs_Comment(Bbs_CommentVO bbs_Comment) throws SQLException;
 	

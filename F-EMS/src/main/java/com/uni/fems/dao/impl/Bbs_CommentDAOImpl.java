@@ -26,34 +26,35 @@ public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	}
 
 	@Override
-	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No, int tpage, int totalRecord, String key) throws SQLException {
-		Paging p = new Paging();
-		key = p.key(key);
-		int[] rows = p.row(tpage, totalRecord);
-		return (List<Bbs_CommentVO>) client.queryForList("getBbs_Comment", bc_Bbs_No, rows[1],rows[0]);
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No)
+			throws SQLException {
+			
+		return client.queryForList("getBbs_Comment",bc_Bbs_No);
 	}
+
 
 	@Override
 	public int insertBbs_Comment(Bbs_CommentVO bbs_Comment) throws SQLException {
-		return client.update("insertNotice_Bbs", bbs_Comment);
+		return client.update("insertBbs_Comment", bbs_Comment);
 	}
 
 	@Override
 	public int updateBbs_Comment(Bbs_CommentVO bbs_Comment) throws SQLException {
 		// TODO Auto-generated method stub
-		return client.update("updateNotice_Bbs", bbs_Comment);
+		return client.update("updateBbs_Comment", bbs_Comment);
 	}
 
 	@Override
 	public int deleteBbs_Comment(int bc_Comnt_No) throws SQLException {
-		return client.update("deleteNotice_Bbs", bc_Comnt_No);
+		return client.update("deleteBbs_Comment", bc_Comnt_No);
 	}
 
 	@Override
 	public int totalBbs_Comment() throws SQLException {
 		int total_pages = 0;
-		total_pages = (Integer) client.queryForObject("totalNotice_Bbs",null);
+		total_pages = (Integer) client.queryForObject("totalBbs_Comment",null);
 		return total_pages;
 	}
+
 
 }
