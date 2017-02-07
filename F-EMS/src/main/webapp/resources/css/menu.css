@@ -24,6 +24,13 @@
 	
 }
 
+/* 적용 되게 고쳐야함 */
+/* .container-fluid .top-menu{
+	padding-left:20%;
+} */
+
+
+
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
@@ -89,14 +96,115 @@ float:left;
 .custom-col-sm-10{
 width:80%;
 height:750px; /* 추후 없애는 걸로 */
-background:#eee;
+background:#EFF7F7; /* 색상:중앙 바디 영역 */
 float : right;
 padding : 10px;
 }
 
 .custom-col-sm-2{
 width:19%;
-background:#aaa;
+background:#fff; /* 색상:좌측 메뉴 영역 */
 float : left;
 padding : 10px;
 }
+
+
+/* //////////////////////////////////// */
+.top-navbar-inverse {
+	/* background-color: #222; */
+	border-color: #fff;
+}
+
+
+.custom-navbar-inverse {
+	background-color: #CEE7E7;	/* 색상:상단 메뉴 영역 */
+	border-color: #58919A;
+}
+
+/* .custom-navbar-inverse .navbar-nav>li>a {
+	color: #0D3FA5;
+} */
+
+/* .custom-navbar-inverse .navbar-nav>li>a:focus, .custom-navbar-inverse .navbar-nav>li>a:hover
+	{
+	color: #fff;
+	background-color: transparent
+} */
+
+/* .custom-navbar-inverse .navbar-nav>.active>a, .custom-navbar-inverse .navbar-nav>.active>a:focus,
+	.custom-navbar-inverse .navbar-nav>.active>a:hover {
+	color: #fff;
+	background-color: #24A6BD;
+} */
+
+/* .custom-navbar-inverse .navbar-nav>.disabled>a, .custom-navbar-inverse .navbar-nav>.disabled>a:focus,
+	.custom-navbar-inverse .navbar-nav>.disabled>a:hover {
+	color: #444;
+	background-color: transparent
+} */
+
+/* .custom-navbar-inverse .navbar-nav>.open>a, .custom-navbar-inverse .navbar-nav>.open>a:focus,
+	.custom-navbar-inverse .navbar-nav>.open>a:hover {
+	color: #fff;
+	background-color: #008299;
+} */
+
+
+/* //////////////////////////////////// */
+.menu-dropbtn {
+    background-color: #CEEAEA;	/* 색상:상단 드롭다운 버튼 */
+    color: white;
+    padding: 16px;
+    width:120px;
+    height:50px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.menu-dropdown a:hover{
+	text-decoration:none;
+	color:#555;	/* 색상: 상단 hover 텍스트 */
+	text-decoration: none;
+}
+
+.menu-dropdown a:mouseup{
+	text-decoration: none;
+}
+
+
+.menu-dropdown {
+    position: relative;
+    display: inline-block;
+    text-decoration:none !important;
+}
+
+.menu-dropdown-content {
+    display: none;
+    position: absolute;
+    right:0px; 
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 101;
+}
+
+.menu-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-dropdown-content a:hover {background-color: #e1e1e1}	/* 색상:상단 드롭다운 서브 hover */
+
+.menu-dropdown:hover .menu-dropdown-content {
+    display: block;
+}
+
+.menu-dropdown:hover .menu-dropbtn {
+   background-color: #BED1D1;	/* 색상:상단 드롭다운 hover */
+}
+
+
+

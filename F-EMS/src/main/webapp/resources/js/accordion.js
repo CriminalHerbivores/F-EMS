@@ -47,10 +47,17 @@ $(document).ready(function(){
      })  
      
      // step #07-02
-     $("#accordionMenu1").selectFolderAccordionMenu(0,1);
+     /*$("#accordionMenu1").selectFolderAccordionMenu(0,1);*/
  	
  });
 /*//////////////////////////////////////// */
+//function op_menu_admin() {
+//	$("#accordionMenu1").selectFolderAccordionMenu(6,1);
+//}
+
+
+
+
 (function($){
     // step #07-01  
     // folderAccordionMenu 플러그인

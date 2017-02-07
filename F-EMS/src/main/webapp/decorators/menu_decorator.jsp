@@ -23,7 +23,7 @@ body{
 </head>
 <body>
 <!-- 상단바 시작 -->
-	<nav class="navbar navbar-inverse" id="topnav">
+	<nav class="navbar top-navbar-inverse" id="topnav">
 		<div class="container-fluid" id="toptable">
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table">
@@ -46,81 +46,81 @@ body{
 
 
 	<!-- 상단메뉴 시작 -->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button> -->
-		
+	<nav class="navbar custom-navbar-inverse">
+		<div class="container-fluid top-menu" style="padding-left:18.5%;">
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-left">
 
 					<!-- 권한 관련 추후에 설정 -->
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">직원 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a></li>
-							<li><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록 </a></li>
-							<li><a href="<%=request.getContextPath() %>/stdnt/stdntList" class="no-uline">학생 조회 </a></li>
-							<li><a href="<%=request.getContextPath() %>/stdnt/sknrgListForm" class="no-uline">학적 관리 </a></li>
-							<li><a href="<%=request.getContextPath() %>/schlship/schlshipList" class="no-uline">장학금 양삭</a></li>
-							<li><a href="#" class="no-uline">메뉴1 </a></li>
-						</ul></li>
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">직원</a></button>
+							<div class="menu-dropdown-content">
+							<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a>
+							<a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록 </a>
+							<a href="<%=request.getContextPath() %>/stdnt/stdntList" class="no-uline">학생 조회 </a>
+							<a href="<%=request.getContextPath() %>/stdnt/sknrgListForm" class="no-uline">학적 관리 </a>
+							<a href="<%=request.getContextPath() %>/schlship/schlshipList" class="no-uline">장학금 양식</a>
+							<a href="#" class="no-uline">메뉴1 </a>
+							</div>
+						</div>
 
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">교수 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">교수메뉴1 </a></li>
-							<li><a href="#">메뉴2 </a></li>
-							<li><a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a></li>
-							<li><a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a></li>
-						</ul></li>
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">교수</a></button>
+							<div class="menu-dropdown-content">
+							<a href="#">교수메뉴1 </a>
+							<a href="#">메뉴2 </a>
+							<a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a>
+							<a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a>
+						</div>
+						</div>
 
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">학생 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">학생메뉴1 </a></li>
-							<li><a href="#">메뉴2 </a></li>
-						</ul></li>
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">학생</a></button>
+							<div class="menu-dropdown-content">
+							<a href="#">학생메뉴1 </a>
+							<a href="#">메뉴2 </a>
+						</div></div>
 					<!-- 여기까지 -->
 
 
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">학사 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a></li>
-							<li><a href="#">메뉴2 </a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">수강신청 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="<%=request.getContextPath() %>/course/course_list">수강신청목록</a></li>
-							<li><a href="#">메뉴2 </a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">강의 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">강의메뉴1 </a></li>
-							<li><a href="#">메뉴2 </a></li>
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">커뮤니티 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">커뮤니티메뉴1 </a></li>
-							<li><a href="#">메뉴2 </a></li>
-						</ul></li>
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">학사</a></button>
+							<div class="menu-dropdown-content">
+							<a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
+							<a href="#">메뉴2 </a>
+						</div></div>
+						
+						
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">수강신청</a></button>
+							<div class="menu-dropdown-content">
+							<a href="<%=request.getContextPath() %>/course/course_list">수강신청목록</a>
+							<a href="#">메뉴2 </a>
+						</div></div>
+						
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">강의</a></button>
+							<div class="menu-dropdown-content">
+							<a href="#">강의메뉴1 </a>
+							<a href="#">메뉴2 </a>
+						</div></div>
+						
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#">커뮤니티</a></button>
+							<div class="menu-dropdown-content">
+							<a href="#">커뮤니티메뉴1 </a>
+							<a href="#">메뉴2 </a>
+						</div></div>
 
 
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">관리자 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="<%=request.getContextPath()%>/admin/step1_add">레이아웃 설정</a></li>
-							<li><a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a></li>
-							<li><a href="#">메뉴2 </a></li>
-						</ul></li>
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn"><a href="#" onclick="op_menu_admin()">관리자</a></button>
+							<div class="menu-dropdown-content">
+							<a href="<%=request.getContextPath()%>/admin/step1_add">레이아웃 설정</a>
+							<a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a>
+							<a href="#">메뉴2 </a>
+						</div></div>
 
 				</ul>
 
@@ -147,31 +147,17 @@ body{
 
 				<!-- ////////////////// -->
 				<ul class="accordion-menu" id="accordionMenu1">
-					<li data-extension="open">
+					<li data-extension="close">
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">직원</a>
+							<span class="folder main_menu"></span><a href="#">직원</a>
 						</div>
 						<ul class="sub sub_meun">
 							<li style="margin-left: 2em;">
-								<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정
+								<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate">직원 정보 수정
 							</a></li>
-							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/stdnt/stdntInsert">학생 등록
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">직원 메뉴1
-							</a></li>
-						</ul>
-					</li>
-
-					<li>
-						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">교수</a>
-						</div>
-						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">학생메뉴1
-							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#">직원 메뉴1
 							</a></li>
 						</ul>
 					</li>
@@ -179,12 +165,12 @@ body{
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">학생</a>
+								>교수</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">학생메뉴1
+							<li style="margin-left: 2em;"><a href="#">학생메뉴1
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#">메뉴2
 							</a></li>
 						</ul>
 					</li>
@@ -192,12 +178,12 @@ body{
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">학사</a>
+								>학생</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판
+							<li style="margin-left: 2em;"><a href="#" >학생메뉴1
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#" >메뉴2
 							</a></li>
 						</ul>
 					</li>
@@ -205,12 +191,12 @@ body{
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">수강신청</a>
+								>학사</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/course/course_list" class="no-uline">수강신청 목록
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" >공지 게시판
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#" >메뉴2
 							</a></li>
 						</ul>
 					</li>
@@ -218,12 +204,12 @@ body{
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">강의</a>
+								>수강신청</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">강의메뉴1
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/course/course_list" >수강신청 목록
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#" >메뉴2
 							</a></li>
 						</ul>
 					</li>
@@ -231,12 +217,12 @@ body{
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">커뮤니티</a>
+								>강의</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">커뮤니티메뉴1
+							<li style="margin-left: 2em;"><a href="#" >강의메뉴1
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#" >메뉴2
 							</a></li>
 						</ul>
 					</li>
@@ -244,13 +230,25 @@ body{
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
-								class="no-uline">관리자</a>
+								>커뮤니티</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/admin/step1_add" class="no-uline">레이아웃 설정
+							<li style="margin-left: 2em;"><a href="#" >커뮤니티메뉴1
+							</a></li>
+							<li style="margin-left: 2em;"><a href="#" >메뉴2
+							</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<div class="main-title">
+							<span class="folder main_menu"> </span><a href="#">관리자</a>
+						</div>
+						<ul class="sub sub_meun">
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/admin/step1_add" >레이아웃 설정
 							</a></li>
 							<li style="margin-left: 2em;"><a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a></li>
-							<li style="margin-left: 2em;"><a href="#" class="no-uline">메뉴2
+							<li style="margin-left: 2em;"><a href="#" >메뉴2
 							</a></li>
 						</ul>
 					</li>

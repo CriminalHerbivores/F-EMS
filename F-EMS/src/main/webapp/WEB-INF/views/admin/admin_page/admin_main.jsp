@@ -14,9 +14,9 @@
 
 <h2>관리자 페이지</h2>
 
-<div class="dropdown">
-  <button class="dropbtn">레이아웃 설정</button>
-  <div class="dropdown-content">
+<div class="admin-dropdown">
+  <button class="admin-dropbtn">레이아웃 설정</button>
+  <div class="admin-dropdown-content">
     <a href="<%=request.getContextPath()%>/admin/step1_modify">대학 정보 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step2_modify">메뉴 사용 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step3_modify">레이아웃 선택</a>
@@ -25,9 +25,9 @@
  </div> 
   <br/>
 
-  <div class="dropdown">
-   <button class="dropbtn">관리자/직원 관리</button>
-  <div class="dropdown-content">
+  <div class="admin-dropdown">
+   <button class="admin-dropbtn">관리자/직원 관리</button>
+  <div class="admin-dropdown-content">
     <a href="#">직원 조회</a>
     <a href="#">직원 등록</a>
     <a href="#">관리자 설정</a>
@@ -35,9 +35,9 @@
 </div>
 <br/>
 
-  <div class="dropdown">
-   <button class="dropbtn">강의실 관리</button>
-  <div class="dropdown-content">
+  <div class="admin-dropdown">
+   <button class="admin-dropbtn">강의실 관리</button>
+  <div class="admin-dropdown-content">
     <a href="<%=request.getContextPath()%>/admin/add_building">건물 등록</a>
     <a href="<%=request.getContextPath()%>/admin/modify_building">건물 수정</a>
     <a href="<%=request.getContextPath()%>/admin/add_classroom">강의실 등록</a>
@@ -47,9 +47,9 @@
 </div>
 <br/>
 
-  <div class="dropdown">
-   <button class="dropbtn">학부·학과 관리</button>
-  <div class="dropdown-content">
+  <div class="admin-dropdown">
+   <button class="admin-dropbtn">학부·학과 관리</button>
+  <div class="admin-dropdown-content">
     <a href="<%=request.getContextPath()%>/admin/add_subject">학부·학과 등록</a>
     <a href="<%=request.getContextPath()%>/admin/modify_subject">학부·학과 수정</a>
     <a href="<%=request.getContextPath()%>/admin/set_subject">학부·학과 설정</a>
@@ -57,17 +57,17 @@
 </div>
 <br/>
 
-  <div class="dropdown">
-   <button class="dropbtn">강의 관리</button>
-  <div class="dropdown-content">
+  <div class="admin-dropdown">
+   <button class="admin-dropbtn">강의 관리</button>
+  <div class="admin-dropdown-content">
     <a href="#">상대평가 설정</a>
   </div>
 </div>
 <br/>
 
-  <div class="dropdown">
-   <button class="dropbtn">게시판 관리</button>
-  <div class="dropdown-content">
+  <div class="admin-dropdown">
+   <button class="admin-dropbtn">게시판 관리</button>
+  <div class="admin-dropdown-content">
     <a href="#">메뉴1</a>
     <a href="#">메뉴2</a>
   </div>
