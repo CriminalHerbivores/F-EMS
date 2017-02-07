@@ -42,10 +42,8 @@ public class CommentController {
 		try {
 			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no));
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -54,17 +52,22 @@ public class CommentController {
 	
 	@RequestMapping(value="/insertComment", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Bbs_CommentVO> insertComment(@RequestBody Bbs_CommentVO bbs_commentVO, HttpSession session){
+	public List<Bbs_CommentVO> insertComment(@RequestBody Map<String, Object> jsonMap,
+	HttpSession session){
+		Bbs_CommentVO bbs_commentVO=new Bbs_CommentVO();
 		/*String user_id = session.getAttribute("loginUser);*/
 		bbs_commentVO.setBc_User_Id("1111");
+		int bc_bbs_no = Integer.parseInt((String) jsonMap.get("bbs_no"));
+		
+		bbs_commentVO.setBc_Bbs_Code("notice_bbs");
+		bbs_commentVO.setBc_Bbs_No(bc_bbs_no);
+		bbs_commentVO.setBc_Comnt_Content((String) jsonMap.get("comment_content"));
 		
 		List<Bbs_CommentVO> commentList = null;
-		
 		try {
 			bbs_CommentSvc.insertBbs_Comment(bbs_commentVO);
-			commentList = bbs_CommentSvc.getBbs_Comment(bbs_commentVO.getBc_Bbs_No());
+			commentList = bbs_CommentSvc.getBbs_Comment(bc_bbs_no);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -87,7 +90,6 @@ public class CommentController {
 //			
 //		}
 			
-		
 		
 		
 		
