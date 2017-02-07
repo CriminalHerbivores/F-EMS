@@ -84,7 +84,7 @@
 	st_subjct_code = #st_Subjct_Code#,
 	st_pw = #st_Pw#,
 	st_nm = #st_Nm#,
-	st_eng_nm = #st_Entsch_Dt#,
+	st_eng_nm = #st_Eng_Nm#,
 	st_ihidnum = #st_Ihidnum#,
 	st_moblphon_no = #st_Moblphon_No#,
 	st_house_tlphon_no = #st_House_Tlphon_No#,

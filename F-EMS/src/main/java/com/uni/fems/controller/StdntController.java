@@ -178,6 +178,8 @@ public class StdntController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		model.addAttribute("st_Stdnt_No",stdntVO.getSt_Stdnt_No());
+		model.addAttribute("tpage",tpage);
 		return url;
 		
 	}
