@@ -21,31 +21,60 @@ $(document).ready(function() {
        data:JSON.stringify(data),
        type:'post',
        success : function(data){
-          $.each(data, function(i) {
-             var date = new Date(
-                   data[i].bc_Writng_Dt);
-             var year = date.getFullYear();
-             var month = (1 + date.getMonth());
-             month = month >= 10 ? month : '0'
-                   + month;
-             var day = date.getDate();
-             day = day >= 10 ? day : '0' + day;
-             var fullD = year + '년' + month
-                   + '월' + day + '일';
-             var commentList = '<div id="'
-                 + data[i].bc_Comnt_No   
-                 + '">아이디 : '
-                 + data[i].bc_User_Id
-                 + '  /  ' + '작성 날짜 : '
-              + fullD
-              +'<a href="" id="'
-                 +data[i].bc_Comnt_No
-                 +'" ' 
-                 +'class="deleteComment" name="deleteComment">삭제</a>'
-              + '<div>  ->'
-                 + data[i].bc_Comnt_Content
-                 +'</div></div><br><br>';
-           $('div #comment').append(commentList);
+    	   var loginUser = $('#loginUser').val();
+    	   $('#comment_content').val('');
+	       $('div #comment').empty();
+	       $.each(data, function(i) {
+	    	   	if(loginUser == data[i].bc_User_Id){
+	             var date = new Date(
+	                   data[i].bc_Writng_Dt);
+	             var year = date.getFullYear();
+	             var month = (1 + date.getMonth());
+	             month = month >= 10 ? month : '0'
+	                   + month;
+	             var day = date.getDate();
+	             day = day >= 10 ? day : '0' + day;
+	             var fullD = year + '년' + month
+	                   + '월' + day + '일';
+	             var commentList = '<div id="'
+	                 + data[i].bc_Comnt_No   
+	                 + '">아이디 : '
+	                 + data[i].bc_User_Id
+	                 + '  /  ' + '작성 날짜 : '
+	              + fullD
+	              +'<a href="" id="'
+	                 +data[i].bc_Comnt_No
+	                 +'" ' 
+	                 +'class="updateComment" name="updateComment">수정</a>'
+	              +'<a href="" id="'
+	                 +data[i].bc_Comnt_No
+	                 +'" ' 
+	                 +'class="deleteComment" name="deleteComment">삭제</a>'
+	              + '<div>  ->'
+	                 + data[i].bc_Comnt_Content
+	                 +'</div></div><br><br>';
+	    	   	}else{
+	    	   	 var date = new Date(
+		                   data[i].bc_Writng_Dt);
+		             var year = date.getFullYear();
+		             var month = (1 + date.getMonth());
+		             month = month >= 10 ? month : '0'
+		                   + month;
+		             var day = date.getDate();
+		             day = day >= 10 ? day : '0' + day;
+		             var fullD = year + '년' + month
+		                   + '월' + day + '일';
+		             var commentList = '<div id="'
+		                 + data[i].bc_Comnt_No   
+		                 + '">아이디 : '
+		                 + data[i].bc_User_Id
+		                 + '  /  ' + '작성 날짜 : '
+		              + fullD
+		              + '<div>  ->'
+		                 + data[i].bc_Comnt_Content
+		                 +'</div></div><br><br>';
+	    	   	}    
+	           $('div #comment').append(commentList);
         });
      },
        error:function(error){
@@ -70,9 +99,160 @@ function commm_go(){
 		type : 'post',
 		contentType : 'application/json',
 		success : function(data){
-			  $('#comment_content').val('');
+	    	   var loginUser = $('#loginUser').val();
+	    	   $('#comment_content').val('');
 		       $('div #comment').empty();
-	          $.each(data, function(i) {
+		       $.each(data, function(i) {
+		    	   	if(loginUser == data[i].bc_User_Id){
+		             var date = new Date(
+		                   data[i].bc_Writng_Dt);
+		             var year = date.getFullYear();
+		             var month = (1 + date.getMonth());
+		             month = month >= 10 ? month : '0'
+		                   + month;
+		             var day = date.getDate();
+		             day = day >= 10 ? day : '0' + day;
+		             var fullD = year + '년' + month
+		                   + '월' + day + '일';
+		             var commentList = '<div id="'
+		                 + data[i].bc_Comnt_No   
+		                 + '">아이디 : '
+		                 + data[i].bc_User_Id
+		                 + '  /  ' + '작성 날짜 : '
+		              + fullD
+		              +'<a href="" id="'
+		                 +data[i].bc_Comnt_No
+		                 +'" ' 
+		                 +'class="updateComment" name="updateComment">수정</a>'
+		              +'<a href="" id="'
+		                 +data[i].bc_Comnt_No
+		                 +'" ' 
+		                 +'class="deleteComment" name="deleteComment">삭제</a>'
+		              + '<div>  ->'
+		                 + data[i].bc_Comnt_Content
+		                 +'</div></div><br><br>';
+		    	   	}else{
+		    	   	 var date = new Date(
+			                   data[i].bc_Writng_Dt);
+			             var year = date.getFullYear();
+			             var month = (1 + date.getMonth());
+			             month = month >= 10 ? month : '0'
+			                   + month;
+			             var day = date.getDate();
+			             day = day >= 10 ? day : '0' + day;
+			             var fullD = year + '년' + month
+			                   + '월' + day + '일';
+			             var commentList = '<div id="'
+			                 + data[i].bc_Comnt_No   
+			                 + '">아이디 : '
+			                 + data[i].bc_User_Id
+			                 + '  /  ' + '작성 날짜 : '
+			              + fullD
+			              + '<div>  ->'
+			                 + data[i].bc_Comnt_Content
+			                 +'</div></div><br><br>';
+		    	   	}    
+		           $('div #comment').append(commentList);
+		        });
+	     },
+	      error : function() {
+	         alert('댓글 등록 실패');
+	      }
+	   });
+	}
+
+$(document).on('click', '.updateComment', function(e){
+	e.preventDefault();
+	var cmntNo = $(this).attr('id');
+	var content = $('#comment_content').val();
+	var bbs_no = $('#bbs_no').val();
+	$.ajax({
+	       url:"<%=request.getContextPath()%>/notice_bbs/updateComment",
+	       data: {"cmntNo" : cmntNo,
+	    		  "content" : content,
+	    		  "bbs_no" : bbs_no
+	       },
+	       dataType:'json',
+	       type:'post',
+	       
+	       success : function(data){
+	    	   var loginUser = $('#loginUser').val();
+	    	   $('#comment_content').val('');
+		       $('div #comment').empty();
+		       $.each(data, function(i) {
+		    	   	if(loginUser == data[i].bc_User_Id){
+		             var date = new Date(
+		                   data[i].bc_Writng_Dt);
+		             var year = date.getFullYear();
+		             var month = (1 + date.getMonth());
+		             month = month >= 10 ? month : '0'
+		                   + month;
+		             var day = date.getDate();
+		             day = day >= 10 ? day : '0' + day;
+		             var fullD = year + '년' + month
+		                   + '월' + day + '일';
+		             var commentList = '<div id="'
+		                 + data[i].bc_Comnt_No   
+		                 + '">아이디 : '
+		                 + data[i].bc_User_Id
+		                 + '  /  ' + '작성 날짜 : '
+		              + fullD
+		              +'<a href="" id="'
+		                 +data[i].bc_Comnt_No
+		                 +'" ' 
+		                 +'class="updateComment" name="updateComment">수정</a>'
+		              +'<a href="" id="'
+		                 +data[i].bc_Comnt_No
+		                 +'" ' 
+		                 +'class="deleteComment" name="deleteComment">삭제</a>'
+		              + '<div>  ->'
+		                 + data[i].bc_Comnt_Content
+		                 +'</div></div><br><br>';
+		    	   	}else{
+		    	   	 var date = new Date(
+			                   data[i].bc_Writng_Dt);
+			             var year = date.getFullYear();
+			             var month = (1 + date.getMonth());
+			             month = month >= 10 ? month : '0'
+			                   + month;
+			             var day = date.getDate();
+			             day = day >= 10 ? day : '0' + day;
+			             var fullD = year + '년' + month
+			                   + '월' + day + '일';
+			             var commentList = '<div id="'
+			                 + data[i].bc_Comnt_No   
+			                 + '">아이디 : '
+			                 + data[i].bc_User_Id
+			                 + '  /  ' + '작성 날짜 : '
+			              + fullD
+			              + '<div>  ->'
+			                 + data[i].bc_Comnt_Content
+			                 +'</div></div><br><br>';
+		    	   	}    
+		           $('div #comment').append(commentList);
+	        });
+	     }
+	   });
+});
+
+$(document).on('click','.deleteComment',function(e){
+    e.preventDefault();
+    var result = $(this).attr('id');
+    var bc_bbs_no = $('#bbs_no').val();
+    $.ajax({
+       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
+       data: {"result" : result,
+    		  "bc_bbs_no" : bc_bbs_no   
+       },
+       dataType:'json',
+       type:'post',
+       
+       success : function(data){
+    	   var loginUser = $('#loginUser').val();
+    	   $('#comment_content').val('');
+	       $('div #comment').empty();
+	       $.each(data, function(i) {
+	    	   	if(loginUser == data[i].bc_User_Id){
 	             var date = new Date(
 	                   data[i].bc_Writng_Dt);
 	             var year = date.getFullYear();
@@ -92,43 +272,48 @@ function commm_go(){
 	              +'<a href="" id="'
 	                 +data[i].bc_Comnt_No
 	                 +'" ' 
+	                 +'class="updateComment" name="updateComment">수정</a>'
+	              +'<a href="" id="'
+	                 +data[i].bc_Comnt_No
+	                 +'" ' 
 	                 +'class="deleteComment" name="deleteComment">삭제</a>'
 	              + '<div>  ->'
 	                 + data[i].bc_Comnt_Content
 	                 +'</div></div><br><br>';
+	    	   	}else{
+	    	   	 var date = new Date(
+		                   data[i].bc_Writng_Dt);
+		             var year = date.getFullYear();
+		             var month = (1 + date.getMonth());
+		             month = month >= 10 ? month : '0'
+		                   + month;
+		             var day = date.getDate();
+		             day = day >= 10 ? day : '0' + day;
+		             var fullD = year + '년' + month
+		                   + '월' + day + '일';
+		             var commentList = '<div id="'
+		                 + data[i].bc_Comnt_No   
+		                 + '">아이디 : '
+		                 + data[i].bc_User_Id
+		                 + '  /  ' + '작성 날짜 : '
+		              + fullD
+		              + '<div>  ->'
+		                 + data[i].bc_Comnt_Content
+		                 +'</div></div><br><br>';
+	    	   	}    
 	           $('div #comment').append(commentList);
-	        });
-	     },
-	      error : function() {
-	         alert('댓글 등록 실패');
-	      }
-	   });
-	}
-
-
-$(document).on('click','.deleteComment',function(e){
-    e.preventDefault();
-    var result = $(this).attr('id');
-    $.ajax({
-       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
-       data: {"result" : result},
-       dataType:'json',
-       type:'post',
-       
-       success:function(map1){
-          freeMap = jQuery.map(map1 , function(a){
-             return a;
-          })
-          $('#'+freeMap).remove();
-       }
+        });
+     }
     });
  });
 
 
 
 
-
 </script>
+
+
+
 
 
 
@@ -165,9 +350,9 @@ $(document).on('click','.deleteComment',function(e){
 
 
 	<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no" name="bbs_no">
-	<textarea rows="3" cols="60" id="comment_content" name="comment_content"></textarea></td>
+	<textarea rows="3" cols="60" id="comment_content" id="comment_content" name="comment_content"></textarea></td>
 	<input type="button" value="확인" id="btnSave" onclick="commm_go();"></td>
-
+	<input type="hidden" value="${loginUser}" id="loginUser"> 
 
 </form>
 

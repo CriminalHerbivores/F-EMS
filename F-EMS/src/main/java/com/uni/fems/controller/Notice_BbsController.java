@@ -105,11 +105,12 @@ public class Notice_BbsController implements ApplicationContextAware{
 								throws ServletException, IOException{
 		
 		String url = "redirect:noticeList";
-		/*HttpSession session = request.getSession();*/
+		
+		String loginUser = (String)session.getAttribute("loginUser");
 		
 		
 		
-		notice_BbsVO.setNb_Sklstf_No("1111");
+		notice_BbsVO.setNb_Sklstf_No(loginUser);
 		
 		/*String savePath="resources/files";
 		ServletContext context = session.getServletContext();
@@ -207,9 +208,11 @@ public class Notice_BbsController implements ApplicationContextAware{
 	}
 	
 	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
-	public String updateNotice(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request){
+	public String updateNotice(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpSession session, HttpServletRequest request){
 		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
-		notice_BbsVO.setNb_Sklstf_No("1111");
+		
+		String loginUser = (String) session.getAttribute("loginUser");
+		notice_BbsVO.setNb_Sklstf_No(loginUser);
 		
 		String uploadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 
