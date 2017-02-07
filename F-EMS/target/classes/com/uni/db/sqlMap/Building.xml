@@ -1,1 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Building">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="building" type="com.uni.fems.dto.BuildingVO" />
+
+	<!-- 건물 등록 -->
+	<update id="insertBuilding" parameterClass="building">
+		insert into building(bd_No,bd_Nm,bd_Useyn)
+			values(#bd_No#,#bd_Nm#,#bd_Useyn#)
+	</update>
+	
+	<!-- 건물 수정 -->
+	<update id="updateBuilding" parameterClass="building">
+		update building set bd_No=#bd_No#,bd_Nm=#bd_Nm#,bd_Useyn=#bd_Useyn#
+		where bd_No=#bd_No#
+	</update>
+	
+	<!-- 건물 사용안함 -->
+	<update id="deleteBuilding" parameterClass="str">
+   update building set bd_Useyn='n' where bd_No=#bd_No#
+   </update>
+	
+	</sqlMap>

@@ -11,14 +11,14 @@
 	
 		
 	<!-- 한개 강의 가져오기 -->
-	<select id="getLctre" parameterClass="int" resultClass="lctre">
+	<select id="getLctre" parameterClass="lctre_search" resultClass="lctre">
 		select * from lctre_view 
 		where lc_Lctre_No=#lc_Lctre_No# 
 	</select>
 	
 	
 	<!-- 강의 콤보박스로 검색 -->
-	<select id="listCodeLctre" parameterClass="lctre_search" resultClass="lctre">
+	<select id="listComboLctre" parameterClass="lctre_search" resultClass="lctre">
 		select * from lctre_view
 		where lu_lctre_nm like '%'||#lu_lctre_nm#||'%'
 		and lu_lctre_code like '%'||#lu_lctre_code#||'%'
@@ -26,6 +26,7 @@
 		and coleg_nm like '%'||#coleg_nm#||'%'
 		and fc_faculty_nm like '%'||#fc_faculty_nm#||'%'
 		and sit_subjct like '%'||#sit_subjct#||'%'
+		and knd_lctre_knd like '%'||#knd_lctre_knd#||'%'
 		order by lu_Lctre_code asc, lc_split asc 
 	</select>
 	
@@ -90,6 +91,7 @@
 		and COLEG_NM like '%'||#COLEG_NM#||'%'
 		and LU_LCTRE_CODE like '%'||#LU_LCTRE_CODE#||'%'
 		and LU_LCTRE_NM like '%'||#LU_LCTRE_NM#||'%'
+		and KND_LCTRE_KND like '%'||#KND_LCTRE_KND#||'%'
 		order by lu_Lctre_code asc, lc_split asc
 	</select>
 	
@@ -115,6 +117,11 @@
 	<update id="updateLctre" parameterClass="lctre">
 		update lctre set lc_Lctre_No=#lc_Lctre_No#,lc_Profsr_No=#lc_Profsr_No#,lc_Lctre_Code=#lc_Lctre_Code#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Pnt=#lc_Pnt#,lc_Grade=#lc_Grade#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
 		where lc_Lctre_No=#lc_Lctre_No#
+	</update>
+	
+	<!-- 강의 삭제 -->
+	<update id="deleteBoard" parameterClass="int">
+		delete from lctre where lc_Lctre_No=#lc_Lctre_No#
 	</update>
 	
 

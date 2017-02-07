@@ -1,1 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Faculty">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="faculty" type="com.uni.fems.dto.FacultyVO" />
+
+	<!-- 학부 등록 -->
+	<update id="insertFaculty" parameterClass="faculty">
+		insert into faculty(fc_Faculty_Code,fc_Coleg_Code,fc_Faculty_Nm,fc_Useyn)
+			values(#fc_Faculty_Code#,#fc_Coleg_Code#,#fc_Faculty_Nm#,#fc_Useyn#)
+	</update>
+	
+	<!-- 학부 수정 -->
+	<update id="updateFaculty" parameterClass="faculty">
+		update faculty set fc_Faculty_Code=#fc_Faculty_Code#,fc_Coleg_Code=#fc_Coleg_Code#,fc_Faculty_Nm=#fc_Faculty_Nm#,fc_Useyn=#fc_Useyn#
+		where sit_Subjct_Code=#sit_Subjct_Code#
+	</update>
+	
+	<!-- 학부 사용안함 -->
+	<update id="deleteFaculty" parameterClass="str">
+   update faculty set fc_Useyn='n' where fc_Faculty_Code=#fc_Faculty_Code#
+   </update>
+	
+	
+	</sqlMap>

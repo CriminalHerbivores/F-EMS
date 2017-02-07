@@ -1,1 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Intrst_List">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="intrst_list" type="com.uni.fems.dto.Intrst_ListVO" />
+
+	<!-- 관심목록 등록 -->
+	<update id="insertIntrst_List" parameterClass="intrst_list">
+		insert into intrst_list(in_Stdnt_No,in_Lctre_No)
+			values(#in_Stdnt_No#,#in_Lctre_No#)
+	</update>
+	
+	<!-- 관심목록 수정 -->
+	<update id="updateIntrst_List" parameterClass="intrst_list">
+		update intrst_list set in_Stdnt_No=#in_Stdnt_No#,in_Lctre_No=#in_Lctre_No#
+		where in_Stdnt_No=#in_Stdnt_No# and in_Lctre_No=#in_Lctre_No#
+	</update>
+	
+	</sqlMap>
