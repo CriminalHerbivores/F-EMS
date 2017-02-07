@@ -2,22 +2,27 @@ package com.uni.fems.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.Bbs_CommentVO;
 import com.uni.fems.service.Bbs_CommentService;
 
 // RestController : ajax 처리 전용 컨트롤러
 
-@RestController
-// 스프링 4.0 이상부터 가능
+@Controller
+@RequestMapping("/notice_bbs")
 public class CommentController {
 	
 	@Autowired
@@ -28,27 +33,14 @@ public class CommentController {
 		this.bbs_CommentSvc = bbs_CommentSvc;
 	}
 
-	@RequestMapping("notice_bbs/commentList")
-	public List comment_list(@RequestParam int bc_bbs_no, Model model, HttpServletRequest request) {
-		String key = request.getParameter("key");
-		String tpage = request.getParameter("tpage");
-		
-		if (key ==null){
-			key = "";
-		}
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("key", key);
-		model.addAttribute("tpage",tpage);
-		
-		List<Bbs_CommentVO> list = null;
-		String paging = null;
+	@RequestMapping(value="/commentList", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Bbs_CommentVO> commentList(@RequestBody Map<String, Object> jsonMap,
+				Model model, HttpServletResponse response){
+		List<Bbs_CommentVO> commentList = null;
+		String bc_bbs_no = (String) jsonMap.get("bbs_no");
 		try {
-			list = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(tpage), bc_bbs_no);
-			paging = bbs_CommentSvc.pageNumber(Integer.parseInt(tpage), key);
+			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,14 +48,67 @@ public class CommentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		return commentList;
+	}
+	
+	@RequestMapping(value="/insertComment", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Bbs_CommentVO> insertComment(@RequestBody Bbs_CommentVO bbs_commentVO, HttpSession session){
+		/*String user_id = session.getAttribute("loginUser);*/
+		bbs_commentVO.setBc_User_Id("1111");
 		
-		return list;
-
+		List<Bbs_CommentVO> commentList = null;
+		
+		try {
+			bbs_CommentSvc.insertBbs_Comment(bbs_commentVO);
+			commentList = bbs_CommentSvc.getBbs_Comment(bbs_commentVO.getBc_Bbs_No());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return commentList;
+		
 	}
-
-	@RequestMapping("notice_bbs/commentInsert")
-	public void comment_insert() {
-
+		
+//		@RequestMapping(value="/deleteComment", method=RequestMethod.POST)
+//		@ResponseBody
+//		public Map<String, Object> deleteComment(Model model, HttpServletRequest request){
+//			int bc_comcnt_no = Integer.parseInt(request.getParameter("result"));
+//			System.out.println(commentNo);
+//			Map<String,Object> map1 = null;
+//			
+//			List<Bbs_CommentVO> listlist = null;
+//			
+//			bbs_CommentSvc.deleteBbs_Comment(bc_Comnt_No)
+//			
+//			
+//			
+//		}
+			
+		
+		
+		
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-}
+	
+
