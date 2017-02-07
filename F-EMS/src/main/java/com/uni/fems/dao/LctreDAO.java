@@ -17,3 +17,4 @@ public interface LctreDAO {
 	int confirmNO(int new_lctre_No) throws SQLException;
 	
 }
+
