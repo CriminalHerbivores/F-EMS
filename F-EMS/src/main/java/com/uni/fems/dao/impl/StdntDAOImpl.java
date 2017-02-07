@@ -55,4 +55,9 @@ public class StdntDAOImpl implements StdntDAO {
 		client.update("updateStdnt", stdntVO);
 	}
 
+	@Override
+	public void registBrhs(StdntVO stdntVO) throws SQLException {
+		client.update("updateBrhs", stdntVO);
+	}
+
 }
