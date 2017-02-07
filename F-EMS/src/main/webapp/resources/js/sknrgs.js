@@ -33,3 +33,7 @@ $(function(){
 function writeSknrgs(form){
 	document.formm.submit();
 }
+
+function go_writesknrgs(){
+	document.frm.submit();
+}
