@@ -13,29 +13,30 @@
 </head>
 <body>
 	기숙사 신청
-	<table>
+	<form name="formm" method="post">
+	<table class="def-table tb-border">
 		<tr>
 			<th>이름 (학번)</th>
-			<td>${sdnt.st_Nm} (${sdnt.st_Stdnt_No})<input type="hidden" name="st_Stdnt_"></td>
+			<td>${stdntVO.st_Nm} (${stdntVO.st_Stdnt_No})<input type="hidden" name="st_Stdnt_No" value="${stdntVO.st_Stdnt_No}"></td>
 			<th>학과</th>
-			<td>${sdnt.st_Subject}</td>
+			<td>${stdntVO.st_Subjct_Code}</td>
 		</tr>
 		<tr>
 			<th>전화번호</th>
-			<td>${sdnt.st_Moblphon_No}</td>
+			<td>${stdntVO.st_Moblphon_No}</td>
 			<th>이메일</th>
-			<td>${sdnt.st_Email}</td>
+			<td>${stdntVO.st_Email}</td>
 		</tr>
 		<tr>
 			<th>주소</th>
-			<td colspan="3">${sdnt.st_Adres1} ${sdnt.st_Adres2} ${sdnt.st_Post_No}</td>
+			<td colspan="3">${stdntVO.st_Adres1} ${stdntVO.st_Adres2} ${stdntVO.st_Post_No}</td>
 		</tr>
 		<tr>
 			<th>기숙사 신청여부</th>
 			<td>
 				<c:choose>
-					<c:when test="${not empty sdnt.st_Brhs_At}">
-						${sdnt.st_Brhs_At}
+					<c:when test="${not empty stdntVO.st_Brhs_At}">
+						${stdntVO.st_Brhs_At}
 					</c:when>
 					<c:otherwise>
 						<input type="button" value="신청하기" onclick="registBrhs(this.form)">
@@ -44,5 +45,6 @@
 			</td>
 		</tr>
 	</table>
+	</form>
 </body>
 </html>

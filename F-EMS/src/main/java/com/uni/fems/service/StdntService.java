@@ -10,5 +10,6 @@ public interface StdntService {
 	void updateStdnt(StdntVO stdntVO)throws SQLException;
 	List<StdntVO> selectNameAllPage(int tpage,String st_Nm) throws SQLException;
 	String pageNumber(int tpage, String st_Nm) throws SQLException;
-	StdntVO selectStdnt(String st_Stdnt_No)throws SQLException;
+	StdntVO selectStdnt(String st_Stdnt_No) throws SQLException;
+	void registBrhs(StdntVO stdntVO) throws SQLException;
 }
