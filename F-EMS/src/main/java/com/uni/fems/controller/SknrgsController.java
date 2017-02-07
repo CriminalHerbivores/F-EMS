@@ -164,21 +164,18 @@ public class SknrgsController {
 			Model model, HttpSession session) {
 		String url = "redirect:sknrgListForm";
 
-		System.out.println("skn_Nos123 : " + skn_Nos.length);
-		for (int i = 0; i < skn_Nos.length; i++) {
-			if (skn_Nos[i] != null) {
-				System.out.println("skn_Nos : " + skn_Nos[i].toString());
-				System.out.println("skn_Useyn : " + skn_Useyns[i].toString());
-				SknrgsVO sknrgsVO = new SknrgsVO();
+		SknrgsVO sknrgsVO = new SknrgsVO();
+		try {
+			for (int i = 0; i < skn_Nos.length; i++) {
 				sknrgsVO.setSkn_No(Integer.parseInt(skn_Nos[i]));
 				sknrgsVO.setSkn_Useyn(skn_Useyns[i]);
-				System.out.println("sknrgsVO"+i+" : "+sknrgsVO);
 				try {
 					sknrgs_Svc.updateUseynSknrgs(sknrgsVO);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
+		} catch (Exception e) {
 		}
 		return url;
 	}

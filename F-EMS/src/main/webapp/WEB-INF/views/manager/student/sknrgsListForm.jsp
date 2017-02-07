@@ -9,9 +9,6 @@
 <meta charset="UTF-8">
 <title></title>
 </head>
-<script type="text/javascript">
-	
-</script>
 
 <body>
 	<form name="frm" method="POST">
@@ -51,7 +48,7 @@
 						<td>${sknrgs.st_Nm}</td>
 						<td>${sknrgs.skn_Content}</td>
 						<td>${sknrgs.skn_Type}</td>
-						<td><input type="text" hidden name="skn_No"
+						<td><input type="hidden"name="skn_No"
 							value="${sknrgs.skn_No}"> <input class="checkbox"
 							type="checkbox" name="skn_Useyn" value="y">가능<input class="checkbox" type="checkbox"
 							name="skn_Useyn" value="n">불가능</td>
@@ -65,8 +62,8 @@
 
 			</table>
 		</div>
-		<button type="submit" class="btn btn-default">등록</button>
-		<button type="button" class="btn btn-default" onclick="go_home()">취소</button>
+		<input type="button" class="btn btn-default" onClick="go_writesknrgs();" value="등록"/>
+		<button type="button" class="btn btn-default" onClick="go_home()">취소</button>
 	</form>
 
 </body>
