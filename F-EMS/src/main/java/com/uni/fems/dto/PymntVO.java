@@ -6,8 +6,10 @@ public class PymntVO {
 	private int py_Schlship_Brkdn_No;   // 장학금 내역 번호
 	private String py_Stdnt_No;   // 학생 번호
 	private int py_Schlship_Code;   // 장학금 코드
-	private Timestamp py_Crrspnd_Year;   // 해당 년도
+	private String py_Crrspnd_Year;   // 해당 년도
 	private String py_Semstr;   // 학기
+	private Timestamp py_Schlship_Dt; // 신청날짜
+	private String py_Useyn; // 승인여부
 	public int getPy_Schlship_Brkdn_No() {
 		return py_Schlship_Brkdn_No;
 	}
@@ -26,10 +28,10 @@ public class PymntVO {
 	public void setPy_Schlship_Code(int py_Schlship_Code) {
 		this.py_Schlship_Code = py_Schlship_Code;
 	}
-	public Timestamp getPy_Crrspnd_Year() {
+	public String getPy_Crrspnd_Year() {
 		return py_Crrspnd_Year;
 	}
-	public void setPy_Crrspnd_Year(Timestamp py_Crrspnd_Year) {
+	public void setPy_Crrspnd_Year(String py_Crrspnd_Year) {
 		this.py_Crrspnd_Year = py_Crrspnd_Year;
 	}
 	public String getPy_Semstr() {
@@ -38,11 +40,25 @@ public class PymntVO {
 	public void setPy_Semstr(String py_Semstr) {
 		this.py_Semstr = py_Semstr;
 	}
+	public Timestamp getPy_Schlship_Dt() {
+		return py_Schlship_Dt;
+	}
+	public void setPy_Schlship_Dt(Timestamp py_Schlship_Dt) {
+		this.py_Schlship_Dt = py_Schlship_Dt;
+	}
+	public String getPy_Useyn() {
+		return py_Useyn;
+	}
+	public void setPy_Useyn(String py_Useyn) {
+		this.py_Useyn = py_Useyn;
+	}
 	@Override
 	public String toString() {
 		return "PymntVO [py_Schlship_Brkdn_No=" + py_Schlship_Brkdn_No
 				+ ", py_Stdnt_No=" + py_Stdnt_No + ", py_Schlship_Code="
-				+ py_Schlship_Code + ", py_Semstr=" + py_Semstr + "]";
+				+ py_Schlship_Code + ", py_Crrspnd_Year=" + py_Crrspnd_Year
+				+ ", py_Semstr=" + py_Semstr + ", py_Schlship_Dt="
+				+ py_Schlship_Dt + ", py_Useyn=" + py_Useyn + "]";
 	}
-
+	
 }
