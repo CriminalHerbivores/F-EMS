@@ -16,24 +16,24 @@
 	<form name="formm" method="post">
 	<table class="def-table tb-border">
 		<tr>
-			<th>이름 (학번)</th>
+			<td>이름 (학번)</td>
 			<td>${stdntVO.st_Nm} (${stdntVO.st_Stdnt_No})<input type="hidden" name="st_Stdnt_No" value="${stdntVO.st_Stdnt_No}"></td>
-			<th>학과</th>
+			<td>학과</td>
 			<td>${stdntVO.st_Subjct_Code}</td>
 		</tr>
 		<tr>
-			<th>전화번호</th>
+			<td>전화번호</td>
 			<td>${stdntVO.st_Moblphon_No}</td>
-			<th>이메일</th>
+			<td>이메일</td>
 			<td>${stdntVO.st_Email}</td>
 		</tr>
 		<tr>
-			<th>주소</th>
+			<td>주소</td>
 			<td colspan="3">${stdntVO.st_Adres1} ${stdntVO.st_Adres2} ${stdntVO.st_Post_No}</td>
 		</tr>
 		<tr>
-			<th>기숙사 신청여부</th>
-			<td>
+			<td>기숙사 신청여부</td>
+			<td colspan="3">
 				<c:choose>
 					<c:when test="${not empty stdntVO.st_Brhs_At}">
 						${stdntVO.st_Brhs_At}

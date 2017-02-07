@@ -18,6 +18,8 @@
 	<a href="<%=request.getContextPath() %>/admin/admin_join" class="no-uline">관리자 가입</a><br/>
 	<a href="<%=request.getContextPath() %>/loginForm" class="no-uline">로그인</a><br/>
 	<a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a><br/>
+	<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a><br/>
+	<a href="<%=request.getContextPath() %>/schlship/schlshipList" class="no-uline">장학금</a><br/>
 		
 </body>
 </html>
