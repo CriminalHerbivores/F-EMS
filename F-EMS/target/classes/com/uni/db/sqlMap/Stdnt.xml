@@ -34,15 +34,6 @@
 		<isNotEqual prepend="st_Ihidnum"></isNotEqual>
 	</select> -->
 	
-	<!-- 학생 페이지로 출력 -->
-	<select id="selectNameStdntPage" parameterClass="str" resultClass="stdnt">
-		select * from stdnt where st_nm like '%$st_nm$%'
-		<isNotEqual prepend="st_Stdnt_No"></isNotEqual>
-		<isNotEqual prepend="st_Subjct_Code"></isNotEqual>
-		<isNotEqual prepend="st_Nm"></isNotEqual>
-		<isNotEqual prepend="st_Ihidnum"></isNotEqual>
-	</select>
-	
 
 	<update id="insertStdnt" parameterClass="stdnt">
 	insert into stdnt(
