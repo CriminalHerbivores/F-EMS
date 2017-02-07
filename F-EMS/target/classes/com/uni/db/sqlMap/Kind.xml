@@ -1,1 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Kind">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="kind" type="com.uni.fems.dto.KindVO" />
+
+	<!-- 강의종류 등록 -->
+	<update id="insertKind" parameterClass="kind">
+		insert into kind(knd_Lctre_No,knd_Lctre_Knd)
+			values(#knd_Lctre_No#,#knd_Lctre_Knd#)
+	</update>
+	
+	<!-- 강의종류 수정 -->
+	<update id="updateKind" parameterClass="kind">
+		update kind set knd_Lctre_No=#knd_Lctre_No#,knd_Lctre_Knd=#knd_Lctre_Knd#
+		where knd_Lctre_No=#knd_Lctre_No#
+	</update>
+	
+	</sqlMap>

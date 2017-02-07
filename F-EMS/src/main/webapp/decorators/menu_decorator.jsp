@@ -66,6 +66,7 @@ body{
 							<li><a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록 </a></li>
 							<li><a href="<%=request.getContextPath() %>/stdnt/stdntList" class="no-uline">학생 조회 </a></li>
 							<li><a href="<%=request.getContextPath() %>/stdnt/sknrgListForm" class="no-uline">학적 관리 </a></li>
+							<li><a href="<%=request.getContextPath() %>/schlship/schlshipList" class="no-uline">장학금 양삭</a></li>
 							<li><a href="#" class="no-uline">메뉴1 </a></li>
 						</ul></li>
 

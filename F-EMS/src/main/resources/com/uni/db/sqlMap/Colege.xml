@@ -1,1 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Colege">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="colege" type="com.uni.fems.dto.ColegeVO" />
+
+	<!-- 학과정보 등록 -->
+	<update id="insertColege" parameterClass="colege">
+		insert into colege(coleg_Code,coleg_Nm,coleg_Useyn)
+			values(#coleg_Code#,#coleg_Nm#,#coleg_Useyn#)
+	</update>
+	
+	<!-- 학과정보 수정 -->
+	<update id="updateColege" parameterClass="colege">
+		update colege set coleg_Code=#coleg_Code#,coleg_Nm=#coleg_Nm#,coleg_Useyn=#coleg_Useyn#
+		where coleg_Code=#coleg_Code#
+	</update>
+	
+	<!-- 학과 사용안함 -->
+	<update id="deleteColege" parameterClass="str">
+   update colege set coleg_Useyn='n' where coleg_Code=#coleg_Code#
+   </update>
+	
+	
+	</sqlMap><?xml version="1.0" encoding="UTF-8"?>
