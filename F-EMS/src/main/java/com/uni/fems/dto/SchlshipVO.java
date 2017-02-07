@@ -6,6 +6,7 @@ public class SchlshipVO {
 	private String ss_Schlship_Type;   // 유형
 	private int ss_Amount;   // 금액
 	private String ss_Papers_Content;   // 서류 내용
+	private String ss_File; // 첨부파일
 	public int getSs_Schlship_Code() {
 		return ss_Schlship_Code;
 	}
@@ -36,12 +37,19 @@ public class SchlshipVO {
 	public void setSs_Papers_Content(String ss_Papers_Content) {
 		this.ss_Papers_Content = ss_Papers_Content;
 	}
+	public String getSs_File() {
+		return ss_File;
+	}
+	public void setSs_File(String ss_File) {
+		this.ss_File = ss_File;
+	}
 	@Override
 	public String toString() {
 		return "SchlshipVO [ss_Schlship_Code=" + ss_Schlship_Code
 				+ ", ss_Schlship_Nm=" + ss_Schlship_Nm + ", ss_Schlship_Type="
 				+ ss_Schlship_Type + ", ss_Amount=" + ss_Amount
-				+ ", ss_Papers_Content=" + ss_Papers_Content + "]";
+				+ ", ss_Papers_Content=" + ss_Papers_Content + ", ss_File="
+				+ ss_File + "]";
 	}
-
+	
 }
