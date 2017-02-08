@@ -17,6 +17,7 @@
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
 		<pattern>/type_**</pattern>
+		<pattern>/find_**</pattern>
 	</excludes>
 	
 </decorators>

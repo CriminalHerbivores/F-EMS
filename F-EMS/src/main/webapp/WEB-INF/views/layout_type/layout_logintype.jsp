@@ -27,7 +27,7 @@
 				<tr><td><input type="password" class="def-input-text-md" name="password" placeholder="패스워드"></td></tr>
 				<tr><td colspan="2"><span id='change'>여기 아작스</span></td></tr>
 			</table></td></tr>
-		<tr><td><input type="button" class="def-btn" value="ID찾기"></td><td><input type="button" value="PW찾기"></td></tr>
+		<tr><td><input type="button" class="def-btn" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 	</table>
 </form>
 </article>
