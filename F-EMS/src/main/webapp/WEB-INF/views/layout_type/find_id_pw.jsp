@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
 <%@ page trimDirectiveWhitespaces="true"%>
+<%-- 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
@@ -16,6 +19,8 @@ function window_close(){
 	self.close();
 }
 </script> -->
+ --%>
+<html>
 <style>
 .city {display:none}
 </style>
@@ -135,7 +140,7 @@ function window_close(){
 </div>
 
 </div>
-
+<!-- 
 <script>
 document.getElementsByClassName("tablink")[0].click();
 
@@ -154,7 +159,7 @@ function openCity(evt, cityName) {
 }
 </script>
 
-<!-- ======================================================== -->
-
+========================================================
+-->
 </body>
-</html>
+</html> 

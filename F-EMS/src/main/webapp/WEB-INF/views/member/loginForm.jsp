@@ -84,8 +84,8 @@
 			<input type="text" name="userid" placeholder="아이디를 입력하시오" 
 				value="${param.userid }"/><br/><br/>		
 			<input type="password" name="password" placeholder="패스워드를 입력하시오"/><br /><br/>
-			<input style="background: #eeeeff;" type="button" value="로그인(json)"
-			  onclick="login_go();"/>
+			<!-- <input style="background: #eeeeff;" type="button" value="로그인(json)"
+			  onclick="login_go();"/> -->
 			<input style="background: #eeeeff;" type="submit" value="로그인(html)"  /> 
 		</form>
 	</div>
