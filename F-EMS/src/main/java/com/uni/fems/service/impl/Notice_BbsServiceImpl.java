@@ -51,6 +51,7 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException {
 		int totalRecord = notice_bbsDAO.totalNotice_Bbs();
 		return notice_bbsDAO.listAllNotice_Bbs(tpage, totalRecord,"");
+		
 	}
 	@Override
 	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No,Bbs_FlpthVO bbs_FlpthVO) throws SQLException {
