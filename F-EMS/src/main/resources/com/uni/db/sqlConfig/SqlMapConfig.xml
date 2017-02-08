@@ -23,7 +23,7 @@
 	<sqlMap resource="com/uni/db/sqlMap/Kind.xml" />-->
 	
 	
-	<sqlMap resource="com/uni/db/sqlMap/Lctre.xml" />
+	<!-- <sqlMap resource="com/uni/db/sqlMap/Lctre.xml" /> -->
 	
 	
 	<!-- <sqlMap resource="com/uni/db/sqlMap/Lctre_Flpth.xml" />aaaa

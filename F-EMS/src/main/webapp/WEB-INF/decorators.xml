@@ -16,6 +16,7 @@
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
+		<pattern>/type_**</pattern>
 	</excludes>
 	
 </decorators>
