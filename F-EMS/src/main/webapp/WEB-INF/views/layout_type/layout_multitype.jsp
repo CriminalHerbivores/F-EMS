@@ -14,7 +14,7 @@
 <body>
 
 <article>
-<!-- <form id="" action="/fems/logintype"  method="post" name="formm"> -->
+<form id=""  method="post" name="formm">
 
 	<table class="tb-border">
 	<tr><td colspan="2"><img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"></td>
@@ -27,7 +27,7 @@
 				<tr><td><input type="password" class="def-input-text-md" name="password" placeholder="패스워드"></td></tr>
 				<tr><td colspan="2"><span id='change'>여기 아작스</span></td></tr>
 			</table></td></tr>
-		<tr><td><input type="button" class="def-btn" value="ID찾기"></td><td><input type="button" value="PW찾기"></td></tr>
+		<tr><td><input type="button" class="def-btn" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 		<tr><td colspan="2">
 			<table class="tb-border">
 				<tr><td>메뉴1</td><td>메뉴2</td><td>메뉴3</td><td>메뉴4</td><td>메뉴5</td></tr>
