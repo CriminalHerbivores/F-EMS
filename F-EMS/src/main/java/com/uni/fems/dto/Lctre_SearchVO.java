@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 public class Lctre_SearchVO {
 	
+	private String column;
+	
 	// 건물 BUILDING
 	private String bd_No;   // 건물 번호
 	private String bd_Nm;   // 건물명
@@ -99,6 +101,12 @@ public class Lctre_SearchVO {
 	private String coleg_Code;   // 단과대학코드
 	private String coleg_Nm;   // 단과대학명
 	private String coleg_useyn;   // 단과대학 사용유무
+	public String getColumn() {
+		return column;
+	}
+	public void setColumn(String column) {
+		this.column = column;
+	}
 	public String getBd_No() {
 		return bd_No;
 	}
@@ -339,6 +347,18 @@ public class Lctre_SearchVO {
 	public void setLu_Presubjct(String lu_Presubjct) {
 		Lu_Presubjct = lu_Presubjct;
 	}
+	public int getKnd_Lctre_No() {
+		return knd_Lctre_No;
+	}
+	public void setKnd_Lctre_No(int knd_Lctre_No) {
+		this.knd_Lctre_No = knd_Lctre_No;
+	}
+	public String getKnd_Lctre_Knd() {
+		return knd_Lctre_Knd;
+	}
+	public void setKnd_Lctre_Knd(String knd_Lctre_Knd) {
+		this.knd_Lctre_Knd = knd_Lctre_Knd;
+	}
 	public String getIn_Stdnt_No() {
 		return in_Stdnt_No;
 	}
@@ -521,20 +541,21 @@ public class Lctre_SearchVO {
 	}
 	@Override
 	public String toString() {
-		return "Lctre_SearchVO [bd_No=" + bd_No + ", bd_Nm=" + bd_Nm
-				+ ", bd_useyn=" + bd_useyn + ", lr_Lctrum_No=" + lr_Lctrum_No
-				+ ", lr_Bd_No=" + lr_Bd_No + ", lr_Floor=" + lr_Floor
-				+ ", lr_Roomno=" + lr_Roomno + ", lr_Accept_Nmpr="
-				+ lr_Accept_Nmpr + ", lr_useyn=" + lr_useyn + ", lc_Lctre_No="
-				+ lc_Lctre_No + ", lc_Profsr_No=" + lc_Profsr_No
-				+ ", lc_Lctre_Code=" + lc_Lctre_Code + ", lc_Lctrbgn_Dt="
-				+ lc_Lctrbgn_Dt + ", lc_Lctre_Nmpr=" + lc_Lctre_Nmpr
-				+ ", lc_Wik_Lctre_Dayweek=" + lc_Wik_Lctre_Dayweek
-				+ ", lc_Lctre_Time=" + lc_Lctre_Time + ", lc_Pnt=" + lc_Pnt
-				+ ", lc_Grade=" + lc_Grade + ", lc_Lctrum_No=" + lc_Lctrum_No
-				+ ", lc_Open_At=" + lc_Open_At + ", lc_Lctre_Org="
-				+ lc_Lctre_Org + ", lc_Lctre_Evl_Score=" + lc_Lctre_Evl_Score
-				+ ", lc_Split=" + lc_Split + ", la_Lctre_No=" + la_Lctre_No
+		return "Lctre_SearchVO [column=" + column + ", bd_No=" + bd_No
+				+ ", bd_Nm=" + bd_Nm + ", bd_useyn=" + bd_useyn
+				+ ", lr_Lctrum_No=" + lr_Lctrum_No + ", lr_Bd_No=" + lr_Bd_No
+				+ ", lr_Floor=" + lr_Floor + ", lr_Roomno=" + lr_Roomno
+				+ ", lr_Accept_Nmpr=" + lr_Accept_Nmpr + ", lr_useyn="
+				+ lr_useyn + ", lc_Lctre_No=" + lc_Lctre_No + ", lc_Profsr_No="
+				+ lc_Profsr_No + ", lc_Lctre_Code=" + lc_Lctre_Code
+				+ ", lc_Lctrbgn_Dt=" + lc_Lctrbgn_Dt + ", lc_Lctre_Nmpr="
+				+ lc_Lctre_Nmpr + ", lc_Wik_Lctre_Dayweek="
+				+ lc_Wik_Lctre_Dayweek + ", lc_Lctre_Time=" + lc_Lctre_Time
+				+ ", lc_Pnt=" + lc_Pnt + ", lc_Grade=" + lc_Grade
+				+ ", lc_Lctrum_No=" + lc_Lctrum_No + ", lc_Open_At="
+				+ lc_Open_At + ", lc_Lctre_Org=" + lc_Lctre_Org
+				+ ", lc_Lctre_Evl_Score=" + lc_Lctre_Evl_Score + ", lc_Split="
+				+ lc_Split + ", la_Lctre_No=" + la_Lctre_No
 				+ ", la_Main_Txtbook=" + la_Main_Txtbook + ", la_Sub_Txtbook="
 				+ la_Sub_Txtbook + ", la_Lctre_Goal=" + la_Lctre_Goal
 				+ ", la_Lctre_Progrs_Form=" + la_Lctre_Progrs_Form
@@ -544,12 +565,13 @@ public class Lctre_SearchVO {
 				+ la_Atend + ", la_Attd=" + la_Attd + ", Lu_Lctre_Code="
 				+ Lu_Lctre_Code + ", Lu_Lctre_Nm=" + Lu_Lctre_Nm + ", Lu_Pnt="
 				+ Lu_Pnt + ", Lu_Compl_Se=" + Lu_Compl_Se + ", Lu_Presubjct="
-				+ Lu_Presubjct + ", in_Stdnt_No=" + in_Stdnt_No
-				+ ", in_Lctre_No=" + in_Lctre_No + ", pr_Profsr_No="
-				+ pr_Profsr_No + ", pr_Pw=" + pr_Pw + ", pr_Nm=" + pr_Nm
-				+ ", pr_Eng_Nm=" + pr_Eng_Nm + ", pr_Ihidnum=" + pr_Ihidnum
-				+ ", pr_Moblphon_No=" + pr_Moblphon_No
-				+ ", pr_House_Tlphon_No=" + pr_House_Tlphon_No
+				+ Lu_Presubjct + ", knd_Lctre_No=" + knd_Lctre_No
+				+ ", knd_Lctre_Knd=" + knd_Lctre_Knd + ", in_Stdnt_No="
+				+ in_Stdnt_No + ", in_Lctre_No=" + in_Lctre_No
+				+ ", pr_Profsr_No=" + pr_Profsr_No + ", pr_Pw=" + pr_Pw
+				+ ", pr_Nm=" + pr_Nm + ", pr_Eng_Nm=" + pr_Eng_Nm
+				+ ", pr_Ihidnum=" + pr_Ihidnum + ", pr_Moblphon_No="
+				+ pr_Moblphon_No + ", pr_House_Tlphon_No=" + pr_House_Tlphon_No
 				+ ", pr_Profsr_Tlphon_No=" + pr_Profsr_Tlphon_No
 				+ ", pr_Post_No=" + pr_Post_No + ", pr_Adres1=" + pr_Adres1
 				+ ", pr_Adres2=" + pr_Adres2 + ", pr_Email=" + pr_Email
@@ -564,5 +586,7 @@ public class Lctre_SearchVO {
 				+ ", coleg_Nm=" + coleg_Nm + ", coleg_useyn=" + coleg_useyn
 				+ "]";
 	}
+	
+	
 	
 }
