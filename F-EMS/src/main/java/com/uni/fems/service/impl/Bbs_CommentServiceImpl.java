@@ -18,23 +18,25 @@ public class Bbs_CommentServiceImpl implements Bbs_CommentService{
 	}
 
 	@Override
-	public List<Bbs_CommentVO> listAllBbs_Comment(int tpage) throws SQLException {
+	public List<Bbs_CommentVO> listAllBbs_Comment(int tpage, int bc_Bbs_No) throws SQLException {
 		
-		int totalRecord = bbs_CommentDAO.totalBbs_Comment();
+		int totalRecord = bbs_CommentDAO.totalBbs_Comment(bc_Bbs_No);
 		return bbs_CommentDAO.listAllBbs_Comment(tpage, totalRecord, "");
 		
 	}
 
 	@Override
-	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No)
-			throws SQLException {
-		return bbs_CommentDAO.getBbs_Comment(bc_Bbs_No);
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No, int tpage) throws SQLException{
+		int totalRecord = bbs_CommentDAO.totalBbs_Comment(bc_Bbs_No);
+		return bbs_CommentDAO.getBbs_Comment(bc_Bbs_No, tpage, totalRecord);
 	}
 	
 
 	@Override
 	public int insertBbs_Comment(Bbs_CommentVO bbs_Comment) throws SQLException {
 		return bbs_CommentDAO.insertBbs_Comment(bbs_Comment);
+		
+		
 		
 	}
 
@@ -51,14 +53,14 @@ public class Bbs_CommentServiceImpl implements Bbs_CommentService{
 	}
 
 	@Override
-	public int totalBbs_Comment() throws SQLException {
-		return bbs_CommentDAO.totalBbs_Comment();
+	public int totalBbs_Comment(int bc_Bbs_No) throws SQLException {
+		return bbs_CommentDAO.totalBbs_Comment(bc_Bbs_No);
 	}
 
 	@Override
-	public String pageNumber(int tpage, String key) throws SQLException {
-		int totalRecord = bbs_CommentDAO.totalBbs_Comment();
-		String page = new Paging().pageNumber(tpage,totalRecord,"commentList", "&key="+key);
+	public String pageNumber(int tpage, int bc_Bbs_No) throws SQLException {
+		int totalRecord = bbs_CommentDAO.totalBbs_Comment(bc_Bbs_No);
+		String page = new Paging().commentPageNumber(tpage,totalRecord,"commentList", "");
 		return page;
 	}
 

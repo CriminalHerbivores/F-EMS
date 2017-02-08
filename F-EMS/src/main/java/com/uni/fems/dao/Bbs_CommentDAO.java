@@ -9,7 +9,7 @@ public interface Bbs_CommentDAO {
 	
 	public List<Bbs_CommentVO> listAllBbs_Comment(int tpage, int totalRecord, String key) throws SQLException;
 	
-	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No) throws SQLException;
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No, int tpage, int totalRecord) throws SQLException;
 	
 	public int insertBbs_Comment(Bbs_CommentVO bbs_Comment) throws SQLException;
 	
@@ -17,7 +17,9 @@ public interface Bbs_CommentDAO {
 	
 	public int deleteBbs_Comment(int bc_Comnt_No) throws SQLException;
 	
-	public int totalBbs_Comment() throws SQLException;
+	public int totalBbs_Comment(int bc_Bbs_No) throws SQLException;
+	
+	
 	
 		
 	

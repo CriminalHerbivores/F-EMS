@@ -7,8 +7,8 @@ import com.uni.fems.dto.request.PageRequest;
 
 public class Paging {
 	
-	static int view_rows = 2; // 페이지의 개수
-	static int counts = 2; // 한 페이지에 나타낼 개수
+	static int view_rows = 4; // 페이지의 개수
+	static int counts = 5; // 한 페이지에 나타낼 개수
 	
 	/**
 	 * 검색어 변수 값의 유무 체크
@@ -129,6 +129,48 @@ public class Paging {
 		if (page_count > end_page) {
 			str += "<a href='"+p.getPath()+"?tpage=" + (end_page + 1) + p.getKey() + "'> &gt; </a>&nbsp;&nbsp;";
 			str += "<a href='"+p.getPath()+"?tpage=" + page_count + p.getKey() + "'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;
+	}
+	
+	public String commentPageNumber(int cpage, int totalRecord, String path, String key) 
+			throws SQLException {
+		
+		if(key==null){
+			key="";
+		}
+		
+		int page_count = totalRecord / counts;
+
+		if (totalRecord % counts != 0)
+			page_count++;
+
+		int page = cpage;
+		if (cpage % view_rows == 0)
+			page--;
+
+		int start_page = page - (page % view_rows) + 1;
+		int end_page = start_page + (view_rows - 1);
+
+		if (end_page > page_count)
+			end_page = page_count;
+
+		String str = "";
+		
+		if (start_page > view_rows) {
+			str += "<a href='"+path+"?cpage=1" + key + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='"+path+"?cpage=" + (start_page - 1) + key + "'>&lt;</a>&nbsp;&nbsp;";
+		}
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == cpage) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='"+path+"?cpage=" + i + key + "'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+		if (page_count > end_page) {
+			str += "<a href='"+path+"?cpage=" + (end_page + 1) + key + "'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='"+path+"?cpage=" + page_count + key + "'> &gt; &gt; </a>&nbsp;&nbsp;";
 		}
 		return str;
 	}
