@@ -39,35 +39,11 @@ public class CommentController {
 		this.bbs_CommentSvc = bbs_CommentSvc;
 	}
 
-	@RequestMapping(value="/commentList",  produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String commentList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request, HttpSession session,
-				Model model, HttpServletResponse response){
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		List<Bbs_CommentVO> commentList = null;
-		String bc_bbs_no = (String) jsonMap.get("bbs_no");
-		String cpage = request.getParameter("cpage");
-		String paging = "";
-		if(cpage==null)
-			cpage="1";
-		try {
-			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no), Integer.parseInt(cpage));
-			paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage),Integer.parseInt(bc_bbs_no));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//////////////////////////////////////////////////////////////////////
+	
+	public String getList(List<Bbs_CommentVO> commentList, String paging, String loginUser){
 		String comment="";
-		String loginUser = (String) session.getAttribute("loginUser");
+		
+		
 		for(Bbs_CommentVO data : commentList){
     	   	if(loginUser == data.getBc_User_Id()){
               comment += "<div id=\""
@@ -101,10 +77,45 @@ public class CommentController {
 		}
 		
 		comment += paging;
-		//////////////////////////////////////////////////////////////////////
 		
 		return comment;
+		
 	}
+	
+	
+	
+	@RequestMapping(value="/commentList",  produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String commentList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request, HttpSession session,
+				Model model, HttpServletResponse response){
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String loginUser = (String) session.getAttribute("loginUser");
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<Bbs_CommentVO> commentList = null;
+		String bc_bbs_no = (String) jsonMap.get("bbs_no");
+		String cpage = request.getParameter("cpage");
+		String paging = "";
+		if(cpage==null)
+			cpage="1";
+		try {
+			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no), Integer.parseInt(cpage));
+			paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage),Integer.parseInt(bc_bbs_no));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//////////////////////////////////////////////////////////////////////
+		return getList(commentList, paging, loginUser);
+		//////////////////////////////////////////////////////////////////////
+		
+	}
+	
 	
 	@RequestMapping(value="/insertComment", method = RequestMethod.POST)
 	@ResponseBody
