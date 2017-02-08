@@ -41,6 +41,7 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 		key = p.key(key);
 
 		int[] rows = p.row(tpage, totalRecord);
+		
 		List<Notice_BbsVO> listAllNotice_Bbs = client.queryForList("listAllNotice_Bbs",key, rows[1], rows[0]);
 		return listAllNotice_Bbs;
 	}
