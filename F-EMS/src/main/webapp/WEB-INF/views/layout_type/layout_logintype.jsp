@@ -15,7 +15,10 @@
 
 <form id="" action="/fems/logintype"  method="post" name="formm">
 
-	<table class="tb-border">
+<div class="custom-col-sm-10-top sidenav">
+<!-- <div class="array-center-step1">
+<div class="array-center-step2"> -->
+	<table class="tb-border array-center">
 	<tr><td rowspan="4"><img src="<%=request.getContextPath()%>/resources/images/fems_logo.png"></td>
 	<td colspan="2"><img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"></td></tr>
 	<tr><td colspan="2">	
@@ -28,6 +31,9 @@
 			</table></td></tr>
 		<tr><td><input type="button" class="def-btn" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 	</table>
+	</div>
+<!-- </div>
+</div> -->
 </form>
 
 <!-- Footer 시작 -->

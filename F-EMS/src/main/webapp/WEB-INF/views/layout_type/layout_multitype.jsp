@@ -14,12 +14,12 @@
 <body>
 
 <form id=""  method="post" name="formm">
-
-	<table class="tb-border">
+<div class="custom-col-sm-10-top sidenav text-left">
+	<table class="tb-border array-center">
 	<tr><td colspan="2"><img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"></td>
 		<td rowspan="4">여기에 공지사항</td></tr>
 	<tr><td colspan="2">	
-			<table class="def-table tb-border">
+			<table class="def-table tb-border ">
 				<tr><td><input type="text" class="def-input-text-md" name="id" placeholder="아이디"></td>
 					<td rowspan="2">
 					<input type="submit" class="def-btn" id="admin_join_btn" value="로그인" onclick="go_index()"></td></tr>
@@ -33,6 +33,7 @@
 			</table>		
 		</td></tr>
 	</table>
+</div>	
 </form>
 <!-- Footer 시작 -->
 	<footer class="footer container-fluid text-center">
