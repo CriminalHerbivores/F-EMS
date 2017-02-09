@@ -13,8 +13,7 @@
 </head>
 <body>
 
-<article>
-<!-- <form id="" action="/fems/logintype"  method="post" name="formm"> -->
+<form id="" action="/fems/logintype"  method="post" name="formm">
 
 	<table class="tb-border">
 	<tr><td rowspan="4"><img src="<%=request.getContextPath()%>/resources/images/fems_logo.png"></td>
@@ -30,8 +29,11 @@
 		<tr><td><input type="button" class="def-btn" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 	</table>
 </form>
-</article>
 
-<jsp:include page="/decorators/menu_decorator.jsp"></jsp:include>
+<!-- Footer 시작 -->
+	<footer class="footer container-fluid text-center">
+		<p>Footer Text</p>
+	</footer>
+	<!-- Footer 끝 -->
 </body>
 </html>

@@ -10,6 +10,8 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="/decorators/top_decorator.jsp"></jsp:include>
+
 <article>
 <form id="step4_modify" action="/fems/admin/layout_preview" method="post" name="formm">
 	
@@ -62,5 +64,7 @@
 
 </form>
 </article>
+
+<jsp:include page="/decorators/footer_decorator.jsp"></jsp:include>
 </body>
 </html>
