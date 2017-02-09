@@ -11,10 +11,15 @@
 <meta charset="UTF-8">
 <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 
 <script>
 // Get the modal
+$(document).ready(function(){
+    $("#course_able").load("<%=request.getContextPath()%>/find_id_pw");
+});
+
+
+
 var modal = document.getElementById('id01');
 
 // When the user clicks anywhere outside of the modal, close it -> 아무곳이나 눌러도 닫히도록 설정
@@ -29,7 +34,7 @@ window.onclick = function(event) {
 </head>
 <body>
 
-
+<form id="" action="/fems/menutype"  method="post" name="formm">
 			
 			
 			<table class="tb-border">
@@ -49,8 +54,12 @@ window.onclick = function(event) {
     <div class="w3-modal-content w3-animate-opacity modal-md">
       <div class="w3-container">
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
-        <jsp:include page="find_id_pw.jsp"></jsp:include>
-      </div>
+        <jsp:include page="find_id_pw.jsp"></jsp:include>       
+        
+        
+        
+        
+       </div>
     </div>
   </div>
   </div>
@@ -61,15 +70,15 @@ window.onclick = function(event) {
 		<tr><td><div>메뉴11</div></td><td><div>메뉴12</div></td><td><div>메뉴13</div></td><td><div>메뉴14</div></td><td><div>메뉴15</div></td></tr>	
 	</table>
 		
-	
+</form>	
 
 
 
-
-
-
-
-
+<!-- Footer 시작 -->
+	<footer class="footer container-fluid text-center">
+		<p>Footer Text</p>
+	</footer>
+	<!-- Footer 끝 -->
 
 </body>
 </html>

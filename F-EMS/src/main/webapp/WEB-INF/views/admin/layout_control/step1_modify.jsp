@@ -20,6 +20,7 @@ border:0;
 </head>
 <body>
 <article>
+<jsp:include page="/decorators/top_decorator.jsp"></jsp:include>
 
 <form id="step1_modify" action="/fems/admin/step2_modify" method="post" name="formm">
 	
@@ -114,5 +115,7 @@ border:0;
 </div>
 </form>
 </article>
+
+<jsp:include page="/decorators/footer_decorator.jsp"></jsp:include>
 </body>
 </html>
