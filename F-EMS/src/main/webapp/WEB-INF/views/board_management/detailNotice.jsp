@@ -59,11 +59,17 @@ $(document).on('click','.pageComment',function(e){
 });
 
 function commm_go(){
-	var bbs_no = $('#bbs_no').val();
+	
 	var comment_content = $('#comment_content').val();
+	if(comment_content == ""){
+		alert('실패');
+		return;
+	}
+	var bbs_no = $('#bbs_no').val();
 	var dataWrite={
 			'bbs_no' : bbs_no,
 			'comment_content' : comment_content
+	
 	};
 	$.ajax({
 		url : '<%=request.getContextPath()%>/notice_bbs/insertComment',
@@ -89,7 +95,7 @@ $(document).on('click','.deleteComment',function(e){
     var bc_bbs_no = $('#bbs_no').val();
     var data = {
 			"result" : result,
-			"bc_bbs_no" : bc_bbs_no
+			"bc_bbs_no" : bc_bbs_no	
 		};
     $.ajax({
        url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
@@ -217,7 +223,6 @@ $(document).on('click','.realupdateComment',function(e){
 
 		</table>
 
-		<div id="comment"></div>
 		<!-- 댓글부분 -->
 
 
@@ -226,6 +231,7 @@ $(document).on('click','.realupdateComment',function(e){
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
 			name="comment_content"></textarea>
 		<input type="button" value="확인" id="btnSave" onclick="commm_go();">
+		<div id="comment"></div>
 		<input type="hidden" value="${loginUser}" id="loginUser">
 
 	</form>
