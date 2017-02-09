@@ -23,6 +23,9 @@ public class ProfsrController {
 
 	@Autowired
 	private ProfsrService profsrService;
+	public void setProfsrService(ProfsrService profsrService) {
+		this.profsrService = profsrService;
+	}
 
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.GET)
 	String profsrInsertForm() {
