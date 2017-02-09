@@ -35,9 +35,9 @@ window.onclick = function(event) {
 <body>
 
 <form id="" action="/fems/menutype"  method="post" name="formm">
+		<div class="custom-col-sm-10-top sidenav text-left">	
 			
-			
-			<table class="tb-border">
+			<table class="tb-border array-center">
 	<tr><td colspan="3"><img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"></td>
 	<td colspan="2" rowspan="2"><img src="<%=request.getContextPath()%>/resources/images/fems_logo.png"></td></tr>
 	<tr><td colspan="3">	
@@ -50,18 +50,17 @@ window.onclick = function(event) {
 		<tr><td><div class="w3-container">
   <button onclick="document.getElementById('id01').style.display='block'" class="">ID/PW 찾기</button>
   
- <div id="id01" class="w3-modal">
+  <!-- ///////////////////// modal START ///////////////////// -->
+<%--  <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-animate-opacity modal-md">
       <div class="w3-container">
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
         <jsp:include page="find_id_pw.jsp"></jsp:include>       
-        
-        
-        
-        
        </div>
     </div>
-  </div>
+  </div> --%>
+  <!-- ///////////////////// modal END ///////////////////// -->
+  
   </div>
 		
 		</td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
@@ -69,7 +68,7 @@ window.onclick = function(event) {
 		<tr><td><div>메뉴6</div></td><td><div>메뉴7</div></td><td><div>메뉴8</div></td><td><div>메뉴9</div></td><td><div>메뉴10</div></td></tr>	
 		<tr><td><div>메뉴11</div></td><td><div>메뉴12</div></td><td><div>메뉴13</div></td><td><div>메뉴14</div></td><td><div>메뉴15</div></td></tr>	
 	</table>
-		
+		</div>
 </form>	
 
 

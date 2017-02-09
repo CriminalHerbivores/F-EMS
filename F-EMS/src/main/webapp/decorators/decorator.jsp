@@ -276,7 +276,7 @@
 			</div>
 			<!-- ////////////////// -->
 
-			<div class="custom-col-sm-10 sidenav text-left">
+			<div class="custom-col-sm-8 sidenav text-left">
 				<decorator:body />
 			</div>
 		</div>

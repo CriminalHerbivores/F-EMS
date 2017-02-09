@@ -146,7 +146,7 @@
 			<table><tr><td>여기 스케쥴러</td></tr></table>
 			</div>
 			</div>
-			<div class="custom-col-sm-10 sidenav text-left">
+			<div class="custom-col-sm-8 sidenav text-left">
 			<table class="def-table tb-border">
 				<tr><td>게시판1</td><td>게시판2</td></tr>
 				<tr><td>게시판3</td><td>게시판4</td></tr>

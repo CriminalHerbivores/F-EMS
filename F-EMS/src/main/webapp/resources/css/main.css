@@ -21,7 +21,38 @@
 }
 
 .margin-auto {
-	margin: auto;
+	margin: 0 auto;
+}
+
+
+.array-center{
+	box-sizing: inherit;
+	margin:17% auto;
+}
+
+.array-center-step1 {
+	
+
+	/* position:relative; */
+
+	/* 
+	display:table-cell; 
+	vertical-align:middle;
+	text-align:center;
+	display:inline-block; */
+}
+
+.array-center-step2 {
+	/* position:absolute; */
+	/* 	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0; */
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .text-indentation {
@@ -48,8 +79,8 @@
 }
 
 .def-table {
-	margin: 5px;
-	width: 98%;
+	margin: 5px auto;
+	width: 80%;
 	height: 98%;
 	/* border:1px solid #000; */
 }
@@ -75,6 +106,12 @@
 .combobox-lg {
 	width: 150px;
 	height: 25px;
+}
+
+a:hover {
+	text-decoration: none;
+	text-decoration: none !important;
+	color: inherit;
 }
 
 /* ///// 관리자페이지 드롭다운 ///// */
@@ -126,4 +163,7 @@
 /* 이미 있는 것 */
 /* .modal-lg{width:900px}
 .modal-sm{width:300px} */
-.modal-md{width: 600px;}
+.modal-md {
+	width: 600px;
+}
+
