@@ -17,7 +17,7 @@
 <html>
 <head>
 <title>
-<decorator:title default="F-EMS 시작하기"/>
+<decorator:title default="F-EMS"/>
 </title>
 
 <meta charset="utf-8">
@@ -35,6 +35,7 @@
 </body>
 
 <!--  ============= css =============  -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/accordion.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />

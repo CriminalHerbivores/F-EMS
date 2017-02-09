@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 
 <%@ page trimDirectiveWhitespaces="true"%>
-<%-- 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
@@ -14,12 +13,6 @@
 <meta charset=UTF-8">
 <title></title>
 </head>
-<!-- <script>
-function window_close(){
-	self.close();
-}
-</script> -->
- --%>
 <html>
 <style>
 .city {display:none}
@@ -43,7 +36,6 @@ function window_close(){
   </ul>
 
   <div id="find_id" class="w3-container city">
-   
 	<img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"
 		id="logo">
 		<table class="tb-border">
@@ -54,11 +46,10 @@ function window_close(){
 				<tr><td>생년월일</td><td>
 					<select name="년도" class="combobox-md">
 					<option value="1"></option>
-					<%-- <c:forEach var="year" begin="2017" end="1930" step="-1">
+					<c:forEach var="year" begin="2017" end="1930" step="-1">
 					<option value="year">year</option>
-					</c:forEach> --%>
+					</c:forEach>
 				</select> 
-				
 				</td></tr>
 				<tr><td>성별</td><td>
 					<select name="선택" class="combobox-md">
@@ -74,9 +65,9 @@ function window_close(){
 				<tr><td>이메일</td><td>
 					<select name="이메일" class="combobox-md">
 					<option value="@gmail.com">@gmail.com</option>
-					<%-- <c:forEach var="year" begin="2017" end="1930" step="-1">
+					<c:forEach var="year" begin="2017" end="1930" step="-1">
 					<option value="year">year</option>
-					</c:forEach> --%>
+					</c:forEach>
 				</select> 
 				
 				</td></tr>
@@ -90,12 +81,8 @@ function window_close(){
 			<tr><td><button
 						class="def-btn" value="닫기" onclick="window_close()">닫기</button></td></tr>
 		</table>
-   
    </div>
-
   <div id="find_pw" class="w3-container city">
-   
-   
 	<img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"
 		id="logo">
 		<table class="tb-border">
@@ -107,11 +94,10 @@ function window_close(){
 				<tr><td>생년월일</td><td>
 					<select name="년도" class="combobox-md">
 					<option value="1"></option>
-					<%-- <c:forEach var="year" begin="2017" end="1930" step="-1">
+					<c:forEach var="year" begin="2017" end="1930" step="-1">
 					<option value="year">year</option>
-					</c:forEach> --%>
+					</c:forEach>
 				</select> 
-				
 				</td></tr>
 				<tr><td>성별</td><td>
 					<select name="선택" class="combobox-md">
@@ -121,14 +107,9 @@ function window_close(){
 				</td></tr>			
 			<tr><td>비밀번호 확인 <input type="radio" name="find_pw" value="이메일">이메일&nbsp;&nbsp;<input type="radio" name="find_pw" value="휴대폰">휴대폰</td></tr>
 			</table></td></tr>
-			
-			
 			<tr><td><button
 						class="def-btn" value="닫기" onclick="window_close()">닫기</button></td></tr>
 		</table>
-
-   
-   
   </div>
 
 
@@ -140,26 +121,61 @@ function window_close(){
 </div>
 
 </div>
-<!-- 
-<script>
-document.getElementsByClassName("tablink")[0].click();
 
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].classList.remove("w3-light-grey");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.classList.add("w3-light-grey");
+</body>
+</html>  --%>
+
+
+
+
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="decorator"
+	uri="http://www.opensymphony.com/sitemesh/decorator"%>
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/lib/w3.css">
+<body>
+
+<div class="w3-container">
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn">Open Modal</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-8 w3-animate-opacity">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-closebtn">&times;</span>
+        <h2>Modal Header</h2>
+      </header>
+      <div class="w3-container">
+        <p>You have two options to close this modal:</p>
+        <p>Click on the "x" or click anywhere outside of the modal!</p>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 </script>
 
-========================================================
--->
 </body>
-</html> 
+</html>

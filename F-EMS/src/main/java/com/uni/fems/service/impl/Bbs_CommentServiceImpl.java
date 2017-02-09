@@ -58,9 +58,9 @@ public class Bbs_CommentServiceImpl implements Bbs_CommentService{
 	}
 
 	@Override
-	public String pageNumber(int tpage, int bc_Bbs_No) throws SQLException {
+	public String pageNumber(int cpage, int bc_Bbs_No) throws SQLException {
 		int totalRecord = bbs_CommentDAO.totalBbs_Comment(bc_Bbs_No);
-		String page = new Paging().commentPageNumber(tpage,totalRecord,"commentList", "");
+		String page = new Paging().commentPageNumber(cpage,totalRecord,"detailNotice", "");
 		return page;
 	}
 

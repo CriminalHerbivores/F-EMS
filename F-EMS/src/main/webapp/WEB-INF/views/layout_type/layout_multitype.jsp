@@ -13,7 +13,6 @@
 </head>
 <body>
 
-<article>
 <form id=""  method="post" name="formm">
 
 	<table class="tb-border">
@@ -35,8 +34,11 @@
 		</td></tr>
 	</table>
 </form>
-</article>
+<!-- Footer 시작 -->
+	<footer class="footer container-fluid text-center">
+		<p>Footer Text</p>
+	</footer>
+	<!-- Footer 끝 -->
 
-<jsp:include page="/decorators/menu_decorator.jsp"></jsp:include>
 </body>
 </html>

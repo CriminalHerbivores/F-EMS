@@ -6,16 +6,10 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
-<%
-	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-cache");
-	response.addHeader("Cache-Control", "no-store");
-	response.setDateHeader("Expires", 1L);
-%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta charset="UTF-8">
 <title>
 </title>
 </head>
@@ -129,6 +123,7 @@
 
 
 	<!-- 상단 메뉴 끝 -->
+
 
 </body>
 </html>
