@@ -158,20 +158,21 @@ public class Paging {
 		String str = "";
 		
 		if (start_page > view_rows) {
-			str += "<a href='"+path+"?cpage=1" + key + "'>&lt;&lt;</a>&nbsp;&nbsp;";
-			str += "<a href='"+path+"?cpage=" + (start_page - 1) + key + "'>&lt;</a>&nbsp;&nbsp;";
+			str += "<a href=\"\" id=\"1\" class=\"pageComment\"> &lt; &lt; </a>&nbsp;&nbsp;";
+			str += "<a href=\"\" id=\"" + (start_page - 1) + "\"  class=\"pageComment\">&lt;</a>&nbsp;&nbsp;";
 		}
 		for (int i = start_page; i <= end_page; i++) {
 			if (i == cpage) {
-				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+				str += "<font color=red>[" + i + "]</font>&nbsp;&nbsp;";
 			} else {
-				str += "<a href='"+path+"?cpage=" + i + key + "'>[" + i + "]</a>&nbsp;&nbsp;";
+				str += "<a href=\"\" id=\""+i+"\" class=\"pageComment\">["+i+"]</a>&nbsp;&nbsp;";
 			}
 		}
 		if (page_count > end_page) {
-			str += "<a href='"+path+"?cpage=" + (end_page + 1) + key + "'> &gt; </a>&nbsp;&nbsp;";
-			str += "<a href='"+path+"?cpage=" + page_count + key + "'> &gt; &gt; </a>&nbsp;&nbsp;";
+			str += "<a href=\"\" id=\"" + (end_page + 1) + "\" class=\"pageComment\"> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href=\"\" id=\"" +  page_count + "\" class=\"pageComment\"> &gt; &gt; </a>&nbsp;&nbsp;";
 		}
+		
 		return str;
 	}
 }

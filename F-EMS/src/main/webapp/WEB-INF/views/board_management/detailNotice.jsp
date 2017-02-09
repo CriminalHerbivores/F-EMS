@@ -15,7 +15,6 @@ $(document).ready(function() {
 	var bbs_no = $('#bbs_no').val();
     var data ={'bbs_no' : bbs_no};
     
-    
     $.ajax({
        url:'<%=request.getContextPath()%>/notice_bbs/commentList',
        contentType:'application/json; charset=utf-8',
@@ -26,6 +25,32 @@ $(document).ready(function() {
     	   $('#comment_content').val('');
 	       $('div #comment').empty();
         $('div #comment').append(data);
+     },
+       error:function(error){
+       alert("오류났음");   
+       }
+    });
+});
+$(document).on('click','.pageComment',function(e){
+    e.preventDefault();
+    var cpage = $(this).attr('id');
+    
+	var bbs_no = $('#bbs_no').val();
+    var data ={
+    		'bbs_no' : bbs_no,
+    		'cpage' : cpage
+    		};
+    
+    $.ajax({
+       url:'<%=request.getContextPath()%>/notice_bbs/commentList',
+       contentType:'application/json; charset=utf-8',
+       dataType:'text',
+       data:JSON.stringify(data),
+       type:'post',
+       success : function(data){
+    	   $('#comment_content').val('');
+	       $('div #comment').empty();
+           $('div #comment').append(data);
      },
        error:function(error){
        alert("오류났음");   
@@ -57,7 +82,7 @@ function commm_go(){
 	      }
 	   });
 	}
-	
+
 $(document).on('click','.deleteComment',function(e){
     e.preventDefault();
     var result = $(this).attr('id');
@@ -200,8 +225,8 @@ $(document).on('click','.realupdateComment',function(e){
 			name="bbs_no">
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
 			name="comment_content"></textarea>
-		</td> <input type="button" value="확인" id="btnSave" onclick="commm_go();">
-		</td> <input type="hidden" value="${loginUser}" id="loginUser">
+		<input type="button" value="확인" id="btnSave" onclick="commm_go();">
+		<input type="hidden" value="${loginUser}" id="loginUser">
 
 	</form>
 
