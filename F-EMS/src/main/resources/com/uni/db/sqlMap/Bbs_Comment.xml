@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="getBbs_Comment" parameterClass="int" resultClass="bbs_comment">
-		select * from bbs_comment where bc_bbs_no=#bc_Bbs_No# order by bc_writng_dt desc 
+		select * from bbs_comment where bc_bbs_no=#bc_Bbs_No# order by bc_writng_dt desc
 	</select>
 	
 	<update id="insertBbs_Comment" parameterClass="bbs_comment">

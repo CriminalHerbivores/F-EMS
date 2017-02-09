@@ -93,7 +93,7 @@ public class CommentController {
 		String loginUser = (String) session.getAttribute("loginUser");
 		List<Bbs_CommentVO> commentList = null;
 		String bc_bbs_no = (String) jsonMap.get("bbs_no");
-		String cpage = request.getParameter("cpage");
+		String cpage = (String) jsonMap.get("cpage");
 		String paging = "";
 		if(cpage==null)
 			cpage="1";
