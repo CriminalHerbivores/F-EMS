@@ -35,21 +35,18 @@
 
 <script>
 	function get_msg(message) {
-		var move = '70px';
 		jQuery('#message').text(message);
-		jQuery('#message').animate({
-			top : '+=' + move
-		}, 'slow', function() {
-			jQuery('#message').delay(1000).animate({
-				top : '-=' + move
-			}, 'slow');
-		});
+		$('#message').show(300).delay(500);
+		$('#message').hide(300).delay(500);
 	}
 	<c:if test="${error == 'true'}">
 	jQuery(function() {
-		get_msg("로그인 실패하였습니다.");
+		get_msg("로그인실패하였습니다.");
 	});
 	</c:if>
+	function emptyMsg(){
+		get_msg("");
+	}
 	function login_go() {
 		$.ajax({
 			url : 'login',
@@ -67,7 +64,7 @@
 				get_msg(message);
 			if (error == false) {
 				if (returl == '')
-					returl = '<c:url value="/member/memberList" />';
+					returl = '<c:url value="/" />';
 				location.href = returl;
 			}
 		});
@@ -84,15 +81,13 @@
 			<input type="text" name="userid" placeholder="아이디를 입력하시오" 
 				value="${param.userid }"/><br/><br/>		
 			<input type="password" name="password" placeholder="패스워드를 입력하시오"/><br /><br/>
-			<!-- <input style="background: #eeeeff;" type="button" value="로그인(json)"
-			  onclick="login_go();"/> -->
-			<input style="background: #eeeeff;" type="submit" value="로그인(html)"  /> 
+			<input style="background: #eeeeff;" type="button" value="로그인"
+			  onclick="login_go();"/>
+			<!-- <input style="background: #eeeeff;" type="submit" value="로그인(html)"  /> --> 
+			<div><span id="message"></span></div>
 		</form>
 	</div>
 	<div> 
-		<div id="message" style="width:300px;position:absolute; 
-		top:-60px;border: 1px;border-color: #000;">
-		</div>
 	</div>
 
 </body>
