@@ -36,7 +36,7 @@ body {
 				<tr>
 					<td>수강신청</td>
 					<td>관심삭제</td>
-					<td>강의번호</td>
+					<td>강의코드</td>
 					<td>강의명</td>
 					<td>시수학점</td>
 					<td>이수구분</td>
@@ -47,26 +47,23 @@ body {
 					<td>암거나</td>
 					<td>비고</td>
 				</tr>
-				
-				<%-- <c:forEach items="${memberList}" var="memberVO">
+<%-- 				
+				<c:forEach items="${lctreList}" var="lctreVO">
 				<tr>
-					<td>${memberVO.id}<c:choose>
-							<c:when test='${memberVO.useyn=="y"}'>
-								<input type="checkbox" name="useyn" disabled="disabled">
-							</c:when>
-							<c:otherwise>
-								<input type="checkbox" name="useyn" checked="checked"
-									disabled="disabled">
-							</c:otherwise>
-						</c:choose>
-					</td>
-					<td>${memberVO.name}</td>
-					<td>${memberVO.email}</td>
-					<td>${memberVO.phone}</td>
-					<td>${memberVO.authority }
+					<td><input type="button" class="" value="수강신청"></td>
+					<td><input type="button" class="" value="관심추가"></td>
+					<td><%-- ${lctre_SearchVO.lu_Lctre_Code} --%>-${lctre_SearchVO.lc_Split}</td>
+<%-- 					<td>${lctre_SearchVO.Lu_Lctre_Nm}</td> --%>
+<%-- 					<td>${lctre_SearchVO.Lu_Pnt}</td> --%>
+<%-- 					<td>${lctre_SearchVO.pr_Nm}</td> --%>
+<%-- 					<td>${lctreVO.lc_Lctre_Time}</td> --%>
+<%-- 					<td>${lctreVO.lc_Lctre_Nmpr}</td> --%>
+<%-- 					<td>${lctre_SearchVO.lr_Accept_Nmpr}</td> 
+					<td>암거나</td>
+					<td>비고</td>
 				</tr>
-			</c:forEach> --%>
-				
+			</c:forEach>
+--%>				
 				
 				
 				

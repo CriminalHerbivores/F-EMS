@@ -16,8 +16,7 @@ public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	}
 
 	@Override
-	public List<Bbs_CommentVO> listAllBbs_Comment(int tpage, int totalRecord,
-			String key) throws SQLException {
+	public List<Bbs_CommentVO> listAllBbs_Comment(int tpage, int totalRecord, String key) throws SQLException {
 		Paging p = new Paging();
 		key = p.key(key);
 		int[] rows = p.row(tpage, totalRecord);
@@ -26,10 +25,12 @@ public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	}
 
 	@Override
-	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No)
-			throws SQLException {
-			
-		return client.queryForList("getBbs_Comment",bc_Bbs_No);
+	public List<Bbs_CommentVO> getBbs_Comment(int bc_Bbs_No, int tpage, int totalRecord)throws SQLException {
+		
+		Paging p = new Paging();
+		int[] rows = p.row(tpage,totalRecord);
+		List<Bbs_CommentVO> getBbs_Comment = client.queryForList("getBbs_Comment",bc_Bbs_No,rows[1],rows[0]); 
+		return getBbs_Comment;
 	}
 
 
@@ -50,9 +51,9 @@ public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	}
 
 	@Override
-	public int totalBbs_Comment() throws SQLException {
+	public int totalBbs_Comment(int bc_Bbs_No) throws SQLException {
 		int total_pages = 0;
-		total_pages = (Integer) client.queryForObject("totalBbs_Comment",null);
+		total_pages = (Integer) client.queryForObject("totalBbs_Comment",bc_Bbs_No);
 		return total_pages;
 	}
 

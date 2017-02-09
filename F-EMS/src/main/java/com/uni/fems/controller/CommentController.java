@@ -1,6 +1,10 @@
 package com.uni.fems.controller;
 
+
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,22 +39,83 @@ public class CommentController {
 		this.bbs_CommentSvc = bbs_CommentSvc;
 	}
 
-	@RequestMapping(value="/commentList", method = RequestMethod.POST)
+	
+	public String getList(List<Bbs_CommentVO> commentList, String paging, String loginUser){
+		String comment="";
+		
+		
+		for(Bbs_CommentVO data : commentList){
+    	   	if(loginUser == data.getBc_User_Id()){
+              comment += "<div id=\""
+                     + data.getBc_Comnt_No()   
+                     + "\">아이디 : "
+                     + data.getBc_User_Id()
+                     + "  /  " + "작성 날짜 : "
+                  + data.getBc_Writng_Dt().toString()
+                  +"<a href=\"\" id=\""
+                     +data.getBc_Comnt_No()
+                     +"\" " 
+                     +"class=\"updateComment\" name=\"updateComment\"><input type=\"button\" class=\"def-btn\" value=\"수정\"></a>"
+                  +"<a href=\"\" id=\""
+                     +data.getBc_Comnt_No()
+                     +"\" " 
+                     +"class=\"deleteComment\" name=\"deleteComment\"><input type=\"button\" class=\"def-btn\" value=\"삭제\"></a>"
+                  + "<div>  ->"
+                     + data.getBc_Comnt_Content()
+                     +"</div></div><br><br>";
+        	   	}else{
+        	   		comment += "<div id=\""
+    	                 + data.getBc_Comnt_No()   
+    	                 + "\">아이디 : "
+    	                 + data.getBc_User_Id()
+    	                 + "  /  " + "작성 날짜 : "
+    	              + data.getBc_Writng_Dt().toString()
+    	              + "<div>  ->"
+    	                 + data.getBc_Comnt_Content()
+    	                 +"</div></div><br><br>";
+    	   	}    
+		}
+		
+		comment += paging;
+		
+		return comment;
+		
+	}
+	
+	
+	
+	@RequestMapping(value="/commentList",  produces = "application/text; charset=utf8")
 	@ResponseBody
-	public List<Bbs_CommentVO> commentList(@RequestBody Map<String, Object> jsonMap,
+	public String commentList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request, HttpSession session,
 				Model model, HttpServletResponse response){
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String loginUser = (String) session.getAttribute("loginUser");
+		Map<String,Object> map = new HashMap<String,Object>();
 		List<Bbs_CommentVO> commentList = null;
 		String bc_bbs_no = (String) jsonMap.get("bbs_no");
+		String cpage = request.getParameter("cpage");
+		String paging = "";
+		if(cpage==null)
+			cpage="1";
 		try {
-			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no));
+			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no), Integer.parseInt(cpage));
+			paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage),Integer.parseInt(bc_bbs_no));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return commentList;
+		//////////////////////////////////////////////////////////////////////
+		return getList(commentList, paging, loginUser);
+		//////////////////////////////////////////////////////////////////////
+		
 	}
+	
 	
 	@RequestMapping(value="/insertComment", method = RequestMethod.POST)
 	@ResponseBody
@@ -117,6 +182,35 @@ public class CommentController {
 			// 게시판 내용 set, where
 			
 		}
+		
+		@RequestMapping(value="/realupdateComment", method=RequestMethod.POST)
+		@ResponseBody
+		public List<Bbs_CommentVO> realupdateComment(String content,int bbs_no, int cmntNo, HttpServletRequest request){
+			
+			List<Bbs_CommentVO> listlist = null;
+			Bbs_CommentVO bbs_commentVO = new Bbs_CommentVO();
+			
+			bbs_commentVO.setBc_Comnt_Content(content);
+			bbs_commentVO.setBc_Comnt_No(cmntNo);
+			
+			System.out.println("============"+content);
+			System.out.println("============"+bbs_no);
+			System.out.println("============"+cmntNo);
+			
+			
+			try {
+				bbs_CommentSvc.updateBbs_Comment(bbs_commentVO);
+				listlist = bbs_CommentSvc.getBbs_Comment(bbs_no);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return listlist;
+			
+			// 게시판 내용 set, where
+			
+		}
+		
 		
 	}
 	

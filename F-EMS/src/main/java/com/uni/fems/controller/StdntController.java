@@ -31,8 +31,10 @@ public class StdntController {
 
 	@Autowired
 	private StdntService stdntService;
-	
-	
+	public void setStdntService(StdntService stdntService) {
+		this.stdntService = stdntService;
+	}
+
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.GET)
 	String stdntInsertForm(){
 		String url = "manager/student/stdntInsertForm";

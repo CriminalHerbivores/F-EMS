@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.service.ProfsrService;
 import com.uni.fems.service.SklstfService;
+import com.uni.fems.service.StdntService;
 
 
 @Controller
@@ -21,6 +23,19 @@ public class SklstfController {
 
 	@Autowired
 	private SklstfService sklstfService;
+	public void setSklstfService(SklstfService sklstfService) {
+		this.sklstfService = sklstfService;
+	}
+	@Autowired
+	private StdntService stdntService;
+	public void setStdntService(StdntService stdntService) {
+		this.stdntService = stdntService;
+	}
+	@Autowired
+	private ProfsrService profsrService;
+	public void setProfsrService(ProfsrService profsrService) {
+		this.profsrService = profsrService;
+	}
 	
 	@RequestMapping(value="/sklstfUpdate", method = RequestMethod.GET)
 	public String sklstfUpdateForm(HttpSession session, Model model){
@@ -49,5 +64,15 @@ public class SklstfController {
 		
 		return url;
 	}
-
+	
+	@RequestMapping(value="stdntBrhs", method = RequestMethod.GET)
+	public String stdntBrhs(){
+		String url ="manager/student/";
+		return url;
+	}
+	@RequestMapping(value="stdntBrhs", method = RequestMethod.POST)
+	public String updatestdntBrhs(){
+		String url ="";
+		return url;
+	}
 }

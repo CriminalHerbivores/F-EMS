@@ -1,6 +1,7 @@
 package com.uni.fems.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dao.LctreDAO;
+import com.uni.fems.dao.impl.LctreDAOImpl;
 import com.uni.fems.dto.LctreVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.service.LctreService;
 
 @Controller
@@ -21,16 +25,45 @@ import com.uni.fems.service.LctreService;
 public class LctreController {
 
 	
-//	@Autowired
-//	LctreService lctreService;
+	@Autowired
+	LctreService lctreService;
 	
 	
 	// 수강신청 메인
 	@RequestMapping("/course_list")
 	public String courseListForm(HttpServletRequest request, HttpSession session) {
 		String url = "course_registration/course_list";
+		
+//		Lctre_SearchVO lctre_SearchVO = lctreService.insertLctre_Search();
+//		lctre_SearchVO=  lctreService.updateLctre_Search(lctre_SearchVO, request);
+//		
+//		LctreDAO lctreDAO = LctreDAOImpl.getInstance();
+//		
+//		ArrayList<LctreVO> lctreList = null;
+//		
+//
+//		try {
+//			lctreList = lctreDAO.listLctre(lctre_SearchVO);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		request.setAttribute("lctreList", lctreList);
+		//request.setAttribute("order", lctre_SearchVO.getColumn());
+		
 		return url;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 수강신청 가능 목록
 //	@RequestMapping("/course_able")
