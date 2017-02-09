@@ -47,13 +47,14 @@ public class CommentController {
 			loginUser="Guest";
 		
 		for(Bbs_CommentVO data : commentList){
+			String replyTime = data.getBc_Writng_Dt().toString();
     	   	if(loginUser.equals(data.getBc_User_Id()) ){
               comment += "<div id=\""
                      + data.getBc_Comnt_No()   
                      + "\">아이디 : "
                      + data.getBc_User_Id()
                      + "  /  " + "작성 날짜 : "
-                  + data.getBc_Writng_Dt().toString()
+                  + replyTime.substring(0, replyTime.length()-2)
                   +"<a href=\"\" id=\""
                      +data.getBc_Comnt_No()
                      +"\" " 
@@ -128,6 +129,7 @@ public class CommentController {
 		bbs_commentVO.setBc_Bbs_No(bc_bbs_no);
 		bbs_commentVO.setBc_Comnt_Content((String) jsonMap.get("comment_content"));
 		
+		
 		String cpage = request.getParameter("cpage");
 		String paging = "";
 		if(cpage==null)
@@ -168,7 +170,7 @@ public class CommentController {
 			try {
 				bbs_CommentSvc.deleteBbs_Comment(bc_comcnt_no);
 				commentList = bbs_CommentSvc.getBbs_Comment(bc_bbs_no, Integer.parseInt(cpage));
-				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage),bc_bbs_no);
+				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage), bc_bbs_no);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -196,6 +198,7 @@ public class CommentController {
 			
 			try {
 				commentList = bbs_CommentSvc.getBbs_Comment(bc_bbs_no, Integer.parseInt(cpage));
+				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage), bc_bbs_no);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -204,13 +207,14 @@ public class CommentController {
 			String comment="";
 			
 			for(Bbs_CommentVO data : commentList){
+				String replyTime = data.getBc_Writng_Dt().toString();
 	    	   	if(loginUser.equals(data.getBc_User_Id()) && bc_comcnt_no==data.getBc_Comnt_No()){
 	              comment += "<div id=\""
 	                     + data.getBc_Comnt_No()   
 	                     + "\">아이디 : "
 	                     + data.getBc_User_Id()
 	                     + "  /  " + "작성 날짜 : "
-	                  + data.getBc_Writng_Dt().toString()
+	                  + replyTime.substring(0,replyTime.length()-2)
 	                  + "<div>"
 		               + "<textarea rows=\"3\" cols=\"60\" id=\"comment_update\" name=\"comment_update\">"+data.getBc_Comnt_Content()+"</textarea>"
 		                 +"</div></div>"
@@ -272,6 +276,7 @@ public class CommentController {
 			try {
 				bbs_CommentSvc.updateBbs_Comment(bbs_commentVO);
 				commentList = bbs_CommentSvc.getBbs_Comment(bbs_no, Integer.parseInt(cpage));
+				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage), bbs_no);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
