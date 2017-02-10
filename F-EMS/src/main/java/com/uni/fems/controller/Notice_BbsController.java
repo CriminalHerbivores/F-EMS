@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Notice_BbsService;
 
 
@@ -59,28 +60,27 @@ public class Notice_BbsController implements ApplicationContextAware{
 	}*/
 	
 	@RequestMapping("/noticeList")
-	public String noticeList(Model model,HttpServletRequest request) throws ServletException, IOException{
+	public String noticeList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
 		String url="board_management/noticeList";
-		String key = request.getParameter("key");
 		String tpage = request.getParameter("tpage");
 		
-		if (key ==null){
-			key = "";
-		}
 		if (tpage ==null){
 			tpage= "1";
 		} else if(tpage.equals("")){
 			tpage="1";
 		}
-		model.addAttribute("key", key);
 		model.addAttribute("tpage",tpage);
 		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("nb_Sj");
 		
 		List<Notice_BbsVO> noticeList = null;
 		String paging = null;
 		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage));
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),key);
+			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

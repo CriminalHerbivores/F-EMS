@@ -9,6 +9,7 @@ import com.uni.fems.dao.Notice_BbsDAO;
 import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Notice_BbsService;
 
 public class Notice_BbsServiceImpl implements Notice_BbsService{
@@ -48,9 +49,9 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 		bbs_FlpthDAO.insertBbs_Flpth(bbs_FlpthVO);
 	}
 	@Override
-	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException {
+	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage, SearchVO searchVO) throws SQLException {
 		int totalRecord = notice_bbsDAO.totalNotice_Bbs();
-		return notice_bbsDAO.listAllNotice_Bbs(tpage, totalRecord,"");
+		return notice_bbsDAO.listAllNotice_Bbs(searchVO,tpage, totalRecord);
 		
 	}
 	@Override
@@ -66,17 +67,14 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	public int deleteNotice_Bbs(int nb_Bbs_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException {
 		 notice_bbsDAO.deleteNotice_Bbs(nb_Bbs_No);
 		 bbs_FlpthDAO.deleteBbs_Flpth_bbs(bbs_FlpthVO);
+		 bbs_CommentDAO.deleteAllBbs_Comment(nb_Bbs_No);
 		return 0;
 	}
 	@Override
-	public String pageNumber(int tpage,String key) throws SQLException {
+	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException {
 		int totalRecord = notice_bbsDAO.totalNotice_Bbs();
-		String page = new Paging().pageNumber(tpage,totalRecord,"noticeList", "&key="+key);
+		String page = new Paging().pageNumber(tpage,totalRecord,"noticeList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
 		return page;
-	}
-	@Override
-	public List<Notice_BbsVO> listAllNotice_Bbs1() throws SQLException {
-		return notice_bbsDAO.listAllNotice_Bbs1();
 	}
 	@Override
 	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException {

@@ -26,7 +26,7 @@
 				<p class="sub_meun">
 				<a href="#">하위메뉴</a>
 				</p>
-				<p>2</p> -->
+				<p>2</p> -->	
 
 				<!-- ////////////////// -->
 				<ul class="accordion-menu" id="accordionMenu1">
@@ -77,7 +77,7 @@
 						<ul class="sub sub_meun">
 							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" >공지 게시판
 							</a></li>
-							<li style="margin-left: 2em;"><a href="#" >메뉴2
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" >학사 일정
 							</a></li>
 						</ul>
 					</li>

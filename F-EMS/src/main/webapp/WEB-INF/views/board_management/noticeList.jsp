@@ -19,6 +19,14 @@
 
 <div class="container">
   <h2>공지 게시판</h2>
+<form name="forrm">
+  <select name="key">
+  	<option value="nb_Sj">제목</option>
+  	<option value="nb_Cn">내용</option>
+  </select>
+  <input type="text" name="value">
+  <input type="button" class="def-btn" value="검색" onclick="searchBBS();">
+ </form>
   <table class="table table-bordered">
       <tr>
         <th>No</th>

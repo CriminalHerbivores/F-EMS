@@ -104,7 +104,7 @@
 						<button class="menu-dropbtn"><a href="#">학사</a></button>
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
-							<a href="#">메뉴2 </a>
+							<a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
 						</div></div>
 						
 						
@@ -303,6 +303,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/menu.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/scheduler.css" />
 <!--  ============= css =============  -->
 
 
@@ -314,6 +315,7 @@
 
 
 <!-- //////////////////////////////////// -->
+
 <script src="<%=request.getContextPath()%>/resources/js/answer.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/atrty.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/atrty.js"></script>

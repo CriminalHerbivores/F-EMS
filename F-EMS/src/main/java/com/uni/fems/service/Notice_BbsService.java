@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.SearchVO;
 
 public interface Notice_BbsService {
 	
@@ -21,15 +22,14 @@ public interface Notice_BbsService {
 	
 	
 	//////////////////////////////////// 관리자 ///////////////////////////////////////////////
-	public List<Notice_BbsVO> listAllNotice_Bbs1() throws SQLException;
 	
-	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage) throws SQLException;
+	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage, SearchVO searchVO) throws SQLException;
 	
 	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO, int bf_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	
 	public int deleteNotice_Bbs(int nb_Bbs_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException;
 	
-	public String pageNumber(int tpage,String key) throws SQLException;
+	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
 	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
 	

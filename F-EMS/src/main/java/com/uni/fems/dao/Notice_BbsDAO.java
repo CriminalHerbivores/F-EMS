@@ -2,10 +2,10 @@ package com.uni.fems.dao;
 
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.SearchVO;
 
 public interface Notice_BbsDAO {
 	
@@ -20,9 +20,8 @@ public interface Notice_BbsDAO {
 	
 	
 	//////////////////////////////////// 관리자 ///////////////////////////////////////////////
-	public List<Notice_BbsVO> listAllNotice_Bbs1() throws SQLException;
 	
-	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage, int totalRecord,String key) throws SQLException;
+	public List<Notice_BbsVO> listAllNotice_Bbs(SearchVO searchVO, int tpage, int totalRecord) throws SQLException;
 	
 	public int updateNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException;
 	

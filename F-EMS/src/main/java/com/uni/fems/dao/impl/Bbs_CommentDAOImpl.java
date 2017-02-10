@@ -51,11 +51,17 @@ public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	}
 
 	@Override
+	public int deleteAllBbs_Comment(int bc_Bbs_No) throws SQLException {
+		return client.update("deleteAllBbs_Comment", bc_Bbs_No);
+	}
+	
+	@Override
 	public int totalBbs_Comment(int bc_Bbs_No) throws SQLException {
 		int total_pages = 0;
 		total_pages = (Integer) client.queryForObject("totalBbs_Comment",bc_Bbs_No);
 		return total_pages;
 	}
+
 
 
 }

@@ -17,6 +17,8 @@ public interface Bbs_CommentDAO {
 	
 	public int deleteBbs_Comment(int bc_Comnt_No) throws SQLException;
 	
+	public int deleteAllBbs_Comment(int bc_Bbs_No) throws SQLException;
+	
 	public int totalBbs_Comment(int bc_Bbs_No) throws SQLException;
 	
 	

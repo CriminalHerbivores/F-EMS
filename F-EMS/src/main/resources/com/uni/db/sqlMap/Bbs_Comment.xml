@@ -32,9 +32,17 @@
 		delete from bbs_comment where bc_comnt_no=#bc_Comnt_No#
 	</update>
 	
+	<update id="deleteAllBbs_Comment" parameterClass="int">
+		delete from bbs_comment where bc_bbs_no=#bc_Bbs_No#
+	</update>
+	
 	<select id="totalBbs_Comment" parameterClass="int" resultClass="int">
 		select count(*) from bbs_comment where bc_bbs_no=#bc_Bbs_No#
 	</select>
+	
+	
+	
+	
 	
 	
 	
