@@ -125,7 +125,7 @@
 
 
 
-<form id="admin_join" action="/fems/admin/step1_add"  method="post" name="formm">
+<form id="" method="post" name="formm">
 
 
 	<div class="container-fluid">
@@ -134,11 +134,17 @@
 			<div class="custom-col-sm-2 sidenav">
 			
 			<table class="tb-border">
-				<tr><td><input type="text" class="def-input-text-md" name="id" placeholder="아이디"></td>
+			<form action="login" id="loginForm" method="post">
+				<tr><td>
+<input type="hidden" name="returl" value="${param.returl }" />
+<input type="text" class="def-input-text-md" name="userid" placeholder="아이디" value="${param.userid }"/>
+				<input type="text" class="def-input-text-md" name="id" placeholder="아이디"></td>
 					<td rowspan="2">
-					<input type="submit" class="def-btn" id="admin_join_btn" value="로그인" onclick="go_index()"></td></tr>
+					<input type="submit" class="def-btn" value="로그인"></td></tr>
 				<tr><td><input type="password" class="def-input-text-md" name="password" placeholder="패스워드"></td></tr>
-				<tr><td colspan="2"><span id='change'>여기 아작스</span></td></tr>
+				<tr><td colspan="2"><span id='change'>여기 아작스</span>
+				</td></tr>
+</form>
 		<tr><td><input type="button" class="def-btn" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 			</table>
 			<div>

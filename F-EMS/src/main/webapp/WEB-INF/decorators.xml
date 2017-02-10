@@ -11,14 +11,14 @@
 		<pattern>/course/course_complete</pattern>
 		<pattern>/course/course_interest</pattern>
 		<pattern>/course/course_credit</pattern>
-		<pattern>/layout_**</pattern>
-		<pattern>/type_**</pattern>
 		<pattern>/find_**</pattern>
 	</decorator>
 		
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
+		<pattern>/layout_type/login_**</pattern>
+		<pattern>/layout_type/access_**</pattern>
 		<!-- <pattern>/**/top_decorator.jsp</pattern>
 		<pattern>/**/left_decorator.jsp</pattern>
 		<pattern>/**/footer_decorator.jsp</pattern> -->

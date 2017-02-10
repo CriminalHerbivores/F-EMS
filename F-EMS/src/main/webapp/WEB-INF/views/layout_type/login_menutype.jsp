@@ -34,7 +34,7 @@ window.onclick = function(event) {
 </head>
 <body>
 
-<form id="" action="/fems/menutype"  method="post" name="formm">
+<form id="" method="post" name="formm">
 		<div class="custom-col-sm-10-top sidenav text-left">	
 			
 			<table class="tb-border array-center">
@@ -42,11 +42,20 @@ window.onclick = function(event) {
 	<td colspan="2" rowspan="2"><img src="<%=request.getContextPath()%>/resources/images/fems_logo.png"></td></tr>
 	<tr><td colspan="3">	
 			<table class="def-table tb-border">
-				<tr><td><input type="text" class="def-input-text-md" name="id" placeholder="아이디"></td>
+			<form action="login" id="loginForm" method="post">
+				
+				
+				<tr><td>
+<input type="hidden" name="returl" value="${param.returl }" />
+<input type="text" class="def-input-text-md" name="userid" placeholder="아이디" value="${param.userid }"/>
+				</td>
 					<td rowspan="2">
-					<input type="submit" class="def-btn" id="admin_join_btn" value="로그인" onclick="go_index()"></td></tr>
-				<tr><td><input type="password" class="def-input-text-md" name="password" placeholder="패스워드"></td></tr>
+<input type="submit" class="def-btn" value="로그인">
+				<tr><td>
+<input type="password" class="def-input-text-md" name="password" placeholder="패스워드">
+				</td></tr>
 				<tr><td colspan="2"><span id='change'>여기 아작스</span></td></tr></table>
+</form>
 		<tr><td><div class="w3-container">
   <button onclick="document.getElementById('id01').style.display='block'" class="">ID/PW 찾기</button>
   
