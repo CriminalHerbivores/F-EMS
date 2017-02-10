@@ -7,7 +7,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.Notice_BbsDAO;
 import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.Notice_BbsVO;
-import com.uni.fems.dto.StdntVO;
+import com.uni.fems.dto.SearchVO;
 
 public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 
@@ -35,14 +35,14 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 		
 	}
 	@Override
-	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage, int totalRecord,String key) throws SQLException {
+	public List<Notice_BbsVO> listAllNotice_Bbs(SearchVO searchVO, int tpage, int totalRecord) throws SQLException {
 		 
 		Paging p = new Paging();
-		key = p.key(key);
+	
 
 		int[] rows = p.row(tpage, totalRecord);
 		
-		List<Notice_BbsVO> listAllNotice_Bbs = client.queryForList("listAllNotice_Bbs",key, rows[1], rows[0]);
+		List<Notice_BbsVO> listAllNotice_Bbs = client.queryForList("listAllNotice_Bbs",searchVO, rows[1], rows[0]);
 		return listAllNotice_Bbs;
 	}
 	
@@ -65,11 +65,6 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 		return result;
 	}
 	
-	@Override
-	public List<Notice_BbsVO> listAllNotice_Bbs1() throws SQLException {
-		List<Notice_BbsVO> listAllNotice_Bbs = client.queryForList("listAllNotice_Bbs",null);
-		return listAllNotice_Bbs;
-	}
 	@Override
 	public int countNotice_Bbs(Notice_BbsVO notice_BbsVO) throws SQLException {
 		client.update("countNotice_Bbs",notice_BbsVO);

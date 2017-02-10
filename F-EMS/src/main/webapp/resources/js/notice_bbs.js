@@ -13,3 +13,7 @@ function goNoticeList() {
 function updateNotice(){
 	document.formm.submit();
 }
+
+function searchBBS(){
+	document.forrm.submit();
+}

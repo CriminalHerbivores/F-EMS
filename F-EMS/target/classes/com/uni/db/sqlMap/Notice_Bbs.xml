@@ -9,9 +9,10 @@
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="notice_bbs" type="com.uni.fems.dto.Notice_BbsVO" />
+	<typeAlias alias="searchvo" type="com.uni.fems.dto.SearchVO" />
 	
-	<select id="listAllNotice_Bbs" resultClass="notice_bbs">
-		select * from notice_bbs order by nb_writng_dt desc
+	<select id="listAllNotice_Bbs" parameterClass="searchvo" resultClass="notice_bbs">
+		select * from notice_bbs where $key$ like '%'||#value#||'%' order by nb_writng_dt desc
 	</select>
 	
 	<select id="maxNotice_No" resultClass="int">
