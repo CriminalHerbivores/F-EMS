@@ -29,7 +29,7 @@ import com.uni.fems.service.StdntService;
 @Controller
 @RequestMapping("/sklstf")
 public class SklstfController {
-
+	
 	@Autowired
 	private SklstfService sklstfService;
 	public void setSklstfService(SklstfService sklstfService) {
@@ -236,4 +236,12 @@ public class SklstfController {
 		return url;
 		
 	}
+	
+	//==============================================================================
+	// 관리자 가입
+		@RequestMapping("/adminJoin")
+		public String adminJoinForm(HttpServletRequest request,HttpSession session) {
+			String url = "admin/admin_management/adminJoin";	
+			return url;
+		}
 }

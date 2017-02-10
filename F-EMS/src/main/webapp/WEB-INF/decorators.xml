@@ -7,18 +7,18 @@
 	
 	<decorator name="non" page="nondecorator.jsp">
 		<pattern>/admin/step**</pattern>
-		<pattern>/course/course_able</pattern>
-		<pattern>/course/course_complete</pattern>
-		<pattern>/course/course_interest</pattern>
-		<pattern>/course/course_credit</pattern>
-		<pattern>/layout_**</pattern>
-		<pattern>/type_**</pattern>
+		<pattern>/course/courseAble</pattern>
+		<pattern>/course/courseComplete</pattern>
+		<pattern>/course/courseInterest</pattern>
+		<pattern>/course/courseCredit</pattern>
 		<pattern>/find_**</pattern>
 	</decorator>
 		
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
+		<pattern>/layout_type/login**</pattern>
+		<pattern>/layout_type/access**</pattern>
 		<!-- <pattern>/**/top_decorator.jsp</pattern>
 		<pattern>/**/left_decorator.jsp</pattern>
 		<pattern>/**/footer_decorator.jsp</pattern> -->

@@ -21,7 +21,7 @@ border:0;
 <body>
 <article>
 
-<form id="step1_add" action="/fems/admin/step2_add" method="post" name="formm">
+<form id="step1Add" action="/fems/admin/step2Add" method="post" name="formm">
 	
 	<div class="set-layout">
 	
@@ -100,7 +100,7 @@ border:0;
 <div class="col-sm-2 sidenav">		
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2_add()">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2Add()">
 	</div>
 	</div>
 </div>

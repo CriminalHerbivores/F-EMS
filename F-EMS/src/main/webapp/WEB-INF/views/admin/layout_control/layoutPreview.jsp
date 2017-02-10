@@ -11,7 +11,7 @@
 </head>
 <body>
 <article>
-<form id="layout_preview" action="/fems" method="post" name="formm">
+<form id="layoutPreview" action="/fems" method="post" name="formm">
 <!-- 대학홈페이지 메인 -->	
 	
 	

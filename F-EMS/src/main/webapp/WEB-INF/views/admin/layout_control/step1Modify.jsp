@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +20,8 @@ border:0;
 </head>
 <body>
 <article>
-<jsp:include page="/decorators/top_decorator.jsp"></jsp:include>
 
-<form id="step1_modify" action="/fems/admin/step2_modify" method="post" name="formm">
+<form id="step1Modify" action="/fems/admin/step2Modify" method="post" name="formm">
 	
 	<div class="set-layout">
 	
@@ -101,8 +100,8 @@ border:0;
 <div class="col-sm-2 sidenav">		
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2_modify()"><br>
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="layout_preview()">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2Modify()"><br>
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="layoutPreview()">
 	</div>
 	</div>
 </div>
@@ -116,6 +115,5 @@ border:0;
 </form>
 </article>
 
-<jsp:include page="/decorators/footer_decorator.jsp"></jsp:include>
 </body>
 </html>

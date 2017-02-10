@@ -30,9 +30,9 @@ public class LctreController {
 	
 	
 	// 수강신청 메인
-	@RequestMapping("/course_list")
-	public String courseListForm(HttpServletRequest request, HttpSession session) {
-		String url = "course_registration/course_list";
+	@RequestMapping("/courseList")
+	public String courseList(HttpServletRequest request, HttpSession session) {
+		String url = "course_registration/courseList";
 		
 //		Lctre_SearchVO lctre_SearchVO = lctreService.insertLctre_Search();
 //		lctre_SearchVO=  lctreService.updateLctre_Search(lctre_SearchVO, request);
@@ -79,10 +79,10 @@ public class LctreController {
 //		return url;
 //	}
 	
-	@RequestMapping("/course_able")
-	public String courseAbleForm(HttpServletRequest request,
+	@RequestMapping("/courseAble")
+	public String courseAble(HttpServletRequest request,
 			HttpSession session) {
-		String url = "course_registration/course_able";
+		String url = "course_registration/courseAble";
 		return url;
 	}
 	
@@ -90,34 +90,34 @@ public class LctreController {
 	
 
 	// 수강신청 완료 목록
-	@RequestMapping("/course_complete")
-	public String courseCompleteForm(HttpServletRequest request,
+	@RequestMapping("/courseComplete")
+	public String courseComplete(HttpServletRequest request,
 			HttpSession session) {
-		String url = "course_registration/course_complete";
+		String url = "course_registration/courseComplete";
 		return url;
 	}
 
 	// 관심과목
-	@RequestMapping("/course_interest")
-	public String courseInterestForm(HttpServletRequest request,
+	@RequestMapping("/courseInterest")
+	public String courseInterest(HttpServletRequest request,
 			HttpSession session) {
-		String url = "course_registration/course_interest";
+		String url = "course_registration/courseInterest";
 		return url;
 	}
 
 	// 수강가능학점
-	@RequestMapping("/course_credit")
-	public String courseCreditForm(HttpServletRequest request,
+	@RequestMapping("/courseCredit")
+	public String courseCredit(HttpServletRequest request,
 			HttpSession session) {
-		String url = "course_registration/course_credit";
+		String url = "course_registration/courseCredit";
 		return url;
 	}
 
 	// 시간표
-	@RequestMapping("/course_timetable")
-	public String courseTimetableForm(HttpServletRequest request,
+	@RequestMapping("/courseTimetable")
+	public String courseTimetable(HttpServletRequest request,
 			HttpSession session) {
-		String url = "course_registration/course_timetable";
+		String url = "course_registration/courseTimetable";
 		return url;
 	}
 

@@ -257,9 +257,7 @@ $(document).on('click','.realupdateComment',function(e){
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
 			name="comment_content"></textarea>
 		<input type="button" value="확인" id="btnSave" onclick="commm_go();">
-
 		<div id="comment"></div>
-
 		<input type="hidden" value="${loginUser}" id="loginUser">
 
 	</form>
