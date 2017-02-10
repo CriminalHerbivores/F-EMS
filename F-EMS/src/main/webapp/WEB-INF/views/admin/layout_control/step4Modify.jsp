@@ -10,8 +10,10 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="/decorators/top_decorator.jsp"></jsp:include>
+
 <article>
-<form id="step4_add" action="/fems/admin/layout_preview" method="post" name="formm">
+<form id="step4Modify" action="/fems/admin/layoutPreview" method="post" name="formm">
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
@@ -53,7 +55,8 @@
 <div class="col-sm-2 sidenav">			
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="layout_preview()">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="layoutPreview()"><br>
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="layoutPreview()">
 	</div>
 	</div>
 
@@ -61,5 +64,7 @@
 
 </form>
 </article>
+
+<jsp:include page="/decorators/footer_decorator.jsp"></jsp:include>
 </body>
 </html>

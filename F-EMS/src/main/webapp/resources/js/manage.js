@@ -20,28 +20,28 @@
 	   })
 })*/
 
-function go_step1_add() {
-	document.formm.action = "/fems/admin/step1_add";
+function go_step1Add() {
+	document.formm.action = "/fems/admin/step1Add";
 	document.formm.submit();
 }
 
-function go_step2_add() {
-	document.formm.action = "/fems/admin/step2_add";
+function go_step2Add() {
+	document.formm.action = "/fems/admin/step2Add";
 	document.formm.submit();
 }
 
-function go_step3_add() {
-	document.formm.action = "/fems/admin/step3_add";
+function go_step3Add() {
+	document.formm.action = "/fems/admin/step3Add";
 	document.formm.submit();
 }
 
-function go_step4_add() {
-	document.formm.action = "/fems/admin/step4_add";
+function go_step4Add() {
+	document.formm.action = "/fems/admin/step4Add";
 	document.formm.submit();
 }
 
-function go_layout_preview() {
-	document.formm.action = "/fems/admin/layout_preview";
+function go_layoutPreview() {
+	document.formm.action = "/fems/admin/layoutPreview";
 	document.formm.submit();
 }
 
@@ -51,23 +51,23 @@ function go_index() {
 }
 
 /* 레이아웃 변경 js */
-function go_step1_modify() {
-	document.formm.action = "/fems/admin/step1_modify";
+function go_step1Modify() {
+	document.formm.action = "/fems/admin/step1Modify";
 	document.formm.submit();
 }
 
-function go_step2_modify() {
-	document.formm.action = "/fems/admin/step2_modify";
+function go_step2Modify() {
+	document.formm.action = "/fems/admin/step2Modify";
 	document.formm.submit();
 }
 
-function go_step3_modify() {
-	document.formm.action = "/fems/admin/step3_modify";
+function go_step3Modify() {
+	document.formm.action = "/fems/admin/step3Modify";
 	document.formm.submit();
 }
 
-function go_step4_modify() {
-	document.formm.action = "/fems/admin/step4_modify";
+function go_step4Modify() {
+	document.formm.action = "/fems/admin/step4Modify";
 	document.formm.submit();
 }
 

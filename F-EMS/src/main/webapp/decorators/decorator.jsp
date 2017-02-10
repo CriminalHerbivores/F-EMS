@@ -133,7 +133,7 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#" onclick="op_menu_admin()">관리자</a></button>
 							<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath()%>/admin/step1_add">레이아웃 설정</a>
+							<a href="<%=request.getContextPath()%>/admin/step1Add">레이아웃 설정</a>
 							<a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a>
 							<a href="#">메뉴2 </a>
 						</div></div>
@@ -261,7 +261,7 @@
 							<span class="folder main_menu"> </span><a href="#">관리자</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/admin/step1_add" >레이아웃 설정
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/admin/step1Add" >레이아웃 설정
 							</a></li>
 							<li style="margin-left: 2em;"><a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a></li>
 							<li style="margin-left: 2em;"><a href="#" >메뉴2

@@ -240,8 +240,8 @@ public class SklstfController {
 	//==============================================================================
 	// 관리자 가입
 		@RequestMapping("/adminJoin")
-		public String admin_joinForm(HttpServletRequest request,HttpSession session) {
-			String url = "admin/admin_management/admin_join";	
+		public String adminJoinForm(HttpServletRequest request,HttpSession session) {
+			String url = "admin/admin_management/adminJoin";	
 			return url;
 		}
 }

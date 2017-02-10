@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LctrumController {
 
 	// 강의실 등록
-	@RequestMapping("/add_classroom")
+	@RequestMapping("/lctrumInsert")
 	public String add_classroomForm(HttpServletRequest request,
 			HttpSession session) {
-		String url = "admin/admin_page/add_classroom";
+		String url = "admin/admin_page/lctrumInsert";
 		return url;
 	}
 
 	// 강의실 수정
-	@RequestMapping("/modify_classroom")
+	@RequestMapping("/lctrumUpdate")
 	public String modify_classroomForm(HttpServletRequest request,
 			HttpSession session) {
-		String url = "admin/admin_page/modify_classroom";
+		String url = "admin/admin_page/lctrumUpdate";
 		return url;
 	}
 
 	// 강의실 설정
-	@RequestMapping("/set_classroom")
+	@RequestMapping("/lctrumUseUpdate")
 	public String set_classroomForm(HttpServletRequest request,
 			HttpSession session) {
-		String url = "admin/admin_page/set_classroom";
+		String url = "admin/admin_page/lctrumUseUpdate";
 		return url;
 	}
 

@@ -17,8 +17,8 @@
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
-		<pattern>/layout_type/login_**</pattern>
-		<pattern>/layout_type/access_**</pattern>
+		<pattern>/layout_type/login**</pattern>
+		<pattern>/layout_type/access**</pattern>
 		<!-- <pattern>/**/top_decorator.jsp</pattern>
 		<pattern>/**/left_decorator.jsp</pattern>
 		<pattern>/**/footer_decorator.jsp</pattern> -->

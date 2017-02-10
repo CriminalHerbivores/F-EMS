@@ -10,109 +10,116 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class ManageController {
 
-/*	@RequestMapping("/")
-	public String in(){
-		String url = "redirect:index";
-		return url;
-	}
-	
-	@RequestMapping("/index")
-	public String index(){
-		String url = "index";
-		return url;
-	}
-	
-	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
-		String url = "redirect:/index";
-		session.invalidate();
-		return url;
-	}*/
+	// @RequestMapping("/")
+	// public String in(){
+	// String url = "redirect:index";
+	// return url;
+	// }
+	//
+	// @RequestMapping("/index")
+	// public String index(){
+	// String url = "index";
+	// return url;
+	// }
+	//
+	// @RequestMapping("/logout")
+	// public String logout(HttpSession session) {
+	// String url = "redirect:/index";
+	// session.invalidate();
+	// return url;
+	// }
 	
 	//직원 조회
-	@RequestMapping("/sklstf_list")
+	@RequestMapping("/sklstfList")
 	public String sklstfList(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_page/sklstf_list";	
+		String url = "admin/admin_management/sklstfList";	
 		return url;
 	}
 	
 	// 직원 등록
-	@RequestMapping("/main")
+	@RequestMapping("/sklstfInsert")
 	public String sklstfInsert(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_page/sklstf_insert";	
+		String url = "admin/admin_management/sklstfInsert";	
 		return url;
 	}
 	
 	
-	// 관리자페이지 메인
-	@RequestMapping("/main")
-	public String adminMain(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_page/sklstf_atrty";	
+	// 관리자 권한 설정
+	@RequestMapping("/sklstfAtrtyList")
+	public String sklstfAtrtyList(HttpServletRequest request,HttpSession session) {
+		String url = "admin/admin_management/sklstfAtrtyList";	
 		return url;
 	}
+	
+	// 관리자 메인
+		@RequestMapping("/main")
+		public String adminMain(HttpServletRequest request,HttpSession session) {
+			String url = "admin/admin_page/main";	
+			return url;
+		}
 	
 	
 	
 	// 레이아웃 등록1
-	@RequestMapping("/step1_add")
+	@RequestMapping("/step1Add")
 	public String step1Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step1_add";	
+		String url = "admin/layout_control/step1Add";	
 		return url;
 	}
 	
 	// 레이아웃 등록2
-	@RequestMapping("/step2_add")
+	@RequestMapping("/step2Add")
 	public String step2Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step2_add";	
+		String url = "admin/layout_control/step2Add";	
 		return url;
 	}
 	
 	// 레이아웃 등록3
-	@RequestMapping("/step3_add")
+	@RequestMapping("/step3Add")
 	public String step3Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step3_add";	
+		String url = "admin/layout_control/step3Add";	
 		return url;
 	}
 	
 	// 레이아웃 등록4
-	@RequestMapping("/step4_add")
+	@RequestMapping("/step4Add")
 	public String step4Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step4_add";	
+		String url = "admin/layout_control/step4Add";	
 		return url;
 	}
 	
 	// 레이아웃 미리보기
-	@RequestMapping("/layout_preview")
+	@RequestMapping("/layoutPreview")
 	public String layoutPreview(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/layout_preview";	
+		String url = "admin/layout_control/layoutPreview";	
 		return url;
 	}
 	
 	// 레이아웃 변경1
-		@RequestMapping("/step1_modify")
+		@RequestMapping("/step1Modify")
 		public String step1Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step1_modify";	
+			String url = "admin/layout_control/step1Modify";	
 			return url;
 		}
 		
 		// 레이아웃 설정2
-		@RequestMapping("/step2_modify")
+		@RequestMapping("/step2Modify")
 		public String step2Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step2_modify";	
+			String url = "admin/layout_control/step2Modify";	
 			return url;
 		}
 		
 		// 레이아웃 설정3
-		@RequestMapping("/step3_modify")
+		@RequestMapping("/step3Modify")
 		public String step3Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step3_modify";	
+			String url = "admin/layout_control/step3Modify";	
 			return url;
 		}
 		
 		// 레이아웃 설정4
-		@RequestMapping("/step4_modify")
+		@RequestMapping("/step4Modify")
 		public String step4Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step4_modify";	
+			String url = "admin/layout_control/step4Modify";	
 			return url;
 		}
 	

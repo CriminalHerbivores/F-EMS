@@ -12,26 +12,26 @@ public class Subjct_Info_TableController {
 
 	
 	// 학부학과 등록
-		@RequestMapping("/add_subject")
+		@RequestMapping("/subjectInsert")
 		public String add_subjectForm(HttpServletRequest request,
 				HttpSession session) {
-			String url = "admin/admin_page/add_subject";
+			String url = "admin/admin_page/subjectInsert";
 			return url;
 		}
 
 		// 학부학과 수정
-		@RequestMapping("/modify_subject")
+		@RequestMapping("/subjectUpdate")
 		public String modify_subjectForm(HttpServletRequest request,
 				HttpSession session) {
-			String url = "admin/admin_page/modify_subject";
+			String url = "admin/admin_page/subjectUpdate";
 			return url;
 		}
 
 		// 학부학과 설정
-		@RequestMapping("/set_subject")
+		@RequestMapping("/subjectUseUpdate")
 		public String set_subjectForm(HttpServletRequest request,
 				HttpSession session) {
-			String url = "admin/admin_page/set_subject";
+			String url = "admin/admin_page/subjectUseUpdate";
 			return url;
 		}
 }
