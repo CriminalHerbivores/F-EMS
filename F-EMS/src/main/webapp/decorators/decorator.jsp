@@ -111,7 +111,7 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">수강신청</a></button>
 							<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath() %>/course/course_list">수강신청목록</a>
+							<a href="<%=request.getContextPath() %>/course/courseList">수강신청목록</a>
 							<a href="#">메뉴2 </a>
 						</div></div>
 						
@@ -223,7 +223,7 @@
 								>수강신청</a>
 						</div>
 						<ul class="sub sub_meun">
-							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/course/course_list" >수강신청 목록
+							<li style="margin-left: 2em;"><a href="<%=request.getContextPath() %>/course/courseList" >수강신청 목록
 							</a></li>
 							<li style="margin-left: 2em;"><a href="#" >메뉴2
 							</a></li>

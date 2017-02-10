@@ -32,9 +32,9 @@
  -->
 
 	<div class="div-course-list-left">
-			<iframe src="<%=request.getContextPath()%>/course/course_able"
+			<iframe src="<%=request.getContextPath()%>/course/courseAble"
 				class="course-list-l-top"></iframe>
-			<iframe src="<%=request.getContextPath()%>/course/course_complete"
+			<iframe src="<%=request.getContextPath()%>/course/courseComplete"
 				class="course-list-l-bottom"></iframe>
 				
 			<!-- <div class="course-list-l-top" id="course_able"> -->
@@ -47,9 +47,9 @@
 		
 	
 	<div class="div-course-list-right">
-		<iframe src="<%=request.getContextPath()%>/course/course_interest"
+		<iframe src="<%=request.getContextPath()%>/course/courseInterest"
 			class="course-list-r-top"></iframe>
-		<iframe src="<%=request.getContextPath()%>/course/course_credit"
+		<iframe src="<%=request.getContextPath()%>/course/courseCredit"
 			class="course-list-r-bottom"></iframe>
 			
 		<!-- <div class="course-list-r-top" id="course_interest"> -->

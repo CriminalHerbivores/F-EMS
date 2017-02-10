@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,6 @@ border:0;
 </head>
 <body>
 <article>
-<jsp:include page="/decorators/top_decorator.jsp"></jsp:include>
 
 <form id="step1Modify" action="/fems/admin/step2Modify" method="post" name="formm">
 	
@@ -116,6 +115,5 @@ border:0;
 </form>
 </article>
 
-<jsp:include page="/decorators/footer_decorator.jsp"></jsp:include>
 </body>
 </html>
