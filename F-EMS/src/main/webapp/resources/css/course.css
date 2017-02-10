@@ -27,37 +27,35 @@
 .course-list-l-top {
 	width: 100%;
 	height: 60%;
-	padding:5px;
+	padding: 5px;
 	border: 0px;
-	overflow:auto;
-	align:top;
+	overflow: auto;
+	align: top;
 }
 
 .course-list-l-bottom {
 	width: 100%;
 	height: 40%;
-	padding:5px;
+	padding: 5px;
 	border: 0px;
-	overflow:auto;
-	align:middle;
+	overflow: auto;
+	align: middle;
 }
 
 .course-list-r-top {
 	width: 100%;
 	height: 60%;
-	padding:5px;
+	padding: 5px;
 	border: 0px;
-	overflow:auto;
-	align:right;
+	overflow: auto;
+	align: right;
 }
 
 .course-list-r-bottom {
 	width: 100%;
 	height: 40%;
-	padding:5px;
+	padding: 5px;
 	border: 0px;
-	overflow:auto;
-	align:right;
+	overflow: auto;
+	align: right;
 }
-
-

@@ -12,6 +12,7 @@
 		<pattern>/course/courseInterest</pattern>
 		<pattern>/course/courseCredit</pattern>
 		<pattern>/find_**</pattern>
+		<pattern>/cssExample</pattern>
 	</decorator>
 		
 	<excludes>
