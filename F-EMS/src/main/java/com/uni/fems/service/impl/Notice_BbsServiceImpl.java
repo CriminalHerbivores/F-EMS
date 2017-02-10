@@ -66,6 +66,7 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	public int deleteNotice_Bbs(int nb_Bbs_No, Bbs_FlpthVO bbs_FlpthVO) throws SQLException {
 		 notice_bbsDAO.deleteNotice_Bbs(nb_Bbs_No);
 		 bbs_FlpthDAO.deleteBbs_Flpth_bbs(bbs_FlpthVO);
+		 bbs_CommentDAO.deleteAllBbs_Comment(nb_Bbs_No);
 		return 0;
 	}
 	@Override
