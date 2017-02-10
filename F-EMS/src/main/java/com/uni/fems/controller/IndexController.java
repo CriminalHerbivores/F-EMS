@@ -9,6 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 	
+	// css 예시
+	@RequestMapping("/cssExample")
+	public String cssExample(){
+		String url = "/cssExample";
+		return url;
+	}
+
+	
+	
 	@RequestMapping("/")
 	public String in(){
 		String url = "redirect:index";
