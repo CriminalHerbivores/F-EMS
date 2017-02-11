@@ -110,6 +110,11 @@ a:hover {
 	width:80px;
 }
 
+.btn-search{
+	height:32px;
+	width:70px;
+}
+
 .btn-gray{
 	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
 	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
@@ -118,6 +123,7 @@ a:hover {
 	background:-moz-linear-gradient( center top, #eee 5%, #ddd 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ddd', endColorstr='#eee');
 	background-color:#eee;
+	border:1px solid #aaa;
 	
 }
 
@@ -125,21 +131,14 @@ a:hover {
 	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
 	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
 	box-shadow: 0px 0px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #95ded4), color-stop(1, #95ded4) ); /* 버튼 바탕색 */
-	background:-moz-linear-gradient( center top, #95ded4 5%, #ddd 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ddd', endColorstr='#95ded4');
-	background-color:#95ded4;
-	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #52B89D), color-stop(1, #52B89D) ); /* 버튼 바탕색 */
+	background:-moz-linear-gradient( center top, #52B89D 5%, #52B89D 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#52B89D', endColorstr='#52B89D');
+	background-color:#52B89D;
+	border:1px solid #21745E;
 }
 
 .def-btn {
-	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
-	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
-	box-shadow: 0px 0px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eee), color-stop(1, #eee) ); /* 버튼 바탕색 */
-	background:-moz-linear-gradient( center top, #eee 5%, #ddd 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ddd', endColorstr='#eee');
-	background-color:#eee;
 	-webkit-border-top-left-radius:5px;
 	-moz-border-radius-topleft:5px;
 	border-top-left-radius:5px;
@@ -153,11 +152,10 @@ a:hover {
 	-moz-border-radius-bottomleft:5px;
 	border-bottom-left-radius:5px;
 	text-indent:0px;
-	border:1px solid #aaa;
 	display:inline-block;
 	color:#555;
 	font-family:Georgia;
-	font-size:14px;
+	font-size:15px;
 	font-weight:bold;
 	font-style:normal;
 	padding:5px;
@@ -166,6 +164,8 @@ a:hover {
 	text-decoration:none;
 	text-align:center;
 }
+
+
 .btn-gray:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ccc), color-stop(1, #ccc) );
 	background:-moz-linear-gradient( center top, #ccc 5%, #ccc 100% );
@@ -174,10 +174,10 @@ a:hover {
 }
 
 .btn-color:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ccc), color-stop(1, #ccc) );
-	background:-moz-linear-gradient( center top, #ccc 5%, #ccc 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bbb', endColorstr='#ccc');
-	background-color:#ccc;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79BFAD), color-stop(1, #79BFAD) );
+	background:-moz-linear-gradient( center top, #79BFAD 5%, #ccc 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79BFAD', endColorstr='#79BFAD');
+	background-color:#79BFAD;
 }
 
 
@@ -185,7 +185,49 @@ a:hover {
 	position:relative;
 	top:1px;
 }
-/* This button was generated using CSSButtonGenerator.com */
+
+/* ////////////////////////// */
+.-ckbtn-color{
+	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
+	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
+	box-shadow: 0px 0px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #52B89D), color-stop(1, #52B89D) ); /* 버튼 바탕색 */
+	background:-moz-linear-gradient( center top, #52B89D 5%, #52B89D 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#52B89D', endColorstr='#52B89D');
+	background-color:#52B89D;
+	border:1px solid #21745E;	
+}
+
+.def-ckbtn {
+	height:32px;
+	width:45px;
+	
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	display:inline-block;
+	color:#555;
+	font-family:Georgia;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	padding:5px;
+	margin:5px;
+	vertical-align:middle;
+	text-decoration:none;
+	text-align:center;
+}
+/* ////////////////////////// */
 
 
 
@@ -248,7 +290,7 @@ a:hover {
 /* ///////////////// 테이블 CSS ///////////////// */
 .def-table-full {
 	margin: 5px auto;
-	width: 80%;
+	width: 90%;
 	/* height: 98%; */
 	/* border:1px solid #000; */
 }
@@ -260,14 +302,25 @@ a:hover {
 	/* border:1px solid #000; */
 }
 
-.def-table-auto th, .def-table-auto td, .def-table-full th, .def-table-full td {
+.def-table-auto td, .def-table-full td {
 	padding-left: 15px;
 	padding-right:15px;
 	padding-top:6px;
 	padding-bottom:6px;
 	font-size:13px !important;
-text-align:center;
-vertical-align: middle;
+	text-align:center;
+	vertical-align: middle;
+}
+
+.def-table-auto th, .def-table-full th{
+	background-color: #ccc;
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-size:15px !important;
+	text-align:center;
+	vertical-align: middle;
 }
 
 .tb-border td {
@@ -291,14 +344,7 @@ border:1px solid #aaa;
 .tb-border>thead>tr>th{
 border-bottom-width:2px
 }
-/* ///////////////// 테이블 CSS ///////////////// */
-
-
-
-
-
-
-
+/* ///////////////// 테이블 CSS 끝 ///////////////// */
 
 
 
