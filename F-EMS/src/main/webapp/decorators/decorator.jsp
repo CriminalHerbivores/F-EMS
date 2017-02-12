@@ -172,13 +172,16 @@
 							<span class="folder main_menu"></span><a href="#">직원</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li">
-								<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate">직원 정보 수정
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/stdntInsert">학생 등록
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#">직원 메뉴1
-							</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 조회 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 신청 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 조회 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 양식</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="#" class="no-uline">메뉴1 </a></li></div>
+							
 						</ul>
 					</li>
 
