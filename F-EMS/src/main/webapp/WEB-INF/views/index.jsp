@@ -21,6 +21,8 @@
 	--------- 교수 ---------<br/>
 	--------- 학생 ---------<br/>
 	--------- 학사 ---------<br/>
+	--------- 수강신청 ---------<br/>
+	--------- 강의 ---------<br/>
 	<a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a><br/>
 	<a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a><br/>
 	<a href="<%=request.getContextPath() %>/lctre/fileList">자료게시판</a><br/>
@@ -28,9 +30,6 @@
 	<a href="<%=request.getContextPath() %>/lctre/hwList">과제 게시판</a><br/>
 	<a href="<%=request.getContextPath() %>/lctre/mediaList">동영상 게시판</a><br/>
 	<a href="<%=request.getContextPath() %>/lctre/attendList">시청 여부 게시판</a><br/>
-	--------- 수강신청 ---------<br/>
-	--------- 강의 ---------<br/>
-	
 	--------- 커뮤니티 ---------<br/>
 	--------- 관리자 ---------<br/>
 	<a href="<%=request.getContextPath() %>/sklstf/adminJoin">관리자 가입</a><br/>
