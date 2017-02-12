@@ -339,7 +339,7 @@ a:hover {
 	/* border:1px solid #000; */
 }
 
-.def-table-auto td, .def-table-full td .def-table-100 td {
+.def-table-auto td, .def-table-full, td .def-table-100 td {
 	padding-left: 15px;
 	padding-right:15px;
 	padding-top:6px;
@@ -349,7 +349,7 @@ a:hover {
 	vertical-align: middle;
 }
 
-.def-table-auto th, .def-table-full th .def-table-100 th{
+.def-table-auto th, .def-table-full, th .def-table-100 th{
 	background-color: #ccc;
 	padding-left: 15px;
 	padding-right:15px;
@@ -403,7 +403,7 @@ border-bottom-width:2px
 	/* border:1px solid #000; */
 }
 
-.def-table-left-auto td, .def-table-left-full td .def-table-left-100 td{
+.def-table-left-auto td, .def-table-left-full, td .def-table-left-100 td{
 	padding-left: 15px;
 	padding-right:15px;
 	padding-top:6px;
@@ -413,7 +413,7 @@ border-bottom-width:2px
 	vertical-align: middle;
 }
 
-.def-table-left-auto th, .def-table-left-full th .def-table-left-100 th{
+.def-table-left-auto th, .def-table-left-full, th .def-table-left-100 th{
 	background-color: #ccc;
 	padding-left: 15px;
 	padding-right:15px;
