@@ -18,7 +18,7 @@
 <body>
 
 <div class="container">
-  <h2>공지 게시판</h2>
+  <h2>동영상 게시판</h2>
  <hr />
 <form name="forrm">
   <select name="key">
@@ -33,22 +33,55 @@
         <th>No</th>
         <th style="width:500px;">제목</th>
         <th>작성날짜</th>
+        <th>작성자</th>
         <th>조회수</th>
       </tr>
       
-      <c:forEach var="notice" items="${noticeList }">
       	<tr>
-      		<td> ${notice.nb_Bbs_No}</td>
-      		<td><a href="detailNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}">
-      		 ${notice.nb_Sj} </a>
-      		</td>
-      		<td><fmt:formatDate value="${notice.nb_Writng_Dt}" /> </td>
-      		<td> ${notice.nb_Rdcnt}</td> <!-- 조회수 -->
+      		<td> 5</td>
+      		<td>5주차 동영상 강의</td>
+      		<td>2017-02-12 </td>
+      		<td>김교수</td>
+      		<td> 10</td> <!-- 조회수 -->
       		
       	</tr>
-      </c:forEach>
+      	
+      		<tr>
+      		<td> 4</td>
+      		<td>4주차 동영상 강의</td>
+      		<td>2017-02-12 </td>
+      		<td>김교수</td>
+      		<td> 8</td> <!-- 조회수 -->
+      		
+      	</tr>
+      		<tr>
+      		<td> 3</td>
+      		<td>3주차 동영상 강의</td>
+      		<td>2017-02-10 </td>
+      		<td>김교수</td>
+      		<td> 18</td> <!-- 조회수 -->
+      		
+      	</tr>
+      		<tr>
+      		<td> 2</td>
+      		<td>2주차 동영상 강의</td>
+      		<td>2017-02-08</td>
+      		<td>김교수</td>
+      		<td> 38</td> <!-- 조회수 -->
+      		
+      	</tr>
+      		<tr>
+      		<td> 1</td>
+      		<td>1주차 동영상 강의</td>
+      		<td>2017-02-06 </td>
+      		<td>김교수</td>
+      		<td> 20</td> <!-- 조회수 -->
+      		
+      	</tr>
+      	
+      	
       	<tr>
-      		<td colspan="4" style="text-align: center;">${paging }</td>
+      		<td colspan="5" style="text-align: center;">${paging }</td>
       	</tr>
       	
      
