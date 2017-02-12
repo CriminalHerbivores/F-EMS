@@ -49,7 +49,7 @@ public class CommentController {
 		for(Bbs_CommentVO data : commentList){
 			String replyTime = data.getBc_Writng_Dt().toString();
     	   	if(loginUser.equals(data.getBc_User_Id()) ){
-              comment += "<div id=\""
+              comment += "<hr><div id=\""
                      + data.getBc_Comnt_No()   
                      + "\">아이디 : "
                      + data.getBc_User_Id()
@@ -65,9 +65,9 @@ public class CommentController {
                      +"class=\"deleteComment\" name=\"deleteComment\"><input type=\"button\" class=\"def-btn\" value=\"삭제\"></a>"
                   + "<div>  ->"
                      + data.getBc_Comnt_Content()
-                     +"</div></div><br><br>";
+                     +"</div></div>";
         	   	}else{
-        	   		comment += "<div id=\""
+        	   		comment += "<hr><div id=\""
     	                 + data.getBc_Comnt_No()   
     	                 + "\">아이디 : "
     	                 + data.getBc_User_Id()
@@ -75,7 +75,7 @@ public class CommentController {
     	              + data.getBc_Writng_Dt().toString()
     	              + "<div>  ->"
     	                 + data.getBc_Comnt_Content()
-    	                 +"</div></div><br><br>";
+    	                 +"</div></div><br>";
     	   	}    
 		}
 		
@@ -226,7 +226,7 @@ public class CommentController {
 		              +"<a href=\"\" id=\""
 		              +data.getBc_Comnt_No()
 		                 +"\" " 
-		                 +"class=\"cancelComment\" name=\"cancelComment\"><input type=\"button\" class=\"def-btn\" value=\"취소\"></a>";
+		                 +"class=\"cancelComment\" name=\"cancelComment\"><input type=\"button\" class=\"def-btn\" value=\"취소\"></a><br>";
 	        	   	}else{
 	        	   		comment += "<div id=\""
 	    	                 + data.getBc_Comnt_No()   

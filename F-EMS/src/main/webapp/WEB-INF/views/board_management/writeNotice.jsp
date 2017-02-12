@@ -23,8 +23,8 @@
 			</fieldset>   
 		<div class="clear"></div>
 		 <div id="buttons" style="float:right">
-			<input type="button"  value="등록" class="def-btn" onclick="writeNotice();" > 
-			<input type="button"  value="목록"  class="def-btn"  onclick="goNoticeList();">	
+			<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="writeNotice();" > 
+			<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="goNoticeList();">	
 		  </div>
 		  
 		</form>
