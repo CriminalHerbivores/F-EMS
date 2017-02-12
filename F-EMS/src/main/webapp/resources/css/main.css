@@ -360,6 +360,7 @@ a:hover {
 	vertical-align: middle;
 }
 
+
 .tb-border td {
 	border: 1px solid #555 !important;
 }
@@ -445,6 +446,37 @@ border:1px solid #aaa;
 .tb-border>thead>tr>th{
 border-bottom-width:2px
 }
+/* //////////////////////////////////////////////// */
+
+.def-table-full-gray {
+	margin: 5px auto;
+	width: 90%;
+	/* height: 98%; */
+	/* border:1px solid #000; */
+}
+
+.def-table-full-gray th{
+	background-color: #ccc;
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-size:15px !important;
+	text-align:center;
+	vertical-align: middle;
+}
+
+.def-table-full-gray td {
+	background-color: #ccc;
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-size:13px !important;
+	text-align:center;
+	vertical-align: middle;
+}
+
 /* ///////////////// 테이블 CSS 끝 ///////////////// */
 
 
