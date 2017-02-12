@@ -40,7 +40,7 @@ body {
 					<td colspan="12"  class="text-right">
 					</td>
 				</tr> -->
-				<tr><th colspan="12"><h4>개설 강의 목록</h4></th></tr>
+				<tr><th colspan="13"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
 					<th>수강신청</th>
 					<th>관심강의</th>
@@ -73,7 +73,7 @@ body {
 				</tr>
 			</c:forEach> --%>
 				
-				<tr>
+				<!-- <tr>
 					<td>값</td>
 					<td></td>
 					<td></td>
@@ -87,8 +87,26 @@ body {
 					<td></td>
 					<td></td>
 					<td></td>
-				</tr>
+				</tr> -->
 				
+				<!-- ////////////////////////////////////////////////////////// -->
+				
+				
+				
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td>컴퓨터공학과</td><td>10473</td><td>00</td><td>1</td><td>컴퓨터 입문</td><td>교양</td><td>3/2/2</td><td>유관종</td><td>월(8~9교시), 수(5~6교시)</td><td>1</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>10473</td><td>01</td><td>1</td><td>컴퓨터 입문</td><td>교양</td><td>3/2/2</td><td>김상형</td><td>월(6~7교시), 수(7~8교시)</td><td>0</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td>컴퓨터공학과</td><td>14773</td><td>01</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>김상하</td><td>수(1교시), 수(6~7교시)</td><td>1</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>14773</td><td>00</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>김상하</td><td>수(2~3교시), 수(~교시)</td><td>0</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>14773</td><td>02</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>이영석</td><td>수(1교시), 수(6~7교시)</td><td>0</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>18129</td><td>02</td><td>2</td><td>논리회로및실험</td><td>전공</td><td>3/2/2</td><td>김형신</td><td>월(2~3교시), 수(6~7교시)</td><td>0</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>18129</td><td>00</td><td>2</td><td>논리회로및실험</td><td>전공</td><td>3/2/2</td><td>김형식</td><td>월(2~3교시), 수(6~7교시)</td><td>0</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>18129</td><td>03</td><td>2</td><td>논리회로및실험</td><td>전공</td><td>3/2/2</td><td>김형신</td><td>월(5~6교시), 목(2~3교시)</td><td>0</td><td>40</td></tr>
+<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>22132</td><td>01</td><td>1</td><td>이산수학</td><td>전공</td><td>3/3/0</td><td>황치정</td><td>월(9교시), 화(7~8교시)</td><td>0</td><td>40</td></tr>
+				
+				
+				
+				
+				<!-- ///////////////////////////////////////////////////////////// -->
 				
 			</table>
 </div>
