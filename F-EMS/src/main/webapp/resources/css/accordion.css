@@ -20,16 +20,21 @@
 
 	
 .accordion-menu li .main-title {
-    background-color:#DAF5F5;	/* 색상:좌측 메뉴 상위 영역 */
+    background-color:#326EA6;	/* 색상:좌측 메뉴 상위 영역 */
     padding:10px;	
     vertical-align:middle;
     position:relative;
     z-index:100;	
 }
+.main-title a{
+	color: #fff !important;	/* 좌측 메뉴 글자 색상 */
+	font-weight: 900;
+}
+
 .accordion-menu li .main-title a {
     display: inline-block;
     height:15px;
-    line-height:15px;
+    line-height:10px;
     text-align: left;
     vertical-align:middle;
     text-decoration:none;
@@ -57,10 +62,12 @@
 
 .accordion-menu li .main-title .folder.open {
     background-position : 0px -15px;
+    margin-top: 4px;
 }
 
 .accordion-menu li .main-title .folder.close {
     background-position : 0px -30px;
+    margin-top: 4px;
 }
 .close{
     float:left;
@@ -77,16 +84,21 @@
 
 .accordion-menu li ul.sub {	
     list-style: none;	
-    /* margin-left:30px; */
+    padding-top:10px;
     padding-bottom:10px;
     z-index:90;
     position:relative;
-    background-color: #EEF9F9; /* 색상:좌측 메뉴 서브영역 */
+    background-color: #fff; /* 색상:좌측 메뉴 서브영역 */
 }
-.accordion-menu li ul.sub a:hover{
-	color:#104952;	/* 색상:좌측메뉴 서브영역 텍스트 hover */
+.sub-menu-li:hover{
 }
-
+.inherit-size:hover{
+	width:inherit;
+	height:inherit;	
+	background: #D8E7F6;
+	color:#063F78;	/* 색상:좌측메뉴 서브영역 텍스트 hover */
+	font-weight: 900;
+}
 
 .accordion-menu li ul.sub.open {
     display:block;
@@ -99,11 +111,13 @@
 .accordion-menu li ul.sub li {
     height:30px;
     padding:5px;
+    padding-left:30px;
     line-height:15px;
     vertical-align:middle;
     cursor:pointer;
 }
 
 .accordion-menu li ul.sub li.select {
-    background-color:#c7c7c7;
+    background-color:#D8E7F6;	/* 좌측메뉴 서브영역 마우스 선택상태 */
+    color:#063F78;
 }

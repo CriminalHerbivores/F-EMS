@@ -36,11 +36,11 @@
 		<!-- 콤보박스 -->
 		<select name="선택" class="combobox-sm custom-form-control">
 			<option value="">작음</option>
-			<option value="">이건작은거임</option>
-		</select><br /> <select name="선택" class="combobox-md custom-form-control">
+			<option value="">이건작은거임</option></select><br /> 
+		<select name="선택" class="combobox-md custom-form-control">
 			<option value="">중간</option>
-			<option value="">이건중간거임</option>
-		</select><br /> <select name="선택" class="combobox-lg custom-form-control">
+			<option value="">이건중간거임</option></select><br /> 
+		<select name="선택" class="combobox-lg custom-form-control">
 			<option value="">큰거</option>
 			<option value="">이건큰거임</option>
 		</select><br /> <br />

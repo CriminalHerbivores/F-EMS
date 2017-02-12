@@ -52,11 +52,18 @@ public class ManageController {
 	}
 	
 	// 관리자 메인
-		@RequestMapping("/main")
-		public String adminMain(HttpServletRequest request,HttpSession session) {
-			String url = "admin/admin_page/main";	
-			return url;
-		}
+	@RequestMapping("/main")
+	public String adminMain(HttpServletRequest request,HttpSession session) {
+		String url = "admin/admin_page/main";	
+		return url;
+	}
+	
+	// 상대 평가 비율 설정
+	@RequestMapping("/evalRateUpdate")
+	public String evalRateUpdate(HttpServletRequest request,HttpSession session) {
+		String url = "admin/admin_page/evalRateUpdate";	
+		return url;
+	}
 	
 	
 	
@@ -96,32 +103,33 @@ public class ManageController {
 	}
 	
 	// 레이아웃 변경1
-		@RequestMapping("/step1Modify")
-		public String step1Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step1Modify";	
-			return url;
-		}
+	@RequestMapping("/step1Modify")
+	public String step1Modify(HttpServletRequest request,HttpSession session) {
+		String url = "admin/layout_control/step1Modify";	
+		return url;
+	}
 		
-		// 레이아웃 설정2
-		@RequestMapping("/step2Modify")
-		public String step2Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step2Modify";	
-			return url;
-		}
+	// 레이아웃 설정2
+	@RequestMapping("/step2Modify")
+	public String step2Modify(HttpServletRequest request,HttpSession session) {
+		String url = "admin/layout_control/step2Modify";	
+		return url;
+	}
 		
-		// 레이아웃 설정3
-		@RequestMapping("/step3Modify")
-		public String step3Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step3Modify";	
-			return url;
-		}
+	// 레이아웃 설정3
+	@RequestMapping("/step3Modify")
+	public String step3Modify(HttpServletRequest request,HttpSession session) {
+		String url = "admin/layout_control/step3Modify";	
+		return url;
+	}
 		
-		// 레이아웃 설정4
-		@RequestMapping("/step4Modify")
-		public String step4Modify(HttpServletRequest request,HttpSession session) {
-			String url = "admin/layout_control/step4Modify";	
-			return url;
-		}
+	// 레이아웃 설정4
+	@RequestMapping("/step4Modify")
+	public String step4Modify(HttpServletRequest request,HttpSession session) {
+		String url = "admin/layout_control/step4Modify";	
+		return url;
+	}
+	
 	
 	
 	

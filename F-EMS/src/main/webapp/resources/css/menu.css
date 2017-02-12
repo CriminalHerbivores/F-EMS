@@ -26,7 +26,7 @@
 
 /* 적용 되게 고쳐야함 */
 /* .container-fluid .top-menu{
-	padding-left:20%;
+	
 } */
 
 
@@ -134,8 +134,8 @@ padding : 10px;
 
 
 .custom-navbar-inverse {
-	background-color: #CEE7E7;	/* 색상:상단 메뉴 영역 */
-	border-color: #58919A;
+	background-color: #063F78;	/* 색상:상단 메뉴 영역 */
+	border-color: #063F78;
 }
 
 /* .custom-navbar-inverse .navbar-nav>li>a {
@@ -169,8 +169,7 @@ padding : 10px;
 
 /* //////////////////////////////////// */
 .menu-dropbtn {
-    background-color: #CEEAEA;	/* 색상:상단 드롭다운 버튼 */
-    color: white;
+    background-color: #063F78;	/* 색상:상단 드롭다운 버튼 */
     padding: 16px;
     width:120px;
     height:50px;
@@ -179,6 +178,11 @@ padding : 10px;
     cursor: pointer;
     text-decoration: none;
 }
+.menu-dropbtn  a{
+    color: #fff !important;	/* 메인 메뉴 글자 색상 */
+    font-weight: 900;
+}
+
 .menu-dropdown a:hover{
 	text-decoration:none;
 	color:#555;	/* 색상: 상단 hover 텍스트 */
@@ -197,10 +201,11 @@ padding : 10px;
 }
 
 .menu-dropdown-content {
+	margin-top:1px;
     display: none;
     position: absolute;
     left:0px; 
-    background-color: #f9f9f9;
+    background-color: #fff;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 101;
@@ -213,14 +218,16 @@ padding : 10px;
     display: block;
 }
 
-.menu-dropdown-content a:hover {background-color: #e1e1e1}	/* 색상:상단 드롭다운 서브 hover */
+.menu-dropdown-content a:hover {
+	background-color : #D8E7F6;;
+}	/* 색상:상단 드롭다운 서브 hover */
 
 .menu-dropdown:hover .menu-dropdown-content {
     display: block;
 }
 
 .menu-dropdown:hover .menu-dropbtn {
-   background-color: #BED1D1;	/* 색상:상단 드롭다운 hover */
+   background-color: #326EA6;	/* 색상:상단 드롭다운 hover */
 }
 
 
