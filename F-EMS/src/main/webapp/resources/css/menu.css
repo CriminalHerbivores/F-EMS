@@ -98,7 +98,7 @@ display: table-cell;
 .custom-col-sm-8{
 width:86%;
 height:750px; /* 추후 없애는 걸로 */
-background:#EFF7F7; /* 색상:중앙 바디 영역 */
+/* background:#EFF7F7; */ /* 색상:중앙 바디 영역 */
 padding : 10px;
 float:right;
 }
@@ -113,7 +113,7 @@ padding : 10px;
 .custom-col-sm-6{
 width:80%;
 height:750px; /* 추후 없애는 걸로 */
-background:#EFF7F7; /* 색상:중앙 바디 영역 */
+/* background:#EFF7F7; */ /* 색상:중앙 바디 영역 */
 padding : 10px;
 float:right;
 }
@@ -130,7 +130,7 @@ padding : 10px;
 .custom-col-sm-10-top{
 width:100%;
 height:865px; /* 추후 없애는 걸로 */
-background:#EFF7F7; /* 색상:중앙 바디 영역 */
+/* background:#EFF7F7; */ /* 색상:중앙 바디 영역 */
 padding : 10px;
 }
 

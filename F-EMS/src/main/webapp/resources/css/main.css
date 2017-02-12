@@ -317,7 +317,7 @@ a:hover {
 }
 
 
-/* ///////////////// 테이블 CSS ///////////////// */
+/* ///////////////// 테이블 CSS 중앙정렬 ///////////////// */
 .def-table-full {
 	margin: 5px auto;
 	width: 90%;
@@ -374,8 +374,64 @@ border:1px solid #aaa;
 .tb-border>thead>tr>th{
 border-bottom-width:2px
 }
-/* ///////////////// 테이블 CSS 끝 ///////////////// */
+/* ///////////////// 테이블 CSS 왼쪽정렬 ///////////////// */
+.def-table-left-full {
+	margin: 5px auto;
+	width: 90%;
+	/* height: 98%; */
+	/* border:1px solid #000; */
+}
 
+.def-table-left-auto {
+	margin: 5px auto;
+	width: auto;
+	/* height: 98%; */
+	/* border:1px solid #000; */
+}
+
+.def-table-left-auto td, .def-table-left-full td {
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-size:13px !important;
+	text-align:center;
+	vertical-align: middle;
+}
+
+.def-table-left-auto th, .def-table-left-full th{
+	background-color: #ccc;
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-size:15px !important;
+	text-align:center;
+	vertical-align: middle;
+}
+
+.tb-border td {
+	border: 1px solid #555 !important;
+}
+
+.tb-border td,.tb-border th{
+border:1px solid #aaa!important}
+
+.tb-border{border:1px solid #aaa}
+.tb-border>tbody>tr>td,
+.tb-border>tbody>tr>th,
+.tb-border>tfoot>tr>td,
+.tb-border>tfoot>tr>th,
+.tb-border>thead>tr>td,
+.tb-border>thead>tr>th{
+border:1px solid #aaa;
+}
+
+.tb-border>thead>tr>td,
+.tb-border>thead>tr>th{
+border-bottom-width:2px
+}
+/* ///////////////// 테이블 CSS 끝 ///////////////// */
 
 
 

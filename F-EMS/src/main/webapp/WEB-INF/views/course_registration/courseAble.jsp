@@ -12,13 +12,15 @@
 body {
 	background: #D4F4FA;
 }
+
 </style>
 
 </head>
 <body>
 	<form>
 	<div class="container">
-	<table class="def-table-full tb-border">
+	<!-- <table class="def-table-full tb-border"> -->
+	<table class="def-table-full tb-border table-hover" style="width:800px; text-align: left !important;">
 	<tr><td class="text-right">
 					<select name="선택" class="combobox-md custom-form-control">
 					<option value="032">전공</option>
