@@ -73,10 +73,13 @@
 						<button class="menu-dropbtn"><a href="#">직원</a></button>
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a>
-							<a href="<%=request.getContextPath() %>/stdnt/stdntInsert" class="no-uline">학생 등록 </a>
-							<a href="<%=request.getContextPath() %>/stdnt/stdntList" class="no-uline">학생 조회 </a>
-							<a href="<%=request.getContextPath() %>/stdnt/sknrgListForm" class="no-uline">학적 관리 </a>
-							<a href="<%=request.getContextPath() %>/schlship/schlshipList" class="no-uline">장학금 양식</a>
+							<a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 조회 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 신청 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 조회 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 양식</a>
 							<a href="#" class="no-uline">메뉴1 </a>
 							</div>
 						</div>
