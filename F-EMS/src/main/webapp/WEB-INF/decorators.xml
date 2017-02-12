@@ -13,6 +13,11 @@
 		<pattern>/course/courseCredit</pattern>
 		<pattern>/find_**</pattern>
 		<pattern>/cssExample</pattern>
+		<pattern>/lgBoard</pattern>
+		<pattern>/lgLogin</pattern>
+		<pattern>/lgMulti</pattern>
+		<pattern>/lgMenu</pattern>
+		<pattern>/adminJoin</pattern>
 	</decorator>
 		
 	<excludes>

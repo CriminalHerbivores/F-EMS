@@ -191,8 +191,8 @@
 								>학생</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a></li>
-							<li><a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a></li></div>
 						</ul>
 					</li>
 
@@ -290,13 +290,14 @@
 
 
 <!--  ============= css =============  -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/accordion.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/layout_setup.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/menu.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/scheduler.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 <!--  ============= css =============  -->
 
 

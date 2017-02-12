@@ -66,3 +66,30 @@
 	margin-bottom : 20px;
 	padding : 5px;
 } */
+
+
+
+
+
+
+
+
+
+/* //////////// 메뉴형로그인 ////////////  */
+.login-menu-gray{
+	height: 80px;
+	background: #ccc;
+	
+}
+
+.login-menu{
+	height: 80px;
+	/* background: #fff; */
+}
+
+.login-menu-gray:hover, .login-menu:hover{
+	background: #326EA6;
+	
+}
+
+

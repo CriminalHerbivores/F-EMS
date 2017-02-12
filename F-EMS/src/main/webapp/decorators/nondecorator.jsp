@@ -35,12 +35,14 @@
 </body>
 
 <!--  ============= css =============  -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/accordion.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/layout_setup.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/menu.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/scheduler.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 <!--  ============= css =============  -->
 
 
@@ -52,6 +54,7 @@
 
 
 <!-- //////////////////////////////////// -->
+
 <script src="<%=request.getContextPath()%>/resources/js/answer.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/atrty.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/atrty.js"></script>
