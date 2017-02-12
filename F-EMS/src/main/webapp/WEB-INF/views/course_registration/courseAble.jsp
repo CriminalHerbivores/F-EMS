@@ -10,7 +10,7 @@
 <title></title>
 <style>
 body {
-	background: #D4F4FA;
+	/* background: #D4F4FA; */
 }
 
 </style>
@@ -18,9 +18,10 @@ body {
 </head>
 <body>
 	<form>
-	<div class="container">
+	<div class="text-center">
+	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
-	<table class="def-table-full tb-border table-hover" style="width:800px; text-align: left !important;">
+	<table class="def-table-full">
 	<tr><td class="text-right">
 					<select name="선택" class="combobox-md custom-form-control">
 					<option value="032">전공</option>
@@ -39,19 +40,21 @@ body {
 					<td colspan="12"  class="text-right">
 					</td>
 				</tr> -->
+				<tr><th colspan="12"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<td>수강신청</td>
-					<td>관심삭제</td>
-					<td>강의코드</td>
-					<td>강의명</td>
-					<td>시수학점</td>
-					<td>이수구분</td>
-					<td>담당교수</td>
-					<td>강의시간</td>
-					<td>수강인원</td>
-					<td>정원</td>
-					<td>암거나</td>
-					<td>비고</td>
+					<th>수강신청</th>
+					<th>관심강의</th>
+					<th>개설학과</th>
+					<th>강의코드</th>
+					<th>분반</th>
+					<th>학년</th>
+					<th>강의명</th>
+					<th>이수구분</th>
+					<th>학점/시수</th>
+					<th>담당교수</th>
+					<th>강의시간</th>
+					<th>수강인원</th>
+					<th>제한인원</th>
 				</tr>
 				
 				<%-- <c:forEach items="${listLctre}" var="lctre_SearchVO">
@@ -70,12 +73,25 @@ body {
 				</tr>
 			</c:forEach> --%>
 				
-				
+				<tr>
+					<td>값</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
 				
 				
 			</table>
 </div>
-	
 	</form>
 </body>
 </html>

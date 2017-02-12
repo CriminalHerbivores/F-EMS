@@ -10,29 +10,28 @@
 <title></title>
 <style>
 body{
-	 background:#FFFFB3;
+	 /* background:#FFFFB3; */
 }
 </style>
 
 </head>
 <body>
 <form>
-<article>
-<table  class="def-table tb-border">
-	<tr><td>신청 가능 학점
-	</td></tr>
-	<tr><td>값 가져와야함
+<div class="text-center"><table  class="def-table-full tb-border">
+	<tr><th>신청 가능 학점
+	</th></tr>
+	<tr><td><h3>12</h3>
 	</td></tr>
 </table>
 <br/>
-<table  class="def-table tb-border">
-	<tr><td>수강 신청 학점
-	</td></tr>
-	<tr><td>값 가져와야함
+<table  class="def-table-full tb-border">
+	<tr><th>수강 신청 학점
+	</th></tr>
+	<tr><td><h3>6</h3>
 	</td></tr>
 </table>
 
-</article>
+</div>
 </form>
 </body>
 </html>

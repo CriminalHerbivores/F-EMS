@@ -10,17 +10,15 @@
 <title></title>
 <style>
 body{
-	 background:#CEFBC9;
+	 /* background:#CEFBC9; */
 }
 </style>
 
 </head>
 <body>
 <form>
-<article>
 
-
-
+<div class="text-center">
 <%-- 
 <a href="<%=request.getContextPath() %>/course/course_timetable" class="openMask"><input type="button" class="def-btn" value="시간표"></a><br/>
  --%>
@@ -29,10 +27,10 @@ body{
 
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" id="openmodal" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  <!-- <button type="button" class="def-btn btn-md btn-color" id="openmodal" data-toggle="modal" data-target="#myModal">시간표</button> -->
 
  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+<!--   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       Modal content
@@ -54,26 +52,24 @@ body{
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
 
 
 
-<table  class="def-table tb-border">
-	<tr><td>관심 강의 목록
-	</td></tr>
-	
-	<tr><td>
-	</td></tr>
+<table  class="def-table-full tb-border table-hover">
+	<h4>관심 강의 목록&nbsp;&nbsp;<button type="button" class="def-btn btn-md btn-color" id="openmodal" data-toggle="modal" data-target="#myModal">시간표</button></h4>
+	<tr><th colspan="2">강의명</th></tr>
+	<tr><td>컴퓨터 입문</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
+	<tr><td>컴퓨터프로그래밍2</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
 	
 </table>
 
+</div>
 
 
-
-</article>
 </form>
 </body>
 </html>

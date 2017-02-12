@@ -9,7 +9,7 @@
 	text-align: left;
 	vertical-align: top;
 	display: table-cell;
-	background: #aaa;
+	/* background: #aaa; */ /* 색상 왼쪽 영역 */
 }
 
 .div-course-list-right {
@@ -21,7 +21,7 @@
 	text-align: left;
 	vertical-align: top;
 	display: table-cell;
-	background: #eee;
+	/* background: #eee; */ /* 색상 오른쪽 영역 */
 }
 
 .course-list-l-top {
