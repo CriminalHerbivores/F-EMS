@@ -38,8 +38,8 @@ body {
 					<th>제한인원</th>
 				</tr>
 				<tr>
-					<td>값</td>
-					<td></td>
+					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td>
+					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td>
 					<td></td>
 					<td></td>
 					<td></td>
