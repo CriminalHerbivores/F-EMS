@@ -15,7 +15,7 @@
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
-	<img src="<%=request.getContextPath()%>/resources/images/step4.png">
+	<img src="<%=request.getContextPath()%>/resources/images/step4.png"><br/>
 	<h1>STEP4. 컬러 테마 설정</h1>
 	</div>
 	
@@ -29,20 +29,20 @@
 	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
 			
-			<table class="tb-layout def-table tb-border">
-				<tr><td>메인 컬러</td><td>R:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>G:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>B:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>색상코드</td></tr>
-				<tr><td>보조 컬러1</td><td>R:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>G:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>B:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>색상코드</td></tr>
-				<tr><td>보조 컬러2</td><td>R:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>G:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>B:<input type="text" class="def-input-text-sm" value=""></td>
-									<td>색상코드</td></tr>					
-				<tr><td colspan="5"><div class="preview-layout">여기에 미리보기</div></td></tr>
+			<table class="tb-layout out-border">
+				<tr><td>메인 컬러</td><td>R:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td>G:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td>B:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td><input type="color" name="favcolor" value="#ff0000">&nbsp;&nbsp;<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용"></td></tr>
+				<tr><td>보조 컬러1</td><td>R:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td>G:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td>B:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td><input type="color" name="favcolor" value="#00ff00">&nbsp;&nbsp;<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용"></td></tr>
+				<tr><td>보조 컬러2</td><td>R:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td>G:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td>B:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
+									<td><input type="color" name="favcolor" value="#0000ff">&nbsp;&nbsp;<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용"></td></tr>					
+				<tr><td colspan="5"><div class="preview-layout margin-auto">여기에 미리보기</div></td></tr>
 			</table>			
 			
 

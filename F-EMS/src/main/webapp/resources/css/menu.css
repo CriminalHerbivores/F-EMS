@@ -12,7 +12,7 @@
 /* Set gray background color and 100% height */
 .sidenav {
 	padding-top: 20px;
-	background-color: #f1f1f1; /* 좌측 메뉴 바탕 */
+	/* background-color: #f3f3f3; */ /* 좌측 메뉴 바탕 색상 */
 	height: 100%;
 }
 

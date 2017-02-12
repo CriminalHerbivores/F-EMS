@@ -26,7 +26,7 @@
 		<input type="button" class="def-btn btn-md btn-gray" value="취소">&nbsp;&nbsp; 취소,이전 등 하단에 크게 들어가는 버튼<br />
 		<input type="button" class="def-btn btn-lg btn-color" value="큰 버튼">&nbsp;&nbsp;특수한 경우의 큰 버튼, 로그인 등<br />
 		<button class="def-btn btn-search btn-color" value="조회"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>&nbsp;&nbsp;조회, 검색 등<br />
-		<input type="button" class="def-ckbtn btn-sm -ckbtn-color" value="체크">&nbsp;&nbsp;테이블 안에서 특수하게 사용할 버튼<br />
+		<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="체크">&nbsp;&nbsp;테이블 안에서 특수하게 사용할 버튼<br />
 		
 		
 		

@@ -5,12 +5,17 @@
 
 .tb-layout{
 	width : 70%;
+	margin:auto;
+	text-align:left;
 	border:1px black solid;
+}
+.tb-layout td{
+	padding: 5px;
 }
 
 .preview-logo{
 	width: 200px;
-	height:30px;
+	height:50px;
 	background:#ddd;
 }
 
@@ -23,10 +28,12 @@
 .set-layout-top{
 	margin:10px;
 	padding: 10px;
+	text-align: center;
 }
 
-.set-layout-side{
-	margin:auto;	
+.set-layout-side .set-layout-center{
+	margin:auto;
+	text-align: center;	
 }
 
 
@@ -91,5 +98,3 @@
 	background: #326EA6;
 	
 }
-
-

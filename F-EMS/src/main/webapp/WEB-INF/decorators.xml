@@ -18,13 +18,14 @@
 		<pattern>/lgMulti</pattern>
 		<pattern>/lgMenu</pattern>
 		<pattern>/adminJoin</pattern>
+		<pattern>/admin/layoutPreview</pattern>
+		<pattern>/layout_type/login**</pattern>
+		<pattern>/layout_type/access**</pattern>
 	</decorator>
 		
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
-		<pattern>/layout_type/login**</pattern>
-		<pattern>/layout_type/access**</pattern>
 		<!-- <pattern>/**/top_decorator.jsp</pattern>
 		<pattern>/**/left_decorator.jsp</pattern>
 		<pattern>/**/footer_decorator.jsp</pattern> -->

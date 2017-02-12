@@ -15,6 +15,7 @@ background-color:#fff;
 border-color:#fff;
 border:0;
 }
+
 </style>
 
 </head>
@@ -23,24 +24,14 @@ border:0;
 
 <form id="step1Add" action="/fems/admin/step2Add" method="post" name="formm">
 	
-	<div class="set-layout">
 	
 	<!-- 상단 -->
-	<nav class="navbar navbar-inverse">
-  <!-- <div class="container-fluid"> -->
-    <div class="navbar-header">
-	
+  <div class="set-layout">
 	<div class="set-layout-top">
-	<img src="<%=request.getContextPath()%>/resources/images/step1.png">
+	
+	<img src="<%=request.getContextPath()%>/resources/images/step1.png"><br/>
 	<h1>STEP1. 대학 정보 설정</h1>
 	</div>
-	</div>
-	
-	</nav>
-	
-	
-	<div class="container-fluid text-center">    
-  <div class="row content">
   
   
 	<!-- 왼쪽 -->
@@ -53,20 +44,20 @@ border:0;
 	
 	
 	<!-- 중앙 -->
-	<div class="col-sm-8 margin-auto"> 
+	<div class="col-sm-8 text-center"> 
 		<div class="set-layout-center">
-		<table class="tb-layout">
-		<tr><td>대학 이름 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
-		<tr><td>대학 영문 이름 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
-		<tr><td>대학 로고 등록 : </td><td><input type="text" class=".def-input-text-lg"><input type="button" class="def-btn" value="찾기"></td></tr> 
-		<tr><td colspan="2">※ 첨부 파일 이미지 크기는 170*15px 권장</td></tr>
-		<tr><td colspan="2">
+		<table class="tb-layout out-border">
+		<tr><td>대학 이름 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
+		<tr><td>대학 영문 이름 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
+		<tr><td>대학 로고 등록 : </td><td><input type="text" class="def-input-text-lg custom-form-control"><input type="button" class="def-btn btn-sm btn-gray" value="찾기"></td></tr> 
+		<tr><td></td><td>※ 첨부 파일 이미지 크기는 200*50px 권장</td></tr>
+		<tr><td></td><td>
 			<div class="preview-logo">
 			
 			</div></td></tr>
-		<tr><td>우편번호 : </td><td><input type="text" class=".def-input-text-lg"><input type="button" class="def-btn" value="검색"></td></tr>
-		<tr><td>주소 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
-		<tr><td>전화번호 : </td><td><select name="선택" class="combobox-sm">
+		<tr><td>우편번호 : </td><td><input type="text" class="def-input-text-md custom-form-control"><input type="button" class="def-btn btn-sm btn-gray" value="검색"></td></tr>
+		<tr><td>주소 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
+		<tr><td>전화번호 : </td><td><select name="선택" class="combobox-sm custom-form-control">
 					<option value="02">02</option>
 					<option value="031">031</option>
 					<option value="032">032</option>
@@ -88,12 +79,12 @@ border:0;
 					<option value="017">017</option>
 					<option value="018">018</option>
 					<option value="019">019</option>
-				</select> 
-				<input type="text" class="def-input-text-sm">
-				<input type="text" class="def-input-text-sm"></td></tr> 
-				<tr><td>저작권 : </td><td><input type="text" class=".def-input-text-lg"></td></tr>
+				</select>&nbsp;-&nbsp;
+				<input type="text" class="def-input-text-sm custom-form-control">&nbsp;-&nbsp;
+				<input type="text" class="def-input-text-sm custom-form-control"></td></tr> 
+				<tr><td>저작권 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
 </table>
-<a href="<%=request.getContextPath()%>/">메인으로 가기</a><br/>
+
 			</div>
 		</div>
 <!-- 오른쪽 -->	
@@ -103,14 +94,11 @@ border:0;
 	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2Add()">
 	</div>
 	</div>
-</div>
 
-</div>
 <!-- 하단 -->
 
-
-
 </div>
+
 </form>
 </article>
 </body>

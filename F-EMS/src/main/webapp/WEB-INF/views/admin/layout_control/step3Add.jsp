@@ -15,7 +15,7 @@
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
-	<img src="<%=request.getContextPath()%>/resources/images/step3.png">
+	<img src="<%=request.getContextPath()%>/resources/images/step3.png"><br/>
 	<h1>STEP3. 레이아웃 선택</h1>
 	</div>
 	
@@ -27,9 +27,9 @@
 	
 	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
-			<table class="tb-layout def-table tb-border">
+			<table class="tb-layout out-border text-center">
 				<tr><td>1. Login형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_login" />
-				</td><td>2.복합형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_multi" /></td></tr>
+				</td><td>2.복합형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_multi" checked="checked"/></td></tr>
 				<tr><td>
 						<img src="<%=request.getContextPath()%>/resources/images/layout_login.png" title="blr" id="blr" class="" />
 						</td><td>
