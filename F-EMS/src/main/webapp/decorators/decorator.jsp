@@ -118,8 +118,15 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">강의</a></button>
 							<div class="menu-dropdown-content">
-							<a href="#">강의메뉴1 </a>
-							<a href="#">메뉴2 </a>
+							
+							<a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a>
+	<a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a>
+	<a href="<%=request.getContextPath() %>/lctre/fileList">자료게시판</a>
+	<a href="<%=request.getContextPath() %>/lctre/qnaList">질의응답 게시판</a>
+	<a href="<%=request.getContextPath() %>/lctre/hwList">과제 게시판</a>
+	<a href="<%=request.getContextPath() %>/lctre/mediaList">동영상 게시판</a>
+	<a href="<%=request.getContextPath() %>/lctre/attendList">시청 여부 게시판</a>
+							
 						</div></div>
 						
 					<div class="menu-dropdown">
@@ -228,10 +235,14 @@
 								>강의</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >강의메뉴1
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >메뉴2
-							</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/fileList">자료게시판</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/qnaList">질의응답 게시판</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/hwList">과제 게시판</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/mediaList">동영상 게시판</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/attendList">시청 여부 게시판</a></li></div>
+							
 						</ul>
 					</li>
 

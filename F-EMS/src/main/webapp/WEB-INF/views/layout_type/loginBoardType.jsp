@@ -133,30 +133,68 @@
 			
 			<div class="custom-col-sm-4 sidenav">
 			
-			<table class="tb-border">
-			<form action="login" id="loginForm" method="post">
+			<table class="def-table-full out-border">
+			<!-- <form action="login" id="loginForm" method="post"> -->
 				<tr><td>
 <input type="hidden" name="returl" value="${param.returl }" />
-<input type="text" class="def-input-text-md" name="userid" placeholder="아이디" value="${param.userid }"/>
-				<input type="text" class="def-input-text-md" name="id" placeholder="아이디"></td>
+<input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/></td>
 					<td rowspan="2">
-					<input type="submit" class="def-btn" value="로그인"></td></tr>
-				<tr><td><input type="password" class="def-input-text-md" name="password" placeholder="패스워드"></td></tr>
-				<tr><td colspan="2"><span id='change'>여기 아작스</span>
-				</td></tr>
-</form>
-		<tr><td><input type="button" class="def-btn" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" value="PW찾기" onclick="modal_find_pw()"></td></tr>
+					<input type="submit" class="def-btn btn-lg btn-color" value="로그인"></td></tr>
+				<tr><td><input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드"></td></tr>
+				<!-- <tr><td colspan="2"><span id='change'>여기 아작스</span></td></tr> -->
+<!-- </form> -->
+		<tr><td><input type="button" class="def-btn btn-sm btn-color" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" class="def-btn btn-sm btn-color" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 			</table>
 			<div>
-
-			<table><tr><td>여기 스케쥴러</td></tr></table>
+<br/>
+			<table class="def-table-full tb-border"><tr><td>
+			스케쥴러
+			</td></tr></table>
 			</div>
 			</div>
 			
 			<div class="custom-col-sm-6 sidenav text-left">
-			<table class="def-table tb-border">
-				<tr><td>게시판1</td><td>게시판2</td></tr>
-				<tr><td>게시판3</td><td>게시판4</td></tr>
+			<table class="def-table-full tb-border">
+				<tr><td>
+				
+				<table class="def-table-full tb-border table-hover">
+			<tr><th>공지사항</th></tr>
+			<tr><td>공지 게시글...........5</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........4</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........3</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........2</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........1</td><td>2017-02-10</td></tr>
+		</table>
+				
+				</td><td>
+					<table class="def-table-full tb-border table-hover">
+			<tr><th>공지사항</th></tr>
+			<tr><td>공지 게시글...........5</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........4</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........3</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........2</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........1</td><td>2017-02-10</td></tr>
+		</table>
+				</td></tr>
+				<tr><td>
+				<table class="def-table-full tb-border table-hover">
+			<tr><th>공지사항</th></tr>
+			<tr><td>공지 게시글...........5</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........4</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........3</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........2</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........1</td><td>2017-02-10</td></tr>
+		</table>
+				</td><td>
+				<table class="def-table-full tb-border table-hover">
+			<tr><th>공지사항</th></tr>
+			<tr><td>공지 게시글...........5</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........4</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........3</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........2</td><td>2017-02-10</td></tr>
+			<tr><td>공지 게시글...........1</td><td>2017-02-10</td></tr>
+		</table>
+				</td></tr>
 			</table>
 			
 	</div></div>
