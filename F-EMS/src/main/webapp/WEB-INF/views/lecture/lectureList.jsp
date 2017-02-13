@@ -12,8 +12,10 @@
 <body>
 
 <div class="container">
+<div style="text-align: center;">
 <h2>강의 목록</h2>
 <hr/>
+</div>
 	 <table class="def-table-auto tb-border table-hover">
 	      <tr>
 	        <th>강의 번호</th>

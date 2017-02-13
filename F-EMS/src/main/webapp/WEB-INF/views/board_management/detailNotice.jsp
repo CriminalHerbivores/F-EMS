@@ -222,9 +222,10 @@ $(document).on('click','.realupdateComment',function(e){
 
 </head>
 <body>
+<div id="detailNotice" style="float:left;">
 	<form name="formm" method="post" action="notice_bbs">
 		<h2>공지 게시판</h2>
-
+		<hr>
 		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
 			<tr>
 				<th>제목</th>
@@ -273,7 +274,7 @@ $(document).on('click','.realupdateComment',function(e){
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>
-
+</div>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">
