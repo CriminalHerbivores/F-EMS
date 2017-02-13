@@ -18,7 +18,7 @@
 <body>
 
 <div class="container">
-<div style="margin-left: 200px;">
+<div style="text-align: center;">
   <h2>공지 게시판</h2>
  <hr />
 <form name="forrm">
