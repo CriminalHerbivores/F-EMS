@@ -18,9 +18,11 @@
 		/>
 	
 	<bean id="sqlMapClient"	
-		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
+		class="kr.or.ddit.commons.ibatis.CustomSqlMapClientFactoryBean"
 		p:configLocation="classpath:com/uni/db/sqlConfig/SqlMapConfig.xml"
-		p:dataSource-ref="dataSource"		
+		p:dataSource-ref="dataSource"
+		p:mappingLocations="classpath:/F-EMS/src/main/resources/com/uni/db/sqlMap/Blank.xml"
+		p:typeAliasPackages="com.uni.**.vo"	
 	/>
 		
 		

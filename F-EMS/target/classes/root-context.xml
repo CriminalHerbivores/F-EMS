@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
@@ -18,11 +22,6 @@
 
    <bean id="atrtyService" class="com.uni.fems.service.impl.AtrtyServiceImpl"
       p:atrtyDAO-ref="atrtyDAO" />      
-      
-      
-      
-
-
 
 <bean id="attendanceDAO" class="com.uni.fems.dao.impl.AttendanceDAOImpl"
       p:client-ref="sqlMapClient" />
@@ -345,6 +344,17 @@
 			<tx:method name="get*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
+	
+	
+	
+	<context:component-scan base-package="com.uni" use-default-filters="false">
+       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+       <!-- <context:include-filter type="annotation" expression=""/> -->
+	</context:component-scan>
+	
+	
+	
+	
 
 	<aop:config>
 		<aop:pointcut
