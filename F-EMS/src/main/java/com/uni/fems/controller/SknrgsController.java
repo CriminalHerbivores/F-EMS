@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.uni.fems.dto.SknrgsDTO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.request.PageRequest;
 import com.uni.fems.service.SknrgsService;
@@ -140,7 +139,7 @@ public class SknrgsController {
 		String url = "manager/student/sknrgsListForm";
 		String skn_Type = (String) session.getAttribute("skn_Type");
 		System.out.println("skn_Typen : " + skn_Type);
-		List<SknrgsDTO> sknrgsDtoList = null;
+		List<SknrgsVO> sknrgsDtoList = null;
 		if (skn_Type != null) {
 			skn_Type = "%";
 		}

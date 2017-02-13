@@ -1,8 +1,14 @@
 package com.uni.fems.dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class PymntVO {
+import kr.or.ddit.commons.ibatis.Alias;
+import lombok.Data;
+
+@Alias("Pymnt")
+@Data
+public class PymntVO implements Serializable{
 	private int py_Schlship_Brkdn_No;   // 장학금 내역 번호
 	private String py_Stdnt_No;   // 학생 번호
 	private int py_Schlship_Code;   // 장학금 코드
@@ -10,55 +16,5 @@ public class PymntVO {
 	private String py_Semstr;   // 학기
 	private Timestamp py_Schlship_Dt; // 신청날짜
 	private String py_Useyn; // 승인여부
-	public int getPy_Schlship_Brkdn_No() {
-		return py_Schlship_Brkdn_No;
-	}
-	public void setPy_Schlship_Brkdn_No(int py_Schlship_Brkdn_No) {
-		this.py_Schlship_Brkdn_No = py_Schlship_Brkdn_No;
-	}
-	public String getPy_Stdnt_No() {
-		return py_Stdnt_No;
-	}
-	public void setPy_Stdnt_No(String py_Stdnt_No) {
-		this.py_Stdnt_No = py_Stdnt_No;
-	}
-	public int getPy_Schlship_Code() {
-		return py_Schlship_Code;
-	}
-	public void setPy_Schlship_Code(int py_Schlship_Code) {
-		this.py_Schlship_Code = py_Schlship_Code;
-	}
-	public String getPy_Crrspnd_Year() {
-		return py_Crrspnd_Year;
-	}
-	public void setPy_Crrspnd_Year(String py_Crrspnd_Year) {
-		this.py_Crrspnd_Year = py_Crrspnd_Year;
-	}
-	public String getPy_Semstr() {
-		return py_Semstr;
-	}
-	public void setPy_Semstr(String py_Semstr) {
-		this.py_Semstr = py_Semstr;
-	}
-	public Timestamp getPy_Schlship_Dt() {
-		return py_Schlship_Dt;
-	}
-	public void setPy_Schlship_Dt(Timestamp py_Schlship_Dt) {
-		this.py_Schlship_Dt = py_Schlship_Dt;
-	}
-	public String getPy_Useyn() {
-		return py_Useyn;
-	}
-	public void setPy_Useyn(String py_Useyn) {
-		this.py_Useyn = py_Useyn;
-	}
-	@Override
-	public String toString() {
-		return "PymntVO [py_Schlship_Brkdn_No=" + py_Schlship_Brkdn_No
-				+ ", py_Stdnt_No=" + py_Stdnt_No + ", py_Schlship_Code="
-				+ py_Schlship_Code + ", py_Crrspnd_Year=" + py_Crrspnd_Year
-				+ ", py_Semstr=" + py_Semstr + ", py_Schlship_Dt="
-				+ py_Schlship_Dt + ", py_Useyn=" + py_Useyn + "]";
-	}
 	
 }

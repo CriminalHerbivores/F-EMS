@@ -3,7 +3,6 @@ package com.uni.fems.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.uni.fems.dto.SknrgsDTO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.request.PageRequest;
 
@@ -12,6 +11,6 @@ public interface SknrgsDAO {
 	List<SknrgsVO> getStudentSknrgs(PageRequest p) throws SQLException;
 	int totalRecord(PageRequest p) throws SQLException;
 	void writeSknrgs(SknrgsVO sknrgs) throws SQLException;
-	List<SknrgsDTO> getSknrgsType(String skn_Typen) throws SQLException;
+	List<SknrgsVO> getSknrgsType(String skn_Typen) throws SQLException;
 	void updateUseynSknrgs(SknrgsVO sknrgs) throws SQLException;
 }

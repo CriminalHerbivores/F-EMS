@@ -282,14 +282,6 @@
 			<version>1.9.13</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>
-				org.apache.servicemix.bundles.ibatis-sqlmap
-			</artifactId>
-			<version>2.3.4.726</version>
-			<type>bundle</type>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

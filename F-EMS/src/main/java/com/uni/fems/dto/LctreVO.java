@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
 
-@Alias("lctre")
+@Alias("Lctre")
 @Data
 public class LctreVO implements Serializable{
 

@@ -7,7 +7,6 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.SknrgsDAO;
 import com.uni.fems.dao.impl.paging.Paging;
-import com.uni.fems.dto.SknrgsDTO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.request.PageRequest;
@@ -22,8 +21,8 @@ public class SknrgsDAOImpl implements SknrgsDAO {
 	
 //	직원의 학적 관리
 	@Override
-	public List<SknrgsDTO> getSknrgsType(String skn_Typen) throws SQLException {
-		ArrayList<SknrgsDTO> list = (ArrayList<SknrgsDTO>) client.queryForList("getSknrgsType",skn_Typen);
+	public List<SknrgsVO> getSknrgsType(String skn_Typen) throws SQLException {
+		ArrayList<SknrgsVO> list = (ArrayList<SknrgsVO>) client.queryForList("getSknrgsType",skn_Typen);
 		return list;
 	}
 

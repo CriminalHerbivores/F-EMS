@@ -1,25 +1,18 @@
 package com.uni.fems.dto;
 
+import java.io.Serializable;
+
+import kr.or.ddit.commons.ibatis.Alias;
+import lombok.Data;
+
 import org.springframework.web.multipart.MultipartFile;
 
-public class FileCommand {
+@Alias("FileCommand")
+@Data
+public class FileCommand implements Serializable {
 	
 	private String title;
 	private MultipartFile uploadfile;
-	
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public MultipartFile getUploadfile() {
-		return uploadfile;
-	}
-	public void setUploadfile(MultipartFile uploadfile) {
-		this.uploadfile = uploadfile;
-	}
-	
 	
 
 }
