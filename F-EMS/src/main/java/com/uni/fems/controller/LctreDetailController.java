@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Notice_BbsService;
@@ -246,6 +247,15 @@ public class LctreDetailController {
 		int n = noticeList.size();
 		model.addAttribute("noticeListSize", n);
 		model.addAttribute("paging", paging);
+		return url;
+		
+	}
+	
+	@RequestMapping("/actPln")
+	public String actPln(Model model, HttpServletRequest request, Lctre_ActplnVO actplnVO){
+		
+		String url="lecture/actPln";
+		
 		return url;
 		
 	}
