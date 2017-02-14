@@ -134,10 +134,10 @@ public class Notice_BbsController implements ApplicationContextAware{
 			}
 			String bbs_code = request.getServletPath();
 			String[] values = bbs_code.split("/");
-			
+			String extension = fileName.substring(pos+1).toLowerCase();
 			
 			bbs_FlpthVO.setBf_Bbs_Code(values[1]);
-			bbs_FlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
+			bbs_FlpthVO.setBf_File_Type_Code(extension);
 			bbs_FlpthVO.setBf_File_Nm(fileName);
 			
 		}
@@ -231,10 +231,10 @@ public class Notice_BbsController implements ApplicationContextAware{
 			}
 			String bbs_code = request.getServletPath();
 			String[] values = bbs_code.split("/");
-			
+			String extension = fileName.substring(pos+1).toLowerCase();
 			updateFlpthVO.setBf_Bbs_No_No(notice_BbsVO.getNb_Bbs_No());
 			updateFlpthVO.setBf_Bbs_Code(values[1]);
-			updateFlpthVO.setBf_File_Type_Code(fileName.substring(pos+1));
+			updateFlpthVO.setBf_File_Type_Code(extension);
 			updateFlpthVO.setBf_File_Nm(fileName);
 			
 		}
