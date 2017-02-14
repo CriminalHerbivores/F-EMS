@@ -21,14 +21,13 @@
 		select SKN_TYPE from sknrgs
 		where skn_stdnt_no = #skn_Stdnt_No#
 		and SKN_USEYN='y'
-		ORDER BY SKN_REQST_DT desc)
+		ORDER BY skn_no desc)
 		where rownum=1
 	</select>
 	<select id="getStudentSknrgs" parameterClass="str" resultClass="Sknrgs">
-		select rownum as SKN_NO, SKN_TYPE ,SKN_REQST_DT,skn_Content,skn_Useyn
-		from sknrgs
-		where skn_stdnt_no = #skn_Stdnt_No#
-		ORDER BY ROWNUM DESC
+		select rownum as skn_no, a.* from 
+		(select SKN_TYPE ,SKN_REQST_DT,skn_Content,skn_Useyn from sknrgs s where skn_stdnt_no=#skn_Stdnt_No# order by skn_no asc) a 
+		order by skn_no desc
 	</select>
 	<select id="countStudentSknrgs" parameterClass="str"
 		resultClass="int">
