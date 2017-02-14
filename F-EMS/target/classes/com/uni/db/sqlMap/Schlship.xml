@@ -30,7 +30,7 @@
 		insert into schlship(
 		ss_Schlship_Code,ss_Schlship_Nm,ss_Schlship_Type,ss_Amount,ss_Papers_Content)
 		values
-		(schlship_seq.nextval,#ss_Schlship_Nm#,#ss_Schlship_Type#,#ss_Amount#,#ss_Papers_Content#)
+		(ss_seq.nextval,#ss_Schlship_Nm#,#ss_Schlship_Type#,#ss_Amount#,#ss_Papers_Content#)
 	</update>
 
 	<update id="updateSchlship" parameterClass="schlship">

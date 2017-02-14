@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
-    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
     
 <sqlMap namespace="Faculty">
 	<typeAlias alias="str" type="java.lang.String" />
@@ -17,7 +17,7 @@
 	<!-- 학부 수정 -->
 	<update id="updateFaculty" parameterClass="faculty">
 		update faculty set fc_Faculty_Code=#fc_Faculty_Code#,fc_Coleg_Code=#fc_Coleg_Code#,fc_Faculty_Nm=#fc_Faculty_Nm#,fc_Useyn=#fc_Useyn#
-		where sit_Subjct_Code=#sit_Subjct_Code#
+		where fc_Faculty_Code=#fc_Faculty_Code#
 	</update>
 	
 	<!-- 학부 사용안함 -->

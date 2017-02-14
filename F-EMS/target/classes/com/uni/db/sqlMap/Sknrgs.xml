@@ -8,10 +8,10 @@
 
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="sknrgs" type="com.uni.fems.dto.SknrgsVO" />
-	<typeAlias alias="sknrgsdto" type="com.uni.fems.dto.SknrgsDTO" />
+	<typeAlias alias="Sknrgs" type="com.uni.fems.dto.SknrgsVO" />
+	<typeAlias alias="SknrgsView" type="com.uni.fems.dto.SknrgsViewVO" />
 	
-	<select id="getSknrgsType" parameterClass="str" resultClass="sknrgsdto">
+	<select id="getSknrgsType" parameterClass="str" resultClass="SknrgsView">
 		select * from sknrgs_view
 		<!-- where SKN_TYPE LIKE '%$skn_Type$%' -->
 	</select>
@@ -21,14 +21,13 @@
 		select SKN_TYPE from sknrgs
 		where skn_stdnt_no = #skn_Stdnt_No#
 		and SKN_USEYN='y'
-		ORDER BY SKN_REQST_DT desc)
+		ORDER BY skn_no desc)
 		where rownum=1
 	</select>
-	<select id="getStudentSknrgs" parameterClass="str" resultClass="sknrgs">
-		select rownum as SKN_NO, SKN_TYPE ,SKN_REQST_DT,skn_Content,skn_Useyn
-		from sknrgs
-		where skn_stdnt_no = #skn_Stdnt_No#
-		ORDER BY ROWNUM DESC
+	<select id="getStudentSknrgs" parameterClass="str" resultClass="Sknrgs">
+		select rownum as skn_no, a.* from 
+		(select SKN_TYPE ,SKN_REQST_DT,skn_Content,skn_Useyn from sknrgs s where skn_stdnt_no=#skn_Stdnt_No# order by skn_no asc) a 
+		order by skn_no desc
 	</select>
 	<select id="countStudentSknrgs" parameterClass="str"
 		resultClass="int">
@@ -37,7 +36,7 @@
 		where skn_stdnt_no = #skn_Stdnt_No#
 	</select>
 
-	<update id="insertStudentSknrgs" parameterClass="sknrgs">
+	<update id="insertStudentSknrgs" parameterClass="Sknrgs">
 		insert into
 		SKNRGS(
 			skn_No,
@@ -57,7 +56,7 @@
 			)
 	</update>
 	
-	<update id="updateUseynSknrgs" parameterClass="sknrgs">
+	<update id="updateUseynSknrgs" parameterClass="Sknrgs">
 		update SKNRGS set
 			skn_useyn = #skn_Useyn#
 			where skn_no = #skn_No#

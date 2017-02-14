@@ -76,11 +76,6 @@
 		</dependency>
 
 		<!-- spring-ibatis -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-ibatis</artifactId>
-			<version>2.0.8</version>
-		</dependency>
 		<!-- spring jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -139,6 +134,50 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
+
+
+
+
+<!-- ////////////////////////////////////////////////////////// -->
+		<!-- spring-orm 3.2.9 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
+
+		<!-- 시스템패스 의존성 등록 -->
+		<dependency>
+			<groupId>kr.or.ddit</groupId>
+			<artifactId>ibatis-typealias-generator</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}\src\main\webapp\WEB-INF\lib\ibatis-typealias-generator.jar</systemPath>
+		</dependency>
+
+		<!-- ibatis-sqlmap -->
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>2.3.4.726</version>
+		</dependency>
+
+		<!-- lombok 의존성 추가 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.14</version>
+		</dependency>
+
+		<!-- 쿼리 디버깅 편의 -->
+		<dependency>
+			<groupId>com.googlecode.log4jdbc</groupId>
+			<artifactId>log4jdbc</artifactId>
+			<version>1.2</version>
+		</dependency>
+<!-- ////////////////////////////////////////////////////////// -->
+
+
 
 
 

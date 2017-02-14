@@ -1,21 +1,14 @@
 package com.uni.fems.dto;
 
-public class SearchVO {
+import java.io.Serializable;
+
+import kr.or.ddit.commons.ibatis.Alias;
+import lombok.Data;
+
+@Alias("Search")
+@Data
+public class SearchVO implements Serializable{
 	private String key;
 	private String value;
-	
-	public String getKey() {
-		return key;
-	}
-	public void setKey(String key) {
-		this.key = key;
-	}
-	public String getValue() {
-		return value;
-	}
-	public void setValue(String value) {
-		this.value = value;
-	}
-	
 	
 }

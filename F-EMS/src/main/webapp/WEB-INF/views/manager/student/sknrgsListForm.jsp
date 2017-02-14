@@ -41,7 +41,7 @@
 					<th>승인여부</th>
 				</tr>
 
-				<c:forEach var="sknrgs" items="${sknrgsDtoList }">
+				<c:forEach var="sknrgs" items="${sknrgsVOList }">
 					<tr>
 						<td>${sknrgs.st_Stdnt_No}</td>
 						<td>${sknrgs.sit_Subjct}</td>

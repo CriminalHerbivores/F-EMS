@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.uni.fems.dao.SknrgsDAO;
 import com.uni.fems.dao.impl.paging.Paging;
-import com.uni.fems.dto.SknrgsDTO;
+import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.request.PageRequest;
 import com.uni.fems.service.SknrgsService;
@@ -21,8 +21,8 @@ public class SknrgsServiceImpl implements SknrgsService {
 	
 //	직원의 학적 관리
 	@Override
-	public List<SknrgsDTO> getSknrgsType(String skn_Typen) throws SQLException {
-		List<SknrgsDTO> list = sknrgsDAO.getSknrgsType(skn_Typen);
+	public List<SknrgsViewVO> getSknrgsType(String skn_Typen) throws SQLException {
+		List<SknrgsViewVO> list = sknrgsDAO.getSknrgsType(skn_Typen);
 		return list;
 	}
 	
