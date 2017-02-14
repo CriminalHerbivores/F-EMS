@@ -9,6 +9,12 @@ import lombok.Data;
 @Alias("SknrgsView")
 @Data
 public class SknrgsViewVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2632669299250251114L;
+	
 	private String sit_Subjct;		//학과명
 	private int skn_No;				//학전 번호
 	private String skn_Type;		//학전 유형
