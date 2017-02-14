@@ -27,9 +27,9 @@
 	<http pattern="/**" use-expressions="true" entry-point-ref="customAuthenticationEntryPoint" >
 		<request-cache ref="nullRequestCache"/>
 		<access-denied-handler error-page="/security/accessDenied"/>
-		<intercept-url pattern="/student/**" access="hasAnyRole('ROLE_STD,ROLE_ADMIN')"/>
-		<intercept-url pattern="/professor/**" access="hasAnyRole('ROLE_PRO,ROLE_ADMIN')"/>
-		<intercept-url pattern="/staff/**" access="hasAnyRole('ROLE_STF,ROLE_ADMIN')"/>
+		<intercept-url pattern="/stdnt/**" access="hasAnyRole('ROLE_STD,ROLE_ADMIN')"/>
+		<intercept-url pattern="/profsr/**" access="hasAnyRole('ROLE_PRO,ROLE_ADMIN')"/>
+		<intercept-url pattern="/sklstf/**" access="hasAnyRole('ROLE_STF,ROLE_ADMIN')"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		
