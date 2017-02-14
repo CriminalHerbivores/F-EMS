@@ -94,8 +94,7 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">교수</a></button>
 							<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a>
-							<a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a>
+							<a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 조회 </a>
 							</div>
 					</div>
 					</sec:authorize>
@@ -211,8 +210,7 @@
 							<span class="folder main_menu"> </span><a href="#">교수</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 조회 </a></li></div>
 						</ul>
 					</li>
 					</sec:authorize>
