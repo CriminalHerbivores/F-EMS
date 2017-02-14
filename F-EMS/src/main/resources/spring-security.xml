@@ -30,7 +30,7 @@
 		<intercept-url pattern="/student/**" access="hasAnyRole('ROLE_STD,ROLE_ADMIN')"/>
 		<intercept-url pattern="/professor/**" access="hasAnyRole('ROLE_PRO,ROLE_ADMIN')"/>
 		<intercept-url pattern="/staff/**" access="hasAnyRole('ROLE_STF,ROLE_ADMIN')"/>
-		<intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
 		
 		<form-login 
