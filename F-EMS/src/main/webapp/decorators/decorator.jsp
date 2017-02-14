@@ -94,8 +94,6 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">교수</a></button>
 							<div class="menu-dropdown-content">
-							<a href="#">교수메뉴1 </a>
-							<a href="#">메뉴2 </a>
 							<a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a>
 							<a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a>
 							</div>
@@ -106,8 +104,8 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">학생</a></button>
 							<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a>
-							<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a>
+							<a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적관리</a>
+							<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사신청</a>
 						</div>
 					</div>
 					</sec:authorize>
@@ -127,7 +125,6 @@
 						<button class="menu-dropbtn"><a href="#">수강신청</a></button>
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/course/courseList">수강신청목록</a>
-							<a href="#">메뉴2 </a>
 						</div>
 					</div>
 					</sec:authorize>
@@ -136,7 +133,6 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">강의</a></button>
 							<div class="menu-dropdown-content">
-							
 							<a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a>
 							<a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a>
 							<a href="<%=request.getContextPath() %>/lctre/fileList">자료게시판</a>
@@ -153,7 +149,6 @@
 						<button class="menu-dropbtn"><a href="#">커뮤니티</a></button>
 							<div class="menu-dropdown-content">
 							<a href="#">커뮤니티메뉴1 </a>
-							<a href="#">메뉴2 </a>
 						</div>
 					</div>
 
@@ -161,9 +156,12 @@
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#" onclick="op_menu_admin()">관리자</a></button>
 							<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath()%>/admin/step1Add">레이아웃 설정</a>
 							<a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a>
-							<a href="#">메뉴2 </a>
+							<a href="<%=request.getContextPath() %>/sklstf/adminJoin">관리자 가입</a><br/>
+							<a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
+							<a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
+							<a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
+							<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
 						</div>
 					</div>
 					</sec:authorize>
@@ -210,14 +208,11 @@
 					<sec:authorize access="hasRole('ROLE_PRO')">
 					<li>
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								>교수</a>
+							<span class="folder main_menu"> </span><a href="#">교수</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#">학생메뉴1
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#">메뉴2
-							</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a></li></div>
 						</ul>
 					</li>
 					</sec:authorize>
@@ -228,36 +223,29 @@
 							<span class="folder main_menu"> </span><a href="#">학생</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적관리</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사신청</a></li></div>
 						</ul>
 					</li>
 					</sec:authorize>
 
 					<li>
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								>학사</a>
+							<span class="folder main_menu"> </span><a href="#">학사</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" >공지 게시판
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >메뉴2
-							</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/notice_bbs/noticeList" >공지 게시판</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a></li></div>
 						</ul>
 					</li>
 
 					<sec:authorize access="isAuthenticated()">
 					<li>
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								>수강신청</a>
+							<span class="folder main_menu"> </span><a href="#">수강신청</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/course/courseList" >수강신청 목록
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >메뉴2
-							</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/course/courseList" >수강신청 목록</a></li></div>
 						</ul>
 					</li>
 					</sec:authorize>
@@ -265,8 +253,7 @@
 					<sec:authorize access="isAuthenticated()">
 					<li>
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								>강의</a>
+							<span class="folder main_menu"> </span><a href="#">강의</a>
 						</div>
 						<ul class="sub sub_meun">
 							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a></li></div>
@@ -286,11 +273,7 @@
 							<span class="folder main_menu"> </span><a href="#">커뮤니티</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >커뮤니티메뉴1
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >메뉴2
-							</a></li></div>
-							
+							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >커뮤니티메뉴1</a></li></div>
 						</ul>
 					</li>
 
@@ -300,11 +283,11 @@
 							<span class="folder main_menu"> </span><a href="#">관리자</a>
 						</div>
 						<ul class="sub sub_meun">
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/step1Add" >레이아웃 설정
-							</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a></li></div>
-							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >메뉴2
-							</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/adminJoin">관리자 가입</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgLogin">로그인형</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMulti">복합형</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgBoard">게시판형</a></li></div>
+							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a></li></div>
 						</ul>
 					</li>
 					</sec:authorize>
