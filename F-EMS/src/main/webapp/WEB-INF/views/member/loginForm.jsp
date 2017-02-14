@@ -6,33 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<style>
-	div#header{
-		width:800px;
-		height:200px;	
-		margin:0 auto;	
-	}
-	div#header>h1{
-		text-align:center;	
-	}
-	div#section{
-		width:800px;
-		height:200px;	
-		margin:0 auto;	
-	}
-	form#loginForm{
-		width:400px;
-		margin:0 auto;			
-	}
-	form#loginForm>input{
-		height:50px;	
-		width:100%;	
-		line-height:50px;		
-	}
-</style>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
 <script>
 	function get_msg(message) {
 		jQuery('#message').text(message);
@@ -73,31 +46,19 @@
 </head>
 <body>
 	<div id="header">
-		<h1>로그인</h1>
+		<h3>로그인</h3>
 	</div>
 	<div id="section">
 		<form action="login" id="loginForm" method="post">
 			<input type="hidden" name="returl" value="${param.returl }" />
-			<input type="text" name="userid" placeholder="아이디를 입력하시오" 
-				value="${param.userid }"/><br/><br/>		
-			<input type="password" name="password" placeholder="패스워드를 입력하시오"/><br /><br/>
-			<input style="background: #eeeeff;" type="button" value="로그인"
-			  onclick="login_go();"/>
+			<input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/><br/><br/>		
+			<input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드"/><br /><br/>
+			<input class="def-btn btn-sm btn-color" type="button" value="로그인" onclick="login_go();"/>
 			<!-- <input style="background: #eeeeff;" type="submit" value="로그인(html)"  /> --> 
 			<div><span id="message"></span></div>
 		</form>
 	</div>
-	<div> 
-	</div>
-
+	
 </body>
 </html>
-
-
-
-
-
-
-
-
 

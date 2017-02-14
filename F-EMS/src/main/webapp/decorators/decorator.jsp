@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%
 	response.setHeader("Pragma", "No-cache");
@@ -44,8 +45,11 @@
 <div class="float-right">
 					<c:choose>
 						<c:when test="${empty loginUser}">
-		<a href="<%=request.getContextPath() %>/loginForm" class="no-uline"><button
-						class="def-btn">Login</button></a>&nbsp;&nbsp;
+		<input class="def-btn btn-sm btn-color" type="button" value="관리자" onclick="login_admin();"/>&nbsp;&nbsp;
+		<input class="def-btn btn-sm btn-color" type="button" value="직원" onclick="login_staff();"/>&nbsp;&nbsp;
+		<input class="def-btn btn-sm btn-color" type="button" value="교수" onclick="login_professor();"/>&nbsp;&nbsp;
+		<input class="def-btn btn-sm btn-color" type="button" value="학생" onclick="login_student();"/>&nbsp;&nbsp;
+		<a href="<%=request.getContextPath() %>/loginForm" class="no-uline"><button class="def-btn">Login</button></a>&nbsp;&nbsp;
 				</c:when>
 				
 				<c:otherwise>
@@ -69,6 +73,7 @@
 				<ul class="nav navbar-nav navbar-left">
 
 					<!-- 권한 관련 추후에 설정 -->
+					<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">직원</a></button>
 							<div class="menu-dropdown-content">
@@ -82,8 +87,10 @@
 							<a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 양식</a>
 							<a href="#" class="no-uline">메뉴1 </a>
 							</div>
-						</div>
-
+					</div>
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('ROLE_PRO')">
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">교수</a></button>
 							<div class="menu-dropdown-content">
@@ -91,15 +98,19 @@
 							<a href="#">메뉴2 </a>
 							<a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a>
 							<a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a>
-						</div>
-						</div>
-
+							</div>
+					</div>
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('ROLE_STD')">
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">학생</a></button>
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a>
 							<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a>
-						</div></div>
+						</div>
+					</div>
+					</sec:authorize>
 					<!-- 여기까지 -->
 
 
@@ -108,45 +119,54 @@
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
 							<a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
-						</div></div>
+						</div>
+					</div>
 						
-						
+					<sec:authorize access="isAuthenticated()">
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">수강신청</a></button>
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/course/courseList">수강신청목록</a>
 							<a href="#">메뉴2 </a>
-						</div></div>
-						
+						</div>
+					</div>
+					</sec:authorize>
+					
+					<sec:authorize access="isAuthenticated()">
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">강의</a></button>
 							<div class="menu-dropdown-content">
 							
 							<a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a>
-	<a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a>
-	<a href="<%=request.getContextPath() %>/lctre/fileList">자료게시판</a>
-	<a href="<%=request.getContextPath() %>/lctre/qnaList">질의응답 게시판</a>
-	<a href="<%=request.getContextPath() %>/lctre/hwList">과제 게시판</a>
-	<a href="<%=request.getContextPath() %>/lctre/mediaList">동영상 게시판</a>
-	<a href="<%=request.getContextPath() %>/lctre/attendList">시청 여부 게시판</a>
+							<a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a>
+							<a href="<%=request.getContextPath() %>/lctre/fileList">자료게시판</a>
+							<a href="<%=request.getContextPath() %>/lctre/qnaList">질의응답 게시판</a>
+							<a href="<%=request.getContextPath() %>/lctre/hwList">과제 게시판</a>
+							<a href="<%=request.getContextPath() %>/lctre/mediaList">동영상 게시판</a>
+							<a href="<%=request.getContextPath() %>/lctre/attendList">시청 여부 게시판</a>
 							
-						</div></div>
+						</div>
+					</div>
+					</sec:authorize>
 						
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#">커뮤니티</a></button>
 							<div class="menu-dropdown-content">
 							<a href="#">커뮤니티메뉴1 </a>
 							<a href="#">메뉴2 </a>
-						</div></div>
+						</div>
+					</div>
 
-
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn"><a href="#" onclick="op_menu_admin()">관리자</a></button>
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath()%>/admin/step1Add">레이아웃 설정</a>
 							<a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a>
 							<a href="#">메뉴2 </a>
-						</div></div>
+						</div>
+					</div>
+					</sec:authorize>
 
 				</ul>
 
@@ -167,6 +187,7 @@
 
 				<!-- ////////////////// -->
 				<ul class="accordion-menu" id="accordionMenu1">
+					<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 					<li data-extension="close">
 						<div class="main-title">
 							<span class="folder main_menu"></span><a href="#">직원</a>
@@ -184,7 +205,9 @@
 							
 						</ul>
 					</li>
+					</sec:authorize>
 
+					<sec:authorize access="hasRole('ROLE_PRO')">
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
@@ -197,17 +220,19 @@
 							</a></li></div>
 						</ul>
 					</li>
+					</sec:authorize>
 
+					<sec:authorize access="hasRole('ROLE_STD')">
 					<li>
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								>학생</a>
+							<span class="folder main_menu"> </span><a href="#">학생</a>
 						</div>
 						<ul class="sub sub_meun">
 							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학생/학적관리</a></li></div>
 							<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">학생/기숙사신청</a></li></div>
 						</ul>
 					</li>
+					</sec:authorize>
 
 					<li>
 						<div class="main-title">
@@ -222,6 +247,7 @@
 						</ul>
 					</li>
 
+					<sec:authorize access="isAuthenticated()">
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
@@ -234,7 +260,9 @@
 							</a></li></div>
 						</ul>
 					</li>
+					</sec:authorize>
 
+					<sec:authorize access="isAuthenticated()">
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#"
@@ -251,11 +279,11 @@
 							
 						</ul>
 					</li>
+					</sec:authorize>
 
 					<li>
 						<div class="main-title">
-							<span class="folder main_menu"> </span><a href="#"
-								>커뮤니티</a>
+							<span class="folder main_menu"> </span><a href="#">커뮤니티</a>
 						</div>
 						<ul class="sub sub_meun">
 							<div class="inherit-size"><li class="sub-menu-li"><a href="#" >커뮤니티메뉴1
@@ -266,6 +294,7 @@
 						</ul>
 					</li>
 
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<li>
 						<div class="main-title">
 							<span class="folder main_menu"> </span><a href="#">관리자</a>
@@ -278,11 +307,8 @@
 							</a></li></div>
 						</ul>
 					</li>
-
-
-
+					</sec:authorize>
 				</ul>
-
 			</div>
 			<!-- ////////////////// -->
 
@@ -372,6 +398,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/use.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/users.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/work.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 <!-- //////////////////////////////////// -->
 
 
