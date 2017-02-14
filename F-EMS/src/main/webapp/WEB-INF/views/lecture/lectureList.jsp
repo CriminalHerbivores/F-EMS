@@ -12,8 +12,10 @@
 <body>
 
 <div class="container">
+<div style="text-align: center;">
 <h2>강의 목록</h2>
 <hr/>
+</div>
 	 <table class="def-table-auto tb-border table-hover">
 	      <tr>
 	        <th>강의 번호</th>
@@ -23,7 +25,7 @@
 	      </tr>
 	      
 	      <tr>
-	      	<td>2675023</td>
+	      	<td><a href="actPln">2675023</a></td>
 	      	<td>시와음악산책</td>
 	      	<td>정경량</td>
 	      	<td>74</td>

@@ -16,12 +16,25 @@
 	--------- 기타 ---------<br/>
 	<a href="<%=request.getContextPath() %>/index">메인으로 가기</a><br/>
 	--------- 직원 ---------<br/>
-	<a href="<%=request.getContextPath() %>/a">직원 페이지</a><br/>
-	<a href="<%=request.getContextPath() %>/schlship/schlshipList">장학금</a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록 </a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 조회 </a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리 </a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 신청 </a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록 </a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 조회 </a><br/>
+	<a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 양식</a><br/>
 	--------- 교수 ---------<br/>
+	<a href="<%=request.getContextPath() %>/profsr/profsrInsert" class="no-uline">교수 등록 </a><br/>
+	<a href="<%=request.getContextPath() %>/profsr/profsrList" class="no-uline">교수 조회 </a><br/>
 	--------- 학생 ---------<br/>
+	<a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적관리</a><br/>
+	<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사신청</a><br/>
 	--------- 학사 ---------<br/>
+	<a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a><br/>
+	<a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a><br/>
 	--------- 수강신청 ---------<br/>
+	<a href="<%=request.getContextPath() %>/course/courseList">수강신청목록</a><br/>
 	--------- 강의 ---------<br/>
 	<a href="<%=request.getContextPath() %>/lctre/lctreList">강의목록</a><br/>
 	<a href="<%=request.getContextPath() %>/lctre/noticeList">공지게시판</a><br/>

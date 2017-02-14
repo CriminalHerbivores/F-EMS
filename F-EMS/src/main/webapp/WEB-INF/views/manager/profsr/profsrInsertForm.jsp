@@ -13,6 +13,7 @@
 <body>
 <%-- <form action="multipartFile" method="POST"enctype="multipart/form-data" name="frm"> --%>
 <form method="POST" enctype="multipart/form-data" name="frm">
+ 	<h2>교수 정보 등록</h2>
  <table class="table table-bordered">
       <tr>
         <td>교수 번호</td>
@@ -35,7 +36,7 @@
       <tr>
         <td>비밀번호</td>
         <td><input type="text" class="form-control" id="pr_Pw" name="pr_Pw"></td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td><input type="text" class="form-control" id="pr_Pw_on" name="pr_Pw_on"></td>
         <td>주민 번호</td>
         <td><input type="text" class="form-control" id="pr_Ihidnum" name="pr_Ihidnum" ></td>
@@ -43,9 +44,9 @@
       <tr>
         <td>우편주소</td>
         <td><input type="text" class="form-control" id="pr_Post_No" name="pr_Post_No"></td>
-        <td>주소1</td>
+        <td>주소</td>
         <td><input type="text" class="form-control" id="pr_Adres1" name="pr_Adres1"></td>
-        <td>주소2</td>
+        <td>상세 주소</td>
         <td><input type="text" class="form-control" id="pr_Adres2" name="pr_Adres2"></td>
       </tr>
       <tr>
@@ -56,13 +57,10 @@
         <td>교수 번호</td>
         <td><input type="text" class="form-control" id="pr_Profsr_Tlphon_No" name="pr_Profsr_Tlphon_No" ></td>
       </tr>
-      
-      
   </table>
-		파일 경로: <input type="text" name="file"><br /> 파일경로: <input
-			type="file" name="f"><br />
+		파일 경로: <input type="text" name="file"><br /> 파일경로: <input type="file" name="f"><br />
    <button type="button" class="btn btn-default" onclick="go_profsrInsert('<%=request.getContextPath() %>')">등록</button>
-    <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
+   <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
   </form>
 </body>
 </html>

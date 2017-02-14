@@ -18,16 +18,18 @@
 <body>
 
 <div class="container">
+<div style="text-align: center;">
   <h2>자료 게시판</h2>
  <hr />
 <form name="forrm">
-  <select name="key">
+  <select name="key" class="combobox-md custom-form-control">
   	<option value="nb_Sj">제목</option>
   	<option value="nb_Cn">내용</option>
   </select>
-  <input type="text" name="value">
-  <input type="button" class="def-btn" value="검색" onclick="searchBBS();">
+  <input type="text" class="def-input-text-lg custom-form-control" name="value">
+  <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="searchBBS();">
  </form>
+ </div>
   <table class="def-table-auto tb-border table-hover">
       <tr>
         <th>No</th>
@@ -89,7 +91,7 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<input type="button" class="def-btn" value="등록하기" onclick="writeNoticeForm();">
+	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
 	  </div>
 </div>
  
