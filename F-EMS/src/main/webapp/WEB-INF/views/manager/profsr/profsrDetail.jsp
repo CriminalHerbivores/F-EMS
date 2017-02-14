@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page  trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@
 <title></title>
 </head>
 <body>
+	<h2>교수 정보 조회</h2>
  <table class="table table-bordered">
       <tr>
         <td>교수 번호</td>
@@ -32,17 +33,17 @@
       <tr>
         <td>비밀번호</td>
         <td>${profsrVO.pr_Pw}</td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td>${profsrVO.pr_Pw}</td>
         <td>주민 번호</td>
         <td>${profsrVO.pr_Ihidnum}</td>
       </tr>
       <tr>
-        <td>우편주소</td>
+        <td>우편번호</td>
         <td>${profsrVO.pr_Post_No}</td>
-        <td>주소1</td>
+        <td>주소</td>
         <td>${profsrVO.pr_Adres1}</td>
-        <td>주소2</td>
+        <td>상세주소</td>
         <td>${profsrVO.pr_Adres2}</td>
       </tr>
       <tr>
@@ -58,8 +59,10 @@
   <!--버튼들  -->
 <div id="buttons" style="float:right">
 	<a href="profsrUpdate?pr_Profsr_No=${profsrVO.pr_Profsr_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn"> </a>
+	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 	<input type="button" class="def-btn" data-target="#layerpop" data-toggle="modal" value="삭제">
 	<a href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
+	</sec:authorize>
 </div>
 <!--모달부분  -->
 <div class="modal fade" id="layerpop" >
