@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,50 @@ public class ProfsrController {
 		this.profsrService = profsrService;
 	}
 
+	@RequestMapping("/profsrDetail")
+	public String profsrDitail(Model model, HttpSession session) throws ServletException, IOException{
+		String url="manager/profsr/profsrDetail";
+		String pr_Profsr_No = (String) session.getAttribute("loginUser");
+		
+		ProfsrVO profsrVO = null;
+		try {
+			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("profsrVO", profsrVO);
+		return url;
+		
+	}
+	
+	@RequestMapping(value="/profsrUpdate", method = RequestMethod.GET)
+	public String profsrUpdateForm(HttpSession session,Model model) throws ServletException, IOException{
+		String url="manager/profsr/profsrUpdate";
+		String pr_Profsr_No = (String) session.getAttribute("loginUser");
+		ProfsrVO profsrVO = null;
+		try {
+			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("profsrVO", profsrVO);
+		return url;
+		
+	}
+	@RequestMapping(value="/profsrUpdate", method = RequestMethod.POST)
+	public String profsrUpdate(ProfsrVO profsrVO,Model model) throws ServletException, IOException{
+		String url="redirect:profsrDetail";
+		try {
+			profsrService.updateProfsr(profsrVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("pr_Profsr_No", profsrVO.getPr_Profsr_No());
+		return url;
+		
+	}
+	
+/*
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.GET)
 	String profsrInsertForm() {
 		String url = "manager/profsr/profsrInsertForm";
@@ -79,53 +124,5 @@ public class ProfsrController {
 		return url;
 		
 	}
-	
-	
-	@RequestMapping("/profsrDetail")
-	public String profsrDitail(@RequestParam String pr_Profsr_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
-		String url="manager/profsr/profsrDetail";
-		
-		model.addAttribute("tpage",tpage);
-		
-		ProfsrVO profsrVO = null;
-		try {
-			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("profsrVO", profsrVO);
-		return url;
-		
-	}
-	
-	@RequestMapping(value="/profsrUpdate", method = RequestMethod.GET)
-	public String profsrUpdateForm(@RequestParam String pr_Profsr_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
-		String url="manager/profsr/profsrUpdate";
-		
-		model.addAttribute("tpage",tpage);
-		
-		ProfsrVO profsrVO = null;
-		try {
-			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("profsrVO", profsrVO);
-		return url;
-		
-	}
-	@RequestMapping(value="/profsrUpdate", method = RequestMethod.POST)
-	public String profsrUpdate(ProfsrVO profsrVO,@RequestParam int tpage, Model model) throws ServletException, IOException{
-		String url="redirect:profsrDetail";
-		System.out.println(" profsrVO : "+profsrVO);
-		try {
-			profsrService.updateProfsr(profsrVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("pr_Profsr_No", profsrVO.getPr_Profsr_No());
-		model.addAttribute("tpage", tpage);
-		return url;
-		
-	}
+*/
 }
