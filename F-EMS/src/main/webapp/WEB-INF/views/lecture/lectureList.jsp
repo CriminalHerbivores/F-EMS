@@ -25,7 +25,7 @@
 	      </tr>
 	      
 	      <tr>
-	      	<td>2675023</td>
+	      	<td><a href="actPln">2675023</a></td>
 	      	<td>시와음악산책</td>
 	      	<td>정경량</td>
 	      	<td>74</td>

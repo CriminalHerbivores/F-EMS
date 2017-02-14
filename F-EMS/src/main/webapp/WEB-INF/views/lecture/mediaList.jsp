@@ -90,7 +90,7 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<input type="button" class="def-btn btn-md btn-color" value="등록하기" onclick="writeNoticeForm();">
+	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
 	  </div>
 </div>
  
