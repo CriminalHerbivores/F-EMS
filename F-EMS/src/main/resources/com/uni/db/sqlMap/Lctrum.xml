@@ -6,7 +6,7 @@
 <sqlMap namespace="Lctrum">
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="lctrum" type="com.uni.fems.dto.LctrumVO" />
+	<typeAlias alias="Lctrum" type="com.uni.fems.dto.LctrumVO" />
 
 	<!-- 강의실 등록 -->
 	<update id="insertLctrum" parameterClass="lctrum">

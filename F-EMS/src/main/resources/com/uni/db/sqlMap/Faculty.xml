@@ -17,7 +17,7 @@
 	<!-- 학부 수정 -->
 	<update id="updateFaculty" parameterClass="faculty">
 		update faculty set fc_Faculty_Code=#fc_Faculty_Code#,fc_Coleg_Code=#fc_Coleg_Code#,fc_Faculty_Nm=#fc_Faculty_Nm#,fc_Useyn=#fc_Useyn#
-		where sit_Subjct_Code=#sit_Subjct_Code#
+		where fc_Faculty_Code=#fc_Faculty_Code#
 	</update>
 	
 	<!-- 학부 사용안함 -->

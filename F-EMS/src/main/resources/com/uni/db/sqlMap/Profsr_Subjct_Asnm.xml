@@ -9,15 +9,15 @@
 	<typeAlias alias="profsr_subjct_asnm" type="com.uni.fems.dto.Profsr_Subjct_AsnmVO" />
 
 	<!-- 교수 학과배정 등록 -->
-	<update id="insertProfsr_Subjct_Asnm" parameterClass="profsr_subjct_asnm">
+<!-- 	<update id="insertProfsr_Subjct_Asnm" parameterClass="profsr_subjct_asnm">
 		insert into profsr_subjct_asnm(psa_Code,psa_Subjct_Code,psa_Profsr_No,private Timestamp psa_Dt)
 			values(#psa_Code#,#psa_Subjct_Code#,#psa_Profsr_No#,#private Timestamp psa_Dt#)
-	</update>
+	</update> -->
 	
 	<!-- 교수 학과배정 수정 -->
-	<update id="updateProfsr_Subjct_Asnm" parameterClass="profsr_subjct_asnm">
+<!-- 	<update id="updateProfsr_Subjct_Asnm" parameterClass="profsr_subjct_asnm">
 		update profsr_subjct_asnm set psa_Code=#psa_Code#,psa_Subjct_Code=#psa_Subjct_Code#,psa_Profsr_No=#psa_Profsr_No#,psa_Dt=#psa_Dt#
 		where psa_Code=#psa_Code#
-	</update>
+	</update> -->
 	
 	</sqlMap>
