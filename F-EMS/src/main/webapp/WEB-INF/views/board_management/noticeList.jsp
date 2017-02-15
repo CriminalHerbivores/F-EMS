@@ -65,8 +65,6 @@
       	</tr>
       	
      
-     
-     
   </table>
 	  <div id="buttons" style="float:right">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">

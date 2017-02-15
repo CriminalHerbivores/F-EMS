@@ -160,7 +160,8 @@ border-collapse: separate;
 				<select name="선택" class="combobox-sm custom-form-control">
 					<option value="">01</option><option value="">02</option><option value="">03</option><option value="">04</option><option value="">05</option><option value="">06</option><option value="">07</option><option value="">08</option><option value="">09</option><option value="">10</option><option value="">11</option><option value="">12</option><option value="">13</option><option value="">14</option><option value="">15</option><option value="">16</option><option value="">17</option><option value="">18</option><option value="">19</option><option value="">20</option><option value="">21</option><option value="">22</option><option value="">23</option><option value="">24</option><option value="">25</option><option value="">26</option><option value="">27</option><option value="">28</option><option value="">29</option><option value="">30</option><option value="">31</option>
 				</select>&nbsp;:
-			 <input type="text" class="def-input-text-lg custom-form-control" value=""><br />
+			 <input type="text" class="def-input-text-lg custom-form-control" value="">
+			 <input type="button" class="def-btn btn-md btn-color" value="등록">
 			</div>
 			</td>
 		</tr>
@@ -253,7 +254,7 @@ border-collapse: separate;
 				</p>
 			<div class="content">
 				<select name="선택" class="combobox-sm custom-form-control">
-					<option value="">05</option><option value="">
+					<option value="">05</option>
 				</select>월
 				<select name="선택" class="combobox-sm custom-form-control">
 					<option value="">01</option><option value="">02</option><option value="">03</option><option value="">04</option><option value="">05</option><option value="">06</option><option value="">07</option><option value="">08</option><option value="">09</option><option value="">10</option><option value="">11</option><option value="">12</option><option value="">13</option><option value="">14</option><option value="">15</option><option value="">16</option><option value="">17</option><option value="">18</option><option value="">19</option><option value="">20</option><option value="">21</option><option value="">22</option><option value="">23</option><option value="">24</option><option value="">25</option><option value="">26</option><option value="">27</option><option value="">28</option><option value="">29</option><option value="">30</option><option value="">31</option>
@@ -305,7 +306,7 @@ border-collapse: separate;
 				</p>
 			<div class="content">
 				<select name="선택" class="combobox-sm custom-form-control">
-					<option value="">07</option><option value="">
+					<option value="">07</option>
 				</select>월
 				<select name="선택" class="combobox-sm custom-form-control">
 					<option value="">01</option><option value="">02</option><option value="">03</option><option value="">04</option><option value="">05</option><option value="">06</option><option value="">07</option><option value="">08</option><option value="">09</option><option value="">10</option><option value="">11</option><option value="">12</option><option value="">13</option><option value="">14</option><option value="">15</option><option value="">16</option><option value="">17</option><option value="">18</option><option value="">19</option><option value="">20</option><option value="">21</option><option value="">22</option><option value="">23</option><option value="">24</option><option value="">25</option><option value="">26</option><option value="">27</option><option value="">28</option><option value="">29</option><option value="">30</option><option value="">31</option>
