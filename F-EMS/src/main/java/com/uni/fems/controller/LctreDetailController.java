@@ -17,7 +17,22 @@ import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Notice_BbsService;
-
+/**
+ * <pre>
+ * 강의part 게시판 리스트 Controller
+ * </pre>
+ * @author 송선호
+ * @since 2017.02.11
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ *   수정일              수정자                    수정내용
+ * --------     --------    ----------------------
+ * 2017.02.11     송선호                    최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 @Controller
 @RequestMapping("/lctre")
 public class LctreDetailController {

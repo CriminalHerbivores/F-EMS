@@ -4,6 +4,12 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
+<!--  [[개정이력(Modification Information)]]       -->
+<!--     수정일          수정자              수정내용               -->
+<!--  ==========   ======    ==============        -->
+<!--  2017.02.01    송선호            최초작성               -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
+
 <sqlMap namespace="Notice_Bbs">
 
 	<typeAlias alias="str" type="java.lang.String" />

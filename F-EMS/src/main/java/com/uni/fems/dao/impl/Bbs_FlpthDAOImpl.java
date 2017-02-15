@@ -7,6 +7,23 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.Bbs_FlpthDAO;
 import com.uni.fems.dto.Bbs_FlpthVO;
 
+/**
+ * <pre>
+ * 공지게시판 파일 업로드 및 다운로드를 위한 DAOImpl
+ * </pre>
+ * @author 송선호
+ * @since 2017.02.03
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ *   수정일              수정자                    수정내용
+ * --------     --------    ----------------------
+ * 2017.02.03     송선호                    최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
+
 public class Bbs_FlpthDAOImpl implements Bbs_FlpthDAO {
 
 	private SqlMapClient client;

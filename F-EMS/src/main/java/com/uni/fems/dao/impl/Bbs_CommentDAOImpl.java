@@ -8,6 +8,23 @@ import com.uni.fems.dao.Bbs_CommentDAO;
 import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.Bbs_CommentVO;
 
+/**
+ * <pre>
+ * 공지게시판 댓글 CRUD를 위한 DAOImpl
+ * </pre>
+ * @author 송선호
+ * @since 2017.02.07
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ *   수정일              수정자                    수정내용
+ * --------     --------    ----------------------
+ * 2017.02.07     송선호                    최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
+
 public class Bbs_CommentDAOImpl implements Bbs_CommentDAO {
 	
 	private SqlMapClient client;
