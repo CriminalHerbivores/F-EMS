@@ -194,7 +194,8 @@
 		<div class="row content">
 			
 			<div class="custom-col-sm-2 sidenav">
-
+				<div>
+				
 				<!-- ////////////////// -->
 				<ul class="accordion-menu" id="accordionMenu1">
 					<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
@@ -302,19 +303,22 @@
 					</sec:authorize>
 				</ul>
 			</div>
+			</div>
 			<!-- ////////////////// -->
 
 			<div class="custom-col-sm-8 sidenav text-left">
+				<!-- <table style="border:none;width:auto; min-width:500px;"> -->
 				<decorator:body />
+				<!-- </table> -->
 			</div>
 		</div>
-
-	</div>
+</div>
 
 	<!-- 좌측메뉴 끝 -->
 	
 <!-- Footer 시작 -->
-	<footer class="footer container-fluid text-center">
+	<!-- <footer class="footer container-fluid text-center"> -->
+	<footer class="footer text-center">
 		<p>Footer Text</p>
 	</footer>
 	<!-- Footer 끝 -->

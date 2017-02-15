@@ -28,6 +28,10 @@ a.select a:hover{	/* hover 밑줄 안 생기도록 */
 	text-decoration: none !important;
 }
 
+.non-border{
+	border:none !important;
+}
+
 .non-disp {
 	display: none;
 }
