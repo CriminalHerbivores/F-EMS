@@ -319,7 +319,8 @@
 <!-- Footer 시작 -->
 	<!-- <footer class="footer container-fluid text-center"> -->
 	<footer class="footer text-center">
-		<p>Footer Text</p>
+		<p>${manageVO.mng_Univ_Nm} Footer</p>
+		
 	</footer>
 	<!-- Footer 끝 -->
 
