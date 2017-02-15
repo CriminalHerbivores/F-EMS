@@ -29,6 +29,23 @@ import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Notice_BbsService;
 
+/**
+ * <pre>
+ * 공지게시판 Controller.
+ * 글 작성(파일 업로드 포함) , 상세보기(파일 다운로드), 수정, 삭제 기능 구현
+ * </pre>
+ * @author 송선호
+ * @since 2017.02.01
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ *   수정일             수정자                    수정내용
+ * --------     --------    ----------------------
+ * 2017.02.01     송선호                    최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 
 @Controller
 @RequestMapping("/notice_bbs")
@@ -59,6 +76,20 @@ public class Notice_BbsController implements ApplicationContextAware{
 		
 	}*/
 	
+
+	/**
+	 * <pre>
+	 * 공지게시판 리스트를 출력하기 위해 값을 model에 저장하여 보내주는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @param searchVO
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/noticeList")
 	public String noticeList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
 		String url="board_management/noticeList";
@@ -93,12 +124,39 @@ public class Notice_BbsController implements ApplicationContextAware{
 		
 	}
 	
+	/**
+	 * <pre>
+	 * 공지게시판 작성 폼을 띄우기 위한 메서드
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/writeNotice", method=RequestMethod.GET)
 	public String writeNoticeForm(Model model) throws ServletException, IOException {
 		String url="board_management/writeNotice";
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 *  작성한 게시판 내용을 바탕으로 값을 DB에 저장 또는 처리하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param notice_BbsVO
+	 * @param bbs_FlpthVO
+	 * @param request
+	 * @param uploadfile
+	 * @param session
+	 * @param model
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/writeNotice", method=RequestMethod.POST)
 	public String writeNotice(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request,
 								@RequestParam("uploadfile")MultipartFile uploadfile, HttpSession session, Model model)
@@ -152,6 +210,18 @@ public class Notice_BbsController implements ApplicationContextAware{
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 공지게시판 상세페이지를 출력하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param no
+	 * @param tpage
+	 * @param model
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
 	@RequestMapping(value="/detailNotice")
 	public String detailNotice(@RequestParam int no,@RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="board_management/detailNotice";
@@ -183,6 +253,18 @@ public class Notice_BbsController implements ApplicationContextAware{
 		
 	}
 	
+	/**
+	 * <pre>
+	 * 공지게시판 수정 폼을 띄워주는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param no
+	 * @param tpage
+	 * @param model
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
 	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
 	public String updateNoticeForm(@RequestParam int no,@RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="board_management/updateNotice";
@@ -207,6 +289,20 @@ public class Notice_BbsController implements ApplicationContextAware{
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 수정한 게시판 내용을 바탕으로 데이터를 수정 또는 처리하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param uploadfile
+	 * @param notice_BbsVO
+	 * @param bbs_FlpthVO
+	 * @param session
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
 	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
 	public String updateNotice(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpSession session, HttpServletRequest request){
 		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
@@ -249,6 +345,17 @@ public class Notice_BbsController implements ApplicationContextAware{
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 해당하는 게시판을 삭제처리하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param no
+	 * @param tpage
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
 	@RequestMapping(value="/deleteNotice")
 	public String deleteNotice(@RequestParam int no,@RequestParam int tpage,HttpServletRequest request){
 		String url = "redirect:noticeList?tpage="+tpage;
@@ -273,7 +380,19 @@ public class Notice_BbsController implements ApplicationContextAware{
 	}
 	
 	
-	   @RequestMapping("/file/{fileId}")
+	   /**
+	 * <pre>
+	 * 첨부파일 다운로드를 처리하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param fileId
+	 * @param response
+	 * @param filename
+	 * @return
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/file/{fileId}")
 	   public ModelAndView download(@PathVariable String fileId,
 	         HttpServletResponse response, @RequestParam String filename) throws IOException {
 		   

@@ -5,6 +5,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<!--  [[개정이력(Modification Information)]]       -->
+<!--  수정일               수정자            수정내용               -->
+<!--  ==========   ======    ==============        -->
+<!--  2017.02.13    송선호            최초작성               -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
+
 <!DOCTYPE html>
 <html>
 <head>
