@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Colege")
 @Data
 public class ColegeVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String coleg_Code;   // 단과대학코드
 	private String coleg_Nm;   // 단과대학명
 	private String coleg_Useyn;   // 단과대학 사용유무

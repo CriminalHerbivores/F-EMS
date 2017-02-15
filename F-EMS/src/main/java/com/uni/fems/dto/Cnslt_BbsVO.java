@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Cnslt_BbsVO")
 @Data
 public class Cnslt_BbsVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int cb_No;   // 게시판번호
 	private String cb_User_No;   // 사용자번호
 	private String cb_Title;   // 제목

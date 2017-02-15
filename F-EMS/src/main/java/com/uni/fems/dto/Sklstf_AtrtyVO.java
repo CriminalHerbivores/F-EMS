@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Sklstf_Atrty")
 @Data
 public class Sklstf_AtrtyVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String sa_Sklstf_No;   // 직원번호
 	private String sa_Atrty;   // 권한
 	

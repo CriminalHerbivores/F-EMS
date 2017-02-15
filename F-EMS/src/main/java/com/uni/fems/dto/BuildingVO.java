@@ -8,6 +8,11 @@ import lombok.Data;
 @Alias("Building")
 @Data
 public class BuildingVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String bd_No;   // 건물 번호
 	private String bd_Nm;   // 건물명
 	private String bd_Useyn;   // 건물 사용유무

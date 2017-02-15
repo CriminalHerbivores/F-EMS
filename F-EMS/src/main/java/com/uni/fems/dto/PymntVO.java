@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Pymnt")
 @Data
 public class PymntVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int py_Schlship_Brkdn_No;   // 장학금 내역 번호
 	private String py_Stdnt_No;   // 학생 번호
 	private int py_Schlship_Code;   // 장학금 코드

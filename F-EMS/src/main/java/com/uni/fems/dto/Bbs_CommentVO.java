@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Bbs_Comment")
 @Data
 public class Bbs_CommentVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int bc_Comnt_No; //댓글번호
 	private String bc_Bbs_Code; // 게시판명 ex)notice_bbs
 	private int bc_Bbs_No; // 게시판번호

@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Answer")
 @Data
 public class AnswerVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String an_Ques_No;   // 문제번호
 	private String an_Tp_No;   // 시험지번호
 	private String an_Stdnt_No;   // 학생번호

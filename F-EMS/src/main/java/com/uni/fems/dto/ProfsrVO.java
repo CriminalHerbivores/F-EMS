@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Profsr")
 @Data
 public class ProfsrVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String pr_Profsr_No;   // 교수 번호
 	private String pr_Pw;   // 비밀번호
 	private String pr_Nm;   // 이름

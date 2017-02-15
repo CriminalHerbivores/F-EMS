@@ -9,6 +9,11 @@ import lombok.Data;
 @Alias("Chatting")
 @Data
 public class ChattingVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String ct_Stdnt_No;   // 학생번호
 	private String ct_Profsr_No;   // 교수번호
 	private String ct_Knd;   // 종류

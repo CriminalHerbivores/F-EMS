@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Kind")
 @Data
 public class KindVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int knd_Lctre_No;   // 강의번호
 	private String knd_Lctre_Knd;   // 강의종류
 }

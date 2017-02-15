@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Atrty")
 @Data
 public class AtrtyVO  implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String au_User_No;   // 사용자번호
 	private String au_Atrty;   // 권한
 
