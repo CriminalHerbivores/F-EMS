@@ -409,6 +409,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/users.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/work.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <!-- //////////////////////////////////// -->
 
 
