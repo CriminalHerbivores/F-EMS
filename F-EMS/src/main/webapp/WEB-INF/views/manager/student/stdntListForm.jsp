@@ -33,9 +33,9 @@
 	<div class="container">
 		<h2>학생 조회</h2>
 		<tr>
-			<form name="frm">
-				<td colspan="5" class="text-right"><select name="선택"
-					class="combobox-sm">
+			<form name="formm">
+				<td colspan="5" class="text-right">
+				<select name="선택" class="combobox-sm">
 						<option value="st_Stdnt_No">학생 번호</option>
 						<option value="st_Subjct_Code">학과</option>
 						<option value="st_Nm">이름</option>

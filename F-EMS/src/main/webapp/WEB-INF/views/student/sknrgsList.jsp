@@ -107,7 +107,7 @@
 						</tr>
 					</table>
 					<input type="button" class="def-btn btn-sm btn-color" id="selAll"
-						disabled value="신청하기" onclick="writeSknrgs(this.form)">
+						disabled value="신청하기" onclick="submitForm(this.form);">
 				</form>
 			</c:if>
 		</c:forEach>

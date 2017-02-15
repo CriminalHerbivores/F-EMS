@@ -19,7 +19,7 @@
 <title></title>
 </head>
 <body>
-<form method="POST" name="frm">
+<form method="POST" name="formm">
  <table class="table table-bordered">
       <tr>
         <td>학생 번호</td>
@@ -73,7 +73,7 @@
       </tr>
       
   </table>
-   <button type="button" class="btn btn-default" onclick="go_stdntInsert('<%=request.getContextPath() %>')">수정</button>
+   <button type="button" class="btn btn-default" onclick="go_stdntInsert()">수정</button>
     <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
   </form>
 </body>

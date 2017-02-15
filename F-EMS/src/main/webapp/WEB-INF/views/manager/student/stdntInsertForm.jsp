@@ -22,7 +22,7 @@
 </head>
 <body>
 <%-- <form action="multipartFile" method="POST"enctype="multipart/form-data" name="frm"> --%>
-<form method="POST" enctype="multipart/form-data" name="frm">
+<form method="POST" enctype="multipart/form-data" name="formm">
  <table class="table table-bordered">
       <tr>
         <td>학생 번호</td>
@@ -78,7 +78,7 @@
   </table>
 		파일 경로: <input type="text" name="file"><br /> 파일경로: <input
 			type="file" name="f"><br />
-   <button type="button" class="btn btn-default" onclick="go_stdntInsert('<%=request.getContextPath() %>')">등록</button>
+   <button type="button" class="btn btn-default" onclick="go_stdntInsert()">등록</button>
     <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
   </form>
 </body>
