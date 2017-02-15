@@ -49,4 +49,22 @@ public class IndexController {
 		return url;
 	}
 
+	// 관리자 /////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * <pre>
+	 * 관리자 가입
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/adminJoin")
+	public String adminJoinForm(HttpServletRequest request,HttpSession session) {
+		String url = "admin/admin_management/adminJoin";	
+		return url;
+	}
+	
 }

@@ -22,14 +22,14 @@
 <body>
 	<form name="frm" method="POST">
 		<div class="container">
-			<h2>학족 관리</h2>
+			<h2>학적 관리</h2>
 			<table class="table table-bordered">
 				<tr>
 
 					<td colspan="6" class="text-right"><select name="skn_Type"
 						class="combobox-sm">
 							<option value="학적 조회">학적 조회</option>
-							<option value="전과 신청 관이">전과 신청 관이</option>
+							<option value="전과 신청 관이">전과 신청 관리</option>
 							<option value="복수 전공 관리">복수 전공 관리</option>
 							<option value="조기 졸업 관리">조기 졸업 관리</option>
 							<option value="졸업 연기 관리">졸업 연기 관리</option>
@@ -72,7 +72,7 @@
 			</table>
 		</div>
 		<input type="button" class="btn btn-default" onClick="go_writesknrgs();" value="등록"/>
-		<button type="button" class="btn btn-default" onClick="go_home()">취소</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">취소</button>
 	</form>
 
 </body>
