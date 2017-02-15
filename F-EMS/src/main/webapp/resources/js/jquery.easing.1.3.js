@@ -1,3 +1,20 @@
+/**
+ * <pre>
+ * jQuery에서 활용되는 JavaScrpit
+ * </pre>
+ * @author KJH
+ * @since 2017. 01. 24
+ * @version 1.0
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.02.15      KJH        추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */ 
+
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *

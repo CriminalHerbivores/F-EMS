@@ -1,3 +1,20 @@
+/**
+ * <pre>
+ * 좌측 아코디언 메뉴를 형성하는데 필요한 CSS
+ * </pre>
+ * @author KJH
+ * @since 2017. 01. 24
+ * @version 1.0
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.01.30      KJH        추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */ 
+
 #accordionMenu1 {
 	margin:0px;
     width:100%;

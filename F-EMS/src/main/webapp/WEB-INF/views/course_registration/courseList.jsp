@@ -3,7 +3,17 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%--
+ * <pre>
+ * 개설강의목록, 수강신청완료목록, 관심강의목록, 수강신청가능학점 페이지를 한번에 확인가능한 JSP
+ * </pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.02.15      KJH        추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ --%>
 <!DOCTYPE html>
 <html>
 <head>

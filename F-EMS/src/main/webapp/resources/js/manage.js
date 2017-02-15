@@ -1,4 +1,19 @@
-
+/**
+ * <pre>
+ * 관리자 페이지에서 사용되는 JavaScript
+ * </pre>
+ * @author KJH
+ * @since 2017. 01. 24
+ * @version 1.0
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.02.03      KJH        추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */ 
 
 /*$(function(){
 	   $('#admin_join_btn').click(function(){

@@ -6,6 +6,19 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
+<%--
+ * <pre>
+ * 상단바, 상단메뉴, 좌측메뉴, Footer가 모두 포함되지 않고 js, css를 포함하는 JSP
+ * </pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.01.30      KJH        추가작성 
+ * 2017.02.10      KJH        추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ --%>
+
 <%
 	response.setHeader("Pragma", "No-cache");
 	response.setHeader("Cache-Control", "no-cache");
