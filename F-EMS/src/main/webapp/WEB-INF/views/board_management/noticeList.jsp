@@ -30,14 +30,14 @@
   <h2>공지 게시판</h2>
  <hr />
 
-<form name="forrm">
+<form name="formm">
 <div class="text-right">
   <select name="key" class="combobox-md custom-form-control">
   	<option value="nb_Sj">제목</option>
   	<option value="nb_Cn">내용</option>
   </select>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
-  <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="searchBBS();">
+  <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
 </div>
  </form>
  </div>
