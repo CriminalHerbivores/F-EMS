@@ -24,5 +24,10 @@ public class SklstfDAOImpl implements SklstfDAO {
 	public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
 		client.update("updateSklstf", sklstfVo);
 	}
+	@Override
+	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

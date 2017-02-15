@@ -11,6 +11,23 @@ import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.request.PageRequest;
 import com.uni.fems.service.SknrgsService;
 
+/**
+ * <pre>
+ * 학적과 관련된 Service를 구현
+ * </pre>
+ * @author JAR
+ * @since 2017. 01. 24.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일             수정자            수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24.    JAR       최초작성
+ * 2017.02.15.    JAR       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 public class SknrgsServiceImpl implements SknrgsService {
 
 	private SknrgsDAO sknrgsDAO;
@@ -18,8 +35,6 @@ public class SknrgsServiceImpl implements SknrgsService {
 		this.sknrgsDAO = sknrgsDAO;
 	}
 	
-	
-//	직원의 학적 관리
 	@Override
 	public List<SknrgsViewVO> getSknrgsType(String skn_Typen) throws SQLException {
 		List<SknrgsViewVO> list = sknrgsDAO.getSknrgsType(skn_Typen);
@@ -55,6 +70,7 @@ public class SknrgsServiceImpl implements SknrgsService {
 		String type = sknrgsDAO.getSknrgs(skn_Stdnt_No);
 		return type;
 	}
+	
 	@Override
 	public void updateUseynSknrgs(SknrgsVO sknrgs) throws SQLException {
 		sknrgsDAO.updateUseynSknrgs(sknrgs);

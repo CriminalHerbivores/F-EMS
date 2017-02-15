@@ -1,6 +1,5 @@
 package com.uni.fems.controller;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,15 +23,34 @@ import org.springframework.web.multipart.MultipartFile;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.dto.SknrgsVO;
+import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.ProfsrService;
 import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SklstfService;
+import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
 
-
+/**
+ * <pre>
+ * 직원과 연관된 로직들을 처리하는 컨트롤러
+ * </pre>
+ * @author JAR
+ * @since 2017. 01. 24.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일             수정자            수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24.    JAR       최초작성
+ * 2017.02.15.    JAR       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 @Controller
 @RequestMapping("/sklstf")
 public class SklstfController {
@@ -52,16 +70,29 @@ public class SklstfController {
 	public void setProfsrService(ProfsrService profsrService) {
 		this.profsrService = profsrService;
 	}
-
 	@Autowired
 	private SchlshipService schlshipService;
 	public void setSchlshipService(SchlshipService schlshipService) {
 		this.schlshipService = schlshipService;
 	}
+	@Autowired
+	private SknrgsService sknrgs_Svc;
+	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
+		this.sknrgs_Svc = sknrgs_Svc;
+	}
 	private WebApplicationContext context = null;
 	
-	//==============================================================================
-	// 직원
+	// 직원 ///////////////////////////////////////////////////////////////
+	/**
+	 * <pre>
+	 * 직원 한명의 정보를 업데이트 하기 위해 정보를 조회하는 메소드
+	 * </pre>
+	 * <pre>
+	 * @param session
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="/sklstfUpdate", method = RequestMethod.GET)
 	public String sklstfUpdateForm(HttpSession session, Model model){
 		String url = "manager/sklstfUpdateForm";
@@ -77,6 +108,15 @@ public class SklstfController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 직원 한명의 정보를 업데이트
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="/sklstfUpdate", method = RequestMethod.POST)
 	public String sklstfUpdate(SklstfVO sklstfVO){
 		String url = "/manager/index";
@@ -90,16 +130,34 @@ public class SklstfController {
 		return url;
 	}
 
-	//==============================================================================
-	// 관리자
+	// 관리자 /////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * <pre>
+	 * 관리자 가입
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/adminJoin")
 	public String adminJoinForm(HttpServletRequest request,HttpSession session) {
 		String url = "admin/admin_management/adminJoin";	
 		return url;
 	}
 	
-	//==============================================================================
-	// 학생
+	// 학생 ///////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * <pre>
+	 * 학생 정보를 등록하기 위한 폼을 띄우는 단계
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.GET)
 	String stdntInsertForm(){
 		String url = "manager/student/stdntInsertForm";
@@ -118,6 +176,17 @@ public class SklstfController {
 		return url;
 	}*/
 	
+	/**
+	 * <pre>
+	 * 학생 정보를 등록
+	 * </pre>
+	 * <pre>
+	 * @param stdntVO
+	 * @param file
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
 	String stdntInsert(StdntVO stdntVO, @RequestParam String file, Model model){
 		String url = "/manager/index";
@@ -167,6 +236,18 @@ public class SklstfController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 학생 정보를 리스트 형식으로 보여줌
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/stdntList")
 	public String stdntList(Model model,HttpServletRequest request) throws ServletException, IOException{
 		String url="manager/student/stdntListForm";
@@ -200,6 +281,19 @@ public class SklstfController {
 		
 	}
 	
+	/**
+	 * <pre>
+	 * 학생 한명의 정보를 조회
+	 * </pre>
+	 * <pre>
+	 * @param st_Stdnt_No
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/stdntDetail")
 	public String stdntDitail(@RequestParam String st_Stdnt_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
 		String url="manager/student/stdntDetail";
@@ -217,6 +311,19 @@ public class SklstfController {
 		
 	}
 	
+	/**
+	 * <pre>
+	 * 학생 한명의 정보를 업데이트 하기 위해 조회
+	 * </pre>
+	 * <pre>
+	 * @param st_Stdnt_No
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/stdntUpdate", method = RequestMethod.GET)
 	public String stdntUpdateForm(@RequestParam String st_Stdnt_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
 		String url="manager/student/stdntUpdate";
@@ -233,6 +340,19 @@ public class SklstfController {
 		return url;
 		
 	}
+	/**
+	 * <pre>
+	 * 학생 한명의 정보를 업데이트
+	 * </pre>
+	 * <pre>
+	 * @param stdntVO
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/stdntUpdate", method = RequestMethod.POST)
 	public String stdntUpdate(StdntVO stdntVO,@RequestParam int tpage, Model model) throws ServletException, IOException{
 		String url="redirect:stdntDetail";
@@ -248,21 +368,69 @@ public class SklstfController {
 		
 	}
 	
-	//==============================================================================
-	// 기숙사
-	@RequestMapping(value="stdntBrhs", method = RequestMethod.GET)
+	// 기숙사 (미완성) ////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * <pre>
+	 * 학생의 기숙사 신청 정보를 승인하기 위해 조회 
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="stdntBrhs", method = RequestMethod.GET) 
 	public String stdntBrhs(){
 		String url ="manager/student/";
 		return url;
 	}
+	/**
+	 * <pre>
+	 * 학생의 기숙사 신청 정보를 승인
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="stdntBrhs", method = RequestMethod.POST)
 	public String updatestdntBrhs(){
 		String url ="";
 		return url;
 	}
 
-	//==============================================================================
-	// 장학금
+	// 장학금 ///////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * <pre>
+	 * 장학금을 등록하기 위한 폼을 띄움
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value = "/schlshipInsert", method = RequestMethod.GET)
+	String schlshipInsertForm(Model model, HttpServletRequest request) {
+		String url = "manager/schlship/schlshipInsert";
+		String key = request.getParameter("key");
+		String tpage = request.getParameter("tpage");
+		model.addAttribute("key", key);
+		model.addAttribute("tpage", tpage);
+		return url;
+	}
+	/**
+	 * <pre>
+	 * 장학금을 등록
+	 * </pre>
+	 * <pre>
+	 * @param schlshipVO
+	 * @param multipartFile
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value = "/schlshipInsert", method = RequestMethod.POST)
 	String schlshipInsert(SchlshipVO schlshipVO,
 			@RequestParam("f") MultipartFile multipartFile, Model model,
@@ -283,13 +451,10 @@ public class SklstfController {
 				schlshipVO.setSs_Papers_Content(file.toString());
 				schlshipService.insertSchlship(schlshipVO);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			model.addAttribute("key", key);
@@ -299,6 +464,18 @@ public class SklstfController {
 		return url;
 	}
 
+	/**
+	 * <pre>
+	 * 장학금을 리스트 형태로 조회
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/schlshipList")
 	public String schlshipList(Model model, HttpServletRequest request)
 			throws ServletException, IOException {
@@ -351,6 +528,19 @@ public class SklstfController {
 //	    return new ModelAndView("download", "downloadFile", downloadFile);
 //	}
 	
+	/**
+	 * <pre>
+	 * 장학금 하나의 정보를 상세하게 조회
+	 * </pre>
+	 * <pre>
+	 * @param st_Schlship_No
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/schlshipDetail")
 	public String schlshipDitail(@RequestParam String st_Schlship_No,
 			@RequestParam int tpage, Model model) throws ServletException,
@@ -370,6 +560,19 @@ public class SklstfController {
 
 	}
 
+	/**
+	 * <pre>
+	 * 장학금 정보를 수정하기 위해 조회
+	 * </pre>
+	 * <pre>
+	 * @param st_Schlship_No
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value = "/schlshipUpdate", method = RequestMethod.GET)
 	public String schlshipUpdateForm(@RequestParam String st_Schlship_No,
 			@RequestParam int tpage, Model model) throws ServletException,
@@ -389,6 +592,19 @@ public class SklstfController {
 
 	}
 
+	/**
+	 * <pre>
+	 * 장학금 정보를 수정
+	 * </pre>
+	 * <pre>
+	 * @param schlshipVO
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value = "/schlshipUpdate", method = RequestMethod.POST)
 	public String schlshipUpdate(SchlshipVO schlshipVO,
 			@RequestParam int tpage, Model model) throws ServletException,
@@ -403,14 +619,95 @@ public class SklstfController {
 		return url;
 	}
 	
-	//==============================================================================
-	// 교수
+	// 학적 ////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * <pre>
+	 * 직원의 학생 학적 조회
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.GET)
+	public String sknrgListForm(Model model, HttpSession session) {
+		String url = "manager/student/sknrgsListForm";
+		String skn_Type = (String) session.getAttribute("skn_Type");
+		List<SknrgsViewVO> sknrgsVOList = null;
+		if (skn_Type != null) {
+			skn_Type = "%";
+		}
+		try {
+			sknrgsVOList = sknrgs_Svc.getSknrgsType(skn_Type);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("sknrgsVOList", sknrgsVOList);
+		return url;
+	}
+
+	/**
+	 * <pre>
+	 * 직원의 학생 학적 변동 내역 승인
+	 * </pre>
+	 * <pre>
+	 * @param skn_Nos
+	 * @param skn_Useyns
+	 * @param model
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.POST)
+	public String sknrgList(@RequestParam(value = "skn_No") String[] skn_Nos,
+			@RequestParam(value = "skn_Useyn") String[] skn_Useyns,
+			Model model, HttpSession session) {
+		String url = "redirect:sknrgListForm";
+
+		SknrgsVO sknrgsVO = new SknrgsVO();
+		try {
+			for (int i = 0; i < skn_Nos.length; i++) {
+				sknrgsVO.setSkn_No(Integer.parseInt(skn_Nos[i]));
+				sknrgsVO.setSkn_Useyn(skn_Useyns[i]);
+				try {
+					sknrgs_Svc.updateUseynSknrgs(sknrgsVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (Exception e) {
+		}
+		return url;
+	}
+
+	// 교수 //////////////////////////////////////////////////////////////////////////////
+	/**
+	 * <pre>
+	 * 교수를 등록하기 위한 폼을 띄움
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.GET)
 	String profsrInsertForm() {
 		String url = "manager/profsr/profsrInsertForm";
 		return url;
 	}
 
+	/**
+	 * <pre>
+	 * 교수를 등록
+	 * </pre>
+	 * <pre>
+	 * @param profsrVO
+	 * @param file
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.POST)
 	String profsrInsert(ProfsrVO profsrVO, @RequestParam String file,
 			Model model) {
@@ -424,6 +721,18 @@ public class SklstfController {
 		return url;
 	}
 
+	/**
+	 * <pre>
+	 * 교수 정보를 리스트 형식으로 조회
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/profsrList")
 	public String profsrList(Model model,HttpServletRequest request) throws ServletException, IOException{
 		String url="manager/profsr/profsrListForm";
@@ -457,7 +766,19 @@ public class SklstfController {
 		
 	}
 	
-	
+	/**
+	 * <pre>
+	 * 교수 한명의 정보를 상세하게 조회
+	 * </pre>
+	 * <pre>
+	 * @param pr_Profsr_No
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/profsrDetail")
 	public String profsrDitail(@RequestParam String pr_Profsr_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
 		String url="manager/profsr/profsrDetail";
@@ -475,6 +796,19 @@ public class SklstfController {
 		
 	}
 	
+	/**
+	 * <pre>
+	 * 교수 정보를 수정하기 위해 정보를 조회
+	 * </pre>
+	 * <pre>
+	 * @param pr_Profsr_No
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/profsrUpdate", method = RequestMethod.GET)
 	public String profsrUpdateForm(@RequestParam String pr_Profsr_No,@RequestParam int tpage, Model model) throws ServletException, IOException{
 		String url="manager/profsr/profsrUpdate";
@@ -491,6 +825,19 @@ public class SklstfController {
 		return url;
 		
 	}
+	/**
+	 * <pre>
+	 * 교수의 정보를 수정
+	 * </pre>
+	 * <pre>
+	 * @param profsrVO
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/profsrUpdate", method = RequestMethod.POST)
 	public String profsrUpdate(ProfsrVO profsrVO,@RequestParam int tpage, Model model) throws ServletException, IOException{
 		String url="redirect:profsrDetail";

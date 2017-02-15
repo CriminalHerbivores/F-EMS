@@ -18,6 +18,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.service.ProfsrService;
 
+/**
+ * <pre>
+ * 교수와 연관된 로직들을 처리하는 컨트롤러
+ * </pre>
+ * @author JAR
+ * @since 2017. 01. 24.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일             수정자            수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24.    JAR       최초작성
+ * 2017.02.15.    JAR       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 @Controller
 @RequestMapping("/profsr")
 public class ProfsrController {
@@ -28,8 +45,20 @@ public class ProfsrController {
 		this.profsrService = profsrService;
 	}
 
+	/**
+	 * <pre>
+	 * 교수 한 명의 정보를 상세히 조회한다
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param session 로그인한 사용자의 아이디를 가져오기 위한 세션
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping("/profsrDetail")
-	public String profsrDitail(Model model, HttpSession session) throws ServletException, IOException{
+	public String profsrDetail(Model model, HttpSession session) throws ServletException, IOException{
 		String url="manager/profsr/profsrDetail";
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");
 		
@@ -43,7 +72,19 @@ public class ProfsrController {
 		return url;
 		
 	}
-	
+
+	/**
+	 * <pre>
+	 * 교수의 정보를 업데이트하기 위해 정보를 조회하는 로직
+	 * </pre>
+	 * <pre>
+	 * @param session
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/profsrUpdate", method = RequestMethod.GET)
 	public String profsrUpdateForm(HttpSession session,Model model) throws ServletException, IOException{
 		String url="manager/profsr/profsrUpdate";
@@ -58,6 +99,19 @@ public class ProfsrController {
 		return url;
 		
 	}
+
+	/**
+	 * <pre>
+	 * 교수의 정보를 업데이트 하는 로직
+	 * </pre>
+	 * <pre>
+	 * @param profsrVO
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/profsrUpdate", method = RequestMethod.POST)
 	public String profsrUpdate(ProfsrVO profsrVO,Model model) throws ServletException, IOException{
 		String url="redirect:profsrDetail";

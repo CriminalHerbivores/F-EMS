@@ -8,10 +8,26 @@ import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.StdntService;
 
+/**
+ * <pre>
+ * 학생과 관련된 Service를 구현
+ * </pre>
+ * @author JAR
+ * @since 2017. 01. 24.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일             수정자            수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24.    JAR       최초작성
+ * 2017.02.15.    JAR       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 public class StdntServiceImpl implements StdntService {
 
 	private StdntDAO stdntDAO;
-
 	public void setStdntDAO(StdntDAO stdntDAO) {
 		this.stdntDAO = stdntDAO;
 	}
@@ -19,7 +35,6 @@ public class StdntServiceImpl implements StdntService {
 	@Override
 	public void insertStdnt(StdntVO stdntVO) throws SQLException {
 		stdntDAO.insertStdnt(stdntVO);
-
 	}
 
 	@Override

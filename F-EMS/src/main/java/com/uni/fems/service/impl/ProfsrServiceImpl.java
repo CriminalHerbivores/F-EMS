@@ -8,19 +8,35 @@ import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.service.ProfsrService;
 
+/**
+ * <pre>
+ * 교수와 관련된 Service를 구현
+ * </pre>
+ * @author JAR
+ * @since 2017. 01. 24.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일             수정자            수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24.    JAR       최초작성
+ * 2017.02.15.    JAR       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 public class ProfsrServiceImpl implements ProfsrService {
  
- private ProfsrDAO profsrDAO;
- public void setProfsrDAO(ProfsrDAO profsrDAO){
-  this.profsrDAO=profsrDAO;
- }
+	private ProfsrDAO profsrDAO;
+	public void setProfsrDAO(ProfsrDAO profsrDAO){
+		this.profsrDAO=profsrDAO;
+	}
  
  	@Override
 	public void insertProfsr(ProfsrVO profsrVO) throws SQLException {
  		profsrDAO.insertProfsr(profsrVO);
  	}
  	
-
 	@Override
 	public List<ProfsrVO> selectNameAllPage(int tpage, String pr_Nm)
 			throws SQLException {

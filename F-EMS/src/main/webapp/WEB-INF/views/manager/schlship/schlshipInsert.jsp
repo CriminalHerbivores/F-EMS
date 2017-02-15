@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+
+<%--
+* [[개정이력(Modification Information)]]
+* 수정일      수정자      수정내용
+* ----------  ---------  -----------------
+* 2017.01.24.    KJS      최초작성
+* 2017.02.15.    JAR      추가작성
+* Copyright (c) 2017 by DDIT All right reserved
+ --%>
+
 <!DOCTYPE html>
 <html>
 <head>

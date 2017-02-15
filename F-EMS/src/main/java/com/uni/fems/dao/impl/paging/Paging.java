@@ -5,16 +5,35 @@ import java.sql.SQLException;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dto.request.PageRequest;
 
+/**
+ * <pre>
+ * 페이지를 만드는 클래스
+ * </pre>
+ * @author JAR
+ * @since 2017. 2. 15.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일                          수정자               수정내용
+ * --------     --------    ----------------------
+ * 2017. 2. 15.      JAR       최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 public class Paging {
 	
 	static int view_rows = 4; // 페이지의 개수
 	static int counts = 5; // 한 페이지에 나타낼 개수
 	
 	/**
+	 * <pre>
 	 * 검색어 변수 값의 유무 체크
-	 * 
+	 * </pre>
+	 * <pre>
 	 * @param key
 	 * @return
+	 * </pre>
 	 */
 	public String key(String key){
 		if(key.equals("")) key="%";
@@ -22,9 +41,14 @@ public class Paging {
 	}
 	
 	/**
+	 * <pre>
+	 * 현재 페이지와 페이지 총합을 받아 첫페이지와 마지막 페이지를 반환해줌
+	 * </pre>
+	 * <pre>
 	 * @param tpage 현재 페이지
-	 * @param totalRecord 테이블에 있는 데이터의 총 갯수
+	 * @param totalRecord 테이블에 있는 데이터의 총 개수
 	 * @return {counts,첫페이지, 마지막페이지}
+	 * </pre>
 	 */
 	public int[] row(int tpage, int totalRecord){
 		int startRow = -1;
@@ -42,14 +66,17 @@ public class Paging {
 	}
 	
 	/**
+	 * <pre>
 	 * 페이징을 반환해줌
-	 * 
+	 * </pre>
+	 * <pre>
 	 * @param tpage 현재페이지
-	 * @param totalRecord 데이터 총 갯수
+	 * @param totalRecord 데이터 총 개수
 	 * @param path 경로
 	 * @param key 매개변수 (&key1=value1&key2=value2)
 	 * @return 페이징 반환
 	 * @throws SQLException
+	 * </pre>
 	 */
 	public String pageNumber(int tpage, int totalRecord, String path, String key) 
 			throws SQLException {
@@ -92,6 +119,16 @@ public class Paging {
 		}
 		return str;
 	}
+	/**
+	 * <pre>
+	 * vo 형식으로 페이징을 반환해줌
+	 * </pre>
+	 * <pre>
+	 * @param p
+	 * @return 페이지를 String 값으로 반환
+	 * @throws SQLException
+	 * </pre>
+	 */
 	public String pageNumber(PageRequest p)	throws SQLException {
 		
 		if(p.getKey()==null){
@@ -133,6 +170,19 @@ public class Paging {
 		return str;
 	}
 	
+	/**
+	 * <pre>
+	 * 댓글 페이지를 만들어서 반환해줌
+	 * </pre>
+	 * <pre>
+	 * @param cpage 댓글의 현재 페이지
+	 * @param totalRecord 댓글 페이지 총 개수
+	 * @param path 경로
+	 * @param key 매개변수 (&key1=value1&key2=value2)
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
 	public String commentPageNumber(int cpage, int totalRecord, String path, String key) 
 			throws SQLException {
 		

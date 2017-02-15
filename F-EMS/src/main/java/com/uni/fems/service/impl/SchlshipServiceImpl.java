@@ -9,10 +9,26 @@ import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.service.SchlshipService;
 
+/**
+ * <pre>
+ * 등록금과 관련된 Service를 구현
+ * </pre>
+ * @author JAR
+ * @since 2017. 01. 24.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일             수정자            수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24.    JAR       최초작성
+ * 2017.02.15.    JAR       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 public class SchlshipServiceImpl implements SchlshipService {
 
 	private SchlshipDAO schlshipDAO;
-
 	public void setSchlshipDAO(SchlshipDAO schlshipDAO) {
 		this.schlshipDAO = schlshipDAO;
 	}
@@ -20,7 +36,6 @@ public class SchlshipServiceImpl implements SchlshipService {
 	@Override
 	public void insertSchlship(SchlshipVO schlshipVO) throws SQLException {
 		schlshipDAO.insertSchlship(schlshipVO);
-
 	}
 
 	@Override

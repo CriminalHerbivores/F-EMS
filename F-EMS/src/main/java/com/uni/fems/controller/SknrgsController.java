@@ -29,7 +29,6 @@ public class SknrgsController {
 
 	@Autowired
 	private SknrgsService sknrgs_Svc;
-
 	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
 		this.sknrgs_Svc = sknrgs_Svc;
 	}
@@ -113,24 +112,6 @@ public class SknrgsController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return url;
-	}
-
-	@RequestMapping("register")
-	public String register() {
-		String url = "";
-		return url;
-	}
-
-	@RequestMapping("/absence")
-	public String absence() {
-		String url = "";
-		return url;
-	}
-
-	@RequestMapping("/returnToSchool")
-	public String returnToSchool() {
-		String url = "";
 		return url;
 	}
 
