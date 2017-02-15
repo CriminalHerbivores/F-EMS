@@ -18,6 +18,7 @@ import lombok.Data;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
+ * 2017.02.15      KJH            추가작성 
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -41,4 +42,8 @@ public class ManageVO implements Serializable{
 	private String mng_Sub_Color2;   // 보조컬러2
 	private String mng_Reltv_Evl_Rate;   // 상대평가비율
 
+	private String mng_Main_Txtclr;   // 메인 텍스트 컬러
+	private String mng_Sub_Txtclr1;   // 보조 텍스트 컬러1
+	private String mng_Sub_Txtclr2;   // 보조 텍스트 컬러2
+	private String mng_Univ_Img;   // 대학이미지
 }
