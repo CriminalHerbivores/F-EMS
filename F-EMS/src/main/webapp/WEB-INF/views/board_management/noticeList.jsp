@@ -24,16 +24,21 @@
 <body>
 
 <div class="container">
-<div style="text-align: center;">
+<table class="non-border margin-auto">
+<tr><td>
+<div class="text-center">
   <h2>공지 게시판</h2>
  <hr />
+
 <form name="forrm">
+<div class="text-right">
   <select name="key" class="combobox-md custom-form-control">
   	<option value="nb_Sj">제목</option>
   	<option value="nb_Cn">내용</option>
   </select>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="searchBBS();">
+</div>
  </form>
  </div>
   <table class="def-table-auto tb-border table-hover">
@@ -66,6 +71,8 @@
 	  <div id="buttons" style="float:right">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
 	  </div>
+</td></tr>  
+</table>	  
 </div>
  
 </body>
