@@ -13,8 +13,32 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
+/**
+ * <pre>
+ * Download 기능을 위해 필요한 자바 클래스
+ * </pre>
+ * @author 송선호
+ * @since 2017.02.09
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ *   수정일              수정자                    수정내용
+ * --------     --------    ----------------------
+ * 2017.02.09     송선호                    최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
+
 public class DownloadView extends AbstractView{
 
+	/**
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 * 파일 다운로드 설정을 위한 메서드
+	 */
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {

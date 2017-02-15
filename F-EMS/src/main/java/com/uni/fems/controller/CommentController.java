@@ -25,7 +25,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.uni.fems.dto.Bbs_CommentVO;
 import com.uni.fems.service.Bbs_CommentService;
 
-// RestController : ajax 처리 전용 컨트롤러
+
+/**
+ * <pre>
+ * 공지게시판 댓글 Controller
+ * 댓글 작성, 수정, 삭제 기능 구현
+ * </pre>
+ * @author SSH
+ * @since 2017.02.07
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ *   수정일              수정자                    수정내용
+ * --------     --------    ----------------------
+ * 2017.02.07     SSH               최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 
 @Controller
 @RequestMapping("/notice_bbs")
@@ -40,6 +57,18 @@ public class CommentController {
 	}
 
 	
+	/**
+	 * <pre>
+	 * 게시물의 댓글 리스트를 가져와 출력해주는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param commentList
+	 * @param paging
+	 * @param loginUser
+	 * @return 댓글 리스트 출력 html코드
+	 * </pre>
+	 * 
+	 */
 	public String getList(List<Bbs_CommentVO> commentList, String paging, String loginUser){
 		String comment="";
 		
@@ -87,6 +116,17 @@ public class CommentController {
 	
 	
 	
+	/**
+	 * <pre>
+	 * 페이징 처리가 포함된 댓글 리스트를 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param jsonMap
+	 * @param request
+	 * @return 댓글 리스트 출력 메서드
+	 * </pre>
+	 * 
+	 */
 	@RequestMapping(value="/commentList",  produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String commentList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
@@ -112,6 +152,17 @@ public class CommentController {
 	}
 	
 	
+	/**
+	 * <pre>
+	 * 댓글 추가하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param jsonMap
+	 * @param request
+	 * @return 댓글 리스트 출력 메서드
+	 * </pre>
+	 * 
+	 */
 	@RequestMapping(value="/insertComment", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String insertComment(@RequestBody Map<String, Object> jsonMap,HttpServletRequest request){
@@ -147,6 +198,17 @@ public class CommentController {
 		
 	}
 		
+		/**
+		 * <pre>
+		 * 댓글 삭제하는 메서드
+		 * </pre>
+		 * <pre>
+		 * @param jsonMap
+		 * @param request
+		 * @return 댓글 리스트 출력 메서드
+		 * </pre>
+		 * 
+		 */
 		@RequestMapping(value="/deleteComment", produces = "application/text; charset=utf8")
 		@ResponseBody
 		public String deleteComment(@RequestBody Map<String, Object> jsonMap,HttpServletRequest request){
@@ -178,6 +240,17 @@ public class CommentController {
 			return getList(commentList, paging, loginUser);
 		}
 		
+		/**
+		 * <pre>
+		 * 댓글 수정하는 Form 출력하는 메서드
+		 * </pre>
+		 * <pre>
+		 * @param jsonMap
+		 * @param request
+		 * @return 댓글 수정하는 Form 출력
+		 * </pre>
+		 * 
+		 */
 		@RequestMapping(value="/updateComment", produces = "application/text; charset=utf8")
 		@ResponseBody
 		public String updateComment(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
@@ -248,6 +321,17 @@ public class CommentController {
 			
 		}
 		
+		/**
+		 * <pre>
+		 * 댓글 수정하는 메서드
+		 * </pre>
+		 * <pre>
+		 * @param jsonMap
+		 * @param request
+		 * @return 댓글 리스트 출력
+		 * </pre>
+		 * 
+		 */
 		@RequestMapping(value="/realupdateComment", produces = "application/text; charset=utf8")
 		@ResponseBody
 		public String realupdateComment(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
