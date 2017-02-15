@@ -1,5 +1,6 @@
 package com.uni.fems.dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import kr.or.ddit.commons.ibatis.Alias;
@@ -24,8 +25,13 @@ import lombok.Data;
  
 @Alias("Lctre_Search")
 @Data
-public class Lctre_SearchVO {
+public class Lctre_SearchVO implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String column;
 	
 	// 건물 BUILDING

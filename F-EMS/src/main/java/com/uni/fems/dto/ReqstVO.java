@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Reqst")
 @Data
 public class ReqstVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int re_No;   // 번호
 	private String re_Stdnt_No;   // 학생 번호
 	private String re_Lctre_No;   // 강의 번호

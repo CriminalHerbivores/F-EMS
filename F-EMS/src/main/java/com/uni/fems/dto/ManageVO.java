@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Manage")
 @Data
 public class ManageVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String mng_Univ_Nm;   // 대학이름
 	private String mng_Univ_Eng_Nm;   // 대학영문이름
 	private String mng_Univ_Logo;   // 대학로고

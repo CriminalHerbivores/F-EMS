@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Schlship")
 @Data
 public class SchlshipVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int ss_Schlship_Code;   // 장학금 코드
 	private String ss_Schlship_Nm;   // 장학금 명
 	private String ss_Schlship_Type;   // 유형

@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Files")
 @Data
 public class FilesVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String fl_File_Type_Code;   // 파일유형코드
 	private String fl_File_Nm;   // 파일명
 	

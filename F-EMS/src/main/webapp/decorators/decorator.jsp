@@ -319,7 +319,9 @@
 <!-- Footer 시작 -->
 	<!-- <footer class="footer container-fluid text-center"> -->
 	<footer class="footer text-center">
-		<p>Footer Text</p>
+		<p>${manageVO.mng_Post_No}&nbsp;&nbsp;${manageVO.mng_Adres1}&nbsp;${manageVO.mng_Adres2}&nbsp;|&nbsp;Tel:${manageVO.mng_Tlphon_No}&nbsp;|&nbsp;Fax:${manageVO.mng_Fax_No}</p>
+		<p>Copyright (C)&nbsp;${manageVO.mng_Cpyr }&nbsp;All Rights Reserved.</p>
+		
 	</footer>
 	<!-- Footer 끝 -->
 

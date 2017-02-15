@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Lctre_Flpth")
 @Data
 public class Lctre_FlpthVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int lf_No;   // 번호
 	private int lf_Lctre_No;   // 강의번호
 	private String lf_File_Type;   // 파일유형코드

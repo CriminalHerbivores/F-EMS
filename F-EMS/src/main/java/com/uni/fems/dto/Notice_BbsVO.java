@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Notice_Bbs")
 @Data
 public class Notice_BbsVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int nb_Bbs_No;   // 게시판 번호
 	private String nb_Sklstf_No;   // 직원 번호
 	private String nb_Sj;   // 제목

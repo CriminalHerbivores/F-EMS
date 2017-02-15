@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Users")
 @Data
 public class UsersVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String user_No;   // 사용자 번호
 	private String user_Sklstf_No;   // 직원번호
 	private String user_Stdnt_No;   // 학생번호

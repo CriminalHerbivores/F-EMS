@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Bbs_List")
 @Data
 public class Bbs_ListVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int bl_Bbs_No;   // 게시판 번호
 	private String bl_Bbs_Nm;   // 게시판 명
 	private String bl_Table_Nm;   // 테이블 명

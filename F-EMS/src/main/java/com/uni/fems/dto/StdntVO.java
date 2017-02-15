@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Stdnt")
 @Data
 public class StdntVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String st_Stdnt_No;   // 학생 번호
 	private String st_Subjct_Code;   // 학과 코드
 	private String st_Pw;   // 비밀번호

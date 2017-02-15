@@ -3,5 +3,25 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
+<!--  [[개정이력(Modification Information)]]        -->
+<!--  수정일       수정자      수정내용             -->
+<!--  ==========   ======    ==============         -->
+<!--  $2017.01.24    KJH       최초작성             -->
+<!--  $2017.02.15    KJH       추가작성             -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
+
 <sqlMap namespace="Manage">
+	<typeAlias alias="Manage" type="com.uni.fems.dto.ManageVO" />
+	
+	
+	<!-- <select id="selectManage" parameterClass="str" resultClass="Manage">
+		select * from Manage 
+		where mng_Univ_Nm=#mng_Univ_Nm# 
+	</select> -->
+	
+	<select id="getManage" resultClass="Manage">
+		select * from Manage 
+	</select>
+	
+
 </sqlMap>

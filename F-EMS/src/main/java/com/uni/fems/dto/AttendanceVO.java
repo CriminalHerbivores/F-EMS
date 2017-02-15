@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Attendance")
 @Data
 public class AttendanceVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String atd_Stdnt_No;   // 학생 번호
 	private int atd_Lctre_No;   // 강의 번호
 	private String atd_Atend;   // 출결

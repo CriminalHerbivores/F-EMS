@@ -1,5 +1,7 @@
 package com.uni.fems.dto;
 
+import java.io.Serializable;
+
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
 
@@ -22,7 +24,12 @@ import lombok.Data;
  
 @Alias("Lctrum")
 @Data
-public class LctrumVO {
+public class LctrumVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String lr_Lctrum_No;   // 강의실 번호
 	private String lr_Bd_No;   // 건물 번호
 	private int lr_Floor;   // 층수
