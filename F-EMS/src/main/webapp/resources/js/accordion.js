@@ -1,3 +1,20 @@
+/**
+ * <pre>
+ * 아코디언 형식의 좌측 메뉴 기능을 돕는 JavaScript
+ * </pre>
+ * @author KJH
+ * @since 2017. 01. 24
+ * @version 1.0
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.01.30      KJH        추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
+
 //$(function() {
 //		$('.dropdown').click(function(event) {
 //			event.preventDefault();

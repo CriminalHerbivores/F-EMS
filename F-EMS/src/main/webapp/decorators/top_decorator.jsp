@@ -6,6 +6,19 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
+<%--
+ * <pre>
+ * 상단바, 상단메뉴, js, css를 포함하는 JSP
+ * </pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자       수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24      KJH        최초작성
+ * 2017.01.30      KJH        추가작성 
+ * 2017.02.10      KJH        사용보류
+ * Copyright (c) 2017 by DDIT All right reserved
+ --%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

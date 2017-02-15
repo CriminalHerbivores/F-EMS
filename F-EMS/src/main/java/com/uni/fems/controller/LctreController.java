@@ -20,16 +20,44 @@ import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.service.LctreService;
 
+/**
+ * <pre>
+ * 강의와 관련된 Controller
+ * 수강신청 관련 기능, 강의등록, 강의수정 등
+ * </pre>
+ * @author KJH
+ * @since 2017. 01. 24
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자          수정내용
+ * --------     --------    ----------------------
+ * 2017.01.24     KJH            최초작성
+ * 2017.01.30     KJH            추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 @Controller
 @RequestMapping("/course")
 public class LctreController {
 
 	
+	
 	@Autowired
 	LctreService lctreService;
 	
 	
-	// 수강신청 메인
+	/**
+	 * <pre>
+	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/courseList")
 	public String courseList(HttpServletRequest request, HttpSession session) {
 		String url = "course_registration/courseList";
@@ -79,6 +107,16 @@ public class LctreController {
 //		return url;
 //	}
 	
+	/**
+	 * <pre>
+	 * 수강신청이 가능한 개설강의목록
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/courseAble")
 	public String courseAble(HttpServletRequest request,
 			HttpSession session) {
@@ -89,7 +127,16 @@ public class LctreController {
 	
 	
 
-	// 수강신청 완료 목록
+	/**
+	 * <pre>
+	 * 수강신청 완료 목록
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/courseComplete")
 	public String courseComplete(HttpServletRequest request,
 			HttpSession session) {
@@ -97,7 +144,16 @@ public class LctreController {
 		return url;
 	}
 
-	// 관심과목
+	/**
+	 * <pre>
+	 * 관심 강의 목록
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/courseInterest")
 	public String courseInterest(HttpServletRequest request,
 			HttpSession session) {
@@ -105,7 +161,16 @@ public class LctreController {
 		return url;
 	}
 
-	// 수강가능학점
+	/**
+	 * <pre>
+	 * 학기내 이수 가능 학점 및 수강신청완료학점 확인 가능
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/courseCredit")
 	public String courseCredit(HttpServletRequest request,
 			HttpSession session) {
@@ -113,7 +178,16 @@ public class LctreController {
 		return url;
 	}
 
-	// 시간표
+	/**
+	 * <pre>
+	 * 관심강의 목록을 바탕으로 작성되는 임시 시간표
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/courseTimetable")
 	public String courseTimetable(HttpServletRequest request,
 			HttpSession session) {
