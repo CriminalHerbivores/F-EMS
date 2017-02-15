@@ -130,24 +130,6 @@ public class SklstfController {
 		return url;
 	}
 
-	// 관리자 /////////////////////////////////////////////////////////////////////////
-	
-	/**
-	 * <pre>
-	 * 관리자 가입
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/adminJoin")
-	public String adminJoinForm(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_management/adminJoin";	
-		return url;
-	}
-	
 	// 학생 ///////////////////////////////////////////////////////////////////////////
 	
 	/**
@@ -380,7 +362,7 @@ public class SklstfController {
 	 */
 	@RequestMapping(value="stdntBrhs", method = RequestMethod.GET) 
 	public String stdntBrhs(){
-		String url ="manager/student/";
+		String url ="manager/student/stdntBrhsYn";
 		return url;
 	}
 	/**
@@ -849,6 +831,5 @@ public class SklstfController {
 		model.addAttribute("pr_Profsr_No", profsrVO.getPr_Profsr_No());
 		model.addAttribute("tpage", tpage);
 		return url;
-		
 	}
 }

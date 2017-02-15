@@ -32,7 +32,7 @@ public class SknrgsController {
 	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
 		this.sknrgs_Svc = sknrgs_Svc;
 	}
-
+/*
 	@RequestMapping(value = "/sknrgsList", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
 		String url = "student/sknrgsList";
@@ -160,5 +160,5 @@ public class SknrgsController {
 		}
 		return url;
 	}
-
+*/
 }
