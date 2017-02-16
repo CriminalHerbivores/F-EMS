@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Grade")
 @Data
 public class GradeVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String gd_Stdnt_No;   // 학생번호
 	private int gd_Lctre_No;   // 강의번호
 	private String gd_Grade;   // 성적

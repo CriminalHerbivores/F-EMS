@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Sknrgs")
 @Data
 public class SknrgsVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int skn_No;   // 번호
 	private String skn_Stdnt_No;   // 학생번호
 	private String skn_Type;   // 유형

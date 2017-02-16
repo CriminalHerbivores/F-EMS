@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.uni.fems.dto.ManageVO;
 import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.dto.StdntVO;
 
 /**
  * <pre>
@@ -24,6 +25,7 @@ import com.uni.fems.dto.SklstfVO;
 
 public interface ManageService {
 	
+	ManageVO getManage() throws SQLException;
 //	void getListSklstf(SklstfVO sklstfVO) throws SQLException;
 //	
 //	void setSklstfAtrty(SklstfVO sklstfVO) throws SQLException;

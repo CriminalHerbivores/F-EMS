@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Lctre_Unq_No")
 @Data
 public class Lctre_Unq_NoVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String Lu_Lctre_Code;   // 강의 코드
 	private String Lu_Lctre_Nm;   // 강의명
 	private String Lu_Pnt;   // 학점

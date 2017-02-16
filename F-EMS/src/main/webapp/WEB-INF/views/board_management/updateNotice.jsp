@@ -32,7 +32,7 @@
 			 <div id="buttons" style="float:right">
 			 <input type="hidden" name="tpage" value=${tpage }>
 			 <input type="hidden" name="nb_Bbs_No" value=${notice.nb_Bbs_No }>
-			 <input type="button" class="def-btn btn-md btn-color" value="수정" onclick="updateNotice();">
+			 <input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
 			 <a href="noticeList?tpage=${tpage}"> <input type="button" class="def-btn btn-md btn-color" value="목록"> </a>
 		  </div>
 		  

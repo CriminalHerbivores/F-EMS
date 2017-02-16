@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Bbs_Atrty")
 @Data
 public class Bbs_AtrtyVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int ba_Bbs_No;   // 게시판 번호
 	private String ba_Manage;   // 관리자
 	private String ba_Sklstf;   // 직원

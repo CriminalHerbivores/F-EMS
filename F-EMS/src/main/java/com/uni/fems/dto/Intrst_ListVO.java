@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Intrst_List")
 @Data
 public class Intrst_ListVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String in_Stdnt_No;   // 학생번호
 	private int in_Lctre_No;   // 강의번호
 

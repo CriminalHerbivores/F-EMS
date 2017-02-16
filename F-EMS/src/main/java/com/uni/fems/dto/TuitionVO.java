@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Tuition")
 @Data
 public class TuitionVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int tu_No;   // 등록금번호
 	private String tu_Stdnt_No;   // 학생번호
 	private String tu_Subjct_Code;   // 학과코드

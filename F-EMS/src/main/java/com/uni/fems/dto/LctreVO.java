@@ -27,6 +27,10 @@ import lombok.Data;
 @Data
 public class LctreVO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int lc_Lctre_No;   // 강의번호
 	private String lc_Profsr_No;   // 교수번호
 	private String lc_Lctre_Code;   // 강의코드

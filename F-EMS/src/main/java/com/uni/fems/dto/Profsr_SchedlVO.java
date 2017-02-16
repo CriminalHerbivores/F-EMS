@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Profsr_Schedl")
 @Data
 public class Profsr_SchedlVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int ps_No;   // 번호
 	private String ps_Profsr_No;   // 교수 번호
 	private String ps_Stdnt_No;   // 학생 번호

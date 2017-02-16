@@ -1,7 +1,6 @@
 package com.uni.fems.service.impl;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import com.uni.fems.dao.ManageDAO;
 import com.uni.fems.dto.ManageVO;
@@ -13,6 +12,11 @@ public class ManageServiceImpl implements ManageService {
  public void setManageDAO(ManageDAO manageDAO){
   this.manageDAO=manageDAO;
  }
+@Override
+public ManageVO getManage() throws SQLException {
+	ManageVO manageVO = manageDAO.getManage();
+	return manageVO;
+}
  
  
 }

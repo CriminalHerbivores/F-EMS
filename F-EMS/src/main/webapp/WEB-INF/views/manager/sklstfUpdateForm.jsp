@@ -20,7 +20,7 @@
 <title></title>
 </head>
 <body>
-<form method="post" name="frm">
+<form method="post" name="formm">
 
  <table class="table table-bordered">
       <tr>
@@ -66,7 +66,7 @@
         <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
       </tr>
   </table>
-    <input type="button" class="btn btn-default" onclick="go_sklstfUpdate('<%=request.getContextPath() %>')" value="수정">
+    <input type="button" class="btn btn-default" onclick="go_sklstfUpdate()" value="수정">
     <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
 
 </form>

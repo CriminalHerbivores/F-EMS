@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Faculty")
 @Data
 public class FacultyVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String fc_Faculty_Code;   // 학부코드
 	private String fc_Coleg_Code;   // 단과대학코드
 	private String fc_Faculty_Nm;   // 학부명

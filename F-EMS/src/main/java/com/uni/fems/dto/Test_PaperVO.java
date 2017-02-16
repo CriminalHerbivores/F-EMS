@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Test_Paper")
 @Data
 public class Test_PaperVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String tp_No;   // 시험지번호
 	private int tp_Lctre_No;   // 교수번호
 	private String tp_Profsr_No;   // 강의번호

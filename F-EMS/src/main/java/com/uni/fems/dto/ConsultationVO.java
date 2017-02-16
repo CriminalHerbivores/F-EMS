@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Consultation")
 @Data
 public class ConsultationVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cs_Stdnt_No;   // 학생번호
 	private String cs_Profsr_No;   // 교수번호
 	private Timestamp cs_Dt;   // 날짜

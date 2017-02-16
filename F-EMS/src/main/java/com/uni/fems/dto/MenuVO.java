@@ -25,6 +25,11 @@ import lombok.Data;
 @Alias("Menu")
 @Data
 public class MenuVO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int mn_No;   // 메뉴번호
 	private String mn_Se_Code;   // 구분코드
 	private String mn_Cours;   // 경로

@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Work")
 @Data
 public class WorkVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String wk_No;   // 재직번호
 	private String wk_Profsr_No;   // 교수번호
 	private String wk_Dt;   // 날짜

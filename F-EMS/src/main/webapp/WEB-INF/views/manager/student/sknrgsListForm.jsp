@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<form name="frm" method="POST">
+	<form name="formm" method="POST">
 		<div class="container">
 			<h2>학적 관리</h2>
 			<table class="table table-bordered">
@@ -71,8 +71,7 @@
 
 			</table>
 		</div>
-		<input type="button" class="btn btn-default" onClick="go_writesknrgs();" value="등록"/>
-		<button type="button" class="btn btn-default" onClick="history.go(-1)">취소</button>
+		<input type="button" class="btn btn-default" onClick="submitForm(this.form);" value="등록"/>
 	</form>
 
 </body>

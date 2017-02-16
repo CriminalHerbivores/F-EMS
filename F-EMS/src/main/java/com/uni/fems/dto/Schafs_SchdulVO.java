@@ -26,6 +26,11 @@ import lombok.Data;
 @Alias("Schafs_Schdul")
 @Data
 public class Schafs_SchdulVO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int sd_No;   // 번호
 	private String sd_Sklstf_No;   // 직원번호
 	private String sd_Schdul_Nm;   // 일정명
