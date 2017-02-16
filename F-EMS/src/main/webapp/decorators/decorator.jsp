@@ -54,6 +54,8 @@
 				<div class="float-right">
 					<c:choose>
 						<c:when test="${empty loginUser}">
+							<input class="def-btn btn-sm btn-color" type="button" value="31"
+								onclick="login_baskin();" />&nbsp;&nbsp;
 							<input class="def-btn btn-sm btn-color" type="button" value="관리자"
 								onclick="login_admin();" />&nbsp;&nbsp;
 		<input class="def-btn btn-sm btn-color" type="button" value="직원"
@@ -206,7 +208,18 @@
 							</div>
 						</div>
 					</sec:authorize>
-
+					<c:if test="${not empty loginUser}">
+					<c:if test="${loginUser eq 'baskin'}">
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn">
+							<a href="#">31</a>
+						</button>
+						<div class="menu-dropdown-content">
+							<a href="<%=request.getContextPath()%>/baskin/robbins">베스킨 라빈스</a>
+						</div>
+					</div>
+					</c:if>
+					</c:if>
 				</ul>
 			</div>
 		</div>

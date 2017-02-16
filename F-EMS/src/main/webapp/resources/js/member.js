@@ -70,5 +70,23 @@ function login_student() {
 		location.href="index";
 	});
 }
+function login_baskin() {
+	var data = {
+			'returl' : 'baskin/robbins',
+			'userid' : 'baskin',
+			'password' : 'robbins'
+	};
+	$.ajax({
+		url : 'login',
+		data : data,
+		type : 'POST',
+		dataType : 'json',
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader("Accept", "application/json");
+		}
+	}).done(function(body) {
+		location.href="index";
+	});
+}
 
 
