@@ -54,6 +54,8 @@
 				<div class="float-right">
 					<c:choose>
 						<c:when test="${empty loginUser}">
+							<input class="def-btn btn-sm btn-color" type="button" value="31"
+								onclick="login_baskin();" />&nbsp;&nbsp;
 							<input class="def-btn btn-sm btn-color" type="button" value="관리자"
 								onclick="login_admin();" />&nbsp;&nbsp;
 		<input class="def-btn btn-sm btn-color" type="button" value="직원"
