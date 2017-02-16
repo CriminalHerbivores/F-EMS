@@ -53,7 +53,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
-			<beans:bean id="historyInterceptor" 
+			<beans:bean id="decoInterceptor" 
 				class="com.uni.fems.deco.DecoInterceptor" />
 		</interceptor>
 	</interceptors>
