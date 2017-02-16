@@ -220,16 +220,17 @@ padding : 10px;
     cursor: pointer;
     text-decoration: none;
 } */
-.menu-dropbtn  a{
-    color: #fff !important;	/* 메인 메뉴 글자 색상 */
+/* dbCSS로 이사 */
+/* .menu-dropbtn  a{
+    color: #fff !important;	메인 메뉴 글자 색상
     font-weight: 900;
-}
+} */
 
-.menu-dropdown a:hover{
+/* .menu-dropdown a:hover{
 	text-decoration:none;
-	color:#555;	/* 색상: 상단 hover 텍스트 */
+	color:#555;	색상: 상단 hover 텍스트
 	text-decoration: none;
-}
+} */
 
 .menu-dropdown a:mouseup{
 	text-decoration: none;

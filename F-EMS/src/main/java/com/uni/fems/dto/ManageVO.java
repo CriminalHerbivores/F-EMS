@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
+//import oracle.sql.CLOB;
 
 /**
  * <pre>
@@ -51,4 +52,6 @@ public class ManageVO implements Serializable{
 	private String mng_Sub_Txtclr1;   // 보조 텍스트 컬러1
 	private String mng_Sub_Txtclr2;   // 보조 텍스트 컬러2
 	private String mng_Univ_Img;   // 대학이미지
+	
+
 }
