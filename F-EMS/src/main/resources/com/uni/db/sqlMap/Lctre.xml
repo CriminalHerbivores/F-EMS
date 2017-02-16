@@ -102,11 +102,11 @@
 		order by lu_Lctre_code asc, lc_split asc
 	</select>
 	
-	
+	 -->
 	전체 강의 목록
-	<select id="listLctre" parameterClass="Lctre_Search" resultClass="Lctre_Search">
-		select * from lctre_view order by lu_Lctre_code asc, lc_split asc 
-	</select> -->
+	<select id="listLctre" parameterClass="str" resultClass="Lctre_Search">
+		select * from lctre_view where Lu_Lctre_Nm like '%'||#Lu_Lctre_Nm#||'%' order by lu_Lctre_code asc, lc_split asc 
+	</select>
 	
 	<!-- [수강신청] 현재 학기의 전체 강의 갯수 : 페이징 안 함 -->
 	<select id="selectCount" resultClass="int">

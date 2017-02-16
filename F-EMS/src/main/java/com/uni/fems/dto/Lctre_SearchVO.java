@@ -114,7 +114,7 @@ public class Lctre_SearchVO implements Serializable {
 	
 	// 학과정보테이블 SUBJCT_INFO_TABLE
 	private String sit_Subjct_Code;   // 학과 코드
-	private String sit_Faculty;   // 학부
+	private String sit_Faculty;   // 학부 코드?
 	private String sit_Subjct;   // 학과
 	private int sit_Tut;   // 등록금 금액
 	private String sit_useyn;   // 학과 사용유무

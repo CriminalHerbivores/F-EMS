@@ -41,6 +41,10 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	ArrayList<Lctre_SearchVO> listForComboLctre=null;
 	
+	static int view_rows = 5; // 페이지의 개수
+	static int counts = 6; // 한 페이지에 나타낼 강의 개수
+	
+	
 	
 	/**
 	 * 한개의 강의 정보 가져오기 (완료)
@@ -113,17 +117,165 @@ public class LctreDAOImpl implements LctreDAO {
 //		return 0;
 //	}
 
+	
+	//===========================================================================================
 	/**
 	 * 전체 강의 목록
 	 */
 	@Override
-	public ArrayList<LctreVO> listLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
-		ArrayList<LctreVO> listLctre = null;
+	public ArrayList<Lctre_SearchVO> listLctre(int tpage, String Lu_Lctre_Nm) throws SQLException {
 		
-		listLctre = (ArrayList<LctreVO>) client.queryForList("listLctre", lctre_SearchVO);
+/*		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+		int startRow = -1;
+		int endRow = -1;
+
+		if (product_name.equals("")) {
+			product_name = "%";
+		}
+
+		int totalRecord = totalRecord(product_name);
+
+		startRow = (tpage - 1) * counts ;
+		endRow = startRow + counts - 1;
+		if (endRow > totalRecord)
+			endRow = totalRecord;
+		
+		productList=(ArrayList<ProductVO>)client.queryForList("listProduct",product_name,startRow,counts);
+		return productList;*/
+		
+		//개설강의목록 메인
+		ArrayList<Lctre_SearchVO> listLctre = new ArrayList<Lctre_SearchVO>();
+		int startRow = -1;
+		int endRow = -1;
+		
+		if(Lu_Lctre_Nm.equals("")){
+			Lu_Lctre_Nm="%";
+		}
+		
+		int totalRecord= totalRecord(Lu_Lctre_Nm);
+		
+		
+		listLctre = (ArrayList<Lctre_SearchVO>) client.queryForList("listLctre", Lu_Lctre_Nm);
 		return listLctre;
 	}
 
+	
+	@Override
+	public int totalRecord(String Lu_Lctre_Nm) throws SQLException {
+		int total_pages = 0;
+		if (Lu_Lctre_Nm.equals("")) {
+			Lu_Lctre_Nm = "%";
+		}
+		total_pages = (Integer) client.queryForObject("totalRecord",Lu_Lctre_Nm);
+		return total_pages;
+	}
+	
+	
+	/*@Override
+	public String pageNumber(int tpage, String name) throws SQLException {
+		int total_pages = totalRecord(name);
+		int page_count = total_pages / counts + 1;
+
+		if (total_pages % counts == 0) {
+			page_count--;
+		}
+		if (tpage < 1) {
+			tpage = 1;
+		}
+		
+		int page=tpage;
+		if(tpage%view_rows==0) page--;
+		
+		int start_page = page - (page % view_rows) + 1;
+		int end_page = start_page + (counts - 1);
+
+		if (end_page > page_count) {
+			end_page = page_count;
+		}
+		if (start_page > view_rows) {
+			str += "<a href='adminProductList.ne?tpage=1&key="
+					+ name + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='adminProductList.ne?tpage="
+					+ (start_page - 1);
+			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
+			
+		}
+
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == tpage) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='adminProductList.ne?tpage="
+						+ i + "&key=" + name + "'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+
+		if (page_count > end_page) {
+			str += "<a href='adminProductList.ne?tpage="
+					+ (end_page + 1) + "&key=" + name
+					+ "'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='adminProductList.ne?tpage="
+					+ page_count + "&key=" + name
+					+ "'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;
+	}
+	@Override
+	public String pageNum(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+int tpage = Integer.parseInt(search.getTpage());
+		
+		int total_pages = (Integer) client.queryForObject("listForProductCount",search);
+		int page_count = total_pages / counts;
+		
+		if (total_pages % counts != 0) page_count++;
+
+		int page=tpage;
+		if(tpage%view_rows==0) page--;
+		
+		int start_page= page - (page % view_rows) +1;
+		int end_page = start_page + (view_rows - 1);
+		
+		if (end_page > page_count) end_page = page_count;
+		
+		String str = "";
+		String key = "";
+		
+		if(!search.getKind().equals("")){
+			key = "&kind="+search.getKind();
+		}else if(!search.getCategory().equals("")){
+			key = "&category="+search.getCategory();
+		}
+		
+		if(!search.getName().equals("")){
+			key += "&key="+ search.getName();
+		}*/
+		
+		////////////////////////////////////////////////////////////////////
+		
+		/*if (start_page > view_rows) {
+			str += "<a href='product.ne?tpage=1" + key + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='product.ne?tpage=" + (start_page - 1);
+			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
+		}
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == tpage) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='product.ne?tpage=" + i + key + "'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+		if (page_count > end_page) {
+			str += "<a href='product.ne?tpage=" + (end_page + 1) + key + "'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='product.ne?tpage=" + page_count + key + "'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;
+	}*/
+	
+	
+	
+	//===========================================================================================
+	
+	
 
 	/**
 	 * 강의 등록 (완료)
