@@ -23,12 +23,14 @@ import com.sun.tracing.dtrace.Attributes;
 import com.uni.fems.dao.StdntDAO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.request.PageRequest;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
+import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
 
@@ -62,6 +64,11 @@ public class StdntController {
 	private SknrgsService sknrgs_Svc;
 	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
 		this.sknrgs_Svc = sknrgs_Svc;
+	}
+	@Autowired
+	private SchlshipService schlshipService;
+	public void setSchlshipService(SchlshipService schlshipService) {
+		this.schlshipService = schlshipService;
 	}
 	/**
 	 * <pre>
@@ -311,9 +318,35 @@ public class StdntController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/schlshipList", method = RequestMethod.GET)
-	public String schlshipList(){
+	public String schlshipList(Model model, HttpServletRequest request){
 		String url="student/schlshipList";
-		
+		String key = request.getParameter("key");
+		String tpage = request.getParameter("tpage");
+
+		if (key == null) {
+			key = "";
+		}
+		if (tpage == null) {
+			tpage = "1";
+		} else if (tpage.equals("")) {
+			tpage = "1";
+		}
+		model.addAttribute("key", key);
+		model.addAttribute("tpage", tpage);
+
+		List<SchlshipVO> schlshipList = null;
+		String paging = null;
+		try {
+			schlshipList = schlshipService.selectNameAllPage(
+					Integer.parseInt(tpage), key);
+			paging = schlshipService.pageNumber(Integer.parseInt(tpage), key);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("schlshipList", schlshipList);
+		int n = schlshipList.size();
+		model.addAttribute("schlshipListSize", n);
+		model.addAttribute("paging", paging);
 		return url;
 	}
 }
