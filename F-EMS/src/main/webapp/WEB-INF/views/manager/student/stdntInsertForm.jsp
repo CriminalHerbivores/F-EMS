@@ -54,9 +54,9 @@
       <tr>
         <td>우편주소</td>
         <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No"></td>
-        <td>주소1</td>
+        <td>주소</td>
         <td><input type="text" class="form-control" id="st_Adres1" name="st_Adres1"></td>
-        <td>주소2</td>
+        <td>상세주소</td>
         <td><input type="text" class="form-control" id="st_Adres2" name="st_Adres2"></td>
       </tr>
       <tr>
@@ -79,7 +79,7 @@
   </table>
 		파일 경로: <input type="text" name="file"><br /> 파일경로: <input
 			type="file" name="f"><br />
-   <button type="button" class="btn btn-default" onclick="go_stdntInsert()">등록</button>
+   <button type="button" class="btn btn-default" onclick="go_stdnt()">등록</button>
     <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>
 </body>

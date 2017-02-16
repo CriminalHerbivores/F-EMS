@@ -69,7 +69,7 @@
       </tr>
   </table>
 		파일 경로: <input type="text" name="file"><br /> 파일경로: <input type="file" name="f"><br />
-   <button type="button" class="btn btn-default" onclick="go_profsrInsert('<%=request.getContextPath() %>')">등록</button>
+   <button type="button" class="btn btn-default" onclick="go_profsr()">등록</button>
    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>
 </body>

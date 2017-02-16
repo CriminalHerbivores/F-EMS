@@ -17,7 +17,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script src="/fems/resources/js/stdnt.js"></script>
 </head>
 <body>
 <h2>학생 정보 수정</h2>
@@ -26,7 +25,7 @@
  <table class="table table-bordered">
       <tr>
         <td>학생 번호</td>
-        <td><input type="text" class="form-control" id="st_Stdnt_No" name="st_Stdnt_No" readonly value="${stdntVO.st_Stdnt_No}"></td>
+        <td><input type="text" class="form-control" readonly value="${stdntVO.st_Stdnt_No}"></td>
         <td>학부</td>
         <td><input type="text" class="form-control" id="" name="" value=""></td>
         <td>학과</td>
@@ -76,7 +75,7 @@
       </tr>
       
   </table>
-   <button type="button" class="btn btn-default" onclick="submitForm(this.form);">수정</button>
+   <button type="button" class="btn btn-default" onclick="go_stdnt()">수정</button>
     <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>
 </body>

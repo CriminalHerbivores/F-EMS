@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sun.tracing.dtrace.Attributes;
 import com.uni.fems.dao.StdntDAO;
 import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
@@ -62,7 +63,33 @@ public class StdntController {
 	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
 		this.sknrgs_Svc = sknrgs_Svc;
 	}
-	
+	/**
+	 * <pre>
+	 * 학생 한 명의 정보를 상세히 조회한다
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param session 로그인한 사용자의 아이디를 가져오기 위한 세션
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/stdntDetail")
+	public String stdntDetail(Model model, HttpSession session) throws ServletException, IOException{
+		String url="manager/student/stdntDetail";
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		
+		StdntVO stdntVO = null;
+		try {
+			stdntVO = stdntService.selectStdnt(st_Stdnt_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("stdntVO", stdntVO);
+		return url;
+		
+	}
 	/**
 	 * <pre>
 	 * 학생 정보를 업데이트하기 전 보여줄 폼을 불러온다.
@@ -76,8 +103,9 @@ public class StdntController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/stdntUpdate", method = RequestMethod.GET)
-	public String stdntUpdateForm(@RequestParam String st_Stdnt_No,Model model) throws ServletException, IOException{
+	public String stdntUpdateForm(Model model, HttpSession session) throws ServletException, IOException{
 		String url="manager/student/stdntUpdate";
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
 		
 		StdntVO stdntVO = null;
 		try {
@@ -214,7 +242,10 @@ public class StdntController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
+		boolean flag = (sknrgsList.get(0).getSkn_Type().equals(type))?true:false;
+		
+		model.addAttribute("flag",flag);
 		model.addAttribute("sknrgsList", sknrgsList);
 		model.addAttribute("paging", paging);
 		model.addAttribute("type", type);
@@ -237,9 +268,10 @@ public class StdntController {
 			@RequestParam("sknFile") MultipartFile uploadfile,
 			HttpSession session) {
 		String url = "redirect:sknrgsList";
-
-		sknrgs.setSkn_Useyn("n");
-
+		
+		if(sknrgs.getSkn_Content().indexOf(",")!=-1)
+		sknrgs.setSkn_Content(sknrgs.getSkn_Content().substring(0, sknrgs.getSkn_Content().indexOf(",")));
+		
 		if (!sknrgs.getSkn_Type().equals("복학"))
 			sknrgs.setSkn_Type("휴학");
 

@@ -91,7 +91,7 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer" style="text-align:center;">
-        <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <!--삭제 모달  -->
+        <a href="deleteProfsr?pr_Profsr_No=${profsrVO.pr_Profsr_No}&tpage=${tpage}"> <!--삭제 모달  -->
         <input type="button" class="btn btn-default" value="예">
         </a>
         <input type="button" class="btn btn-default" data-dismiss="modal" value="아니오">
