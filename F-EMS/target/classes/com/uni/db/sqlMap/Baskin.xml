@@ -20,9 +20,9 @@
 	<update id="setBaskin" parameterClass="baskin">
 		update manage
 		set
-			bskn_Main = #bskn_Main#,
-			bskn_Sub1 = #bskn_Sub1#,
-			bskn_Sub2 = #bskn_Sub2#
+			mng_Main_Color = #bskn_Main#,
+			mng_Sub_Color1 = #bskn_Sub1#,
+			mng_Sub_Color2 = #bskn_Sub2#
 		where mng_univ_nm=#bskn_Nm#
 	</update>
 	<select id="getName" resultClass="str">
