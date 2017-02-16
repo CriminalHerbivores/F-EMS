@@ -27,7 +27,7 @@
 <!-- <div class="custom-col-sm-10-top sidenav text-left"> -->
 <div class=" array-center">
 	<table class="def-table-auto">
-	<tr><td colspan="2"><img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"></td>
+	<tr><td colspan="2"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></td>
 		<td rowspan="3">
 		<table class="def-table-auto tb-border table-hover">
 			<tr><th>공지사항</th></tr>

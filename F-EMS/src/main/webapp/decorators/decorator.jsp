@@ -55,9 +55,8 @@
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
 					<tr  style="width: 900px;">
-						<td><a href="<%=request.getContextPath()%>/"><img
-								src="<%=request.getContextPath()%>/resources/images/uni_logo.png"
-								id="logo"></a></td>
+						<td><a href="<%=request.getContextPath()%>/">
+						<img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}" id="logo"></a></td>
 				</table>
 <div class="float-right">
 					<c:choose>

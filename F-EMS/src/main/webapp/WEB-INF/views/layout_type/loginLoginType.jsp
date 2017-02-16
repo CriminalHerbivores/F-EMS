@@ -27,8 +27,8 @@
 <div class="custom-col-sm-10-top sidenav">
 <div class=" array-center ">
 	<table class="def-table-auto">
-	<tr><td rowspan="4"><img src="<%=request.getContextPath()%>/resources/images/uni_img.png"></td>
-	<td colspan="2"><img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"></td></tr>
+	<tr><td rowspan="4"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Img}"></td>
+	<td colspan="2"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></td></tr>
 	<tr><td colspan="2">	
 			<table class="def-table-auto">
 				<tr><td>
