@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page  trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%--
 * [[개정이력(Modification Information)]]
@@ -19,6 +20,7 @@
 <title></title>
 </head>
 <body>
+<h2>학생 정보 조회</h2>
  <table class="table table-bordered">
       <tr>
         <td>학생 번호</td>
@@ -75,8 +77,10 @@
   <!--버튼들  -->
 <div id="buttons" style="float:right">
 	<a href="stdntUpdate?st_Stdnt_No=${stdntVO.st_Stdnt_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn"> </a>
+	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 	<input type="button" class="def-btn" data-target="#layerpop" data-toggle="modal" value="삭제">
-	<a href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
+	<a href="stdntList?tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
+	</sec:authorize>
 </div>
 <!--모달부분  -->
 <div class="modal fade" id="layerpop" >

@@ -22,16 +22,13 @@
 --------- 직원 ---------<br/>
 <a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 조회</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 신청 조회</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 리스트 조회</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/schlshipDetail" class="no-uline">장학금 상세 조회</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/schlshipUpdate" class="no-uline">장학금 수정</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 리스트</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 관리</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 리스트</a><br/>
-<a href="<%=request.getContextPath() %>/sklstf/profsrUpdate" class="no-uline">교수 수정</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 관리</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a><br/>
 --------- 교수 ---------<br/>
 <a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 정보 조회</a><br/>
 <a href="<%=request.getContextPath() %>/profsr/profsrUpdate" class="no-uline">교수 정보 수정</a><br/>
