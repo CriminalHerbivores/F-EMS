@@ -349,7 +349,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css" >
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css" >
 <!--  ============= css =============  -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
+<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dynamicCss/menu.do" /> --%>
 
 
 

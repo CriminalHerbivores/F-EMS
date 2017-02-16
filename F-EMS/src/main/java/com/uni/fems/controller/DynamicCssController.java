@@ -25,7 +25,7 @@ public class DynamicCssController {
 	
 	@RequestMapping("/dynamicCss/menu.do")
 	public String cssGenerator(/*Model model,*/HttpSession session){
-		
+		/*
 		ManageVO manageVO=null;
 		
 		try {
@@ -35,7 +35,7 @@ public class DynamicCssController {
 		}
 		
 		session.setAttribute("manageVO", manageVO);
-		/*model.addAttribute("manageVO", manageVO);*/
+		model.addAttribute("manageVO", manageVO);*/
 		return "dynamicCss/dbCSS";
 	}
 }
