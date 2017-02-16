@@ -66,7 +66,7 @@
         <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
       </tr>
   </table>
-    <input type="button" class="btn btn-default" onclick="go_sklstfUpdate()" value="수정">
+    <input type="button" class="btn btn-default" onclick="go_sklstf()" value="수정">
     <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
 
 </form>

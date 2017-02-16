@@ -28,7 +28,7 @@
         <td>학부</td>
         <td></td>
         <td>학과</td>
-        <td>${stdntVO.st_Subjct_Code}"</td>
+        <td>${stdntVO.st_Subjct_Code}</td>
       </tr>
       
       <tr>
@@ -99,7 +99,7 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer" style="text-align:center;">
-        <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <!--삭제 모달  -->
+        <a href="deleteStdnt?st_Stdnt_No=${stdntVO.st_Stdnt_No}&tpage=${tpage}"> <!--삭제 모달  -->
         <input type="button" class="btn btn-default" value="예">
         </a>
         <input type="button" class="btn btn-default" data-dismiss="modal" value="아니오">

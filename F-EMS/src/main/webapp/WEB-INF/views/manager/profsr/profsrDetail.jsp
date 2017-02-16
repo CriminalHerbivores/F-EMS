@@ -61,8 +61,8 @@
         <td>${profsrVO.pr_Moblphon_No}</td>
         <td>집 전화번호</td>
         <td>${profsrVO.pr_House_Tlphon_No}</td>
-        <td>교수 번호</td>
-        <td>${profsrVO.pr_Profsr_No}</td>
+        <td>교수 전화번호</td>
+        <td>${profsrVO.pr_Profsr_Tlphon_No}</td>
       </tr>
       
   </table>
@@ -91,7 +91,7 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer" style="text-align:center;">
-        <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <!--삭제 모달  -->
+        <a href="deleteProfsr?pr_Profsr_No=${profsrVO.pr_Profsr_No}&tpage=${tpage}"> <!--삭제 모달  -->
         <input type="button" class="btn btn-default" value="예">
         </a>
         <input type="button" class="btn btn-default" data-dismiss="modal" value="아니오">

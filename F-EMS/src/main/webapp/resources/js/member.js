@@ -70,3 +70,5 @@ function login_student() {
 		location.href="index";
 	});
 }
+
+

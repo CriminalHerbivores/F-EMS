@@ -45,7 +45,7 @@
 		</table>
 
 		<c:forEach var="sknrgs" items="${sknrgsList}" begin="0" end="0" step="1">
-			<c:if test="${not empty type}">
+			<c:if test="${flag}">
 
 				<h3>학적 변동 신청 상세</h3>
 				<form name="formm" method="post" enctype="multipart/form-data">
@@ -87,8 +87,7 @@
 							<td colspan="2">
 								<div id="sknContent"></div>
 								<div id="toSknrgsRest" class="non-disp">
-									<select id="sknSelect" class="combobox-md custom-form-control"
-										name="skn_Content" size="1">
+									<select id="sknSelect" class="combobox-md custom-form-control" name="skn_Content" size="1">
 										<option value="선택">선택</option>
 										<option value="경제사정">경제사정</option>
 										<option value="업무부담">업무부담</option>
