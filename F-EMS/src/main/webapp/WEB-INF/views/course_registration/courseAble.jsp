@@ -67,7 +67,7 @@ body {
 					<th>제한인원</th>
 				</tr>
 				
-				<c:forEach items="${listLctre}" var="lctre_SearchVO">
+				<c:forEach items="${lctre_SearchVO}" var="lctre">
 				<tr>
 					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강신청"></td>
 					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>

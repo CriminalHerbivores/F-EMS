@@ -2,6 +2,7 @@ package com.uni.fems.dao.impl;
  
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.LctreDAO;
@@ -123,56 +124,36 @@ public class LctreDAOImpl implements LctreDAO {
 	 * 전체 강의 목록
 	 */
 	@Override
-	public ArrayList<Lctre_SearchVO> listLctre(int tpage, String Lu_Lctre_Nm) throws SQLException {
-		
-/*		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-		int startRow = -1;
-		int endRow = -1;
-
-		if (product_name.equals("")) {
-			product_name = "%";
-		}
-
-		int totalRecord = totalRecord(product_name);
-
-		startRow = (tpage - 1) * counts ;
-		endRow = startRow + counts - 1;
-		if (endRow > totalRecord)
-			endRow = totalRecord;
-		
-		productList=(ArrayList<ProductVO>)client.queryForList("listProduct",product_name,startRow,counts);
-		return productList;*/
-		
+	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
 		//개설강의목록 메인
-		ArrayList<Lctre_SearchVO> listLctre = new ArrayList<Lctre_SearchVO>();
-		int startRow = -1;
-		int endRow = -1;
-		
-		if(Lu_Lctre_Nm.equals("")){
-			Lu_Lctre_Nm="%";
-		}
-		
-		int totalRecord= totalRecord(Lu_Lctre_Nm);
-		
-		
-		listLctre = (ArrayList<Lctre_SearchVO>) client.queryForList("listLctre", Lu_Lctre_Nm);
+		List<Lctre_SearchVO> listLctre;
+//		if(lu_Lctre_Nm.equals("")){
+//			lu_Lctre_Nm="%";
+//		}
+		listLctre = (List<Lctre_SearchVO>) client.queryForList("listLctre", lu_Lctre_Nm);
 		return listLctre;
 	}
 
 	
+	
+	// 검색어가 없으면 모든 강의 갖고오나보다...
 	@Override
 	public int totalRecord(String Lu_Lctre_Nm) throws SQLException {
-		int total_pages = 0;
+		/*int total_pages = 0;
 		if (Lu_Lctre_Nm.equals("")) {
 			Lu_Lctre_Nm = "%";
 		}
 		total_pages = (Integer) client.queryForObject("totalRecord",Lu_Lctre_Nm);
-		return total_pages;
+		return total_pages;*/
+		return 0;
 	}
 	
 	
-	/*@Override
+	
+	@Override
 	public String pageNumber(int tpage, String name) throws SQLException {
+		/*String str="";
+		
 		int total_pages = totalRecord(name);
 		int page_count = total_pages / counts + 1;
 
@@ -193,11 +174,11 @@ public class LctreDAOImpl implements LctreDAO {
 			end_page = page_count;
 		}
 		if (start_page > view_rows) {
-			str += "<a href='adminProductList.ne?tpage=1&key="
+			str += "<a href='course/courseAble?tpage=1&key="
 					+ name + "'>&lt;&lt;</a>&nbsp;&nbsp;";
-			str += "<a href='adminProductList.ne?tpage="
+			str += "<a href='course/courseAble?tpage="
 					+ (start_page - 1);
-			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
+			str += "&key=<%=Lu_Lctre_Nm%>'>&lt;</a>&nbsp;&nbsp;";
 			
 		}
 
@@ -205,26 +186,28 @@ public class LctreDAOImpl implements LctreDAO {
 			if (i == tpage) {
 				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
 			} else {
-				str += "<a href='adminProductList.ne?tpage="
+				str += "<a href='course/courseAble?tpage="
 						+ i + "&key=" + name + "'>[" + i + "]</a>&nbsp;&nbsp;";
 			}
 		}
 
 		if (page_count > end_page) {
-			str += "<a href='adminProductList.ne?tpage="
+			str += "<a href='course/courseAble?tpage="
 					+ (end_page + 1) + "&key=" + name
 					+ "'> &gt; </a>&nbsp;&nbsp;";
-			str += "<a href='adminProductList.ne?tpage="
+			str += "<a href='course/courseAble?tpage="
 					+ page_count + "&key=" + name
 					+ "'> &gt; &gt; </a>&nbsp;&nbsp;";
 		}
-		return str;
+		return str;*/
+		
+		return null;
 	}
 	@Override
 	public String pageNum(Lctre_SearchVO lctre_SearchVO) throws SQLException {
-int tpage = Integer.parseInt(search.getTpage());
+		/*int tpage = Integer.parseInt(lctre_SearchVO.getTpage());
 		
-		int total_pages = (Integer) client.queryForObject("listForProductCount",search);
+		int total_pages = (Integer) client.queryForObject("listForProductCount",lctre_SearchVO);
 		int page_count = total_pages / counts;
 		
 		if (total_pages % counts != 0) page_count++;
@@ -240,19 +223,19 @@ int tpage = Integer.parseInt(search.getTpage());
 		String str = "";
 		String key = "";
 		
-		if(!search.getKind().equals("")){
-			key = "&kind="+search.getKind();
-		}else if(!search.getCategory().equals("")){
-			key = "&category="+search.getCategory();
+		if(!lctre_SearchVO.getKind().equals("")){
+			key = "&kind="+lctre_SearchVO.getKind();
+		}else if(!lctre_SearchVO.getCategory().equals("")){
+			key = "&category="+lctre_SearchVO.getCategory();
 		}
 		
-		if(!search.getName().equals("")){
-			key += "&key="+ search.getName();
-		}*/
+		if(!lctre_SearchVO.getLu_Lctre_Nm().equals("")){
+			key += "&key="+ lctre_SearchVO.getLu_Lctre_Nm();
+		}
 		
 		////////////////////////////////////////////////////////////////////
 		
-		/*if (start_page > view_rows) {
+		if (start_page > view_rows) {
 			str += "<a href='product.ne?tpage=1" + key + "'>&lt;&lt;</a>&nbsp;&nbsp;";
 			str += "<a href='product.ne?tpage=" + (start_page - 1);
 			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
@@ -268,8 +251,10 @@ int tpage = Integer.parseInt(search.getTpage());
 			str += "<a href='product.ne?tpage=" + (end_page + 1) + key + "'> &gt; </a>&nbsp;&nbsp;";
 			str += "<a href='product.ne?tpage=" + page_count + key + "'> &gt; &gt; </a>&nbsp;&nbsp;";
 		}
-		return str;
-	}*/
+		return str;*/
+		
+		return null;
+	}
 	
 	
 	

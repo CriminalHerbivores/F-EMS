@@ -13,19 +13,19 @@
 <sqlMap namespace="Lctre">
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="Lctre" type="com.uni.fems.dto.LctreVO" />
-	<typeAlias alias="Lctre_Search" type="com.uni.fems.dto.Lctre_SearchVO" />
+	<typeAlias alias="lctre" type="com.uni.fems.dto.LctreVO" />
+	<typeAlias alias="lctre_Search" type="com.uni.fems.dto.Lctre_SearchVO" />
 	 
 		
 	<!-- 한개 강의 가져오기 -->
-	<!-- <select id="getLctre" parameterClass="Lctre_Search" resultClass="Lctre_Search">
+	<!-- <select id="getLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
 		select * from lctre_view 
 		where lc_Lctre_No=#lc_Lctre_No# 
 	</select>
 	
 	
 	강의 콤보박스로 검색
-	<select id="listComboLctre" parameterClass="Lctre_Search" resultClass="Lctre_Search">
+	<select id="listComboLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
 		select * from lctre_view
 		where lu_lctre_nm like '%'||#lu_lctre_nm#||'%'
 		and lu_lctre_code like '%'||#lu_lctre_code#||'%'
@@ -38,7 +38,7 @@
 	</select>
 	
 	강의 상세 검색
-	<select id="listDetailLctre" parameterClass="Lctre_Search" resultClass="Lctre_Search">
+	<select id="listDetailLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
 		select * from lctre_view
 		where LU_PNT like '%'||#LU_PNT#||'%'
 		and LU_COMPL_SE like '%'||#LU_COMPL_SE#||'%'
@@ -103,33 +103,35 @@
 	</select>
 	
 	 -->
-	전체 강의 목록
-	<select id="listLctre" parameterClass="str" resultClass="Lctre_Search">
+	 
+	 
+	<!-- 전체 강의 목록 -->
+	<select id="listLctre" parameterClass="str" resultClass="lctre_Search">
 		select * from lctre_view where Lu_Lctre_Nm like '%'||#Lu_Lctre_Nm#||'%' order by lu_Lctre_code asc, lc_split asc 
 	</select>
 	
 	<!-- [수강신청] 현재 학기의 전체 강의 갯수 : 페이징 안 함 -->
-	<select id="selectCount" resultClass="int">
+	<!-- <select id="selectCount" resultClass="int">
 		select count(*) from lctre where lc_Lctrbgn_Dt=to_date(#lc_Lctrbgn_Dt#)
-	</select>
+	</select> -->
 		
 	
 	<!-- 강의 등록 -->
-	<update id="insertLctre" parameterClass="Lctre">
+	<!-- <update id="insertLctre" parameterClass="lctre">
 		insert into lctre(lc_Lctre_No,lc_Profsr_No,lc_Lctre_Code,lc_Lctrbgn_Dt,lc_Lctre_Nmpr,lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Pnt,lc_Grade,lc_Lctrum_No,lc_Open_At,lc_Lctre_Org,lc_Lctre_Evl_Score,lc_Split)
 			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctrbgn_Dt#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Grade#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
-	</update>
+	</update> -->
 	
 	<!-- 강의 수정 -->
-	<update id="updateLctre" parameterClass="Lctre">
+	<!-- <update id="updateLctre" parameterClass="lctre">
 		update lctre set lc_Lctre_No=#lc_Lctre_No#,lc_Profsr_No=#lc_Profsr_No#,lc_Lctre_Code=#lc_Lctre_Code#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Pnt=#lc_Pnt#,lc_Grade=#lc_Grade#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
 		where lc_Lctre_No=#lc_Lctre_No#
-	</update>
+	</update> -->
 	
 	<!-- 강의 삭제 -->
-	<update id="deleteLctre" parameterClass="int">
+	<!-- <update id="deleteLctre" parameterClass="int">
 		delete from lctre where lc_Lctre_No=#lc_Lctre_No#
-	</update>
+	</update> -->
 	
 
 	

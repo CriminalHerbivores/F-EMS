@@ -1,7 +1,7 @@
 package com.uni.fems.dao;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
@@ -41,14 +41,14 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	ArrayList<Lctre_SearchVO> listLctre(int tpage, String Lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 
+	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록  int tpage, 
 	
 	
 	
 	 /*
 	    * 관리자페이지에서 사용되는 메서드
 	    */
-	   public int totalRecord(String Lu_Lctre_Nm) throws SQLException;
+	   public int totalRecord(String lu_Lctre_Nm) throws SQLException;
 
 	   // 페이지 이동을 위한 메소드
 	   public String pageNumber(int tpage, String name) throws SQLException;
