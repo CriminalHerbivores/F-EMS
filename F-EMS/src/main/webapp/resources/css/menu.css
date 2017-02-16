@@ -172,7 +172,8 @@ padding : 10px;
 
 
 .custom-navbar-inverse {
-	background-color: #063F78;	/* 색상:상단 메뉴 영역 */
+	background-color: #{manageVO.mng_Main_Color};}	/* 색상:상단 메뉴 영역 */
+.custom-navbar-inverse{
 	border-color: #063F78;
 }
 

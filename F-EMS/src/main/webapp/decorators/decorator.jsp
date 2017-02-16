@@ -5,7 +5,6 @@
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <%--
  * <pre>
  * 상단바, 상단메뉴, 좌측메뉴, Footer, js, css를 포함하는 JSP
@@ -30,7 +29,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<h:head>
 <title>
 <decorator:title default="F-EMS"/>
 </title>
@@ -41,9 +40,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<%-- <link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath() %>resource/menu.css?ln=css" /> --%>
 <decorator:head />
-</head>
-<body>
+</h:head>
+<h:body>
+<h:outputStylehseet library="css" name="menu.css"/>
 
 
 <!-- 상단바 시작 -->
@@ -326,11 +328,10 @@
 	<!-- Footer 끝 -->
 
 
-
-</body>
-
+</h:body>
 
 <!--  ============= css =============  -->
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/accordion.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
