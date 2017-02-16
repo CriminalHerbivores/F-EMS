@@ -23,12 +23,26 @@
     text-decoration: none;
 }
 
+.menu-dropbtn  a{
+    color: ${manageVO.mng_Main_Txtclr} !important;	<%-- 메인 메뉴 글자 색상 --%>
+    font-weight: 900;
+}
+
+.menu-dropdown a:hover{
+	text-decoration:none;
+	color:${manageVO.mng_Sub_Txtclr1};	<%--색상: 상단 hover 텍스트 --%>
+		text-decoration: none;
+}
+
+
 .menu-dropdown:hover .menu-dropbtn {
    background-color: ${manageVO.mng_Sub_Color1};	<%-- 색상:상단 드롭다운 hover --%>
+   color: ${manageVO.mng_Sub_Txtclr1};
 }
 
 .menu-dropdown-content a:hover {
-	background-color : ${manageVO.mng_Sub_Color2};;
+	background-color : ${manageVO.mng_Sub_Color2};
+	color: ${manageVO.mng_Sub_Txtclr2};
 }
 
 <%--  --%>
@@ -48,7 +62,7 @@
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='${manageVO.mng_Sub_Color1}', endColorstr='${manageVO.mng_Sub_Color1}');
 	border:1px solid ${manageVO.mng_Main_Color};
 	background-color:${manageVO.mng_Sub_Color1};
-	color:#fff;
+	color:${manageVO.mng_Sub_Txtclr1};
 }
 
 .btn-color:hover {
@@ -66,31 +80,37 @@
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, ${manageVO.mng_Sub_Color1}), color-stop(1, ${manageVO.mng_Sub_Color1}) ); <%-- 버튼 바탕색 --%>
 	background:-moz-linear-gradient( center top, ${manageVO.mng_Sub_Color1} 5%, ${manageVO.mng_Sub_Color1} 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='${manageVO.mng_Sub_Color1}', endColorstr='${manageVO.mng_Sub_Color1}');
-	background-color:${manageVO.mng_Sub_Color1};
 	border:1px solid ${manageVO.mng_Main_Color};
-	color:#fff;	
+	background-color:${manageVO.mng_Sub_Color1};
+	color:${manageVO.mng_Sub_Txtclr1};	
 }
 
 
 <%--/////////////////// accodion.css ///////////////////--%>
+.main-title a{
+	color: ${manageVO.mng_Sub_Txtclr1} !important;	<%-- 좌측 메뉴 글자 색상 --%>
+	font-weight: 900;
+}
+
 
 <%-- 서브영역 텍스트 --%>
 .inherit-size:hover{
 	width:inherit;
 	height:inherit;	
 	background: ${manageVO.mng_Sub_Color2};
-	color:${manageVO.mng_Main_Color};	<%-- 색상:좌측메뉴 서브영역 텍스트 hover --%>
+	color:${manageVO.mng_Sub_Txtclr2};	<%-- 색상:좌측메뉴 서브영역 텍스트 hover --%>
 	font-weight: 900;
 }
 
 
 .accordion-menu li ul.sub li.select {
     background-color:${manageVO.mng_Sub_Color2};	<%-- 좌측메뉴 서브영역 마우스 선택상태 --%>
-    color:${manageVO.mng_Main_Color};
+    color:${manageVO.mng_Sub_Txtclr2};
 }
 
 .accordion-menu li .main-title {
     background-color:${manageVO.mng_Sub_Color1};	<%-- 색상:좌측 메뉴 상위 영역 --%>
+    color:${manageVO.mng_Sub_Txtclr1};
     padding:10px;	
     vertical-align:middle;
     position:relative;
@@ -102,5 +122,7 @@
 <%--/////////////////// layout.css ///////////////////--%>
 .login-menu-gray:hover, .login-menu:hover{
 	background: ${manageVO.mng_Sub_Color1};
+	color: ${manageVO.mng_Sub_Txtclr1};
+	
 }
 
