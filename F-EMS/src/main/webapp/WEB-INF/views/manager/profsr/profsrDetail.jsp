@@ -61,8 +61,8 @@
         <td>${profsrVO.pr_Moblphon_No}</td>
         <td>집 전화번호</td>
         <td>${profsrVO.pr_House_Tlphon_No}</td>
-        <td>교수 번호</td>
-        <td>${profsrVO.pr_Profsr_No}</td>
+        <td>교수 전화번호</td>
+        <td>${profsrVO.pr_Profsr_Tlphon_No}</td>
       </tr>
       
   </table>

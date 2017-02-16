@@ -62,7 +62,7 @@
 				<td><input type="text" class="form-control" id="pr_Moblphon_No" name="pr_Moblphon_No" value="${profsrVO.pr_Moblphon_No }"></td>
 				<td>집 전화번호</td>
 				<td><input type="text" class="form-control" id="pr_House_Tlphon_No" name="pr_House_Tlphon_No" value="${profsrVO.pr_House_Tlphon_No }"></td>
-				<td>교수 번호</td>
+				<td>교수 전화번호</td>
 				<td><input type="text" class="form-control" id="pr_Profsr_Tlphon_No" name="pr_Profsr_Tlphon_No" value="${profsrVO.pr_Profsr_Tlphon_No }"></td>
 			</tr>
 		</table>
