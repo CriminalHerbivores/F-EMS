@@ -50,7 +50,7 @@
   </ul>
 
   <div id="find_id" class="w3-container city">
-	<img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"
+	<img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"
 		id="logo">
 		<table class="tb-border">
 			<tr><td>이름/생년월일로 아이디 찾기</td></tr>
@@ -97,7 +97,7 @@
 		</table>
    </div>
   <div id="find_pw" class="w3-container city">
-	<img src="<%=request.getContextPath()%>/resources/images/uni_logo.png"
+	<img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"
 		id="logo">
 		<table class="tb-border">
 			<tr><td>이름/생년월일로 비밀번호 찾기</td></tr>

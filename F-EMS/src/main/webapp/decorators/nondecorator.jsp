@@ -35,10 +35,6 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <decorator:head />
 </head>  
 
@@ -48,25 +44,71 @@
 </body>
 
 <!--  ============= css =============  -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/accordion.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/board.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/course.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/layout_setup.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/menu.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/scheduler.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/accordion.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/board.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/course.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/layout_setup.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/main.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/menu.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/scheduler.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/w3.css">
+
+<!-- Calendar -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/examples-offline.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/kendo.common.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/kendo.rtl.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css">
 <!--  ============= css =============  -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
+
+
+
 
 <!--  ============= js =============  -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 <!--  ============= js =============  -->
 
 
 <!-- //////////////////////////////////// -->
+
+<!-- ssh 추가 -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquerymin.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/kendo.all.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/console.js"></script>
+
 
 <script src="<%=request.getContextPath()%>/resources/js/answer.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/atrty.js"></script>
@@ -96,24 +138,29 @@
 <script src="<%=request.getContextPath()%>/resources/js/menu_se.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/notice_bbs.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/profsr.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/profsr_schedl.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/profsr_subjct_asnm.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/profsr_schedl.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/profsr_subjct_asnm.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/pymnt.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/reqst.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/schafs_schdul.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/schafs_schdul.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/schlship.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/sklstf.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/sklstf_atrty.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/sknrgs.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/stdnt.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/subjct_info_table.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/subjct_info_table.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/test.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/test_paper.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/tuition.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/use.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/users.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/work.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <!-- //////////////////////////////////// -->
-
 
 </html>

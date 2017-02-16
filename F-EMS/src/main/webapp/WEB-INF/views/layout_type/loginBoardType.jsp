@@ -31,7 +31,7 @@
 				<table id="topnav-table">
 					<tr>
 						<td><a href="<%=request.getContextPath()%>/"><img
-								src="<%=request.getContextPath()%>/resources/images/uni_logo.png"
+								src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"
 								id="logo"></a></td>
 						<td></td>
 					</tr>
