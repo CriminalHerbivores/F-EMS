@@ -71,7 +71,7 @@
 	<a href="profsrUpdate?pr_Profsr_No=${profsrVO.pr_Profsr_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn"> </a>
 	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 	<input type="button" class="def-btn" data-target="#layerpop" data-toggle="modal" value="삭제">
-	<a href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
+	<a href="profsrList?&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
 	</sec:authorize>
 </div>
 <!--모달부분  -->

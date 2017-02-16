@@ -31,9 +31,10 @@
 </head>
 <body>
 	<div class="container">
-		<h2>학생 조회</h2>
-		<tr>
+		<h2>학생 관리</h2>
 			<form name="formm">
+		<table>
+		<tr>
 				<td colspan="5" class="text-right">
 				<select name="선택" class="combobox-sm">
 						<option value="st_Stdnt_No">학생 번호</option>
@@ -43,8 +44,9 @@
 				</select>&nbsp;&nbsp; <input type="text"  name="key" class="def-input-text-sm">&nbsp;&nbsp;
 					<input type="button" class="def-btn" value="조회">&nbsp;&nbsp;
 				</td>
-			</form>
 		</tr>
+		</table>
+			</form>
 		<table class="table table-bordered">
 			<tr>
 				<th>학번</th>

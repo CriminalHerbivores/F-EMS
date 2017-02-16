@@ -20,7 +20,7 @@
 </head>
 <body>
 	<h2>교수 정보 수정</h2>
-	<form method="POST" name="frm">
+	<form method="POST" name="formm">
 		<input type="hidden" name="tpage" value="${tpage}">
 		<table class="table table-bordered">
 			<tr>
@@ -66,7 +66,7 @@
 				<td><input type="text" class="form-control" id="pr_Profsr_Tlphon_No" name="pr_Profsr_Tlphon_No" value="${profsrVO.pr_Profsr_Tlphon_No }"></td>
 			</tr>
 		</table>
-		<button type="button" class="btn btn-default" onclick="go_profsrUpdate('<%=request.getContextPath()%>')">수정</button>
+		<button type="button" class="btn btn-default" onclick="go_profsrUpdate()">수정</button>
 		<button type="button" class="btn btn-default" onclick="history.go(-1);">취소</button>
 	</form>
 </body>

@@ -18,7 +18,8 @@
 <title></title>
 </head>
 <body>
-	<form method="POST" enctype="multipart/form-data" name="frm">
+<h2>등록금 정보 등록</h2>
+	<form method="POST" enctype="multipart/form-data" name="formm">
 		<table class="table table-bordered">
 			<tr>
 				<td>장학금 명 :</td>
@@ -38,7 +39,7 @@
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-default">등록</button>
-		<button type="button" class="btn btn-default" onclick="go_home()">취소</button>
+		<button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
 	</form>
 </body>
 </html>
