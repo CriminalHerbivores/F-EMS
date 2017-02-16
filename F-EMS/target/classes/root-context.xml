@@ -326,6 +326,12 @@
    <bean id="cnslt_BbsService" class="com.uni.fems.service.impl.Cnslt_BbsServiceImpl"
       p:cnslt_BbsDAO-ref="cnslt_BbsDAO" />
       
+<bean id="baskinDAO" class="com.uni.fems.dao.impl.BaskinDAOImpl"
+      p:client-ref="sqlMapClient" />
+
+   <bean id="baskinService" class="com.uni.fems.service.impl.BaskinServiceImpl"
+      p:baskinDAO-ref="baskinDAO" />
+      
       
       
 	<bean id="serviceProfiler" class="com.uni.fems.aop.ServiceProfiler"

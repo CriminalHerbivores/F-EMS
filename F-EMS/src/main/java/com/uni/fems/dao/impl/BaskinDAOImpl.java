@@ -1,0 +1,27 @@
+package com.uni.fems.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.dao.BaskinDAO;
+import com.uni.fems.dto.BaskinVO;
+
+public class BaskinDAOImpl implements BaskinDAO{
+	private SqlMapClient client;
+	public void setClient(SqlMapClient client) {
+		this.client = client;
+	}
+	@Override
+	public List<BaskinVO> getBaskin() throws SQLException {
+		List<BaskinVO> list = (List<BaskinVO>) client.queryForList("getBaskin");
+		return list;
+	}
+
+	@Override
+	public BaskinVO getThemeBaskin(String bskn_Nm) throws SQLException {
+		BaskinVO vo = (BaskinVO) client.queryForObject("getThemeBaskin",bskn_Nm);
+		return vo;
+	}
+
+}

@@ -32,8 +32,9 @@
 --------- 학생 ---------<br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a><br/>
-<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적 조회</a><br/>
+<a href="<%=request.getContextPath() %>/stdnt/schlshipList" class="no-uline">등록금 조회</a><br/>
+<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사 조회</a><br/>
 --------- 학사 ---------<br/>
 <a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a><br/>
 <a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a><br/>

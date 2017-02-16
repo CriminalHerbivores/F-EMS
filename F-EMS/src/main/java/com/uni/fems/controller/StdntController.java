@@ -299,5 +299,21 @@ public class StdntController {
 		}
 		return url;
 	}
-
+	
+	// 장학금 //////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * <pre>
+	 * 장학금을 조회한다.
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value = "/schlshipList", method = RequestMethod.GET)
+	public String schlshipList(){
+		String url="student/schlshipList";
+		
+		return url;
+	}
 }

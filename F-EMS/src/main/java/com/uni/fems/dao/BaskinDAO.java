@@ -1,0 +1,11 @@
+package com.uni.fems.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.uni.fems.dto.BaskinVO;
+
+public interface BaskinDAO {
+	List<BaskinVO> getBaskin() throws SQLException;
+	BaskinVO getThemeBaskin(String bskn_Nm) throws SQLException;
+}
