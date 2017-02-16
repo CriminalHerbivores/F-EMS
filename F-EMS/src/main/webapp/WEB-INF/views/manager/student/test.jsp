@@ -74,7 +74,7 @@
       
   </table>
    <button type="button" class="btn btn-default" onclick="go_stdntInsert()">수정</button>
-    <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
+    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>
 </body>
 </html>

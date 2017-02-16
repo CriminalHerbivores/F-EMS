@@ -44,7 +44,7 @@
       <tr>
         <td>비밀번호</td>
         <td><input type="text" class="form-control" id="stf_Pw" name="stf_Pw" value="${sklstfVO.stf_Pw }"></td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td><input type="text" class="form-control" id="stf_Pw_on" name="stf_Pw_on" value="${sklstfVO.stf_Pw }"></td>
         <td>생년월일</td>
         <td><input type="text" class="form-control" id="stf_Ihidnum" name="stf_Ihidnum" value="${sklstfVO.stf_Ihidnum }"></td>
@@ -67,7 +67,7 @@
       </tr>
   </table>
     <input type="button" class="btn btn-default" onclick="go_sklstfUpdate()" value="수정">
-    <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
+    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
 
 </form>
 </body>

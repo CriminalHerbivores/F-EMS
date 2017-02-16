@@ -21,14 +21,17 @@
 </head>
 <body>
 	<div class="container">
-		<h2>학생 조회</h2>
+		<h2>장학금 관리</h2>
+		<form name="formm">
+		<table>
 		<tr>
-			<form name="frm">
+			<td>
 				장학금 명 : <input type="text"  name="key" class="def-input-text-sm">&nbsp;&nbsp;
 					<input type="button" class="def-btn" value="조회">&nbsp;&nbsp;
-				</td>
-			</form>
+			</td>
 		</tr>
+		</table>
+		</form>
 		<table class="table table-bordered">
 			<tr>
 				<th>장학금 코드</th>
@@ -45,7 +48,7 @@
 					<td>${schlship.ss_Schlship_Type}</td>
 					<td>${schlship.ss_Amount}</td>
 					<td><a href="fileDownload1?name=${schlship.ss_Papers_Content}">${schlship.ss_Papers_Content}</a></td>
-					<td>$수정/삭제</td>
+					<td>수정/삭제</td>
 				</tr>
 			</c:forEach>
 			<tr>
