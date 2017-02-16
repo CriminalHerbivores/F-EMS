@@ -81,7 +81,7 @@
 	<!-- 상단메뉴 시작 -->
 	<nav class="navbar custom-navbar-inverse">
 		<div class="container-fluid top-menu" style="padding-left: 11.5%;">
-			<div class="collapse navbar-collapse" id="myNavbar">
+	 		<div class="collapse navbar-collapse" id="myNavbar">
 
 				<ul class="nav navbar-nav navbar-left">
 
@@ -216,9 +216,11 @@
 
 
 	<!-- 좌측메뉴 시작 -->
+	
 	<div class="container-fluid">
 		<div class="row content">
 
+	<c:if test="${manageVO.mng_Left_Menu_Use_Ennc=='y'||'Y'}">
 			<div class="custom-col-sm-2 sidenav">
 				<div>
 
@@ -392,6 +394,12 @@
 								<div class="inherit-size">
 									<li class="sub-menu-li"><a href="#">커뮤니티메뉴1</a></li>
 								</div>
+								<div class="inherit-size">
+									<li class="sub-menu-li"><a href="#">커뮤니티메뉴2</a></li>
+								</div>
+								<div class="inherit-size">
+									<li class="sub-menu-li"><a href="#">커뮤니티메뉴3</a></li>
+								</div>
 							</ul>
 						</li>
 
@@ -429,12 +437,22 @@
 				</div>
 			</div>
 			<!-- ////////////////// -->
+			</c:if>
+			
 
+	<c:choose>
+	<c:when test="${manageVO.mng_Left_Menu_Use_Ennc=='y'||'Y'}">
 			<div class="custom-col-sm-8 sidenav text-left">
-				<!-- <table style="border:none;width:auto; min-width:500px;"> -->
 				<decorator:body />
-				<!-- </table> -->
+				</div>
+		</c:when>
+	<c:otherwise>
+			<div class="custom-col-sm-10 sidenav text-left">
+			<decorator:body />
 			</div>
+		</c:otherwise>	
+		</c:choose>	
+				
 		</div>
 	</div>
 

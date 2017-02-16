@@ -43,10 +43,11 @@
     position:relative;
     z-index:100;	
 } */
-.main-title a{
-	color: #fff !important;	/* 좌측 메뉴 글자 색상 */
+/* dbCSS로 이사 */
+/* .main-title a{
+	color: #fff !important;	좌측 메뉴 글자 색상
 	font-weight: 900;
-}
+} */
 
 .accordion-menu li .main-title a {
     display: inline-block;
