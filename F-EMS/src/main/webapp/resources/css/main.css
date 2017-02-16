@@ -179,17 +179,17 @@ a:hover {
 	
 }
 
-.btn-color{
+/* .btn-color{
 	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
 	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
 	box-shadow: 0px 0px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #326EA6), color-stop(1, #326EA6) ); /* 버튼 바탕색 */
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #326EA6), color-stop(1, #326EA6) ); 버튼 바탕색
 	background:-moz-linear-gradient( center top, #326EA6 5%, #326EA6 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#326EA6', endColorstr='#326EA6');
 	border:1px solid #063F78;
 	background-color:#326EA6;
 	color:#fff;
-}
+} */
 
 	
 
@@ -227,13 +227,14 @@ a:hover {
 	background-color:#ccc;
 }
 
-.btn-color:hover {
-	/* background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79BFAD), color-stop(1, #79BFAD) );
+/* dbCSS로 이사 */
+/* .btn-color:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79BFAD), color-stop(1, #79BFAD) );
 	background:-moz-linear-gradient( center top, #79BFAD 5%, #ccc 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79BFAD', endColorstr='#79BFAD'); */
-	/* opacity:0.7; */
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79BFAD', endColorstr='#79BFAD');
+	opacity:0.7;
 	background-color:#063F78;
-}
+} */
 
 
 .def-btn:active {
@@ -242,17 +243,19 @@ a:hover {
 }
 
 /* ////////////////////////// */
-.ckbtn-color{
+
+/* dbCSS로 이사 */
+/* .ckbtn-color{
 	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
 	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
 	box-shadow: 0px 0px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #326EA6), color-stop(1, #326EA6) ); /* 버튼 바탕색 */
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #326EA6), color-stop(1, #326EA6) ); 버튼 바탕색
 	background:-moz-linear-gradient( center top, #326EA6 5%, #326EA6 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#326EA6', endColorstr='#326EA6');
 	background-color:#326EA6;
 	border:1px solid #063F78;
 	color:#fff;	
-}
+} */
 
 .ckbtn-gray{
 	-moz-box-shadow: 0px 0px 0px 0px #ffffff;

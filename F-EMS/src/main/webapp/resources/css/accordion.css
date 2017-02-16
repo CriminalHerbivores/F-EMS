@@ -35,14 +35,14 @@
 }
 
 
-	
-.accordion-menu li .main-title {
-    background-color:#326EA6;	/* 색상:좌측 메뉴 상위 영역 */
+/* dbCSS로 이사 */	
+/* .accordion-menu li .main-title {
+    background-color:#326EA6;	색상:좌측 메뉴 상위 영역
     padding:10px;	
     vertical-align:middle;
     position:relative;
     z-index:100;	
-}
+} */
 .main-title a{
 	color: #fff !important;	/* 좌측 메뉴 글자 색상 */
 	font-weight: 900;
@@ -109,13 +109,15 @@
 }
 .sub-menu-li:hover{
 }
-.inherit-size:hover{
+
+/* dbCSS로 이사 */
+/* .inherit-size:hover{
 	width:inherit;
 	height:inherit;	
 	background: #D8E7F6;
-	color:#063F78;	/* 색상:좌측메뉴 서브영역 텍스트 hover */
+	color:#063F78;	색상:좌측메뉴 서브영역 텍스트 hover
 	font-weight: 900;
-}
+} */
 
 .accordion-menu li ul.sub.open {
     display:block;
@@ -134,7 +136,8 @@
     cursor:pointer;
 }
 
-.accordion-menu li ul.sub li.select {
-    background-color:#D8E7F6;	/* 좌측메뉴 서브영역 마우스 선택상태 */
+/* dbCSS로 이사 */
+/* .accordion-menu li ul.sub li.select {
+    background-color:#D8E7F6;	좌측메뉴 서브영역 마우스 선택상태
     color:#063F78;
-}
+} */

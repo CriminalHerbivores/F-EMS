@@ -57,7 +57,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/scheduler.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/w3.css">
 <!--  ============= css =============  -->
-
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
 
 <!--  ============= js =============  -->
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
