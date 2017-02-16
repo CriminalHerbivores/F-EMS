@@ -48,9 +48,9 @@ public class IndexController {
 	 */
 	@RequestMapping("/index")
 	public String index(Model model, HttpSession session){
-		String url = "/index";	// 인덱스 말고 데코레이터로 연결할 수는 없는지?
+		String url = "/index";	
 		
-		ManageVO manageVO=null;
+		/*ManageVO manageVO=null;
 		
 		try {
 			manageVO= manageService.getManage();
@@ -58,7 +58,7 @@ public class IndexController {
 			e.printStackTrace();
 		}
 		
-		session.setAttribute("manageVO", manageVO);
+		session.setAttribute("manageVO", manageVO);*/
 		
 		return url;
 	}
