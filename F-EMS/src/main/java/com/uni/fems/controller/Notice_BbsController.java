@@ -143,7 +143,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 *  작성한 게시판 내용을 바탕으로 값을 DB에 저장 또는 처리하는 메서드
+	 *  작성한 게시판 내용을 바탕으로 값을 DB에 저장 또는 처리하는 메서드(업로드)
 	 * </pre>
 	 * <pre>
 	 * @param notice_BbsVO

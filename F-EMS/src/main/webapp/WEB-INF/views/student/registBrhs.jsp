@@ -47,7 +47,7 @@
 					      ${stdntVO.st_Brhs_At}
 					    </c:when>
 						<c:otherwise>
-							<input type="button" class="def-btn btn-sm btn-color" value="신청하기" onclick="registBrhs(this.form)">
+							<input type="button" class="def-btn btn-sm btn-color" value="신청하기" onclick="submitForm(this.form);">
 						</c:otherwise>
 					</c:choose></td>
 			</tr>

@@ -5,7 +5,7 @@ function submitForm(form){
 
 /* 인덱스로 돌아가기 */
 function go_home(){
-	location.href="<%=request.getContextPath() %>/"
+	location.href="http://"+location.host + "/fems/";
 }
 
 /* femsModal 아이디의 모달을 여닫음  */

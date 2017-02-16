@@ -20,8 +20,9 @@
 <script src="/fems/resources/js/stdnt.js"></script>
 </head>
 <body>
-<form method="POST" name="frm">
-<input type="text" hidden name="tpage" value="${tpage}">
+<h2>학생 정보 수정</h2>
+<form method="POST" name="formm">
+<input type="hidden" name="tpage" value="${tpage}">
  <table class="table table-bordered">
       <tr>
         <td>학생 번호</td>
@@ -75,8 +76,8 @@
       </tr>
       
   </table>
-   <button type="button" class="btn btn-default" onclick="go_stdntUpdate('<%=request.getContextPath() %>')">수정</button>
-    <button type="button" class="btn btn-default" onclick="go_home()">취소</button>
+   <button type="button" class="btn btn-default" onclick="submitForm(this.form);">수정</button>
+    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>
 </body>
 </html>
