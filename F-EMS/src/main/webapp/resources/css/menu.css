@@ -172,11 +172,12 @@ padding : 10px;
 
 
 
-	
-.custom-navbar-inverse{
+/* dbCSS로 이사 */	
+/* .custom-navbar-inverse{
+	background-color: #063F78;
 	border-color: #063F78;
 	
-}
+} */
 
 /* .custom-navbar-inverse .navbar-nav>li>a {
 	color: #0D3FA5;
@@ -208,8 +209,9 @@ padding : 10px;
 
 
 /* //////////////////////////////////// */
-.menu-dropbtn {
-    background-color: #063F78;	/* 색상:상단 드롭다운 버튼 */
+/* dbCSS로 이사 */
+/* .menu-dropbtn {
+    background-color: #063F78;	색상:상단 드롭다운 버튼
     padding: 16px;
     width:120px;
     height:50px;
@@ -217,7 +219,7 @@ padding : 10px;
     border: none;
     cursor: pointer;
     text-decoration: none;
-}
+} */
 .menu-dropbtn  a{
     color: #fff !important;	/* 메인 메뉴 글자 색상 */
     font-weight: 900;
@@ -258,17 +260,19 @@ padding : 10px;
     display: block;
 }
 
-.menu-dropdown-content a:hover {
+/* dbCSS로 이사 */
+/* .menu-dropdown-content a:hover {
 	background-color : #D8E7F6;;
-}	/* 색상:상단 드롭다운 서브 hover */
+} */	/* 색상:상단 드롭다운 서브 hover */
 
 .menu-dropdown:hover .menu-dropdown-content {
     display: block;
 }
 
-.menu-dropdown:hover .menu-dropbtn {
-   background-color: #326EA6;	/* 색상:상단 드롭다운 hover */
-}
+/* dbCSS로 이사 */
+/* .menu-dropdown:hover .menu-dropbtn {
+   background-color: #326EA6;	색상:상단 드롭다운 hover
+} */
 
 
 
