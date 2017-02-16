@@ -35,9 +35,20 @@ public class IndexController {
 	}
 	
 	
+	/**
+	 * <pre>
+	 * 첫 화면으로 이동
+	 * DB에 저장된 MANAGE 테이블의 내용을 가져온다
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/index")
 	public String index(Model model, HttpSession session){
-		String url = "/index";
+		String url = "/index";	// 인덱스 말고 데코레이터로 연결할 수는 없는지?
 		
 		ManageVO manageVO=null;
 		
