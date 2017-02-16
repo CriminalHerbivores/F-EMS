@@ -26,6 +26,10 @@
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>
+			<pattern>/dynamicCss/menu.do</pattern>	<!-- <pattern>/**/dbCSS.jsp</pattern> -->
+		
+		<!-- <pattern>/**/menu.jsp  라고 해도 되는데 이미 다른애가 써서...</pattern> -->
+		
 		<!-- <pattern>/**/top_decorator.jsp</pattern>
 		<pattern>/**/left_decorator.jsp</pattern>
 		<pattern>/**/footer_decorator.jsp</pattern> -->

@@ -29,7 +29,7 @@
 
 <!DOCTYPE html>
 <html>
-<h:head>
+<head>
 <title>
 <decorator:title default="F-EMS"/>
 </title>
@@ -40,12 +40,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+
 <%-- <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath() %>resource/menu.css?ln=css" /> --%>
 <decorator:head />
-</h:head>
-<h:body>
-<h:outputStylehseet library="css" name="menu.css"/>
+</head>
+<body>
 
 
 <!-- 상단바 시작 -->
@@ -328,7 +329,7 @@
 	<!-- Footer 끝 -->
 
 
-</h:body>
+</body>
 
 <!--  ============= css =============  -->
 
@@ -348,6 +349,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css" >
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css" >
 <!--  ============= css =============  -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
+
+
 
 
 <!--  ============= js =============  -->

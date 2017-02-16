@@ -187,11 +187,10 @@ a:hover {
 	background:-moz-linear-gradient( center top, #326EA6 5%, #326EA6 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#326EA6', endColorstr='#326EA6');
 	border:1px solid #063F78;
+	background-color:#326EA6;
 	color:#fff;
 }
-.btn-color{
-	background-color:#{manageVO.mng_Sub_Color1}; /* #326EA6 */
-}
+
 	
 
 .def-btn {
