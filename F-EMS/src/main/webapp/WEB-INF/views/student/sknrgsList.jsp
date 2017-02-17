@@ -21,33 +21,10 @@
 <title></title>
 </head>
 <body>
-		<h3>학적 변동 내역</h3>
-		<table class="def-table-full tb-border table-hover">
-			<tr>
-				<th>No</th>
-				<th>학적변동</th>
-				<th>사유</th>
-				<th>신청날짜</th>
-				<th>승인여부</th>
-			</tr>
-			<c:forEach var="sknrgs" items="${sknrgsList}">
-				<tr>
-					<td>${sknrgs.skn_No}</td>
-					<td>${sknrgs.skn_Type}</td>
-					<td>${sknrgs.skn_Content}</td>
-					<td><fmt:formatDate value="${sknrgs.skn_Reqst_Dt}" /></td>
-					<td>${sknrgs.skn_Useyn}</td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="5" style="text-align: center;">${paging }</td>
-			</tr>
-		</table>
-
 		<c:forEach var="sknrgs" items="${sknrgsList}" begin="0" end="0" step="1">
 			<c:if test="${flag}">
 
-				<h3>학적 변동 신청 상세</h3>
+				<h3>학적 변동 신청 상세</h3><br/>
 				<form name="formm" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="skn_Stdnt_No" value="${loginUser}">
 					<table class="def-table-full tb-border table-hover">
@@ -111,12 +88,38 @@
 			</c:if>
 		</c:forEach>
 		<%-- 휴학기간 (시작/끝) 복학예정일자 (2015년도 1학기~2015년도1학기까지 2015-03-01~2015-08-31) : 학기 단위라서 생략 --%>
-		<h3>안내</h3>
+		<br/>
+		<table class="def-table-full tb-border table-hover"><tr><td style="text-align: left;">
+		<h3>안내</h3><br/>
 		<ul>
 			<li>휴학은 한 학기(1학기) 단위로 휴학 가능하며, 학기 단위로 신청 가능</li>
 			<li>휴학기간이 만료되면 반드시 복학 또는 휴학기간 연장 신청을 해야 함</li>
 			<li>1. 일반휴학 : 일반휴학은 재학 연한 중 통상 4학기를 초과할 수 없습니다.</li>
 			<li>2. 입대휴학 : 입영통지서 파일을 첨부하시면 휴학원서를 제출하지 않고 휴학처리 됩니다.</li>
 		</ul>
+		</td></tr></table>
+		<hr>
+		<h3>학적 변동 내역</h3>
+		<table class="def-table-full tb-border table-hover">
+			<tr>
+				<th>No</th>
+				<th>학적변동</th>
+				<th>사유</th>
+				<th>신청날짜</th>
+				<th>승인여부</th>
+			</tr>
+			<c:forEach var="sknrgs" items="${sknrgsList}">
+				<tr>
+					<td>${sknrgs.skn_No}</td>
+					<td>${sknrgs.skn_Type}</td>
+					<td>${sknrgs.skn_Content}</td>
+					<td><fmt:formatDate value="${sknrgs.skn_Reqst_Dt}" /></td>
+					<td>${sknrgs.skn_Useyn}</td>
+				</tr>
+			</c:forEach>
+			<tr>
+				<td colspan="5" style="text-align: center;">${paging }</td>
+			</tr>
+		</table>
 </body>
 </html>
