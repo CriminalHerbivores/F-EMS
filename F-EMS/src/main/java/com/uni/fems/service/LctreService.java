@@ -29,8 +29,19 @@ import com.uni.fems.dto.Lctre_SearchVO;
 
 public interface LctreService {
 
+	/**
+	 * <pre>
+	 * 전체 강의 목록을 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param lu_Lctre_Nm
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 int tpage, 
 	
+	// 강의등록(강의,강의계획서,)
 	
 	/*public ArrayList<LctreVO> getLctreList(int key);	
 	public LctreVO selectLctre(int lc_Lctre_No);*/

@@ -57,7 +57,6 @@ public class Lctre_SearchVO implements Serializable {
 	private String lc_Wik_Lctre_Dayweek;   // 주간 강의 요일
 	private String lc_Lctre_Time;   // 강의 시간
 	private String lc_Pnt;   // 학점
-	private String lc_Grade;   // 학년
 	private String lc_Lctrum_No;   // 강의실 번호
 	private String lc_Open_At;   // 개설여부
 	private String lc_Lctre_Org;   // 강의 원본
@@ -84,6 +83,7 @@ public class Lctre_SearchVO implements Serializable {
 	private String lu_Pnt;   // 학점
 	private String lu_Compl_Se;   // 이수구분
 	private String lu_Presubjct;   // 선수과목
+	private String lu_Grade;   // 학년
 	
 	// 종류 KIND
 	private int knd_Lctre_No;   // 강의번호

@@ -42,8 +42,63 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	ArrayList<Lctre_SearchVO> listForComboLctre=null;
 	
-	static int view_rows = 5; // 페이지의 개수
-	static int counts = 6; // 한 페이지에 나타낼 강의 개수
+//	static int view_rows = 5; // 페이지의 개수
+//	static int counts = 6; // 한 페이지에 나타낼 강의 개수
+	
+
+	
+	
+	
+	
+	/**
+	 * 전체 강의 목록
+	 */
+	@Override
+	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
+		//개설강의목록 메인
+		List<Lctre_SearchVO> listLctre;
+		if(lu_Lctre_Nm==null){
+			lu_Lctre_Nm="";
+		}
+		listLctre = (List<Lctre_SearchVO>) client.queryForList("listLctre", lu_Lctre_Nm);
+		return listLctre;
+	}
+	
+	/**
+	 * 강의 등록 (완료)
+	 */
+	@Override
+	public int insertLctre(LctreVO lctreVO) throws SQLException {
+		int result = -1;
+		if (client.insert("insertLctre", lctreVO) != null) {
+			result=-1;
+		} else {
+			result=1;
+		}
+		return result;
+	}
+
+
+	/**
+	 * 강의 수정 (완료)
+	 */
+	@Override
+	public int updateLctre(LctreVO lctreVO) throws SQLException {
+		int result = (Integer)client.update("updateLctre",lctreVO);
+		return result;
+	}
+	
+	
+	/**
+	 * 강의 삭제 (완료)
+	 */
+	@Override
+	public int deleteLctre(int lc_Lctre_No) throws SQLException {
+		int result = (Integer)client.update("deleteLctre",lc_Lctre_No);
+		return result;
+	}
+	
+	
 	
 	
 	
@@ -120,19 +175,7 @@ public class LctreDAOImpl implements LctreDAO {
 
 	
 	//===========================================================================================
-	/**
-	 * 전체 강의 목록
-	 */
-	@Override
-	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
-		//개설강의목록 메인
-		List<Lctre_SearchVO> listLctre;
-		if(lu_Lctre_Nm==null){
-			lu_Lctre_Nm="";
-		}
-		listLctre = (List<Lctre_SearchVO>) client.queryForList("listLctre", lu_Lctre_Nm);
-		return listLctre;
-	}
+
 
 	
 	
@@ -259,46 +302,5 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	
 	//===========================================================================================
-	
-	
-
-	/**
-	 * 강의 등록 (완료)
-	 */
-//	@Override
-//	public int insertLctre(LctreVO lctreVO) throws SQLException {
-//		int result = -1;
-//		if (client.insert("insertLctre", lctreVO) != null) {
-//			result=-1;
-//		} else {
-//			result=1;
-//		}
-//		return result;
-//	}
-
-
-	/**
-	 * 강의 수정 (완료)
-	 */
-//	@Override
-//	public int updateLctre(LctreVO lctreVO) throws SQLException {
-//		int result = (Integer)client.update("updateLctre",lctreVO);
-//		return result;
-//	}
-	
-	
-	/**
-	 * 강의 삭제 (완료)
-	 */
-//	@Override
-//	public int deleteLctre(int lc_Lctre_No) throws SQLException {
-//		int result = (Integer)client.update("deleteLctre",lc_Lctre_No);
-//		return result;
-//	}
-
-	
-
-
-
 	
 }
