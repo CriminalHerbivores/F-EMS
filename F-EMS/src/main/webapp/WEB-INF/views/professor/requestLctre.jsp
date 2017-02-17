@@ -67,6 +67,32 @@ input[type=radio] + label, input[type=checkbox] + label {
 	}
 </style>
 
+<script>
+
+
+/* $(document).ready(function(){
+	
+	$('#year').val("1");
+	
+	 var a=new Date().getFullYear();
+	document.getElementById("year").value= a; 
+	
+});	 */
+
+/* $(document).ready(function() {
+    $('#year').val('원하는 값');
+});
+
+ */
+// document.getElementById("year").value='aa';
+ 
+/*  var enc=111;
+ $('input[name=enc]').attr('value',enc);  */
+ 
+ 
+</script>
+
+
 
 </head>
 <body>
@@ -150,10 +176,16 @@ input[type=radio] + label, input[type=checkbox] + label {
 	 	<th>강의평가</th>
 	 	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
 	 </tr>
-	 
+	 </table>
 	
-	 
-	 
+	 <table class="def-table-auto tb-border table-hover">
+	 <tr>
+	 	<th>강의시간</th>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control">학년</td>
+	 	
+	 	<th>희망 강의 정원</th>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
+	 </tr>
 	   <tr>
 	      <th>학습평가방법(100%)</th>
 	      <td colspan="3" class="padding-0">
