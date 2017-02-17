@@ -15,39 +15,44 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="schlship" type="com.uni.fems.dto.SchlshipVO" />
 
-	<!-- 학생 개수 등록 -->
+	<!-- 등록금 개수 -->
 	<select id="totalSchlship" parameterClass="str" resultClass="int">
 		select count(*) from schlship where ss_Schlship_Nm like
 		'%$ss_Schlship_Nm$%'
 	</select>
 
-	<!-- 학생 페이지로 출력 -->
+	<!-- 등록금 목록 페이지로 출력 -->
 	<select id="selectAllSchlshipPage" parameterClass="str"
 		resultClass="schlship">
 		select * from schlship where ss_Schlship_Nm like
 		'%$ss_Schlship_Nm$%'
 	</select>
 
-	<!-- 학생 한명 출력 -->
+	<!-- 등록금 하나 출력 -->
 	<select id="selectSchlship" parameterClass="str" resultClass="schlship">
 		select * from schlship where ss_Schlship_Code = #ss_Schlship_Code#
 	</select>
 
 	<update id="insertSchlship" parameterClass="schlship">
 		insert into schlship(
-		ss_Schlship_Code,ss_Schlship_Nm,ss_Schlship_Type,ss_Amount,ss_Papers_Content)
+		ss_Schlship_Code,ss_Schlship_Nm,ss_Schlship_Type,ss_Amount,ss_Papers_Content,ss_File,ss_useyn)
 		values
-		(ss_seq.nextval,#ss_Schlship_Nm#,#ss_Schlship_Type#,#ss_Amount#,#ss_Papers_Content#)
+		(ss_seq.nextval,#ss_Schlship_Nm#,#ss_Schlship_Type#,#ss_Amount#,#ss_Papers_Content#,#ss_File#,y)
 	</update>
 
 	<update id="updateSchlship" parameterClass="schlship">
 		update schlship set
 		ss_Schlship_Nm = #ss_Schlship_Nm#,
-		ss_Schlship_Type =
-		#ss_Schlship_Type#,
+		ss_Schlship_Type = #ss_Schlship_Type#,
 		ss_Amount = #ss_Amount#,
-		ss_Papers_Content =
-		#ss_Papers_Content#
+		ss_Papers_Content = #ss_Papers_Content#,
+		ss_File = #ss_File#
+		where ss_Schlship_Code = #ss_Schlship_Code#
+	</update>
+	
+	<update id="deleteSchlship" parameterClass="schlship">
+		update schlship set
+		ss_useyn = #ss_useyn#
 		where ss_Schlship_Code = #ss_Schlship_Code#
 	</update>
 </sqlMap>

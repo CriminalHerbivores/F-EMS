@@ -47,10 +47,13 @@
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
 					<tr style="width: 900px;">
+					
 						<td><a href="<%=request.getContextPath()%>/"> <img
 								src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"
 								id="logo"></a></td>
-				</table>
+				</table> 
+				
+				
 				<div class="float-right">
 					<c:choose>
 						<c:when test="${empty loginUser}">
@@ -77,7 +80,7 @@
 			</div>
 		</div>
 	</nav>
-	<!-- 상단바 끝 -->
+	<!-- 상단바 끝 --> 
 
 
 	<!-- 상단메뉴 시작 -->

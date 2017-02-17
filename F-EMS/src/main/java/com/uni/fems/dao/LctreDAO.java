@@ -44,6 +44,10 @@ public interface LctreDAO {
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록  int tpage, 
 	
 	
+	int insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
+	int updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
+	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제
+	
 	
 	 /*
 	    * 관리자페이지에서 사용되는 메서드
@@ -57,9 +61,6 @@ public interface LctreDAO {
 //	int selectCount(LctreVO lctreVO) throws SQLException;	//[수강신청] 현재 학기의 전체 강의 갯수
 //	
 //	
-//	int insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
-//	int updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
-//	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제
 	
 }
 
