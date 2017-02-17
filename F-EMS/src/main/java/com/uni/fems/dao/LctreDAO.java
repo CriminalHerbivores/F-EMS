@@ -36,7 +36,7 @@ public interface LctreDAO {
 	 * 수강신청 첫 페이지에서 검색어 없이 모든 강의목록 가져온다
 	 * </pre>
 	 * <pre>
-	 * @param lctre_SearchVO
+	 * @param lu_Lctre_Nm
 	 * @return
 	 * @throws SQLException
 	 * </pre>
@@ -52,11 +52,11 @@ public interface LctreDAO {
 	 /*
 	    * 관리자페이지에서 사용되는 메서드
 	    */
-	   public int totalRecord(String lu_Lctre_Nm) throws SQLException;
+	   int totalRecord(String lu_Lctre_Nm) throws SQLException;
 
 	   // 페이지 이동을 위한 메소드
-	   public String pageNumber(int tpage, String name) throws SQLException;
-	   public String pageNum(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	   String pageNumber(int tpage, String name) throws SQLException;
+	   String pageNum(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 //	int selectCount(LctreVO lctreVO) throws SQLException;	//[수강신청] 현재 학기의 전체 강의 갯수
 //	

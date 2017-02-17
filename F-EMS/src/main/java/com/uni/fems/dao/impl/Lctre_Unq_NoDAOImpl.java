@@ -1,9 +1,12 @@
 package com.uni.fems.dao.impl;
  
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.Lctre_Unq_NoVO;
 
 /**
@@ -24,10 +27,21 @@ import com.uni.fems.dto.Lctre_Unq_NoVO;
  */
 
 public class Lctre_Unq_NoDAOImpl implements Lctre_Unq_NoDAO {
+	
 	private SqlMapClient client;
+	private static Lctre_Unq_NoDAOImpl instance = new Lctre_Unq_NoDAOImpl();
+	
+	private Lctre_Unq_NoDAOImpl() {}
 	public void setClient(SqlMapClient client){
 		this.client=client;
 	}
+	
+	public static Lctre_Unq_NoDAOImpl getInstance() {
+		return instance;
+	}
+
+	
+	
 	@Override
 	public int insertLctre_Unq_No(Lctre_Unq_NoVO lctre_Unq_NoVO)
 			throws SQLException {
@@ -39,5 +53,20 @@ public class Lctre_Unq_NoDAOImpl implements Lctre_Unq_NoDAO {
 			throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	// 교수가 강의개설할 때 강의명으로 강의찾기
+	@Override
+	public ArrayList<Lctre_SearchVO> selectLctreByName(String lu_Lctre_Nm)
+			throws SQLException {
+		ArrayList<Lctre_SearchVO> lctreList;
+		System.out.println("여기일까1111111===================================================================");
+		if(lu_Lctre_Nm.trim().equals("")){
+			System.out.println("공백인가=========================");
+			lu_Lctre_Nm="%";
+		}
+		lctreList=(ArrayList<Lctre_SearchVO>)client.queryForList("selectLctreByName",lu_Lctre_Nm);
+		System.out.println("여기일까22222===================================================================");
+		return lctreList;
 	}
 }
