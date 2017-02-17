@@ -32,6 +32,7 @@ import com.uni.fems.service.ProfsrService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.02.17.    KJH       추가작성(강의 개설 요청)
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -121,6 +122,25 @@ public class ProfsrController {
 			e.printStackTrace();
 		}
 		model.addAttribute("pr_Profsr_No", profsrVO.getPr_Profsr_No());
+		return url;
+		
+	}
+
+	/**
+	 * <pre>
+	 * 교수의 강의 정보 입력 후 등록하여 개설 요청
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/requestLctre") //(value="/requestLctre", method = RequestMethod.POST)
+	public String requestLctre(HttpServletRequest request,HttpSession session) throws ServletException, IOException{
+		String url="professor/requestLctre";
 		return url;
 		
 	}
