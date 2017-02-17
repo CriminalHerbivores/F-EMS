@@ -21,21 +21,10 @@
 </head>
 <body>
 	<div class="container">
-<<<<<<< HEAD
 <table class="non-border margin-auto"><tr><td>
-=======
-<table class="non-border margin-auto">
-	<tr><td>
-	<div class="text-center">
->>>>>>> refs/heads/kjh
 		<h2>장학금 관리</h2>
-<<<<<<< HEAD
 		<form name="search">
 		<table>
-=======
-		<form name="formm">
-		<table class="text-right">
->>>>>>> refs/heads/kjh
 		<tr>
 			<td>
 				장학금 명 : 
@@ -45,10 +34,6 @@
 		</tr>
 		</table>
 		</form>
-<<<<<<< HEAD
-=======
-		</div>
->>>>>>> refs/heads/kjh
 		<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>장학금 명</th>
@@ -79,11 +64,7 @@
 		<div id="buttons" style="float:right">
 	  	<input type="button" class="def-btn btn-sm btn-color" value="등록하기" onclick="writeschlshipForm()">
 	  </div>
-<<<<<<< HEAD
 </td></tr></table>
-=======
-	</td></tr></table>
->>>>>>> refs/heads/kjh
 	</div>
 </body>
 </html>
