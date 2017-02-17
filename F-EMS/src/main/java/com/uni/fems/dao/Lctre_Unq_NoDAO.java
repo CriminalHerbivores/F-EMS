@@ -1,7 +1,9 @@
 package com.uni.fems.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.Lctre_Unq_NoVO;
 
 /**
@@ -34,7 +36,7 @@ public interface Lctre_Unq_NoDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public int insertLctre_Unq_No(Lctre_Unq_NoVO lctre_Unq_NoVO) throws SQLException;	//강의고유번호 등록
+	int insertLctre_Unq_No(Lctre_Unq_NoVO lctre_Unq_NoVO) throws SQLException;	//강의고유번호 등록
 	
 	/**
 	 * <pre>
@@ -46,6 +48,18 @@ public interface Lctre_Unq_NoDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public int updateLctre_Unq_No(Lctre_Unq_NoVO lctre_Unq_NoVO) throws SQLException;	//강의고유번호 수정
+	int updateLctre_Unq_No(Lctre_Unq_NoVO lctre_Unq_NoVO) throws SQLException;	//강의고유번호 수정
+	
+	/**
+	 * <pre>
+	 * 교수가 강의개설할 때 강의이름으로 강의 찾기
+	 * </pre>
+	 * <pre>
+	 * @param lu_Lctre_Nm
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<Lctre_SearchVO> selectLctreByName(String lu_Lctre_Nm) throws SQLException;	// 강의 이름으로 강의찾기
 
 }

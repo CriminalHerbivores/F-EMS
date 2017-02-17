@@ -67,55 +67,80 @@ input[type=radio] + label, input[type=checkbox] + label {
 	}
 </style>
 
+<script type="text/javascript">
+function searchLctre() {
+	var url = "findLctre";
+	window
+			.open(
+					url,
+					"_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+}
+
+/* $(document).ready(function(){
+	
+	$('#year').val("1");
+	
+	 var a=new Date().getFullYear();
+	document.getElementById("year").value= a; 
+	
+});	 */
+
+/* $(document).ready(function() {
+    $('#year').val('원하는 값');
+});
+
+ */
+// document.getElementById("year").value='aa';
+ 
+/*  var enc=111;
+ $('input[name=enc]').attr('value',enc);  */
+ 
+ 
+</script>
+
+
 
 </head>
 <body>
 <h2>강의 개설 요청</h2>
+<form id="formm" name="formm" method="post" action="requestLctre" >
 <table class="def-table-auto tb-border table-hover">
+<tr><th colspan="4">개설 강의 정보</th></tr>
 	<tr>
 		<th>개설년도/학기</th>
 		<td><input type="text" class="def-input-text-sm custom-form-control">년도
 			<input type="text" class="def-input-text-sm custom-form-control">학기
 		</td>
 		<th>개설학과전공</th>
-		<td><input type="text" class="def-input-text-md custom-form-control"></td>
-	 </tr>
-	 
-	 <tr>
-	 	<th>강의번호</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>
-	 	<th>분반번호</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>
+		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct"></td>
 	 </tr>
 	 
 	 <tr>
 	 	<th>교과목명</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm">&nbsp;<button class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
+	 	<th>강의번호</th>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code"></td>
+	 </tr>
+	 
+	 <tr>
 	 	<th>이수구분</th>
-	 	<td>
-	      <input type="radio" id="radio1" name="radios" value="" checked>
-			<label for="radio1">전공</label>
-    	  <input type="radio" id="radio2" name="radios"value="">
-			<label for="radio2">교양</label>
-    	  <input type="radio" id="radio3" name="radios" value="">
-			<label for="radio3">선택</label>
-		  <input type="radio" id="radio4" name="radios" value="">
-			<label for="radio4">필수</label>
-	 	</td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Compl_Se"></td>
+	 	<th>이수학점</th>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Pnt"></td>
 	 </tr>
-	 
 	 <tr>
-	 	<th>담당교수</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>
+	 	<th>학년</th>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control" name="lu_Grade"> 학년</td>
 	 	
-	 	<th>강의정원</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
+	 	<th>선행과목</th>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Presubjct"></td>
 	 </tr>
 	 
+	 <tr><th colspan="4">담당 교수 정보</th></tr>
 	 <tr>
-	 	<th>강의시간/강의실</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"> /
-	 	<input type="text" class="def-input-text-md custom-form-control"></td>  
+	 	<th>교수이름</th>
+	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>  
 	 	
 	 	
 	 	<th>담당교수전화</th>
@@ -135,25 +160,16 @@ input[type=radio] + label, input[type=checkbox] + label {
 	 	<td><input type="text" class="def-input-text-lg custom-form-control"></td>
 	 </tr>
 	 
+
+	<tr><th colspan="4">강의 상세 정보</th></tr>
+	
 	 <tr>
-	 	<th>이수학점</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control">점</td>
-	 	
-	 	<th>선행과목</th>
+	 	<th>강의시간</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>
-	 </tr>
-	 
-	 <tr>
-	 	<th>학년</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control">학년</td>
 	 	
-	 	<th>강의평가</th>
+	 	<th>희망 강의 정원</th>
 	 	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
 	 </tr>
-	 
-	
-	 
-	 
 	   <tr>
 	      <th>학습평가방법(100%)</th>
 	      <td colspan="3" class="padding-0">
@@ -285,7 +301,7 @@ input[type=radio] + label, input[type=checkbox] + label {
 	     
 	     
 	 </table>
-	 
+	 </form>
 
 </body>
 </html>

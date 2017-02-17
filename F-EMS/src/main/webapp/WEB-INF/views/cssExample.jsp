@@ -8,8 +8,43 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
+<script type="text/javascript">
+function aa() {
+	var a=new Date()
+	document.getElementById("test").value=a.getFullYear();
+    };
+    
+ /*    function autoDate () {
+    	var tDay = new Date();
+    	var tMonth = tDay.getMonth()+1;
+    	var tDate = tDay.getDate();
+    	if ( tMonth < 10) tMonth = "0"+tMonth;
+    	if ( tDate < 10) tDate = "0"+tDate;
+    	document.getElementById("tDate").value = tDay.getFullYear()+"년"+tMonth+"월"+tDate+"일";
+     }   
+ // Multiple onload function created by: Simon Willison
+ // http://simonwillison.net/2004/May/26/addLoadEvent/*/ 
+ function addLoadEvent(func) {
+   var oldonload = window.onload;
+   if (typeof window.onload != 'function') {
+     window.onload = func;
+   } else {
+     window.onload = function() {
+       if (oldonload) {
+         oldonload();
+       }
+       func();
+     }
+   }
+ } 
+   
+</script>
+
 </head>
 <body>
+<input name="tName" type="text" id="test">
+<span id="test"></span>
 	<div style="position: inherit; background-color: #fff; height:1500px import!; z-index: 100;">
 		<h1>작업 어느정도 함(버튼 색상 및 테이블 형태는 좀 더 손 볼 생각)</h1>	<input type="button" class="btn-lg btn-color" value="이전" onclick="history.go(-1);">
 		※ 텍스트 크기는 13~15px를 기본으로 하고있음<br/><br/>
