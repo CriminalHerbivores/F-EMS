@@ -1,4 +1,4 @@
-package com.uni.fems.download;
+package com.uni.fems.controller.file;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,8 +37,7 @@ public class DownloadView extends AbstractView {
 			fileName = new String(file.getName().getBytes("utf-8"),
 					"iso-8859-1");
 		}
-		response.setHeader("Content-Disposition", "attachment; filename=\""
-				+ fileName + "\";");
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		OutputStream out = response.getOutputStream();
 		FileInputStream fis = null;
@@ -54,5 +53,4 @@ public class DownloadView extends AbstractView {
 		}
 		out.flush();
 	}
-
 }
