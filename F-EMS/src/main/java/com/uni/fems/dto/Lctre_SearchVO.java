@@ -33,6 +33,7 @@ public class Lctre_SearchVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String column;
+	private String tpage;
 	
 	// 건물 BUILDING
 	private String bd_No;   // 건물 번호
@@ -78,11 +79,11 @@ public class Lctre_SearchVO implements Serializable {
 	private String la_Attd;   // 태도
 	
 	// 강의고유번호 LCTRE_UNQ_NO
-	private String Lu_Lctre_Code;   // 강의 코드
-	private String Lu_Lctre_Nm;   // 강의명
-	private String Lu_Pnt;   // 학점
-	private String Lu_Compl_Se;   // 이수구분
-	private String Lu_Presubjct;   // 선수과목
+	private String lu_Lctre_Code;   // 강의 코드
+	private String lu_Lctre_Nm;   // 강의명
+	private String lu_Pnt;   // 학점
+	private String lu_Compl_Se;   // 이수구분
+	private String lu_Presubjct;   // 선수과목
 	
 	// 종류 KIND
 	private int knd_Lctre_No;   // 강의번호
@@ -114,7 +115,7 @@ public class Lctre_SearchVO implements Serializable {
 	
 	// 학과정보테이블 SUBJCT_INFO_TABLE
 	private String sit_Subjct_Code;   // 학과 코드
-	private String sit_Faculty;   // 학부
+	private String sit_Faculty;   // 학부 코드?
 	private String sit_Subjct;   // 학과
 	private int sit_Tut;   // 등록금 금액
 	private String sit_useyn;   // 학과 사용유무
