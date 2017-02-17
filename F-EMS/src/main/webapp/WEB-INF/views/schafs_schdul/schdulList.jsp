@@ -17,6 +17,17 @@
     <title>Customizing templates</title>
     <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+
+ 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<!--
+
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+
+
+
+
 <style>
 .scheBox2 {
     border: 1px solid #cfcfcf;
@@ -76,6 +87,14 @@ border-collapse: separate;
 </style>    
  
 
+<script>
+$(function() {
+  $( "#datepicker1" ).datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+});
+</script>
+
 
 <script>
 $(document).on('click','#monthbutton1',function(){
@@ -90,12 +109,30 @@ $(document).on('click','#submit1',function(){
 })
 </script>
 
- 
 
+
+
+<script>
+    $(function() {
+        $("#datepicker1, #datepicker2").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    });
+
+</script>
  
     
 </head>
 <body>
+
+
+<p>조회기간:
+  <input type="text" id="datepicker1"> ~
+  <input type="text" id="datepicker2">
+</p>
+
+
+
     
         <a class="offline-button" href="../index.html">Back</a>
     
