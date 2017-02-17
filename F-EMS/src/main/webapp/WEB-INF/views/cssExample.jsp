@@ -17,7 +17,10 @@
 		<!-- 텍스트 입력창 -->
 		<input type="text" class="def-input-text-sm custom-form-control" value=""><br /> 
 		<input type="text" class="def-input-text-md custom-form-control" value=""><br />
-		<input type="text" class="def-input-text-lg custom-form-control" value=""><br /> <br />
+		<input type="text" class="def-input-text-lg custom-form-control" value=""><br />
+		<input type="text" class="def-input-text-xlg custom-form-control" value=""><br />
+		<input type="text" class="def-input-text-full custom-form-control" value=""><br />
+		<br />
 		
 		<!-- 버튼 -->
 		취소 버튼 외에는 컬러 입힐 예정임<br/>
