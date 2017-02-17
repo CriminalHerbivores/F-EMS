@@ -60,13 +60,7 @@ public class Lctre_Unq_NoDAOImpl implements Lctre_Unq_NoDAO {
 	public ArrayList<Lctre_SearchVO> selectLctreByName(String lu_Lctre_Nm)
 			throws SQLException {
 		ArrayList<Lctre_SearchVO> lctreList;
-		System.out.println("여기일까1111111===================================================================");
-		if(lu_Lctre_Nm.trim().equals("")){
-			System.out.println("공백인가=========================");
-			lu_Lctre_Nm="%";
-		}
 		lctreList=(ArrayList<Lctre_SearchVO>)client.queryForList("selectLctreByName",lu_Lctre_Nm);
-		System.out.println("여기일까22222===================================================================");
 		return lctreList;
 	}
 }

@@ -21,7 +21,6 @@ public class Lctre_Unq_NoServiceImpl implements Lctre_Unq_NoService {
 	@Override
 	public ArrayList<Lctre_SearchVO> selectLctreByName(String lu_Lctre_Nm)
 			throws SQLException {
-		System.out.println("여기일까33333===================================================================");
 		List<Lctre_SearchVO> lctre_SearchVO = lctre_Unq_NoDAO
 				.selectLctreByName(lu_Lctre_Nm);
 

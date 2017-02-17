@@ -182,15 +182,12 @@ public class ProfsrController {
 			throws ServletException, IOException {
 		
 		String url = "professor/findLctre";
-		System.out.println("여기일까444===================================================================");
 		ArrayList<Lctre_SearchVO> lctre_SearchVO=null;
 		
 		try {
 			if (lu_Lctre_Nm != null && lu_Lctre_Nm.trim().equals("") == false) {
 			lctre_SearchVO = lctre_Unq_NoService.selectLctreByName(lu_Lctre_Nm);
 			}else{
-				System.out.println("공백좀===================================================================");
-				//lu_Lctre_Nm="%";
 				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
 			}
 		} catch (SQLException e) {
