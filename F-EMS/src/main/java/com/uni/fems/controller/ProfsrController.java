@@ -190,7 +190,8 @@ public class ProfsrController {
 			lctre_SearchVO = lctre_Unq_NoService.selectLctreByName(lu_Lctre_Nm);
 			}else{
 				System.out.println("공백좀===================================================================");
-				lu_Lctre_Nm="";
+				//lu_Lctre_Nm="%";
+				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -62,14 +62,14 @@ table#zipcode a:hover{
 } */
 
 
-function result(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_Grade,lu_Presubjct) {
+function resultLctre(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_Grade,lu_Presubjct) {
    opener.document.formm.lu_Lctre_Nm.value=lu_Lctre_Nm;
    opener.document.formm.sit_Subjct.value=sit_Subjct;
    opener.document.formm.lu_Lctre_Code.value=lu_Lctre_Code;
    opener.document.formm.lu_Compl_Se.value=lu_Compl_Se;
    opener.document.formm.lu_Pnt.value=lu_Pnt;
    opener.document.formm.lu_Grade.value=lu_Grade;
-   opener.document.formmlu_Presubjct.lu_Presubjct.value=lu_Presubjct;
+   opener.document.formm.lu_Presubjct.value=lu_Presubjct;
    self.close();
 };
 </script>
@@ -92,7 +92,7 @@ function result(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_Grade
    		<td>${lctre.sit_Subjct}</td>
       <td>${lctre.lu_Lctre_Code}</td>
         <td>
-          <a href="#" onclick="return result('${lctre.lu_Lctre_Nm}','${lctre.sit_Subjct}', '${lctre.lu_Lctre_Code}','${lctre.lu_Compl_Se}','${lctre.lu_Pnt}','${lctre.lu_Grade}','${lctre.lu_Presubjct}')">
+          <a href="#" onclick="return resultLctre('${lctre.lu_Lctre_Nm}','${lctre.sit_Subjct}', '${lctre.lu_Lctre_Code}','${lctre.lu_Compl_Se}','${lctre.lu_Pnt}','${lctre.lu_Grade}','${lctre.lu_Presubjct}')">
 			${lctre.lu_Lctre_Nm}
           </a>
         </td>
