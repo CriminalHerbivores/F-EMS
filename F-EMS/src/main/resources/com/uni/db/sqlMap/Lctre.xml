@@ -120,8 +120,8 @@
 	
 	<!-- 강의 등록 -->
 	<update id="insertLctre" parameterClass="lctre">
-		insert into lctre(lc_Lctre_No,lc_Profsr_No,lc_Lctre_Code,lc_Lctrbgn_Dt,lc_Lctre_Nmpr,lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Pnt,lc_Grade,lc_Lctrum_No,lc_Open_At,lc_Lctre_Org,lc_Lctre_Evl_Score,lc_Split)
-			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctrbgn_Dt#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Grade#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
+		insert into lctre(lc_Lctre_No,lc_Profsr_No,lc_Lctre_Code,lc_Lctrbgn_Dt,lc_Lctre_Nmpr,lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Pnt,lc_Lctrum_No,lc_Open_At,lc_Lctre_Org,lc_Lctre_Evl_Score,lc_Split)
+			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctrbgn_Dt#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
 	</update>
 	
 	<!-- 강의 수정 -->
