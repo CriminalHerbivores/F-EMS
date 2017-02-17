@@ -101,9 +101,7 @@
 		and KND_LCTRE_KND like '%'||#KND_LCTRE_KND#||'%'
 		order by lu_Lctre_code asc, lc_split asc
 	</select>
-	
-	 -->
-	 
+	-->
 	 
 	<!-- 전체 강의 목록 -->
 	<select id="listLctre" parameterClass="str" resultClass="lctre_Search">

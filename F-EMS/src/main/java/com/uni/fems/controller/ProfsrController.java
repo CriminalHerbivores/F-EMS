@@ -2,10 +2,12 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dao.Lctre_Unq_NoDAO;
+import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
+import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.Lctre_Unq_NoVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.service.LctreService;
+import com.uni.fems.service.Lctre_Unq_NoService;
 import com.uni.fems.service.ProfsrService;
 
 /**
@@ -45,6 +53,14 @@ public class ProfsrController {
 	public void setProfsrService(ProfsrService profsrService) {
 		this.profsrService = profsrService;
 	}
+	
+	@Autowired
+	private Lctre_Unq_NoService lctre_Unq_NoService;
+	public void setLctre_Unq_NoService(Lctre_Unq_NoService lctre_Unq_NoService) {
+		this.lctre_Unq_NoService = lctre_Unq_NoService;
+	}
+	
+	
 
 	/**
 	 * <pre>
@@ -144,6 +160,54 @@ public class ProfsrController {
 		return url;
 		
 	}
+	
+	
+	
+	
+	
+	/**
+	 * <pre>
+	 * 교수가 강의 개설시 강의명으로 강의를 검색할 때 사용
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value="/findLctre", method={RequestMethod.GET, RequestMethod.POST})
+	public String findLctre(Model model, String lu_Lctre_Nm) 
+			throws ServletException, IOException {
+		
+		String url = "professor/findLctre";
+		ArrayList<Lctre_SearchVO> lctre_SearchVO=null;
+		
+		try {
+			if (lu_Lctre_Nm != null && lu_Lctre_Nm.trim().equals("") == false) {
+			lctre_SearchVO = lctre_Unq_NoService.selectLctreByName(lu_Lctre_Nm);
+			}else{
+				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
+		return url;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 /*
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.GET)
