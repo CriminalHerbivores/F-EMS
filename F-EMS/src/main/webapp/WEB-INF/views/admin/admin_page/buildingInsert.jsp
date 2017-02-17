@@ -26,8 +26,8 @@
 <h1>건물 등록</h1>
 
 	<table class="def-table tb-border">
-		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
-		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_No"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_Nm"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
 	</table>
 
 <br/>
