@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
  * <pre>
@@ -20,15 +20,167 @@
 <title></title>
 
 <script>
-
+	
 </script>
 
 
 </head>
 <body>
 
-시간표
-      
+	시간표
+	<table class="def-table-full tb-border table-hover">
+		<tr>
+			<th>시간</th>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+			<th>금</th>
+		</tr>
+		<tr>
+			<td>1교시</td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+		</tr>
+		<tr>
+			<td>09:00</td>
+		</tr>
+		<tr>
+			<td>2교시</td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+		</tr>
+		<tr>
+			<td>10:00</td>
+		</tr>
+		<tr>
+			<td>3교시</td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+		</tr>
+		<tr>
+			<td>11:00</td>
+		</tr>
+		<tr>
+		<td>4교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>12:00</td>
+	</tr>
+	<tr>
+		<td>5교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>13:00</td>
+	</tr>
+	<tr>
+		<td>6교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>14:00</td>
+	</tr>
+	<tr>
+		<td>7교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>15:00</td>
+	</tr>
+	<tr>
+		<td>8교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>16:00</td>
+	</tr>
+	<tr>
+		<td>9교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>17:00</td>
+	</tr>
+	<tr>
+		<td>10교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>18:00</td>
+	</tr>
+	<tr>
+		<td>11교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>19:00</td>
+	</tr>
+	<tr>
+		<td>12교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>20:00</td>
+	</tr>
+	<tr>
+		<td>13교시</td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>
+		<td rowspan="2"></td>	
+		<td rowspan="2"></td>
+	</tr>
+	<tr>
+	<td>21:00</td>
+	</tr>
+	</table>
 
 
 </body>
