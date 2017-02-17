@@ -542,8 +542,8 @@
 <!-- //////////////////////////////////// -->
 
 <!-- ssh 추가 -->
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquerymin.js"></script>
+<%-- <script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script> --%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
 <script type="text/javascript"

@@ -75,7 +75,17 @@ border-collapse: separate;
 
 
 </style>    
-    
+ 
+ 
+<script>
+$(function(){
+		var month1 = $('#content1').val();
+	$('#monthbutton1').click(function(){
+		$('#contentplus1').append(month1);
+	})
+});
+</script> 
+ 
     
 </head>
 <body>
@@ -90,7 +100,7 @@ border-collapse: separate;
                 </div>
             </div>
 
-            <script>
+             <script>
                 $(document).ready(function() {
                     var today = new Date(),
                         events = [
@@ -132,7 +142,6 @@ border-collapse: separate;
                     });
                 });
             </script>
-
             
         </div>
 
@@ -145,9 +154,9 @@ border-collapse: separate;
 			</th>
 			<td class="all_zoom">
 				<p>2017년 1월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
+				 <button id="monthbutton1" class="def-btn btn-search btn-color" value="조회">+추가</button>
 				</p>
-			<div class="content">
+			<div id="content1" class="content1">
 				<select name="선택" class="combobox-sm custom-form-control">
 					<option value="">01</option>
 				</select>월
@@ -163,6 +172,7 @@ border-collapse: separate;
 			 <input type="text" class="def-input-text-lg custom-form-control" value="">
 			 <input type="button" class="def-btn btn-md btn-color" value="등록">
 			</div>
+			<div id="contentplus1"></div>
 			</td>
 		</tr>
 		<tr>
