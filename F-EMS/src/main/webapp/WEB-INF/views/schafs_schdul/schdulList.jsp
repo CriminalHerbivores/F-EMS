@@ -16,7 +16,7 @@
 <head>
     <title>Customizing templates</title>
     <meta charset="utf-8">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <style>
 .scheBox2 {
     border: 1px solid #cfcfcf;
@@ -472,3 +472,5 @@ $(function(){
 
     
 </body>
+
+</html>
