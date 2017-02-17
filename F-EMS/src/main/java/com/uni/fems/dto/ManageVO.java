@@ -53,5 +53,6 @@ public class ManageVO implements Serializable{
 	private String mng_Sub_Txtclr2;   // 보조 텍스트 컬러2
 	private String mng_Univ_Img;   // 대학이미지
 	
+	private String column1; 
 
 }
