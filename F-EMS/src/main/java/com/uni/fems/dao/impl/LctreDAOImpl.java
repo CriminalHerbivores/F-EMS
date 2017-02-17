@@ -127,9 +127,9 @@ public class LctreDAOImpl implements LctreDAO {
 	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
 		//개설강의목록 메인
 		List<Lctre_SearchVO> listLctre;
-//		if(lu_Lctre_Nm.equals("")){
-//			lu_Lctre_Nm="%";
-//		}
+		if(lu_Lctre_Nm==null){
+			lu_Lctre_Nm="";
+		}
 		listLctre = (List<Lctre_SearchVO>) client.queryForList("listLctre", lu_Lctre_Nm);
 		return listLctre;
 	}
@@ -138,12 +138,12 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	// 검색어가 없으면 모든 강의 갖고오나보다...
 	@Override
-	public int totalRecord(String Lu_Lctre_Nm) throws SQLException {
+	public int totalRecord(String lu_Lctre_Nm) throws SQLException {
 		/*int total_pages = 0;
-		if (Lu_Lctre_Nm.equals("")) {
-			Lu_Lctre_Nm = "%";
+		if (lu_Lctre_Nm.equals("")) {
+			lu_Lctre_Nm = "%";
 		}
-		total_pages = (Integer) client.queryForObject("totalRecord",Lu_Lctre_Nm);
+		total_pages = (Integer) client.queryForObject("totalRecord",lu_Lctre_Nm);
 		return total_pages;*/
 		return 0;
 	}
@@ -178,7 +178,7 @@ public class LctreDAOImpl implements LctreDAO {
 					+ name + "'>&lt;&lt;</a>&nbsp;&nbsp;";
 			str += "<a href='course/courseAble?tpage="
 					+ (start_page - 1);
-			str += "&key=<%=Lu_Lctre_Nm%>'>&lt;</a>&nbsp;&nbsp;";
+			str += "&key=<%=lu_Lctre_Nm%>'>&lt;</a>&nbsp;&nbsp;";
 			
 		}
 
