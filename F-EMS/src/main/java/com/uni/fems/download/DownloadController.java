@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-@RequestMapping("/download")
-public class DownloadController implements ApplicationContextAware {
-
+//@Controller
+//@RequestMapping("/download")
+public class DownloadController /*implements ApplicationContextAware*/ {
+/*
 	private WebApplicationContext context = null;
 
 	@RequestMapping("/file/{fileId}")
@@ -44,5 +44,5 @@ public class DownloadController implements ApplicationContextAware {
 			throws BeansException {
 		this.context = (WebApplicationContext) applicationContext;
 	}
-
+*/
 }

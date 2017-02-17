@@ -24,7 +24,9 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.uni.fems.controller.file.FileDownload;
 import com.uni.fems.dto.Bbs_FlpthVO;
+import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Notice_BbsService;
@@ -161,23 +163,17 @@ public class Notice_BbsController implements ApplicationContextAware{
 	public String writeNotice(Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpServletRequest request,
 								@RequestParam("uploadfile")MultipartFile uploadfile, HttpSession session, Model model)
 								throws ServletException, IOException{
-		
 		String url = "redirect:noticeList";
 		
 		String loginUser = (String)session.getAttribute("loginUser");
-		
-		
-		
 		notice_BbsVO.setNb_Sklstf_No(loginUser);
 		
 		/*String savePath="resources/files";
 		ServletContext context = session.getServletContext();
 		String uploadFilePath = context.getRealPath(savePath);*/ //업로드파일 저장경로가 이상 ㅠㅠ;
 		
-		
+		/*
 		String uploadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
-	
-	
 	
 		if(!uploadfile.isEmpty()){
 			File file = new File(uploadFilePath, "$$"+System.currentTimeMillis()+uploadfile.getOriginalFilename());
@@ -199,11 +195,21 @@ public class Notice_BbsController implements ApplicationContextAware{
 			bbs_FlpthVO.setBf_File_Nm(fileName);
 			
 		}
+		*/
+		
+		if(!uploadfile.isEmpty()){
+			FilesVO vo = new FileDownload().uploadFile(uploadfile);
+			String bbs_code = request.getServletPath();
+			String[] values = bbs_code.split("/");
+			
+			bbs_FlpthVO.setBf_Bbs_Code(values[1]);
+			bbs_FlpthVO.setBf_File_Type_Code(vo.getFl_File_Type_Code());
+			bbs_FlpthVO.setBf_File_Nm(vo.getFl_File_Nm());
+		}
 		
 		try {
 			notice_BbsSvc.insertNotice_Bbs(notice_BbsVO,bbs_FlpthVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -380,7 +386,7 @@ public class Notice_BbsController implements ApplicationContextAware{
 	}
 	
 	
-	   /**
+	/**
 	 * <pre>
 	 * 첨부파일 다운로드를 처리하는 메서드
 	 * </pre>
