@@ -70,6 +70,7 @@ input[type=radio] + label, input[type=checkbox] + label {
 
 </head>
 <body>
+<h2>강의 개설 요청</h2>
 <table class="def-table-auto tb-border table-hover">
 	<tr>
 		<th>개설년도/학기</th>
@@ -185,22 +186,22 @@ input[type=radio] + label, input[type=checkbox] + label {
 	     
 	     <tr>
 	     	<th>강의 진행 형태</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>강의 목표</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>주교재</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>부교재</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
 	     </tr>
 	     
 	     <tr>
@@ -209,77 +210,77 @@ input[type=radio] + label, input[type=checkbox] + label {
 	     
 	     <tr>
 	     	<th>1주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>2주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>3주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>4주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>5주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>6주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>7주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>8주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>9주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>10주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>11주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>12주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>13주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>14주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>15주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-lg custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
 	     </tr>
 	     
 	     
