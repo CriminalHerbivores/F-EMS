@@ -74,7 +74,7 @@ body {
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}</td>
 					<td>${lctre.lc_Split}</td>
-					<td>${lctre.lc_Grade }</td>
+					<td>${lctre.lu_Grade }</td>
 					<td>${lctre.lu_Lctre_Nm}</td>
 					<td>${lctre.lu_Compl_Se}</td>
 					<td>${lctre.lu_Pnt}</td>

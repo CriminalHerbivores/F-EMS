@@ -108,7 +108,15 @@ a.select a:hover{	/* hover 밑줄 안 생기도록 */
 .text-right{text-align:right !important}
 .text-center{text-align:center !important}
 
+.def-input-text-full {
+	width: 100%;
+	height: 32px;
+}
 
+.def-input-text-xlg {
+	width: 240px;
+	height: 32px;
+}
 
 .def-input-text-lg {
 	width: 180px;
