@@ -35,7 +35,6 @@ public class SchlshipVO implements Serializable{
 	private String ss_Schlship_Type;   // 유형
 	private int ss_Amount;   // 금액
 	private String ss_Papers_Content;   // 서류 내용
-	private String ss_File; // 첨부파일
-	
-	
+	private String ss_File;	// 첨부파일
+	private String ss_useyn;	// 사용유무
 }

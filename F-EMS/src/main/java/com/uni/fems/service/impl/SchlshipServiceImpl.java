@@ -66,4 +66,15 @@ public class SchlshipServiceImpl implements SchlshipService {
 		schlshipDAO.updateSchlship(schlshipVO);
 	}
 
+	@Override
+	public void deleteSchlship(String ss_Schlship_Code) throws SQLException {
+		System.out.println("++++++++++++++++++++++++ : "+ss_Schlship_Code);
+		SchlshipVO schlshipVO = schlshipDAO.selectSchlship(ss_Schlship_Code);
+		if(schlshipVO.getSs_useyn().equals("y")){
+			schlshipVO.setSs_useyn("n");
+		}else {
+			schlshipVO.setSs_useyn("y");
+		}
+		schlshipDAO.deleteSchlship(schlshipVO);
+	}
 }
