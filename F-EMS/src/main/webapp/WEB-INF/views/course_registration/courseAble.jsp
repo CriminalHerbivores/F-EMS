@@ -71,17 +71,17 @@ body {
 				<tr>
 					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강신청"></td>
 					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
-					<td>${lctre_SearchVO.sit_Subjct}</td>
-					<td>${lctre_SearchVO.lu_Lctre_Code}</td>
-					<td>${lctre_SearchVO.lc_Split}</td>
-					<td>${lctre_SearchVO.lc_Grade }</td>
-					<td>${lctre_SearchVO.Lu_Lctre_Nm}</td>
-					<td>${lctre_SearchVO.Lu_Compl_Se}</td>
-					<td>${lctre_SearchVO.Lu_Pnt}</td>
-					<td>${lctre_SearchVO.pr_Nm}</td>
-					<td>${lctreVO.lc_Lctre_Time}</td>
-					<td>${lctreVO.lc_Lctre_Nmpr}</td>
-					<td>${lctre_SearchVO.lr_Accept_Nmpr}</td> 
+					<td>${lctre.sit_Subjct}</td>
+					<td>${lctre.lu_Lctre_Code}</td>
+					<td>${lctre.lc_Split}</td>
+					<td>${lctre.lc_Grade }</td>
+					<td>${lctre.lu_Lctre_Nm}</td>
+					<td>${lctre.lu_Compl_Se}</td>
+					<td>${lctre.lu_Pnt}</td>
+					<td>${lctre.pr_Nm}</td>
+					<td>${lctre.lc_Lctre_Time}</td>
+					<td>${lctre.lc_Lctre_Nmpr}</td>
+					<td>${lctre.lr_Accept_Nmpr}</td> 
 				</tr>
 			</c:forEach>
 				

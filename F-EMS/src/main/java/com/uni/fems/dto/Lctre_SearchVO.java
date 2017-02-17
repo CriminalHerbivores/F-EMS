@@ -79,7 +79,7 @@ public class Lctre_SearchVO implements Serializable {
 	private String la_Attd;   // 태도
 	
 	// 강의고유번호 LCTRE_UNQ_NO
-	private String Lu_Lctre_Code;   // 강의 코드
+	private String lu_Lctre_Code;   // 강의 코드
 	private String lu_Lctre_Nm;   // 강의명
 	private String lu_Pnt;   // 학점
 	private String lu_Compl_Se;   // 이수구분

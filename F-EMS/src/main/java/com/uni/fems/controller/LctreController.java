@@ -134,7 +134,7 @@ public class LctreController {
 		}
 		
 		
-		//lctre_SearchVO=lctreService.listLctre(Lu_Lctre_Nm);
+		//lctre_SearchVO=lctreService.listLctre(lu_Lctre_Nm);
 		
 		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 		return url;
