@@ -7,5 +7,6 @@ import com.uni.fems.dto.BaskinVO;
 
 public interface BaskinDAO {
 	List<BaskinVO> getBaskin() throws SQLException;
-	BaskinVO getThemeBaskin(String bskn_Nm) throws SQLException;
+	void setBaskin(BaskinVO baskin) throws SQLException;
+	String getName() throws SQLException;
 }
