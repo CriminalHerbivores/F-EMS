@@ -17,6 +17,17 @@
     <title>Customizing templates</title>
     <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+
+ 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<!--
+
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+
+
+
+
 <style>
 .scheBox2 {
     border: 1px solid #cfcfcf;
@@ -67,28 +78,61 @@ border-collapse: separate;
 
 
 .scheBox2 .t_all .all_zoom .content {
-    margin: 20px 10px 23px 24px;
+    margin: 10px 10px 10px 24px;
     padding: 0px;
     list-style: none;
     line-height: 16px;
 }
 
-
 </style>    
  
- 
+
 <script>
-$(function(){
-		var month1 = $('#content1').val();
-	$('#monthbutton1').click(function(){
-		$('#contentplus1').append(month1);
-	})
+$(function() {
+  $( "#datepicker1" ).datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
 });
-</script> 
+</script>
+
+
+<script>
+$(document).on('click','#monthbutton1',function(){
+	var month1 = $("#content1").html();
+	$('#contentplus1').append(month1);
+});
+</script>
+
+<script>
+$(document).on('click','#submit1',function(){
+	
+})
+</script>
+
+
+
+
+<script>
+    $(function() {
+        $("#datepicker1, #datepicker2").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    });
+
+</script>
  
     
 </head>
 <body>
+
+
+<p>조회기간:
+  <input type="text" id="datepicker1"> ~
+  <input type="text" id="datepicker2">
+</p>
+
+
+
     
         <a class="offline-button" href="../index.html">Back</a>
     
@@ -156,7 +200,7 @@ $(function(){
 				<p>2017년 1월
 				 <button id="monthbutton1" class="def-btn btn-search btn-color" value="조회">+추가</button>
 				</p>
-			<div id="content1" class="content1">
+			<div id="content1" class="content">
 				<select name="선택" class="combobox-sm custom-form-control">
 					<option value="">01</option>
 				</select>월
@@ -170,11 +214,13 @@ $(function(){
 					<option value="">01</option><option value="">02</option><option value="">03</option><option value="">04</option><option value="">05</option><option value="">06</option><option value="">07</option><option value="">08</option><option value="">09</option><option value="">10</option><option value="">11</option><option value="">12</option><option value="">13</option><option value="">14</option><option value="">15</option><option value="">16</option><option value="">17</option><option value="">18</option><option value="">19</option><option value="">20</option><option value="">21</option><option value="">22</option><option value="">23</option><option value="">24</option><option value="">25</option><option value="">26</option><option value="">27</option><option value="">28</option><option value="">29</option><option value="">30</option><option value="">31</option>
 				</select>&nbsp;:
 			 <input type="text" class="def-input-text-lg custom-form-control" value="">
-			 <input type="button" class="def-btn btn-md btn-color" value="등록">
+			 <button id="submit1" class="def-btn btn-search btn-color" value="등록">등록</button> <br>
 			</div>
-			<div id="contentplus1"></div>
+			<div id="contentplus1" class="content"></div>
 			</td>
 		</tr>
+		
+		
 		<tr>
 			<th class="all_month">
 				2017년<br>
@@ -210,7 +256,7 @@ $(function(){
 				<p>2017년 3월
 				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
 				</p>
-			<div class="content">
+			<div id="content2" class="content">
 				<select name="선택" class="combobox-sm custom-form-control">
 					<option value="">03</option>
 				</select>월

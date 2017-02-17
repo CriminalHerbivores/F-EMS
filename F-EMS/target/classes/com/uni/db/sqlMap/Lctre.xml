@@ -119,14 +119,14 @@
 		
 	
 	<!-- 강의 등록 -->
-	<!-- <update id="insertLctre" parameterClass="lctre">
-		insert into lctre(lc_Lctre_No,lc_Profsr_No,lc_Lctre_Code,lc_Lctrbgn_Dt,lc_Lctre_Nmpr,lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Pnt,lc_Grade,lc_Lctrum_No,lc_Open_At,lc_Lctre_Org,lc_Lctre_Evl_Score,lc_Split)
-			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctrbgn_Dt#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Grade#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
-	</update> -->
+	<update id="insertLctre" parameterClass="lctre">
+		insert into lctre(lc_Lctre_No,lc_Profsr_No,lc_Lctre_Code,lc_Lctrbgn_Dt,lc_Lctre_Nmpr,lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Pnt,lc_Lctrum_No,lc_Open_At,lc_Lctre_Org,lc_Lctre_Evl_Score,lc_Split)
+			values(#lc_Lctre_No#,#lc_Profsr_No#,#lc_Lctre_Code#,#lc_Lctrbgn_Dt#,#lc_Lctre_Nmpr#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#,#lc_Pnt#,#lc_Lctrum_No#,#lc_Open_At#,#lc_Lctre_Org#,#lc_Lctre_Evl_Score#,#lc_Split#)
+	</update>
 	
 	<!-- 강의 수정 -->
 	<!-- <update id="updateLctre" parameterClass="lctre">
-		update lctre set lc_Lctre_No=#lc_Lctre_No#,lc_Profsr_No=#lc_Profsr_No#,lc_Lctre_Code=#lc_Lctre_Code#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Pnt=#lc_Pnt#,lc_Grade=#lc_Grade#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
+		update lctre set lc_Lctre_No=#lc_Lctre_No#,lc_Profsr_No=#lc_Profsr_No#,lc_Lctre_Code=#lc_Lctre_Code#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Pnt=#lc_Pnt#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
 		where lc_Lctre_No=#lc_Lctre_No#
 	</update> -->
 	
