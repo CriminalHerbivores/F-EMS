@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.dao.LctreDAO;
@@ -45,7 +47,8 @@ public class LctreController {
 	
 	
 	@Autowired
-	LctreService lctreService;
+	private LctreService lctreService;
+	
 	
 	
 	/**
@@ -117,10 +120,23 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseAble")
-	public String courseAble(HttpServletRequest request,
-			HttpSession session) {
+	@RequestMapping(value="/courseAble", method=RequestMethod.GET)
+	public String courseAble(Model model, String lu_Lctre_Nm) {
 		String url = "course_registration/courseAble";
+		
+		List<Lctre_SearchVO> lctre_SearchVO=null;
+		
+		try {
+			lctre_SearchVO = lctreService.listLctre(lu_Lctre_Nm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		//lctre_SearchVO=lctreService.listLctre(lu_Lctre_Nm);
+		
+		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 		return url;
 	}
 	

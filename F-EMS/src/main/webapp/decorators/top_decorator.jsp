@@ -29,7 +29,7 @@
 <body>
 
 <!-- 상단바 시작 -->
-	<nav class="navbar top-navbar-inverse" id="topnav">
+<%-- 	<nav class="navbar top-navbar-inverse" id="topnav">
 		<div class="container-fluid" id="toptable">
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table">
@@ -47,7 +47,7 @@
 						class="def-btn float-right">Logout</button></a>
 			</div>
 		</div>
-	</nav>
+	</nav> --%>
 	<!-- 상단바 끝 -->
 
 

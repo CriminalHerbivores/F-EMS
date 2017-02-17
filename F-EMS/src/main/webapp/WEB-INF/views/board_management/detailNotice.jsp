@@ -247,7 +247,8 @@ $(document).on('click','.realupdateComment',function(e){
 			<c:forEach var="flpth" items="${flpthList }">
 				<tr>
 					<th>파일첨부</th>
-					<td colspan="3" style="text-align: left;"><a href="file/notice?filename=${flpth.bf_File_Nm }">${flpth.bf_File_Nm}</a></td>
+<%-- 					<td colspan="3" style="text-align: left;"><a href="file/notice?filename=${flpth.bf_File_Nm }">${flpth.bf_File_Nm}</a></td> --%>
+					<td colspan="3" style="text-align: left;"><a href="<%=request.getContextPath() %>/download/file/list?filename=${flpth.bf_File_Nm}">${flpth.bf_File_Nm}</a></td>
 				</tr>
 			</c:forEach>
 			<tr>

@@ -47,13 +47,18 @@
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
 					<tr style="width: 900px;">
+					
 						<td><a href="<%=request.getContextPath()%>/"> <img
 								src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"
 								id="logo"></a></td>
-				</table>
+				</table> 
+				
+				
 				<div class="float-right">
 					<c:choose>
 						<c:when test="${empty loginUser}">
+							<input class="def-btn btn-sm btn-color" type="button" value="31"
+								onclick="login_baskin();" />&nbsp;&nbsp;
 							<input class="def-btn btn-sm btn-color" type="button" value="관리자"
 								onclick="login_admin();" />&nbsp;&nbsp;
 		<input class="def-btn btn-sm btn-color" type="button" value="직원"
@@ -75,7 +80,7 @@
 			</div>
 		</div>
 	</nav>
-	<!-- 상단바 끝 -->
+	<!-- 상단바 끝 --> 
 
 
 	<!-- 상단메뉴 시작 -->
@@ -120,6 +125,8 @@
 							<div class="menu-dropdown-content">
 								<a href="<%=request.getContextPath()%>/profsr/profsrDetail"
 									class="no-uline">교수 조회 </a>
+								<a href="<%=request.getContextPath() %>/profsr/requestLctre"
+									 class="no-uline">강의 등록 요청</a><br/>	
 							</div>
 						</div>
 					</sec:authorize>
@@ -206,7 +213,18 @@
 							</div>
 						</div>
 					</sec:authorize>
-
+					<c:if test="${not empty loginUser}">
+					<c:if test="${loginUser eq 'baskin'}">
+					<div class="menu-dropdown">
+						<button class="menu-dropbtn">
+							<a href="#">31</a>
+						</button>
+						<div class="menu-dropdown-content">
+							<a href="<%=request.getContextPath()%>/baskin/robbins">베스킨 라빈스</a>
+						</div>
+					</div>
+					</c:if>
+					</c:if>
 				</ul>
 			</div>
 		</div>
@@ -286,6 +304,9 @@
 										<li class="sub-menu-li"><a
 											href="<%=request.getContextPath()%>/profsr/profsrDetail"
 											class="no-uline">교수 조회 </a></li>
+										<li class="sub-menu-li">	
+											<a href="<%=request.getContextPath() %>/profsr/requestLctre" 
+												class="no-uline">강의 등록 요청</a><li/>
 									</div>
 								</ul>
 							</li>
@@ -529,8 +550,6 @@
 <!-- //////////////////////////////////// -->
 
 <!-- ssh 추가 -->
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquerymin.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
 <script type="text/javascript"

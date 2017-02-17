@@ -555,17 +555,16 @@ public class SklstfController {
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value = "/schlshipUpdate", method = RequestMethod.GET)
-	public String schlshipUpdateForm(@RequestParam String st_Schlship_No,
+	@RequestMapping(value = "/updateSchlship", method = RequestMethod.GET)
+	public String schlshipUpdateForm(@RequestParam String ss_Schlship_Code,
 			@RequestParam int tpage, Model model) throws ServletException,
 			IOException {
 		String url = "manager/schlship/schlshipUpdate";
-
 		model.addAttribute("tpage", tpage);
 
 		SchlshipVO schlshipVO = null;
 		try {
-			schlshipVO = schlshipService.selectSchlship(st_Schlship_No);
+			schlshipVO = schlshipService.selectSchlship(ss_Schlship_Code);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -587,14 +586,29 @@ public class SklstfController {
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value = "/schlshipUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateSchlship", method = RequestMethod.POST)
 	public String schlshipUpdate(SchlshipVO schlshipVO,
 			@RequestParam int tpage, Model model) throws ServletException,
 			IOException {
 		String url = "redirect:schlshipList";
-
+		model.addAttribute("tpage", tpage);
 		try {
 			schlshipService.updateSchlship(schlshipVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return url;
+	}
+	
+	@RequestMapping(value = "/deleteSchlship")
+	public String schlshipDelete(@RequestParam String ss_Schlship_Code,
+			@RequestParam int tpage,Model model) throws ServletException,
+			IOException {
+		String url = "redirect:schlshipList";
+		model.addAttribute("tpage", tpage);
+		
+		try {
+			schlshipService.deleteSchlship(ss_Schlship_Code);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

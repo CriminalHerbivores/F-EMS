@@ -2,6 +2,7 @@ package com.uni.fems.dao.impl;
  
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.LctreDAO;
@@ -40,6 +41,65 @@ public class LctreDAOImpl implements LctreDAO {
 	}
 	
 	ArrayList<Lctre_SearchVO> listForComboLctre=null;
+	
+//	static int view_rows = 5; // 페이지의 개수
+//	static int counts = 6; // 한 페이지에 나타낼 강의 개수
+	
+
+	
+	
+	
+	
+	/**
+	 * 전체 강의 목록
+	 */
+	@Override
+	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
+		//개설강의목록 메인
+		List<Lctre_SearchVO> listLctre;
+		if(lu_Lctre_Nm==null){
+			lu_Lctre_Nm="";
+		}
+		listLctre = (List<Lctre_SearchVO>) client.queryForList("listLctre", lu_Lctre_Nm);
+		return listLctre;
+	}
+	
+	/**
+	 * 강의 등록 (완료)
+	 */
+	@Override
+	public int insertLctre(LctreVO lctreVO) throws SQLException {
+		int result = -1;
+		if (client.insert("insertLctre", lctreVO) != null) {
+			result=-1;
+		} else {
+			result=1;
+		}
+		return result;
+	}
+
+
+	/**
+	 * 강의 수정 (완료)
+	 */
+	@Override
+	public int updateLctre(LctreVO lctreVO) throws SQLException {
+		int result = (Integer)client.update("updateLctre",lctreVO);
+		return result;
+	}
+	
+	
+	/**
+	 * 강의 삭제 (완료)
+	 */
+	@Override
+	public int deleteLctre(int lc_Lctre_No) throws SQLException {
+		int result = (Integer)client.update("deleteLctre",lc_Lctre_No);
+		return result;
+	}
+	
+	
+	
 	
 	
 	/**
@@ -113,55 +173,134 @@ public class LctreDAOImpl implements LctreDAO {
 //		return 0;
 //	}
 
-	/**
-	 * 전체 강의 목록
-	 */
+	
+	//===========================================================================================
+
+
+	
+	
+	// 검색어가 없으면 모든 강의 갖고오나보다...
 	@Override
-	public ArrayList<LctreVO> listLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
-		ArrayList<LctreVO> listLctre = null;
-		
-		listLctre = (ArrayList<LctreVO>) client.queryForList("listLctre", lctre_SearchVO);
-		return listLctre;
+	public int totalRecord(String lu_Lctre_Nm) throws SQLException {
+		/*int total_pages = 0;
+		if (lu_Lctre_Nm.equals("")) {
+			lu_Lctre_Nm = "%";
+		}
+		total_pages = (Integer) client.queryForObject("totalRecord",lu_Lctre_Nm);
+		return total_pages;*/
+		return 0;
 	}
-
-
-	/**
-	 * 강의 등록 (완료)
-	 */
-//	@Override
-//	public int insertLctre(LctreVO lctreVO) throws SQLException {
-//		int result = -1;
-//		if (client.insert("insertLctre", lctreVO) != null) {
-//			result=-1;
-//		} else {
-//			result=1;
-//		}
-//		return result;
-//	}
-
-
-	/**
-	 * 강의 수정 (완료)
-	 */
-//	@Override
-//	public int updateLctre(LctreVO lctreVO) throws SQLException {
-//		int result = (Integer)client.update("updateLctre",lctreVO);
-//		return result;
-//	}
 	
 	
-	/**
-	 * 강의 삭제 (완료)
-	 */
-//	@Override
-//	public int deleteLctre(int lc_Lctre_No) throws SQLException {
-//		int result = (Integer)client.update("deleteLctre",lc_Lctre_No);
-//		return result;
-//	}
-
 	
+	@Override
+	public String pageNumber(int tpage, String name) throws SQLException {
+		/*String str="";
+		
+		int total_pages = totalRecord(name);
+		int page_count = total_pages / counts + 1;
 
+		if (total_pages % counts == 0) {
+			page_count--;
+		}
+		if (tpage < 1) {
+			tpage = 1;
+		}
+		
+		int page=tpage;
+		if(tpage%view_rows==0) page--;
+		
+		int start_page = page - (page % view_rows) + 1;
+		int end_page = start_page + (counts - 1);
 
+		if (end_page > page_count) {
+			end_page = page_count;
+		}
+		if (start_page > view_rows) {
+			str += "<a href='course/courseAble?tpage=1&key="
+					+ name + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='course/courseAble?tpage="
+					+ (start_page - 1);
+			str += "&key=<%=lu_Lctre_Nm%>'>&lt;</a>&nbsp;&nbsp;";
+			
+		}
 
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == tpage) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='course/courseAble?tpage="
+						+ i + "&key=" + name + "'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+
+		if (page_count > end_page) {
+			str += "<a href='course/courseAble?tpage="
+					+ (end_page + 1) + "&key=" + name
+					+ "'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='course/courseAble?tpage="
+					+ page_count + "&key=" + name
+					+ "'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;*/
+		
+		return null;
+	}
+	@Override
+	public String pageNum(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		/*int tpage = Integer.parseInt(lctre_SearchVO.getTpage());
+		
+		int total_pages = (Integer) client.queryForObject("listForProductCount",lctre_SearchVO);
+		int page_count = total_pages / counts;
+		
+		if (total_pages % counts != 0) page_count++;
+
+		int page=tpage;
+		if(tpage%view_rows==0) page--;
+		
+		int start_page= page - (page % view_rows) +1;
+		int end_page = start_page + (view_rows - 1);
+		
+		if (end_page > page_count) end_page = page_count;
+		
+		String str = "";
+		String key = "";
+		
+		if(!lctre_SearchVO.getKind().equals("")){
+			key = "&kind="+lctre_SearchVO.getKind();
+		}else if(!lctre_SearchVO.getCategory().equals("")){
+			key = "&category="+lctre_SearchVO.getCategory();
+		}
+		
+		if(!lctre_SearchVO.getLu_Lctre_Nm().equals("")){
+			key += "&key="+ lctre_SearchVO.getLu_Lctre_Nm();
+		}
+		
+		////////////////////////////////////////////////////////////////////
+		
+		if (start_page > view_rows) {
+			str += "<a href='product.ne?tpage=1" + key + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='product.ne?tpage=" + (start_page - 1);
+			str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
+		}
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == tpage) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='product.ne?tpage=" + i + key + "'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+		if (page_count > end_page) {
+			str += "<a href='product.ne?tpage=" + (end_page + 1) + key + "'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='product.ne?tpage=" + page_count + key + "'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;*/
+		
+		return null;
+	}
+	
+	
+	
+	//===========================================================================================
 	
 }

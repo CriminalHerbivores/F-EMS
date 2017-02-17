@@ -89,4 +89,13 @@ public interface SchlshipDAO {
 	 * </pre>
 	 */
 	void updateSchlship(SchlshipVO schlshipVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 등록금 사용유무를 바꿈
+	 * </pre>
+	 * <pre>
+	 * @param ss_Schlship_Code
+	 * </pre>
+	 */
+	public void deleteSchlship(SchlshipVO schlshipVO) throws SQLException;
 }

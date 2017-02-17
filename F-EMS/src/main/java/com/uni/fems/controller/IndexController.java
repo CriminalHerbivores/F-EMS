@@ -56,24 +56,24 @@ public class IndexController {
 			manageVO = manageService.getManage();
 
 			switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
-			case 1: url= "redirect:lgLogin";
-				// url = "redirect:layout_type/loginLoginType";
+			case 1: //url= "redirect:lgLogin";
+					url = "layout_type/loginLoginType";
 				break;
-			case 2: url= "redirect:lgBoard"; 
-				//url = "redirect:layout_type/loginBoardType";
+			case 2: //url= "redirect:lgBoard"; 
+					url = "layout_type/loginBoardType";
 				break;
-			case 3: url= "redirect:lgMenu"; 
-				//url = "redirect:layout_type/loginMenuType";
+			case 3: //url= "redirect:lgMenu"; 
+					url = "layout_type/loginMenuType";
 				break;
-			case 4: url= "redirect:lgMulti";
-				//url = "redirect:layout_type/loginMultiType";
+			case 4: //url= "redirect:lgMulti";
+					url = "layout_type/loginMultiType";
 				break;
 			default: url = "/index";
 			
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 
 		// session.setAttribute("manageVO", manageVO);
