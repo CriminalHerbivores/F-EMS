@@ -62,6 +62,7 @@ table#zipcode a:hover{
 } */
 
 
+/* 교수-강의등록요청 에서 강의명으로 검색하여 강의 선택시 값 입력 */
 function resultLctre(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_Grade,lu_Presubjct) {
    opener.document.formm.lu_Lctre_Nm.value=lu_Lctre_Nm;
    opener.document.formm.sit_Subjct.value=sit_Subjct;

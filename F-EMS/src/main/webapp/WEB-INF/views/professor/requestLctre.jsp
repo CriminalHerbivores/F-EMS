@@ -97,6 +97,23 @@ function searchLctre() {
  $('input[name=enc]').attr('value',enc);  */
  
  
+/* 로그인한 교수 정보로 가져옴 */
+ $(document).ready(function() {
+	   /* opener.document.formm.lu_Lctre_Nm.value=lu_Lctre_Nm;
+	   opener.document.formm.sit_Subjct.value=sit_Subjct;
+	   opener.document.formm.lu_Lctre_Code.value=lu_Lctre_Code;
+	   opener.document.formm.lu_Compl_Se.value=lu_Compl_Se;
+	   opener.document.formm.lu_Pnt.value=lu_Pnt;
+	   opener.document.formm.lu_Grade.value=lu_Grade;
+	   opener.document.formm.lu_Presubjct.value=lu_Presubjct; */
+//	$('#pr_test').val('${profsrVO.pr_Email}');//db값 갖고오고픔
+	   
+	   
+	   
+	});
+ 
+ 
+ 
 </script>
 
 
@@ -113,40 +130,41 @@ function searchLctre() {
 			<input type="text" class="def-input-text-sm custom-form-control">학기
 		</td>
 		<th>개설학과전공</th>
-		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct"></td>
+		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly></td>
 	 </tr>
 	 
 	 <tr>
 	 	<th>교과목명</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm">&nbsp;<button class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm" readonly>&nbsp;<button class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
 	 	<th>강의번호</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code" readonly></td>
 	 </tr>
 	 
 	 <tr>
 	 	<th>이수구분</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Compl_Se"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Compl_Se" readonly></td>
 	 	<th>이수학점</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Pnt"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Pnt" readonly></td>
 	 </tr>
 	 <tr>
 	 	<th>학년</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control" name="lu_Grade"> 학년</td>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control" name="lu_Grade" readonly> 학년</td>
 	 	
 	 	<th>선행과목</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Presubjct"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Presubjct" readonly></td>
 	 </tr>
 	 
 	 <tr><th colspan="4">담당 교수 정보</th></tr>
 	 <tr>
+	 <%-- <c:forEach items="${profsrVO}" var="profsr"> --%>
 	 	<th>교수이름</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>  
+	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Nm}" readonly></td>  
 	 	
 	 	
 	 	<th>담당교수전화</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control">-
-	 	<input type="text" class="def-input-text-sm custom-form-control">-
-	 	<input type="text" class="def-input-text-sm custom-form-control">
+	 	<td><input type="text" class="def-input-text-sm custom-form-control" value="${profsrVO.pr_Profsr_Tlphon_No}">-
+	 	<input type="text" class="def-input-text-sm custom-form-control"  value="${profsrVO.pr_Profsr_Tlphon_No}">-
+	 	<input type="text" class="def-input-text-sm custom-form-control"  value="${profsrVO.pr_Profsr_Tlphon_No}">
 	 	</td>
 	 	
 	 	
@@ -154,10 +172,11 @@ function searchLctre() {
 	 
 	  <tr>
 	 	<th>교수 이메일 주소</th>
-	 	<td><input type="text" class="def-input-text-lg custom-form-control"></td>
+	 	<td><input type="text" class="def-input-text-lg custom-form-control" value="${profsrVO.pr_Email}"></td>
 	 	
 	 	<th>홈페이지</th>
-	 	<td><input type="text" class="def-input-text-lg custom-form-control"></td>
+	 	<td><input type="text" class="def-input-text-lg custom-form-control" id="pr_test"></td>
+	 	<%-- </c:forEach> --%>
 	 </tr>
 	 
 
@@ -301,6 +320,9 @@ function searchLctre() {
 	     
 	     
 	 </table>
+	 <input type="submit" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form)">&nbsp;&nbsp; <input type="button" class="def-btn btn-md btn-gray" value="취소" onclick="go.history(-1)"><br />
+	 
+	 
 	 </form>
 
 </body>
