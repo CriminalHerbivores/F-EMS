@@ -17,11 +17,13 @@ public class BaskinDAOImpl implements BaskinDAO{
 		List<BaskinVO> list = (List<BaskinVO>) client.queryForList("getBaskin");
 		return list;
 	}
-
 	@Override
-	public BaskinVO getThemeBaskin(String bskn_Nm) throws SQLException {
-		BaskinVO vo = (BaskinVO) client.queryForObject("getThemeBaskin",bskn_Nm);
-		return vo;
+	public void setBaskin(BaskinVO baskin) throws SQLException {
+		client.update("setBaskin",baskin);
 	}
-
+	@Override
+	public String getName() throws SQLException {
+		String name = (String) client.queryForObject("getName");
+		return name;
+	}
 }

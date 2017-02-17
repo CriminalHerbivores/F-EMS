@@ -21,9 +21,9 @@ public class BaskinServiceImpl implements BaskinService{
 	}
 
 	@Override
-	public BaskinVO getThemeBaskin(String bskn_Nm) throws SQLException {
-		BaskinVO vo = baskinDAO.getThemeBaskin(bskn_Nm);
-		return vo;
+	public void setBaskin(BaskinVO baskin) throws SQLException {
+		String name = baskinDAO.getName();
+		baskin.setBskn_Nm(name);
+		baskinDAO.setBaskin(baskin);
 	}
-	
 }
