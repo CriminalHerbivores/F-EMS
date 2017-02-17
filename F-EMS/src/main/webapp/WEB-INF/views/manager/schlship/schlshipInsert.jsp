@@ -34,6 +34,10 @@
 				<td><input type="text" name="ss_Amount" value="${schlshipVO.ss_Amount }"></td>
 			</tr>
 			<tr>
+				<td>내용 :</td>
+				<td><input type="text" name="ss_Amount" value="${schlshipVO.ss_Papers_Content}"></td>
+			</tr>
+			<tr>
 				<td>첨부파일 :</td>
 				<td><input type="file" name="f" value=""></td>
 			</tr>
