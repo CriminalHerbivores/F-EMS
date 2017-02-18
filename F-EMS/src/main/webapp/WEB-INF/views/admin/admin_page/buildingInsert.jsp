@@ -20,8 +20,8 @@
 <title></title>
 </head>
 <script type="text/javascript">
-go_save(){
-var theForm = document.formm;
+/* go_save(){
+var theForm = document.formm; */
 
 /* 유효성 부분 아작스로 변경해야함 */
 /* if (theForm.bd_No.value == '') {
@@ -35,6 +35,13 @@ var theForm = document.formm;
 theForm.action = "/admin/buildingInsert";
 theForm.submit(); */
 	
+/* } */
+function go_building() {
+	var bd_no = document.formm.bd_no.value;
+	var bd_nm = document.formm.bd_nm.value;
+	if(!bd_no=="" && !bd_nm==""){
+		document.formm.submit();
+	}
 }
 
 
@@ -47,12 +54,12 @@ theForm.submit(); */
 <h1>건물 등록</h1>
 
 	<table class="def-table tb-border">
-		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="building" id="bd_no"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
-		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="building" id="bd_nm"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_no"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_nm"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
 	</table>
 
 <br/>
-<input type="button" class="def-btn" value="이전" onclick="history.go(-1);">&nbsp;&nbsp;<input type="submit" class="def-btn" value="등록" onclick="go_save()"> <!-- go_admin_page() -->
+<input type="button" class="def-btn" value="이전" onclick="history.go(-1);">&nbsp;&nbsp;<input type="submit" class="def-btn" value="등록" onclick="go_building()"> <!-- go_admin_page() -->
 
 
 </form>

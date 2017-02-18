@@ -46,7 +46,27 @@ public class BuildingController {
 	
 	
 	
-	// 건물 등록
+	   /**
+	 * <pre>
+	 * 건물등록을 위한 폼을 불러냄
+	 * </pre>
+	 * <pre>
+	 * @param buildingVO
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/buildingInsert", method=RequestMethod.GET)
+	   public String buildingInsertForm(Model model, HttpSession session) {
+	      
+		   
+		   String url = "admin/admin_page/buildingInsert";
+	      return url;
+	   }
+	
+	
 	
 	/**
 	 * <pre>
@@ -58,59 +78,28 @@ public class BuildingController {
 	 * @return
 	 * </pre>
 	 */
-//	@RequestMapping(value="/buildingInsert", method=RequestMethod.GET)
-//	public String buildingInsert(Model model, HttpSession session) {
-//		String url = "admin/admin_page/buildingInsert";
-//		
-//		/*String pr_Profsr_No = (String) session.getAttribute("loginUser");
-//		ProfsrVO profsrVO = null;
-//		try {
-//			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("profsrVO", profsrVO);
-//		return url;*/
-//		
-//		//String bd_no=null;
-//		
-//		BuildingVO buildingVO=null;
-//		System.out.println("[컨트롤러1]여기222222222222222222222222222222222222222222222222222222222222");
-//		try {
-//			buildingService.insertBuilding(buildingVO);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		model.addAttribute("buildingVO",buildingVO);
-//		System.out.println("[컨트롤러2]여기3333333333333333333333333333333333333");
-//		return url;
-//	}
-	
-	   @RequestMapping(value="/buildingInsert", method=RequestMethod.GET)
-	   public String buildingInsert(BuildingVO buildingVO, Model model, HttpSession session) throws ServletException, IOException{
-	      
-		   
-		   String url = "admin/admin_page/buildingInsert";
-			System.out.println("[컨트롤러1]여기222222222222222222222222222222222222222222222222222222222222");
-			
-			buildingVO.setBd_No("");
-			buildingVO.setBd_Nm("");
-			buildingVO.setBd_Useyn("y");
-			
-			try {
-				buildingService.insertBuilding(buildingVO);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			//model.addAttribute("buildingVO",buildingVO);
-			System.out.println("[컨트롤러2]여기3333333333333333333333333333333333333");
-	      
-	      return url;
-	   }
+	@RequestMapping(value="/buildingInsert", method=RequestMethod.POST)
+	public String buildingInsert(BuildingVO buildingVO,HttpServletRequest request, Model model, HttpSession session) {
+		String url = "admin/admin_page/buildingInsert";
+		
+		//buildingVO.setBd_No(buildingVO.getBd_No());
+		//buildingVO.setBd_Nm(buildingVO.getBd_Nm());
+		
+		try {
+			buildingService.insertBuilding(buildingVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		model.addAttribute("bd_No",buildingVO);
+		model.addAttribute("bd_Nm",buildingVO);
+		
+		
+		return url;
+	}
+
 
 	
 	
