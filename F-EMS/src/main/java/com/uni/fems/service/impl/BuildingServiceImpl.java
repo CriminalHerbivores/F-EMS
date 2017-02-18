@@ -35,15 +35,18 @@ public class BuildingServiceImpl implements BuildingService {
 @Override
 public void insertBuilding(BuildingVO buildingVO) throws SQLException {
 	buildingDAO.insertBuilding(buildingVO);
+	System.out.println("여기1111111111111111111111111111111");
 }
-@Override
-public void updateBuilding(BuildingVO buildingVO) throws SQLException {
-	buildingDAO.updateBuilding(buildingVO);
-}
-@Override
-public void deleteBuilding(String bd_No) throws SQLException {
-	buildingDAO.deleteBuilding(bd_No);
-}
+
+
+//@Override
+//public void updateBuilding(BuildingVO buildingVO) throws SQLException {
+//	buildingDAO.updateBuilding(buildingVO);
+//}
+//@Override
+//public void deleteBuilding(String bd_No) throws SQLException {
+//	buildingDAO.deleteBuilding(bd_No);
+//}
  
  
 }

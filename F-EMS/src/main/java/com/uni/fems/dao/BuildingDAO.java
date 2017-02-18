@@ -40,7 +40,7 @@ public interface BuildingDAO {
 	 * @param buildingVO
 	 * @throws SQLException
 	 */
-	void updateBuilding(BuildingVO buildingVO) throws SQLException;
+	//void updateBuilding(BuildingVO buildingVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -50,7 +50,7 @@ public interface BuildingDAO {
 	 * @param bd_No
 	 * @throws SQLException
 	 */
-	void deleteBuilding(String bd_No) throws SQLException;
+	//void deleteBuilding(String bd_No) throws SQLException;
 	
 
 }

@@ -41,7 +41,7 @@ public interface BuildingService {
 	 * @param buildingVO
 	 * @throws SQLException
 	 */
-	void updateBuilding(BuildingVO buildingVO) throws SQLException;
+//	void updateBuilding(BuildingVO buildingVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -51,7 +51,7 @@ public interface BuildingService {
 	 * @param bd_No
 	 * @throws SQLException
 	 */
-	void deleteBuilding(String bd_No) throws SQLException;
+//	void deleteBuilding(String bd_No) throws SQLException;
 	
 	
 }

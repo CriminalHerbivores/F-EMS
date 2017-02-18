@@ -10,7 +10,7 @@
  * 수정일        수정자       수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH        최초작성
- * 2017.02.15      KJH        추가작성
+ * 2017.02.18      KJH        추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  --%>
 <!DOCTYPE html>
@@ -19,10 +19,31 @@
 <meta charset="UTF-8">
 <title></title>
 </head>
+<script type="text/javascript">
+go_save(){
+var theForm = document.formm;
+
+/* 유효성 부분 아작스로 변경해야함 */
+if (theForm.bd_No.value == '') {
+	alert('건물번호 입력.');
+	theForm.bd_No.focus();
+} else if (theForm.bd_Nm.value == '') {
+	alert('건물이름 입력.');
+	theForm.bd_Nm.focus();
+}
+
+theForm.action = "/admin/buildingInsert";
+theForm.submit();
+	
+}
+
+
+</script>
+
 
 <body>
 <article>
-<form id="add_building" action="/fems/admin/main" method="post" name="formm">
+<form method="post" name="formm">
 <h1>건물 등록</h1>
 
 	<table class="def-table tb-border">
@@ -31,7 +52,7 @@
 	</table>
 
 <br/>
-<input type="button" class="def-btn" value="이전" onclick="history.go(-1);">&nbsp;&nbsp;<input type="submit" class="def-btn" value="등록" onclick="go_admin_page()">
+<input type="button" class="def-btn" value="이전" onclick="history.go(-1);">&nbsp;&nbsp;<input type="submit" class="def-btn" value="등록" onclick="go_save()"> <!-- go_admin_page() -->
 
 
 </form>

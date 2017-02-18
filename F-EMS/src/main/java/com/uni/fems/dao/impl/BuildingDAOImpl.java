@@ -34,18 +34,19 @@ public class BuildingDAOImpl implements BuildingDAO {
 	@Override
 	public void insertBuilding(BuildingVO buildingVO) throws SQLException {
 		client.update("insertBuilding",buildingVO);
+		System.out.println("여기000000000000000000000000000000000000000000000");
 	}
 
 	// 건물 수정
-	@Override
+	/*@Override
 	public void updateBuilding(BuildingVO buildingVO) throws SQLException {
 		client.update("updateBuilding",buildingVO);
 	}
-
+*/
 	// 건물 사용 안함
-	@Override
+/*	@Override
 	public void deleteBuilding(String bd_No) throws SQLException {
 		client.update("deleteBuilding",bd_No);
 	}
-
+*/
 }

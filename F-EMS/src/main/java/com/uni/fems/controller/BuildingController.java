@@ -72,11 +72,16 @@ public class BuildingController {
 		//String bd_no=null;
 		
 		BuildingVO buildingVO=null;
-		
-		//buildingVO=buildingService.insertBuilding(buildingVO);
+		System.out.println("여기222222222222222222222222222222222222222222222222222222222222");
+		try {
+			buildingService.insertBuilding(buildingVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		model.addAttribute("buildingVO",buildingVO);
-		
+		System.out.println("여기3333333333333333333333333333333333333");
 		return url;
 	}
 
