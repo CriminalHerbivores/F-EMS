@@ -22,14 +22,14 @@
 	</update>
 	
 	<!-- 건물 수정 -->
-	<update id="updateBuilding" parameterClass="building">
+<!-- 	<update id="updateBuilding" parameterClass="building">
 		update building set bd_No=#bd_No#,bd_Nm=#bd_Nm#,bd_Useyn=#bd_Useyn#
 		where bd_No=#bd_No#
-	</update>
+	</update> -->
 	
 	<!-- 건물 사용안함 -->
-	<update id="deleteBuilding" parameterClass="str">
+<!-- 	<update id="deleteBuilding" parameterClass="str">
    update building set bd_Useyn='n' where bd_No=#bd_No#
-   </update>
+   </update> -->
 	
 	</sqlMap>

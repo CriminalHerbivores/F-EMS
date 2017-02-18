@@ -23,6 +23,7 @@ import com.uni.fems.dto.ProfsrVO;
  * </pre>
  */
 public interface ProfsrService {
+	
 	/**
 	 * <pre>
 	 * 교수 정보를 등록
@@ -33,6 +34,8 @@ public interface ProfsrService {
 	 * </pre>
 	 */
 	void insertProfsr(ProfsrVO profsrVO) throws SQLException;
+	
+	
 	/**
 	 * <pre>
 	 * 교수 이름으로 교수 정보를 조회
@@ -45,6 +48,8 @@ public interface ProfsrService {
 	 * </pre>
 	 */
 	List<ProfsrVO> selectNameAllPage(int tpage, String pr_Nm) throws SQLException;
+	
+	
 	/**
 	 * <pre>
 	 * 교수 이름으로 정보를 조회한 페이지
@@ -57,6 +62,8 @@ public interface ProfsrService {
 	 * </pre>
 	 */
 	String pageNumber(int tpage, String st_Nm) throws SQLException;
+	
+	
 	/**
 	 * <pre>
 	 * 교수 한명의 정보를 조회
@@ -68,6 +75,8 @@ public interface ProfsrService {
 	 * </pre>
 	 */
 	ProfsrVO selectProfsr(String st_Profsr_No) throws SQLException;
+	
+	
 	/**
 	 * <pre>
 	 * 교수 정보를 수정

@@ -1,10 +1,20 @@
 package com.uni.fems.controller;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import lombok.Data;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.uni.fems.dto.BuildingVO;
+import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.service.BuildingService;
 
 /**
  * <pre>
@@ -25,8 +35,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
+@Data
 public class BuildingController {
-
+	
+	@Autowired
+	BuildingService buildingService;
+	
+	
 	
 	// 건물 등록
 	
@@ -41,8 +56,32 @@ public class BuildingController {
 	 * </pre>
 	 */
 	@RequestMapping("/buildingInsert")
-	public String buildingInsert(HttpServletRequest request, HttpSession session) {
+	public String buildingInsert(Model model, HttpSession session) {
 		String url = "admin/admin_page/buildingInsert";
+		
+		/*String pr_Profsr_No = (String) session.getAttribute("loginUser");
+		ProfsrVO profsrVO = null;
+		try {
+			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("profsrVO", profsrVO);
+		return url;*/
+		
+		//String bd_no=null;
+		
+		BuildingVO buildingVO=null;
+		System.out.println("[컨트롤러1]여기222222222222222222222222222222222222222222222222222222222222");
+		try {
+			buildingService.insertBuilding(buildingVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("buildingVO",buildingVO);
+		System.out.println("[컨트롤러2]여기3333333333333333333333333333333333333");
 		return url;
 	}
 
