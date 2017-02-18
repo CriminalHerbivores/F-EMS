@@ -33,9 +33,14 @@ public class BuildingServiceImpl implements BuildingService {
  
  
 @Override
-public void insertBuilding(BuildingVO buildingVO) throws SQLException {
-	buildingDAO.insertBuilding(buildingVO);
-	System.out.println("여기1111111111111111111111111111111");
+public void insertBuilding(BuildingVO buildingVO) {
+	try {
+		buildingDAO.insertBuilding(buildingVO);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	System.out.println("[서비스임플]여기1111111111111111111111111111111");
 }
 
 
