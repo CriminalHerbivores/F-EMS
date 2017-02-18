@@ -93,9 +93,7 @@ public class BuildingController {
 		}
 		
 		
-		model.addAttribute("bd_No",buildingVO);
-		model.addAttribute("bd_Nm",buildingVO);
-		
+		model.addAttribute("buildingVO",buildingVO);
 		
 		return url;
 	}
