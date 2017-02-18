@@ -108,15 +108,13 @@ function searchLctre() {
 	 
 	 <tr><th colspan="4">담당 교수 정보</th></tr>
 	 <tr>
-	 <%-- <c:forEach items="${profsrVO}" var="profsr"> --%>
+	<%-- <c:forEach items="${profsrVO}" var="profsr"> --%>
 	 	<th>교수이름</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Nm}" readonly></td>  
 	 	
 	 	
 	 	<th>담당교수전화</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control" value="${profsrVO.pr_Profsr_Tlphon_No}">-
-	 	<input type="text" class="def-input-text-sm custom-form-control"  value="${profsrVO.pr_Profsr_Tlphon_No}">-
-	 	<input type="text" class="def-input-text-sm custom-form-control"  value="${profsrVO.pr_Profsr_Tlphon_No}">
+	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Profsr_Tlphon_No}">
 	 	</td>
 	 	
 	 	
@@ -136,10 +134,10 @@ function searchLctre() {
 	
 	 <tr>
 	 	<th>강의시간</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control"   name="lc_Lctre_Time"></td>
 	 	
 	 	<th>희망 강의 정원</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control"   name=""></td>
 	 </tr>
 	   <tr>
 	      <th>학습평가방법(100%)</th>
@@ -157,13 +155,13 @@ function searchLctre() {
 	     </tr>
 	     
 	     <tr>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
-	     	<td><input type="text" class="def-input-text-sm custom-form-control"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Midex"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Fnex"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Indvdl_Task"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Team_Task"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Presnatn"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Atend"></td>
+	     	<td><input type="text" class="def-input-text-sm custom-form-control"  name="la_Attd"></td>
 	     </tr>
 	      </table>
 	      
@@ -173,22 +171,22 @@ function searchLctre() {
 	     
 	     <tr>
 	     	<th>강의 진행 형태</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"  name="la_Lctre_Progrs_Form"> </td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>강의 목표</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"  name="la_Lctre_Goal"> </td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>주교재</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"  name="la_Main_Txtbook"> </td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>부교재</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"> </td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"  name="la_Sub_Txtbook"> </td>
 	     </tr>
 	     
 	     <tr>
@@ -197,82 +195,93 @@ function searchLctre() {
 	     
 	     <tr>
 	     	<th>1주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"  name="la_Week1"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>2주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week2"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>3주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week3"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>4주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week4"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>5주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week5"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>6주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week6"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>7주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week7"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>8주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week8"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>9주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week9"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>10주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week10"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>11주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week11"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>12주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week12"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>13주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week13"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>14주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week14"></td>
 	     </tr>
 	     
 	     <tr>
 	     	<th>15주차</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control"></td>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week15"></td>
+	     </tr>
+	     
+	     
+	      <tr>
+	     	<th>지워야함</th>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="lc_Lctre_No"></td>
+	     </tr>
+	     
+	     <tr>
+	     	<th>이것도</th>
+	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Lctre_No"></td>
 	     </tr>
 	     
 	     
 	 </table>
-	 <input type="submit" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form)">&nbsp;&nbsp; <input type="button" class="def-btn btn-md btn-gray" value="취소" onclick="go.history(-1)"><br />
+	 <input type="button" class="def-btn btn-md btn-color"  value="등록" onclick="submitForm(this.form)">&nbsp;&nbsp; <input type="button" class="def-btn btn-md btn-gray"  value="취소" onclick="go.history(-1)"><br />
 	 
 	 
 	 </form>

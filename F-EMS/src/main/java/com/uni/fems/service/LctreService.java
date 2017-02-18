@@ -43,7 +43,7 @@ public interface LctreService {
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 int tpage, 
 	
 	// 강의 등록 - 서비스로 가야함
-	void insertLctre_Search(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
+	void insertLctre(LctreVO lctreVO) throws SQLException;
 
 	
 	

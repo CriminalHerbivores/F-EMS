@@ -36,7 +36,8 @@ import com.uni.fems.service.LctreService;
 public class LctreServiceImpl implements LctreService {
 
 	private LctreDAO lctreDAO;
-	private Lctre_ActplnDAO lctre_ActplnDAO; 
+	private Lctre_ActplnDAO lctre_ActplnDAO;
+	
 	
 
 	//전체강의 가져옴
@@ -50,12 +51,13 @@ public class LctreServiceImpl implements LctreService {
 	
 	// 강의 개설 요청
 	@Override
-	public void insertLctre_Search(LctreVO lctreVO,
-			Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
-		
+	public void insertLctre(LctreVO lctreVO) throws SQLException {
+		System.out.println("==================================================================================LctreServiceImpl  1111111111");
+
 		//강의등록시 필요한 정보 불러오게 해야할듯? 조회쪽
 		lctreDAO.insertLctre(lctreVO);
-		lctre_ActplnDAO.insertLctre_Actpl(lctre_ActplnVO);
+		System.out.println("==================================================================================LctreServiceImpl  2222222222");
+
 	}
 
 	// public ArrayList<LctreVO> getLctreList(int key){

@@ -84,7 +84,6 @@ public class BuildingController {
 		try {
 			buildingService.insertBuilding(buildingVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
