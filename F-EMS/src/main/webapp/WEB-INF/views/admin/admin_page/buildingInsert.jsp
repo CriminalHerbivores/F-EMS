@@ -24,7 +24,7 @@ go_save(){
 var theForm = document.formm;
 
 /* 유효성 부분 아작스로 변경해야함 */
-if (theForm.bd_No.value == '') {
+/* if (theForm.bd_No.value == '') {
 	alert('건물번호 입력.');
 	theForm.bd_No.focus();
 } else if (theForm.bd_Nm.value == '') {
@@ -33,7 +33,7 @@ if (theForm.bd_No.value == '') {
 }
 
 theForm.action = "/admin/buildingInsert";
-theForm.submit();
+theForm.submit(); */
 	
 }
 

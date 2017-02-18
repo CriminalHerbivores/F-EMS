@@ -30,7 +30,7 @@ public interface BuildingDAO {
 	 * @param buildingVO
 	 * @throws SQLException
 	 */
-	void insertBuilding(BuildingVO buildingVO) throws SQLException;
+	int insertBuilding(BuildingVO buildingVO) throws SQLException;
 	
 	/**
 	 * <pre>
