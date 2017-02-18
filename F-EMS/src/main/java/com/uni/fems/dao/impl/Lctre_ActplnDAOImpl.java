@@ -28,11 +28,18 @@ public class Lctre_ActplnDAOImpl implements Lctre_ActplnDAO {
 	public void setClient(SqlMapClient client){
 		this.client=client;
 	}
+	
+	
+	// 강의계획서 등록
 	@Override
 	public int insertLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		if (client.insert("insertLctre_Actpl",lctre_ActplnVO) != null){
+			result=1;
+		}
+		
+		return result;
 	}
 	@Override
 	public int updateLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO)

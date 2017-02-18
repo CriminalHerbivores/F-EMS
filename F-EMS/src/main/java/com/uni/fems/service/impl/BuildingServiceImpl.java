@@ -37,7 +37,6 @@ public void insertBuilding(BuildingVO buildingVO) throws SQLException {
 
 		buildingDAO.insertBuilding(buildingVO);
 
-	System.out.println("[서비스임플]여기1111111111111111111111111111111");
 }
 
 

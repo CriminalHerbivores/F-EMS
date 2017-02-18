@@ -17,8 +17,8 @@
 
 	<!-- 건물 등록 -->
 	<update id="insertBuilding" parameterClass="building">
-		insert into building(bd_No,bd_Nm,bd_Useyn)
-			values(#bd_No#,#bd_Nm#,#bd_Useyn#)
+		insert into building(bd_No,bd_Nm)
+			values(#bd_No#,#bd_Nm#)
 	</update>
 	
 	<!-- 건물 수정 -->

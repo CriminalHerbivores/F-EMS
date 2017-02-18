@@ -4,8 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
 import com.uni.fems.dao.LctreDAO;
+import com.uni.fems.dao.Lctre_ActplnDAO;
+import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dto.LctreVO;
+import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.service.LctreService;
 
@@ -27,13 +32,12 @@ import com.uni.fems.service.LctreService;
  * </pre>
  */
 
+@Data
 public class LctreServiceImpl implements LctreService {
 
 	private LctreDAO lctreDAO;
-
-	public void setLctreDAO(LctreDAO lctreDAO) {
-		this.lctreDAO = lctreDAO;
-	}
+	private Lctre_ActplnDAO lctre_ActplnDAO; 
+	
 
 	//전체강의 가져옴
 	@Override
@@ -41,6 +45,17 @@ public class LctreServiceImpl implements LctreService {
 		List<Lctre_SearchVO> lctre_SearchVO=lctreDAO.listLctre(lu_Lctre_Nm);
 		
 		return lctre_SearchVO;
+	}
+
+	
+	// 강의 개설 요청
+	@Override
+	public void insertLctre_Search(LctreVO lctreVO,
+			Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
+		
+		//강의등록시 필요한 정보 불러오게 해야할듯? 조회쪽
+		lctreDAO.insertLctre(lctreVO);
+		lctre_ActplnDAO.insertLctre_Actpl(lctre_ActplnVO);
 	}
 
 	// public ArrayList<LctreVO> getLctreList(int key){
@@ -53,14 +68,14 @@ public class LctreServiceImpl implements LctreService {
 	// return lctreList;
 	// }
 
-	// public LctreVO selectLctre(int lc_Lctre_No){
-	// LctreVO lctre=null;
-	// try {
-	// lctre=lctreDAO.getLctre(lc_Lctre_No);
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// return lctre;
-	// }
+//	 public LctreVO selectLctre(int lc_Lctre_No){
+//	 LctreVO lctre=null;
+//	 try {
+//	 lctre=lctreDAO.getLctre(lc_Lctre_No);
+//	 } catch (SQLException e) {
+//	 e.printStackTrace();
+//	 }
+//	 return lctre;
+//	 }
 
 }

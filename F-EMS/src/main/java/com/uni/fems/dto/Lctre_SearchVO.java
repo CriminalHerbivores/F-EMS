@@ -90,8 +90,8 @@ public class Lctre_SearchVO implements Serializable {
 	private String knd_Lctre_Knd;   // 강의종류
 	
 	// 관심목록 INTRST_LIST
-	private String in_Stdnt_No;   // 학생번호
-	private int in_Lctre_No;   // 강의번호
+//	private String in_Stdnt_No;   // 학생번호
+//	private int in_Lctre_No;   // 강의번호
 	
 	// 교수 PROFSR
 	private String pr_Profsr_No;   // 교수 번호
