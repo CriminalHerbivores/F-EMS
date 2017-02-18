@@ -1,7 +1,9 @@
 package com.uni.fems.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dto.BuildingVO;
 import com.uni.fems.dto.ProfsrVO;
@@ -43,7 +46,27 @@ public class BuildingController {
 	
 	
 	
-	// 건물 등록
+	   /**
+	 * <pre>
+	 * 건물등록을 위한 폼을 불러냄
+	 * </pre>
+	 * <pre>
+	 * @param buildingVO
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/buildingInsert", method=RequestMethod.GET)
+	   public String buildingInsertForm(Model model, HttpSession session) {
+	      
+		   
+		   String url = "admin/admin_page/buildingInsert";
+	      return url;
+	   }
+	
+	
 	
 	/**
 	 * <pre>
@@ -55,24 +78,13 @@ public class BuildingController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/buildingInsert")
-	public String buildingInsert(Model model, HttpSession session) {
+	@RequestMapping(value="/buildingInsert", method=RequestMethod.POST)
+	public String buildingInsert(BuildingVO buildingVO,HttpServletRequest request, Model model, HttpSession session) {
 		String url = "admin/admin_page/buildingInsert";
 		
-		/*String pr_Profsr_No = (String) session.getAttribute("loginUser");
-		ProfsrVO profsrVO = null;
-		try {
-			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("profsrVO", profsrVO);
-		return url;*/
+		//buildingVO.setBd_No(buildingVO.getBd_No());
+		//buildingVO.setBd_Nm(buildingVO.getBd_Nm());
 		
-		//String bd_no=null;
-		
-		BuildingVO buildingVO=null;
-		System.out.println("[컨트롤러1]여기222222222222222222222222222222222222222222222222222222222222");
 		try {
 			buildingService.insertBuilding(buildingVO);
 		} catch (SQLException e) {
@@ -80,10 +92,14 @@ public class BuildingController {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("buildingVO",buildingVO);
-		System.out.println("[컨트롤러2]여기3333333333333333333333333333333333333");
+		
+		model.addAttribute("bd_No",buildingVO);
+		model.addAttribute("bd_Nm",buildingVO);
+		
+		
 		return url;
 	}
+
 
 	
 	
