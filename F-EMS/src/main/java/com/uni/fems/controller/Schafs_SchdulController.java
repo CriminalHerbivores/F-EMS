@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.Schafs_SchdulVO;
 import com.uni.fems.service.Schafs_SchdulService;
@@ -41,6 +42,7 @@ public class Schafs_SchdulController {
 	}
 	
 	@RequestMapping(value="/insertSchdul", produces = "application/text; charset=utf8")
+	@ResponseBody
 	public String insertSchdul(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request) throws ServletException, IOException, ParseException{
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
