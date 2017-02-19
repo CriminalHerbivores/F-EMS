@@ -214,12 +214,12 @@ public class ProfsrController {
 		
 		try {
 			System.out.println("==================================================================================Controller333333333333");
+			
 
-
-			lctre_ActplnService.insertLctre_Actpln(lctre_ActplnVO);
+			lctreVO.setLc_Lctre_No(1);
 			lctreService.insertLctre(lctreVO);
-//			lctreVO.setLc_Lctre_No(1);
-//			lctre_ActplnVO.setLa_Lctre_No(2);
+			lctre_ActplnVO.setLa_Lctre_No(1);
+			lctre_ActplnService.insertLctre_Actpln(lctre_ActplnVO);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

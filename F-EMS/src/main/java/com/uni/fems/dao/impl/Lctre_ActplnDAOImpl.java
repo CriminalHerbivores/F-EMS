@@ -32,12 +32,10 @@ public class Lctre_ActplnDAOImpl implements Lctre_ActplnDAO {
 	
 	// 강의계획서 등록
 	@Override
-	public int insertLctre_Actpln(Lctre_ActplnVO lctre_ActplnVO)
-			throws SQLException {
+	public void insertLctre_Actpln(Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
 		System.out.println("==================================================================================Lctre_ActplnDAOImpl  111111111111");
-		int result=client.update("insertLctre_Actpln",lctre_ActplnVO);
+		client.update("insertLctre_Actpln",lctre_ActplnVO);
 		System.out.println("==================================================================================Lctre_ActplnDAOImpl  2222222222222");
-		return result;
 	}
 	@Override
 	public int updateLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO)
