@@ -85,6 +85,7 @@
 <!--  ============= js =============  -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -101,7 +102,8 @@
 
 <!--ssh추가2  -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
 
 <!-- ssh 추가 -->
 <script type="text/javascript"
