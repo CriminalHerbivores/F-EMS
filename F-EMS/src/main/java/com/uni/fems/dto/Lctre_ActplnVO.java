@@ -26,10 +26,8 @@ import lombok.Data;
 @Data
 public class Lctre_ActplnVO implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
 	private int la_Lctre_No;   // 강의번호
 	private String la_Main_Txtbook;   // 주교재
 	private String la_Sub_Txtbook;   // 부교재

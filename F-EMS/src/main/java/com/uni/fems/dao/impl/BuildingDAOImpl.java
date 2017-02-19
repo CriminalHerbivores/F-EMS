@@ -34,7 +34,6 @@ public class BuildingDAOImpl implements BuildingDAO {
 	@Override
 	public int insertBuilding(BuildingVO buildingVO) throws SQLException {
 		int result=client.update("insertBuilding",buildingVO);
-		System.out.println("[다오임플]여기000000000000000000000000000000000000000000000");
 		return result;
 	}
 

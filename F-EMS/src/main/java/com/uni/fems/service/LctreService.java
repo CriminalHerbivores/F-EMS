@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.uni.fems.dto.LctreVO;
+import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 
 /**
@@ -41,13 +42,18 @@ public interface LctreService {
 	 */
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 int tpage, 
 	
+	// 강의 등록 - 서비스로 가야함
+	void insertLctre(LctreVO lctreVO) throws SQLException;
+
+	
+	
+	
+	
 	// 강의등록(강의,강의계획서,)
 	
 	/*public ArrayList<LctreVO> getLctreList(int key);	
 	public LctreVO selectLctre(int lc_Lctre_No);*/
 
-	// 강의 등록 - 서비스로 가야함
-//		Lctre_SearchVO insertLctre_Search();
 		
 	// 강의 수정 - 서비스로 가야함
 //	Lctre_SearchVO updateLctre_Search(Lctre_SearchVO lctre_SearchVO, HttpServletRequest request);
