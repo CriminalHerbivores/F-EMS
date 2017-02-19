@@ -2,7 +2,9 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -38,16 +40,27 @@ public class Schafs_SchdulController {
 	}
 	
 	@RequestMapping(value="/insertSchdul", produces = "application/text; charset=utf8")
-	public String insertSchdul(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request) throws ServletException, IOException{
+	public String insertSchdul(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request) throws ServletException, IOException, ParseException{
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
 		
+		
 		Schafs_SchdulVO schdulVO = new Schafs_SchdulVO();
 		
-		Timestamp sd_Bgnde = (Timestamp)jsonMap.get("sd_Bgnde");
-		Timestamp sd_Enddt = (Timestamp)jsonMap.get("sd_Enddt");
+		
+		String sdbgnde = (String)jsonMap.get("sd_Bgnde");
+		String sdenddt = (String)jsonMap.get("sd_Enddt");
+		
+		Date sd_Bgnde = new SimpleDateFormat("yyyy-MM-dd").parse(sdbgnde);
+		Date sd_Enddt = new SimpleDateFormat("yyyy-MM-dd").parse(sdenddt);
+
+		
 		String sd_Schdul_Nm = (String)jsonMap.get("sd_Schdul_Nm");
 		String sd_Schdul_Sumry = (String)jsonMap.get("sd_Schdul_Sumry");
+		
+		
+		System.out.println("==================================="+sd_Bgnde);
+		System.out.println("==================================="+sd_Enddt);
 		
 		schdulVO.setSd_Sklstf_No(loginUser);
 		schdulVO.setSd_Bgnde(sd_Bgnde);

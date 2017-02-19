@@ -16,9 +16,9 @@
 <head>
     <title>Customizing templates</title>
     <meta charset="utf-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>
   
   $(function() {
@@ -52,7 +52,6 @@
 		 dateType:'text',
 		 type:'post',
 		 success: function(data){
-			 $('div #append1').empty();
 			$('div #append1').append(data);
 		 },
 		 error: function(){
