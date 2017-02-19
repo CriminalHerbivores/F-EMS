@@ -332,7 +332,8 @@
    <bean id="baskinService" class="com.uni.fems.service.impl.BaskinServiceImpl"
       p:baskinDAO-ref="baskinDAO" />
       
-      
+    <bean id="lctre_GntDAO" class="com.uni.fems.dao.impl.Lctre_GntDAOImpl"
+      p:client-ref="sqlMapClient" />  
       
 	<bean id="serviceProfiler" class="com.uni.fems.aop.ServiceProfiler"
 		p:client-ref="sqlMapClient" />

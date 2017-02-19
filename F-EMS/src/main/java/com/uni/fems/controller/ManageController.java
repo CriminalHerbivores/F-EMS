@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.uni.fems.service.Bbs_ListService;
+
 /**
  * <pre>
  * 관리자 페이지의 모든 기능들이 포함된 Controller
@@ -26,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class ManageController {
+	
+	private Bbs_ListService bbs_ListSvc;
 
 	// @RequestMapping("/")
 	// public String in(){
@@ -242,6 +246,9 @@ public class ManageController {
 		String url = "admin/layout_control/step2Modify";	
 		return url;
 	}
+	
+	
+	
 		
 	/**
 	 * <pre>

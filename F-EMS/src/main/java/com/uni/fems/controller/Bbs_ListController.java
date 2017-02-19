@@ -48,4 +48,6 @@ public class Bbs_ListController{
 
 	}
 
+	
+	
 }

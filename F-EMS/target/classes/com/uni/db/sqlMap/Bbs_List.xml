@@ -56,12 +56,12 @@
 	
 	<insert id="insertBbs_Table" parameterClass="str">
 		create table BBS_$value$(	
-			BBS_NO number NOT NULL,
-			SKLSTF_NO varchar2(50),
-			SJ varchar2(200),
-			CN varchar2(3000),
-			WRITNG_DT date,
-			RDCNT number,
+			BB_BBS_NO number NOT NULL,
+			BB_SKLSTF_NO varchar2(50),
+			BB_SJ varchar2(200),
+			BB_CN varchar2(3000),
+			BB_WRITNG_DT date,
+			BB_RDCNT number,
 			CONSTRAINT BBS_$value$_PK PRIMARY KEY(BBS_NO),
 			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(SKLSTF_NO) REFERENCES SKLSTF(STF_SKLSTF_NO)
 		)
