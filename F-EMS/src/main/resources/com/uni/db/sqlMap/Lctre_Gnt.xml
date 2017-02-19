@@ -3,6 +3,12 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
+
+<!--  [[개정이력(Modification Information)]]        -->
+<!--  수정일       수정자      수정내용             -->
+<!--  ==========   ======    ==============         -->
+<!--  $2017.02.19    KJS       최초작성             -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
 <sqlMap namespace="Lctre_Gnt">
 
  	<typeAlias alias="str" type="java.lang.String" />
@@ -10,80 +16,91 @@
 	
 	
 	<update id="notice_Table" parameterClass="str">
-		create table N_$value$(	
-			N_BBS_NO number NOT NULL,
-			SJ varchar2(200),
-			CN varchar2(3000),
-			WRITNG_DT date,
-			RDCNT number,
-			CONSTRAINT N_$value$_PK PRIMARY KEY(BBS_NO),
+		create table LN_$value$(	
+			LN_BBS_NO number NOT NULL,
+			LN_SJ varchar2(200),
+			LN_CN varchar2(3000),
+			LN_WRITNG_DT date,
+			LN_RDCNT number,
+			CONSTRAINT LN_$value$_PK PRIMARY KEY(LN_BBS_NO)
 		)
 	</update>
 	
 	<update id="date_Table" parameterClass="str">
-		create table D_$value$(	
-			D_BBS_NO number NOT NULL,
-			SJ varchar2(200),
-			CN varchar2(3000),
-			WRITNG_DT date,
-			RDCNT number,
-			FLPTH_NO NUMBER,
-			CONSTRAINT D_$value$_PK PRIMARY KEY(BBS_NO),
-			CONSTRAINT D_$value$_LCTRE_FLPTH_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		create table LD_$value$(	
+			LD_BBS_NO number NOT NULL,
+			LD_SJ varchar2(200),
+			LD_CN varchar2(3000),
+			LD_WRITNG_DT date,
+			LD_RDCNT number,
+			LD_FLPTH_NO NUMBER,
+			CONSTRAINT LD_$value$_PK PRIMARY KEY(LD_BBS_NO),
+			CONSTRAINT LD_$value$_LCTRE_FLPTH_FK FOREIGN KEY(LD_FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
 		)
 	
 	</update>
 	<update id="qna_Table" parameterClass="str">
-		create table Q_$value$(	
-			Q_BBS_NO number NOT NULL,
-			STDNT_NO varchar2(50),
-			SJ varchar2(200),
-			CN varchar2(3000),
-			REPLY varchar2(3000),
-			WRITNG_DT date,
-			RDCNT number,
-			CONSTRAINT Q_$value$_PK PRIMARY KEY(BBS_NO),
-			CONSTRAINT Q_$value$_STDNT_FK FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
+		create table LQ_$value$(	
+			LQ_BBS_NO number NOT NULL,
+			LQ_STDNT_NO varchar2(50),
+			LQ_SJ varchar2(200),
+			LQ_CN varchar2(3000),
+			LQ_REPLY varchar2(3000),
+			LQ_WRITNG_DT date,
+			LQ_RDCNT number,
+			CONSTRAINT LQ__$value$_PK PRIMARY KEY(LQ_BBS_NO),
+			CONSTRAINT LQ_$value$_STDNT_FK FOREIGN KEY(LQ_STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
 		)
 	
 	</update>
+
+	<insert id="comment_Table" parameterClass="str">
+		create table LQC_$value$(	
+			LQC_COMNT_NO NUMBER NOT NULL,
+			LQC_BBS_NO NUMBER,
+			LQC_COMNT_CONTENT varchar2(4000),
+			LQC_WRITNG_DT DATE,
+			LQC_STDNT_NO varchar2(50),
+			CONSTRAINT LQC__$value$_PK PRIMARY KEY(LQC_COMNT_NO),
+		)
+	</insert>
 	<update id="task_Table" parameterClass="str">
-		create table T_$value$(	
-			T_BBS_NO number NOT NULL,
-			STDNT_NO varchar2(50),
-			SJ varchar2(200),
-			CN varchar2(3000),
-			WRITNG_DT date,
-			RDCNT number,
-			FLPTH_NO NUMBER,
-			CONSTRAINT T_$value$_PK PRIMARY KEY(BBS_NO),
-			CONSTRAINT T_$value$_STDNT_FK FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
-			CONSTRAINT T_$value$_LCTRE_FLPTH_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		create table LT_$value$(	
+			LT_BBS_NO number NOT NULL,
+			LT_STDNT_NO varchar2(50),
+			LT_SJ varchar2(200),
+			LT_CN varchar2(3000),
+			LT_WRITNG_DT date,
+			LT_RDCNT number,
+			LT_FLPTH_NO NUMBER,
+			CONSTRAINT LT_$value$_PK PRIMARY KEY(LT_BBS_NO),
+			CONSTRAINT LT_$value$_STDNT_FK FOREIGN KEY(LT_STDNT_NO) REFERENCES STDNT(ST_STDNT_NO),
+			CONSTRAINT LT_$value$_LCTRE_FLPTH_FK FOREIGN KEY(LT_FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
 		)
 	
 	</update>
 	<update id="video_Table" parameterClass="str">
-		create table V_$value$(	
-			V_BBS_NO number NOT NULL,
-			SJ varchar2(200),
-			CN varchar2(3000),
-			WRITNG_DT date,
-			FLPTH_NO NUMBER,
-			CONSTRAINT V_$value$_PK PRIMARY KEY(BBS_NO),
-			CONSTRAINT V_$value$_LCTRE_FLPTH_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		create table LV_$value$(	
+			LV_BBS_NO number NOT NULL,
+			LV_SJ varchar2(200),
+			LV_CN varchar2(3000),
+			LV_WRITNG_DT date,
+			LV_FLPTH_NO NUMBER,
+			CONSTRAINT LV_$value$_PK PRIMARY KEY(LV_BBS_NO),
+			CONSTRAINT LV_$value$_LCTRE_FLPTH_FK FOREIGN KEY(LV_FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
 		)
 	
 	</update>
 	<update id="watch_Table" parameterClass="str">
-		create table P_$value$(	
-			P_BBS_NO number NOT NULL,
-			STDNT_NO varchar2(50),
-			VIDEO_BBS_NO NUMBER,
-			VIDEO_DT date,
-			ST_VIDEO_DT date,
-			CONSTRAINT P_$value$_PK PRIMARY KEY(P_BBS_NO),
-			CONSTRAINT P_$value$_V_$value$_FK FOREIGN KEY(VIDEO_BBS_NO) REFERENCES V_$value$(V_BBS_NO)
-			CONSTRAINT P_$value$_STDNT_FK FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
+		create table LW_$value$(	
+			LW_BBS_NO number NOT NULL,
+			LW_STDNT_NO varchar2(50),
+			LW_VIDEO_BBS_NO NUMBER,
+			LW_VIDEO_DT date,
+			LW_STDNT_VIDEO_DT date,
+			CONSTRAINT LW_$value$_PK PRIMARY KEY(LW_BBS_NO),
+			CONSTRAINT LW_$value$_LV_$value$_FK FOREIGN KEY(LW_VIDEO_BBS_NO) REFERENCES LV_$value$(LV_BBS_NO),
+			CONSTRAINT LW_$value$_STDNT_FK FOREIGN KEY(LW_STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
 		)
 	
 	</update>

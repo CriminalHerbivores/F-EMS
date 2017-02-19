@@ -31,8 +31,6 @@ public class Bbs_Comment_ListVO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String bl_Bbs_Nm;   // 게시판 명
-	private String bl_Table_Nm;   // 테이블 명
 	private int bc_Comnt_No; //댓글번호
 	private String bc_Bbs_Code; // 게시판명 ex)notice_bbs
 	private int bc_Bbs_No; // 게시판번호
