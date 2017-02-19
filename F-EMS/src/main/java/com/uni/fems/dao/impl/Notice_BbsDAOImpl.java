@@ -11,7 +11,7 @@ import com.uni.fems.dto.SearchVO;
 
 /**
  * <pre>
- * 
+ * Notice_BbsDAO 인터페이스를 상속받아 활용하는 클래스
  * </pre>
  * @author 송선호
  * @since 2017.02.01
