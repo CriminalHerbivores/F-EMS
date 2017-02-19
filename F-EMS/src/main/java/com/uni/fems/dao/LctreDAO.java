@@ -44,7 +44,17 @@ public interface LctreDAO {
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록  int tpage, 
 	
 	
+	/**
+	 * <pre>
+	 * 개설할 강의 등록
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @return
+	 * @throws SQLException
+	 */
 	int insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
+	
 	int updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
 	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제
 	

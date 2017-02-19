@@ -16,13 +16,13 @@
 <head>
     <title>Customizing templates</title>
     <meta charset="utf-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>
   
   $(function() {
-    $("#sd_Bgnde, #sd_Enddt").datepicker();
+    $("#sd_Bgndt, #sd_Enddt").datepicker();
   });
 
   
@@ -38,25 +38,26 @@
  */
  
  function insertSchdul(){
-	 var sd_Bgnde = $('#sd_Bgnde').val();
+	 var sd_Bgndt = $('#sd_Bgndt').val();
 	 var sd_Enddt = $('#sd_Enddt').val();
 	 var sd_Schdul_Nm = $('#sd_Schdul_Nm').val();
 	 var sd_Schdul_Sumry = $('#sd_Schdul_Sumry').val();
-	 var dataWrite ={ 'sd_Bgnde':sd_Bgnde, 'sd_Enddt':sd_Enddt,
+	 var dataWrite ={ 'sd_Bgndt':sd_Bgndt, 'sd_Enddt':sd_Enddt,
 			 'sd_Schdul_Nm':sd_Schdul_Nm,'sd_Schdul_Sumry':sd_Schdul_Sumry
 	 };
 	 $.ajax({
 		 url : '<%=request.getContextPath()%>/schafs_schdul/insertSchdul',
 		 contentType:'application/json; charset=utf-8',
 		 data:JSON.stringify(dataWrite),
-		 dateType:'text',
+		 dataType:'text',
 		 type:'post',
 		 success: function(data){
-			 $('div #append1').empty();
+					alert(data);
 			$('div #append1').append(data);
 		 },
-		 error: function(){
-				alert('일정 등록 실패');
+		 error: function(data){
+				alert(data);
+				alert('에러');
 			}
 	 });
  }
@@ -140,7 +141,7 @@
 				</select>
 	</td>
 	<td>
-	<input type="text" id="sd_Bgnde" name="sd_Bgnde" class="def-input-text-md custom-form-control">
+	<input type="text" id="sd_Bgndt" name="sd_Bgndt" class="def-input-text-md custom-form-control">
 	</td>
 	<td>
 	<input type="text" id="sd_Enddt" name="sd_Enddt" class="def-input-text-md custom-form-control">

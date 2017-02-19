@@ -69,12 +69,10 @@ public class LctreDAOImpl implements LctreDAO {
 	 */
 	@Override
 	public int insertLctre(LctreVO lctreVO) throws SQLException {
-		int result = -1;
-		if (client.insert("insertLctre", lctreVO) != null) {
-			result=-1;
-		} else {
-			result=1;
-		}
+		System.out.println("==================================================================================LctreDAOImpl  111111");
+
+		int result=client.update("insertLctre", lctreVO);
+		System.out.println("==================================================================================LctreDAOImpl  222222");
 		return result;
 	}
 

@@ -17,8 +17,8 @@
 		
 	
 	<update id="insertSchdul" parameterClass="schdulvo">
-		insert into notice_bbs(sd_no,sd_sklstf_no,sd_schdul_nm,sd_schdul_sumry,sd_detail_dc,sd_bgnde,sd_enddt) 
-		values(ss_seq.nextval,#sd_Sklstf_No#,#sd_Schdul_Nm#,#sd_Schdul_Sumry#,#sd_Detail_Dc#,#sd_Bgnde#,#sd_Enddt#)
+		insert into schafs_schdul(sd_no,sd_sklstf_no,sd_schdul_nm,sd_schdul_sumry,sd_detail_dc,sd_bgndt,sd_enddt) 
+		values(ss_seq.nextval,#sd_Sklstf_No#,#sd_Schdul_Nm#,#sd_Schdul_Sumry#,#sd_Detail_Dc#,#sd_Bgndt#,#sd_Enddt#)
 	</update>
 
 
