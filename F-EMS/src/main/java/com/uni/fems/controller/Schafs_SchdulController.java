@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,22 +49,28 @@ public class Schafs_SchdulController {
 		Schafs_SchdulVO schdulVO = new Schafs_SchdulVO();
 		
 		
-		String sdbgnde = (String)jsonMap.get("sd_Bgnde");
+		String sdbgndt = (String)jsonMap.get("sd_Bgndt");
 		String sdenddt = (String)jsonMap.get("sd_Enddt");
 		
-		Date sd_Bgnde = new SimpleDateFormat("yyyy-MM-dd").parse(sdbgnde);
+/*		DateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date sd_Bgnde = timeFormat.parse(sdbgnde);
+		Date sd_Enddt = timeFormat.parse(sdenddt);
+		*/
+		
+		
+		Date sd_Bgndt = new SimpleDateFormat("yyyy-MM-dd").parse(sdbgndt);
 		Date sd_Enddt = new SimpleDateFormat("yyyy-MM-dd").parse(sdenddt);
 
+		System.out.println("==================================="+sd_Bgndt);
+		System.out.println("==================================="+sd_Enddt);
 		
 		String sd_Schdul_Nm = (String)jsonMap.get("sd_Schdul_Nm");
 		String sd_Schdul_Sumry = (String)jsonMap.get("sd_Schdul_Sumry");
 		
 		
-		System.out.println("==================================="+sd_Bgnde);
-		System.out.println("==================================="+sd_Enddt);
 		
 		schdulVO.setSd_Sklstf_No(loginUser);
-		schdulVO.setSd_Bgnde(sd_Bgnde);
+		schdulVO.setSd_Bgndt(sd_Bgndt);
 		schdulVO.setSd_Enddt(sd_Enddt);
 		schdulVO.setSd_Schdul_Nm(sd_Schdul_Nm);
 		schdulVO.setSd_Schdul_Sumry(sd_Schdul_Sumry);
@@ -75,17 +82,18 @@ public class Schafs_SchdulController {
 			e.printStackTrace();
 		}
 		
-		String result="<div id="
+		
+		String result="<div id=\""
 				+schdulVO.getSd_No()
-				+">시작일자: "
-				+schdulVO.getSd_Bgnde()
+				+"\">시작일자: "
+				+schdulVO.getSd_Bgndt()
 				+" / "+ "종료일자:"
 				+schdulVO.getSd_Enddt()
 				+"/" + "일정명 : "
 				+schdulVO.getSd_Schdul_Nm()
 				+"/"+"일정요약:"
 				+schdulVO.getSd_Schdul_Sumry()
-				+"<div>";
+				+"</div>";
 		return result;
 		
 		

@@ -36,7 +36,7 @@ public class Schafs_SchdulVO implements Serializable{
 	private String sd_Schdul_Nm;   // 일정명
 	private String sd_Schdul_Sumry;   // 일정 요약
 	private String sd_Detail_Dc;   // 상세 설명
-	private Date sd_Bgnde;   // 시작일
+	private Date sd_Bgndt;   // 시작일
 	private Date sd_Enddt;   // 종료일
 	
 
