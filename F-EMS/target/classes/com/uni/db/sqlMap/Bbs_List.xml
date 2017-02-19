@@ -10,47 +10,74 @@
 <!--  $2017.02.17    KJS       추가작성             -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 <sqlMap namespace="Bbs_List">
-<!-- 
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="bbs_list" type="com.uni.fems.dto.Bbs_ListVO" />
-	<typeAlias alias="bbs_atrty" type="com.uni.fems.dto.Bbs_AtrtyVO" />
-	<typeAlias alias="bbs_list_atrty" type="com.uni.fems.dto.Bbs_List_AtrtyVO" />
+	<typeAlias alias="bbs_listvo" type="com.uni.fems.dto.Bbs_ListVO" />
+	<typeAlias alias="bbs_atrtyvo" type="com.uni.fems.dto.Bbs_AtrtyVO" />
+	<typeAlias alias="bbs_list_atrtyvo" type="com.uni.fems.dto.Bbs_List_AtrtyVO" />
 
 
-	<select id="listAllBbs_List_Atrty" parameterClass="searchvo" resultClass="bbs_list_atrty">
-		select * from bbs_list_view where $key$ like '%'||#value#||'%' order by bl_bbs_no
+	<select id="listAllBbs_List_Atrty" parameterClass="str" resultClass="bbs_list_atrtyvo">
+		select * from bbs_list_view where bl_bbs_nm like '%'||#value#||'%' order by bl_bbs_no
 	</select>
-	<select id="totalBbs_List_Atrty" resultClass="int">
-		select count(*) from bbs_list_view
+	<select id="totalBbs_List_Atrty" parameterClass="str" resultClass="int">
+		select count(*) from bbs_list_view where bl_bbs_nm like '%'||#value#||'%' order by bl_bbs_no
 	</select>
 	
 	<select id="getBbs_List_Atrty" parameterClass="int">
-		select * from bbs_list_view bl_bbs_no = #bl_bbs_no#
+		select * from bbs_list_view bl_bbs_no = #bl_Bbs_No#
 	</select>	
 
-	게시판 리스트 생성
-	<update id="insertBbs_Atrty" parameterClass="bbs_list_atrty">
+	<update id="insertBbs_List_Atrty1" parameterClass="bbs_list_atrtyvo">
 		insert into bbs_list(bl_bbs_no,bl_bbs_nm,bl_table_nm,bl_use_ennc) 
-		values((select max(bl_bbs_no)form bbs_list)+1,#bl_bbs_nm#,#bl_table_nm#,#bl_use_ennc#)
-		insert into bbs_atrty(ba_bbs_no,ba_manager,ba_sklstf,ba_profsr,ba_stdnt) 
-		values((select max(bl_bbs_no)form bbs_list),#ba_manager#,#ba_sklstf#,#ba_profsr#,#ba_stdnt#)
+		values(((select max(bl_bbs_no)from bbs_list)+1),#bl_Bbs_Nm#,#bl_Table_Nm#,#bl_Use_Ennc#)
+		
+	</update>
+	<update id="insertBbs_List_Atrty2" parameterClass="bbs_list_atrtyvo">
+		
+		insert into bbs_atrty(ba_bbs_no,ba_manage,ba_sklstf,ba_profsr,ba_stdnt) 
+		values((select max(bl_bbs_no)from bbs_list),#ba_Manage#,#ba_Sklstf#,#ba_Profsr#,#ba_Stdnt#)
 	</update>
 	
-	게시판 권한 수정
-	<update id="updateBbs_Atrty" parameterClass="bbs_atrty">
+	<update id="updateBbs_Atrty" parameterClass="bbs_atrtyvo">
 		update bbs_atrty set 
-		ba_manager=#ba_manager#,
-		ba_sklstf=#ba_sklstf#,
-		ba_profsr=#ba_profsr#,
-		ba_stdnt=#ba_stdnt#  
-		where ba_bbs_no=#ba_bbs_no#
+		ba_manage=#ba_Manage#,
+		ba_sklstf=#ba_Sklstf#,
+		ba_profsr=#ba_Profsr#,
+		ba_stdnt=#ba_Stdnt#  
+		where ba_bbs_no=#ba_Bbs_No#
 	</update>
 	
-	게시판 리스트 사용유무
-	<update id="updateBbs_List" parameterClass="bbs_list">
+	<update id="updateBbs_List" parameterClass="bbs_listvo">
 		update bbs_list set 
-		bl_use_ennc=#bl_use_ennc#  
-		where bl_bbs_no=#bl_bbs_no#
-	</update> -->
+		bl_use_ennc=#bl_Use_Ennc#  
+		where bl_bbs_no=#bl_Bbs_No#
+	</update>
+	
+	<insert id="insertBbs_Table" parameterClass="str">
+		create table BBS_$value$(	
+			BBS_NO number NOT NULL,
+			SKLSTF_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			CONSTRAINT BBS_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(SKLSTF_NO) REFERENCES SKLSTF(STF_SKLSTF_NO)
+		)
+		 
+	</insert>
+	<insert id="insertComment_Table" parameterClass="str">
+		create table COMMENT_$value$(	
+			BC_COMNT_NO NUMBER NOT NULL,
+			BC_BBS_CODE varchar2(50),
+			BC_BBS_NO NUMBER,
+			BC_USER_ID varchar2(50),
+			BC_COMNT_CONTENT varchar2(4000),
+			BC_WRITNG_DT DATE,
+			CONSTRAINT COMMENT_$value$_PK PRIMARY KEY(BC_COMNT_NO)
+		)
+	</insert>
+	
+	
 </sqlMap>

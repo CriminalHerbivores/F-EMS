@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Lctre_Actpln">
+
+<!-- 	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	
+	
+	<update id="notice_Table" parameterClass="str">
+		create table N_$value$(	
+			N_BBS_NO number NOT NULL,
+			PROFSR_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			CONSTRAINT N_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT N_$value$_PROFSR_FK FOREIGN KEY(PROFSR_NO) REFERENCES PROFSR(PR_PROFSR_NO)
+		)
+	</update>
+	
+	<update id="date_Table" parameterClass="str">
+		create table D_$value$(	
+			D_BBS_NO number NOT NULL,
+			PROFSR_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			FLPTH_NO NUMBER,
+			CONSTRAINT D_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT D_$value$_PROFSR_FK FOREIGN KEY(PROFSR_NO) REFERENCES PROFSR(PR_PROFSR_NO),
+			CONSTRAINT D_$value$_LF_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		)
+	
+	</update>
+	<update id="qna_Table" parameterClass="str">
+		create table Q_$value$(	
+			Q_BBS_NO number NOT NULL,
+			PROFSR_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			CONSTRAINT Q_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT Q_$value$_PROFSR_FK FOREIGN KEY(PROFSR_NO) REFERENCES PROFSR(PR_PROFSR_NO)
+		)
+	
+	</update>
+	<update id="task_Table" parameterClass="str">
+		create table T_$value$(	
+			BBS_NO number NOT NULL,
+			STDNT_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			FLPTH_NO NUMBER,
+			CONSTRAINT BBS_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
+			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		)
+	
+	</update>
+	<update id="video_Table" parameterClass="str">
+		create table V_$value$(	
+			BBS_NO number NOT NULL,
+			SKLSTF_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			FLPTH_NO NUMBER,
+			CONSTRAINT BBS_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(SKLSTF_NO) REFERENCES SKLSTF(STF_SKLSTF_NO)
+			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		)
+	
+	</update>
+	<update id="watch_Table" parameterClass="str">
+		create table P_$value$(	
+			BBS_NO number NOT NULL,
+			SKLSTF_NO varchar2(50),
+			SJ varchar2(200),
+			WRITNG_DT date,
+			CONSTRAINT BBS_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT FR_$value$_SKLSTF FOREIGN KEY(SKLSTF_NO) REFERENCES SKLSTF(STF_SKLSTF_NO)
+		)
+	
+	</update> -->
+	
+</sqlMap>
