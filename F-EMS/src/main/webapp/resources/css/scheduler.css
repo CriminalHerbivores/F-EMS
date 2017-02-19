@@ -251,3 +251,58 @@
 .calendar-context-menu  .item:hover > .submenu {
 	display:block;
 }
+
+.scheBox2 {
+    border: 1px solid #cfcfcf;
+    padding: 5px 10px 5px 5px;
+}
+table{
+width:100%;
+border-spacing: 0px;
+border-collapse: separate;
+}
+
+.scheBox2 .t_all .all_month {
+    color: #666161;
+    font-weight: bold;
+    line-height: 45px;
+    text-align: center;
+    padding-top: 5px;
+    background: #eee;
+    border-bottom: 1px dashed #b7b7b7;
+}
+
+
+
+.scheBox2 .t_all .all_month {
+    width:20%;
+   font-size: 12px;
+}
+
+.scheBox2 .t_all .all_month strong {
+    color: #000;
+    font-size: 50px;
+    font-family: Helvetica, sans-serif;
+}
+
+.scheBox2 .t_all .all_zoom {
+    border-bottom: 1px dashed #b7b7b7;
+    font-size: 12px;
+    
+}
+
+.scheBox2 .t_all .all_zoom p {
+    margin: 17px 10px 0px 14px;
+    padding-left: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #cfcfcf;
+    font-weight: bold;
+}
+
+
+.scheBox2 .t_all .all_zoom .content {
+    margin: 10px 10px 10px 24px;
+    padding: 0px;
+    list-style: none;
+    line-height: 16px;
+}
