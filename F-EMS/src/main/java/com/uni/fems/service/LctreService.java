@@ -42,8 +42,17 @@ public interface LctreService {
 	 */
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 int tpage, 
 	
-	// 강의 등록 - 서비스로 가야함
-	void insertLctre(LctreVO lctreVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 교수가 작성한 강의계획서의 Lctre테이블과 Lctre_Actpln에 데이터를 넣어서
+	 * 강의 개설 요청 등록
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @throws SQLException
+	 */
+	void openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
 
 	
 	

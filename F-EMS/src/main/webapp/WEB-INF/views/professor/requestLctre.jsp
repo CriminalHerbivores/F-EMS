@@ -267,17 +267,7 @@ function searchLctre() {
 	     	<th>15주차</th>
 	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Week15"></td>
 	     </tr>
-	     
-	     
-	      <tr>
-	     	<th>지워야함</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="lc_Lctre_No"></td>
-	     </tr>
-	     
-	     <tr>
-	     	<th>이것도</th>
-	     	<td colspan="3"><input type="text" class="def-input-text-full custom-form-control" name="la_Lctre_No"></td>
-	     </tr>
+
 	     
 	     
 	 </table>

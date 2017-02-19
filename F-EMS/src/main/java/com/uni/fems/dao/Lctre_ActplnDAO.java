@@ -26,7 +26,7 @@ public interface Lctre_ActplnDAO {
 	
 	/**
 	 * <pre>
-	 * 강의 계획서 등록
+	 * 교수가 개설할 강의의 강의 계획서 등록
 	 * </pre>
 	 * <pre>
 	 * @param lctre_ActplnVO

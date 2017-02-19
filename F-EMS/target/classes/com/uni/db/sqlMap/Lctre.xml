@@ -117,12 +117,12 @@
 		
 	
 	<!-- 강의 등록 -->
-	<insert id="insertLctre" parameterClass="lctre">
+	<update id="insertLctre" parameterClass="lctre">
 	<isNotEmpty prepend="AND" property="type">
 		INSERT INTO LCTRE(LC_LCTRE_NO,LC_PROFSR_NO,LC_LCTRBGN_DT,LC_LCTRE_NMPR,LC_WIK_LCTRE_DAYWEEK,LC_LCTRE_TIME,LC_LCTRUM_NO,LC_PNT,LC_GRADE,LC_LCTRE_EVL_SCOPE,LC_OPEN_AT,LC_LCTRE_ORG,LC_LCTRE_CODE,LC_SPLIT)
-			VALUES(#LC_LCTRE_NO#,#LC_PROFSR_NO#,#LC_LCTRBGN_DT#,#LC_LCTRE_NMPR#,#LC_WIK_LCTRE_DAYWEEK#,#LC_LCTRE_TIME#,#LC_LCTRUM_NO#,#LC_PNT#,#LC_GRADE#,#LC_LCTRE_EVL_SCOPE#,#LC_OPEN_AT#,#LC_LCTRE_ORG#,#LC_LCTRE_CODE#,#LC_SPLIT#)
+			VALUES(ltr_seq.nextval,#LC_PROFSR_NO#,#LC_LCTRBGN_DT#,#LC_LCTRE_NMPR#,#LC_WIK_LCTRE_DAYWEEK#,#LC_LCTRE_TIME#,#LC_LCTRUM_NO#,#LC_PNT#,#LC_GRADE#,#LC_LCTRE_EVL_SCOPE#,#LC_OPEN_AT#,#LC_LCTRE_ORG#,#LC_LCTRE_CODE#,#LC_SPLIT#)
 	</isNotEmpty>
-	</insert>
+	</update>
 	
 	<!-- 강의 수정 -->
 	<!-- <update id="updateLctre" parameterClass="lctre">

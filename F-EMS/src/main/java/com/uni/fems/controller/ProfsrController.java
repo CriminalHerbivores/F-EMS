@@ -60,8 +60,8 @@ public class ProfsrController {
 	@Autowired
 	private LctreService lctreService;
 	
-	@Autowired
-	private Lctre_ActplnService lctre_ActplnService;
+	//@Autowired
+	//private Lctre_ActplnService lctre_ActplnService;
 
 	@Autowired
 	private Lctre_Unq_NoService lctre_Unq_NoService;
@@ -204,7 +204,7 @@ public class ProfsrController {
 	// (value = "/requestLctre", method = RequestMethod.GET)
 	public String requestLctre(Model model, HttpSession session)
 			throws ServletException, IOException {
-		String url = "professor/requestLctre";
+		String url = "professor/requestLctre";//교수가 강의개설 요청 끝난 후 어떻게 할지 해야할듯, 개설한 강의 목록을 보게할지 등등
 		System.out.println("==================================================================================Controller111111111111");
 
 		LctreVO lctreVO = null;
@@ -216,10 +216,8 @@ public class ProfsrController {
 			System.out.println("==================================================================================Controller333333333333");
 			
 
-			lctreVO.setLc_Lctre_No(1);
-			lctreService.insertLctre(lctreVO);
-			lctre_ActplnVO.setLa_Lctre_No(1);
-			lctre_ActplnService.insertLctre_Actpln(lctre_ActplnVO);
+			lctreService.openLctre(lctreVO,lctre_ActplnVO);
+			//lctre_ActplnService.insertLctre_Actpln(lctre_ActplnVO);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -229,8 +227,8 @@ public class ProfsrController {
 		System.out.println("==================================================================================Controller55555555");
 
 		
-		model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
-		model.addAttribute("lctreVO",lctreVO);
+		//model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
+		//model.addAttribute("lctreVO",lctreVO);
 
 		return url;
 	}

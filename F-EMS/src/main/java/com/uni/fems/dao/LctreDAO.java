@@ -46,7 +46,7 @@ public interface LctreDAO {
 	
 	/**
 	 * <pre>
-	 * 개설할 강의 등록
+	 * 교수가 개설할 강의를 등록
 	 * </pre>
 	 * <pre>
 	 * @param lctreVO
