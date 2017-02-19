@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Lctre_Gnt">
+
+ 	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	
+	
+	<update id="notice_Table" parameterClass="str">
+		create table N_$value$(	
+			N_BBS_NO number NOT NULL,
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			CONSTRAINT N_$value$_PK PRIMARY KEY(BBS_NO),
+		)
+	</update>
+	
+	<update id="date_Table" parameterClass="str">
+		create table D_$value$(	
+			D_BBS_NO number NOT NULL,
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			FLPTH_NO NUMBER,
+			CONSTRAINT D_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT D_$value$_LCTRE_FLPTH_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		)
+	
+	</update>
+	<update id="qna_Table" parameterClass="str">
+		create table Q_$value$(	
+			Q_BBS_NO number NOT NULL,
+			STDNT_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			REPLY varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			CONSTRAINT Q_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT Q_$value$_STDNT_FK FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
+		)
+	
+	</update>
+	<update id="task_Table" parameterClass="str">
+		create table T_$value$(	
+			T_BBS_NO number NOT NULL,
+			STDNT_NO varchar2(50),
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			RDCNT number,
+			FLPTH_NO NUMBER,
+			CONSTRAINT T_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT T_$value$_STDNT_FK FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
+			CONSTRAINT T_$value$_LCTRE_FLPTH_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		)
+	
+	</update>
+	<update id="video_Table" parameterClass="str">
+		create table V_$value$(	
+			V_BBS_NO number NOT NULL,
+			SJ varchar2(200),
+			CN varchar2(3000),
+			WRITNG_DT date,
+			FLPTH_NO NUMBER,
+			CONSTRAINT V_$value$_PK PRIMARY KEY(BBS_NO),
+			CONSTRAINT V_$value$_LCTRE_FLPTH_FK FOREIGN KEY(FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
+		)
+	
+	</update>
+	<update id="watch_Table" parameterClass="str">
+		create table P_$value$(	
+			P_BBS_NO number NOT NULL,
+			STDNT_NO varchar2(50),
+			VIDEO_BBS_NO NUMBER,
+			VIDEO_DT date,
+			ST_VIDEO_DT date,
+			CONSTRAINT P_$value$_PK PRIMARY KEY(P_BBS_NO),
+			CONSTRAINT P_$value$_V_$value$_FK FOREIGN KEY(VIDEO_BBS_NO) REFERENCES V_$value$(V_BBS_NO)
+			CONSTRAINT P_$value$_STDNT_FK FOREIGN KEY(STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
+		)
+	
+	</update>
+	
+</sqlMap>
