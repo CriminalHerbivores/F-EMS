@@ -1,7 +1,7 @@
 package com.uni.fems.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
@@ -36,8 +36,8 @@ public class Schafs_SchdulVO implements Serializable{
 	private String sd_Schdul_Nm;   // 일정명
 	private String sd_Schdul_Sumry;   // 일정 요약
 	private String sd_Detail_Dc;   // 상세 설명
-	private Timestamp sd_Bgnde;   // 시작일
-	private Timestamp sd_Enddt;   // 종료일
+	private Date sd_Bgndt;   // 시작일
+	private Date sd_Enddt;   // 종료일
 	
 
 }

@@ -76,6 +76,25 @@ public class Lctre_SearchVO implements Serializable {
 	private String la_Presnatn;   // 발표
 	private String la_Atend;   // 출석
 	private String la_Attd;   // 태도
+	private String la_Week1;   // 1주차
+	private String la_Week2;   // 2주차
+	private String la_Week3;   // 3주차
+	private String la_Week4;   // 4주차
+	private String la_Week5;   // 5주차
+	private String la_Week6;   // 6주차
+	private String la_Week7;   // 7주차
+	private String la_Week8;   // 8주차
+	private String la_Week9;   // 9주차
+	private String la_Week10;   // 10주차
+	private String la_Week11;   // 11주차
+	private String la_Week12;   // 12주차
+	private String la_Week13;   // 13주차
+	private String la_Week14;   // 14주차
+	private String la_Week15;   // 15주차
+
+	
+	
+	
 	
 	// 강의고유번호 LCTRE_UNQ_NO
 	private String lu_Lctre_Code;   // 강의 코드
@@ -90,8 +109,8 @@ public class Lctre_SearchVO implements Serializable {
 	private String knd_Lctre_Knd;   // 강의종류
 	
 	// 관심목록 INTRST_LIST
-	private String in_Stdnt_No;   // 학생번호
-	private int in_Lctre_No;   // 강의번호
+//	private String in_Stdnt_No;   // 학생번호
+//	private int in_Lctre_No;   // 강의번호
 	
 	// 교수 PROFSR
 	private String pr_Profsr_No;   // 교수 번호
