@@ -64,9 +64,7 @@ public class LctreDAOImpl implements LctreDAO {
 		return listLctre;
 	}
 	
-	/**
-	 * 강의 등록 (완료)
-	 */
+	// 교수가 강의 등록 요청
 	@Override
 	public void insertLctre(LctreVO lctreVO) throws SQLException {
 		System.out.println("==================================================================================LctreDAOImpl  111111");

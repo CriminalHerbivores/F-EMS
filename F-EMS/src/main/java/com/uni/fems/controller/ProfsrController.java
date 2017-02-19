@@ -60,8 +60,8 @@ public class ProfsrController {
 	@Autowired
 	private LctreService lctreService;
 	
-	@Autowired
-	private Lctre_ActplnService lctre_ActplnService;
+	//@Autowired
+	//private Lctre_ActplnService lctre_ActplnService;
 
 	@Autowired
 	private Lctre_Unq_NoService lctre_Unq_NoService;
@@ -169,12 +169,12 @@ public class ProfsrController {
 	 */
 	@RequestMapping(value="/requestLctre", method=RequestMethod.GET)
 	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctreForm(Model model, HttpSession session)
+	public String requestLctreForm(Model model, HttpSession session,ProfsrVO profsrVO)
 			throws ServletException, IOException {
 		String url = "professor/requestLctre";
 		
+		//ProfsrVO profsrVO = null;
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");	//로그인한 교수정보 가져옴
-		ProfsrVO profsrVO = null;
 		
 		try {
 			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
@@ -184,6 +184,7 @@ public class ProfsrController {
 		}
 		model.addAttribute("profsrVO", profsrVO);
 		
+		System.out.println("*********************"+profsrVO.getPr_Profsr_No());
 		return url;
 	}
 
@@ -202,24 +203,26 @@ public class ProfsrController {
 	 */
 	@RequestMapping(value="/requestLctre", method=RequestMethod.POST)
 	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctre(Model model, HttpSession session)
+	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO,ProfsrVO profsrVO)
 			throws ServletException, IOException {
-		String url = "professor/requestLctre";
+		String url = "redirect:openLctreList";//교수가 강의개설 요청 끝난 후 어떻게 할지 해야할듯, 개설한 강의 목록을 보게할지 등등
+		
+		String pr_Profsr_No = (String) session.getAttribute("loginUser");
+		
 		System.out.println("==================================================================================Controller111111111111");
-
-		LctreVO lctreVO = null;
-		Lctre_ActplnVO lctre_ActplnVO = null;
+		System.out.println("************************"+lctreVO);
+		System.out.println("************************"+lctre_ActplnVO);
+		System.out.println("*********************"+pr_Profsr_No);
+		//LctreVO lctreVO = null;
+		//Lctre_ActplnVO lctre_ActplnVO = null;
 		System.out.println("==================================================================================Controller22222222222");
 		
 		
 		try {
 			System.out.println("==================================================================================Controller333333333333");
 			
-
-			lctreVO.setLc_Lctre_No(1);
-			lctreService.insertLctre(lctreVO);
-			lctre_ActplnVO.setLa_Lctre_No(1);
-			lctre_ActplnService.insertLctre_Actpln(lctre_ActplnVO);
+			profsrService.selectProfsr(pr_Profsr_No);
+			lctreService.openLctre(lctreVO,lctre_ActplnVO);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -229,12 +232,24 @@ public class ProfsrController {
 		System.out.println("==================================================================================Controller55555555");
 
 		
-		model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
-		model.addAttribute("lctreVO",lctreVO);
-
+		//model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
+		//model.addAttribute("lctreVO",lctreVO);
+		//model.addAttribute("profsrVO", profsrVO);
 		return url;
 	}
 
+	
+	// 봐서 삭제할거임
+	@RequestMapping(value="/openLctreList", method=RequestMethod.GET)
+	// (value = "/requestLctre", method = RequestMethod.GET)
+	public String requestLctreListForm(Model model, HttpSession session)
+			throws ServletException, IOException {
+		String url = "professor/requestLctreList";
+		
+		return url;
+	}
+	
+	
 	
 	
 	

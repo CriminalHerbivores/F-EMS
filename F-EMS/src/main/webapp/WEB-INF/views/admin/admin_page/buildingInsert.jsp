@@ -46,29 +46,29 @@ function submitForm(form) {
 	document.getElementById("formm").submit();
 	} 
 }
-
-
 </script>
 
-
 <body>
-<article>
+<table class="non-border margin-auto">
+	<tr><td>
 <form method="post" name="formm">
 <h1>건물 등록</h1>
 
-	<table class="def-table tb-border">
-		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_No"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
-		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_Nm"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+	<table class="def-table-auto tb-border table-hover">
+		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_No"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
+		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_Nm"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
+		<tr><td>사용 여부</td><td><input type="radio" name="bd_Useyn" value="y" checked="checked">사용&nbsp;&nbsp;<input type="radio" name="bd_Useyn" value="n">사용 안함</td><td></td><td></td></tr>
 	</table>
 
 <br/>
 <div class="clear"></div>
 <div id="buttons" class="float-right">
-<input type="button" class="def-btn btn-md btn-gray" value="목록" onclick="go.history(-1);">&nbsp;&nbsp;<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form);"> 
+<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form);">&nbsp;&nbsp;
+<input type="button" class="def-btn btn-md btn-gray" value="목록" onclick="go.history(-1);">
 
 </div>
 
 </form>
-</article>
+</td></tr></table>
 </body>
 </html>

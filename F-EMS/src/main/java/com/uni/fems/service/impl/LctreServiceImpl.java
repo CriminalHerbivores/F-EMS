@@ -49,13 +49,16 @@ public class LctreServiceImpl implements LctreService {
 	}
 
 	
-	// 강의 개설 요청
+	// 교수가 개설 강의 폼을 작성하여 직원에게 강의 개설 요청
 	@Override
-	public void insertLctre(LctreVO lctreVO) throws SQLException {
+	public void openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
 		System.out.println("==================================================================================LctreServiceImpl  1111111111");
 
 		//강의등록시 필요한 정보 불러오게 해야할듯? 조회쪽
 		lctreDAO.insertLctre(lctreVO);
+		lctre_ActplnDAO.insertLctre_Actpln(lctre_ActplnVO);
+		
+		
 		System.out.println("==================================================================================LctreServiceImpl  2222222222");
 
 	}
