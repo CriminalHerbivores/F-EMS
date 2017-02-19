@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<!--  [[개정이력(Modification Information)]]        -->
+<!--  수정일       수정자      수정내용             -->
+<!--  ==========   ======    ==============         -->
+<!--  $2017.02.19    KJS       최초작성             -->
+<!--  $2017.02.20    KJS       기본작성             -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
+<sqlMap namespace="Lctre_Date">
+
+ 	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	
+	<select id="listAllLctre_Date" >
+		select * from LD_$tabl_Nm$ where LD_SJ like '%$ld_Sj$%' order by LD_BBS_NO desc
+	</select>
+	 
+	<select id="totalLctre_Date" >
+		select count(*) from LD_$tabl_Nm$ where LD_SJ like '%$ld_Sj$%'
+	</select>
+	
+	<select id="getLctre_Date" >
+		select * from LD_$tabl_Nm$ where LD_BBS_NO=#ld_Bbs_No#
+	</select>
+	
+	<update id="insertLctre_Date" >
+		insert into LD_$tabl_Nm$(LD_BBS_NO,LD_SJ,LD_CN,LD_WRITNG_DT,LD_RDCNT,LD_FLPTH_NO) 
+		values(((select max(LD_BBS_NO) from LD_$tabl_Nm)+1)),#ld_Sj#,#ld_Cn#,sysdate,0,#ld_Flpth_No#)
+	</update>
+	
+	<update id="updateLctre_Date" >
+		update LD_$tabl_Nm$ set LD_SJ=#ld_Sj#,LD_CN=#ld_Cn#,LD_FLPTH_NO=#ld_Flpth_No# 
+		where LD_BBS_NO=#ld_Bbs_No#
+	</update>
+	
+	<update id="updateLctre_Date_Rdcnt" >
+		update LD_$tabl_Nm$ set LD_RDCNT=#ld_Rdcnt#
+		where LD_BBS_NO=#ld_Bbs_No#
+	</update>
+	
+	<update id="deleteLctre_Date" >
+		delete from LD_$tabl_Nm$ where LD_BBS_NO=#ld_Bbs_No#
+	</update>
+	
+	
+</sqlMap>

@@ -32,8 +32,6 @@ public class Bbs_List_BbsVO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int bb_Bbs_no;			//게시판 번호
-	private String bl_Bbs_Nm;   	// 게시판 명
-	private String bl_Table_Nm;   	// 테이블 명
 	private String bb_Sklstf_no;	//작성자 번호
 	private String bb_Sj;			//게시판 제목
 	private String bb_Cn;			//게시판 내용
