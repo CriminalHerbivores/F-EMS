@@ -22,11 +22,7 @@
 <script type="text/javascript">
 function searchLctre() {
 	var url = "findLctre";
-	window
-			.open(
-					url,
-					"_blank_1",
-					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
 }
 
 /* $(document).ready(function(){
@@ -50,7 +46,7 @@ function searchLctre() {
  
  
 /* 로그인한 교수 정보로 가져옴 */
- $(document).ready(function() {
+/*  $(document).ready(function() { */
 	   /* opener.document.formm.lu_Lctre_Nm.value=lu_Lctre_Nm;
 	   opener.document.formm.sit_Subjct.value=sit_Subjct;
 	   opener.document.formm.lu_Lctre_Code.value=lu_Lctre_Code;
@@ -61,8 +57,8 @@ function searchLctre() {
 //	$('#pr_test').val('${profsrVO.pr_Email}');//db값 갖고오고픔
 	   
 	   
-	   
-	});
+/* 	   
+	}); */
  
  
  
@@ -73,7 +69,7 @@ function searchLctre() {
 </head>
 <body>
 <h2>강의 개설 요청</h2>
-<form id="formm" name="formm" method="post" action="requestLctre" >
+<form id="formm" name="formm" method="post"><!--  action="requestLctre" > -->
 <table class="def-table-auto tb-border table-hover">
 <tr><th colspan="4">개설 강의 정보</th></tr>
 	<tr>
