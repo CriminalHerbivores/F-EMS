@@ -496,6 +496,7 @@
 <!--  ============= css =============  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/accordion.css">
@@ -532,26 +533,30 @@
 
 
 <!--  ============= js =============  -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
-<!--  ============= js =============  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
+	<!--  ============= js ============= 
+<%-- <script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script> --%>
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+
 
 
 <!-- //////////////////////////////////// -->
 
 
-<!--ssh추가2  -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+
+
+
 
 <!-- ssh 추가 -->
 <script type="text/javascript"
