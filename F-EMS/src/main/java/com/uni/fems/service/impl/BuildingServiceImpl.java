@@ -3,6 +3,8 @@ package com.uni.fems.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import lombok.Data;
+
 import com.uni.fems.dao.BuildingDAO;
 import com.uni.fems.dto.BuildingVO;
 import com.uni.fems.service.BuildingService;
@@ -24,20 +26,16 @@ import com.uni.fems.service.BuildingService;
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
+@Data
 public class BuildingServiceImpl implements BuildingService {
  
  private BuildingDAO buildingDAO;
- public void setBuildingDAO(BuildingDAO buildingDAO){
-  this.buildingDAO=buildingDAO;
- }
+
  
  
 @Override
 public void insertBuilding(BuildingVO buildingVO) throws SQLException {
-
 		buildingDAO.insertBuilding(buildingVO);
-
-	System.out.println("[서비스임플]여기1111111111111111111111111111111");
 }
 
 
@@ -52,5 +50,3 @@ public void insertBuilding(BuildingVO buildingVO) throws SQLException {
  
  
 }
-
-

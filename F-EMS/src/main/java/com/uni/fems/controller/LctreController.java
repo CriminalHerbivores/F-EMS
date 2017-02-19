@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,8 +62,8 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseList")
-	public String courseList(HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value="/courseList", method=RequestMethod.GET)
+	public String courseListForm(HttpServletRequest request, HttpSession session) {
 		String url = "course_registration/courseList";
 		
 //		Lctre_SearchVO lctre_SearchVO = lctreService.insertLctre_Search();
@@ -83,17 +84,6 @@ public class LctreController {
 		
 		return url;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	// 수강신청 가능 목록

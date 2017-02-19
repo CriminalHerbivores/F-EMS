@@ -36,12 +36,15 @@ theForm.action = "/admin/buildingInsert";
 theForm.submit(); */
 	
 /* } */
-function go_building() {
-	var bd_no = document.formm.bd_no.value;
-	var bd_nm = document.formm.bd_nm.value;
-	if(!bd_no=="" && !bd_nm==""){
-		document.formm.submit();
-	}
+function submitForm(form) {
+ 	var bd_No = document.formm.bd_No.value;
+	var bd_Nm = document.formm.bd_Nm.value;
+	if(bd_No=="" || bd_Nm==""){
+		alert("건물등록실패-아작스로 바꾸기");
+	}else{
+		
+	document.getElementById("formm").submit();
+	} 
 }
 
 
@@ -54,13 +57,16 @@ function go_building() {
 <h1>건물 등록</h1>
 
 	<table class="def-table tb-border">
-		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_no"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
-		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_nm"></td><td><input type="button" class="def-btn" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_No"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
+		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_Nm"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</tr>
 	</table>
 
 <br/>
-<input type="button" class="def-btn" value="이전" onclick="history.go(-1);">&nbsp;&nbsp;<input type="submit" class="def-btn" value="등록" onclick="go_building()"> <!-- go_admin_page() -->
+<div class="clear"></div>
+<div id="buttons" class="float-right">
+<input type="button" class="def-btn btn-md btn-gray" value="목록" onclick="go.history(-1);">&nbsp;&nbsp;<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form);"> 
 
+</div>
 
 </form>
 </article>
