@@ -53,7 +53,7 @@ public interface LctreDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	int insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
+	void insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
 	
 	int updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
 	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제

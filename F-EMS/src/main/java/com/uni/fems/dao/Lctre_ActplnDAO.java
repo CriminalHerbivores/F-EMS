@@ -34,7 +34,7 @@ public interface Lctre_ActplnDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int insertLctre_Actpln(Lctre_ActplnVO lctre_ActplnVO) throws SQLException;	//강의계획서 등록
+	void insertLctre_Actpln(Lctre_ActplnVO lctre_ActplnVO) throws SQLException;	//강의계획서 등록
 	
 	
 	/**
