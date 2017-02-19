@@ -78,12 +78,13 @@ function searchLctre() {
 			<input type="text" class="def-input-text-sm custom-form-control">학기
 		</td>
 		<th>개설학과전공</th>
-		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly></td>
+		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>
+		<input type="hidden" name="lc_Lctre_Code" value="${lctre_SearchVO.lu_Lctre_Code}"></td> <!-- 여기서 강의고유코드 정보로 lc_Lctre_Code 가져오고 싶음 -->
 	 </tr>
 	 
 	 <tr>
 	 	<th>교과목명</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm" readonly>&nbsp;<button class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
 	 	<th>강의번호</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code" readonly></td>
 	 </tr>
@@ -106,7 +107,8 @@ function searchLctre() {
 	 <tr>
 	<%-- <c:forEach items="${profsrVO}" var="profsr"> --%>
 	 	<th>교수이름</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Nm}" readonly></td>  
+	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Nm}" readonly>
+	 	<input type="hidden" name="lc_Profsr_No" value="${profsrVO.pr_Profsr_No}"></td>   <!-- 강의 테이블에 올라갈 로그인한 교수 정보로 lc_Profsr_No 가져오고픔 -->
 	 	
 	 	
 	 	<th>담당교수전화</th>
@@ -133,7 +135,7 @@ function searchLctre() {
 	 	<td><input type="text" class="def-input-text-md custom-form-control"   name="lc_Lctre_Time"></td>
 	 	
 	 	<th>희망 강의 정원</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control"   name=""></td>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control"   name=""></td> <!-- 강의 테이블의 강의실번호 lc_Lctrum_No 를 갖고와야 할텐데... -->
 	 </tr>
 	   <tr>
 	      <th>학습평가방법(100%)</th>
