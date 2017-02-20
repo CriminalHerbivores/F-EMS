@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sun.security.ntlm.Client;
+import com.uni.fems.controller.common.UnitDate;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
 import com.uni.fems.dto.LctreVO;
@@ -46,7 +47,8 @@ import com.uni.fems.service.ProfsrService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
- * 2017.02.17.    KJH       추가작성(강의 개설 요청)
+ * 2017.02.17.    KJH       추가작성
+ * 2017.02.17.    KJH       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -169,23 +171,22 @@ public class ProfsrController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/requestLctre", method=RequestMethod.GET)
-	// (value = "/requestLctre", method = RequestMethod.GET)
 	public String requestLctreForm(Model model, HttpSession session,ProfsrVO profsrVO)
 			throws ServletException, IOException {
+
 		String url = "professor/requestLctre";
-		
-		//ProfsrVO profsrVO = null;
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");	//로그인한 교수정보 가져옴
 		
 		try {
 			profsrVO = profsrService.selectProfsr(pr_Profsr_No);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int[] i = new UnitDate().getDay();
+		model.addAttribute("hack",i[3]); //학기
+		
 		model.addAttribute("profsrVO", profsrVO);
 		
-		System.out.println("*********************  getPr_Profsr_No : "+profsrVO.getPr_Profsr_No());
 		return url;
 	}
 
@@ -193,7 +194,7 @@ public class ProfsrController {
 	
 	/**
 	 * <pre>
-	 * 교수가 강의 개설폼을 작성하여 등록 요청
+	 * 교수가 강의 개설폼을 작성하여 등록 요청하는 로직
 	 * </pre>
 	 * <pre>
 	 * @param model
@@ -263,7 +264,6 @@ public class ProfsrController {
 				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -271,71 +271,58 @@ public class ProfsrController {
 		return url;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@RequestMapping(value = "/profsrInsert", method = RequestMethod.GET)
-//	String profsrInsertForm() {
-//		String url = "manager/profsr/profsrInsertForm";
-//		return url;
-//	}
-//
-//	@RequestMapping(value = "/profsrInsert", method = RequestMethod.POST)
-//	String profsrInsert(ProfsrVO profsrVO, @RequestParam String file,
-//			Model model) {
-//		String url = "redirect:profsrInsert";
-//		System.out.println("profsrVO : " + profsrVO);
-//		try {
-//			profsrService.insertProfsr(profsrVO);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return url;
-//	}
-//
-//	@RequestMapping("/profsrList")
-//	public String profsrList(Model model, HttpServletRequest request)
-//			throws ServletException, IOException {
-//		String url = "manager/profsr/profsrListForm";
-//		String key = request.getParameter("key");
-//		String tpage = request.getParameter("tpage");
-//
-//		if (key == null) {
-//			key = "";
-//		}
-//		if (tpage == null) {
-//			tpage = "1";
-//		} else if (tpage.equals("")) {
-//			tpage = "1";
-//		}
-//		model.addAttribute("key", key);
-//		model.addAttribute("tpage", tpage);
-//
-//		List<ProfsrVO> profsrList = null;
-//		String paging = null;
-//		try {
-//			profsrList = profsrService.selectNameAllPage(
-//					Integer.parseInt(tpage), key);
-//			paging = profsrService.pageNumber(Integer.parseInt(tpage), key);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("profsrList", profsrList);
-//		int n = profsrList.size();
-//		model.addAttribute("profsrListSize", n);
-//		model.addAttribute("paging", paging);
-//		return url;
-//
-//	}
+		
+	/**
+	 * <pre>
+	 * 교수가 개설 강의 및 강의계획서 수정하는 폼
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/updateLctre", method = RequestMethod.GET)
+	String lctreUpdateForm(Model model, LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws ServletException, IOException {
+		String url = "professor/updateLctre";
+		
+		model.addAttribute("lctreVO", lctreVO);
+		model.addAttribute("lctre_ActplnVO", lctre_ActplnVO);
+		
+		return url;
+	}
+
+	/**
+	 * <pre>
+	 * 교수가 개설 강의 및 강의계획서 수정하는 로직
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/updateLctre", method = RequestMethod.POST)
+	String lctreUpdate(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, Model model) throws ServletException, IOException {
+		String url = "redirect:openLctreList";
+		
+		try {
+			lctreService.updateLctre(lctreVO,lctre_ActplnVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctreVO", lctreVO);
+		model.addAttribute("lctre_ActplnVO", lctre_ActplnVO);
+
+		return url;
+	}
+
+
 
 }

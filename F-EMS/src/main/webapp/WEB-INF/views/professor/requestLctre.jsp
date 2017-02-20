@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<jsp:useBean id="now" class="java.util.Date" />
+
 <%--
  * <pre>
  * 교수가 강의 정보를 입력하여 강의 개설요청을 하는 JSP
@@ -11,6 +16,7 @@
  * --------     --------    ----------------------
  * 2017.02.17      KJH        최초작성
  * 2017.02.17      KJH        추가작성
+ * 2017.02.20      KJH        추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  --%>
 <!DOCTYPE html>
@@ -24,6 +30,35 @@ function searchLctre() {
 	var url = "findLctre";
 	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
 }
+
+
+<%-- $(document).on('click','.findLctre',function(e){
+	e.preventDefault();
+	 var bbs_no = $('#bbs_no').val();
+	var cmntNo = $(this).attr('id');
+	var content = $('#comment_update').val();
+	var	data={'content' : content,
+			  'cmntNo' : cmntNo,
+			  'bbs_no' : bbs_no 
+			}*/
+	$.ajax({
+		url:"<%=request.getContextPath()%>/profsr/findLctre",
+		contentType:'application/json; charset=utf-8',
+		dataType:'text',
+		data:JSON.stringify(data),
+		type:'post',
+		  success : function(data){
+	    	   $('#comment_content').val('');
+		       $('div #comment').empty();
+	        $('div #comment').append(data);
+	     },
+	       error:function(error){
+	       alert("오류났음");   
+	       }
+	    });
+}); --%>
+
+
 
 /* $(document).ready(function(){
 	
@@ -77,8 +112,7 @@ function searchLctre() {
 <tr><th colspan="4">개설 강의 정보</th></tr>
 	<tr>
 		<th>개설년도/학기</th>
-		<td><input type="text" class="def-input-text-sm custom-form-control" readonly>년도
-			<input type="text" class="def-input-text-sm custom-form-control" readonly>학기
+		<td><fmt:formatDate value="${now}" pattern="yyyy"/>년도&nbsp;${hack}학기
 		</td>
 		<th>개설학과전공</th>
 		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>
