@@ -4,12 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.13    송선호            최초작성               -->
-<!--  Copyright (c) 2017 by DDIT All right reserved -->
+<!--  <fmt:formatDate value="${now}" pattern="yyyy" />.02.13    송선호            최초작성               -->
+<!--  Copyright (c) <fmt:formatDate value="${now}" pattern="yyyy" /> by DDIT All right reserved -->
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +26,7 @@
     $("#sd_Bgndt, #sd_Enddt").datepicker();
   });
 
+
   
   
 </script>
@@ -37,13 +39,12 @@
 });
  */
  
- function insertSchdul(){
+<%--  function insertSchdul(){
 	 var sd_Bgndt = $('#sd_Bgndt').val();
 	 var sd_Enddt = $('#sd_Enddt').val();
-	 var sd_Schdul_Nm = $('#sd_Schdul_Nm').val();
 	 var sd_Schdul_Sumry = $('#sd_Schdul_Sumry').val();
 	 var dataWrite ={ 'sd_Bgndt':sd_Bgndt, 'sd_Enddt':sd_Enddt,
-			 'sd_Schdul_Nm':sd_Schdul_Nm,'sd_Schdul_Sumry':sd_Schdul_Sumry
+			 'sd_Schdul_Sumry':sd_Schdul_Sumry
 	 };
 	 $.ajax({
 		 url : '<%=request.getContextPath()%>/schafs_schdul/insertSchdul',
@@ -52,18 +53,28 @@
 		 dataType:'text',
 		 type:'post',
 		 success: function(data){
-					alert(data);
-			$('div #append1').append(data);
+					/* alert(data); */
+					
+		for(var i=1;i<=12;i++){
+			i+='';
+			if($('#selectmonth').val()==i+"월"){
+				$('div #append'+i).append(data);
+				alert(i+'월 일정이 추가되었습니다.')
+			}
+		}
 		 },
 		 error: function(data){
 				alert(data);
 				alert('에러');
 			}
 	 });
- }
+ } --%>
 
 </script>
+<script>
 
+
+</script>
 
     
 </head>
@@ -124,30 +135,20 @@
         </div>
 
 
-<form name="formm" method="post" action="schafs_schdul">
+<form name="formm" method="post" action="insertSchdul">
 <table class="def-table-auto tb-border table-hover">
   <tr>
-	<th>월</th>
 	<th>시작날짜</th>
 	<th>종료날짜</th>
-	<th>일정명</th>
 	<th style="width:500px;">일정요약</th>
-	<td rowspan="2"><input type="button" class="def-btn btn-md btn-color" value="추가" onclick="insertSchdul();"></td>
+	<td rowspan="2"><input type="button" class="def-btn btn-md btn-color" value="추가" onclick="submitForm(this.form);"></td>
   </tr>
   <tr>
-	<td>
-	<select name="selectmonth" class="combobox-sm custom-form-control">
-					<option value="1월">01</option><option value="2월">02</option><option value="3월">03</option><option value="4월">04</option><option value="5월">05</option><option value="6월">06</option><option value="7월">07</option><option value="8월">08</option><option value="9월">09</option><option value="10월">10</option><option value="11월">11</option><option value="12월">12</option>
-				</select>
-	</td>
 	<td>
 	<input type="text" id="sd_Bgndt" name="sd_Bgndt" class="def-input-text-md custom-form-control">
 	</td>
 	<td>
 	<input type="text" id="sd_Enddt" name="sd_Enddt" class="def-input-text-md custom-form-control">
-	</td>
-	<td>
-	<input type="text" id="sd_Schdul_Nm" name="sd_Schdul_Nm" class="def-input-text-full custom-form-control">
 	</td>
 	<td>
 	<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" class="def-input-text-full custom-form-control">
@@ -168,146 +169,1042 @@
 	<table class="t_all">
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>01</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 1월
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 1월</p>
+				
+				<c:forEach var="list1" items="${list1 }" varStatus="status">
+				<div id="content1">${list1.sd_Bgndt } &nbsp; ~ &nbsp;${list1.sd_Enddt}
+				: &nbsp; ${list1.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list1.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list1.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list1.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list1.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list1.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list1.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list1.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
+		
+				
+				
 				<div id="append1"></div>
+				
 			</td>
 		</tr>
 		
 		
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>02</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 2월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 2월</p>
+				<c:forEach var="list2" items="${list2 }" varStatus="status">
+				<div id="content2">${list2.sd_Bgndt } &nbsp; ~ &nbsp;${list2.sd_Enddt}
+				: &nbsp; ${list2.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list2.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list2.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list2.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list2.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list2.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list2.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list2.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append2"></div>
 			</td>
 		</tr>
+		
+		
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>03</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 3월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 3월</p>
+				<c:forEach var="list3" items="${list3 }" varStatus="status">
+				<div id="content1">${list3.sd_Bgndt } &nbsp; ~ &nbsp;${list3.sd_Enddt}
+				: &nbsp; ${list3.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list3.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list3.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list3.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list3.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list3.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list3.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list3.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append3"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>04</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 4월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 4월</p>
+			<c:forEach var="list4" items="${list4 }" varStatus="status">
+				<div id="content1">${list4.sd_Bgndt } &nbsp; ~ &nbsp;${list4.sd_Enddt}
+				: &nbsp; ${list4.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list4.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list4.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list4.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list4.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list4.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list4.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list4.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append4"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>05</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 5월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 5월</p>
+				<c:forEach var="list5" items="${list5 }" varStatus="status">
+				<div id="content1">${list5.sd_Bgndt } &nbsp; ~ &nbsp;${list5.sd_Enddt}
+				: &nbsp; ${list5.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list5.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list5.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list5.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list5.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list5.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list5.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list5.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append5"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>06</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 6월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 6월</p>
+				<c:forEach var="list6" items="${list6 }" varStatus="status">
+				<div id="content1">${list6.sd_Bgndt } &nbsp; ~ &nbsp;${list6.sd_Enddt}
+				: &nbsp; ${list6.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list6.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list6.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list6.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list6.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list6.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list6.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list6.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append6"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>07</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 7월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 7월</p>
+				<c:forEach var="list7" items="${list7 }" varStatus="status">
+				<div id="content1">${list7.sd_Bgndt } &nbsp; ~ &nbsp;${list7.sd_Enddt}
+				: &nbsp; ${list7.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list7.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list7.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list7.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list7.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list7.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list7.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list7.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append7"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>08</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 8월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 8월</p>
+			<c:forEach var="list8" items="${list8 }" varStatus="status">
+				<div id="content1">${list8.sd_Bgndt } &nbsp; ~ &nbsp;${list8.sd_Enddt}
+				: &nbsp; ${list8.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list8.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list8.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list8.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list8.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list8.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list8.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list8.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append8"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>09</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 9월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 9월</p>
+				<c:forEach var="list9" items="${list9 }" varStatus="status">
+				<div id="content1">${list9.sd_Bgndt } &nbsp; ~ &nbsp;${list9.sd_Enddt}
+				: &nbsp; ${list9.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list9.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list9.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list9.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list9.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list9.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list9.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list9.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append9"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>10</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 10월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 10월</p>
+				<c:forEach var="list10" items="${list10 }" varStatus="status">
+				<div id="content1">${list10.sd_Bgndt } &nbsp; ~ &nbsp;${list10.sd_Enddt}
+				: &nbsp; ${list10.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list10.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list10.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list10.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list10.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list10.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list10.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list10.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append10"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>11</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 11월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 11월</p>
+				<c:forEach var="list11" items="${list11 }" varStatus="status">
+				<div id="content1">${list11.sd_Bgndt } &nbsp; ~ &nbsp;${list11.sd_Enddt}
+				: &nbsp; ${list11.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list11.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list11.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list11.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list11.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list11.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list11.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list11.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append11"></div>
 			</td>
 		</tr>
 		<tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>12</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 12월
-				 <button class="def-btn btn-search btn-color" value="조회">+추가</button>
-				</p>
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 12월</p>
+				<c:forEach var="list12" items="${list12 }" varStatus="status">
+				<div id="content1">${list12.sd_Bgndt } &nbsp; ~ &nbsp;${list12.sd_Enddt}
+				: &nbsp; ${list12.sd_Schdul_Sumry }
+				
+				
+				<input type="button" data-target="#${list12.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
+				
+		
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+			<!--모달부분  -->
+			
+	<form method="post" action="updateSchdul">
+	<div class="modal fade" id="${list12.sd_No}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">수정 페이지</h4>
+				</div>
+				
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">
+					<input type="hidden" id="sd_No" name="sd_No" value=${list12.sd_No }>
+					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list12.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list12.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list12.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
+				</div>
+				<script>
+				  $(function(){
+						 $("#${status.index+66}, #${status.count+4}").datepicker();
+					  });
+				</script>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					
+						<input type="submit" class="btn btn-default" value="수정" >
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="취소">
+				</div>
+			</div>
+		</div>
+	</div>
+		</form>
+<form method="post" action="deleteSchdul">
+	<div class="modal fade" id="${status.index+34}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?
+				
+				<input type="hidden" id="sd_No" name="sd_No" value=${list12.sd_No }>
+				
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					 <!--삭제 모달  -->
+						<input type="submit" class="btn btn-default" value="예">
+					 <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+			</div>
+			</c:forEach>
 				<div id="append12"></div>
 			</td>
 		</tr>
@@ -319,11 +1216,11 @@
 
 <!-- <tr>
 			<th class="all_month">
-				2017년<br>
+				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
 				<strong>01</strong>월
 			</th>
 			<td class="all_zoom">
-				<p>2017년 1월
+				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 1월
 				 <button id="monthbutton1" class="def-btn btn-search btn-color" value="조회">+추가</button>
 				</p>
 			<div id="content1" class="content">

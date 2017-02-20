@@ -1,6 +1,7 @@
 package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.Schafs_SchdulDAO;
@@ -31,6 +32,21 @@ public class Schafs_SchdulDAOImpl implements Schafs_SchdulDAO {
 	@Override
 	public int insertSchdul(Schafs_SchdulVO schdulVO) throws SQLException {
 		int result = client.update("insertSchdul", schdulVO);
+		return result;
+	}
+	@Override
+	public List<Schafs_SchdulVO> listSchdul(int monthNo) throws SQLException {
+		List<Schafs_SchdulVO> list = client.queryForList("listSchdul", monthNo);
+		return list;
+	}
+	@Override
+	public int updateSchdul(Schafs_SchdulVO schdulVO) throws SQLException {
+		int result = client.update("updateSchdul",schdulVO);
+		return result;
+	}
+	@Override
+	public int deleteSchdul(int sd_no) throws SQLException {
+		int result = client.update("deleteSchdul",sd_no);
 		return result;
 	}
 	
