@@ -203,16 +203,19 @@ public class ProfsrController {
 	 */
 	@RequestMapping(value="/requestLctre", method=RequestMethod.POST)
 	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO,ProfsrVO profsrVO)
+	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO)
 			throws ServletException, IOException {
 		String url = "redirect:openLctreList";//교수가 강의개설 요청 끝난 후 어떻게 할지 해야할듯, 개설한 강의 목록을 보게할지 등등
 		
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");
 		
+		//String lc_Lctre_Code=findLctre(model, );
+		
 		System.out.println("==================================================================================Controller111111111111");
 		System.out.println("************************"+lctreVO);
 		System.out.println("************************"+lctre_ActplnVO);
-		System.out.println("*********************"+pr_Profsr_No);
+		System.out.println("*********************  pr_Profsr_No: "+pr_Profsr_No);
+		//System.out.println("*********************   lc_Lctre_Code: "+lc_Lctre_Code);
 		//LctreVO lctreVO = null;
 		//Lctre_ActplnVO lctre_ActplnVO = null;
 		System.out.println("==================================================================================Controller22222222222");
@@ -232,8 +235,8 @@ public class ProfsrController {
 		System.out.println("==================================================================================Controller55555555");
 
 		
-		//model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
-		//model.addAttribute("lctreVO",lctreVO);
+		model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
+		model.addAttribute("lctreVO",lctreVO);
 		//model.addAttribute("profsrVO", profsrVO);
 		return url;
 	}

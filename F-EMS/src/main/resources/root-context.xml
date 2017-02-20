@@ -118,7 +118,8 @@
       p:client-ref="sqlMapClient" />
 
    <bean id="lctreService" class="com.uni.fems.service.impl.LctreServiceImpl"
-      p:lctreDAO-ref="lctreDAO" />
+      p:lctreDAO-ref="lctreDAO" 
+      p:lctre_ActplnDAO-ref="lctre_ActplnDAO"/>
 
 
 <bean id="lctre_FlpthDAO" class="com.uni.fems.dao.impl.Lctre_FlpthDAOImpl"
@@ -332,8 +333,7 @@
    <bean id="baskinService" class="com.uni.fems.service.impl.BaskinServiceImpl"
       p:baskinDAO-ref="baskinDAO" />
       
-    <bean id="lctre_GntDAO" class="com.uni.fems.dao.impl.Lctre_GntDAOImpl"
-      p:client-ref="sqlMapClient" />  
+      
       
 	<bean id="serviceProfiler" class="com.uni.fems.aop.ServiceProfiler"
 		p:client-ref="sqlMapClient" />
@@ -380,5 +380,3 @@
 		pointcut-ref="publicMethod2" method="trace" /> <aop:around pointcut-ref="publicMethod3" 
 		method="trace" /> </aop:aspect> </aop:config> -->
 </beans>
-
-

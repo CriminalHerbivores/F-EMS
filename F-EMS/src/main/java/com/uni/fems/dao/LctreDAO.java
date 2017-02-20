@@ -55,6 +55,17 @@ public interface LctreDAO {
 	 */
 	void insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
 	
+	/**
+	 * <pre>
+	 * 강의번호(lc_Lctre_No)중 가장 큰 값을 가져옴
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int selectMaxLc_Lctre_No() throws SQLException;	//무조건 최대값을 가져오기 때문에 매개변수x
+	
 	int updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
 	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제
 	
