@@ -13,8 +13,13 @@
 <sqlMap namespace="Subjct_Info_Table">
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
-	<typeAlias alias="subjct_info_table" type="com.uni.fems.dto.Subjct_Info_TableVO" />
-
+	<typeAlias alias = "colege" type="com.uni.fems.dto.ColegeVO" />
+	<typeAlias alias = "faculty" type="com.uni.fems.dto.FacultyVO" />
+	<typeAlias alias = "subjct_info_table" type="com.uni.fems.dto.Subjct_Info_TableVO" />
+	<typeAlias alias = "tuition" type="com.uni.fems.dto.TuitionVO" />
+	<typeAlias alias = "stdnt" type="com.uni.fems.dto.StdntVO" />
+	<typeAlias alias = "search" type="com.uni.fems.dto.SearchVO" />
+	
 	<!-- 학과정보 등록 -->
 	<update id="insertSubjct_Info_Table" parameterClass="subjct_info_table">
 		insert into subjct_info_table(sit_Subjct_Code,sit_Faculty,sit_Subjct,sit_Tut,sit_Subjct_Tlphon_No,sit_Useyn)
@@ -32,5 +37,55 @@
    update subjct_info_table set sit_Useyn='n' where sit_Subjct_Code=#sit_Subjct_Code#
    </update>
 	
-	
-	</sqlMap>
+	<select id="selectColege" resultClass="colege">
+		select * from colege
+	</select>
+	<select id="selectFaculty" parameterClass="str" resultClass="faculty">
+		select * from faculty where fc_Coleg_Code = #fc_Coleg_Code# 
+	</select>
+	<select id="selectSubjct" parameterClass="str" resultClass="subjct_info_table">
+		select * from subjct_info_table where sit_Faculty = #sit_Faculty#
+	</select>
+	<update id="updateTut" parameterClass="subjct_info_table">
+		update subjct_info_table
+		set sit_Tut=#sit_Tut#
+		where SIT_SUBJCT_CODE = #sit_Subjct_Code#
+	</update>
+	<select id="subjctStdnt" parameterClass="str" resultClass="stdnt">
+		select * from stdnt
+		where st_subjct_code = #st_Subjct_Code#
+	</select>
+	<update id="insertTuition" parameterClass="tuition">
+		insert into tuition(
+			tu_no,
+			tu_Tut,
+			tu_Stdnt_No,
+			tu_Virtl_acnut_No
+		)values(
+			tu_seq.nextval,
+			#tu_Tut#,
+			#tu_Stdnt_No#,
+			#tu_Virtl_acnut_No#
+		)
+	</update>
+	<select id="tuitionStdnt" parameterClass="str" resultClass="tuition">
+		select * from tution
+		where tu_Stdnt_No=#tu_Stdnt_No#
+	</select>
+	<update id="updateTuition" parameterClass="tuition">
+		update tution
+		set tu_Pay_Dt = #tu_Pay_Dt#
+		where tu_No=#tu_No#
+	</update>
+	<select id="selectTuition" parameterClass="search" resultClass="tuition">
+	select * 
+	from stdnt st, SUBJCT_INFO_TABLE sj, tuition tu
+	where st.ST_SUBJCT_CODE = sj.SIT_SUBJCT_CODE
+	and tu.TU_STDNT_NO = st.ST_STDNT_NO
+	and $key$ like '%'||$value$||'%'
+	</select>
+	<select id="selectNotTuition" resultClass="tuition">
+	select * from tuition
+	where tu_Pay_Dt is null
+	</select>
+</sqlMap>
