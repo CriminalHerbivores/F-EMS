@@ -21,6 +21,7 @@
 	margin: 0;
 	padding: 0;
 	width: 80%;
+	min-height:700px;
 	height: 100%;
 	text-align: left;
 	vertical-align: top;
@@ -33,6 +34,7 @@
 	margin: 0;
 	padding: 0;
 	width: 20%;
+	min-height:700px;
 	height: 100%;
 	text-align: left;
 	vertical-align: top;
@@ -42,6 +44,7 @@
 
 .course-list-l-top {
 	width: 100%;
+	min-height:420px;
 	height: 60%;
 	padding: 5px;
 	border: 0px;
@@ -51,6 +54,7 @@
 
 .course-list-l-bottom {
 	width: 100%;
+	min-height:280px;
 	height: 40%;
 	padding: 5px;
 	border: 0px;
@@ -60,6 +64,7 @@
 
 .course-list-r-top {
 	width: 100%;
+	min-height:420px;
 	height: 60%;
 	padding: 5px;
 	border: 0px;
@@ -69,6 +74,7 @@
 
 .course-list-r-bottom {
 	width: 100%;
+	min-height:280px;
 	height: 40%;
 	padding: 5px;
 	border: 0px;

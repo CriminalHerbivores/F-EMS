@@ -25,7 +25,7 @@ body {
 </style>
 
 </head>
-<body>
+<body class="course-list-l-bottom">
 	<form>
 <div class="text-center">
 			<table  class="def-table-full tb-border table-hover">
