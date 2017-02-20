@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.uni.fems.controller.common.FileDownload;
+import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SklstfVO;
@@ -415,33 +417,22 @@ public class SklstfController {
 	 */
 	@RequestMapping(value = "/schlshipInsert", method = RequestMethod.POST)
 	String schlshipInsert(SchlshipVO schlshipVO,
-			@RequestParam("f") MultipartFile multipartFile, Model model,
-			HttpServletRequest request, HttpServletResponse response) {
+			@RequestParam("uploadfile") MultipartFile multipartFile) {
 		String url = "redirect:schlshipList";
-		String key = request.getParameter("key");
-		String tpage = request.getParameter("tpage");
 
-		if (!multipartFile.isEmpty()) {
-
-			String upload = request.getSession().getServletContext()
-					.getRealPath("resources/upload");
-
-			File file = new File(upload, System.currentTimeMillis() + "$$"
-					+ multipartFile.getOriginalFilename());
-			try {
-				multipartFile.transferTo(file);
-				schlshipVO.setSs_Papers_Content(file.toString());
-				schlshipService.insertSchlship(schlshipVO);
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}catch (SQLException e) {
-				e.printStackTrace();
-			}
-			model.addAttribute("key", key);
-			model.addAttribute("tpage", tpage);
-			
+		if(!multipartFile.isEmpty()){
+			FilesVO vo = new FileDownload().uploadFile(multipartFile);
+			schlshipVO.setSs_File(vo.getFl_File_Nm());
+		}
+		
+		System.out.println(schlshipVO.toString());
+		
+		try {
+			schlshipService.insertSchlship(schlshipVO);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return url;
 	}
