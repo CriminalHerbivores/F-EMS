@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sun.security.ntlm.Client;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
 import com.uni.fems.dto.LctreVO;
@@ -184,7 +185,7 @@ public class ProfsrController {
 		}
 		model.addAttribute("profsrVO", profsrVO);
 		
-		System.out.println("*********************"+profsrVO.getPr_Profsr_No());
+		System.out.println("*********************  getPr_Profsr_No : "+profsrVO.getPr_Profsr_No());
 		return url;
 	}
 
@@ -203,41 +204,19 @@ public class ProfsrController {
 	 */
 	@RequestMapping(value="/requestLctre", method=RequestMethod.POST)
 	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO)
+	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO,Lctre_SearchVO lctre_SearchVO)
 			throws ServletException, IOException {
 		String url = "redirect:openLctreList";//교수가 강의개설 요청 끝난 후 어떻게 할지 해야할듯, 개설한 강의 목록을 보게할지 등등
 		
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");
 		
-		//String lc_Lctre_Code=findLctre(model, );
-		
-		System.out.println("==================================================================================Controller111111111111");
-		System.out.println("************************"+lctreVO);
-		System.out.println("************************"+lctre_ActplnVO);
-		System.out.println("*********************  pr_Profsr_No: "+pr_Profsr_No);
-		//System.out.println("*********************   lc_Lctre_Code: "+lc_Lctre_Code);
-		//LctreVO lctreVO = null;
-		//Lctre_ActplnVO lctre_ActplnVO = null;
-		System.out.println("==================================================================================Controller22222222222");
-		
-		
 		try {
-			System.out.println("==================================================================================Controller333333333333");
-			
 			profsrService.selectProfsr(pr_Profsr_No);
 			lctreService.openLctre(lctreVO,lctre_ActplnVO);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("==================================================================================Controller44444444444");
 
 		}
-		System.out.println("==================================================================================Controller55555555");
-
-		
-		model.addAttribute("lctre_ActplnVO",lctre_ActplnVO);
-		model.addAttribute("lctreVO",lctreVO);
-		//model.addAttribute("profsrVO", profsrVO);
 		return url;
 	}
 

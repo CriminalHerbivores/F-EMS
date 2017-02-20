@@ -66,7 +66,7 @@ table#zipcode a:hover{
 function resultLctre(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_Grade,lu_Presubjct) {
    opener.document.formm.lu_Lctre_Nm.value=lu_Lctre_Nm;
    opener.document.formm.sit_Subjct.value=sit_Subjct;
-   opener.document.formm.lu_Lctre_Code.value=lu_Lctre_Code;
+   opener.document.formm.lc_Lctre_Code.value=lu_Lctre_Code;
    opener.document.formm.lu_Compl_Se.value=lu_Compl_Se;
    opener.document.formm.lu_Pnt.value=lu_Pnt;
    opener.document.formm.lu_Grade.value=lu_Grade;

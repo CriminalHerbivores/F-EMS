@@ -36,7 +36,7 @@ theForm.action = "/admin/buildingInsert";
 theForm.submit(); */
 	
 /* } */
-function submitForm(form) {
+function submitForm1(form) {
  	var bd_No = document.formm.bd_No.value;
 	var bd_Nm = document.formm.bd_Nm.value;
 	if(bd_No=="" || bd_Nm==""){
