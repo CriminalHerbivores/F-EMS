@@ -114,23 +114,31 @@
 	<!-- <select id="selectCount" resultClass="int">
 		select count(*) from lctre where lc_Lctrbgn_Dt=to_date(#lc_Lctrbgn_Dt#)
 	</select> -->
+	
+	<!-- 강의번호중 가장 큰 값 가져온다 -->
+	<select id="selectMaxLc_Lctre_No" resultClass="int">
+		select max(lc_Lctre_No) from lctre
+	</select>
 		
 	
 	<!-- 강의 등록 -->
 	<update id="insertLctre" parameterClass="lctre">
 	<dynamic>
 	<isNotEmpty property="lc_Lctre_No">
-		INSERT INTO LCTRE(lc_Lctre_No,LC_PROFSR_NO,LC_LCTRBGN_DT,LC_LCTRE_NMPR,LC_WIK_LCTRE_DAYWEEK,LC_LCTRE_TIME,LC_LCTRUM_NO,LC_PNT,LC_GRADE,LC_LCTRE_EVL_SCOPE,LC_OPEN_AT,LC_LCTRE_ORG,LC_LCTRE_CODE,LC_SPLIT)
-			VALUES(ltr_seq.nextval,#LC_PROFSR_NO#,#LC_LCTRBGN_DT#,#LC_LCTRE_NMPR#,#LC_WIK_LCTRE_DAYWEEK#,#LC_LCTRE_TIME#,#LC_LCTRUM_NO#,#LC_PNT#,#LC_GRADE#,#LC_LCTRE_EVL_SCOPE#,#LC_OPEN_AT#,#LC_LCTRE_ORG#,#LC_LCTRE_CODE#,#LC_SPLIT#)
+		INSERT INTO LCTRE(lc_Lctre_No,lc_Lctre_Code,lc_Profsr_No,lc_Wik_Lctre_Dayweek,lc_Lctre_Time)
+			VALUES(ltr_seq.nextval,#lc_Lctre_Code#,#lc_Profsr_No#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#)
 	</isNotEmpty>
 	</dynamic>
 	</update>
 	
 	<!-- 강의 수정 -->
-	<!-- <update id="updateLctre" parameterClass="lctre">
-		update lctre set lc_Lctre_No=#lc_Lctre_No#,lc_Profsr_No=#lc_Profsr_No#,lc_Lctre_Code=#lc_Lctre_Code#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Pnt=#lc_Pnt#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
+	<update id="updateLctre" parameterClass="lctre">
+	<dynamic>
+	<isNotEmpty property="lc_Lctre_No">
+		update lctre set lc_Profsr_No=#lc_Profsr_No#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
 		where lc_Lctre_No=#lc_Lctre_No#
-	</update> -->
+	</isNotEmpty></dynamic>	
+	</update>
 	
 	<!-- 강의 삭제 -->
 	<!-- <update id="deleteLctre" parameterClass="int">

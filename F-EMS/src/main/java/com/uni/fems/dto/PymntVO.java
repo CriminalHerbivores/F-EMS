@@ -38,5 +38,4 @@ public class PymntVO implements Serializable{
 	private String py_Semstr;   // 학기
 	private Timestamp py_Schlship_Dt; // 신청날짜
 	private String py_Useyn; // 승인여부
-	
 }

@@ -3,6 +3,7 @@ package com.uni.fems.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 
 /**
@@ -47,6 +48,16 @@ public interface SchlshipService {
 	List<SchlshipVO> selectNameAllPage(int tpage, String ss_Schlship_Nm) throws SQLException;
 	/**
 	 * <pre>
+	 * 사용 가능한 등록금 리스트
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<SchlshipVO> selectAllSchlship() throws SQLException;
+	/**
+	 * <pre>
 	 * 등록금 이름으로 검색한 정보의 페이지
 	 * </pre>
 	 * <pre>
@@ -87,4 +98,25 @@ public interface SchlshipService {
 	 * </pre>
 	 */
 	void deleteSchlship(String ss_Schlship_Code) throws SQLException;
+	/**
+	 * <pre>
+	 * 등록금을 신청함
+	 * </pre>
+	 * <pre>
+	 * @param pymntVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void requestschlship(PymntVO pymntVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 학생의 등록금 신청 내역을 조회
+	 * </pre>
+	 * <pre>
+	 * @param loginUser
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<SchlshipVO> selectSchlshipByStdnt(String loginUser) throws SQLException;
 }

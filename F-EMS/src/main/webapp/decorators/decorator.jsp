@@ -127,6 +127,8 @@
 									class="no-uline">교수 조회 </a>
 								<a href="<%=request.getContextPath() %>/profsr/requestLctre"
 									 class="no-uline">강의 등록 요청</a>
+								<a href="<%=request.getContextPath() %>/profsr/updateLctre"
+									 class="no-uline">강의 수정 요청</a>	 
 								<a href="<%=request.getContextPath() %>/profsr/openLctreList"
 									 class="no-uline">강의 목록</a>
 							</div>
@@ -309,6 +311,9 @@
 										<li class="sub-menu-li">	
 											<a href="<%=request.getContextPath() %>/profsr/requestLctre" 
 												class="no-uline">강의 등록 요청</a></li>
+										<li class="sub-menu-li">			
+										<a href="<%=request.getContextPath() %>/profsr/updateLctre"
+									 class="no-uline">강의 수정 요청</a></li>		
 										<li class="sub-menu-li">		
 											<a href="<%=request.getContextPath() %>/profsr/openLctreList"
 												 class="no-uline">강의 목록</a></li>		

@@ -7,6 +7,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.SchlshipDAO;
 import com.uni.fems.dao.impl.paging.Paging;
+import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.Schafs_SchdulVO;
 import com.uni.fems.dto.SchlshipVO;
 
@@ -18,7 +19,6 @@ public class SchlshipDAOImpl implements SchlshipDAO {
 	}
 	@Override
 	public List<Schafs_SchdulVO> listAllSchafs_Schdul() throws SQLException {
-		
 		return null;
 	}
 	
@@ -62,6 +62,23 @@ public class SchlshipDAOImpl implements SchlshipDAO {
 	@Override
 	public void deleteSchlship(SchlshipVO schlshipVO) throws SQLException {
 		client.update("deleteSchlship", schlshipVO);
+	}
+	@Override
+	public void requestschlship(PymntVO pymntVO) throws SQLException {
+		client.update("requestSchlship", pymntVO);
+	}
+	@Override
+	public List<SchlshipVO> selectAllSchlship() throws SQLException {
+		List<SchlshipVO> list = null;
+		list = (ArrayList<SchlshipVO>) client.queryForList("selectAllSchlship");
+		return list;
+	}
+	@Override
+	public List<SchlshipVO> selectSchlshipByStdnt(String loginUser)
+			throws SQLException {
+		List<SchlshipVO> list = null;
+		list = (ArrayList<SchlshipVO>) client.queryForList("selectSchlshipByStdnt",loginUser);
+		return list;
 	}
 	
 }
