@@ -26,7 +26,7 @@ body {
 </style>
 
 </head>
-<body>
+<body class="course-list-l-top">
 	<form>
 	<div class="text-center">
 	<!-- <div class="container out-border"> -->
@@ -67,9 +67,12 @@ body {
 					<th>제한인원</th>
 				</tr>
 				
-				<c:forEach items="${lctre_SearchVO}" var="lctre">
+				<c:forEach items="${lctre_SearchVO}" var="lctre" begin="0" end="9">
 				<tr>
-					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강신청"></td>
+					<td>
+						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강신청">
+						</td>
+					
 					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}</td>

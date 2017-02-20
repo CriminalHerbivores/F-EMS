@@ -25,7 +25,7 @@ body{
 </style>
 
 </head>
-<body>
+<body class="course-list-r-top">
 <form>
 <div class="text-center"><table  class="def-table-full tb-border">
 	<tr><th>신청 가능 학점
