@@ -28,6 +28,8 @@ import com.uni.fems.service.LctreService;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
+ * 2017.02.19      KJH            강의등록
+ * 2017.02.20      KJH            강의수정
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -52,41 +54,27 @@ public class LctreServiceImpl implements LctreService {
 	// 교수가 개설 강의 폼을 작성하여 직원에게 강의 개설 요청
 	@Override
 	public int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
-		System.out.println("==================================================================================LctreServiceImpl  1111111111");
-
 		int maxLtr_seq=0;
 		
 		lctreDAO.insertLctre(lctreVO);
 		maxLtr_seq=lctreDAO.selectMaxLc_Lctre_No();
-		lctre_ActplnVO.setLa_Lctre_No(maxLtr_seq);
-		System.out.println(lctre_ActplnVO.toString());
+		lctre_ActplnVO.setLa_Lctre_No(maxLtr_seq);	// 강의번호 최대값을 넣어줌
 		lctre_ActplnDAO.insertLctre_Actpln(lctre_ActplnVO);
 		
-		
-		System.out.println("==================================================================================LctreServiceImpl  2222222222");
-		
 		return maxLtr_seq;
+	}
+
+
+	// 교수가 강의 수정
+	@Override
+	public void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO)
+			throws SQLException {
+		
+		lctreDAO.updateLctre(lctreVO);
+		lctre_ActplnDAO.updateLctre_Actpl(lctre_ActplnVO);
 		
 	}
 
-	// public ArrayList<LctreVO> getLctreList(int key){
-	// ArrayList<LctreVO> lctreList=null;
-	// try {
-	// lctreList = lctreDAO.listLctre(key);
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// return lctreList;
-	// }
 
-//	 public LctreVO selectLctre(int lc_Lctre_No){
-//	 LctreVO lctre=null;
-//	 try {
-//	 lctre=lctreDAO.getLctre(lc_Lctre_No);
-//	 } catch (SQLException e) {
-//	 e.printStackTrace();
-//	 }
-//	 return lctre;
-//	 }
 
 }
