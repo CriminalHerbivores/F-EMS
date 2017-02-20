@@ -36,6 +36,10 @@ public class TuitionVO implements Serializable{
 	private String tu_Subjct_Code;   // 학과코드
 	private int tu_Tut;   // 등록금 금액
 	private Timestamp tu_Pay_Dt; //납부일
-	private String tu_Virtl_acnut_No;
+	private String tu_Virtl_acnut_No; //가상계좌
+	
+	private String tu_Nm;
+	private String sit_Faculty;   // 학부
+	private String sit_Subjct;   // 학과
 	
 }
