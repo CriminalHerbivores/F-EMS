@@ -30,7 +30,6 @@
 		select * from stdnt where st_Stdnt_No = #st_Stdnt_No#
 	</select>
 	
-	
 	<!-- 학생 페이지로 출력 -->
 <!-- 	<select id="selectNameStdntPage" parameterClass="str" resultClass="stdnt">
 		select * from stdnt where st_nm like '%$st_nm$%'
