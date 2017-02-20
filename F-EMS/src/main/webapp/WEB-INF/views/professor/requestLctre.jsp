@@ -68,25 +68,29 @@ function searchLctre() {
 
 </head>
 <body>
+
+<table class="non-border margin-auto">
+	<tr><td>
 <h2>강의 개설 요청</h2>
 <form id="formm" name="formm" method="post"><!--  action="requestLctre" > -->
 <table class="def-table-auto tb-border table-hover">
 <tr><th colspan="4">개설 강의 정보</th></tr>
 	<tr>
 		<th>개설년도/학기</th>
-		<td><input type="text" class="def-input-text-sm custom-form-control">년도
-			<input type="text" class="def-input-text-sm custom-form-control">학기
+		<td><input type="text" class="def-input-text-sm custom-form-control" readonly>년도
+			<input type="text" class="def-input-text-sm custom-form-control" readonly>학기
 		</td>
 		<th>개설학과전공</th>
 		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>
-		<%-- <input type="hidden" name="lc_Lctre_Code" value="${lctre_SearchVO.lu_Lctre_Code}"> --%></td> <!-- 여기서 강의고유코드 정보로 lc_Lctre_Code 가져오고 싶음 -->
+		<!-- <input type="hidden" name="lc_Lctre_Code" value="${lctre_SearchVO.lu_Lctre_Code}"> -->
+		</td> <!-- 여기서 강의고유코드 정보로 lc_Lctre_Code 가져오고 싶음 -->
 	 </tr>
 	 
 	 <tr>
 	 	<th>교과목명</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
 	 	<th>강의번호</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code" readonly></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lc_Lctre_Code" readonly></td>
 	 </tr>
 	 
 	 <tr>
@@ -111,7 +115,7 @@ function searchLctre() {
 	 	<input type="hidden" name="lc_Profsr_No" value="${profsrVO.pr_Profsr_No}"></td>   
 	 	
 	 	<th>담당교수전화</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Profsr_Tlphon_No}">
+	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Profsr_Tlphon_No}" readonly>
 	 	</td>
 	 	
 	 	
@@ -119,10 +123,10 @@ function searchLctre() {
 	 
 	  <tr>
 	 	<th>교수 이메일 주소</th>
-	 	<td><input type="text" class="def-input-text-lg custom-form-control" value="${profsrVO.pr_Email}"></td>
+	 	<td><input type="text" class="def-input-text-lg custom-form-control" value="${profsrVO.pr_Email}" readonly></td>
 	 	
-	 	<th>홈페이지</th>
-	 	<td><input type="text" class="def-input-text-lg custom-form-control" id="pr_test"></td>
+	 	<th></th>
+	 	<td></td>
 	 	<%-- </c:forEach> --%>
 	 </tr>
 	 
@@ -272,6 +276,6 @@ function searchLctre() {
 	 
 	 
 	 </form>
-
+</td></tr></table>
 </body>
 </html>
