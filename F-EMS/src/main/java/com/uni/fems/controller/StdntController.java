@@ -319,7 +319,7 @@ public class StdntController {
 	 */
 	@RequestMapping(value = "/schlshipList", method = RequestMethod.GET)
 	public String schlshipList(Model model, HttpServletRequest request){
-		String url="student/schlshipList";
+		String url="student/schlship";
 		String key = request.getParameter("key");
 		String tpage = request.getParameter("tpage");
 

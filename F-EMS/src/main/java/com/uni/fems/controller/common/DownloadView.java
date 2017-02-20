@@ -1,4 +1,4 @@
-package com.uni.fems.controller.file;
+package com.uni.fems.controller.common;
 
 import java.io.File;
 import java.io.FileInputStream;
