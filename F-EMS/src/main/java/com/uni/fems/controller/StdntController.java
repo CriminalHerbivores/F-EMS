@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.tracing.dtrace.Attributes;
+import com.uni.fems.controller.common.UnitDate;
 import com.uni.fems.dao.StdntDAO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.ProfsrVO;
@@ -343,6 +344,9 @@ public class StdntController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		int[] i = new UnitDate().getDay();
+		model.addAttribute("hack",i[3]); //학기
 		model.addAttribute("schlshipList", schlshipList);
 		int n = schlshipList.size();
 		model.addAttribute("schlshipListSize", n);

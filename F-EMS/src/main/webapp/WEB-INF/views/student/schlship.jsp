@@ -28,7 +28,7 @@
 			<th>신청년도</th>
 			<td><fmt:formatDate value="${now}" pattern="yyyy" /></td>
 			<th>신청학기</th>
-			<td></td>
+			<td>${hack}</td>
 		</tr>
 		<tr>
 			<th>신청기간</th>
