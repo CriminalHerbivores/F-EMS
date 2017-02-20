@@ -183,7 +183,7 @@
 				<input type="button" data-target="#${list1.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+100000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -201,13 +201,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list1.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list1.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list1.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+10000}" name="sd_Bgndt" value=${list1.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+1000}" name="sd_Enddt" value=${list1.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list1.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+10000}, #${status.count+1000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -222,7 +222,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+100000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -275,7 +275,7 @@
 				<input type="button" data-target="#${list2.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+200000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -293,13 +293,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list2.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list2.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list2.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+20000}" name="sd_Bgndt" value=${list2.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+2000}" name="sd_Enddt" value=${list2.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list2.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+20000}, #${status.count+2000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -314,7 +314,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+200000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -363,7 +363,7 @@
 				<input type="button" data-target="#${list3.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+300000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -381,13 +381,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list3.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list3.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list3.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+30000}" name="sd_Bgndt" value=${list3.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+148700}" name="sd_Enddt" value=${list3.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list3.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+30000}, #${status.count+148700}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -402,7 +402,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+300000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -449,7 +449,7 @@
 				<input type="button" data-target="#${list4.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+400000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -467,13 +467,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list4.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list4.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list4.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+40000}" name="sd_Bgndt" value=${list4.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+4000}" name="sd_Enddt" value=${list4.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list4.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+40000}, #${status.count+4000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -488,7 +488,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+400000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -535,7 +535,7 @@
 				<input type="button" data-target="#${list5.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+500000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -553,13 +553,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list5.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list5.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list5.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+50000}" name="sd_Bgndt" value=${list5.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+5000}" name="sd_Enddt" value=${list5.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list5.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+50000}, #${status.count+5000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -574,7 +574,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+500000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -621,7 +621,7 @@
 				<input type="button" data-target="#${list6.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+600000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -639,13 +639,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list6.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list6.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list6.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+60000}" name="sd_Bgndt" value=${list6.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+6000}" name="sd_Enddt" value=${list6.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list6.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+60000}, #${status.count+6000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -660,7 +660,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+600000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -707,7 +707,7 @@
 				<input type="button" data-target="#${list7.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+700000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -725,13 +725,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list7.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list7.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list7.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+70000}" name="sd_Bgndt" value=${list7.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+7000}" name="sd_Enddt" value=${list7.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list7.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+70000}, #${status.count+7000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -746,7 +746,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+700000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -793,7 +793,7 @@
 				<input type="button" data-target="#${list8.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+800000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -811,13 +811,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list8.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list8.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list8.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+80000}" name="sd_Bgndt" value=${list8.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+8000}" name="sd_Enddt" value=${list8.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list8.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+80000}, #${status.count+8000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -832,7 +832,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+800000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -879,7 +879,7 @@
 				<input type="button" data-target="#${list9.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+900000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -897,13 +897,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list9.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list9.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list9.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+90000}" name="sd_Bgndt" value=${list9.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+9000}" name="sd_Enddt" value=${list9.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list9.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+90000}, #${status.count+9000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -918,7 +918,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+900000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -965,7 +965,7 @@
 				<input type="button" data-target="#${list10.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1000000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -983,13 +983,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list10.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list10.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list10.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+105000}" name="sd_Bgndt" value=${list10.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+10500}" name="sd_Enddt" value=${list10.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list10.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+105000}, #${status.count+10500}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -1004,7 +1004,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+1000000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -1051,7 +1051,7 @@
 				<input type="button" data-target="#${list11.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1100000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -1069,13 +1069,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list11.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list11.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list11.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+115000}" name="sd_Bgndt" value=${list11.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+15000}" name="sd_Enddt" value=${list11.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list11.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+115000}, #${status.count+15000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -1090,7 +1090,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+1100000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
@@ -1137,7 +1137,7 @@
 				<input type="button" data-target="#${list12.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
 				
 		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+34}" data-toggle="modal" value="삭제">
+		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1200000}" data-toggle="modal" value="삭제">
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -1155,13 +1155,13 @@
 				<!-- body -->
 				<div class="modal-body" style="text-align: center">
 					<input type="hidden" id="sd_No" name="sd_No" value=${list12.sd_No }>
-					<input type="text" id="${status.index+66}" name="sd_Bgndt" value=${list12.sd_Bgndt } class="def-input-text-md custom-form-control">
-					<input type="text" id="${status.count+4}" name="sd_Enddt" value=${list12.sd_Enddt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.index+125000}" name="sd_Bgndt" value=${list12.sd_Bgndt } class="def-input-text-md custom-form-control">
+					<input type="text" id="${status.count+25000}" name="sd_Enddt" value=${list12.sd_Enddt } class="def-input-text-md custom-form-control">
 					<input type="text" id="sd_Schdul_Sumry" name="sd_Schdul_Sumry" value=${list12.sd_Schdul_Sumry } class="def-input-text-xlg custom-form-control">
 				</div>
 				<script>
 				  $(function(){
-						 $("#${status.index+66}, #${status.count+4}").datepicker();
+						 $("#${status.index+125000}, #${status.count+25000}").datepicker();
 					  });
 				</script>
 				<!-- Footer -->
@@ -1176,7 +1176,7 @@
 	</div>
 		</form>
 <form method="post" action="deleteSchdul">
-	<div class="modal fade" id="${status.index+34}">
+	<div class="modal fade" id="${status.index+1200000}">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!-- header -->
