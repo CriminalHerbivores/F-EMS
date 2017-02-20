@@ -52,7 +52,7 @@ public interface LctreService {
 	 * @param lctreVO
 	 * @throws SQLException
 	 */
-	void openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
+	int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
 
 	
 	

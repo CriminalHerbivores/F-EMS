@@ -79,7 +79,7 @@ function searchLctre() {
 		</td>
 		<th>개설학과전공</th>
 		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>
-		<input type="hidden" name="lc_Lctre_Code" value="${lctre_SearchVO.lu_Lctre_Code}"></td> <!-- 여기서 강의고유코드 정보로 lc_Lctre_Code 가져오고 싶음 -->
+		<%-- <input type="hidden" name="lc_Lctre_Code" value="${lctre_SearchVO.lu_Lctre_Code}"> --%></td> <!-- 여기서 강의고유코드 정보로 lc_Lctre_Code 가져오고 싶음 -->
 	 </tr>
 	 
 	 <tr>
@@ -108,8 +108,7 @@ function searchLctre() {
 	<%-- <c:forEach items="${profsrVO}" var="profsr"> --%>
 	 	<th>교수이름</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Nm}" readonly>
-	 	<input type="hidden" name="lc_Profsr_No" value="${profsrVO.pr_Profsr_No}"></td>   <!-- 강의 테이블에 올라갈 로그인한 교수 정보로 lc_Profsr_No 가져오고픔 -->
-	 	
+	 	<input type="hidden" name="lc_Profsr_No" value="${profsrVO.pr_Profsr_No}"></td>   
 	 	
 	 	<th>담당교수전화</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" value="${profsrVO.pr_Profsr_Tlphon_No}">
@@ -131,11 +130,11 @@ function searchLctre() {
 	<tr><th colspan="4">강의 상세 정보</th></tr>
 	
 	 <tr>
+	 	<th>주간 강의 요일</th>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control"   name="lc_Wik_Lctre_Dayweek"></td> 
 	 	<th>강의시간</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control"   name="lc_Lctre_Time"></td>
-	 	
-	 	<th>희망 강의 정원</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control"   name=""></td> <!-- 강의 테이블의 강의실번호 lc_Lctrum_No 를 갖고와야 할텐데... -->
+	 	<!-- 강의 테이블의 강의실번호 lc_Lctrum_No 를 갖고와야 할텐데... -->
 	 </tr>
 	   <tr>
 	      <th>학습평가방법(100%)</th>

@@ -1,10 +1,12 @@
 package com.uni.fems.dao.impl;
  
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.ibatis.sqlmap.client.SqlMapSession;
 import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
@@ -67,11 +69,24 @@ public class LctreDAOImpl implements LctreDAO {
 	// 교수가 강의 등록 요청
 	@Override
 	public void insertLctre(LctreVO lctreVO) throws SQLException {
+		
 		System.out.println("==================================================================================LctreDAOImpl  111111");
-		client.update("insertLctre", lctreVO);
+		int result=client.update("insertLctre", lctreVO);
 		System.out.println("==================================================================================LctreDAOImpl  222222");
+		
 	}
 
+	@Override
+	public int selectMaxLc_Lctre_No() throws SQLException{
+
+		int maxLtr_seq=0;
+
+		maxLtr_seq=(Integer)client.queryForObject("selectMaxLc_Lctre_No",null);	
+		
+		return maxLtr_seq;
+	}
+	
+	
 
 	/**
 	 * 강의 수정 (완료)

@@ -114,14 +114,19 @@
 	<!-- <select id="selectCount" resultClass="int">
 		select count(*) from lctre where lc_Lctrbgn_Dt=to_date(#lc_Lctrbgn_Dt#)
 	</select> -->
+	
+	<!-- 강의번호중 가장 큰 값 가져온다 -->
+	<select id="selectMaxLc_Lctre_No" resultClass="int">
+		select max(lc_Lctre_No) from lctre
+	</select>
 		
 	
 	<!-- 강의 등록 -->
 	<update id="insertLctre" parameterClass="lctre">
 	<dynamic>
 	<isNotEmpty property="lc_Lctre_No">
-		INSERT INTO LCTRE(lc_Lctre_No,LC_PROFSR_NO,LC_LCTRBGN_DT,LC_LCTRE_NMPR,LC_WIK_LCTRE_DAYWEEK,LC_LCTRE_TIME,LC_LCTRUM_NO,LC_PNT,LC_GRADE,LC_LCTRE_EVL_SCOPE,LC_OPEN_AT,LC_LCTRE_ORG,LC_LCTRE_CODE,LC_SPLIT)
-			VALUES(ltr_seq.nextval,#LC_PROFSR_NO#,#LC_LCTRBGN_DT#,#LC_LCTRE_NMPR#,#LC_WIK_LCTRE_DAYWEEK#,#LC_LCTRE_TIME#,#LC_LCTRUM_NO#,#LC_PNT#,#LC_GRADE#,#LC_LCTRE_EVL_SCOPE#,#LC_OPEN_AT#,#LC_LCTRE_ORG#,#LC_LCTRE_CODE#,#LC_SPLIT#)
+		INSERT INTO LCTRE(lc_Lctre_No,lc_Profsr_No,lc_Wik_Lctre_Dayweek,lc_Lctre_Time)
+			VALUES(ltr_seq.nextval,#lc_Profsr_No#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#)
 	</isNotEmpty>
 	</dynamic>
 	</update>
