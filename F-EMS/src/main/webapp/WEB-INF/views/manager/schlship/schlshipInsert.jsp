@@ -35,7 +35,12 @@
 			</tr>
 			<tr>
 				<td>내용 :</td>
-				<td><input type="text" name="ss_Amount" value="${schlshipVO.ss_Papers_Content}"></td>
+				<td>
+				<%-- <input type="text" name="ss_Amount" value="${schlshipVO.ss_Papers_Content}"> --%>
+<textarea name="ss_Amount">신청기간 : 
+내용 : 
+</textarea>
+				</td>
 			</tr>
 			<tr>
 				<td>첨부파일 :</td>

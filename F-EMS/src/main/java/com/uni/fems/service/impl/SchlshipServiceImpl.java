@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.uni.fems.dao.SchlshipDAO;
 import com.uni.fems.dao.impl.paging.Paging;
+import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.service.SchlshipService;
@@ -68,7 +69,6 @@ public class SchlshipServiceImpl implements SchlshipService {
 
 	@Override
 	public void deleteSchlship(String ss_Schlship_Code) throws SQLException {
-		System.out.println("++++++++++++++++++++++++ : "+ss_Schlship_Code);
 		SchlshipVO schlshipVO = schlshipDAO.selectSchlship(ss_Schlship_Code);
 		if(schlshipVO.getSs_useyn().equals("y")){
 			schlshipVO.setSs_useyn("n");
@@ -76,5 +76,23 @@ public class SchlshipServiceImpl implements SchlshipService {
 			schlshipVO.setSs_useyn("y");
 		}
 		schlshipDAO.deleteSchlship(schlshipVO);
+	}
+
+	@Override
+	public void requestschlship(PymntVO pymntVO) throws SQLException {
+		schlshipDAO.requestschlship(pymntVO);
+	}
+
+	@Override
+	public List<SchlshipVO> selectAllSchlship() throws SQLException {
+		List<SchlshipVO> list = schlshipDAO.selectAllSchlship();
+		return list;
+	}
+
+	@Override
+	public List<SchlshipVO> selectSchlshipByStdnt(String loginUser)
+			throws SQLException {
+		List<SchlshipVO> list = schlshipDAO.selectSchlshipByStdnt(loginUser);
+		return list;
 	}
 }
