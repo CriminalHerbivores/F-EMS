@@ -25,24 +25,14 @@
 		</dynamic>
 	</update>
 	
-	
-	
-	<!-- 		insert into lctre_Actpln(la_Lctre_No,la_main_txtbook,la_sub_txtbook,la_lctre_goal,la_lctre_progrs_form,la_midex,la_fnex,la_indvdl_task,la_team_task,la_presnatn,la_atend,la_attd,la_Week1,la_Week2,la_Week3,la_Week4,la_Week5,la_Week6,la_Week7,la_Week8,la_Week9,la_Week10,la_Week11,la_Week12,la_Week13,la_Week14,la_Week15)
-			values(#la_Lctre_No#,#la_main_txtbook#,#la_sub_txtbook#,#la_lctre_goal#,#la_lctre_progrs_form#,#la_midex#,#la_fnex#,#la_indvdl_task#,#la_team_task#,#la_presnatn#,#la_atend#,#la_attd#,#la_Week1#,#la_Week2#,#la_Week3#,#la_Week4#,#la_Week5#,#la_Week6#,#la_Week7#,#la_Week8#,#la_Week9#,#la_Week10#,#la_Week11#,#la_Week12#,#la_Week13#,#la_Week14#,#la_Week15#)
-	 -->
-	
-	
-	
-	
-	
-	
-	
-	
 	<!-- 강의계획서 수정 -->
-<!-- 	<update id="updateLctre_Actpln" parameterClass="Lctre_Actpln">
+	<update id="updateLctre_Actpln" parameterClass="Lctre_Actpln">
+	<dynamic>
+	<isNotEmpty property="lc_Lctre_No">
 		update lctre_actpln set la_lctre_no=#la_lctre_no#,la_main_txtbook=#la_main_txtbook#,la_sub_txtbook=#la_sub_txtbook#,la_lctre_goal=#la_lctre_goal#,la_lctre_progrs_form=#la_lctre_progrs_form#,la_midex=#la_midex#,la_fnex=#la_fnex#,la_indvdl_task=#la_indvdl_task#,la_team_task=#la_team_task#,la_presnatn=#la_presnatn#,la_atend=#la_atend#,la_attd=#la_attd#,la_Week1=#la_Week1#,la_Week2=#la_Week2#,la_Week3=#la_Week3#,la_Week4=#la_Week4#,la_Week5=#la_Week5#,la_Week6=#la_Week6#,la_Week7=#la_Week7#,la_Week8=#la_Week8#,la_Week9=#la_Week9#,la_Week10=#la_Week10#,la_Week11=#la_Week11#,la_Week12=#la_Week12#,la_Week13=#la_Week13#,la_Week14=#la_Week14#,la_Week15=#la_Week15#
 		where la_lctre_no=#la_lctre_no#
-	</update> -->
+	</isNotEmpty></dynamic>	
+	</update>
 	
 	<!-- 강의계획서 삭제 -->
 <!-- 	<update id="deleteLctre_Actpln" parameterClass="int">

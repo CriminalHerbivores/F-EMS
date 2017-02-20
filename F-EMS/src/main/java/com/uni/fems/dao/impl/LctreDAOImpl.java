@@ -24,6 +24,8 @@ import com.uni.fems.dto.Lctre_SearchVO;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
+ * 2017.02.19      KJH            강의등록
+ * 2017.02.20      KJH            강의수정
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -47,14 +49,9 @@ public class LctreDAOImpl implements LctreDAO {
 //	static int view_rows = 5; // 페이지의 개수
 //	static int counts = 6; // 한 페이지에 나타낼 강의 개수
 	
-
 	
 	
-	
-	
-	/**
-	 * 전체 강의 목록
-	 */
+	// 전체 강의 목록
 	@Override
 	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
 		//개설강의목록 메인
@@ -69,32 +66,22 @@ public class LctreDAOImpl implements LctreDAO {
 	// 교수가 강의 등록 요청
 	@Override
 	public void insertLctre(LctreVO lctreVO) throws SQLException {
-		
-		System.out.println("==================================================================================LctreDAOImpl  111111");
-		int result=client.update("insertLctre", lctreVO);
-		System.out.println("==================================================================================LctreDAOImpl  222222");
-		
+		client.update("insertLctre", lctreVO);
 	}
 
+	//강의번호 최대값 가져옴
 	@Override
 	public int selectMaxLc_Lctre_No() throws SQLException{
 
 		int maxLtr_seq=0;
-
 		maxLtr_seq=(Integer)client.queryForObject("selectMaxLc_Lctre_No",null);	
-		
 		return maxLtr_seq;
 	}
 	
-	
-
-	/**
-	 * 강의 수정 (완료)
-	 */
+	// 교수가 강의 수정
 	@Override
-	public int updateLctre(LctreVO lctreVO) throws SQLException {
-		int result = (Integer)client.update("updateLctre",lctreVO);
-		return result;
+	public void updateLctre(LctreVO lctreVO) throws SQLException {
+		client.update("updateLctre",lctreVO);
 	}
 	
 	
