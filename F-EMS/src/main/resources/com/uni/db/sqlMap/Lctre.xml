@@ -125,8 +125,8 @@
 	<update id="insertLctre" parameterClass="lctre">
 	<dynamic>
 	<isNotEmpty property="lc_Lctre_No">
-		INSERT INTO LCTRE(lc_Lctre_No,lc_Profsr_No,lc_Wik_Lctre_Dayweek,lc_Lctre_Time)
-			VALUES(ltr_seq.nextval,#lc_Profsr_No#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#)
+		INSERT INTO LCTRE(lc_Lctre_No,lc_Lctre_Code,lc_Profsr_No,lc_Wik_Lctre_Dayweek,lc_Lctre_Time)
+			VALUES(ltr_seq.nextval,#lc_Lctre_Code#,#lc_Profsr_No#,#lc_Wik_Lctre_Dayweek#,#lc_Lctre_Time#)
 	</isNotEmpty>
 	</dynamic>
 	</update>
