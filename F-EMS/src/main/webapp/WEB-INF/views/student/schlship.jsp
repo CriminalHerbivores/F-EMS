@@ -21,18 +21,14 @@
 <title></title>
 </head>
 <body>
-	<h3>장학금 양식</h3><br/>
+	<h3>장학금</h3><br/>
 	<h4>기준년도 학기</h4><br/>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
-			<th>신청년도</th>
+			<th width=150px>신청년도</th>
 			<td><fmt:formatDate value="${now}" pattern="yyyy" /></td>
-			<th>신청학기</th>
+			<th width=150px>신청학기</th>
 			<td>${hack}</td>
-		</tr>
-		<tr>
-			<th>신청기간</th>
-			<td colspan="3"></td>
 		</tr>
 		<tr>
 			<th>신청시 유의사항</th>
@@ -45,29 +41,51 @@
 	<br/>
 	<h4>신청 가능 장학금</h4>
 	<table class="def-table-full tb-border table-hover">
-			<tr>
-				<th>장학금 명</th>
-				<th>유형</th>
-				<th>금액</th>
-				<th>내용</th>
-				<th>다운로드</th>
-				<th>신청</th>
-			</tr>
-			<c:forEach var="schlship" items="${schlshipList }">
-				<tr>
-					<td>${schlship.ss_Schlship_Nm}</td>
-					<td>${schlship.ss_Schlship_Type}</td>
-					<td>${schlship.ss_Amount}</td>
-					<td>${schlship.ss_Papers_Content}</td>
-					<td><a href="<%=request.getContextPath() %>/download/file/list?filename=${schlship.ss_File}">${schlship.ss_File}</a></td>
-					<td>
-					<input type="button" value="수정" class="def-btn btn-sm btn-color">
-					</td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="6" style="text-align: center;">${paging}</td>
-			</tr>
-		</table>
+		<tr>
+			<th>장학금 명</th>
+			<th>유형</th>
+			<th>금액</th>
+			<th>내용</th>
+			<th>다운로드</th>
+			<th>신청</th>
+		</tr>
+		<c:forEach var="schlship" items="${schlshipList }">
+		<tr>
+			<td>${schlship.ss_Schlship_Nm}</td>
+			<td>${schlship.ss_Schlship_Type}</td>
+			<td>${schlship.ss_Amount}</td>
+			<td>${schlship.ss_Papers_Content}</td>
+			<td><a href="<%=request.getContextPath() %>/download/file/list?filename=${schlship.ss_File}">${schlship.ss_File}</a></td>
+			<td>
+				<a href="requestschlship?ss_Schlship_Code=${schlship.ss_Schlship_Code}&tpage=${tpage}"><input type="button" value="신청" class="def-ckbtn btn-sm ckbtn-color"></a>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<h4>장학금 신청 내역</h4>
+	<table class="def-table-full tb-border table-hover">
+		<tr>
+			<th>장학금 명</th>
+			<th>유형</th>
+			<th>금액</th>
+			<th>내용</th>
+			<th>신청학기</th>
+			<th>신청일자</th>
+			<th>상태</th>
+		</tr>
+		<c:forEach var="schlship" items="${stdntSchlshipList}">
+		<tr>
+			<td>${schlship.ss_Schlship_Nm}</td>
+			<td>${schlship.ss_Schlship_Type}</td>
+			<td>${schlship.ss_Amount}</td>
+			<td>${schlship.ss_Papers_Content}</td>
+			<td>${schlship.py_Crrspnd_Year}-${schlship.py_Semstr}</td>
+			<td>
+				<fmt:formatDate value="${schlship.py_Schlship_Dt}" />
+			</td>
+			<td>${schlship.py_Useyn}</td>
+		</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
