@@ -20,8 +20,9 @@
 	 
 	 <!-- 교수가 강의명으로 강의 검색 -->
 	 <select id="selectLctreByName" parameterClass="str" resultClass="lctre_Search">
-		select * from lctre_view 
+		select * from subjct_view
 		where Lu_Lctre_Nm like '%'||#Lu_Lctre_Nm#||'%'
+		or lu_lctre_code like '%'||#lu_lctre_code#||'%'
 	</select>
 
 

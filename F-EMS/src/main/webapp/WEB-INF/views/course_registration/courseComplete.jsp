@@ -63,9 +63,35 @@ body {
 					<td></td>
 				</tr> -->
 				
-				<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td>컴퓨터공학과</td><td>10473</td><td>00</td><td>1</td><td>컴퓨터 입문</td><td>교양</td><td>3/2/2</td><td>유관종</td><td>월(8~9교시), 수(5~6교시)</td><td>1</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td>컴퓨터공학과</td><td>14773</td><td>01</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>김상하</td><td>수(1교시), 수(6~7교시)</td><td>1</td><td>40</td></tr>
+				<!-- <tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td>컴퓨터공학과</td><td>10473</td><td>00</td><td>1</td><td>컴퓨터 입문</td><td>교양</td><td>3/2/2</td><td>유관종</td><td>월(8~9교시), 수(5~6교시)</td><td>1</td><td>40</td></tr>
+				<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td><td>컴퓨터공학과</td><td>14773</td><td>01</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>김상하</td><td>수(1교시), 수(6~7교시)</td><td>1</td><td>40</td></tr>
+				 -->
 				
+				
+	<%-- 			<c:forEach items="${lctre_SearchVO}" var="lctre">
+				<c:choose>
+				<c:when test="{ requestVO.re_NO}" >
+				<tr>
+					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강해제"></td>
+					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
+					<td>${lctre.sit_Subjct}</td>
+					<td>${lctre.lu_Lctre_Code}</td>
+					<td>${lctre.lc_Split}</td>
+					<td>${lctre.lu_Grade }</td>
+					<td>${lctre.lu_Lctre_Nm}</td>
+					<td>${lctre.lu_Compl_Se}</td>
+					<td>${lctre.lu_Pnt}</td>
+					<td>${lctre.pr_Nm}</td>
+					<td>${lctre.lc_Lctre_Time}</td>
+					<td>${lctre.lc_Lctre_Nmpr}</td>
+					<td>${lctre.lr_Accept_Nmpr}</td> 
+				</tr>
+				</c:when>
+				<c:otherwise>
+				
+				</c:otherwise>
+				</c:choose>
+			</c:forEach> --%>
 				
 				
 			</table>

@@ -24,6 +24,8 @@ import com.uni.fems.dto.Lctre_SearchVO;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
+ * 2017.02.19      KJH            강의등록
+ * 2017.02.20      KJH            강의수정
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -42,22 +44,36 @@ public interface LctreService {
 	 */
 	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 int tpage, 
 	
-	// 강의 등록 - 서비스로 가야함
-	void insertLctre(LctreVO lctreVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 교수가 작성한 강의계획서의 Lctre테이블과 Lctre_Actpln에 데이터를 넣어서
+	 * 강의 개설 요청 등록
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @throws SQLException
+	 */
+	int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
 
 	
 	
+	/**
+	 * <pre>
+	 * 교수가 강의계획서 및 개설 강의 내용을 수정
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
 	
 	
-	// 강의등록(강의,강의계획서,)
 	
-	/*public ArrayList<LctreVO> getLctreList(int key);	
-	public LctreVO selectLctre(int lc_Lctre_No);*/
 
 		
-	// 강의 수정 - 서비스로 가야함
-//	Lctre_SearchVO updateLctre_Search(Lctre_SearchVO lctre_SearchVO, HttpServletRequest request);
-	
 	
 	
 }

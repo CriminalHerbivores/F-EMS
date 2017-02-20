@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<!--  [[개정이력(Modification Information)]]        -->
+<!--  수정일       수정자      수정내용             -->
+<!--  ==========   ======    ==============         -->
+<!--  $2017.02.19    KJS       최초작성             -->
+<!--  $2017.02.20    KJS       기본작성             -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
+<sqlMap namespace="Lctre_Notice">
+
+ 	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	
+	<select id="listAllLctre_Notice" >
+		select * from LN_$tabl_Nm$ where LN_SJ like '%$ln_Sj$%' order by LN_BBS_NO desc
+	</select>
+	
+	<select id="totalLctre_Notice" >
+		select count(*) from LN_$tabl_Nm$ where LN_SJ like '%$ln_Sj$%'
+	</select>
+	
+	<select id="getLctre_Notice" >
+		select * from LN_$tabl_Nm$ where LN_BBS_NO=#ln_Bbs_No#
+	</select>
+	
+	<update id="insertLctre_Notice" >
+		insert into LN_$tabl_Nm$(LN_BBS_NO,LN_SJ,LN_CN,LN_WRITNG_DT,LN_RDCNT) 
+		values(((select max(LN_BBS_NO) from LN_$tabl_Nm)+1)),#ln_Sj#,#ln_Cn#,sysdate,0)
+	</update>
+	
+	<update id="updateLctre_Notice" >
+		update LN_$tabl_Nm$ set LN_SJ=#ln_Sj#,LN_CN=#ln_Cn# 
+		where LN_BBS_NO=#ln_Bbs_No#
+	</update>
+	
+	<update id="updateLctre_Notice_Rdcnt" >
+		update LN_$tabl_Nm$ set LN_RDCNT=#ln_Rdcnt#
+		where LN_BBS_NO=#ln_Bbs_No#
+	</update>
+	
+	<update id="deleteLctre_Notice" >
+		delete from LN_$tabl_Nm$ where LN_BBS_NO=#ln_Bbs_No#
+	</update>
+	
+</sqlMap>

@@ -80,15 +80,16 @@ public class BuildingController {
 	 */
 	@RequestMapping(value="/buildingInsert", method=RequestMethod.POST)
 	public String buildingInsert(BuildingVO buildingVO,HttpServletRequest request, Model model, HttpSession session) {
-		String url = "admin/admin_page/buildingInsert";
+		String url = "redirect:buildingInsert";
 		try {
 			buildingService.insertBuilding(buildingVO);
+			System.out.println(buildingVO.getBd_Useyn()+"=============================11111111111111111111111111");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(buildingVO.getBd_Useyn()+"=============================22222222222222222");
 		model.addAttribute("buildingVO",buildingVO);
-		
+		System.out.println(buildingVO.getBd_Useyn()+"=============================333333333333333333333333333");
 		return url;
 	}
 

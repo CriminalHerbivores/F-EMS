@@ -16,32 +16,23 @@
 	<typeAlias alias="lctre_Actpln" type="com.uni.fems.dto.Lctre_ActplnVO" />
 
 	<!-- 강의계획서 등록 -->
-	<insert id="insertLctre_Actpln" parameterClass="lctre_Actpln">
-		
-		<isNotEmpty prepend="AND" property="type">
-		INSERT INTO LCTRE_ACTPLN(LA_LCTRE_NO,LA_MAIN_TXTBOOK,LA_SUB_TXTBOOK,LA_LCTRE_GOAL,LA_LCTRE_PROGRS_FORM,LA_MIDEX,LA_FNEX,LA_INDVDL_TASK,LA_TEAM_TASK,LA_PRESNATN,LA_ATEND,LA_ATTD,LA_WEEK1,LA_WEEK2,LA_WEEK3,LA_WEEK4,LA_WEEK5,LA_WEEK6,LA_WEEK7,LA_WEEK8,LA_WEEK9,LA_WEEK10,LA_WEEK11,LA_WEEK12,LA_WEEK13,LA_WEEK14,LA_WEEK15)
-			VALUES(#LA_LCTRE_NO#,#LA_MAIN_TXTBOOK#,#LA_SUB_TXTBOOK#,#LA_LCTRE_GOAL#,#LA_LCTRE_PROGRS_FORM#,#LA_MIDEX#,#LA_FNEX#,#LA_INDVDL_TASK#,#LA_TEAM_TASK#,#LA_PRESNATN#,#LA_ATEND#,#LA_ATTD#,#LA_WEEK1#,#LA_WEEK2#,#LA_WEEK3#,#LA_WEEK4#,#LA_WEEK5#,#LA_WEEK6#,#LA_WEEK7#,#LA_WEEK8#,#LA_WEEK9#,#LA_WEEK10#,#LA_WEEK11#,#LA_WEEK12#,#LA_WEEK13#,#LA_WEEK14#,#LA_WEEK15#)
+	<update id="insertLctre_Actpln" parameterClass="lctre_Actpln">
+		<dynamic>
+		<isNotEmpty property="la_Lctre_No">
+		INSERT INTO LCTRE_ACTPLN(la_Lctre_No,la_Main_Txtbook,la_Sub_Txtbook,la_Lctre_Goal,la_Lctre_Progrs_Form,la_Midex,la_Fnex,la_Indvdl_Task,la_Team_Task,la_Presnatn,la_Atend,la_Attd,la_Week1,la_Week2,la_Week3,la_Week4,la_Week5,la_Week6,la_Week7,la_Week8,la_Week9,la_Week10,la_Week11,la_Week12,la_Week13,la_Week14,la_Week15)
+			VALUES(#la_Lctre_No#,#la_Main_Txtbook#,#la_Sub_Txtbook#,#la_Lctre_Goal#,#la_Lctre_Progrs_Form#,#la_Midex#,#la_Fnex#,#la_Indvdl_Task#,#la_Team_Task#,#la_Presnatn#,#la_Atend#,#la_Attd#,#la_Week1#,#la_Week2#,#la_Week3#,#la_Week4#,#la_Week5#,#la_Week6#,#la_Week7#,#la_Week8#,#la_Week9#,#la_Week10#,#la_Week11#,#la_Week12#,#la_Week13#,#la_Week14#,#la_Week15#)
 		</isNotEmpty>
-	</insert>
-	
-	
-	
-	<!-- 		insert into lctre_Actpln(la_Lctre_No,la_main_txtbook,la_sub_txtbook,la_lctre_goal,la_lctre_progrs_form,la_midex,la_fnex,la_indvdl_task,la_team_task,la_presnatn,la_atend,la_attd,la_week1,la_week2,la_week3,la_week4,la_week5,la_week6,la_week7,la_week8,la_week9,la_week10,la_week11,la_week12,la_week13,la_week14,la_week15)
-			values(#la_Lctre_No#,#la_main_txtbook#,#la_sub_txtbook#,#la_lctre_goal#,#la_lctre_progrs_form#,#la_midex#,#la_fnex#,#la_indvdl_task#,#la_team_task#,#la_presnatn#,#la_atend#,#la_attd#,#la_week1#,#la_week2#,#la_week3#,#la_week4#,#la_week5#,#la_week6#,#la_week7#,#la_week8#,#la_week9#,#la_week10#,#la_week11#,#la_week12#,#la_week13#,#la_week14#,#la_week15#)
-	 -->
-	
-	
-	
-	
-	
-	
-	
+		</dynamic>
+	</update>
 	
 	<!-- 강의계획서 수정 -->
-<!-- 	<update id="updateLctre_Actpln" parameterClass="Lctre_Actpln">
-		update lctre_actpln set la_lctre_no=#la_lctre_no#,la_main_txtbook=#la_main_txtbook#,la_sub_txtbook=#la_sub_txtbook#,la_lctre_goal=#la_lctre_goal#,la_lctre_progrs_form=#la_lctre_progrs_form#,la_midex=#la_midex#,la_fnex=#la_fnex#,la_indvdl_task=#la_indvdl_task#,la_team_task=#la_team_task#,la_presnatn=#la_presnatn#,la_atend=#la_atend#,la_attd=#la_attd#,la_week1=#la_week1#,la_week2=#la_week2#,la_week3=#la_week3#,la_week4=#la_week4#,la_week5=#la_week5#,la_week6=#la_week6#,la_week7=#la_week7#,la_week8=#la_week8#,la_week9=#la_week9#,la_week10=#la_week10#,la_week11=#la_week11#,la_week12=#la_week12#,la_week13=#la_week13#,la_week14=#la_week14#,la_week15=#la_week15#
+	<update id="updateLctre_Actpln" parameterClass="Lctre_Actpln">
+	<dynamic>
+	<isNotEmpty property="lc_Lctre_No">
+		update lctre_actpln set la_lctre_no=#la_lctre_no#,la_main_txtbook=#la_main_txtbook#,la_sub_txtbook=#la_sub_txtbook#,la_lctre_goal=#la_lctre_goal#,la_lctre_progrs_form=#la_lctre_progrs_form#,la_midex=#la_midex#,la_fnex=#la_fnex#,la_indvdl_task=#la_indvdl_task#,la_team_task=#la_team_task#,la_presnatn=#la_presnatn#,la_atend=#la_atend#,la_attd=#la_attd#,la_Week1=#la_Week1#,la_Week2=#la_Week2#,la_Week3=#la_Week3#,la_Week4=#la_Week4#,la_Week5=#la_Week5#,la_Week6=#la_Week6#,la_Week7=#la_Week7#,la_Week8=#la_Week8#,la_Week9=#la_Week9#,la_Week10=#la_Week10#,la_Week11=#la_Week11#,la_Week12=#la_Week12#,la_Week13=#la_Week13#,la_Week14=#la_Week14#,la_Week15=#la_Week15#
 		where la_lctre_no=#la_lctre_no#
-	</update> -->
+	</isNotEmpty></dynamic>	
+	</update>
 	
 	<!-- 강의계획서 삭제 -->
 <!-- 	<update id="deleteLctre_Actpln" parameterClass="int">

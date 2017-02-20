@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -19,17 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sun.tracing.dtrace.Attributes;
-import com.uni.fems.dao.StdntDAO;
-import com.uni.fems.dto.Notice_BbsVO;
-import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.controller.common.UnitDate;
+import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SknrgsVO;
-import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.request.PageRequest;
-import com.uni.fems.excel.ExcelRead;
-import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
@@ -317,36 +311,57 @@ public class StdntController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/schlshipList", method = RequestMethod.GET)
-	public String schlshipList(Model model, HttpServletRequest request){
-		String url="student/schlshipList";
-		String key = request.getParameter("key");
-		String tpage = request.getParameter("tpage");
-
-		if (key == null) {
-			key = "";
-		}
-		if (tpage == null) {
-			tpage = "1";
-		} else if (tpage.equals("")) {
-			tpage = "1";
-		}
-		model.addAttribute("key", key);
-		model.addAttribute("tpage", tpage);
-
+	@RequestMapping(value = "/schlshipList")
+	public String schlshipList(Model model, HttpServletRequest request, HttpSession session){
+		String url="student/schlship";
+		
+		String loginUser = (String) session.getAttribute("loginUser");
+		
 		List<SchlshipVO> schlshipList = null;
+		List<SchlshipVO> stdntSchlshipList = null;
 		String paging = null;
 		try {
-			schlshipList = schlshipService.selectNameAllPage(
-					Integer.parseInt(tpage), key);
-			paging = schlshipService.pageNumber(Integer.parseInt(tpage), key);
+			schlshipList = schlshipService.selectAllSchlship();
+			stdntSchlshipList = schlshipService.selectSchlshipByStdnt(loginUser);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		int[] i = new UnitDate().getDay();
+		model.addAttribute("hack",i[3]); //학기
 		model.addAttribute("schlshipList", schlshipList);
-		int n = schlshipList.size();
-		model.addAttribute("schlshipListSize", n);
-		model.addAttribute("paging", paging);
+		model.addAttribute("stdntSchlshipList", stdntSchlshipList);
+		return url;
+	}
+	/**
+	 * <pre>
+	 * 장학금을 신청한다.
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value = "/requestschlship")
+	public String requestschlship(HttpSession session,String tpage,int ss_Schlship_Code){
+		String url="redirect:schlshipList?tpage="+tpage;
+		
+		int[] i = new UnitDate().getDay();
+		String loginUser = (String) session.getAttribute("loginUser");
+		
+		PymntVO pymntVO = new PymntVO();
+		pymntVO.setPy_Schlship_Code(ss_Schlship_Code);
+		pymntVO.setPy_Crrspnd_Year(i[0]+"");
+		pymntVO.setPy_Semstr(i[3]+"");
+		pymntVO.setPy_Stdnt_No(loginUser);
+		
+		try {
+			schlshipService.requestschlship(pymntVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return url;
 	}
 }

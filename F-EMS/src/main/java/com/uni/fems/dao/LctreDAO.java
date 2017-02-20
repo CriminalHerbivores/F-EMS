@@ -20,6 +20,8 @@ import com.uni.fems.dto.Lctre_SearchVO;
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
  * 2017.02.16      KJH            강의목록
+ * 2017.02.19      KJH            강의등록
+ * 2017.02.20      KJH            강의수정
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -46,7 +48,7 @@ public interface LctreDAO {
 	
 	/**
 	 * <pre>
-	 * 개설할 강의 등록
+	 * 교수가 개설할 강의를 등록
 	 * </pre>
 	 * <pre>
 	 * @param lctreVO
@@ -55,7 +57,29 @@ public interface LctreDAO {
 	 */
 	void insertLctre(LctreVO lctreVO) throws SQLException;	//강의 등록
 	
-	int updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
+	/**
+	 * <pre>
+	 * 강의번호(lc_Lctre_No)중 가장 큰 값을 가져옴
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int selectMaxLc_Lctre_No() throws SQLException;	//무조건 최대값을 가져오기 때문에 매개변수x
+	
+	/**
+	 * <pre>
+	 * 개설된 강의 혹은 개설 요청중인 강의를 수정
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
+	
+	
 	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제
 	
 	

@@ -19,6 +19,8 @@ import com.uni.fems.dto.Lctre_ActplnVO;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
+ * 2017.02.19      KJH            강의등록
+ * 2017.02.20      KJH            강의수정
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -30,17 +32,16 @@ public class Lctre_ActplnDAOImpl implements Lctre_ActplnDAO {
 	}
 	
 	
-	// 강의계획서 등록
+	// 교수가 강의계획서 등록
 	@Override
 	public void insertLctre_Actpln(Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
-		System.out.println("==================================================================================Lctre_ActplnDAOImpl  111111111111");
 		client.update("insertLctre_Actpln",lctre_ActplnVO);
-		System.out.println("==================================================================================Lctre_ActplnDAOImpl  2222222222222");
 	}
+	
+	// 교수가 강의계획서 수정
 	@Override
-	public int updateLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO)
+	public void updateLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		client.update("updateLctre_Actpl",lctre_ActplnVO);
 	}
 }
