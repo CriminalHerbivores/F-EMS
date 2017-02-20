@@ -40,14 +40,16 @@ public class DecoInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		
-		ManageVO manageVO=null;
-		try {
-			manageVO=manageService.getManage();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		if(session.getAttribute("manageVO")==null){
+			ManageVO manageVO=null;
+			try {
+				manageVO=manageService.getManage();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("manageVO", manageVO);
 		}
-		request.setAttribute("manageVO", manageVO);
 		return super.preHandle(request, response, handler);
 	}
 	
