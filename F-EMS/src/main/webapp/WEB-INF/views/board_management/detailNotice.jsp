@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
@@ -123,29 +125,46 @@ function commm_go(){
 	}
 
 $(document).on('click','.deleteComment',function(e){
-    e.preventDefault();
-    var result = $(this).attr('id');
+	e.preventDefault();
+	var result = $(this).attr('id');
     var bc_bbs_no = $('#bbs_no').val();
     var data = {
 			"result" : result,
 			"bc_bbs_no" : bc_bbs_no	
 		};
-    $.ajax({
-       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
-			contentType : 'application/json; charset=utf-8',
-			data : JSON.stringify(data),
-			dataType : 'text',
-			type : 'post',
-			success : function(data) {
-				$('#comment_content').val('');
-				$('div #comment').empty();
-				$('div #comment').append(data);
-			},
-			error : function() {
-				alert('댓글 삭제 실패');
-			}
+	swal({
+		  title: "정말 삭제하시겠습니까?",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "삭제",
+		  cancelButtonText: "취소",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+		function(isConfirm){
+		  if (isConfirm) {
+			    $.ajax({
+			       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
+						contentType : 'application/json; charset=utf-8',
+						data : JSON.stringify(data),
+						dataType : 'text',
+						type : 'post',
+						success : function(data) {
+							$('#comment_content').val('');
+							$('div #comment').empty();
+							$('div #comment').append(data);
+						},
+						error : function() {
+							alert('댓글 삭제 실패');
+						}
+				});
+			    swal("삭제되었습니다.");
+		  } else {
+		    swal("삭제를 취소했습니다.");
+		  }
 		});
-	});
+});
 
 
 $(document).on('click','.cancelComment',function(e){
@@ -257,10 +276,21 @@ $(document).on('click','.realupdateComment',function(e){
 			</tr>
 
 		</table>
-		<br>
+		<!--버튼들  -->
+	<div id="buttons" style="float: right">
+	<sec:authorize access="hasRole('ROLE_STF')">
+		<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
+			type="button" value="수정" class="def-btn btn-md btn-color">
+		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
+			data-toggle="modal" value="삭제">
+	</sec:authorize>
+			 <a	href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}">
+			  <input type="button" class="def-btn btn-md btn-color" value="목록">
+		</a>
+	</div>
 		<!-- 댓글부분 -->
-
-
+	<br><br>
+	<div>
 		<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no"
 			name="bbs_no">
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
@@ -268,20 +298,10 @@ $(document).on('click','.realupdateComment',function(e){
 		<input type="button" value="확인" class="def-btn btn-sm btn-color" id="btnSave" onclick="commm_go();">
 		<div id="comment"></div>
 		<input type="hidden" value="${loginUser}" id="loginUser">
-
+	</div>
 	</form>
 
-	<!--버튼들  -->
-	<div id="buttons" style="float: right">
-		<%-- <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="삭제"> </a> --%>
-		<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
-			type="button" value="수정" class="def-btn btn-md btn-color">
-		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> <a
-			href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
-			type="button" class="def-btn btn-md btn-color" value="목록">
-		</a>
-	</div>
+
 </div>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">

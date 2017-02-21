@@ -67,7 +67,7 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	}
 	@Override
 	public List<Notice_BbsVO> listAllNotice_Bbs(int tpage, SearchVO searchVO) throws SQLException {
-		int totalRecord = notice_bbsDAO.totalNotice_Bbs();
+		int totalRecord = notice_bbsDAO.totalNotice_Bbs(searchVO);
 		return notice_bbsDAO.listAllNotice_Bbs(searchVO,tpage, totalRecord);
 		
 	}
@@ -89,7 +89,7 @@ public class Notice_BbsServiceImpl implements Notice_BbsService{
 	}
 	@Override
 	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException {
-		int totalRecord = notice_bbsDAO.totalNotice_Bbs();
+		int totalRecord = notice_bbsDAO.totalNotice_Bbs(searchVO);
 		String page = new Paging().pageNumber(tpage,totalRecord,"noticeList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
 		return page;
 	}

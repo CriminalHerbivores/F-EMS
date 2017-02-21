@@ -64,10 +64,10 @@ public class Notice_BbsDAOImpl implements Notice_BbsDAO{
 	}
 	
 	@Override
-	public int totalNotice_Bbs() throws SQLException{
+	public int totalNotice_Bbs(SearchVO searchVO) throws SQLException{
 		int total_pages = 0;
 		
-		total_pages = (Integer) client.queryForObject("totalNotice_Bbs",null);
+		total_pages = (Integer) client.queryForObject("totalNotice_Bbs",searchVO);
 		return total_pages;
 	}
 	

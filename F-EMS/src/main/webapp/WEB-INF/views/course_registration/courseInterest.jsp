@@ -25,7 +25,7 @@ body{
 </style>
 
 </head>
-<body>
+<body class="course-list-r-bottom">
 <form>
 
 <div class="text-center">

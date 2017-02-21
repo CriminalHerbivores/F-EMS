@@ -51,16 +51,16 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	
 	
-	// 전체 강의 목록
+	// 현재 개설된 전체 강의 목록
 	@Override
-	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException { //int tpage, 
+	public List<Lctre_SearchVO> openLctreList(String lu_Lctre_Nm) throws SQLException { //int tpage, 
 		//개설강의목록 메인
-		List<Lctre_SearchVO> listLctre;
+		List<Lctre_SearchVO> openLctreList;
 		if(lu_Lctre_Nm==null){
 			lu_Lctre_Nm="";
 		}
-		listLctre = (List<Lctre_SearchVO>) client.queryForList("listLctre", lu_Lctre_Nm);
-		return listLctre;
+		openLctreList = (List<Lctre_SearchVO>) client.queryForList("openLctreList", lu_Lctre_Nm);
+		return openLctreList;
 	}
 	
 	// 교수가 강의 등록 요청
@@ -147,7 +147,7 @@ public class LctreDAOImpl implements LctreDAO {
 	 * 전체 강의 목록 <-안쓰는
 	 */
 //	@Override
-//	public ArrayList<Lctre_SearchVO> listLctre(String lu_lctre_no)
+//	public ArrayList<Lctre_SearchVO> openLctreList(String lu_lctre_no)
 //			throws SQLException {
 //		ArrayList<Lctre_SearchVO> lctre_SearchVO = new ArrayList<Lctre_SearchVO>();
 //
