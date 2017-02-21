@@ -78,14 +78,14 @@
 		where tu_No=#tu_No#
 	</update>
 	<select id="selectTuition" parameterClass="search" resultClass="tuition">
-	select * 
-	from stdnt st, SUBJCT_INFO_TABLE sj, tuition tu
-	where st.ST_SUBJCT_CODE = sj.SIT_SUBJCT_CODE
-	and tu.TU_STDNT_NO = st.ST_STDNT_NO
-	and $key$ like '%'||$value$||'%'
+		select * 
+		from stdnt st, SUBJCT_INFO_TABLE sj, tuition tu
+		where st.ST_SUBJCT_CODE = sj.SIT_SUBJCT_CODE
+		and tu.TU_STDNT_NO = st.ST_STDNT_NO
+		and $key$ like '%'||$value$||'%'
 	</select>
 	<select id="selectNotTuition" resultClass="tuition">
-	select * from tuition
-	where tu_Pay_Dt is null
+		select * from tuition
+		where tu_Pay_Dt is null
 	</select>
 </sqlMap>
