@@ -540,7 +540,9 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
 
-
+<!--alert css  -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/sweetalert.css">	
 
 <!--  ============= js =============  -->
 	
@@ -564,11 +566,12 @@
 
 
 
+<!--alert js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
 
 
-
-
-<!-- ssh 추가 -->
+<!-- ssh 추가 -->	
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
 <script type="text/javascript"

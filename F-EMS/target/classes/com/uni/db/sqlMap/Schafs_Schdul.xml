@@ -15,10 +15,23 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="schdulvo" type="com.uni.fems.dto.Schafs_SchdulVO" />
 		
+	<select id="listSchdul" parameterClass="int" resultClass="schdulvo">
+	select * from schafs_schdul where extract(month from SD_BGNDT)=#monthNo# order by SD_BGNDT
+	</select>
 	
 	<update id="insertSchdul" parameterClass="schdulvo">
-		insert into schafs_schdul(sd_no,sd_sklstf_no,sd_schdul_nm,sd_schdul_sumry,sd_detail_dc,sd_bgndt,sd_enddt) 
-		values(ss_seq.nextval,#sd_Sklstf_No#,#sd_Schdul_Nm#,#sd_Schdul_Sumry#,#sd_Detail_Dc#,#sd_Bgndt#,#sd_Enddt#)
+		insert into schafs_schdul(sd_no,sd_sklstf_no,sd_schdul_sumry,sd_bgndt,sd_enddt) 
+		values(ss_seq.nextval,#sd_Sklstf_No#,#sd_Schdul_Sumry#,#sd_Bgndt#,#sd_Enddt#)
+	</update>
+	
+	
+	<update id="updateSchdul" parameterClass="schdulvo">
+		update schafs_schdul set sd_schdul_sumry=#sd_Schdul_Sumry#, sd_bgndt=#sd_Bgndt#, sd_enddt=#sd_Enddt#
+		where sd_no=#sd_No# 
+	</update>
+	
+	<update id="deleteSchdul" parameterClass="int">
+		delete from schafs_schdul where sd_no=#sd_No#
 	</update>
 
 

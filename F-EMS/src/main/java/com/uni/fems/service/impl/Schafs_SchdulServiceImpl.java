@@ -32,8 +32,18 @@ public class Schafs_SchdulServiceImpl implements Schafs_SchdulService {
 public int insertSchdul(Schafs_SchdulVO schdulVO) throws SQLException {
 	int result = schafs_SchdulDAO.insertSchdul(schdulVO);
 	return result;
-	
-	
+}
+@Override
+public List<Schafs_SchdulVO> listSchdul(int monthNo) throws SQLException {
+	return schafs_SchdulDAO.listSchdul(monthNo);
+}
+@Override
+public int updateSchdul(Schafs_SchdulVO schdulVO) throws SQLException {
+	return schafs_SchdulDAO.updateSchdul(schdulVO);
+}
+@Override
+public int deleteSchdul(int sd_no) throws SQLException {
+	return schafs_SchdulDAO.deleteSchdul(sd_no);
 }
  
  

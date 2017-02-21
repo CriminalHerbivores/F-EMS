@@ -46,13 +46,12 @@ public class BaskinController {
 	@RequestMapping(value="/robbins", method = RequestMethod.POST)
 	public String getThemeBaskin(BaskinVO baskin,HttpServletRequest request,HttpSession session){
 		String url = "redirect:robbins";
-		/*
-		ManageVO vo = new ManageVO();
+		
+		ManageVO vo = (ManageVO) session.getAttribute("manageVO");
 		vo.setMng_Main_Color(baskin.getBskn_Main());
 		vo.setMng_Sub_Color1(baskin.getBskn_Sub1());
 		vo.setMng_Sub_Color2(baskin.getBskn_Sub2());
-		request.setAttribute("baskin", vo);
-		*/
+		session.setAttribute("manageVO", vo);
 		
 		try {
 			baskinService.setBaskin(baskin);
