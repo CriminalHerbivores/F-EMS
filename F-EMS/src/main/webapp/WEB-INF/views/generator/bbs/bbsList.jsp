@@ -14,12 +14,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>직원-공지게시판</title>
+  <title>직원-제너레이터게시판</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="<%=request.getContextPath()%>/resources/js/bbs_gnt.js"></script>
 </head>
 <body>
 
@@ -27,14 +28,14 @@
 <table class="non-border margin-auto">
 <tr><td>
 <div class="text-center">
-  <h2>공지 게시판</h2>
+  <h2>${bbs_List_Gnt.bl_Bbs_Nm}</h2>
  <hr />
 
 <form name="formm">
 <div class="text-right">
   <select name="key" class="combobox-md custom-form-control">
-  	<option value="nb_Sj">제목</option>
-  	<option value="nb_Cn">내용</option>
+  	<option value="bb_Sj">제목</option>
+  	<option value="bb_Cn">내용</option>
   </select>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
@@ -49,14 +50,14 @@
         <th>조회수</th>
       </tr>
       
-      <c:forEach var="notice" items="${noticeList }">
+      <c:forEach var="bbs_Gnt" items="${bbs_GntList }">
       	<tr>
-      		<td> ${notice.nb_Bbs_No}</td>
-      		<td><a href="detailNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}">
-      		 ${notice.nb_Sj} </a>
+      		<td> ${bbs_Gnt.bb_Bbs_No}</td>
+      		<td><a href="detailBbs_Gnt?bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&tpage=${tpage}">
+      		 ${bbs_Gnt.bb_Sj} </a>
       		</td>
-      		<td><fmt:formatDate value="${notice.nb_Writng_Dt}" /> </td>
-      		<td> ${notice.nb_Rdcnt}</td> <!-- 조회수 -->
+      		<td><fmt:formatDate value="${bbs_Gnt.bb_Writng_dt}" /> </td>
+      		<td> ${bbs_Gnt.bb_Rdcnt}</td> <!-- 조회수 -->
       		
       	</tr>
       </c:forEach>
@@ -67,11 +68,11 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
+	  	<a href="writeBbs_Gnt?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}">
+	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
 </td></tr>  
 </table>	  
 </div>
- 
 </body>
 </html>

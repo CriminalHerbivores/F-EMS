@@ -17,13 +17,14 @@
 </head>
 <body>
 
-	    <h2> 공지 게시판 </h2>
+	    <h2>${bbs_List_Gnt.bl_Bbs_Nm}</h2>
 		<form name="formm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="bl_Bbs_No" value="${bbs_List_Gnt.bl_Bbs_No}">
 			<fieldset>	
 			    <label>제목</label>
-			    <input type="text" name="nb_Sj"  size="64" ><br>
+			    <input type="text" name="bb_Sj"  size="64" ><br>
 				<label>내용</label>
-			    <textarea rows="8" cols="65" name="nb_Cn"></textarea><br>
+			    <textarea rows="8" cols="65" name="bb_Cn"></textarea><br>
 			    <input type="file" name="uploadfile">
 			</fieldset>   
 		<div class="clear"></div>
