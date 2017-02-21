@@ -11,7 +11,7 @@
 		<pattern>/course/courseComplete</pattern>
 		<pattern>/course/courseInterest</pattern>
 		<pattern>/course/courseCredit</pattern>
-		<pattern>/find_**</pattern>
+		<pattern>/**/find**</pattern>
 		<pattern>/cssExample</pattern>
 		<pattern>/lgBoard</pattern>
 		<pattern>/lgLogin</pattern>
