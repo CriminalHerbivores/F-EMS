@@ -48,7 +48,7 @@ public class BuildingController {
 	
 	   /**
 	 * <pre>
-	 * 건물등록을 위한 폼을 불러냄
+	 * 건물등록이 가능한 폼
 	 * </pre>
 	 * <pre>
 	 * @param buildingVO
@@ -70,7 +70,7 @@ public class BuildingController {
 	
 	/**
 	 * <pre>
-	 * 건물번호와 건물명을 중복하지 않는 값으로 입력받아서 건물을 새로 등록
+	 * 건물번호와 건물명을 중복하지 않는 값으로 입력받아서 건물을 새로 등록 가능한 로직
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -98,7 +98,7 @@ public class BuildingController {
 	
 	/**
 	 * <pre>
-	 * 등록한 건물의 건물번호, 건물명을 수정
+	 * 등록한 건물의 건물번호, 건물명을 수정 가능한 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -106,10 +106,36 @@ public class BuildingController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/buildingUpdate")
-	public String buildingUpdate(HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value="/buildingUpdate", method=RequestMethod.GET)
+	public String buildingUpdateForm(HttpServletRequest request, HttpSession session) {
 		String url = "admin/admin_page/buildingUpdate";
 		return url;
 	}
+	
+	/**
+	 * <pre>
+	 * 등록한 건물의 건물번호, 건물명을 수정 가능한 로직
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/buildingUpdate", method=RequestMethod.POST)
+	public String buildingUpdate(Model model, HttpSession session, BuildingVO buildingVO) {
+		String url = "redirect:buildingUpdate";
+		
+		try {
+			buildingService.updateBuilding(buildingVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("buildingVO",buildingVO);
+
+		return url;
+	}
+	
 
 }
