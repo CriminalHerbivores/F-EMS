@@ -67,9 +67,11 @@
       	
      
   </table>
+  <sec:authorize access="hasRole('ROLE_STF')">
 	  <div id="buttons" style="float:right">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
 	  </div>
+</sec:authorize>
 </td></tr>  
 </table>	  
 </div>
