@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,8 +43,10 @@ import com.uni.fems.service.SklstfService;
 @Controller
 @RequestMapping("/admin")
 public class ManageController {
-	
+	@Autowired
 	private Bbs_ListService bbs_ListSvc;
+	
+	@Autowired
 	private SklstfService sklstfService;
 
 	// @RequestMapping("/")
@@ -111,8 +114,8 @@ public class ManageController {
 	@RequestMapping(value="/sklstfInsert", method=RequestMethod.POST)
 	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo) 
 			throws ServletException, IOException{
-		String url = "redirect:sklstfInsert";	
-
+		String url = "redirect:sklstfAtrtyList";	
+		System.out.println("111111111111111111111111111111111111111111111111111111");
 		if(file != null && !file.equals("")){
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(file);		//경로 입력
@@ -142,15 +145,18 @@ public class ManageController {
 					e.printStackTrace();
 				}
 			}
+			System.out.println("여기는 if문 내부임=================================");
 			
 		}else{
 			try {
-				sklstfService.insertSklstf(sklstfVo);;
+				sklstfService.insertSklstf(sklstfVo);
+				System.out.println("sklstfVo================="+sklstfVo);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
+		model.addAttribute("sklstfVo",sklstfVo);
 		
 		return url;
 	}

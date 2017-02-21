@@ -47,11 +47,8 @@
 	
 	<!-- 관리자의 직원 등록 -->
 	<update id="insertSklstf" parameterClass="sklstf">
-	<dynamic>
-	<isNotEmpty property="stf_Sklstf_No">
 		insert into sklstf(STF_SKLSTF_NO,stf_Sklstf_Tlphon_No,STF_SUBJECT_CODE,STF_NM,STF_ENG_NM,STF_IHIDNUM,STF_MOBLPHON_NO,STF_HOUSE_TLPHON_NO,STF_PW,STF_POST_NO,STF_ADRES1,STF_ADRES2,STF_EMAIL,STF_USEYN)
-		values(#STF_SKLSTF_NO#,#stf_Sklstf_Tlphon_No#,#STF_SUBJECT_CODE#,#STF_NM#,#STF_ENG_NM#,#STF_IHIDNUM#,#STF_MOBLPHON_NO#,#STF_HOUSE_TLPHON_NO#,#STF_PW#,#STF_POST_NO#,#STF_ADRES1#,#STF_ADRES2#,#STF_EMAIL#,#STF_USEYN#)
-	</isNotEmpty></dynamic>
+		values(#stf_Sklstf_No#,#stf_Sklstf_Tlphon_No#,#stf_Subject_Code#,#stf_Nm#,#stf_Eng_Nm#,#stf_Ihidnum#,#stf_Moblphon_No#,#stf_House_Tlphon_No#,#stf_Pw#,#stf_Post_No#,#stf_Adres1#,#stf_Adres2#,#stf_Email#,#stf_Useyn#)
 	</update>
 	
 	
