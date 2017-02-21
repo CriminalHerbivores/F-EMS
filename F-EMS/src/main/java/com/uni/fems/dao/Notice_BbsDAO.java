@@ -136,7 +136,7 @@ public interface Notice_BbsDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public int totalNotice_Bbs() throws SQLException;
+	public int totalNotice_Bbs(SearchVO searchVO) throws SQLException;
 	
 
 

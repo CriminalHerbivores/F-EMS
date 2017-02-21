@@ -47,8 +47,8 @@
 		delete from notice_bbs where nb_bbs_no=#nb_Bbs_No#
 	</update>
 	
-	<select id="totalNotice_Bbs" resultClass="int">
-		select count(*) from notice_bbs
+	<select id="totalNotice_Bbs" parameterClass="searchvo" resultClass="int">
+		select count(*) from notice_bbs where $key$ like '%'||#value#||'%'
 	</select>
 	
 	<update id="countNotice_Bbs" parameterClass="notice_bbs">

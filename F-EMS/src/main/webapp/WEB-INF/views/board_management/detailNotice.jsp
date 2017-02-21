@@ -274,21 +274,7 @@ $(document).on('click','.realupdateComment',function(e){
 			</tr>
 
 		</table>
-		<br>
-		<!-- 댓글부분 -->
-
-
-		<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no"
-			name="bbs_no">
-		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
-			name="comment_content"></textarea>
-		<input type="button" value="확인" class="def-btn btn-sm btn-color" id="btnSave" onclick="commm_go();">
-		<div id="comment"></div>
-		<input type="hidden" value="${loginUser}" id="loginUser">
-
-	</form>
-
-	<!--버튼들  -->
+		<!--버튼들  -->
 	<div id="buttons" style="float: right">
 		<%-- <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="삭제"> </a> --%>
 		<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
@@ -299,6 +285,21 @@ $(document).on('click','.realupdateComment',function(e){
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>
+	
+		<!-- 댓글부분 -->
+
+	<div>
+		<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no"
+			name="bbs_no">
+		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
+			name="comment_content"></textarea>
+		<input type="button" value="확인" class="def-btn btn-sm btn-color" id="btnSave" onclick="commm_go();">
+		<div id="comment"></div>
+		<input type="hidden" value="${loginUser}" id="loginUser">
+	</div>
+	</form>
+
+
 </div>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
