@@ -79,6 +79,9 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
 
+<!--alert css  -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/sweetalert.css">	
 
 
 
@@ -96,6 +99,10 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 <!--  ============= js =============  -->
+
+<!--alert js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/sweetalert.js"></script>
 
 
 <!-- //////////////////////////////////// -->

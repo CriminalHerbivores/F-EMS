@@ -14,6 +14,20 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script>
+$(document).on('click','#insertNotice',function(){
+var title = $('#title').val();
+var content = $('#content').val();
+	if(Trim(title)=="" || title==null){
+		alert("제목을 입력해 주세요");
+		return;
+	}
+	if(Trim(content)=="" || content ==null){
+		alert("내용을 입력해 주세요");
+		return;
+	}
+}
+</script>
 </head>
 <body>
 
@@ -21,14 +35,14 @@
 		<form name="formm" method="post" enctype="multipart/form-data">
 			<fieldset>	
 			    <label>제목</label>
-			    <input type="text" name="nb_Sj"  size="64" ><br>
+			    <input type="text" id="title" name="nb_Sj"  size="64" ><br>
 				<label>내용</label>
-			    <textarea rows="8" cols="65" name="nb_Cn"></textarea><br>
+			    <textarea id="content" rows="8" cols="65" name="nb_Cn"></textarea><br>
 			    <input type="file" name="uploadfile">
 			</fieldset>   
 		<div class="clear"></div>
 		 <div id="buttons" style="float:right">
-			<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitForm(this.form);" > 
+			<input type="button" value="등록" class="def-btn btn-md btn-color" onclick="submitNotice(this.form);" > 
 			<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="submitForm(this.form);">	
 		  </div>
 		  
