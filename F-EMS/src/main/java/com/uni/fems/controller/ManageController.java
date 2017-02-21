@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.SklstfService;
+import com.uni.fems.service.Subjct_Info_TableService;
 
 /**
  * <pre>
@@ -36,6 +40,7 @@ import com.uni.fems.service.SklstfService;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
+ * 2017.02.22.     KJH       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -43,12 +48,17 @@ import com.uni.fems.service.SklstfService;
 @Controller
 @RequestMapping("/admin")
 public class ManageController {
+	
 	@Autowired
 	private Bbs_ListService bbs_ListSvc;
 	
 	@Autowired
 	private SklstfService sklstfService;
-
+	
+	@Autowired
+	private Subjct_Info_TableService subjct_Info_TableService;
+	
+	
 	// @RequestMapping("/")
 	// public String in(){
 	// String url = "redirect:index";
@@ -162,6 +172,42 @@ public class ManageController {
 	}
 	
 	
+	/**
+	 * <pre>
+	 * 관리자가 직원 등록시 학과명으로 학과 검색할 때 사용
+	 * </pre>
+	 * 
+	 * <pre>
+	 * @param model
+	 * @param lu_Lctre_Nm
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/findSubjct", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String findSubjct(Model model, String sit_Subjct)
+			throws ServletException, IOException {
+
+		String url = "admin/sklstf/findSubjct"; 
+		ArrayList<UserSubjctVO> userSubjctVO = null;
+
+		try {
+			if (sit_Subjct != null && sit_Subjct.trim().equals("") == false) {
+				userSubjctVO = subjct_Info_TableService.selectSubjctByName(sit_Subjct);
+			} else {
+				userSubjctVO = subjct_Info_TableService.selectSubjctByName("");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("userSubjctVO", userSubjctVO);
+		return url;
+	}
+	
+	
+	
 	
 	/**
 	 * <pre>
@@ -174,10 +220,19 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.GET)
-	public String sklstfAtrtyListForm(HttpServletRequest request,HttpSession session) {
+	public String sklstfAtrtyListForm(Model model,HttpSession session, String stf_Nm) {
 		String url = "admin/sklstf/sklstfAtrtyList";	
 		
+		List<UserSubjctVO> userSubjctVO=null;
 		
+		try {
+			sklstfService.sklstfList(stf_Nm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("userSubjctVO", userSubjctVO);
 		return url;
 	}
 	
@@ -194,7 +249,11 @@ public class ManageController {
 	 */
 	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.POST)
 	public String sklstfAtrtyUpdate(HttpServletRequest request,HttpSession session) {
-		String url = "admin/sklstf/sklstfAtrtyUpdate";	
+		String url = "redirect:sklstfAtrtyUpdate";	
+		
+		
+		
+		
 		return url;
 	}
 	

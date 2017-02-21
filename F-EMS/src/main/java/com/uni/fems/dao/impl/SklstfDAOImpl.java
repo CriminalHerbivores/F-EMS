@@ -2,10 +2,12 @@ package com.uni.fems.dao.impl;
 
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.SklstfDAO;
 import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.dto.UserSubjctVO;
 
 /**
  * <pre>
@@ -45,6 +47,18 @@ public class SklstfDAOImpl implements SklstfDAO {
 	@Override
 	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
 		client.update("insertSklstf",sklstfVo);
+	}
+	
+	// 전체 직원의 목록
+	@Override
+	public List<UserSubjctVO> sklstfList(String stf_Nm) throws SQLException {
+		
+		List<UserSubjctVO> sklstfList;
+		if(stf_Nm==null){
+			stf_Nm="";
+		}
+		sklstfList = client.queryForList("sklstfList",stf_Nm);	
+		return sklstfList;
 	}
 	
 }

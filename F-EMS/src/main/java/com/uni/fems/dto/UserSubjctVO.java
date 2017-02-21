@@ -1,4 +1,4 @@
-package UserSubjctVO;
+package com.uni.fems.dto;
 
 import java.sql.Timestamp;
 
@@ -83,6 +83,10 @@ public class UserSubjctVO {
 	private String stf_Adres2; // 주소2
 	private String stf_Email; // 이메일
 	private String stf_Useyn; // 직원 사용여부
+	
+	// Sklstf_AtrtyVO 권한
+	private String sa_Sklstf_No;   // 직원번호
+	private String sa_Atrty;   // 권한
 
 	// ProfsrVO 교수
 	private String pr_Profsr_No; // 교수 번호
