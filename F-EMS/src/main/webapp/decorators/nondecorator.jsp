@@ -75,6 +75,10 @@
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css">
+	
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/calendarstyle.css">
+	
 <!--  ============= css =============  -->
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
@@ -104,6 +108,10 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
 
+
+<!-- calendar js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/calendarscript.js"></script>
 
 <!-- //////////////////////////////////// -->
 
