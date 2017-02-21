@@ -34,27 +34,33 @@
 	
 	<!-- 학과 사용안함 -->
 	<update id="deleteSubjct_Info_Table" parameterClass="str">
-   update subjct_info_table set sit_Useyn='n' where sit_Subjct_Code=#sit_Subjct_Code#
-   </update>
+	   update subjct_info_table set sit_Useyn='n' where sit_Subjct_Code=#sit_Subjct_Code#
+	</update>
 	
+	<!-- 단과대학 정보 조회 -->
 	<select id="selectColege" resultClass="colege">
-		select * from colege
+		select * from colege order by coleg_nm
 	</select>
+	<!-- 단과대학으로 학부 정보 조회 -->
 	<select id="selectFaculty" parameterClass="str" resultClass="faculty">
-		select * from faculty where fc_Coleg_Code = #fc_Coleg_Code# 
+		select * from faculty where fc_Coleg_Code = #fc_Coleg_Code# order by FC_FACULTY_NM
 	</select>
+	<!-- 학부로 학과 정보 조회 -->
 	<select id="selectSubjct" parameterClass="str" resultClass="subjct_info_table">
-		select * from subjct_info_table where sit_Faculty = #sit_Faculty#
+		select * from subjct_info_table where sit_Faculty = #sit_Faculty# order by SIT_SUBJCT
 	</select>
+	<!-- 학과 등록금 수정 -->
 	<update id="updateTut" parameterClass="subjct_info_table">
 		update subjct_info_table
 		set sit_Tut=#sit_Tut#
 		where SIT_SUBJCT_CODE = #sit_Subjct_Code#
 	</update>
+	<!-- 학과 내 학생 조회 -->
 	<select id="subjctStdnt" parameterClass="str" resultClass="stdnt">
 		select * from stdnt
 		where st_subjct_code = #st_Subjct_Code#
 	</select>
+	<!-- 등록금 고지 -->
 	<update id="insertTuition" parameterClass="tuition">
 		insert into tuition(
 			tu_no,
@@ -68,24 +74,31 @@
 			#tu_Virtl_acnut_No#
 		)
 	</update>
+	<!-- 학생의 등록금 조회 -->
 	<select id="tuitionStdnt" parameterClass="str" resultClass="tuition">
-		select * from tution
+		select * from tuition
 		where tu_Stdnt_No=#tu_Stdnt_No#
+		order by tu_no desc
 	</select>
+	<!-- 등록금 납부일 등록 -->
 	<update id="updateTuition" parameterClass="tuition">
 		update tution
 		set tu_Pay_Dt = #tu_Pay_Dt#
 		where tu_No=#tu_No#
 	</update>
+	<!-- 등록금 조회 및 검색 -->
 	<select id="selectTuition" parameterClass="search" resultClass="tuition">
 		select * 
 		from stdnt st, SUBJCT_INFO_TABLE sj, tuition tu
 		where st.ST_SUBJCT_CODE = sj.SIT_SUBJCT_CODE
 		and tu.TU_STDNT_NO = st.ST_STDNT_NO
 		and $key$ like '%'||$value$||'%'
+		order by tu_no desc
 	</select>
+	<!-- 납부되지 않은 등록금 조회 -->
 	<select id="selectNotTuition" resultClass="tuition">
 		select * from tuition
 		where tu_Pay_Dt is null
+		order by tu_no desc
 	</select>
 </sqlMap>
