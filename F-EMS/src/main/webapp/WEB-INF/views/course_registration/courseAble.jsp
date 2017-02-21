@@ -70,7 +70,18 @@ body {
 				<c:forEach items="${lctre_SearchVO}" var="lctre" begin="0" end="9">
 				<tr>
 					<td>
-						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강신청">
+					<%-- <c:choose>
+					<c:when test="${lctre.lu_Lctre_No=lctre_SearchVO.in_Lctre_No && stdntVO.st_Stdnt_No=lctre_SearchVO.in_Stdnt_No}"> --%>
+					<!-- 로그인한 학생과 in_Stdnt_No가 일치하고
+						해당 라인의 lu_Lctre_No 와 in_Lctre_No중에 일치하는 게 있을 경우-->
+					
+						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강">
+					<%-- </c:when>
+					<c:otherwise> --%>
+						<!-- <input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소"> -->					
+					<%-- </c:otherwise>
+					</c:choose>	 --%>				
+					
 						</td>
 					
 					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
