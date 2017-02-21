@@ -147,7 +147,7 @@ public class LctreDAOImpl implements LctreDAO {
 	 * 전체 강의 목록 <-안쓰는
 	 */
 //	@Override
-//	public ArrayList<Lctre_SearchVO> listLctre(String lu_lctre_no)
+//	public ArrayList<Lctre_SearchVO> openLctreList(String lu_lctre_no)
 //			throws SQLException {
 //		ArrayList<Lctre_SearchVO> lctre_SearchVO = new ArrayList<Lctre_SearchVO>();
 //

@@ -75,7 +75,7 @@ public class LctreController {
 //		
 //
 //		try {
-//			lctreList = lctreDAO.listLctre(lctre_SearchVO);
+//			lctreList = lctreDAO.openLctreList(lctre_SearchVO);
 //		} catch (SQLException e) {
 //			e.printStackTrace();
 //		}
@@ -124,7 +124,7 @@ public class LctreController {
 		}
 		
 		
-		//lctre_SearchVO=lctreService.listLctre(lu_Lctre_Nm);
+		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
 		
 		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 		return url;
