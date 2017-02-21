@@ -33,7 +33,6 @@ import com.uni.fems.service.StdntService;
  * </pre>
  */
 @Controller
-<<<<<<< HEAD
 //@RequestMapping("/stdnt")
 //@Data
 public class ReqstController {
@@ -79,52 +78,5 @@ public class ReqstController {
 //		
 //		return url;
 //	}
-=======
-@RequestMapping("/stdnt")
-@Data
-public class ReqstController {
-	
-	@Autowired
-	private ReqstService reqstService;
-	
-	@Autowired
-	private ReqstDAO reqstDAO; 
-	
-	
-	/**
-	 * <pre>
-	 * 관심 강의로 추가하는 폼
-	 * </pre>
-	 * <pre>
-	 * @param model
-	 * @param session
-	 * @return
-	 * @throws SQLException
-	 */
-	@RequestMapping(value="/intrstList", method=RequestMethod.GET)
-	public String courseCreditForm(Model model, HttpSession session) throws SQLException{
-		String url="course_registration/courseCredit";
-		
-		return url;
-	}
-	
-	
-	/**
-	 * <pre>
-	 * 관심강의 취소, 추가하는 로직
-	 * </pre>
-	 * <pre>
-	 * @param model
-	 * @param session
-	 * @return
-	 * @throws SQLException
-	 */
-	@RequestMapping(value="/intrstList", method=RequestMethod.POST)
-	public String courseCredit(Model model, HttpSession session) throws SQLException{
-		String url="course_registration/courseCredit";
-		
-		return url;
-	}
->>>>>>> branch 'kjh' of https://github.com/CriminalHerbivores/F-EMS.git
 	
 }
