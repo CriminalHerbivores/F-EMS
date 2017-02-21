@@ -3,6 +3,25 @@ function submitForm(form){
 	document.formm.submit();
 }
 
+function submitNotice(form){
+
+	var title = $('#title').val().trim();
+	var content = $('#content').val().trim();
+		if(title=="" || title==null){
+			sweetAlert("Oops...", "제목을 입력해 주세요", "error");
+			/*alert("제목을 입력해 주세요");*/
+			$('#title').focus();
+			return;
+		}
+		if(content==""|| content ==null){
+			sweetAlert("Oops...", "내용을 입력해 주세요", "error");
+			/*alert("내용을 입력해 주세요");*/
+			$('#content').focus();
+			return;
+		}
+	document.formm.submit();
+}
+
 /* 인덱스로 돌아가기 */
 function go_home(){
 	location.href="http://"+location.host + "/fems/";
