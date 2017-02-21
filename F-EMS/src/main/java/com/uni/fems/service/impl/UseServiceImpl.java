@@ -8,12 +8,10 @@ import com.uni.fems.dto.UseVO;
 import com.uni.fems.service.UseService;
 
 public class UseServiceImpl implements UseService {
- 
- private UseDAO useDAO;
- public void setUseDAO(UseDAO useDAO){
-  this.useDAO=useDAO;
- }
- 
- 
-}
 
+	private UseDAO useDAO;
+	public void setUseDAO(UseDAO useDAO) {
+		this.useDAO = useDAO;
+	}
+	
+}
