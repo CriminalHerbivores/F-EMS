@@ -568,7 +568,7 @@
 
 <!--alert js  -->
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/sweetalert.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
 
 
 <!-- ssh 추가 -->	
