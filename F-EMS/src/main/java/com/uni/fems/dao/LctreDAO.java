@@ -34,7 +34,7 @@ public interface LctreDAO {
 	
 	/**
 	 * <pre>
-	 * 강의 목록 조회
+	 * 현재 개설된 강의 목록 조회
 	 * 수강신청 첫 페이지에서 검색어 없이 모든 강의목록 가져온다
 	 * </pre>
 	 * <pre>
@@ -43,7 +43,7 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록  int tpage, 
+	List<Lctre_SearchVO> openLctreList(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록  int tpage, 
 	
 	
 	/**
