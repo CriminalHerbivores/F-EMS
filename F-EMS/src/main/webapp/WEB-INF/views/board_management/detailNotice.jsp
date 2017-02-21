@@ -123,29 +123,46 @@ function commm_go(){
 	}
 
 $(document).on('click','.deleteComment',function(e){
-    e.preventDefault();
-    var result = $(this).attr('id');
+	e.preventDefault();
+	var result = $(this).attr('id');
     var bc_bbs_no = $('#bbs_no').val();
     var data = {
 			"result" : result,
 			"bc_bbs_no" : bc_bbs_no	
 		};
-    $.ajax({
-       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
-			contentType : 'application/json; charset=utf-8',
-			data : JSON.stringify(data),
-			dataType : 'text',
-			type : 'post',
-			success : function(data) {
-				$('#comment_content').val('');
-				$('div #comment').empty();
-				$('div #comment').append(data);
-			},
-			error : function() {
-				alert('댓글 삭제 실패');
-			}
+	swal({
+		  title: "정말 삭제하시겠습니까?",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "삭제",
+		  cancelButtonText: "취소",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+		function(isConfirm){
+		  if (isConfirm) {
+			    $.ajax({
+			       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
+						contentType : 'application/json; charset=utf-8',
+						data : JSON.stringify(data),
+						dataType : 'text',
+						type : 'post',
+						success : function(data) {
+							$('#comment_content').val('');
+							$('div #comment').empty();
+							$('div #comment').append(data);
+						},
+						error : function() {
+							alert('댓글 삭제 실패');
+						}
+				});
+			    swal("삭제되었습니다.");
+		  } else {
+		    swal("삭제를 취소했습니다.");
+		  }
 		});
-	});
+});
 
 
 $(document).on('click','.cancelComment',function(e){
