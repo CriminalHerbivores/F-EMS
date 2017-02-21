@@ -206,7 +206,6 @@ public class Notice_BbsController implements ApplicationContextAware{
 			bbs_FlpthVO.setBf_File_Type_Code(vo.getFl_File_Type_Code());
 			bbs_FlpthVO.setBf_File_Nm(vo.getFl_File_Nm());
 		}
-		
 		try {
 			notice_BbsSvc.insertNotice_Bbs(notice_BbsVO,bbs_FlpthVO);
 		} catch (SQLException e) {
