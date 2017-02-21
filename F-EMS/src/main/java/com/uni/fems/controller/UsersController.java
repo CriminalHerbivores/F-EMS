@@ -40,11 +40,11 @@ public class UsersController {
 	}
 
 	// 아이디 비번 찾기
-	@RequestMapping("findIdPw")
-	public String findIdPwForm(HttpServletRequest request, HttpSession session) {
-		String url = "layout_type/findIdPw";
-		return url;
-	}
+//	@RequestMapping("findIdPw")
+//	public String findIdPwForm(HttpServletRequest request, HttpSession session) {
+//		String url = "layout_type/findIdPw";
+//		return url;
+//	}
 	
 	
 	// 메인 - 로그인형
