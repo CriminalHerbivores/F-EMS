@@ -22,6 +22,7 @@ import com.uni.fems.dao.impl.LctreDAOImpl;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.service.LctreService;
+import com.uni.fems.service.StdntService;
 
 /**
  * <pre>
@@ -49,6 +50,9 @@ public class LctreController {
 	
 	@Autowired
 	private LctreService lctreService;
+	
+	@Autowired
+	private StdntService stdntService;
 	
 	
 	
@@ -111,13 +115,56 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.GET)
-	public String courseAbleForm(Model model, String lu_Lctre_Nm) {
+	public String courseAbleForm(Model model, HttpSession session, String lu_Lctre_Nm) {
 		String url = "course_registration/courseAble";
 		
 		List<Lctre_SearchVO> lctre_SearchVO=null;
 		
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		System.out.println("=======================================st_Stdnt_No : "+st_Stdnt_No);
+		
+		
 		try {
 			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
+			stdntService.selectStdnt(st_Stdnt_No);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
+		
+		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
+		return url;
+	}
+	
+	
+	
+	
+	/**
+	 * <pre>
+	 * 개설강의 목록에서 수강신청 및 관심강의 등록이 가능한 로직
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param session
+	 * @param lu_Lctre_Nm
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
+	public String courseAble(Model model, HttpSession session,String lu_Lctre_Nm) {
+		String url = "course_registration/courseAble";
+		
+		List<Lctre_SearchVO> lctre_SearchVO=null;
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		System.out.println("=======================================st_Stdnt_No : "+st_Stdnt_No);
+		
+		try {
+			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
+			stdntService.selectStdnt(st_Stdnt_No);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
