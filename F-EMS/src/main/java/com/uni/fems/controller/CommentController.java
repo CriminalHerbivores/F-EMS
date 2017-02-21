@@ -87,11 +87,11 @@ public class CommentController {
                   +"<a href=\"\" id=\""
                      +data.getBc_Comnt_No()
                      +"\" " 
-                     +"class=\"updateComment\" name=\"updateComment\"><input type=\"button\" class=\"def-btn\" value=\"수정\"></a>"
+                     +"class=\"updateComment\" name=\"updateComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"수정\"></a>"
                   +"<a href=\"\" id=\""
                      +data.getBc_Comnt_No()
                      +"\" " 
-                     +"class=\"deleteComment\" name=\"deleteComment\"><input type=\"button\" class=\"def-btn\" value=\"삭제\"></a>"
+                     +"class=\"deleteComment\" name=\"deleteComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"삭제\"></a>"
                   + "<div>  ->"
                      + data.getBc_Comnt_Content()
                      +"</div></div>";
@@ -295,11 +295,11 @@ public class CommentController {
 		                 +"<a href=\"\" id=\""
 		                 +data.getBc_Comnt_No()
 		                 +"\" " 
-		                 +"class=\"realupdateComment\" name=\"realupdateComment\"> <input type=\"button\" class=\"def-btn\" value=\"수정완료\"></a>"
+		                 +"class=\"realupdateComment\" name=\"realupdateComment\"> <input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"수정완료\"></a>"
 		              +"<a href=\"\" id=\""
 		              +data.getBc_Comnt_No()
 		                 +"\" " 
-		                 +"class=\"cancelComment\" name=\"cancelComment\"><input type=\"button\" class=\"def-btn\" value=\"취소\"></a><br>";
+		                 +"class=\"cancelComment\" name=\"cancelComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"취소\"></a><br>";
 	        	   	}else{
 	        	   		comment += "<div id=\""
 	    	                 + data.getBc_Comnt_No()   
