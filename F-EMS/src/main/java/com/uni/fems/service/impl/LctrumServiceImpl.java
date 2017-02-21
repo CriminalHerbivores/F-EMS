@@ -14,6 +14,26 @@ public class LctrumServiceImpl implements LctrumService {
   this.lctrumDAO=lctrumDAO;
  }
  
+// 강의 등록
+@Override
+public void insertLctrum(LctrumVO lctrumVO) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
+
+//강의 수정
+@Override
+public void updateLctrum(LctrumVO lctrumVO) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
+//강의 삭제
+@Override
+public void deleteLctrum(String lr_Lctrum_No) throws SQLException {
+	// TODO Auto-generated method stub
+	
+}
+ 
  
 }
 

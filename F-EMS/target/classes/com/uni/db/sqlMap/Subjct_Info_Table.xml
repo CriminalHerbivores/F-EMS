@@ -19,6 +19,7 @@
 	<typeAlias alias = "tuition" type="com.uni.fems.dto.TuitionVO" />
 	<typeAlias alias = "stdnt" type="com.uni.fems.dto.StdntVO" />
 	<typeAlias alias = "search" type="com.uni.fems.dto.SearchVO" />
+	<typeAlias alias = "userSubjct" type="com.uni.fems.dto.UserSubjctVO" />
 	
 	<!-- 학과정보 등록 -->
 	<update id="insertSubjct_Info_Table" parameterClass="subjct_info_table">
@@ -49,6 +50,14 @@
 	<select id="selectSubjct" parameterClass="str" resultClass="subjct_info_table">
 		select * from subjct_info_table where sit_Faculty = #sit_Faculty# order by SIT_SUBJCT
 	</select>
+	 <!-- 학과명으로 학과 검색으로 학과,학부,단과대학 조회 -->
+	 <select id="selectSubjctByName" parameterClass="str" resultClass="userSubjct">
+		select * from major_view
+		where sit_Subjct like '%'||#sit_Subjct#||'%'
+		or fc_Faculty_Nm like '%'||#fc_Faculty_Nm#||'%'
+		order by sit_Subjct
+	</select>
+	
 	<!-- 학과 등록금 수정 -->
 	<update id="updateTut" parameterClass="subjct_info_table">
 		update subjct_info_table

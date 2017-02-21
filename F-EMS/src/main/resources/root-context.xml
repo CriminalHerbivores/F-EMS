@@ -121,7 +121,6 @@
       p:lctreDAO-ref="lctreDAO" 
       p:lctre_ActplnDAO-ref="lctre_ActplnDAO"/>
 
-
 <bean id="lctre_FlpthDAO" class="com.uni.fems.dao.impl.Lctre_FlpthDAOImpl"
       p:client-ref="sqlMapClient" />
 
@@ -333,10 +332,23 @@
    <bean id="baskinService" class="com.uni.fems.service.impl.BaskinServiceImpl"
       p:baskinDAO-ref="baskinDAO" />
       
-      
-      
 	<bean id="serviceProfiler" class="com.uni.fems.aop.ServiceProfiler"
 		p:client-ref="sqlMapClient" />
+		
+	<bean id="bbs_GntDAO" class="com.uni.fems.dao.impl.Bbs_GntDAOImpl"
+      p:client-ref="sqlMapClient" /> 
+      
+	<bean id="bbs_Comment_GntDAO" class="com.uni.fems.dao.impl.Bbs_Comment_GntDAOImpl"
+      p:client-ref="sqlMapClient" /> 
+
+	<bean id="bbs_Comment_Gnt" class="com.uni.fems.service.impl.Bbs_Comment_GntServiceImpl"
+      p:bbs_Comment_GntDAO-ref="bbs_Comment_GntDAO" />
+
+   <bean id="bbs_GntService" class="com.uni.fems.service.impl.Bbs_GntServiceImpl"
+      p:bbs_GntDAO-ref="bbs_GntDAO" 
+      p:bbs_FlpthDAO-ref="bbs_FlpthDAO"
+      p:bbs_Comment_GntDAO-ref="bbs_Comment_GntDAO"
+      />
 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
@@ -380,3 +392,4 @@
 		pointcut-ref="publicMethod2" method="trace" /> <aop:around pointcut-ref="publicMethod3" 
 		method="trace" /> </aop:aspect> </aop:config> -->
 </beans>
+
