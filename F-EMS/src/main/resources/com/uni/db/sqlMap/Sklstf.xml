@@ -54,7 +54,8 @@
 	
 	<!-- 전체 직원 목록 -->
 	<select id="sklstfList" parameterClass="str" resultClass="userSubjct">
-		select * from sklstf where stf_Nm like '%'||#stf_Nm#||'%' 
+		select * from sklstf_view where stf_Nm like '%'||#stf_Nm#||'%' 
+		or stf_Sklstf_No like '%'||#stf_Sklstf_No#||'%' or coleg_Nm like '%'||#coleg_Nm#||'%' or fc_Faculty_Nm like '%'||#fc_Faculty_Nm#||'%' or sit_Subjct like '%'||#sit_Subjct#||'%' 
 		order by stf_Sklstf_No asc 
 	</select>
 	

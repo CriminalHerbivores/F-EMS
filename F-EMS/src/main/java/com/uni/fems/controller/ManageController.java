@@ -211,7 +211,7 @@ public class ManageController {
 	
 	/**
 	 * <pre>
-	 * 직원에게 관리자 권한 여부 목록
+	 * 관리자가 직원의 목록을 조회하는 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -226,7 +226,36 @@ public class ManageController {
 		List<UserSubjctVO> userSubjctVO=null;
 		
 		try {
-			sklstfService.sklstfList(stf_Nm);
+			userSubjctVO = sklstfService.sklstfList(stf_Nm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("userSubjctVO", userSubjctVO);
+		return url;
+	}
+	
+	
+	
+	/**
+	 * <pre>
+	 * 관리자가 직원의 관리자 권한 여부 목록 조회 폼
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/sklstfList", method=RequestMethod.GET)
+	public String sklstfListForm(Model model,HttpSession session, String stf_Nm) {
+		String url = "admin/sklstf/sklstfList";	
+		
+		List<UserSubjctVO> userSubjctVO=null;
+		
+		try {
+			userSubjctVO = sklstfService.sklstfList(stf_Nm);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -10,7 +10,7 @@
  * 수정일        수정자       수정내용
  * --------     --------    ----------------------
  * 2017.01.24      KJH        최초작성
- * 2017.02.15      KJH        추가작성
+ * 2017.02.22      KJH        추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  --%>
 <!DOCTYPE html>
@@ -23,22 +23,21 @@
 
 <form name="formm" mehtod="post">
 	
-<h2>직원 목록</h2>
 <div class="text-center">
+<h2>직원 조회</h2>
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
 	<table class="def-table-full">
 	<tr><td class="text-right">
 					<select name="선택" class="combobox-md custom-form-control">
-					<option value="032">전공</option>
-					<option value="033">교양</option>
-					<option value="02">강의</option>
-					<option value="031">학과</option>
-					<option value="041">담당교수</option>
+					<option value="${subjct.stf_Sklstf_No}">직원번호</option>
+					<option value="${subjct.stf_Nm}">직원이름</option>
+					<option value="${subjct.sit_Subjct }">소속학과</option>
+					<option value="${subjct.fc_Faculty_Nm}">소속학부</option>
+					<option value="${subjct.coleg_Nm}">소속단과대학</option>
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" value="조회"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>&nbsp;&nbsp;
-					<input type="button" class="def-btn btn-search btn-color" value="상세검색">&nbsp;&nbsp;
+					<button class="def-btn btn-search btn-color" value="조회"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 	</td></tr>
 	</table>
 			<table class="def-table-full tb-border table-hover">
@@ -46,7 +45,6 @@
 					<td colspan="12"  class="text-right">
 					</td>
 				</tr> -->
-				<tr><th colspan="13"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
 					<th>직원번호</th>
 					<th>단과대학</th>
@@ -58,13 +56,9 @@
 					<th>구분</th>
 				</tr>
 				
-				<c:forEach items="${userSubjctVO}" var="subjct" begin="0" end="9">
+				<c:forEach items="${userSubjctVO}" var="subjct" begin="0" end="19">
 				<tr>
-					<td>
-			
-					
-						</td>
-					
+				
 					<td>${subjct.stf_Sklstf_No}</td>
 					<td>${subjct.coleg_Nm}</td>
 					<td>${subjct.fc_Faculty_Nm}</td>
@@ -72,8 +66,12 @@
 					<td>${subjct.stf_Nm}</td>
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
-					<td>${subjct.}</td>
-					<td>${subjct.stf_Useyn}</td>
+					<td>
+					<c:choose>
+					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}">관리자</c:when>
+					<c:otherwise>직원</c:otherwise>
+					</c:choose>
+					</td>
 					
 				</tr>
 			</c:forEach>
