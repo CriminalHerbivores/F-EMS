@@ -54,6 +54,7 @@
 			<input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/><br/><br/>		
 			<input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드"/><br /><br/>
 			<input class="def-btn btn-sm btn-color" type="button" value="로그인" onclick="login_go();"/>
+			<a href="findIdPw"><input class="def-btn btn-sm btn-color" type="button" value="아이디/비밀번호 찾기"/></a>
 			<!-- <input style="background: #eeeeff;" type="submit" value="로그인(html)"  /> --> 
 			<div><span id="message"></span></div>
 		</form>
