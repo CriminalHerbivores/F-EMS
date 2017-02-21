@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
@@ -276,18 +278,18 @@ $(document).on('click','.realupdateComment',function(e){
 		</table>
 		<!--버튼들  -->
 	<div id="buttons" style="float: right">
-		<%-- <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="삭제"> </a> --%>
+	<sec:authorize access="hasRole('ROLE_STF')">
 		<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> <a
-			href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
-			type="button" class="def-btn btn-md btn-color" value="목록">
+			data-toggle="modal" value="삭제">
+	</sec:authorize>
+			 <a	href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}">
+			  <input type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>
-	
 		<!-- 댓글부분 -->
-
+	<br><br>
 	<div>
 		<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no"
 			name="bbs_no">

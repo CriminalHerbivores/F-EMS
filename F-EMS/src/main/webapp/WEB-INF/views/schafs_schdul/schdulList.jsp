@@ -135,6 +135,7 @@
         </div>
 
 
+<sec:authorize access="hasRole('ROLE_STF')">
 <form name="formm" method="post" action="insertSchdul">
 <table class="def-table-auto tb-border table-hover">
   <tr>
@@ -156,6 +157,7 @@
   </tr>
 </table>
 </form>
+</sec:authorize>
 <!-- <p>일정추가:
 월 &nbsp;
   시작일
@@ -179,11 +181,10 @@
 				<div id="content1">${list1.sd_Bgndt } &nbsp; ~ &nbsp;${list1.sd_Enddt}
 				: &nbsp; ${list1.sd_Schdul_Sumry }
 				
-				
+				<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list1.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+100000}" data-toggle="modal" value="삭제">
+			<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+100000}" data-toggle="modal" value="삭제">
+			</sec:authorize>			
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -271,11 +272,10 @@
 				<div id="content2">${list2.sd_Bgndt } &nbsp; ~ &nbsp;${list2.sd_Enddt}
 				: &nbsp; ${list2.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list2.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+200000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+200000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -359,11 +359,10 @@
 				<div id="content1">${list3.sd_Bgndt } &nbsp; ~ &nbsp;${list3.sd_Enddt}
 				: &nbsp; ${list3.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list3.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+300000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+300000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -445,11 +444,10 @@
 				<div id="content1">${list4.sd_Bgndt } &nbsp; ~ &nbsp;${list4.sd_Enddt}
 				: &nbsp; ${list4.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list4.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+400000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+400000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -531,11 +529,10 @@
 				<div id="content1">${list5.sd_Bgndt } &nbsp; ~ &nbsp;${list5.sd_Enddt}
 				: &nbsp; ${list5.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list5.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+500000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+500000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -617,11 +614,10 @@
 				<div id="content1">${list6.sd_Bgndt } &nbsp; ~ &nbsp;${list6.sd_Enddt}
 				: &nbsp; ${list6.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list6.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+600000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+600000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -703,11 +699,10 @@
 				<div id="content1">${list7.sd_Bgndt } &nbsp; ~ &nbsp;${list7.sd_Enddt}
 				: &nbsp; ${list7.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list7.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+700000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+700000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -789,11 +784,10 @@
 				<div id="content1">${list8.sd_Bgndt } &nbsp; ~ &nbsp;${list8.sd_Enddt}
 				: &nbsp; ${list8.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list8.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+800000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+800000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -875,11 +869,10 @@
 				<div id="content1">${list9.sd_Bgndt } &nbsp; ~ &nbsp;${list9.sd_Enddt}
 				: &nbsp; ${list9.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">	
 				<input type="button" data-target="#${list9.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+900000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+900000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -961,11 +954,10 @@
 				<div id="content1">${list10.sd_Bgndt } &nbsp; ~ &nbsp;${list10.sd_Enddt}
 				: &nbsp; ${list10.sd_Schdul_Sumry }
 				
-				
+			<sec:authorize access="hasRole('ROLE_STF')">
 				<input type="button" data-target="#${list10.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1000000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1000000}" data-toggle="modal" value="삭제">
+			</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -1047,11 +1039,10 @@
 				<div id="content1">${list11.sd_Bgndt } &nbsp; ~ &nbsp;${list11.sd_Enddt}
 				: &nbsp; ${list11.sd_Schdul_Sumry }
 				
-				
+		<sec:authorize access="hasRole('ROLE_STF')">		
 				<input type="button" data-target="#${list11.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1100000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1100000}" data-toggle="modal" value="삭제">
+		</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
@@ -1133,11 +1124,10 @@
 				<div id="content1">${list12.sd_Bgndt } &nbsp; ~ &nbsp;${list12.sd_Enddt}
 				: &nbsp; ${list12.sd_Schdul_Sumry }
 				
-				
+		<sec:authorize access="hasRole('ROLE_STF')">		
 				<input type="button" data-target="#${list12.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				
-		
-		<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1200000}" data-toggle="modal" value="삭제">
+				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1200000}" data-toggle="modal" value="삭제">
+		</sec:authorize>
 			<!--모달부분  -->
 			
 	<form method="post" action="updateSchdul">
