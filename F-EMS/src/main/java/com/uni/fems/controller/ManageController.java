@@ -1,12 +1,26 @@
 package com.uni.fems.controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.excel.ExcelRead;
+import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
+import com.uni.fems.service.SklstfService;
 
 /**
  * <pre>
@@ -30,6 +44,7 @@ import com.uni.fems.service.Bbs_ListService;
 public class ManageController {
 	
 	private Bbs_ListService bbs_ListSvc;
+	private SklstfService sklstfService;
 
 	// @RequestMapping("/")
 	// public String in(){
@@ -63,13 +78,13 @@ public class ManageController {
 	 */
 	@RequestMapping("/sklstfList")
 	public String sklstfList(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_management/sklstfList";	
+		String url = "admin/sklstf/sklstfList";	
 		return url;
 	}
 	
 	/**
 	 * <pre>
-	 * 직원 등록
+	 * 관리자의 직원 등록 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -77,16 +92,15 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/sklstfInsert")
-	public String sklstfInsert(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_management/sklstfInsert";	
+	@RequestMapping(value="/sklstfInsert", method=RequestMethod.GET)
+	public String sklstfInsertForm(HttpSession session) {
+		String url = "admin/sklstf/sklstfInsert";	
 		return url;
 	}
 	
-	
 	/**
 	 * <pre>
-	 * 직원에게 관리자 권한 여부 설정
+	 * 관리자의 직원 등록하는 로직
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -94,11 +108,91 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/sklstfAtrtyList")
-	public String sklstfAtrtyList(HttpServletRequest request,HttpSession session) {
-		String url = "admin/admin_management/sklstfAtrtyList";	
+	@RequestMapping(value="/sklstfInsert", method=RequestMethod.POST)
+	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo) 
+			throws ServletException, IOException{
+		String url = "redirect:sklstfInsert";	
+
+		if(file != null && !file.equals("")){
+			ReadOption ro = new ReadOption();
+			ro.setFilePath(file);		//경로 입력
+			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N");	//배열 명 입력
+			ro.setStartRow(2);
+			
+			List<Map<String, String>> result = ExcelRead.read(ro);
+			
+			for(Map<String, String> map : result) {
+				sklstfVo.setStf_Sklstf_No(map.get("A"));
+				sklstfVo.setStf_Pw(map.get("B"));
+				sklstfVo.setStf_Subject_Code(map.get("C"));
+				sklstfVo.setStf_Nm(map.get("D"));
+				sklstfVo.setStf_Eng_Nm(map.get("E"));
+				sklstfVo.setStf_Ihidnum(map.get("F"));
+				sklstfVo.setStf_Sklstf_Tlphon_No(map.get("G"));
+				sklstfVo.setStf_Moblphon_No(map.get("H"));
+				sklstfVo.setStf_House_Tlphon_No(map.get("I"));
+				sklstfVo.setStf_Post_No(map.get("J"));
+				sklstfVo.setStf_Adres1(map.get("K"));
+				sklstfVo.setStf_Adres2(map.get("L"));
+				sklstfVo.setStf_Email(map.get("M"));
+				sklstfVo.setStf_Useyn(map.get("N"));
+				try {
+					sklstfService.insertSklstf(sklstfVo);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}else{
+			try {
+				sklstfService.insertSklstf(sklstfVo);;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		return url;
 	}
+	
+	
+	
+	/**
+	 * <pre>
+	 * 직원에게 관리자 권한 여부 목록
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.GET)
+	public String sklstfAtrtyListForm(HttpServletRequest request,HttpSession session) {
+		String url = "admin/sklstf/sklstfAtrtyList";	
+		
+		
+		return url;
+	}
+	
+	
+	/**
+	 * <pre>
+	 * 직원에게 관리자 권한 부여 및 취소 로직
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.POST)
+	public String sklstfAtrtyUpdate(HttpServletRequest request,HttpSession session) {
+		String url = "admin/sklstf/sklstfAtrtyUpdate";	
+		return url;
+	}
+	
+	//===================================================
 	
 	/**
 	 * <pre>

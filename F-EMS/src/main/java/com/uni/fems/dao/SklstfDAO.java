@@ -43,9 +43,10 @@ public interface SklstfDAO {
 	 * </pre>
 	 */
 	void updateSklstf(SklstfVO sklstfVo)throws SQLException;	
+	
 	/**
 	 * <pre>
-	 * 직원 등록
+	 * 관리자가 직원 등록
 	 * </pre>
 	 * <pre>
 	 * @param sklstfVo

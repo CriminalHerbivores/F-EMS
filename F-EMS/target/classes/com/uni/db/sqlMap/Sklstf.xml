@@ -8,6 +8,7 @@
 <!--  ==========   ======    ==============        -->
 <!--  2017.01.24.   JAR      최초작성               -->
 <!--  2017.02.15.   JAR      추가작성               -->
+<!--  2017.02.21.   KJH      추가작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Sklstf">
@@ -43,5 +44,15 @@
 		where STF_SKLSTF_NO = #stf_Sklstf_No#
 		
 	</update>
+	
+	<!-- 관리자의 직원 등록 -->
+	<update id="insertSklstf" parameterClass="sklstf">
+	<dynamic>
+	<isNotEmpty property="stf_Sklstf_No">
+		insert into sklstf(STF_SKLSTF_NO,stf_Sklstf_Tlphon_No,STF_SUBJECT_CODE,STF_NM,STF_ENG_NM,STF_IHIDNUM,STF_MOBLPHON_NO,STF_HOUSE_TLPHON_NO,STF_PW,STF_POST_NO,STF_ADRES1,STF_ADRES2,STF_EMAIL,STF_USEYN)
+		values(#STF_SKLSTF_NO#,#stf_Sklstf_Tlphon_No#,#STF_SUBJECT_CODE#,#STF_NM#,#STF_ENG_NM#,#STF_IHIDNUM#,#STF_MOBLPHON_NO#,#STF_HOUSE_TLPHON_NO#,#STF_PW#,#STF_POST_NO#,#STF_ADRES1#,#STF_ADRES2#,#STF_EMAIL#,#STF_USEYN#)
+	</isNotEmpty></dynamic>
+	</update>
+	
 	
 </sqlMap>

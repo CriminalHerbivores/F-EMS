@@ -37,10 +37,17 @@ public class SklstfServiceImpl implements SklstfService {
 		return sklstfVo;
 	}
 
+	// 관리자가 직원 등록
+	@Override
+	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
+		sklstfDAO.insertSklstf(sklstfVo);
+	}
+	
 	@Override
 	public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
 		sklstfDAO.updateSklstf(sklstfVo);
 	}
+
 }
 
 

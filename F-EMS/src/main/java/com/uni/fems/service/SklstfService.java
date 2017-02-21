@@ -33,6 +33,18 @@ public interface SklstfService {
 	 * </pre>
 	 */
 	SklstfVO getSklstf(String stf_Sklstf_No)throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 관리자가 직원을 등록
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertSklstf(SklstfVO sklstfVo)throws SQLException;
+	
 	/**
 	 * <pre>
 	 * 직원 정보를 수정

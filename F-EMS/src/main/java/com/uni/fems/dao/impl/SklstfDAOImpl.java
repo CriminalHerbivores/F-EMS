@@ -7,6 +7,22 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.SklstfDAO;
 import com.uni.fems.dto.SklstfVO;
 
+/**
+ * <pre>
+ * 직원 관련 사항을 처리하는 DAOImpl
+ * </pre>
+ * @author KJH
+ * @since 2017. 02. 22
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자           수정내용
+ * --------     --------    ----------------------
+ * 2017.02.22      KJH            최초작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 public class SklstfDAOImpl implements SklstfDAO {
 
 	private SqlMapClient client;
@@ -24,10 +40,11 @@ public class SklstfDAOImpl implements SklstfDAO {
 	public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
 		client.update("updateSklstf", sklstfVo);
 	}
+	
+	// 관리자의 직원 등록
 	@Override
 	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		client.update("insertSklstf",sklstfVo);
 	}
 	
 }
