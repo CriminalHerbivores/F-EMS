@@ -38,11 +38,11 @@ public class BuildingDAOImpl implements BuildingDAO {
 	}
 
 	// 건물 수정
-	/*@Override
+	@Override
 	public void updateBuilding(BuildingVO buildingVO) throws SQLException {
 		client.update("updateBuilding",buildingVO);
 	}
-*/
+
 	// 건물 사용 안함
 /*	@Override
 	public void deleteBuilding(String bd_No) throws SQLException {

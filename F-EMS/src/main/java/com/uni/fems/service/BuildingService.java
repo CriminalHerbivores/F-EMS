@@ -41,7 +41,7 @@ public interface BuildingService {
 	 * @param buildingVO
 	 * @throws SQLException
 	 */
-//	void updateBuilding(BuildingVO buildingVO) throws SQLException;
+	void updateBuilding(BuildingVO buildingVO) throws SQLException;
 	
 	/**
 	 * <pre>

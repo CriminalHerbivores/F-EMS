@@ -32,17 +32,18 @@ public class BuildingServiceImpl implements BuildingService {
  private BuildingDAO buildingDAO;
 
  
- 
+// 건물 등록
 @Override
 public void insertBuilding(BuildingVO buildingVO) throws SQLException {
 		buildingDAO.insertBuilding(buildingVO);
 }
 
+// 건물 수정
+@Override
+public void updateBuilding(BuildingVO buildingVO) throws SQLException {
+	buildingDAO.updateBuilding(buildingVO);
+}
 
-//@Override
-//public void updateBuilding(BuildingVO buildingVO) throws SQLException {
-//	buildingDAO.updateBuilding(buildingVO);
-//}
 //@Override
 //public void deleteBuilding(String bd_No) throws SQLException {
 //	buildingDAO.deleteBuilding(bd_No);
