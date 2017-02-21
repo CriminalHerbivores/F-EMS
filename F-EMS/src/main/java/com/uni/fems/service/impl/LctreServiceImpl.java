@@ -44,8 +44,8 @@ public class LctreServiceImpl implements LctreService {
 
 	//전체강의 가져옴
 	@Override
-	public List<Lctre_SearchVO> listLctre(String lu_Lctre_Nm) throws SQLException{ //int tpage, 
-		List<Lctre_SearchVO> lctre_SearchVO=lctreDAO.listLctre(lu_Lctre_Nm);
+	public List<Lctre_SearchVO> openLctreList(String lu_Lctre_Nm) throws SQLException{ //int tpage, 
+		List<Lctre_SearchVO> lctre_SearchVO=lctreDAO.openLctreList(lu_Lctre_Nm);
 		
 		return lctre_SearchVO;
 	}

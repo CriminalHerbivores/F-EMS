@@ -104,7 +104,7 @@
 	-->
 	 
 	<!-- 전체 강의 목록 -->
-	<select id="listLctre" parameterClass="str" resultClass="lctre_Search">
+	<select id="openLctreList" parameterClass="str" resultClass="lctre_Search">
 		select * from lctre_view where Lu_Lctre_Nm like '%'||#Lu_Lctre_Nm#||'%' 
 		 and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 		order by lu_Lctre_code asc, lc_split asc 

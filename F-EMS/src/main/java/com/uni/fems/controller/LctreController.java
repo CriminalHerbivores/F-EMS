@@ -54,7 +54,7 @@ public class LctreController {
 	
 	/**
 	 * <pre>
-	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인
+	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -75,7 +75,7 @@ public class LctreController {
 //		
 //
 //		try {
-//			lctreList = lctreDAO.listLctre(lctre_SearchVO);
+//			lctreList = lctreDAO.openLctreList(lctre_SearchVO);
 //		} catch (SQLException e) {
 //			e.printStackTrace();
 //		}
@@ -102,7 +102,7 @@ public class LctreController {
 	
 	/**
 	 * <pre>
-	 * 수강신청이 가능한 개설강의목록
+	 * 수강신청이 가능한 개설강의목록 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -111,20 +111,20 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.GET)
-	public String courseAble(Model model, String lu_Lctre_Nm) {
+	public String courseAbleForm(Model model, String lu_Lctre_Nm) {
 		String url = "course_registration/courseAble";
 		
 		List<Lctre_SearchVO> lctre_SearchVO=null;
 		
 		try {
-			lctre_SearchVO = lctreService.listLctre(lu_Lctre_Nm);
+			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		//lctre_SearchVO=lctreService.listLctre(lu_Lctre_Nm);
+		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
 		
 		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 		return url;
@@ -135,7 +135,7 @@ public class LctreController {
 
 	/**
 	 * <pre>
-	 * 수강신청 완료 목록
+	 * 수강신청 완료 목록 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -143,8 +143,8 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseComplete")
-	public String courseComplete(HttpServletRequest request,
+	@RequestMapping(value="/courseComplete", method=RequestMethod.GET)
+	public String courseCompleteForm(HttpServletRequest request,
 			HttpSession session) {
 		String url = "course_registration/courseComplete";
 		return url;
@@ -152,7 +152,7 @@ public class LctreController {
 
 	/**
 	 * <pre>
-	 * 관심 강의 목록
+	 * 관심 강의 목록 폼
 	 * </pre>
 	 * <pre>
 	 * @param request

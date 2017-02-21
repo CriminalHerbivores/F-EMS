@@ -536,11 +536,17 @@
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/calendarstyle.css">
+	
 <!--  ============= css =============  -->
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
 
-
+<!--alert css  -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/sweetalert.css">	
 
 <!--  ============= js =============  -->
 	
@@ -562,13 +568,17 @@
 
 <!-- //////////////////////////////////// -->
 
+<!-- calendar js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/calendarscript.js"></script>
 
 
+<!--alert js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
 
 
-
-
-<!-- ssh 추가 -->
+<!-- ssh 추가 -->	
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
 <script type="text/javascript"
