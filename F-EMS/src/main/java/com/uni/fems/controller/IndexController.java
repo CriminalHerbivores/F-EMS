@@ -1,19 +1,21 @@
 package com.uni.fems.controller;
 
 import java.sql.SQLException;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.uni.fems.controller.common.SendMail;
 import com.uni.fems.dto.ManageVO;
 import com.uni.fems.dto.UsersVO;
+import com.uni.fems.dto.request.MessageRequest;
 import com.uni.fems.service.ManageService;
 import com.uni.fems.service.UsersService;
 
@@ -41,6 +43,8 @@ public class IndexController {
 	private ManageService manageService;
 	@Autowired
 	private UsersService usersService;
+	@Autowired
+	private MailSender mailSender;
 
 	// css 예시
 	@RequestMapping("/cssExample")
@@ -164,18 +168,25 @@ public class IndexController {
 	 */
 	@RequestMapping(value="findPw", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String findPw(UsersVO usersVO){
+	public String findPw(UsersVO usersVO, HttpSession session){
 		String pw="";
-		Random random = new Random();
-		for(int i=0; i<10; i++){
-			pw += (random.nextInt(9)+1)+"";
-		}
-		System.out.println(pw);
 		
 		try {
 			pw = usersService.findPw(usersVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		
+		if(pw!="" && pw!=null){
+			MessageRequest msg = new MessageRequest();
+			ManageVO vo = (ManageVO) session.getAttribute("manageVO");
+			msg.setMng_Univ_Nm(vo.getMng_Univ_Nm());
+			msg.setMng_Email(vo.getMng_Email());
+			msg.setEmail(usersVO.getEmail());
+			msg.setTitle("["+vo.getMng_Univ_Nm()+"] 임시 비밀번호 발급 안내");
+			msg.setContent("비밀번호가 "+pw+"로 재설정되었습니다<br/>로그인 후 반드시 비밀번호 변경을 해주시기 바랍니다.");
+			new SendMail().sendMail(mailSender, msg);
+			pw="초기화완료";
 		}
 		return pw;
 	}

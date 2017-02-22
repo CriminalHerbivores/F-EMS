@@ -55,4 +55,9 @@ public class ProfsrDAOImpl implements ProfsrDAO {
 	public void updateProfsr(ProfsrVO profsrVO) throws SQLException {
 		client.update("updateProfsr", profsrVO);
 	}
+
+	@Override
+	public void updatePw(ProfsrVO profsrVO) throws SQLException {
+		client.update("updatePwProfsr",profsrVO);
+	}
 }
