@@ -8,7 +8,7 @@ import lombok.Data;
 
 /**
  * <pre>
- * 강의자료 테이블의 컬럼을 넣는 변수VO
+ * 강의 질의응답 테이블의 컬럼을 넣는 변수VO
  * </pre>
  * @author KJS
  * @since 2017. 02. 22
@@ -23,17 +23,19 @@ import lombok.Data;
  * </pre>
  */
  
-@Alias("Lctre_Date")
+@Alias("Lctre_Qna_Gnr")
 @Data
-public class Lctre_DateVO implements Serializable {
+public class Lctre_Qna_GntVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private int ld_Bbs_No;			//게시판 번호
-	private String ld_Sj;			//게시판 제목
-	private String ld_Cn;			//게시판 내용
-	private Timestamp ld_Writng_Dt;	//게시판 작성날짜
-	private int ld_Rdcnt;			//게시판 조회수
-	private int ld_Flpth_No;		//게시판 파일 경로 번호
+	private String table_Nm;		//테이블 명
+	private int lq_Bbs_No;			//게시판 번호
+	private String lq_Stdnt_No;		//게시판 작성자
+	private String lq_Sj;			//게시판 제목
+	private String lq_Cn;			//게시판 내용
+	private String lq_Reply;		//게시판 답글
+	private Timestamp lq_Writng_Dt;	//게시판 작성날짜
+	private int lq_Rdcnt;			//게시판 조회수
 
 }
