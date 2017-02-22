@@ -65,10 +65,21 @@
 		select count(*) from sklstf_view where $key$ like '%'||#value#||'%'
 	</select>
 	
+	<!-- 전체 직원 인원수 -->
+	<select id="numOfSklstf" parameterClass="sklstf" resultClass="int">
+		select count(*) from sklstf
+	</select>
 	
 	<!-- 전체 직원 목록 -->
 	<select id="listAllSklstf" parameterClass="searchvo" resultClass="userSubjct">
 		select * from sklstf_view where $key$ like '%'||#value#||'%' order by stf_Sklstf_No desc 
 	</select>
+	
+	<!-- 관리자 최초 가입 -->
+	<update id="joinAdmin" parameterClass="sklstf">
+		insert into sklstf(stf_Sklstf_No,stf_Pw,stf_Email,stf_Useyn)
+		values(#stf_Sklstf_No#,#stf_Pw#,#stf_Email#,#stf_Useyn#)
+	</update>
+	
 	
 </sqlMap>
