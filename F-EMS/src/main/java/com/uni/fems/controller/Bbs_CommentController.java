@@ -23,23 +23,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.Bbs_CommentVO;
+import com.uni.fems.dto.Bbs_Comment_GntVO;
+import com.uni.fems.dto.Bbs_List_Comment_GntVO;
 import com.uni.fems.service.Bbs_CommentService;
+import com.uni.fems.service.Bbs_Comment_GntService;
 
 
 /**
  * <pre>
- * 공지게시판 댓글 Controller
+ * 제너레이터 게시판 댓글 Controller
  * 댓글 작성, 수정, 삭제 기능 구현
  * </pre>
- * @author SSH
- * @since 2017.02.07
+ * @author KJS
+ * @since 2017.02.22
  * @version 1.0
  * @see javax.servlet.http.HttpServlet
  * <pre>
  * [[개정이력(Modification Information)]]
  *   수정일              수정자                    수정내용
  * --------     --------    ----------------------
- * 2017.02.07     SSH               최초작성
+ * 2017.02.22     KJS               최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -48,8 +51,11 @@ import com.uni.fems.service.Bbs_CommentService;
 @RequestMapping("/bbs_gnt")
 public class Bbs_CommentController {
 	
+	private static final String String = null;
 	@Autowired
 	Bbs_CommentService bbs_CommentSvc;
+	@Autowired
+	Bbs_Comment_GntService bbs_Comment_GntSvc;
 	
 
 	public void setBbs_CommentSvc(Bbs_CommentService bbs_CommentSvc) {
@@ -69,29 +75,26 @@ public class Bbs_CommentController {
 	 * </pre>
 	 * 
 	 */
-	public String getList(List<Bbs_CommentVO> commentList, String paging, String loginUser){
+	public String getList(List<Bbs_Comment_GntVO> commentList, String paging, String loginUser){
 		String comment="";
 		
 		if(loginUser ==null)
 			loginUser="Guest";
 		
-		for(Bbs_CommentVO data : commentList){
+		for(Bbs_Comment_GntVO data : commentList){
 			String replyTime = data.getBc_Writng_Dt().toString();
     	   	if(loginUser.equals(data.getBc_User_Id()) ){
-              comment += "<hr><div id=\""
-                     + data.getBc_Comnt_No()   
-                     + "\">아이디 : "
-                     + data.getBc_User_Id()
-                     + "  /  " + "작성 날짜 : "
-                  + replyTime.substring(0, replyTime.length()-2)
+              comment += "<hr>"
+              		+ "<div id=\""+ data.getBc_Comnt_No() + "\">"
+              		+ "아이디 : " + data.getBc_User_Id() + "  /  " + "작성 날짜 : " + replyTime.substring(0, replyTime.length()-2)
+                  +"<a href=\"\" id=\""+data.getBc_Comnt_No()+"\"class=\"updateComment\" name=\"updateComment\">"
+                     + "<input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"수정\">"
+                     + "</a>"
                   +"<a href=\"\" id=\""
                      +data.getBc_Comnt_No()
                      +"\" " 
-                     +"class=\"updateComment\" name=\"updateComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"수정\"></a>"
-                  +"<a href=\"\" id=\""
-                     +data.getBc_Comnt_No()
-                     +"\" " 
-                     +"class=\"deleteComment\" name=\"deleteComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"삭제\"></a>"
+                     +"class=\"deleteComment\" name=\"deleteComment\">"
+                     + "<input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"삭제\"></a>"
                   + "<div>  ->"
                      + data.getBc_Comnt_Content()
                      +"</div></div>";
@@ -132,15 +135,20 @@ public class Bbs_CommentController {
 	public String commentList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
-		List<Bbs_CommentVO> commentList = null;
-		String bc_bbs_no = (String) jsonMap.get("bbs_no");
+		Bbs_List_Comment_GntVO bbs_List_Comment_GntVO = new Bbs_List_Comment_GntVO();
+		List<Bbs_Comment_GntVO> commentList = null;
+		String bb_Bbs_No = (String)jsonMap.get("bb_Bbs_No");
+		
+		bbs_List_Comment_GntVO.setBc_Bbs_No(Integer.parseInt(bb_Bbs_No));
+		bbs_List_Comment_GntVO.setBl_Table_Nm((String)jsonMap.get("bl_Table_Nm"));
+
 		String cpage = (String) jsonMap.get("cpage");
 		String paging = "";
 		if(cpage==null)
 			cpage="1";
 		try {
-			commentList = bbs_CommentSvc.getBbs_Comment(Integer.parseInt(bc_bbs_no), Integer.parseInt(cpage));
-			paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage),Integer.parseInt(bc_bbs_no));
+			commentList = bbs_Comment_GntSvc.getBbs_Comment_Gnt(bbs_List_Comment_GntVO, Integer.parseInt(cpage));
+			paging = bbs_Comment_GntSvc.pageNumber(Integer.parseInt(cpage),bbs_List_Comment_GntVO);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -173,24 +181,23 @@ public class Bbs_CommentController {
 			loginUser = ((String) session.getAttribute("loginUser"));
 		}
 		
-		Bbs_CommentVO bbs_commentVO=new Bbs_CommentVO();
-		bbs_commentVO.setBc_User_Id(loginUser);
-		int bc_bbs_no = Integer.parseInt((String) jsonMap.get("bbs_no"));
-		bbs_commentVO.setBc_Bbs_Code("notice_bbs");
-		bbs_commentVO.setBc_Bbs_No(bc_bbs_no);
-		bbs_commentVO.setBc_Comnt_Content((String) jsonMap.get("comment_content"));
+		Bbs_List_Comment_GntVO bbs_List_Comment_GntVO = new Bbs_List_Comment_GntVO();
+		bbs_List_Comment_GntVO.setBc_User_Id(loginUser);
+		String bb_Bbs_No = (String)jsonMap.get("bb_Bbs_No");
+		bbs_List_Comment_GntVO.setBc_Bbs_No(Integer.parseInt(bb_Bbs_No));
+		bbs_List_Comment_GntVO.setBl_Table_Nm((String)jsonMap.get("bl_Table_Nm"));
+		bbs_List_Comment_GntVO.setBc_Comnt_Content((String) jsonMap.get("comment_content"));
 		
 		
-		String cpage = request.getParameter("cpage");
+		int cpage = 1;
 		String paging = "";
-		if(cpage==null)
-			cpage="1";
 		
-		List<Bbs_CommentVO> commentList = null;
+		List<Bbs_Comment_GntVO> commentList = null;
 		try {
-			bbs_CommentSvc.insertBbs_Comment(bbs_commentVO);
-			commentList = bbs_CommentSvc.getBbs_Comment(bc_bbs_no, Integer.parseInt(cpage));
-			paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage),bc_bbs_no);
+			System.out.println("bbs_List_Comment_GntVO : "+bbs_List_Comment_GntVO);
+			bbs_Comment_GntSvc.insertBbs_Comment_Gnt(bbs_List_Comment_GntVO);
+			commentList = bbs_Comment_GntSvc.getBbs_Comment_Gnt(bbs_List_Comment_GntVO, cpage);
+			paging = bbs_Comment_GntSvc.pageNumber(cpage,bbs_List_Comment_GntVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -220,19 +227,23 @@ public class Bbs_CommentController {
 				loginUser = ((String) session.getAttribute("loginUser"));
 			}
 			
-			int bc_comcnt_no = Integer.parseInt((String) jsonMap.get("result"));
-			int bc_bbs_no = Integer.parseInt((String) jsonMap.get("bc_bbs_no"));
+			Bbs_List_Comment_GntVO bbs_List_Comment_GntVO = new Bbs_List_Comment_GntVO();
+			String result = (String) jsonMap.get("result");
+			String bb_Bbs_No =(String) jsonMap.get("bb_Bbs_No");
+			bbs_List_Comment_GntVO.setBc_Comnt_No(Integer.parseInt(result));
+			bbs_List_Comment_GntVO.setBc_Bbs_No(Integer.parseInt(bb_Bbs_No));
+			bbs_List_Comment_GntVO.setBl_Table_Nm((String) jsonMap.get("bl_Table_Nm"));
 			String cpage = request.getParameter("cpage");
 			String paging = "";
 			if(cpage==null)
 				cpage="1";
 						
-			List<Bbs_CommentVO> commentList = null;
+			List<Bbs_Comment_GntVO> commentList = null;
 			
 			try {
-				bbs_CommentSvc.deleteBbs_Comment(bc_comcnt_no);
-				commentList = bbs_CommentSvc.getBbs_Comment(bc_bbs_no, Integer.parseInt(cpage));
-				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage), bc_bbs_no);
+				bbs_Comment_GntSvc.deleteBbs_Comment_Gnt(bbs_List_Comment_GntVO);
+				commentList = bbs_Comment_GntSvc.getBbs_Comment_Gnt(bbs_List_Comment_GntVO, Integer.parseInt(cpage));
+				paging = bbs_Comment_GntSvc.pageNumber(Integer.parseInt(cpage), bbs_List_Comment_GntVO);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -261,27 +272,30 @@ public class Bbs_CommentController {
 				loginUser = ((String) session.getAttribute("loginUser"));
 			}
 			
-			int bc_comcnt_no = Integer.parseInt((String) jsonMap.get("cmntNo"));
-			int bc_bbs_no = Integer.parseInt((String) jsonMap.get("bbs_no"));
-			List<Bbs_CommentVO> commentList = null;
+			Bbs_List_Comment_GntVO bbs_List_Comment_GntVO = new Bbs_List_Comment_GntVO();
+			String cmntNo = (String) jsonMap.get("cmntNo");
+			String bb_Bbs_No =(String) jsonMap.get("bb_Bbs_No");
+			bbs_List_Comment_GntVO.setBc_Comnt_No(Integer.parseInt(cmntNo));
+			bbs_List_Comment_GntVO.setBc_Bbs_No(Integer.parseInt(bb_Bbs_No));
+			bbs_List_Comment_GntVO.setBl_Table_Nm((String) jsonMap.get("bl_Table_Nm"));
+			List<Bbs_Comment_GntVO> commentList = null;
 			String cpage = request.getParameter("cpage");
 			String paging = "";
 			if(cpage==null)
 				cpage="1";
 			
 			try {
-				commentList = bbs_CommentSvc.getBbs_Comment(bc_bbs_no, Integer.parseInt(cpage));
-				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage), bc_bbs_no);
+				commentList = bbs_Comment_GntSvc.getBbs_Comment_Gnt(bbs_List_Comment_GntVO, Integer.parseInt(cpage));
+				paging = bbs_Comment_GntSvc.pageNumber(Integer.parseInt(cpage), bbs_List_Comment_GntVO);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			String comment="";
 			
-			for(Bbs_CommentVO data : commentList){
+			for(Bbs_Comment_GntVO data : commentList){
 				String replyTime = data.getBc_Writng_Dt().toString();
-	    	   	if(loginUser.equals(data.getBc_User_Id()) && bc_comcnt_no==data.getBc_Comnt_No()){
+	    	   	if(loginUser.equals(data.getBc_User_Id()) && bbs_List_Comment_GntVO.getBc_Comnt_No()==data.getBc_Comnt_No()){
 	              comment += "<div id=\""
 	                     + data.getBc_Comnt_No()   
 	                     + "\">아이디 : "
@@ -342,27 +356,27 @@ public class Bbs_CommentController {
 				loginUser = ((String) session.getAttribute("loginUser"));
 			}
 			
-			String content = (String) jsonMap.get("content");
-			int bbs_no = Integer.parseInt((String) jsonMap.get("bbs_no"));
-			int cmntNo = Integer.parseInt((String) jsonMap.get("cmntNo"));
+			Bbs_List_Comment_GntVO bbs_List_Comment_GntVO = new Bbs_List_Comment_GntVO();
+			String cmntNo = (String) jsonMap.get("cmntNo");
+			String bb_Bbs_No =(String) jsonMap.get("bb_Bbs_No");
+			bbs_List_Comment_GntVO.setBc_Comnt_No(Integer.parseInt(cmntNo));
+			bbs_List_Comment_GntVO.setBc_Bbs_No(Integer.parseInt(bb_Bbs_No));
+			bbs_List_Comment_GntVO.setBl_Table_Nm((String) jsonMap.get("bl_Table_Nm"));
+			bbs_List_Comment_GntVO.setBc_Comnt_Content((String) jsonMap.get("content"));
 
 			String cpage = request.getParameter("cpage");
 			String paging = "";
 			if(cpage==null)
 				cpage="1";
 			
-			List<Bbs_CommentVO> commentList = null;
-			Bbs_CommentVO bbs_commentVO = new Bbs_CommentVO();
-			bbs_commentVO.setBc_Comnt_Content(content);
-			bbs_commentVO.setBc_Comnt_No(cmntNo);
+			List<Bbs_Comment_GntVO> commentList = null;
 	
 			
 			try {
-				bbs_CommentSvc.updateBbs_Comment(bbs_commentVO);
-				commentList = bbs_CommentSvc.getBbs_Comment(bbs_no, Integer.parseInt(cpage));
-				paging = bbs_CommentSvc.pageNumber(Integer.parseInt(cpage), bbs_no);
+				bbs_Comment_GntSvc.updateBbs_Comment_Gnt(bbs_List_Comment_GntVO);
+				commentList = bbs_Comment_GntSvc.getBbs_Comment_Gnt(bbs_List_Comment_GntVO, Integer.parseInt(cpage));
+				paging = bbs_Comment_GntSvc.pageNumber(Integer.parseInt(cpage), bbs_List_Comment_GntVO);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return getList(commentList, paging, loginUser);
