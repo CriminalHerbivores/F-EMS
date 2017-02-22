@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.dto.AddressVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.dto.Sklstf_AtrtyVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
@@ -95,9 +97,45 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping("/sklstfList")
-	public String sklstfList(HttpServletRequest request,HttpSession session) {
+	public String sklstfList(Model model,HttpServletRequest request, SearchVO searchVO) {
 		String url = "admin/sklstf/sklstfList";	
+		String tpage = request.getParameter("tpage");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("stf_Nm");
+		
+		System.out.println("===============11111111111 searchVO.getValue() : "+searchVO.getValue());
+		
+		List<UserSubjctVO> sklstfList=null;
+		String paging = null;
+		System.out.println("===============2222222222222 searchVO.getValue() : "+searchVO.getValue());
+		try {
+			sklstfList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
+			paging = sklstfService.pageNumber(Integer.parseInt(tpage),searchVO);
+			System.out.println("===============3333333333 searchVO.getValue() : "+searchVO.getValue());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("===============4444444444444 searchVO.getValue() : "+searchVO.getValue());
+		model.addAttribute("sklstfList", sklstfList);
+		System.out.println("===============55555555555 searchVO.getValue() : "+searchVO.getValue());
+		int n = sklstfList.size();
+		System.out.println("===============666666666666 searchVO.getValue() : "+searchVO.getValue());
+		model.addAttribute("sklstfListSize", n);
+		System.out.println("===============777777777 searchVO.getValue() : "+searchVO.getValue());
+		model.addAttribute("paging", paging);
+		System.out.println("===============8888888888 searchVO.getValue() : "+searchVO.getValue());
 		return url;
+		
 	}
 	
 	/**
@@ -127,7 +165,7 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/sklstfInsert", method=RequestMethod.POST)
-	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo) 
+	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) 
 			throws ServletException, IOException{
 		String url = "redirect:sklstfList";	
 		System.out.println("111111111111111111111111111111111111111111111111111111");
@@ -158,7 +196,10 @@ public class ManageController {
 				sklstfVo.setStf_Email(map.get("M"));
 				sklstfVo.setStf_Useyn(map.get("N"));
 				try {
-					sklstfService.insertSklstf(sklstfVo);
+					sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+					System.out.println("sklstfVo.getStf_Sklstf_No()=============="+sklstfVo.getStf_Sklstf_No());
+					sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
+					System.out.println("===============getSa_Sklstf_No  "+sklstf_AtrtyVO.getSa_Sklstf_No());
 						//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
 						//System.out.println("if : sit_Subjct:================= "+sit_Subjct);
 				} catch (SQLException e) {
@@ -169,7 +210,10 @@ public class ManageController {
 			
 		}else{
 			try {
-				sklstfService.insertSklstf(sklstfVo);
+				sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+				System.out.println("sklstfVo.getStf_Sklstf_No()=============="+sklstfVo.getStf_Sklstf_No());
+				sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
+				System.out.println("===============getSa_Sklstf_No  "+sklstf_AtrtyVO.getSa_Sklstf_No());
 				//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
 				System.out.println("else : sklstfVo================="+sklstfVo);
 				//System.out.println("else : sit_Subjct:================= "+sit_Subjct);
@@ -195,19 +239,17 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.GET)
-	public String sklstfAtrtyListForm(Model model,HttpSession session, String stf_Nm) {
+	public String sklstfAtrtyListForm(Model model,HttpSession session, SearchVO searchVO) {
 		String url = "admin/sklstf/sklstfAtrtyList";	
 		
-		List<UserSubjctVO> userSubjctVO=null;
-		
 		try {
-			userSubjctVO = sklstfService.sklstfList(stf_Nm);
+			searchVO = (SearchVO) sklstfService.listAllSklstf(0, searchVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("userSubjctVO", userSubjctVO);
+		model.addAttribute("userSubjctVO", searchVO);
 		return url;
 	}
 	
@@ -223,22 +265,21 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/sklstfList", method=RequestMethod.GET)
-	public String sklstfListForm(Model model,HttpSession session, String stf_Nm) {
+/*	@RequestMapping(value="/sklstfList", method=RequestMethod.GET)
+	public String sklstfListForm(Model model,HttpSession session, SearchVO searchVO) {
 		String url = "admin/sklstf/sklstfList";	
 		
-		List<UserSubjctVO> userSubjctVO=null;
 		
 		try {
-			userSubjctVO = sklstfService.sklstfList(stf_Nm);
+			searchVO = (SearchVO) sklstfService.listAllSklstf(0, searchVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("userSubjctVO", userSubjctVO);
+		model.addAttribute("searchVO", searchVO);
 		return url;
-	}
+	}*/
 	
 	
 	/**

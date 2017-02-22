@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import lombok.Data;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,33 +57,19 @@ import com.uni.fems.service.StdntService;
  */
 @Controller
 @RequestMapping("/sklstf")
+@Data
 public class SklstfController {
 	
 	@Autowired
 	private SklstfService sklstfService;
-	public void setSklstfService(SklstfService sklstfService) {
-		this.sklstfService = sklstfService;
-	}
 	@Autowired
 	private StdntService stdntService;
-	public void setStdntService(StdntService stdntService) {
-		this.stdntService = stdntService;
-	}
 	@Autowired
 	private ProfsrService profsrService;
-	public void setProfsrService(ProfsrService profsrService) {
-		this.profsrService = profsrService;
-	}
 	@Autowired
 	private SchlshipService schlshipService;
-	public void setSchlshipService(SchlshipService schlshipService) {
-		this.schlshipService = schlshipService;
-	}
 	@Autowired
 	private SknrgsService sknrgs_Svc;
-	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
-		this.sknrgs_Svc = sknrgs_Svc;
-	}
 	private WebApplicationContext context = null;
 	
 	// 직원 ///////////////////////////////////////////////////////////////

@@ -31,7 +31,7 @@
 				<select name="선택" class="combobox-lg">
 				<c:forEach items="${buildingVO}" var="building">
 									
-					<option value="${building.bd_Nm}">건물명</option>
+					<option value="${building.bd_Nm}">${building.bd_Nm}</option>
 				</c:forEach><!-- 건물명 쭉 가져오고 싶음 -->
 				</select>
 			</td><td colspan="2"><input type="button" class="def-btn" value="선택"></td>

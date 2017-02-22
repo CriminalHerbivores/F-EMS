@@ -2,6 +2,25 @@
 
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-
+<!--  [[개정이력(Modification Information)]]       -->
+<!--  수정일              수정자        수정내용               -->
+<!--  ==========   ======    ==============        -->
+<!--  2017.01.22.   KJH      최초작성               -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
 <sqlMap namespace="Sklstf_Atrty">
+	<typeAlias alias = "sklstf_Atrty" type="com.uni.fems.dto.Sklstf_AtrtyVO" />
+	
+		<!-- 관리자의 직원 권한 등록 -->
+	<update id="insertSklstf_Atrty" parameterClass="sklstf_Atrty">
+		insert into Sklstf_Atrty(sa_Sklstf_No,sa_Atrty)
+		values(#sa_Sklstf_No#,#sa_Atrty#)
+	</update>
+	
+		<!-- 관리자의 직원 권한 수정 -->
+	<update id="updateSklstf_Atrty" parameterClass="sklstf_Atrty">
+		update Sklstf_Atrty set sa_Sklstf_No=#sa_Sklstf_No#,sa_Atrty=#sa_Atrty#
+		where sa_Sklstf_No=#sa_Sklstf_No#
+	</update>
+	
+	
 </sqlMap>

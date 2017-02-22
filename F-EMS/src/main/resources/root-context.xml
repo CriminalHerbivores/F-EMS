@@ -205,7 +205,8 @@
       p:client-ref="sqlMapClient" />
 
    <bean id="sklstfService" class="com.uni.fems.service.impl.SklstfServiceImpl"
-      p:sklstfDAO-ref="sklstfDAO" />
+      p:sklstfDAO-ref="sklstfDAO"
+      p:sklstf_AtrtyDAO-ref="sklstf_AtrtyDAO" />
 
 
 <bean id="sklstf_AtrtyDAO" class="com.uni.fems.dao.impl.Sklstf_AtrtyDAOImpl"

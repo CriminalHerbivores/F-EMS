@@ -15,6 +15,7 @@
 	<typeAlias alias = "int" type="java.lang.Integer" />
 	<typeAlias alias = "str" type="java.lang.String" />
 	<typeAlias alias = "sklstf" type="com.uni.fems.dto.SklstfVO" />
+	<typeAlias alias="searchvo" type="com.uni.fems.dto.SearchVO" />
 	<typeAlias alias = "userSubjct" type="com.uni.fems.dto.UserSubjctVO" />
 	
 	<select id="getSklstfList" parameterClass="str" resultClass="sklstf">
@@ -52,12 +53,22 @@
 		values(#stf_Sklstf_No#,#stf_Sklstf_Tlphon_No#,#stf_Subject_Code#,#stf_Nm#,#stf_Eng_Nm#,#stf_Ihidnum#,#stf_Moblphon_No#,#stf_House_Tlphon_No#,#stf_Pw#,#stf_Post_No#,#stf_Adres1#,#stf_Adres2#,#stf_Email#,#stf_Useyn#)
 	</update>
 	
-	<!-- 전체 직원 목록 -->
-	<select id="sklstfList" parameterClass="str" resultClass="userSubjct">
+	
+	<!-- 직원 목록 -->
+<!-- 	<select id="listSklstf" parameterClass="str" resultClass="userSubjct">
 		select * from sklstf_view where stf_Nm like '%'||#stf_Nm#||'%' 
-		or stf_Sklstf_No like '%'||#stf_Sklstf_No#||'%' or coleg_Nm like '%'||#coleg_Nm#||'%' or fc_Faculty_Nm like '%'||#fc_Faculty_Nm#||'%' or sit_Subjct like '%'||#sit_Subjct#||'%' 
-		order by stf_Sklstf_No asc 
+	</select>	 -->
+	
+	
+	<!-- 전체 직원목록의 갯수 -->
+	<select id="totalSklstf" parameterClass="searchvo" resultClass="int">
+		select count(*) from sklstf_view where $key$ like '%'||#value#||'%'
 	</select>
 	
+	
+	<!-- 전체 직원 목록 -->
+	<select id="listAllSklstf" parameterClass="searchvo" resultClass="userSubjct">
+		select * from sklstf_view where $key$ like '%'||#value#||'%' order by stf_Sklstf_No desc 
+	</select>
 	
 </sqlMap>
