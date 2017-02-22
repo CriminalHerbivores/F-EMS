@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.uni.fems.dto.Schafs_SchdulVO;
 import com.uni.fems.service.Schafs_SchdulService;
 
