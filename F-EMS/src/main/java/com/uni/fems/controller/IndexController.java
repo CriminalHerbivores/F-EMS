@@ -1,6 +1,7 @@
 package com.uni.fems.controller;
 
 import java.sql.SQLException;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -165,6 +166,12 @@ public class IndexController {
 	@ResponseBody
 	public String findPw(UsersVO usersVO){
 		String pw="";
+		Random random = new Random();
+		for(int i=0; i<10; i++){
+			pw += (random.nextInt(9)+1)+"";
+		}
+		System.out.println(pw);
+		
 		try {
 			pw = usersService.findPw(usersVO);
 		} catch (SQLException e) {

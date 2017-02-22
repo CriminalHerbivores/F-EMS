@@ -3,32 +3,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" >
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.starttls.enable">true</prop>
 				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.debug">true</prop>
-			</props>			
+				<prop key="mail.debug"></prop>
+			</props>
 		</property>
 		<property name="defaultEncoding" value="utf-8" />
 		<property name="protocol" value="smtps" />
-		<property name="username" value="메일계정" />
-		<property name="password" value="계정암호" />
-		<property name="host" value="smtp.naver.com" />
+		<property name="username" value="jar20170106@gmail.com" />
+		<property name="password" value="java20170106" />
+
+		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="465" />
 	</bean>
 	
-<!-- 	<bean class="com.test.board.mail.SimpleRegistrationNotifier"
-		p:mailSender-ref="mailSender"
-		p:memberSvc-ref="memberService" /> -->
+	<bean id="templateMailMessage" class="org.springframework.mail.SimpleMailMessage"
+		  p:from="jar20170106@gmail.com"
+		  p:subject="[템플릿] 회원 가입 안내"
+		  p:text="[템플릿] 회원 가입을 환영합니다."
+	/>
+	
 </beans>
-
-
-
-
-
-
-
-
