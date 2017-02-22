@@ -1,15 +1,20 @@
 package com.uni.fems.controller;
 
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.common.Paging;
+import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.service.TuitionService;
 
@@ -80,8 +85,8 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping(value="toStdTuition")
-	public String toStdTuition(){
-		String url="redirect:tuitionList";
+	public String toStdTuition(String sit_Subjct, String tpage){
+		String url="redirect:tuitionList?sit_Subjct="+sit_Subjct+"&tpage="+tpage;
 		
 		return url;
 	}
@@ -93,9 +98,26 @@ public class TuitionController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("updateSubTuition")
-	public String updateTuition(){
-		String url="";
+	@RequestMapping(value="updateSubTuition", method = RequestMethod.GET)
+	public String upTuition(String sit_Subjct_Code, Model model){
+		String url="manager/tuition/updateSubTuition";
+		
+		UserSubjctVO sub = new UserSubjctVO();
+		try {
+			sub = tuitionService.selectSubjctByCode(sit_Subjct_Code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("tut",sub);
+		return url;
+	}
+	@RequestMapping(value="updateSubTuition", method = RequestMethod.POST)
+	public String updateTuition(Subjct_Info_TableVO subVO){
+		String url="redirect:tuitionList";
+		
+		
+		
 		return url;
 	}
 	/**

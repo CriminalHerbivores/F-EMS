@@ -100,7 +100,7 @@ public interface Subjct_Info_TableDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	ArrayList<UserSubjctVO> selectSubjctByCode(String sit_Subjct_Code) throws SQLException;
+	UserSubjctVO selectSubjctByCode(String sit_Subjct_Code) throws SQLException;
 	/**
 	 * <pre>
 	 * 등록금 수정

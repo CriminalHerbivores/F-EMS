@@ -79,9 +79,9 @@ public class Subjct_Info_TableDAOImpl implements Subjct_Info_TableDAO {
 	}
 
 	@Override
-	public ArrayList<UserSubjctVO> selectSubjctByCode(String sit_Subjct_Code)
+	public UserSubjctVO selectSubjctByCode(String sit_Subjct_Code)
 			throws SQLException {
-		ArrayList<UserSubjctVO> sub = (ArrayList<UserSubjctVO>) client.queryForList("selectSubjctByCode",sit_Subjct_Code);
+		UserSubjctVO sub = (UserSubjctVO) client.queryForObject("selectSubjctByCode",sit_Subjct_Code);
 		return sub;
 	}
 
