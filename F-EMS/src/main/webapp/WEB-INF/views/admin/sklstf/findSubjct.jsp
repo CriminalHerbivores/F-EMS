@@ -83,7 +83,7 @@ function resultSubjct(coleg_Nm,fc_Faculty_Nm,sit_Subjct,sit_Subjct_Code) {
     <tr>
     	<th>단과대학</th>
       <th>학부</th>
-      <th>학학과</th>
+      <th>학과</th>
     </tr>
     <c:forEach items="${userSubjctVO}" var="subjct">
     <tr>
