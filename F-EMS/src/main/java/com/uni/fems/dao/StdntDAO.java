@@ -88,4 +88,15 @@ public interface StdntDAO {
 	 * </pre>
 	 */
 	void registBrhs(StdntVO stdntVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 비밀번호 변경
+	 * </pre>
+	 * <pre>
+	 * @param stdntVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updatePw(StdntVO stdntVO) throws SQLException;
 }
