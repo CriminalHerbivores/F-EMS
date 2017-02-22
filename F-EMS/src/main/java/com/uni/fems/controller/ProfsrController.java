@@ -236,40 +236,7 @@ public class ProfsrController {
 	
 	
 	
-	/**
-	 * <pre>
-	 * 교수가 강의 개설시 강의명으로 강의를 검색할 때 사용
-	 * </pre>
-	 * 
-	 * <pre>
-	 * @param model
-	 * @param lu_Lctre_Nm
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	@RequestMapping(value = "/findLctre", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public String findLctre(Model model, String lu_Lctre_Nm)
-			throws ServletException, IOException {
-
-		String url = "professor/findLctre";
-		ArrayList<Lctre_SearchVO> lctre_SearchVO = null;
-
-		try {
-			if (lu_Lctre_Nm != null && lu_Lctre_Nm.trim().equals("") == false) {
-				lctre_SearchVO = lctre_Unq_NoService
-						.selectLctreByName(lu_Lctre_Nm.trim());
-			} else {
-				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
-		return url;
-	}
+	
 
 		
 	/**

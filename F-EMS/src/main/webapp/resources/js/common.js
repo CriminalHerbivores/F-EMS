@@ -39,3 +39,19 @@ function disp(){
 	$('.non-disp').toggle();
 }
 
+
+/*학과 검색*/
+function searchSubjct() {
+	var url = "http://"+location.host+"/fems/findSubjct/";
+	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+}
+/*우편번호 검색*/
+function searchZipNum() {
+	var url = "http://"+location.host+"/fems/findZipNum/";
+	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+}
+/*강의 검색*/
+function searchLctre() {
+	var url = "http://"+location.host+"/fems/findLctre/";
+	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+}

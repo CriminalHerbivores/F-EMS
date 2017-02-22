@@ -18,16 +18,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript">
-function searchSubjct() {
-	var url = "findSubjct";
-	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
-}
-function searchZipNum() {
-	var url = "findZipNum";
-	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
-}
-</script>
 </head>
 <body>
 <form id="formm" name="formm" method="post" enctype="multipart/form-data">
