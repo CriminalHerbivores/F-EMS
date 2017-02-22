@@ -14,20 +14,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script>
-$(document).on('click','#insertNotice',function(){
-var title = $('#title').val();
-var content = $('#content').val();
-	if(Trim(title)=="" || title==null){
-		alert("제목을 입력해 주세요");
-		return;
-	}
-	if(Trim(content)=="" || content ==null){
-		alert("내용을 입력해 주세요");
-		return;
-	}
-}
-</script>
 </head>
 <body>
 
