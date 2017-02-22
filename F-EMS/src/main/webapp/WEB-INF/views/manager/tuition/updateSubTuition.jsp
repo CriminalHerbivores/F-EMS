@@ -19,10 +19,23 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('#sit_Tut').keyup(function(){
+		var inc = $(this).val();
+		var ori = $('#orig').val();
+		var per = Math.round((inc-ori)/ori*10000)/100+"%";
+		
+		$('#perTut').html(per);
+	});
+})
+</script>
 </head>
 <body>
 	<h2>학과 정보 조회</h2>
-	<form name="formm">
+	<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>단과</th>
@@ -45,17 +58,18 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<input type="number" name="sit_Tut">
+				<input type="number" id="sit_Tut" name="sit_Tut">
 			</td>
 			<td>
-				<input type="hidden" name="sit_Subjct_Code" value="${tut.sit_Subjct_Code}">
-				<div id="increaseTut"></div>
+				<input type="hidden" id="orig" value="${tut.sit_Tut}">
+				<div id="perTut"></div>
 			</td>
 			<td>
-				<input type="button" value="수정" onclick="submitForm(this.form)">
+				<input type="button" value="수정" onclick="submitForm(this.form)" class="def-btn btn-sm btn-color">
 			</td>
 		</tr>
 	</table>
 	</form>
+	<input type="button" value="목록" onclick="history.go(-1)" class="def-btn btn-sm btn-color">
 </body>
 </html>

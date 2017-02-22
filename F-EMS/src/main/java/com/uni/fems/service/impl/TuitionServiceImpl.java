@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.uni.fems.dao.StdntDAO;
 import com.uni.fems.dao.Subjct_Info_TableDAO;
 import com.uni.fems.dao.TuitionDAO;
+import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.Subjct_Info_TableVO;
+import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.service.TuitionService;
 
@@ -36,7 +38,16 @@ public class TuitionServiceImpl implements TuitionService {
 	}
 	@Override
 	public void toStdTuition() throws SQLException {
-		
+		ArrayList<UserSubjctVO> list = subDAO.selectSubjctByName("");
+		for(UserSubjctVO vo : list){
+			ArrayList<StdntVO> li = stdntDAO.subjctStdnt(vo.getSit_Subjct_Code());
+			for(StdntVO st : li){
+				TuitionVO tuitionVO = new TuitionVO();
+				tuitionVO.setTu_Stdnt_No(st.getSt_Stdnt_No());
+				tuitionVO.setTu_Tut(vo.getSit_Tut());
+				tuitionDAO.insertTuition(tuitionVO);
+			}
+		}
 	}
 	@Override
 	public void updateTuition(Subjct_Info_TableVO subVO) throws SQLException {
