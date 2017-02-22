@@ -24,7 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uni.fems.controller.common.FileDownload;
+import com.uni.fems.common.FileDownload;
 import com.uni.fems.dao.Bbs_ListDAO;
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Bbs_GntVO;

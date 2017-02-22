@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sun.security.ntlm.Client;
-import com.uni.fems.controller.common.UnitDate;
+import com.uni.fems.common.UnitDate;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
 import com.uni.fems.dto.LctreVO;

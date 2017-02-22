@@ -111,4 +111,14 @@ public interface StdntDAO {
 	 * </pre>
 	 */
 	ArrayList<StdntVO> subjctStdnt(String st_Subjct_Code) throws SQLException;
+	/**
+	 * <pre>
+	 * 재학 중인 학생 조회
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<StdntVO> notGrdStdnt() throws SQLException;
 }

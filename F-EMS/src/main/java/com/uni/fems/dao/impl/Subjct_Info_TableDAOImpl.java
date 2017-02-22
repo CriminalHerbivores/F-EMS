@@ -2,11 +2,14 @@ package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.Subjct_Info_TableDAO;
 import com.uni.fems.dto.ColegeVO;
 import com.uni.fems.dto.FacultyVO;
+import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 /**
@@ -36,12 +39,25 @@ public class Subjct_Info_TableDAOImpl implements Subjct_Info_TableDAO {
 	@Override
 	public ArrayList<UserSubjctVO> selectSubjctByName(String sit_Subjct)
 			throws SQLException {
-
 		ArrayList<UserSubjctVO>	subjctList;
 		subjctList=(ArrayList<UserSubjctVO>) client.queryForList("selectSubjctByName",sit_Subjct);
 		return subjctList;
 	}
 
+	@Override
+	public ArrayList<UserSubjctVO> selectSubjctByNamePaging(int tpage, int totalRecord, String sit_Subjct) throws SQLException {
+		Paging p = new Paging();
+		int[] rows = p.row(tpage, totalRecord);
+		ArrayList<UserSubjctVO>	list = (ArrayList<UserSubjctVO>) client.queryForList("selectSubjctByName",sit_Subjct, rows[1], rows[0]);
+		return list;
+	}
+
+	@Override
+	public int countSubjctByName(String sit_Subjct) throws SQLException {
+		int count = (int) client.queryForObject("countSubjctByName",sit_Subjct);
+		return count;
+	}
+	
 	@Override
 	public ArrayList<ColegeVO> selectColege() throws SQLException {
 		ArrayList<ColegeVO> col = (ArrayList<ColegeVO>) client.queryForList("selectColege");
@@ -73,5 +89,5 @@ public class Subjct_Info_TableDAOImpl implements Subjct_Info_TableDAO {
 	public void updateTut(Subjct_Info_TableVO sub) throws SQLException {
 		client.update("updateTut",sub);
 	}
-	
+
 }

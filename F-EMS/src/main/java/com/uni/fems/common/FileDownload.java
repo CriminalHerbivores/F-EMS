@@ -1,4 +1,4 @@
-package com.uni.fems.controller.common;
+package com.uni.fems.common;
 
 import java.io.File;
 import java.io.IOException;

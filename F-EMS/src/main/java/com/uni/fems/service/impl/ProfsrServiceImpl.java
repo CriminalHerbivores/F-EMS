@@ -3,8 +3,8 @@ package com.uni.fems.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.ProfsrDAO;
-import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.service.ProfsrService;
 

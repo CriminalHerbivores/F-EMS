@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.uni.fems.controller.common.FileDownload;
+import com.uni.fems.common.FileDownload;
 import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.SchlshipVO;

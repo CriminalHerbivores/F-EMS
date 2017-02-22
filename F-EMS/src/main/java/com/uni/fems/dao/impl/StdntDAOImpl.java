@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.StdntDAO;
-import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.StdntVO;
 
 public class StdntDAOImpl implements StdntDAO {
@@ -67,6 +67,12 @@ public class StdntDAOImpl implements StdntDAO {
 	@Override
 	public ArrayList<StdntVO> subjctStdnt(String st_Subjct_Code) throws SQLException {
 		ArrayList<StdntVO> list = (ArrayList<StdntVO>) client.queryForList("subjctStdnt",st_Subjct_Code);
+		return list;
+	}
+
+	@Override
+	public ArrayList<StdntVO> notGrdStdnt() throws SQLException {
+		ArrayList<StdntVO> list = (ArrayList<StdntVO>) client.queryForList("notGrdStdnt");
 		return list;
 	}
 }

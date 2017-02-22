@@ -1,4 +1,4 @@
-package com.uni.fems.dao.impl.paging;
+package com.uni.fems.common;
 
 import java.sql.SQLException;
 

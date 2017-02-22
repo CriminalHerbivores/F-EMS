@@ -125,4 +125,10 @@
 		where st_subjct_code = #st_Subjct_Code#
 	</select>
 	
+	<!-- 재학 중인 학생 조회 -->
+	<select id="notGrdStdnt" resultClass="stdnt">
+		select * from stdnt
+		where ST_GRDTN_DT is null
+	</select>
+	
 </sqlMap>
