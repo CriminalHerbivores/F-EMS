@@ -256,12 +256,14 @@
     border: 1px solid #cfcfcf;
     padding: 5px 10px 5px 5px;
 }
-table{
+
+/* 선호에게 */
+/* table{
 width:100%;
 border-spacing: 0px;
 border-collapse: separate;
 }
-
+ */
 .scheBox2 .t_all .all_month {
     color: #666161;
     font-weight: bold;

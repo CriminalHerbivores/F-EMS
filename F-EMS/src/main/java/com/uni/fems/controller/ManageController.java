@@ -29,6 +29,7 @@ import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.SklstfService;
+import com.uni.fems.service.Sklstf_AtrtyService;
 import com.uni.fems.service.Subjct_Info_TableService;
 import com.uni.fems.service.UsersService;
 
@@ -59,6 +60,9 @@ public class ManageController {
 	
 	@Autowired
 	private SklstfService sklstfService;
+	
+	@Autowired
+	private Sklstf_AtrtyService sklstf_AtrtyService;
 	
 	@Autowired
 	private Subjct_Info_TableService subjct_Info_TableService;
@@ -258,31 +262,74 @@ public class ManageController {
 		if(searchVO.getKey()==null)
 			searchVO.setKey("stf_Nm");
 		
-		System.out.println("===============11111111111 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============11111111111 searchVO.getValue() : "+searchVO.getValue());
 		
 		List<UserSubjctVO> sklstfAtrtyList=null;
 		String paging = null;
-		System.out.println("===============2222222222222 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============2222222222222 searchVO.getValue() : "+searchVO.getValue());
 		try {
 			sklstfAtrtyList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
 			paging = sklstfService.pageNumber(Integer.parseInt(tpage),searchVO);
-			System.out.println("===============3333333333 searchVO.getValue() : "+searchVO.getValue());
+			//System.out.println("===============3333333333 searchVO.getValue() : "+searchVO.getValue());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("===============4444444444444 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============4444444444444 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("sklstfAtrtyList", sklstfAtrtyList);
-		System.out.println("===============55555555555 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============55555555555 searchVO.getValue() : "+searchVO.getValue());
 		int n = sklstfAtrtyList.size();
-		System.out.println("===============666666666666 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============666666666666 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("sklstfListSize", n);
-		System.out.println("===============777777777 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============777777777 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("paging", paging);
-		System.out.println("===============8888888888 searchVO.getValue() : "+searchVO.getValue());
+		//System.out.println("===============8888888888 searchVO.getValue() : "+searchVO.getValue());
 		return url;
 		
 	}
 	
+	
+	/**
+	 * <pre>
+	 * 직원에게 관리자 권한 부여 및 취소 로직
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.POST)
+	public String sklstfAtrtyUpdate(Model model,HttpSession session, Sklstf_AtrtyVO sklstf_AtrtyVO) 
+			throws ServletException, IOException{
+		String url = "redirect:sklstfAtrtyList";	
+		
+//		List<sklstf_AtrtyVO> sklstfAtrtyList=null;
+		// 선택한 것의 번호 가져와야할듯
+		
+		try {
+			System.out.println("1111111111sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+			
+			sklstf_AtrtyService.updateSklstf_Atrty(sklstf_AtrtyVO);
+			System.out.println("222222222sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+			if(sklstf_AtrtyVO.getSa_Atrty()=="ROLE_STF"){
+				System.out.println("33333333333333 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+				sklstf_AtrtyVO.setSa_Atrty("ROLE_ADMIN");
+				System.out.println("4444444444444444 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+			} else{
+				System.out.println("555555555555555555 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+				sklstf_AtrtyVO.setSa_Atrty("ROLE_STF");
+				System.out.println("66666666666666666 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("777777777777777777777 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+		model.addAttribute("sklstfAtrtyList",sklstf_AtrtyVO);
+		System.out.println("8888888888888 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
+		
+		return url;
+	}
 	
 	
 	/**
@@ -311,26 +358,7 @@ public class ManageController {
 		return url;
 	}*/
 	
-	
-	/**
-	 * <pre>
-	 * 직원에게 관리자 권한 부여 및 취소 로직
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.POST)
-	public String sklstfAtrtyUpdate(Model model,HttpSession session, UserSubjctVO userSubjctVO) {
-		String url = "redirect:sklstfAtrtyList";	
-		
-	//	userSubjctVO.setSa_Atrty(sa_Atrty);
 
-		
-		return url;
-	}
 	
 	//===================================================
 	
