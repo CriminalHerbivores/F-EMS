@@ -23,6 +23,10 @@ function searchSubjct() {
 	var url = "findSubjct";
 	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
 }
+function searchZipNum() {
+	var url = "findZipNum";
+	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+}
 </script>
 </head>
 <body>
@@ -35,7 +39,10 @@ function searchSubjct() {
         <td>직원 번호</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No"></td>
         <td>학부</td>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="fc_Faculty_Nm" readonly></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="fc_Faculty_Nm" readonly>
+        <input type="hidden" name="coleg_Nm" > 
+        <input type="hidden" name="sit_Subjct_Code" value="${userSubjctVO.stf_Subjct_Code}"> 
+        </td>
         <td>학과</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
       </tr>
@@ -59,9 +66,9 @@ function searchSubjct() {
       </tr>
       <tr>
         <td>우편번호</td>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Post_No">&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick=""></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres1"></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres1" readonly></td>
         <td>상세 주소</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres2"></td>
       </tr>

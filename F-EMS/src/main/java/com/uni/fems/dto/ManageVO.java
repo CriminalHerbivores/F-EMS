@@ -40,6 +40,7 @@ public class ManageVO implements Serializable{
 	private String mng_Adres2;   // 주소2
 	private String mng_Tlphon_No;   // 전화번호
 	private String mng_Fax_No;   // 팩스번호
+	private String mng_Email;   // 이메일
 	private String mng_Cpyr;   // 저작권
 	private String mng_Layout_Knd;   // 레이아웃 종류
 	private String mng_Left_Menu_Use_Ennc;   // 좌측메뉴 사용유무

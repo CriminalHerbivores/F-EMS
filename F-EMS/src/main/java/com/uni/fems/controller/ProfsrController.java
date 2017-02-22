@@ -259,7 +259,7 @@ public class ProfsrController {
 		try {
 			if (lu_Lctre_Nm != null && lu_Lctre_Nm.trim().equals("") == false) {
 				lctre_SearchVO = lctre_Unq_NoService
-						.selectLctreByName(lu_Lctre_Nm);
+						.selectLctreByName(lu_Lctre_Nm.trim());
 			} else {
 				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
 			}
