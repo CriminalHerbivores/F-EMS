@@ -19,31 +19,29 @@
 <meta charset="UTF-8">
 <title></title>
 <script type="text/javascript">
-function update_Atrty(){
-	
-}
+
 </script>
 </head>
 <body>
 
 <form name="formm" mehtod="post">
-	
-<div class="text-center">
+<table class="non-border margin-auto">	
+<tr><td>	
+<div class="text-left">
 	<h2>관리자 설정</h2>
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
-	<table class="def-table-full">
+	<table class="def-table-auto">
 	<tr><td class="text-right">
-					<select name="선택" class="combobox-md custom-form-control">
-					<option value="${subjct.sa_Atrty}">관리자</option>
-					<option value="${subjct.stf_Sklstf_No}">직원번호</option>
-					<option value="${subjct.stf_Nm}">직원이름</option>
-					<option value="${subjct.sit_Subjct }">소속학과</option>
-					<option value="${subjct.fc_Faculty_Nm}">소속학부</option>
-					<option value="${subjct.coleg_Nm}">소속단과대학</option>
+					<select name="key" class="combobox-md custom-form-control">
+					<option value="stf_Sklstf_No">직원번호</option>
+					<option value="stf_Nm">직원이름</option>
+					<option value="sit_Subjct">학과</option>
+					<option value="fc_Faculty_Nm">학부</option>
+					<option value="coleg_Nm">단과대학</option>
 				</select>&nbsp;&nbsp;
-					<input type="text" class="def-input-text-md custom-form-control">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" value="조회"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
+					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
+					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 	</td></tr>
 	</table>
 			<table class="def-table-full tb-border table-hover">
@@ -63,29 +61,46 @@ function update_Atrty(){
 					<th><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="전체적용" onclick=""></th>
 				</tr>
 				
-				<c:forEach items="${userSubjctVO}" var="subjct" begin="0" end="19">
+				<c:forEach items="${sklstfAtrtyList}" var="subjct">
 				<tr>
 				
 					<td>${subjct.stf_Sklstf_No}</td>
 					<td>${subjct.coleg_Nm}</td>
 					<td>${subjct.fc_Faculty_Nm}</td>
 					<td>${subjct.sit_Subjct }</td>
-					<td>${subjct.stf_Nm}</td>
+					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Nm}</a></td>
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
 					<td>
+					<form method="post">
 					<c:choose>
-					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Atrty"  checked="checked"></c:when>
-					<c:otherwise><input type="checkbox" name="sa_Atrty" ></c:otherwise>
+					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Atrty" value="ROLE_STF" checked="checked"></c:when>
+					<c:otherwise><input type="checkbox" name="sa_Atrty" value="ROLE_ADMIN"></c:otherwise>
 					</c:choose>
 					</td>
-					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="적용" onclick="update_Atrty()"></td>
+					<td>
 					
+					<input type="submit" class="def-ckbtn btn-sm ckbtn-color" value="적용">
+					
+					<%-- <c:choose>
+					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}">
+					<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용">
+					<input type="hidden" name="sa_Atrty" value="ROLE_STF"></c:when><c:otherwise>
+					<input type="submit" class="def-ckbtn btn-sm ckbtn-color" value="적용">
+					<input type="hidden" name="sa_Atrty" value="ROLE_ADMIN">
+					</c:otherwise>
+					</c:choose> --%>
+					</td>
+					
+					</form>
 				</tr>
 			</c:forEach>
-				
+				<tr>
+      		<td colspan="9" style="text-align: center;">${paging }</td>
+      	</tr>
 			</table>
 </div>
+</td></tr></table>
 	</form>
 </body>
 </html>
