@@ -183,7 +183,7 @@ public class IndexController {
 			msg.setMng_Univ_Nm(vo.getMng_Univ_Nm());
 			msg.setMng_Email(vo.getMng_Email());
 			msg.setEmail(usersVO.getEmail());
-			msg.setTitle("["+vo.getMng_Univ_Nm()+"] 비밀번호 초기화 안내");
+			msg.setTitle("["+vo.getMng_Univ_Nm()+"] 임시 비밀번호 발급 안내");
 			msg.setContent("비밀번호가 "+pw+"로 재설정되었습니다<br/>로그인 후 반드시 비밀번호 변경을 해주시기 바랍니다.");
 			new SendMail().sendMail(mailSender, msg);
 			pw="초기화완료";
