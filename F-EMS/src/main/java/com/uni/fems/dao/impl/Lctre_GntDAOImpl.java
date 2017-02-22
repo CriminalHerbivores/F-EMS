@@ -48,7 +48,7 @@ public class Lctre_GntDAOImpl implements Lctre_GntDAO {
 	}
 	@Override
 	public int date_Table(String table_nm)throws SQLException{
-		return client.update("notice_Table", table_nm);
+		return client.update("date_Table", table_nm);
 		
 	}
 	@Override

@@ -73,7 +73,7 @@ public class Bbs_GntController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 공지게시판 리스트를 출력하기 위해 값을 model에 저장하여 보내주는 메서드
+	 * 제너레이터 게시판의 리스트를 출력해준다
 	 * </pre>
 	 * <pre>
 	 * @param model
@@ -138,10 +138,11 @@ public class Bbs_GntController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 공지게시판 작성 폼을 띄우기 위한 메서드
+	 * 게시판 작성 폼을 띄우기 위한 메서드
 	 * </pre>
 	 * <pre>
 	 * @param model
+	 * @param bbs_List_Gnt
 	 * @return url
 	 * @throws ServletException
 	 * @throws IOException
@@ -157,10 +158,10 @@ public class Bbs_GntController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 *  작성한 게시판 내용을 바탕으로 값을 DB에 저장 또는 처리하는 메서드(업로드)
+	 *  작성한 게시판을 업로드 한다.
 	 * </pre>
 	 * <pre>
-	 * @param notice_BbsVO
+	 * @param bbs_List_Gnt
 	 * @param bbs_FlpthVO
 	 * @param request
 	 * @param uploadfile
@@ -204,10 +205,10 @@ public class Bbs_GntController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 공지게시판 상세페이지를 출력하는 메서드
+	 * 게시판 리스트중 하나를 상세히 본다.
 	 * </pre>
 	 * <pre>
-	 * @param no
+	 * @param bbs_List_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -245,10 +246,10 @@ public class Bbs_GntController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 공지게시판 수정 폼을 띄워주는 메서드
+	 * 게시판의 내용을 수정하기 위한 폼으로 이동
 	 * </pre>
 	 * <pre>
-	 * @param no
+	 * @param bbs_List_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -286,12 +287,12 @@ public class Bbs_GntController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 수정한 게시판 내용을 바탕으로 데이터를 수정 또는 처리하는 메서드
+	 * 수정한 게시판의 내용을 업로드 한다.
 	 * </pre>
 	 * <pre>
 	 * @param tpage
 	 * @param uploadfile
-	 * @param notice_BbsVO
+	 * @param bbs_List_Gnt
 	 * @param bbs_FlpthVO
 	 * @param session
 	 * @param request
@@ -349,7 +350,7 @@ public class Bbs_GntController implements ApplicationContextAware{
 	 * 해당하는 게시판을 삭제처리하는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param no
+	 * @param bbs_List_Gnt
 	 * @param tpage
 	 * @param request
 	 * @return url
