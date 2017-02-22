@@ -79,4 +79,5 @@ public interface ProfsrDAO {
 	 * </pre>
 	 */
 	void updateProfsr(ProfsrVO profsrVO) throws SQLException;
+	void updatePw(ProfsrVO profsrVO) throws SQLException;
 }

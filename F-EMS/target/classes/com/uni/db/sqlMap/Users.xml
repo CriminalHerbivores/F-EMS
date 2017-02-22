@@ -24,7 +24,7 @@
 		and email = #email#
 	</select>
 	<select id="findPw" parameterClass="users" resultClass="str">
-		select username from member_view
+		select authority from member_view
 		where nm = #name#
 		and email = #email#
 		and username = #id#

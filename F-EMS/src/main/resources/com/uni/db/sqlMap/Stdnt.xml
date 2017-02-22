@@ -112,4 +112,10 @@
 	st_brhs_at = #st_Brhs_At#
 	where st_stdnt_no = #st_Stdnt_No#
 	</update>
+	
+	<update id="updatePwStdnt" parameterClass="stdnt">
+		update stdnt
+		set st_Pw = #st_Pw#
+		where st_Stdnt_No = #st_Stdnt_No#
+	</update>
 </sqlMap>

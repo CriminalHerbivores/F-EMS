@@ -7,6 +7,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -31,13 +32,13 @@ import com.uni.fems.dto.request.MessageRequest;
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
-@Controller
 public class SendMail {
-	@Resource(name = "mailSender")
-	private MailSender mailSender;
-	public void setMailSender(MailSender mailSender) {
-		this.mailSender = mailSender;
-	}
+	//@Resource(name = "mailSender")
+//	@Autowired
+//	private MailSender mailSender;
+//	public void setMailSender(MailSender mailSender) {
+//		this.mailSender = mailSender;
+//	}
 	
 	/**
 	 * <pre>
@@ -48,9 +49,8 @@ public class SendMail {
 	 * @return
 	 * </pre>
 	 */
-	public void sendMail(MessageRequest msg){
+	public void sendMail(MailSender mailSender,MessageRequest msg){
 		JavaMailSender jmailSender = (JavaMailSender) mailSender;
-		
 		MimeMessage message = jmailSender.createMimeMessage();
 		try{
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "utf-8");
@@ -60,7 +60,7 @@ public class SendMail {
 			messageHelper.setFrom(msg.getMng_Email(),msg.getMng_Univ_Nm());
 			messageHelper.setTo(new InternetAddress(msg.getEmail(),"utf-8"));
 			
-			if(!msg.getFilePath().isEmpty()){
+			if(msg.getFilePath()!=null && msg.getFilePath()!=""){
 			DataSource dataSource = new FileDataSource(msg.getFilePath());
 			messageHelper.addAttachment(
 					MimeUtility.encodeText(msg.getFilePath(),"utf-8","B"),dataSource);
