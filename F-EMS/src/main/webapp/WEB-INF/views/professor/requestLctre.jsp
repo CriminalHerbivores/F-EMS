@@ -26,11 +26,6 @@
 <title></title>
 
 <script type="text/javascript">
-function searchLctre() {
-	var url = "findLctre";
-	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
-}
-
 
 <%-- $(document).on('click','.findLctre',function(e){
 	e.preventDefault();

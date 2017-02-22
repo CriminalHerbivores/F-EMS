@@ -1,8 +1,11 @@
 package com.uni.fems.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,11 +13,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.uni.fems.dto.AddressVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ManageVO;
+import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.dto.UsersVO;
+import com.uni.fems.service.Lctre_Unq_NoService;
 import com.uni.fems.service.ManageService;
+import com.uni.fems.service.Subjct_Info_TableService;
 import com.uni.fems.service.UsersService;
 
 /**
@@ -41,6 +51,10 @@ public class IndexController {
 	private ManageService manageService;
 	@Autowired
 	private UsersService usersService;
+	@Autowired
+	private Subjct_Info_TableService subjct_Info_TableService;
+	@Autowired
+	private Lctre_Unq_NoService lctre_Unq_NoService;
 
 	// css 예시
 	@RequestMapping("/cssExample")
@@ -199,5 +213,111 @@ public class IndexController {
 		String url = "admin/admin_management/adminJoin";
 		return url;
 	}
+	
+	//==========================================================================
+	
+	/**
+	 * <pre>
+	 * 동이름으로 우편번호 검색할 때 사용
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param dong
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/findZipNum", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String findZipNum(Model model, @RequestParam(value="dong",defaultValue="대흥동")String dong)
+			throws ServletException, IOException {
+
+		String url = "common/findZipNum"; 
+		ArrayList<AddressVO> addressVO=null;
+		try {
+			if (dong != null && dong.trim().equals("") == false) {
+				addressVO=usersService.selectAddressByDong(dong.trim());
+			} else {
+				addressVO=usersService.selectAddressByDong("");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("addressVO",addressVO);
+		return url;
+	}	
+
+
+
+/**
+	 * <pre>
+	 * 학과명 혹은 학부명으로 학과 검색할 때 사용
+	 * </pre>
+	 * 
+	 * <pre>
+	 * @param model
+	 * @param sit_Subjct
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/findSubjct", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String findSubjct(Model model, String sit_Subjct)
+			throws ServletException, IOException {
+
+		String url = "common/findSubjct"; 
+		ArrayList<UserSubjctVO> userSubjctVO = null;
+		
+		try {
+			if (sit_Subjct != null && sit_Subjct.trim().equals("") == false) {
+				userSubjctVO = subjct_Info_TableService.selectSubjctByName(sit_Subjct.trim());
+			} else {
+				userSubjctVO = subjct_Info_TableService.selectSubjctByName("");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("userSubjctVO", userSubjctVO);
+		return url;
+	}
+	
+	
+/**
+	 * <pre>
+	 * 강의명으로 강의를 검색할 때 사용
+	 * </pre>
+	 * 
+	 * <pre>
+	 * @param model
+	 * @param lu_Lctre_Nm
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/findLctre", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String findLctre(Model model, String lu_Lctre_Nm)
+			throws ServletException, IOException {
+
+		String url = "common/findLctre";
+		ArrayList<Lctre_SearchVO> lctre_SearchVO = null;
+
+		try {
+			if (lu_Lctre_Nm != null && lu_Lctre_Nm.trim().equals("") == false) {
+				lctre_SearchVO = lctre_Unq_NoService
+						.selectLctreByName(lu_Lctre_Nm.trim());
+			} else {
+				lctre_SearchVO = lctre_Unq_NoService.selectLctreByName("");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
+		return url;
+	}	
 
 }
