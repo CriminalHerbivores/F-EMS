@@ -22,8 +22,9 @@
 <body>
 
 <form name="formm" mehtod="post">
-	
-<div class="text-center">
+<table class="non-border margin-auto">	
+<tr><td>
+<div class="text-left">
 <h2>직원 조회</h2>
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
@@ -81,6 +82,8 @@
       	</tr>
 			</table>
 </div>
+</td></tr>
+</table>
 	</form>
 </body>
 </html>

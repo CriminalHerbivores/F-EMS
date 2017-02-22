@@ -25,8 +25,9 @@
 <body>
 
 <form name="formm" mehtod="post">
-	
-<div class="text-center">
+<table class="non-border margin-auto">	
+<tr><td>	
+<div class="text-left">
 	<h2>관리자 설정</h2>
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
@@ -62,7 +63,6 @@
 				
 				<c:forEach items="${sklstfAtrtyList}" var="subjct">
 				<tr>
-					<form method="post">
 				
 					<td>${subjct.stf_Sklstf_No}</td>
 					<td>${subjct.coleg_Nm}</td>
@@ -72,20 +72,24 @@
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
 					<td>
+					<form method="post">
 					<c:choose>
 					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Atrty" value="ROLE_STF" checked="checked"></c:when>
 					<c:otherwise><input type="checkbox" name="sa_Atrty" value="ROLE_ADMIN"></c:otherwise>
 					</c:choose>
 					</td>
 					<td>
-					<c:choose>
+					
+					<input type="submit" class="def-ckbtn btn-sm ckbtn-color" value="적용">
+					
+					<%-- <c:choose>
 					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}">
 					<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용">
 					<input type="hidden" name="sa_Atrty" value="ROLE_STF"></c:when><c:otherwise>
 					<input type="submit" class="def-ckbtn btn-sm ckbtn-color" value="적용">
 					<input type="hidden" name="sa_Atrty" value="ROLE_ADMIN">
 					</c:otherwise>
-					</c:choose>
+					</c:choose> --%>
 					</td>
 					
 					</form>
@@ -96,6 +100,7 @@
       	</tr>
 			</table>
 </div>
+</td></tr></table>
 	</form>
 </body>
 </html>
