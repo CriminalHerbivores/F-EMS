@@ -16,7 +16,7 @@
 	
 	
 	<update id="notice_Table" parameterClass="str">
-		create table LN_$value$(	
+		create table LCTRE_N$value$(	
 			LN_BBS_NO number NOT NULL,
 			LN_SJ varchar2(200),
 			LN_CN varchar2(3000),
@@ -27,7 +27,7 @@
 	</update>
 	
 	<update id="date_Table" parameterClass="str">
-		create table LD_$value$(	
+		create table LCTRE_D$value$(	
 			LD_BBS_NO number NOT NULL,
 			LD_SJ varchar2(200),
 			LD_CN varchar2(3000),
@@ -40,7 +40,7 @@
 	
 	</update>
 	<update id="qna_Table" parameterClass="str">
-		create table LQ_$value$(	
+		create table LCTRE_Q$value$(	
 			LQ_BBS_NO number NOT NULL,
 			LQ_STDNT_NO varchar2(50),
 			LQ_SJ varchar2(200),
@@ -54,7 +54,7 @@
 	
 	</update>
 
-	<insert id="comment_Table" parameterClass="str">
+	<!-- <insert id="comment_Table" parameterClass="str">
 		create table LQC_$value$(	
 			LQC_COMNT_NO NUMBER NOT NULL,
 			LQC_BBS_NO NUMBER,
@@ -63,9 +63,9 @@
 			LQC_STDNT_NO varchar2(50),
 			CONSTRAINT LQC__$value$_PK PRIMARY KEY(LQC_COMNT_NO),
 		)
-	</insert>
+	</insert> -->
 	<update id="task_Table" parameterClass="str">
-		create table LT_$value$(	
+		create table LCTRE_T$value$(	
 			LT_BBS_NO number NOT NULL,
 			LT_STDNT_NO varchar2(50),
 			LT_SJ varchar2(200),
@@ -80,7 +80,7 @@
 	
 	</update>
 	<update id="video_Table" parameterClass="str">
-		create table LV_$value$(	
+		create table LCTRE_V$value$(	
 			LV_BBS_NO number NOT NULL,
 			LV_SJ varchar2(200),
 			LV_CN varchar2(3000),
@@ -92,14 +92,14 @@
 	
 	</update>
 	<update id="watch_Table" parameterClass="str">
-		create table LW_$value$(	
+		create table LCTRE_W$value$(	
 			LW_BBS_NO number NOT NULL,
 			LW_STDNT_NO varchar2(50),
 			LW_VIDEO_BBS_NO NUMBER,
 			LW_VIDEO_DT date,
 			LW_STDNT_VIDEO_DT date,
 			CONSTRAINT LW_$value$_PK PRIMARY KEY(LW_BBS_NO),
-			CONSTRAINT LW_$value$_LV_$value$_FK FOREIGN KEY(LW_VIDEO_BBS_NO) REFERENCES LV_$value$(LV_BBS_NO),
+			CONSTRAINT LW_$value$_LV_$value$_FK FOREIGN KEY(LW_VIDEO_BBS_NO) REFERENCES LCTRE_V$value$(LV_BBS_NO),
 			CONSTRAINT LW_$value$_STDNT_FK FOREIGN KEY(LW_STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
 		)
 	

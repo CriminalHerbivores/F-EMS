@@ -39,10 +39,13 @@
     
 </head>
 <body>
-    
-    	<div id="kCalendar">
+    <div>
+    	<div style="float:left" id="kCalendar"></div>
+    </div>
+    	<div style="height:280px;" id="monthdata"></div>
     	
-    	</div>
+    	<br>
+    	
 
 
 

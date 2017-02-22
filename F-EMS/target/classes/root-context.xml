@@ -310,7 +310,8 @@
       p:client-ref="sqlMapClient" />
 
    <bean id="lctre_ActplnService" class="com.uni.fems.service.impl.Lctre_ActplnServiceImpl"
-      p:lctre_ActplnDAO-ref="lctre_ActplnDAO" />
+      p:lctre_ActplnDAO-ref="lctre_ActplnDAO" 
+      p:lctre_GntDAO-ref= "lctre_GntDAO"/>
 
 
 <bean id="usersDAO" class="com.uni.fems.dao.impl.UsersDAOImpl"
@@ -350,6 +351,9 @@
       p:bbs_Comment_GntDAO-ref="bbs_Comment_GntDAO"
       />
 
+	<bean id="lctre_GntDAO" class="com.uni.fems.dao.impl.Lctre_GntDAOImpl"
+      p:client-ref="sqlMapClient" /> 
+     
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />

@@ -49,10 +49,11 @@ function kCalendar(id, date) {
 	
 	if( currentMonth < 10 )
 		var currentMonth = '0' + currentMonth;
+	if( currentMonth >=10)
+		var currentMonth = ''+ currentMonth;
 	//10월 이하라면 앞에 0을 붙여준다.
 	
 	var calendar = '';
-	
 	calendar += '<div id="header">';
 	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
 	calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
@@ -91,24 +92,59 @@ function kCalendar(id, date) {
 	calendar += '		</table>';
 	
 	
-	var data={'currentMonth' : currentMonth};
+/*	
+	function dateToYYYYMMDD(date){
+	    function pad(num) {
+	        num = num + '';
+	        return num.length < 2 ? '0' + num : num;
+	    }
+	    return date.getFullYear() + '-' + pad(date.getMonth()+1) + '-' + pad(date.getDate());
+	}
+
+	*/
+	var cdate = new Date();
+	var cyear = cdate.getFullYear();
+	if(currentYear==cyear){
+	var data={'currentMonth':currentMonth};
     $.ajax({
         url:'currentDate',
-        contentType:'application/json; charset=utf-8',
+        contentType:'application/json',
         dataType:'json',
         data:JSON.stringify(data),
         type:'post',
         success : function(data){
-     	  alert(data);
+        	$('div #monthdata').empty();
+        var form = '';
+        for(var i=0;i<data.length;i++){
+       
+/*      form += '' 	<table class="t_all">
+    		<tr>
+    			<th class="all_month">
+    				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
+    				<strong>01</strong>월
+    			</th>
+    			<td class="all_zoom">
+    				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 1월</p>
+        	*/
+        	
+       form +=  data[i].sd_Bgndt;
+       form +=  '&nbsp; ~ &nbsp;';
+       form +=  data[i].sd_Enddt;
+       form += ': &nbsp;'+ data[i].sd_Schdul_Sumry; 
+       form += '<br>';
+       
+        $('div #monthdata').html(form);
+      } 
+       
       },
       error:function(request,status,error){
       alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
 
     	
      });
-	
-	
-	
+	}else{
+		$('div #monthdata').empty();
+	}
 	
 	
 	
