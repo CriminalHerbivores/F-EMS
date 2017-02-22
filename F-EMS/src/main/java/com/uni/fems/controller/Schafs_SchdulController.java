@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
+import org.springframework.http.converter.json.GsonFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.uni.fems.dto.Schafs_SchdulVO;
 import com.uni.fems.service.Schafs_SchdulService;
 
@@ -56,26 +60,18 @@ public class Schafs_SchdulController {
 	return url;
 	}
 	
-	@RequestMapping(value="/currentDate",method = RequestMethod.POST,produces ="application/json; charset=utf8")
-	@ResponseBody
-	public String currentDate(@RequestBody Map<String, Object> jsonMap){
+	@RequestMapping(value="/currentDate",method = RequestMethod.POST)
+	public @ResponseBody List<Schafs_SchdulVO> currentDate(@RequestBody Map<String, Object> jsonMap){
 		int month = Integer.parseInt((String) jsonMap.get("currentMonth")) ;
-		List<Schafs_SchdulVO> list = null;
+		List<Schafs_SchdulVO> list = new ArrayList<Schafs_SchdulVO>();
 		try {
 			 list = schdulSvc.listSchdul(month);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 				
-		String result = "";
-		System.out.println("==============="+month);
-		System.out.println("==============="+list);
-		
-		
-		
-		return result;
+		return list;
 	}
 	
 	
