@@ -129,10 +129,10 @@ public class ManageController {
 	@RequestMapping(value="/sklstfInsert", method=RequestMethod.POST)
 	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo) 
 			throws ServletException, IOException{
-		String url = "redirect:sklstfAtrtyList";	
+		String url = "redirect:sklstfList";	
 		System.out.println("111111111111111111111111111111111111111111111111111111");
-		ArrayList<UserSubjctVO> userSubjctVO;
-		String sit_Subjct=null;
+		//ArrayList<UserSubjctVO> userSubjctVO = null;
+		//String sit_Subjct=null;
 		
 		if(file != null && !file.equals("")){
 			ReadOption ro = new ReadOption();
@@ -159,8 +159,8 @@ public class ManageController {
 				sklstfVo.setStf_Useyn(map.get("N"));
 				try {
 					sklstfService.insertSklstf(sklstfVo);
-						userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
-						System.out.println("sit_Subjct:================= "+sit_Subjct);
+						//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
+						//System.out.println("if : sit_Subjct:================= "+sit_Subjct);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -170,12 +170,15 @@ public class ManageController {
 		}else{
 			try {
 				sklstfService.insertSklstf(sklstfVo);
-				System.out.println("sklstfVo================="+sklstfVo);
+				//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
+				System.out.println("else : sklstfVo================="+sklstfVo);
+				//System.out.println("else : sit_Subjct:================= "+sit_Subjct);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
+		//model.addAttribute("userSubjctVO",userSubjctVO);
 		model.addAttribute("sklstfVo",sklstfVo);
 		
 		return url;
