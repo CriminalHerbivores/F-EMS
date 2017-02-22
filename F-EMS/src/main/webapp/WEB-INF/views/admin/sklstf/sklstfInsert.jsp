@@ -41,7 +41,7 @@ function searchZipNum() {
         <td>학부</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="fc_Faculty_Nm" readonly>
         <input type="hidden" name="coleg_Nm" > 
-        <input type="hidden" name="sit_Subjct_Code" value="${userSubjctVO.stf_Subjct_Code}"> 
+        <input type="hidden" name="sit_Subjct_Code" value="${userSubjctVO.stf_Subjct_Code}">
         </td>
         <td>학과</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
