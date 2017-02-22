@@ -31,7 +31,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
 		p:order="0" 
 	/>
-	<beans:bean id="download" class="com.uni.fems.controller.common.DownloadView" />
+	<beans:bean id="download" class="com.uni.fems.common.DownloadView" />
 <!-- 	<beans:bean id="productListExcel" class="com.test.board.view.ProductListExcelView" />
 	<beans:bean id="productListPdf" class="com.test.board.view.ProductListPdfView" /> -->
 	

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.SchlshipDAO;
-import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.Schafs_SchdulVO;
 import com.uni.fems.dto.SchlshipVO;

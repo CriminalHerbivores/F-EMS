@@ -57,7 +57,15 @@
 	 <select id="selectSubjctByName" parameterClass="str" resultClass="userSubjct">
 		select * from major_view
 		where sit_Subjct like '%'||#sit_Subjct#||'%'
-		or fc_Faculty_Nm like '%'||#fc_Faculty_Nm#||'%'
+		or fc_Faculty_Nm like '%'||#sit_Subjct#||'%'
+		order by sit_Subjct
+	</select>
+	
+	<!-- 학과명으로 학과 검색으로 학과,학부,단과대학 조회 총 개수 -->
+	 <select id="countSubjctByName" parameterClass="str" resultClass="int">
+		select count(*) from major_view
+		where sit_Subjct like '%'||#sit_Subjct#||'%'
+		or fc_Faculty_Nm like '%'||#sit_Subjct#||'%'
 		order by sit_Subjct
 	</select>
 	

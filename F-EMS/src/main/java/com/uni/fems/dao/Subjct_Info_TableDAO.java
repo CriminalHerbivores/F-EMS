@@ -38,6 +38,28 @@ public interface Subjct_Info_TableDAO {
 	ArrayList<UserSubjctVO> selectSubjctByName(String sit_Subjct) throws SQLException;
 	/**
 	 * <pre>
+	 * 사용자가 학과명으로 검색하여 학과 찾기 + 페이지
+	 * </pre>
+	 * <pre>
+	 * @param sit_Subjct
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<UserSubjctVO> selectSubjctByNamePaging(int tpage, int totalRecord, String sit_Subjct) throws SQLException;
+	/**
+	 * <pre>
+	 * 사용자가 학과명으로 검색하여 학과 찾기 총 개수
+	 * </pre>
+	 * <pre>
+	 * @param sit_Subjct
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int countSubjctByName(String sit_Subjct) throws SQLException;
+	/**
+	 * <pre>
 	 * 단과 대학 조회
 	 * </pre>
 	 * <pre>

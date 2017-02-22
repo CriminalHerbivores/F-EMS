@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.Bbs_CommentDAO;
-import com.uni.fems.dao.impl.paging.Paging;
 import com.uni.fems.dto.Bbs_CommentVO;
 
 /**
