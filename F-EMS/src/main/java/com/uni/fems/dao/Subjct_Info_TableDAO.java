@@ -3,6 +3,9 @@ package com.uni.fems.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.uni.fems.dto.ColegeVO;
+import com.uni.fems.dto.FacultyVO;
+import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 
 /**
@@ -33,4 +36,57 @@ public interface Subjct_Info_TableDAO {
 	 * @throws SQLException
 	 */
 	ArrayList<UserSubjctVO> selectSubjctByName(String sit_Subjct) throws SQLException;
+	/**
+	 * <pre>
+	 * 단과 대학 조회
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<ColegeVO> selectColege() throws SQLException;
+	/**
+	 * <pre>
+	 * 단과 대학명으로 학부 조회
+	 * </pre>
+	 * <pre>
+	 * @param fc_Coleg_Code
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<FacultyVO> selectFaculty(String fc_Coleg_Code) throws SQLException;
+	/**
+	 * <pre>
+	 * 학부명으로 학과 조회
+	 * </pre>
+	 * <pre>
+	 * @param sit_Faculty
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<Subjct_Info_TableVO> selectSubjct(String sit_Faculty) throws SQLException;
+	/**
+	 * <pre>
+	 * 학과 코드로 학과 정보 조회
+	 * </pre>
+	 * <pre>
+	 * @param sit_Subjct_Code
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<UserSubjctVO> selectSubjctByCode(String sit_Subjct_Code) throws SQLException;
+	/**
+	 * <pre>
+	 * 등록금 수정
+	 * </pre>
+	 * <pre>
+	 * @param sub
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateTut(Subjct_Info_TableVO sub) throws SQLException;
 }

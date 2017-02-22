@@ -12,7 +12,6 @@ import com.uni.fems.dto.StdntVO;
 public class StdntDAOImpl implements StdntDAO {
 
 	private SqlMapClient client;
-
 	public void setClient(SqlMapClient client) {
 		this.client = client;
 	}
@@ -63,5 +62,11 @@ public class StdntDAOImpl implements StdntDAO {
 	@Override
 	public void updatePw(StdntVO stdntVO) throws SQLException {
 		client.update("updatePwStdnt",stdntVO);
+	}
+
+	@Override
+	public ArrayList<StdntVO> subjctStdnt(String st_Subjct_Code) throws SQLException {
+		ArrayList<StdntVO> list = (ArrayList<StdntVO>) client.queryForList("subjctStdnt",st_Subjct_Code);
+		return list;
 	}
 }
