@@ -104,6 +104,11 @@ function kCalendar(id, date) {
 	*/
 	var cdate = new Date();
 	var cyear = cdate.getFullYear();
+	var cmonth = '<strong>';
+		cmonth += currentMonth;
+		cmonth += '</strong>';
+	var yearmonth = '<p>'+currentYear+'년 '+currentMonth+'월 </p>';
+	
 	if(currentYear==cyear){
 	var data={'currentMonth':currentMonth};
     $.ajax({
@@ -114,27 +119,29 @@ function kCalendar(id, date) {
         type:'post',
         success : function(data){
         	$('div #monthdata').empty();
+           	$('div #year1').empty();
+           	$('div #month1').empty();
+            $('div #monthdata').empty();
+            $('div #yearmonth').empty();
+            
         var form = '';
         for(var i=0;i<data.length;i++){
        
-/*      form += '' 	<table class="t_all">
-    		<tr>
-    			<th class="all_month">
-    				<fmt:formatDate value="${now}" pattern="yyyy" />년<br>
-    				<strong>01</strong>월
-    			</th>
-    			<td class="all_zoom">
-    				<p><fmt:formatDate value="${now}" pattern="yyyy" />년 1월</p>
-        	*/
+
         	
        form +=  data[i].sd_Bgndt;
        form +=  '&nbsp; ~ &nbsp;';
        form +=  data[i].sd_Enddt;
        form += ': &nbsp;'+ data[i].sd_Schdul_Sumry; 
        form += '<br>';
-       
-        $('div #monthdata').html(form);
+        
+        
       } 
+        $('div #year1').html(currentYear);
+        $('div #month1').html(cmonth);
+        $('div #monthdata').html(form);
+        $('div #yearmonth').html(yearmonth);
+        
        
       },
       error:function(request,status,error){
@@ -143,7 +150,16 @@ function kCalendar(id, date) {
     	
      });
 	}else{
+    	$('div #monthdata').empty();
+       	$('div #year1').empty();
+       	$('div #month1').empty();
+        $('div #yearmonth').empty();
 		$('div #monthdata').empty();
+		
+	    $('div #year1').html(currentYear);
+        $('div #month1').html(cmonth);
+        $('div #yearmonth').html(yearmonth);
+		
 	}
 	
 	
