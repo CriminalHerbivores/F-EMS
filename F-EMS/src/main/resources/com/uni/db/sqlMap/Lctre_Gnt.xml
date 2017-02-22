@@ -54,7 +54,7 @@
 	
 	</update>
 
-	<<!-- insert id="comment_Table" parameterClass="str">
+	<!-- <insert id="comment_Table" parameterClass="str">
 		create table LQC_$value$(	
 			LQC_COMNT_NO NUMBER NOT NULL,
 			LQC_BBS_NO NUMBER,

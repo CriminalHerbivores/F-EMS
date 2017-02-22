@@ -54,7 +54,7 @@
 	
 	</update>
 
-	<insert id="comment_Table" parameterClass="str">
+	<!-- <insert id="comment_Table" parameterClass="str">
 		create table LQC_$value$(	
 			LQC_COMNT_NO NUMBER NOT NULL,
 			LQC_BBS_NO NUMBER,
@@ -63,7 +63,7 @@
 			LQC_STDNT_NO varchar2(50),
 			CONSTRAINT LQC__$value$_PK PRIMARY KEY(LQC_COMNT_NO),
 		)
-	</insert>
+	</insert> -->
 	<update id="task_Table" parameterClass="str">
 		create table LT_$value$(	
 			LT_BBS_NO number NOT NULL,
