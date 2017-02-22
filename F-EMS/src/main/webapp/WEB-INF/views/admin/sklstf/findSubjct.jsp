@@ -81,9 +81,9 @@ function resultSubjct(coleg_Nm,fc_Faculty_Nm,sit_Subjct,sit_Subjct_Code) {
   </form>
   <table id="zipcode">
     <tr>
-    	<th>개설학과전공</th>
-      <th>강의코드</th>
-      <th>강의명</th>
+    	<th>단과대학</th>
+      <th>학부</th>
+      <th>학학과</th>
     </tr>
     <c:forEach items="${userSubjctVO}" var="subjct">
     <tr>
