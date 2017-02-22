@@ -192,8 +192,6 @@ public class Bbs_GntController implements ApplicationContextAware{
 			bbs_FlpthVO.setBf_File_Type_Code(vo.getFl_File_Type_Code());
 			bbs_FlpthVO.setBf_File_Nm(vo.getFl_File_Nm());
 		}
-		System.out.println("bbs_List_Gnt : "+bbs_List_Gnt);
-		System.out.println("bbs_FlpthVO : "+bbs_FlpthVO);
 		try {
 			bbs_GntSvc.insertBbs_Gnt(bbs_List_Gnt, bbs_FlpthVO);;
 		} catch (SQLException e) {
