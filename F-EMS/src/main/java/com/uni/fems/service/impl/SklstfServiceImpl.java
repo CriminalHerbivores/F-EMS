@@ -44,13 +44,6 @@ public class SklstfServiceImpl implements SklstfService {
 		SklstfVO sklstfVo = sklstfDAO.getSklstf(stf_Sklstf_No); 
 		return sklstfVo;
 	}
-	
-	// 관리자가 전체 직원 목록 조회
-//	@Override
-//	public List<UserSubjctVO> listSklstf(String stf_Nm) throws SQLException {
-//		
-//		return null;
-//	}
 
 	// 관리자가 직원 등록
 	@Override
@@ -77,7 +70,6 @@ public class SklstfServiceImpl implements SklstfService {
 	// 전체 직원의 목록 조회
 	@Override
 	public List<UserSubjctVO> listAllSklstf(int tpage, SearchVO searchVO) throws SQLException {
-		System.out.println("===================================== 2-2");
 		int totalRecord = sklstfDAO.totalSklstf(searchVO);
 		return sklstfDAO.listAllSklstf(searchVO,tpage, totalRecord);
 	}
@@ -85,7 +77,6 @@ public class SklstfServiceImpl implements SklstfService {
 	// 직원목록 조회 페이지 설정
 	@Override
 	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException {
-		System.out.println("===================================== 2-1");
 		int totalRecord = sklstfDAO.totalSklstf(searchVO);
 		String page = new Paging().pageNumber(tpage,totalRecord,"sklstfList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
 		return page;

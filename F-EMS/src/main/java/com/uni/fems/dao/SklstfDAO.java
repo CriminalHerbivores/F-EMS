@@ -59,22 +59,6 @@ public interface SklstfDAO {
 	 */
 	void insertSklstf(SklstfVO sklstfVo)throws SQLException;
 	
-
-	
-	
-	/**
-	 * <pre>
-	 * 관리자가 직원 목록 조회
-	 * </pre>
-	 * <pre>
-	 * @param stf_Nm
-	 * @return
-	 * @throws SQLException
-	 * </pre>
-	 */
-	//List<UserSubjctVO> listSklstf(String stf_Nm) throws SQLException;
-	
-	//====================================================================
 	
 	/**
 	 * <pre>

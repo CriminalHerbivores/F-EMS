@@ -43,19 +43,30 @@ public interface SklstfService {
 	SklstfVO getSklstf(String stf_Sklstf_No)throws SQLException;
 	
 	
+	/**
+	 * <pre>
+	 * 전체 직원의 목록
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param searchVO
+	 * @return
+	 * @throws SQLException
+	 */
+	List<UserSubjctVO> listAllSklstf(int tpage, SearchVO searchVO) throws SQLException;
 	
 	/**
 	 * <pre>
-	 * 관리자가 전체 직원 목록 조회
+	 * 직원 목록 페이지를 설정하는 서비스 메서드
 	 * </pre>
 	 * <pre>
-	 * @param stf_Nm
-	 * @return
+	 * @param tpage
+	 * @param searchVO
+	 * @return String
 	 * @throws SQLException
 	 * </pre>
 	 */
-	//List<UserSubjctVO> listSklstf(String stf_Nm) throws SQLException; 
-	
+	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -91,31 +102,7 @@ public interface SklstfService {
 	 */
 	void updateSklstf_Atrty(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
 	
-	//==========================================
-	
-	/**
-	 * <pre>
-	 * 직원 목록 페이지를 설정하는 서비스 메서드
-	 * </pre>
-	 * <pre>
-	 * @param tpage
-	 * @param searchVO
-	 * @return String
-	 * @throws SQLException
-	 * </pre>
-	 */
-	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
 	
-	/**
-	 * <pre>
-	 * 전체 직원의 목록
-	 * </pre>
-	 * <pre>
-	 * @param tpage
-	 * @param searchVO
-	 * @return
-	 * @throws SQLException
-	 */
-	List<UserSubjctVO> listAllSklstf(int tpage, SearchVO searchVO) throws SQLException;
+
 }

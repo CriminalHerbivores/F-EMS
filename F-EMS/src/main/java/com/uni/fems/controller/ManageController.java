@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -97,7 +98,8 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping("/sklstfList")
-	public String sklstfList(Model model,HttpServletRequest request, SearchVO searchVO) {
+	public String sklstfList(Model model,HttpServletRequest request, SearchVO searchVO) 
+			throws ServletException, IOException {
 		String url = "admin/sklstf/sklstfList";	
 		String tpage = request.getParameter("tpage");
 		
@@ -113,27 +115,18 @@ public class ManageController {
 		if(searchVO.getKey()==null)
 			searchVO.setKey("stf_Nm");
 		
-		System.out.println("===============11111111111 searchVO.getValue() : "+searchVO.getValue());
-		
 		List<UserSubjctVO> sklstfList=null;
 		String paging = null;
-		System.out.println("===============2222222222222 searchVO.getValue() : "+searchVO.getValue());
 		try {
 			sklstfList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
 			paging = sklstfService.pageNumber(Integer.parseInt(tpage),searchVO);
-			System.out.println("===============3333333333 searchVO.getValue() : "+searchVO.getValue());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("===============4444444444444 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("sklstfList", sklstfList);
-		System.out.println("===============55555555555 searchVO.getValue() : "+searchVO.getValue());
 		int n = sklstfList.size();
-		System.out.println("===============666666666666 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("sklstfListSize", n);
-		System.out.println("===============777777777 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("paging", paging);
-		System.out.println("===============8888888888 searchVO.getValue() : "+searchVO.getValue());
 		return url;
 		
 	}
@@ -238,19 +231,56 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.GET)
-	public String sklstfAtrtyListForm(Model model,HttpSession session, SearchVO searchVO) {
-		String url = "admin/sklstf/sklstfAtrtyList";	
+	@RequestMapping(value="/sklstfAtrtyList",method=RequestMethod.GET)
+	public String sklstfAtrtyList(Model model,HttpServletRequest request, SearchVO searchVO) 
+			throws ServletException, IOException{
+//		String url = "admin/sklstf/sklstfAtrtyList";	
+//		try {
+//			userSubjctVO = (UserSubjctVO) sklstfService.listAllSklstf(0, UserSubjctVO);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("userSubjctVO", userSubjctVO);
+//		return url;
 		
+		String url = "admin/sklstf/sklstfAtrtyList";	
+		String tpage = request.getParameter("tpage");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("stf_Nm");
+		
+		System.out.println("===============11111111111 searchVO.getValue() : "+searchVO.getValue());
+		
+		List<UserSubjctVO> sklstfAtrtyList=null;
+		String paging = null;
+		System.out.println("===============2222222222222 searchVO.getValue() : "+searchVO.getValue());
 		try {
-			searchVO = (SearchVO) sklstfService.listAllSklstf(0, searchVO);
+			sklstfAtrtyList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
+			paging = sklstfService.pageNumber(Integer.parseInt(tpage),searchVO);
+			System.out.println("===============3333333333 searchVO.getValue() : "+searchVO.getValue());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		model.addAttribute("userSubjctVO", searchVO);
+		System.out.println("===============4444444444444 searchVO.getValue() : "+searchVO.getValue());
+		model.addAttribute("sklstfAtrtyList", sklstfAtrtyList);
+		System.out.println("===============55555555555 searchVO.getValue() : "+searchVO.getValue());
+		int n = sklstfAtrtyList.size();
+		System.out.println("===============666666666666 searchVO.getValue() : "+searchVO.getValue());
+		model.addAttribute("sklstfListSize", n);
+		System.out.println("===============777777777 searchVO.getValue() : "+searchVO.getValue());
+		model.addAttribute("paging", paging);
+		System.out.println("===============8888888888 searchVO.getValue() : "+searchVO.getValue());
 		return url;
+		
 	}
 	
 	
@@ -293,11 +323,11 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/sklstfAtrtyList", method=RequestMethod.POST)
-	public String sklstfAtrtyUpdate(HttpServletRequest request,HttpSession session) {
-		String url = "redirect:sklstfAtrtyUpdate";	
+	public String sklstfAtrtyUpdate(Model model,HttpSession session, UserSubjctVO userSubjctVO) {
+		String url = "redirect:sklstfAtrtyList";	
 		
-		
-		
+	//	userSubjctVO.setSa_Atrty(sa_Atrty);
+
 		
 		return url;
 	}

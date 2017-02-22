@@ -63,7 +63,7 @@
 					<td>${subjct.coleg_Nm}</td>
 					<td>${subjct.fc_Faculty_Nm}</td>
 					<td>${subjct.sit_Subjct }</td>
-					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Sklstf_No}</a></td>
+					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Nm}</a></td>
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
 					<%-- <td>${subjct.sa_Atrty}</td> --%>
