@@ -124,7 +124,7 @@ function searchLctre() {
 	 	<th>교과목명</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
 	 	<th>강의번호</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lc_Lctre_Code" readonly></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code" readonly></td>
 	 </tr>
 	 
 	 <tr>

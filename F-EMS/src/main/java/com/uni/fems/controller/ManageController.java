@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dto.AddressVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.UserSubjctVO;
@@ -26,6 +27,7 @@ import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Subjct_Info_TableService;
+import com.uni.fems.service.UsersService;
 
 /**
  * <pre>
@@ -57,6 +59,9 @@ public class ManageController {
 	
 	@Autowired
 	private Subjct_Info_TableService subjct_Info_TableService;
+	
+	@Autowired
+	private UsersService usersService;
 	
 	
 	// @RequestMapping("/")
@@ -179,7 +184,7 @@ public class ManageController {
 	 * 
 	 * <pre>
 	 * @param model
-	 * @param lu_Lctre_Nm
+	 * @param sit_Subjct
 	 * @return
 	 * @throws ServletException
 	 * @throws IOException
@@ -191,10 +196,10 @@ public class ManageController {
 
 		String url = "admin/sklstf/findSubjct"; 
 		ArrayList<UserSubjctVO> userSubjctVO = null;
-
+		
 		try {
 			if (sit_Subjct != null && sit_Subjct.trim().equals("") == false) {
-				userSubjctVO = subjct_Info_TableService.selectSubjctByName(sit_Subjct);
+				userSubjctVO = subjct_Info_TableService.selectSubjctByName(sit_Subjct.trim());
 			} else {
 				userSubjctVO = subjct_Info_TableService.selectSubjctByName("");
 			}
@@ -203,6 +208,41 @@ public class ManageController {
 		}
 
 		model.addAttribute("userSubjctVO", userSubjctVO);
+		return url;
+	}
+	
+
+	/**
+	 * <pre>
+	 * 관리자가 직원 등록시 동이름으로 우편번호 검색할 때 사용
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param dong
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/findZipNum", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String findZipNum(Model model, String dong)
+			throws ServletException, IOException {
+
+		String url = "admin/sklstf/findZipNum"; 
+		ArrayList<AddressVO> addressVO=null;
+		
+		try {
+			if (dong != null && dong.trim().equals("") == false) {
+				addressVO=usersService.selectAddressByDong(dong.trim());
+			} else {
+				addressVO=usersService.selectAddressByDong("");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("addressVO",addressVO);
 		return url;
 	}
 	
