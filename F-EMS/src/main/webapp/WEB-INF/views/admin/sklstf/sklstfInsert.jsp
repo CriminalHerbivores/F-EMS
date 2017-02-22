@@ -41,7 +41,7 @@ function searchZipNum() {
         <td>학부</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="fc_Faculty_Nm" readonly>
         <input type="hidden" name="coleg_Nm" > 
-        <input type="hidden" name="sit_Subjct_Code" value="${userSubjctVO.stf_Subjct_Code}"> 
+        <input type="hidden" name="stf_Subject_Code"> 
         </td>
         <td>학과</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
@@ -80,7 +80,7 @@ function searchZipNum() {
         <td>교수 번호</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_Tlphon_No" ></td>
       </tr>
-      <tr><td>근무여부</td><td colspan="5"><input type="radio" name="stf_Useyn" value="1" checked="checked">근무&nbsp;&nbsp;<input type="radio" name="stf_Useyn" value="1">근무 안함</td></tr>
+      <tr><td>근무여부</td><td colspan="5"><input type="radio" name="stf_Useyn" value="1" checked="checked">근무&nbsp;&nbsp;<input type="radio" name="stf_Useyn" value="0">근무 안함</td></tr>
   </table>
   	</td></tr>
   	<tr><td>단체등록 미구현 상태</td></tr>

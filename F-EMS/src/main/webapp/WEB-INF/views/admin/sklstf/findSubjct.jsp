@@ -67,7 +67,7 @@ function resultSubjct(coleg_Nm,fc_Faculty_Nm,sit_Subjct,sit_Subjct_Code) {
    opener.document.formm.coleg_Nm.value=coleg_Nm;
    opener.document.formm.fc_Faculty_Nm.value=fc_Faculty_Nm;
    opener.document.formm.sit_Subjct.value=sit_Subjct;
-   opener.document.formm.sit_Subjct_Code.value=sit_Subjct_Code;
+   opener.document.formm.stf_Subject_Code.value=sit_Subjct_Code;
    self.close();
 };
 </script>
@@ -81,12 +81,14 @@ function resultSubjct(coleg_Nm,fc_Faculty_Nm,sit_Subjct,sit_Subjct_Code) {
   </form>
   <table id="zipcode">
     <tr>
+    	<th>학과코드</th>
     	<th>단과대학</th>
       <th>학부</th>
       <th>학과</th>
     </tr>
     <c:forEach items="${userSubjctVO}" var="subjct">
     <tr>
+    	<td>${ subjct.sit_Subjct_Code}</td>
    		<td>${subjct.coleg_Nm}</td>
       <td>${subjct.fc_Faculty_Nm}</td>
         <td><a href="#" onclick="return resultSubjct('${subjct.coleg_Nm}','${subjct.fc_Faculty_Nm}', '${subjct.sit_Subjct}','${subjct.sit_Subjct_Code}')">

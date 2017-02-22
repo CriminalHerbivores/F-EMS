@@ -14,6 +14,7 @@ body{
 }
 #popup{   
    padding: 0 10px;
+   min-height:300px;
 }
 #popup h1 {
    font-size: 45px;
@@ -68,7 +69,7 @@ function result(zipNum,sido,gugun,dong) {
       <th>우편번호</th>
       <th>주소</th>
     </tr>
-    <c:forEach items="${addressList}" var="addressVO">
+    <c:forEach items="${addressVO}" var="addressVO">
     <tr>
       <td>${addressVO.zipNum}</td>
         <td>

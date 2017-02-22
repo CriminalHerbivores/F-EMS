@@ -129,8 +129,11 @@ public class ManageController {
 	@RequestMapping(value="/sklstfInsert", method=RequestMethod.POST)
 	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo) 
 			throws ServletException, IOException{
-		String url = "redirect:sklstfAtrtyList";	
+		String url = "redirect:sklstfList";	
 		System.out.println("111111111111111111111111111111111111111111111111111111");
+		//ArrayList<UserSubjctVO> userSubjctVO = null;
+		//String sit_Subjct=null;
+		
 		if(file != null && !file.equals("")){
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(file);		//경로 입력
@@ -156,6 +159,8 @@ public class ManageController {
 				sklstfVo.setStf_Useyn(map.get("N"));
 				try {
 					sklstfService.insertSklstf(sklstfVo);
+						//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
+						//System.out.println("if : sit_Subjct:================= "+sit_Subjct);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -165,12 +170,15 @@ public class ManageController {
 		}else{
 			try {
 				sklstfService.insertSklstf(sklstfVo);
-				System.out.println("sklstfVo================="+sklstfVo);
+				//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
+				System.out.println("else : sklstfVo================="+sklstfVo);
+				//System.out.println("else : sit_Subjct:================= "+sit_Subjct);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
+		//model.addAttribute("userSubjctVO",userSubjctVO);
 		model.addAttribute("sklstfVo",sklstfVo);
 		
 		return url;
@@ -226,22 +234,24 @@ public class ManageController {
 	 */
 	@RequestMapping(value = "/findZipNum", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String findZipNum(Model model, String dong)
+	public String findZipNum(Model model, @RequestParam(value="dong",defaultValue="대흥동")String dong)
 			throws ServletException, IOException {
 
 		String url = "admin/sklstf/findZipNum"; 
 		ArrayList<AddressVO> addressVO=null;
-		
+		System.out.println("==================================컨트롤러11111111");
 		try {
 			if (dong != null && dong.trim().equals("") == false) {
 				addressVO=usersService.selectAddressByDong(dong.trim());
+				System.out.println("==================================if문 내부");
 			} else {
 				addressVO=usersService.selectAddressByDong("");
+				System.out.println("==================================else문 내부");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("==================================컨트롤러2222222");
 		model.addAttribute("addressVO",addressVO);
 		return url;
 	}
