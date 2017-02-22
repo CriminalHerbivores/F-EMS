@@ -4,4 +4,58 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Tuition">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias = "search" type="com.uni.fems.dto.SearchVO" />
+	<typeAlias alias = "tuition" type="com.uni.fems.dto.TuitionVO" />
+	
+	<!-- 학과 등록금 수정은 학과xml을 참고 -->
+	
+	<!-- 학생의 등록금 조회 -->
+	<select id="tuitionStdnt" parameterClass="str" resultClass="tuition">
+		select * from tuition
+		where tu_Stdnt_No=#tu_Stdnt_No#
+		order by tu_no desc
+	</select>
+	
+	<!-- 등록금 고지 -->
+	<update id="insertTuition" parameterClass="tuition">
+		insert into tuition(
+			tu_no,
+			tu_Tut,
+			tu_Stdnt_No,
+			tu_Virtl_acnut_No
+		)values(
+			tu_seq.nextval,
+			#tu_Tut#,
+			#tu_Stdnt_No#,
+			#tu_Virtl_acnut_No#
+		)
+	</update>
+	
+	<!-- 등록금 납부일 등록 -->
+	<update id="updateTuition" parameterClass="tuition">
+		update tution
+		set tu_Pay_Dt = #tu_Pay_Dt#
+		where tu_No=#tu_No#
+	</update>
+	
+	<!-- 등록금 조회 및 검색 -->
+	<select id="selectTuition" parameterClass="search" resultClass="tuition">
+		select * 
+		from stdnt st, SUBJCT_INFO_TABLE sj, tuition tu
+		where st.ST_SUBJCT_CODE = sj.SIT_SUBJCT_CODE
+		and tu.TU_STDNT_NO = st.ST_STDNT_NO
+		and $key$ like '%'||$value$||'%'
+		order by tu_no desc
+	</select>
+	
+	<!-- 미납 등록금 조회 -->
+	<select id="selectNotTuition" parameterClass="search" resultClass="tuition">
+		select * from tuition
+		where tu_Pay_Dt is null
+		and $key$ like '%'||$value$||'%'
+		order by tu_no desc
+	</select>
+	
 </sqlMap>

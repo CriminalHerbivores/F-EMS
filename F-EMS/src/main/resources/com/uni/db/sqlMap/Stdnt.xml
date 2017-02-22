@@ -118,4 +118,11 @@
 		set st_Pw = #st_Pw#
 		where st_Stdnt_No = #st_Stdnt_No#
 	</update>
+	
+	<!-- 학과코드로 학과 내 학생 조회 -->
+	<select id="subjctStdnt" parameterClass="str" resultClass="stdnt">
+		select * from stdnt
+		where st_subjct_code = #st_Subjct_Code#
+	</select>
+	
 </sqlMap>

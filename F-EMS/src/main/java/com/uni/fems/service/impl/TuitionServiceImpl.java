@@ -8,13 +8,10 @@ import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.service.TuitionService;
 
 public class TuitionServiceImpl implements TuitionService {
- 
- private TuitionDAO tuitionDAO;
- public void setTuitionDAO(TuitionDAO tuitionDAO){
-  this.tuitionDAO=tuitionDAO;
- }
- 
- 
+
+	private TuitionDAO tuitionDAO;
+	public void setTuitionDAO(TuitionDAO tuitionDAO) {
+		this.tuitionDAO = tuitionDAO;
+	}
+
 }
-
-

@@ -1,6 +1,7 @@
 package com.uni.fems.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.fems.dto.StdntVO;
@@ -99,4 +100,15 @@ public interface StdntDAO {
 	 * </pre>
 	 */
 	void updatePw(StdntVO stdntVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 학과 코드로 학과 내 학생 조회
+	 * </pre>
+	 * <pre>
+	 * @param st_Subjct_Code
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ArrayList<StdntVO> subjctStdnt(String st_Subjct_Code) throws SQLException;
 }
