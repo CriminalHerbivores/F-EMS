@@ -48,7 +48,7 @@ public class SklstfDAOImpl implements SklstfDAO {
 	// 관리자의 직원 등록
 	@Override
 	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
-		client.update("insertSklstf",sklstfVo);
+		client.insert("insertSklstf",sklstfVo);
 	}
 	
 	// 전체 직원의 목록
@@ -69,6 +69,20 @@ public class SklstfDAOImpl implements SklstfDAO {
 		int total_pages = 0;
 		total_pages = (Integer) client.queryForObject("totalSklstf",searchVO);
 		return total_pages;
+	}
+	
+	// 관리자 최초 가입
+	@Override
+	public void joinAdmin(SklstfVO sklstfVo) throws SQLException {
+		client.insert("joinAdmin",sklstfVo);
+	}
+	
+	
+	// 직원 인원수
+	@Override
+	public int numOfSklstf(SklstfVO sklstfVO) throws SQLException {
+		int count=(int) client.queryForObject("numOfSklstf",sklstfVO);
+		return count;
 	}
 	
 }

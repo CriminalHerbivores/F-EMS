@@ -210,7 +210,7 @@
 							</button>
 							<div class="menu-dropdown-content">
 								<a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a> <a
-									href="<%=request.getContextPath()%>/sklstf/adminJoin">관리자
+									href="<%=request.getContextPath()%>/adminJoin">관리자
 									가입</a> <a href="<%=request.getContextPath()%>/lgLogin">로그인형</a> <a
 									href="<%=request.getContextPath()%>/lgMulti">복합형</a> <a
 									href="<%=request.getContextPath()%>/lgBoard">게시판형</a> <a
@@ -443,7 +443,7 @@
 								<ul class="sub sub_meun">
 									<div class="inherit-size">
 										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/adminJoin">관리자
+											href="<%=request.getContextPath()%>/adminJoin">관리자
 												가입</a></li>
 									</div>
 									<div class="inherit-size">

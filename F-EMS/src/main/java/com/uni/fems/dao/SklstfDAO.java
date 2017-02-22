@@ -83,4 +83,29 @@ public interface SklstfDAO {
 	 * </pre>
 	 */
 	public int totalSklstf(SearchVO searchVO) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 관리자 최초 가입
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void joinAdmin(SklstfVO sklstfVo) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 직원 인원수
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @return 
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int numOfSklstf(SklstfVO sklstfVO) throws SQLException;
+	
 }

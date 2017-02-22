@@ -77,6 +77,7 @@
 					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Atrty" value="ROLE_STF" checked="checked"></c:when>
 					<c:otherwise><input type="checkbox" name="sa_Atrty" value="ROLE_ADMIN"></c:otherwise>
 					</c:choose>
+					<input type="hidden" name="sa_Sklstf_No"> <!-- 선택한 것의 직원번호 가져오고 싶음 -->
 					</td>
 					<td>
 					

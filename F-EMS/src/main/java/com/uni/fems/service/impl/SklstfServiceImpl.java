@@ -81,6 +81,15 @@ public class SklstfServiceImpl implements SklstfService {
 		String page = new Paging().pageNumber(tpage,totalRecord,"sklstfList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
 		return page;
 	}
+
+	// 관리자 최초 가입
+	@Override
+	public void joinAdmin(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO)
+			throws SQLException {
+		sklstfDAO.joinAdmin(sklstfVO);
+		sklstf_AtrtyDAO.insertSklstf_Atrty(sklstf_AtrtyVO);
+		sklstf_AtrtyVO.setSa_Atrty("ROLE_ADMIN");
+	}
 	
 
 }
