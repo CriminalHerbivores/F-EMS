@@ -13,6 +13,8 @@ function submitNotice(form){
 			$('#title').focus();
 			return;
 		}
+		
+		$('#title').focus();
 		if(content==""|| content ==null){
 			sweetAlert("Oops...", "내용을 입력해 주세요", "error");
 			/*alert("내용을 입력해 주세요");*/

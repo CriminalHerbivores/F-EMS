@@ -58,7 +58,7 @@ public class Schafs_SchdulController {
 	
 	@RequestMapping(value="/currentDate",method = RequestMethod.POST,produces ="application/json; charset=utf8")
 	@ResponseBody
-	public List<Schafs_SchdulVO> currentDate(@RequestBody Map<String, Object> jsonMap){
+	public String currentDate(@RequestBody Map<String, Object> jsonMap){
 		int month = Integer.parseInt((String) jsonMap.get("currentMonth")) ;
 		List<Schafs_SchdulVO> list = null;
 		try {
@@ -68,11 +68,14 @@ public class Schafs_SchdulController {
 			e.printStackTrace();
 		}
 		
+				
+		String result = "";
 		System.out.println("==============="+month);
 		System.out.println("==============="+list);
 		
 		
-		return list;
+		
+		return result;
 	}
 	
 	
