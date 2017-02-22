@@ -27,17 +27,17 @@
 <h2>직원 조회</h2>
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
-	<table class="def-table-full">
+	<table class="def-table-auto">
 	<tr><td class="text-right">
-					<select name="선택" class="combobox-md custom-form-control">
-					<option value="${subjct.stf_Sklstf_No}">직원번호</option>
-					<option value="${subjct.stf_Nm}">직원이름</option>
-					<option value="${subjct.sit_Subjct }">소속학과</option>
-					<option value="${subjct.fc_Faculty_Nm}">소속학부</option>
-					<option value="${subjct.coleg_Nm}">소속단과대학</option>
+				<select name="key" class="combobox-md custom-form-control">
+					<option value="stf_Sklstf_No">직원번호</option>
+					<option value="stf_Nm">직원이름</option>
+					<option value="sit_Subjct">학과</option>
+					<option value="fc_Faculty_Nm">학부</option>
+					<option value="coleg_Nm">단과대학</option>
 				</select>&nbsp;&nbsp;
-					<input type="text" class="def-input-text-md custom-form-control">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" value="조회"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
+					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
+					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 	</td></tr>
 	</table>
 			<table class="def-table-full tb-border table-hover">
@@ -56,16 +56,17 @@
 					<th>구분</th>
 				</tr>
 				
-				<c:forEach items="${userSubjctVO}" var="subjct" begin="0" end="19">
+				<c:forEach items="${sklstfList}" var="subjct">
 				<tr>
 				
 					<td>${subjct.stf_Sklstf_No}</td>
 					<td>${subjct.coleg_Nm}</td>
 					<td>${subjct.fc_Faculty_Nm}</td>
 					<td>${subjct.sit_Subjct }</td>
-					<td>${subjct.stf_Nm}</td>
+					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Sklstf_No}</a></td>
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
+					<%-- <td>${subjct.sa_Atrty}</td> --%>
 					<td>
 					<c:choose>
 					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}">관리자</c:when>
@@ -75,7 +76,9 @@
 					
 				</tr>
 			</c:forEach>
-				
+				<tr>
+      		<td colspan="8" style="text-align: center;">${paging }</td>
+      	</tr>
 			</table>
 </div>
 	</form>

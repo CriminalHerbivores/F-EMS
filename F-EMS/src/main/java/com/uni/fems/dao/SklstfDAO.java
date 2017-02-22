@@ -3,6 +3,7 @@ package com.uni.fems.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.UserSubjctVO;
 
@@ -58,6 +59,23 @@ public interface SklstfDAO {
 	 */
 	void insertSklstf(SklstfVO sklstfVo)throws SQLException;
 	
+
+	
+	
+	/**
+	 * <pre>
+	 * 관리자가 직원 목록 조회
+	 * </pre>
+	 * <pre>
+	 * @param stf_Nm
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	//List<UserSubjctVO> listSklstf(String stf_Nm) throws SQLException;
+	
+	//====================================================================
+	
 	/**
 	 * <pre>
 	 * 전체 직원의 목록
@@ -67,6 +85,18 @@ public interface SklstfDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	List<UserSubjctVO> sklstfList(String stf_Nm) throws SQLException;
+	List<UserSubjctVO> listAllSklstf(SearchVO searchVO, int tpage, int totalRecord) throws SQLException;
 	
+	
+	/**
+	 * <pre>
+	 * 직원목록의 직원수를 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param userSubjctVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int totalSklstf(SearchVO searchVO) throws SQLException;
 }

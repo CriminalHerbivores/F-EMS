@@ -132,7 +132,8 @@ public class BuildingController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		model.addAttribute("buildingVO",buildingVO);
+		System.out.println("buildingVO"+buildingVO);
+		//model.addAttribute("buildingVO",buildingVO);
 
 		return url;
 	}
