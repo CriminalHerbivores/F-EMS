@@ -160,6 +160,7 @@
 								class="no-uline">공지 게시판</a> <a
 								href="<%=request.getContextPath()%>/schafs_schdul/schdulList"
 								class="no-uline">학사 일정</a>
+							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=1" class="no-uline">test 게시판</a>	
 						</div>
 					</div>
 
@@ -536,6 +537,10 @@
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/calendarstyle.css">
+	
 <!--  ============= css =============  -->
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/dynamicCss/menu.do" />
@@ -564,6 +569,9 @@
 
 <!-- //////////////////////////////////// -->
 
+<!-- calendar js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/calendarscript.js"></script>
 
 
 <!--alert js  -->
@@ -631,6 +639,7 @@
 <script src="<%=request.getContextPath()%>/resources/js/work.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/common.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bbs_gnt.js"></script>
 <!-- //////////////////////////////////// -->
 
 

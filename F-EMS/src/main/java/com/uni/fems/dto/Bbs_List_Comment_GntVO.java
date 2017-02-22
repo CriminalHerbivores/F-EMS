@@ -8,7 +8,7 @@ import lombok.Data;
 
 /**
  * <pre>
- * 게시판의 공용 댓글 테이블의 컬럼을 변수로 하는 VO클래스
+ * 제너레이터로 생성한 게시판의 댓글 테이블에 체테이블 이름을 추가한 DTO
  * </pre>
  * @author KJS
  * @since 2017. 02. 19
@@ -23,16 +23,16 @@ import lombok.Data;
  * </pre>
  */
  
-@Alias("Bbs_Comment_List")
+@Alias("Bbs_List_Comment_Gnt")
 @Data
-public class Bbs_Comment_ListVO implements Serializable{
+public class Bbs_List_Comment_GntVO implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String bl_Table_Nm;   // 테이블 명
 	private int bc_Comnt_No; //댓글번호
-	private String bc_Bbs_Code; // 게시판명 ex)notice_bbs
 	private int bc_Bbs_No; // 게시판번호
 	private String bc_User_Id; // 댓글 작성자 아이디
 	private String bc_Comnt_Content; // 댓글 내용

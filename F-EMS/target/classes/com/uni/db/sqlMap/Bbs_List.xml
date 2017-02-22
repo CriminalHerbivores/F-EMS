@@ -20,12 +20,12 @@
 	<select id="listAllBbs_List_Atrty" parameterClass="str" resultClass="bbs_list_atrtyvo">
 		select * from bbs_list_view where bl_bbs_nm like '%'||#value#||'%' order by bl_bbs_no
 	</select>
-	<select id="totalBbs_List_Atrty" parameterClass="str" resultClass="int">
+	<select id="totalBbs_List_Atrty" parameterClass="str" resultClass="bbs_list_atrtyvo">
 		select count(*) from bbs_list_view where bl_bbs_nm like '%'||#value#||'%' order by bl_bbs_no
 	</select>
 	
-	<select id="getBbs_List_Atrty" parameterClass="int">
-		select * from bbs_list_view bl_bbs_no = #bl_Bbs_No#
+	<select id="getBbs_List_Atrty" parameterClass="int" resultClass="bbs_list_atrtyvo">
+		select * from bbs_list_view where bl_bbs_no = #bl_Bbs_No#
 	</select>	
 
 	<update id="insertBbs_List_Atrty1" parameterClass="bbs_list_atrtyvo">
@@ -70,7 +70,6 @@
 	<insert id="insertComment_Table" parameterClass="str">
 		create table COMMENT_$value$(	
 			BC_COMNT_NO NUMBER NOT NULL,
-			BC_BBS_CODE varchar2(50),
 			BC_BBS_NO NUMBER,
 			BC_USER_ID varchar2(50),
 			BC_COMNT_CONTENT varchar2(4000),

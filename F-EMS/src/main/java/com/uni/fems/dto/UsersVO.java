@@ -35,4 +35,8 @@ public class UsersVO implements Serializable {
 	private String user_Stdnt_No;   // 학생번호
 	private String user_Profsr_No;   // 교수번호
 	
+	private String id;
+	private String name;
+	private String password;
+	private String email;
 }

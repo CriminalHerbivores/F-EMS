@@ -14,9 +14,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.Schafs_SchdulVO;
 import com.uni.fems.service.Schafs_SchdulService;
@@ -53,6 +55,27 @@ public class Schafs_SchdulController {
 	
 	return url;
 	}
+	
+	@RequestMapping(value="/currentDate",method = RequestMethod.POST,produces ="application/json; charset=utf8")
+	@ResponseBody
+	public List<Schafs_SchdulVO> currentDate(@RequestBody Map<String, Object> jsonMap){
+		int month = Integer.parseInt((String) jsonMap.get("currentMonth")) ;
+		List<Schafs_SchdulVO> list = null;
+		try {
+			 list = schdulSvc.listSchdul(month);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("==============="+month);
+		System.out.println("==============="+list);
+		
+		
+		return list;
+	}
+	
+	
 	
 	@RequestMapping(value="/insertSchdul", method=RequestMethod.POST)
 	public String insertSchdul(Schafs_SchdulVO schdulVO, HttpServletRequest request) throws ServletException, IOException, ParseException{
