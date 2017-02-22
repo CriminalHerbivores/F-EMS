@@ -50,8 +50,8 @@
 	<form name="searchForm">
 		<input type="hidden" id="key" name="key" value="sit_Subjct"/>
 		<input type="text" name="value"/>
-		<input type="button" value="검색" onclick="searchMe(this.form)" class="def-ckbtn btn-sm ckbtn-color"/>
+		<input type="button" value="검색" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color"/>
 	</form>
-	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-ckbtn btn-sm ckbtn-color"></a>
+	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
 </body>
 </html>
