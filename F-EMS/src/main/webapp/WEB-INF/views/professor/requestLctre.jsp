@@ -111,7 +111,7 @@
 		</td>
 		<th>개설학과전공</th>
 		<td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>
-		<!-- <input type="hidden" name="lc_Lctre_Code" value="${lctre_SearchVO.lu_Lctre_Code}"> -->
+		<!-- <input type="hidden" name="lc_Lctre_Code"> -->
 		</td> <!-- 여기서 강의고유코드 정보로 lc_Lctre_Code 가져오고 싶음 -->
 	 </tr>
 	 
@@ -119,7 +119,7 @@
 	 	<th>교과목명</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Nm" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;검색</button></td>
 	 	<th>강의번호</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Lctre_Code" readonly></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lc_Lctre_Code" readonly></td>
 	 </tr>
 	 
 	 <tr>

@@ -27,7 +27,7 @@
  	<table class="def-table-auto tb-border table-hover">
       <tr>
         <td>직원 번호</td>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No"></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No"><input type="hidden" name="sa_Sklstf_No"></td>
         <td>학부</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="fc_Faculty_Nm" readonly>
         <input type="hidden" name="coleg_Nm" > 
@@ -70,6 +70,7 @@
         <td>교수 번호</td>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_Tlphon_No" ></td>
       </tr>
+      <tr><td>권한</td><td colspan="5"><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원&nbsp;&nbsp;<input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</td></tr>
       <tr><td>근무여부</td><td colspan="5"><input type="radio" name="stf_Useyn" value="1" checked="checked">근무&nbsp;&nbsp;<input type="radio" name="stf_Useyn" value="0">근무 안함</td></tr>
   </table>
   	</td></tr>
