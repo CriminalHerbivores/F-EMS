@@ -23,13 +23,11 @@
 		insert into tuition(
 			tu_no,
 			tu_Tut,
-			tu_Stdnt_No,
-			tu_Virtl_acnut_No
+			tu_Stdnt_No
 		)values(
 			tu_seq.nextval,
 			#tu_Tut#,
-			#tu_Stdnt_No#,
-			#tu_Virtl_acnut_No#
+			#tu_Stdnt_No#
 		)
 	</update>
 	

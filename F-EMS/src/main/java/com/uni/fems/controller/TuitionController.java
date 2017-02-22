@@ -86,8 +86,13 @@ public class TuitionController {
 	 */
 	@RequestMapping(value="toStdTuition")
 	public String toStdTuition(String sit_Subjct, String tpage){
+		if(sit_Subjct==null) sit_Subjct="";
 		String url="redirect:tuitionList?sit_Subjct="+sit_Subjct+"&tpage="+tpage;
-		
+		try {
+			tuitionService.toStdTuition();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return url;
 	}
 	/**
@@ -112,11 +117,24 @@ public class TuitionController {
 		model.addAttribute("tut",sub);
 		return url;
 	}
+	/**
+	 * <pre>
+	 * 학과번호로 등록금을 업데이트 함
+	 * </pre>
+	 * <pre>
+	 * @param subVO
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="updateSubTuition", method = RequestMethod.POST)
 	public String updateTuition(Subjct_Info_TableVO subVO){
 		String url="redirect:tuitionList";
 		
-		
+		try {
+			tuitionService.updateTuition(subVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return url;
 	}
