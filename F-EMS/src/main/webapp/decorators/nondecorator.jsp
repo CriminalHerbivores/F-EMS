@@ -65,7 +65,7 @@
 	href="<%=request.getContextPath()%>/resources/css/w3.css">
 
 <!-- Calendar -->
-<link rel="stylesheet"
+<%-- <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/examples-offline.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.common.min.css">
@@ -74,7 +74,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css">
+	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css"> --%>
 	
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/calendarstyle.css">

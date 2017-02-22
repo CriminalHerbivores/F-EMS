@@ -527,7 +527,7 @@
 	href="<%=request.getContextPath()%>/resources/css/w3.css">
 
 <!-- Calendar -->
-<link rel="stylesheet"
+<%-- <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/examples-offline.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.common.min.css">
@@ -536,7 +536,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css">
+	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css"> --%>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/calendarstyle.css">
@@ -582,8 +582,8 @@
 <!-- ssh 추가 -->	
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/kendo.all.min.js"></script>
+<%-- <script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/kendo.all.min.js"></script> --%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/console.js"></script>
 

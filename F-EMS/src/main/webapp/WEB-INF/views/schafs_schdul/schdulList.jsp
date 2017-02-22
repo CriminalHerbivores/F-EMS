@@ -40,9 +40,24 @@
 </head>
 <body>
     <div>
-    	<div style="float:left" id="kCalendar"></div>
+    	<div style="margin-top: 40px; float: left;" id="kCalendar"></div>
     </div>
+   <div class="scheBox2">
+    <table style="width:500px; height:280px;"class="t_all">
+		<tr>
+			<th class="all_month">
+				<div style="display:inline;" id="year1"></div>년<br>
+				<div style="display:inline;" id="month1"></div>월
+			</th>
+			<td class="all_zoom">
+			<div style="display:inline;" id="yearmonth"></div>
+    
     	<div style="height:280px;" id="monthdata"></div>
+    			</td>
+			</tr>
+		</table>
+    </div>
+    
     	
     	<br>
     	
