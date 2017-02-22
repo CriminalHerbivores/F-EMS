@@ -43,7 +43,7 @@ public class Bbs_Comment_GntDAOImpl implements Bbs_Comment_GntDAO {
 
 	@Override
 	public List<Bbs_Comment_GntVO> getBbs_Comment_Gnt(Bbs_List_Comment_GntVO bbs_List_Comment_Gnt, int tpage, int totalRecord)throws SQLException {
-		
+		System.out.println("bbs_List_Comment_Gnt : "+bbs_List_Comment_Gnt);
 		Paging p = new Paging();
 		int[] rows = p.row(tpage,totalRecord);
 		List<Bbs_Comment_GntVO> getBbs_Comment_Gnt = client.queryForList("getBbs_Comment_Gnt",bbs_List_Comment_Gnt,rows[1],rows[0]); 

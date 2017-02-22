@@ -53,7 +53,7 @@
       <c:forEach var="bbs_Gnt" items="${bbs_GntList }">
       	<tr>
       		<td> ${bbs_Gnt.bb_Bbs_No}</td>
-      		<td><a href="detailBbs_Gnt?bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&tpage=${tpage}">
+      		<td><a href="detailBbs_Gnt?bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}">
       		 ${bbs_Gnt.bb_Sj} </a>
       		</td>
       		<td><fmt:formatDate value="${bbs_Gnt.bb_Writng_dt}" /> </td>

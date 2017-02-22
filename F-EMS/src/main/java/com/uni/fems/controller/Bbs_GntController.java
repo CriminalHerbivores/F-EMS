@@ -204,42 +204,46 @@ public class Bbs_GntController implements ApplicationContextAware{
 		return url;
 	}
 	
-//	/**
-//	 * <pre>
-//	 * 공지게시판 상세페이지를 출력하는 메서드
-//	 * </pre>
-//	 * <pre>
-//	 * @param no
-//	 * @param tpage
-//	 * @param model
-//	 * @param request
-//	 * @return url
-//	 * </pre>
-//	 */
-//	@RequestMapping(value="/detailBbs_Gnt")
-//	public String detailNotice(@RequestParam int bb_Bbs_No,@RequestParam int bl_Bbs_No, @RequestParam int tpage, Model model, HttpServletRequest request){
-//		String url="board_management/detailNotice";
-//		Bbs_List_GntVO notice = null;
-//		Bbs_FlpthVO flpth = new Bbs_FlpthVO();
-//		List<Bbs_FlpthVO> flpthList = null;
-//		String bbs_code = request.getServletPath();
-//		String[] values = bbs_code.split("/");
-//		flpth.setBf_Bbs_No_No(bb_Bbs_No);
-//		flpth.setBf_Bbs_Code(values[1]);
-//		try {
-//			notice = (Notice_BbsVO)notice_BbsSvc.getNotice_Bbs(bb_Bbs_No);
-//			notice_BbsSvc.countNotice_Bbs(notice);
-//			notice.setNb_Rdcnt(notice.getNb_Rdcnt()+1);
-//			flpthList = notice_BbsSvc.getBbs_Flpth(flpth);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("notice",notice);
-//		model.addAttribute("tpage",tpage);
-//		model.addAttribute("flpthList",flpthList);
-//		return url;
-//	}
+	/**
+	 * <pre>
+	 * 공지게시판 상세페이지를 출력하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param no
+	 * @param tpage
+	 * @param model
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
+	@RequestMapping(value="/detailBbs_Gnt")
+	public String detailBbs_Gnt(Bbs_List_GntVO bbs_List_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
+		String url="generator/bbs/detailBbs_Gnt";
+		Bbs_FlpthVO flpth = new Bbs_FlpthVO();
+		Bbs_GntVO bbs_Gnt = null;
+		List<Bbs_FlpthVO> flpthList = null;
+		String bbs_code = request.getServletPath();
+		String[] values = bbs_code.split("/");
+		flpth.setBf_Bbs_No_No(bbs_List_Gnt.getBb_Bbs_No());
+		flpth.setBf_Bbs_Code(values[1]);
+		try {
+			bbs_Gnt = bbs_GntSvc.getBbs_Gnt(bbs_List_Gnt);
+			bbs_GntSvc.countBbs_Gnt(bbs_List_Gnt);
+			flpthList = bbs_GntSvc.getBbs_Flpth(flpth);
+			bbs_List_Gnt.setBb_Cn(bbs_Gnt.getBb_Cn());
+			bbs_List_Gnt.setBb_Rdcnt(bbs_Gnt.getBb_Rdcnt()+1);
+			bbs_List_Gnt.setBb_Sj(bbs_Gnt.getBb_Sj());
+			bbs_List_Gnt.setBb_Sklstf_No(bbs_Gnt.getBb_Sklstf_No());
+			bbs_List_Gnt.setBb_Writng_dt(bbs_Gnt.getBb_Writng_dt());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("bbs_List_Gnt",bbs_List_Gnt);
+		model.addAttribute("tpage",tpage);
+		model.addAttribute("flpthList",flpthList);
+		return url;
+	}
 	
 	/**
 	 * <pre>
@@ -253,26 +257,31 @@ public class Bbs_GntController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
-	public String updateNoticeForm(@RequestParam int no,@RequestParam int tpage, Model model, HttpServletRequest request){
-		String url="board_management/updateNotice";
-		Notice_BbsVO notice = null;
+	@RequestMapping(value="/updateBbs_Gnt", method=RequestMethod.GET)
+	public String updateBbs_GntForm(Bbs_List_GntVO bbs_List_Gnt,@RequestParam int tpage, Model model, HttpServletRequest request){
+		String url="generator/bbs/updateBbs_Gnt";
+		Bbs_GntVO bbs_Gnt = null;
 		Bbs_FlpthVO flpth = new Bbs_FlpthVO();
 		List<Bbs_FlpthVO> flpthList = null;
 		String bbs_code = request.getServletPath();
 		String[] values = bbs_code.split("/");
-		flpth.setBf_Bbs_No_No(no);
+		flpth.setBf_Bbs_No_No(bbs_List_Gnt.getBb_Bbs_No());
 		flpth.setBf_Bbs_Code(values[1]);
 		try {
-			notice = notice_BbsSvc.getNotice_Bbs(no);
-			flpthList = notice_BbsSvc.getBbs_Flpth(flpth);
+			bbs_Gnt = bbs_GntSvc.getBbs_Gnt(bbs_List_Gnt);
+			flpthList = bbs_GntSvc.getBbs_Flpth(flpth);
+			bbs_List_Gnt.setBb_Cn(bbs_Gnt.getBb_Cn());
+			bbs_List_Gnt.setBb_Rdcnt(bbs_Gnt.getBb_Rdcnt());
+			bbs_List_Gnt.setBb_Sj(bbs_Gnt.getBb_Sj());
+			bbs_List_Gnt.setBb_Sklstf_No(bbs_Gnt.getBb_Sklstf_No());
+			bbs_List_Gnt.setBb_Writng_dt(bbs_Gnt.getBb_Writng_dt());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("bbs_List_Gnt",bbs_List_Gnt);
 		model.addAttribute("tpage",tpage);
-		model.addAttribute("notice",notice);
 		model.addAttribute("flpthList",flpthList);
 		return url;
 	}
@@ -291,12 +300,17 @@ public class Bbs_GntController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
-	public String updateNotice(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,Notice_BbsVO notice_BbsVO, Bbs_FlpthVO bbs_FlpthVO, HttpSession session, HttpServletRequest request){
-		String url = "redirect:detailNotice?no="+notice_BbsVO.getNb_Bbs_No()+"&tpage="+tpage;
-		
+	@RequestMapping(value="/updateBbs_Gnt", method=RequestMethod.POST)
+	public String updateBbs_Gnt(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,Bbs_List_GntVO bbs_List_Gnt, Bbs_FlpthVO bbs_FlpthVO, HttpSession session, HttpServletRequest request, Model model){
+		String url = "redirect:detailBbs_Gnt?"
+				+ "bb_Bbs_No="+bbs_List_Gnt.getBb_Bbs_No()
+				+ "&bl_Bbs_No="+bbs_List_Gnt.getBl_Bbs_No()
+				+ "&bl_Bbs_Nm="+bbs_List_Gnt.getBl_Bbs_Nm()
+				+ "&bl_Table_Nm="+bbs_List_Gnt.getBl_Table_Nm()
+				+ "&tpage="+tpage;
+		System.out.println("bbs_List_Gnt : "+bbs_List_Gnt);
 		String loginUser = (String) session.getAttribute("loginUser");
-		notice_BbsVO.setNb_Sklstf_No(loginUser);
+		bbs_List_Gnt.setBb_Sklstf_No(loginUser);
 		
 		String uploadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 
@@ -316,20 +330,19 @@ public class Bbs_GntController implements ApplicationContextAware{
 			String bbs_code = request.getServletPath();
 			String[] values = bbs_code.split("/");
 			String extension = fileName.substring(pos+1).toLowerCase();
-			updateFlpthVO.setBf_Bbs_No_No(notice_BbsVO.getNb_Bbs_No());
+			updateFlpthVO.setBf_Bbs_No_No(bbs_List_Gnt.getBb_Bbs_No());
 			updateFlpthVO.setBf_Bbs_Code(values[1]);
 			updateFlpthVO.setBf_File_Type_Code(extension);
 			updateFlpthVO.setBf_File_Nm(fileName);
 			
 		}
 		try {
-			notice_BbsSvc.updateNotice_Bbs(notice_BbsVO, bbs_FlpthVO.getBf_No(), updateFlpthVO);
+			bbs_GntSvc.updateBbs_Gnt(bbs_List_Gnt, bbs_FlpthVO.getBf_No(), updateFlpthVO);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return url;
 	}
 	
@@ -344,26 +357,29 @@ public class Bbs_GntController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/deleteNotice")
-	public String deleteNotice(@RequestParam int no,@RequestParam int tpage,HttpServletRequest request){
-		String url = "redirect:noticeList?tpage="+tpage;
+	@RequestMapping(value="/deleteBbs_Gnt")
+	public String deleteNotice(Bbs_List_GntVO bbs_List_Gnt,@RequestParam int tpage,HttpServletRequest request, Model model){
+		String url = "redirect:bbsList?"
+				+ "bl_Bbs_No="+bbs_List_Gnt.getBl_Bbs_No()
+				+ "&tpage="+tpage;
 		
 		String bbs_code = request.getServletPath();
 		String[] values = bbs_code.split("/");
 		
 		Bbs_FlpthVO bbs_flpthVO = new Bbs_FlpthVO();
 		 
-		 bbs_flpthVO.setBf_Bbs_No_No(no);
+		 bbs_flpthVO.setBf_Bbs_No_No(bbs_List_Gnt.getBb_Bbs_No());
 		 bbs_flpthVO.setBf_Bbs_Code(values[1]);
 		 
 		
 		
 		try {
-			notice_BbsSvc.deleteNotice_Bbs(no, bbs_flpthVO);
+			bbs_GntSvc.deleteBbs_Gnt(bbs_List_Gnt, bbs_flpthVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return url;
 	}
 	

@@ -19,11 +19,13 @@
 
 <script>
 $(document).ready(function() {
-	var bbs_no = $('#bbs_no').val();
-    var data ={'bbs_no' : bbs_no};
+	var bbs_no = ${bbs_List_Gnt.bb_Bbs_No}
+	
+    var data ={'bb_Bbs_No' : '${bbs_List_Gnt.bb_Bbs_No}',
+    			'bl_Table_Nm' : '${bbs_List_Gnt.bl_Table_Nm}'};
     
     $.ajax({
-       url:'<%=request.getContextPath()%>/notice_bbs/commentList',
+       url:'<%=request.getContextPath()%>/bbs_gnt/commentList',
        contentType:'application/json; charset=utf-8',
        dataType:'text',
        data:JSON.stringify(data),
@@ -44,12 +46,12 @@ $(document).on('click','.pageComment',function(e){
     
 	var bbs_no = $('#bbs_no').val();
     var data ={
-    		'bbs_no' : bbs_no,
+    		'bb_Bbs_No' : bbs_no,
     		'cpage' : cpage
     		};
     
     $.ajax({
-       url:'<%=request.getContextPath()%>/notice_bbs/commentList',
+       url:'<%=request.getContextPath()%>/bbs_gnt/commentList',
        contentType:'application/json; charset=utf-8',
        dataType:'text',
        data:JSON.stringify(data),
@@ -64,33 +66,6 @@ $(document).on('click','.pageComment',function(e){
        }
     });
 });
-$(document).on('click','.pageComment',function(e){
-    e.preventDefault();
-    var cpage = $(this).attr('id');
-    
-	var bbs_no = $('#bbs_no').val();
-    var data ={
-    		'bbs_no' : bbs_no,
-    		'cpage' : cpage
-    		};
-    
-    $.ajax({
-       url:'<%=request.getContextPath()%>/notice_bbs/commentList',
-       contentType:'application/json; charset=utf-8',
-       dataType:'text',
-       data:JSON.stringify(data),
-       type:'post',
-       success : function(data){
-    	   $('#comment_content').val('');
-	       $('div #comment').empty();
-           $('div #comment').append(data);
-     },
-       error:function(error){
-       alert("오류났음");   
-       }
-    });
-});
-
 function commm_go(){
 	
 	var comment_content = $('#comment_content').val();
@@ -100,12 +75,12 @@ function commm_go(){
 	}
 	var bbs_no = $('#bbs_no').val();
 	var dataWrite={
-			'bbs_no' : bbs_no,
-			'comment_content' : comment_content
-	
+			'bb_Bbs_No' : '${bbs_List_Gnt.bb_Bbs_No}',
+			'comment_content' : comment_content,
+			'bl_Table_Nm' : '${bbs_List_Gnt.bl_Table_Nm}'
 	};
 	$.ajax({
-		url : '<%=request.getContextPath()%>/notice_bbs/insertComment',
+		url : '<%=request.getContextPath()%>/bbs_gnt/insertComment',
 		contentType:'application/json; charset=utf-8',
 		data : JSON.stringify(dataWrite),
 		dataType:'text',
@@ -125,13 +100,13 @@ function commm_go(){
 $(document).on('click','.deleteComment',function(e){
     e.preventDefault();
     var result = $(this).attr('id');
-    var bc_bbs_no = $('#bbs_no').val();
     var data = {
 			"result" : result,
-			"bc_bbs_no" : bc_bbs_no	
+			"bb_Bbs_No" : '${bbs_List_Gnt.bb_Bbs_No}',
+			'bl_Table_Nm' : '${bbs_List_Gnt.bl_Table_Nm}'
 		};
     $.ajax({
-       url:"<%=request.getContextPath()%>/notice_bbs/deleteComment",
+       url:"<%=request.getContextPath()%>/bbs_gnt/deleteComment",
 			contentType : 'application/json; charset=utf-8',
 			data : JSON.stringify(data),
 			dataType : 'text',
@@ -151,9 +126,10 @@ $(document).on('click','.deleteComment',function(e){
 $(document).on('click','.cancelComment',function(e){
 	e.preventDefault();
 	var bbs_no = $('#bbs_no').val();
-	var data ={'bbs_no' : bbs_no};
+	var data ={'bb_Bbs_No' : '${bbs_List_Gnt.bb_Bbs_No}',
+			'bl_Table_Nm' : '${bbs_List_Gnt.bl_Table_Nm}'};
 	$.ajax({
-	       url:'<%=request.getContextPath()%>/notice_bbs/commentList',
+	       url:'<%=request.getContextPath()%>/bbs_gnt/commentList',
 	       contentType:'application/json; charset=utf-8',
 	       dataType:'text',
 	       data:JSON.stringify(data),
@@ -174,11 +150,12 @@ $(document).on('click', '.updateComment', function(e){
 	e.preventDefault();
 	var bbs_no = $('#bbs_no').val();
     var cmntNo = $(this).attr('id');
-    var data ={'bbs_no' : bbs_no,
+    var data ={'bb_Bbs_No' : '${bbs_List_Gnt.bb_Bbs_No}',
+			'bl_Table_Nm' : '${bbs_List_Gnt.bl_Table_Nm}',
     		   'cmntNo' : cmntNo
     		};
     $.ajax({
-	       url:'<%=request.getContextPath()%>/notice_bbs/updateComment',
+	       url:'<%=request.getContextPath()%>/bbs_gnt/updateComment',
 	       contentType:'application/json; charset=utf-8',
 	       dataType:'text',
 	       data:JSON.stringify(data),
@@ -201,10 +178,11 @@ $(document).on('click','.realupdateComment',function(e){
 	var content = $('#comment_update').val();
 	var	data={'content' : content,
 			  'cmntNo' : cmntNo,
-			  'bbs_no' : bbs_no
+			  'bb_Bbs_No' : '${bbs_List_Gnt.bb_Bbs_No}',
+	'bl_Table_Nm' : '${bbs_List_Gnt.bl_Table_Nm}'
 			};
 	$.ajax({
-		url:"<%=request.getContextPath()%>/notice_bbs/realupdateComment",
+		url:"<%=request.getContextPath()%>/bbs_gnt/realupdateComment",
 		contentType:'application/json; charset=utf-8',
 		dataType:'text',
 		data:JSON.stringify(data),
@@ -229,20 +207,20 @@ $(document).on('click','.realupdateComment',function(e){
 
 </head>
 <body>
-<div id="detailNotice" style="float:left;">
-	<form name="formm" method="post" action="notice_bbs">
-		<h2>공지 게시판</h2>
+<div id="detailBbs_Gnt" style="float:left;">
+	<form name="formm" method="post" action="detailBbs_Gnt">
+		<h2>${bbs_List_Gnt.bl_Bbs_Nm }</h2>
 		<hr>
 		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
 			<tr>
 				<th>제목</th>
-				<td colspan="3" style="text-align: left;">${notice.nb_Sj}</td>
+				<td colspan="3" style="text-align: left;">${bbs_List_Gnt.bb_Sj}</td>
 			</tr>
 			<tr>
 				<th>작성날짜</th>
-				<td style="text-align: left;">${notice.nb_Writng_Dt}</td>
+				<td style="text-align: left;">${bbs_List_Gnt.bb_Writng_dt}</td>
 				<th>조회수</th>
-				<td style="text-align: left;">${notice.nb_Rdcnt}</td>
+				<td style="text-align: left;">${bbs_List_Gnt.bb_Rdcnt}</td>
 			</tr>
 			<c:forEach var="flpth" items="${flpthList }">
 				<tr>
@@ -253,7 +231,7 @@ $(document).on('click','.realupdateComment',function(e){
 			</c:forEach>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly">${notice.nb_Cn }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly">${bbs_List_Gnt.bb_Cn }</textarea><br></td>
 			</tr>
 
 		</table>
@@ -261,8 +239,6 @@ $(document).on('click','.realupdateComment',function(e){
 		<!-- 댓글부분 -->
 
 
-		<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no"
-			name="bbs_no">
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
 			name="comment_content"></textarea>
 		<input type="button" value="확인" class="def-btn btn-sm btn-color" id="btnSave" onclick="commm_go();">
@@ -273,12 +249,11 @@ $(document).on('click','.realupdateComment',function(e){
 
 	<!--버튼들  -->
 	<div id="buttons" style="float: right">
-		<%-- <a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" class="def-btn" value="삭제"> </a> --%>
-		<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
+		<a href="updateBbs_Gnt?bb_Bbs_No=${bbs_List_Gnt.bb_Bbs_No}&bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
 			data-toggle="modal" value="삭제"> <a
-			href="noticeList?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input
+			href="bbsList?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&tpage=${tpage}"> <input
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>
@@ -298,7 +273,7 @@ $(document).on('click','.realupdateComment',function(e){
 				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
 				<!-- Footer -->
 				<div class="modal-footer" style="text-align: center;">
-					<a href="deleteNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <!--삭제 모달  -->
+					<a href="deleteBbs_Gnt?bb_Bbs_No=${bbs_List_Gnt.bb_Bbs_No}&bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}"> <!--삭제 모달  -->
 						<input type="button" class="btn btn-default" value="예">
 					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
 						value="아니오">

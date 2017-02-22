@@ -16,13 +16,18 @@
 <title></title>
 </head>
 <body>
-	    <h2> 공지 게시판 </h2>
+	    <h2> ${bbs_List_Gnt.bl_Bbs_Nm } </h2>
 		<form name="formm" method="post" enctype="multipart/form-data">
 			<fieldset>	
+				 <input type="hidden" name="tpage" value=${tpage }>
+				 <input type="hidden" name="bb_Bbs_No" value=${bbs_List_Gnt.bb_Bbs_No }>
+				 <input type="hidden" name="bl_Bbs_No" value=${bbs_List_Gnt.bl_Bbs_No }>
+				 <input type="hidden" name="bl_Bbs_Nm" value=${bbs_List_Gnt.bl_Bbs_Nm }>
+				 <input type="hidden" name="bl_Table_Nm" value=${bbs_List_Gnt.bl_Table_Nm }>
 			    <label>제목</label>
-			    <input type="text" name="nb_Sj" value=${notice.nb_Sj }  size="64" ><br>
+			    <input type="text" name="bb_Sj" value="${bbs_List_Gnt.bb_Sj }"  size="64" ><br>
 				<label>내용</label>
-			    <textarea rows="8" cols="65" name="nb_Cn">${notice.nb_Cn }</textarea><br>
+			    <textarea rows="8" cols="65" name="bb_Cn">${bbs_List_Gnt.bb_Cn }</textarea><br>
 			   <c:forEach var="flpth" items="${flpthList }">
 			   <input type="hidden" name="bf_No" value=${flpth.bf_No }>
 			   </c:forEach>
@@ -30,8 +35,6 @@
 			</fieldset>   
 		<div class="clear"></div>
 			 <div id="buttons" style="float:right">
-			 <input type="hidden" name="tpage" value=${tpage }>
-			 <input type="hidden" name="nb_Bbs_No" value=${notice.nb_Bbs_No }>
 			 <input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
 			 <a href="noticeList?tpage=${tpage}"> <input type="button" class="def-btn btn-md btn-color" value="목록"> </a>
 		  </div>
