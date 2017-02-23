@@ -303,7 +303,7 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/deleteBbs_Gnt")
+	@RequestMapping(value="/deleteLctre_Date")
 	public String deleteNotice(Lctre_Date_GntVO lctre_Date_Gnt,@RequestParam int tpage,HttpServletRequest request, Model model){
 		String url = "redirect:dateList?"
 				+ "table_Nm="+lctre_Date_Gnt.getTable_Nm()

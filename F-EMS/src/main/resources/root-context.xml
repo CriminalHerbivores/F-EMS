@@ -362,6 +362,13 @@
       p:lctre_DateDAO-ref="lctre_DateDAO" 
       p:lctre_FlpthDAO-ref="lctre_FlpthDAO"
       />
+      
+      <bean id="lctre_NoticeDAO" class="com.uni.fems.dao.impl.Lctre_NoticeDAOImpl"
+      p:client-ref="sqlMapClient" /> 
+      
+      <bean id="lctre_NoticeService" class="com.uni.fems.service.impl.Lctre_NoticeServiceImpl"
+      p:lctre_NoticeDAO-ref="lctre_NoticeDAO" 
+      />
      
      
      <bean id="fileDownload" class="com.uni.fems.common.FileDownload"/>

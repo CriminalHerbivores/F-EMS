@@ -6,7 +6,7 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.22    KJS            최초작성               -->
+<!--  2017.02.23    KJS            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
@@ -75,7 +75,7 @@
 				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
 				<!-- Footer -->
 				<div class="modal-footer" style="text-align: center;">
-					<a href="deleteBbs_Gnt?bb_Bbs_No=${bbs_List_Gnt.bb_Bbs_No}&bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}"> <!--삭제 모달  -->
+					<a href="deleteLctre_Date?tpage=${tpage}&table_Nm=${lctre_Date_Gnt.table_Nm }&ld_Bbs_No=${lctre_Date_Gnt.ld_Bbs_No}"> <!--삭제 모달  -->
 						<input type="button" class="btn btn-default" value="예">
 					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
 						value="아니오">
