@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.uni.fems.common.SendMail;
+import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.AddressVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ManageVO;
@@ -199,7 +199,7 @@ public class IndexController {
 			msg.setEmail(usersVO.getEmail());
 			msg.setTitle("["+vo.getMng_Univ_Nm()+"] 임시 비밀번호 발급 안내");
 			msg.setContent("비밀번호가 "+pw+"로 재설정되었습니다<br/>로그인 후 반드시 비밀번호 변경을 해주시기 바랍니다.");
-			new SendMail().sendMail(mailSender, msg);
+			new Supporter().sendMail(mailSender, msg);
 			pw="초기화완료";
 		}
 		return pw;

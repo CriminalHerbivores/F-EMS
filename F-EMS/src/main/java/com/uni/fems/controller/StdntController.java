@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.uni.fems.common.UnitDate;
+import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SknrgsVO;
@@ -48,22 +48,14 @@ import com.uni.fems.service.StdntService;
 @Controller
 @RequestMapping("stdnt")
 public class StdntController {
-
+	@Autowired
+	private Supporter supporter;
 	@Autowired
 	private StdntService stdntService;
-	public void setStdntService(StdntService stdntService) {
-		this.stdntService = stdntService;
-	}
 	@Autowired
 	private SknrgsService sknrgs_Svc;
-	public void setSknrgs_Svc(SknrgsService sknrgs_Svc) {
-		this.sknrgs_Svc = sknrgs_Svc;
-	}
 	@Autowired
 	private SchlshipService schlshipService;
-	public void setSchlshipService(SchlshipService schlshipService) {
-		this.schlshipService = schlshipService;
-	}
 	/**
 	 * <pre>
 	 * 학생 한 명의 정보를 상세히 조회한다
@@ -327,7 +319,7 @@ public class StdntController {
 			e.printStackTrace();
 		}
 		
-		int[] i = new UnitDate().getDay();
+		int[] i = supporter.getDay();
 		model.addAttribute("hack",i[3]); //학기
 		model.addAttribute("schlshipList", schlshipList);
 		model.addAttribute("stdntSchlshipList", stdntSchlshipList);
@@ -347,7 +339,7 @@ public class StdntController {
 	public String requestschlship(HttpSession session,String tpage,int ss_Schlship_Code){
 		String url="redirect:schlshipList?tpage="+tpage;
 		
-		int[] i = new UnitDate().getDay();
+		int[] i = supporter.getDay();
 		String loginUser = (String) session.getAttribute("loginUser");
 		
 		PymntVO pymntVO = new PymntVO();
