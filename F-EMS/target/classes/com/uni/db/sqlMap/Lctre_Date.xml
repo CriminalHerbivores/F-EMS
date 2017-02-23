@@ -37,7 +37,7 @@
 	
 	<update id="insertLctre_Date" parameterClass="lctre_date_Gnt">
 		insert into LCTRE_D$table_Nm$(LD_BBS_NO,LD_SJ,LD_CN,LD_WRITNG_DT,LD_RDCNT,LD_FLPTH_NO) 
-		values(((select max(LD_BBS_NO) from LCTRE_D$table_Nm)+1)),#ld_Sj#,#ld_Cn#,sysdate,0,#ld_Flpth_No#)
+		values(((select max(LD_BBS_NO) from LCTRE_D$table_Nm$)+1),#ld_Sj#,#ld_Cn#,sysdate,0,#ld_Flpth_No#)
 	</update>
 	
 	<update id="updateLctre_Date" parameterClass="lctre_date_Gnt">

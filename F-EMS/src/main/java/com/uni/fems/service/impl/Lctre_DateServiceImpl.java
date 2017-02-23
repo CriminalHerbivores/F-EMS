@@ -57,9 +57,15 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 		return lctre_DateDAO.getLctre_Date(lctre_Date_Gnt);
 	}
 	@Override
-	public Lctre_FlpthVO getLctre_Flpth(int lf_No)
+	public Lctre_FlpthVO getLctre_Flpth(String lf_No)
 			throws SQLException {
-		return lctre_FlpthDAO.getLctre_Flpth(lf_No);
+		Lctre_FlpthVO lctre_Flpth;
+		if(lf_No == null)
+			lctre_Flpth = null;
+		else{ 
+			lctre_Flpth = lctre_FlpthDAO.getLctre_Flpth(Integer.parseInt(lf_No));
+		}
+		return lctre_Flpth;
 	}
 	@Override
 	public void insertLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
@@ -72,11 +78,8 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 		lctre_DateDAO.insertLctre_Date(lctre_Date_Gnt);
 	}
 	@Override
-	public int updateLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, int lf_No,Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
+	public int updateLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
 		
-		if(lf_No != 0)
-			lctre_FlpthDAO.deleteLctre_Flpth_lctre(lf_No);
-
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
@@ -89,9 +92,11 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 		return lctre_DateDAO.countLctre_Date(lctre_Date_Gnt);
 	}
 	@Override
-	public int deleteLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
-//			lctre_FlpthDAO.deleteLctre_Flpth_lctre(lctre_FlpthVO.getLf_No());
-		return lctre_DateDAO.deleteLctre_Date(lctre_Date_Gnt);
+	public int deleteLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt) throws SQLException {
+			lctre_DateDAO.deleteLctre_Date(lctre_Date_Gnt);
+			if(lctre_Date_Gnt.getLd_Flpth_No() != null)
+			lctre_FlpthDAO.deleteLctre_Flpth_lctre(Integer.parseInt(lctre_Date_Gnt.getLd_Flpth_No()));
+		return 0;
 	}
 
 
