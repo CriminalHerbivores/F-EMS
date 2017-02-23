@@ -36,8 +36,29 @@
 })*/
 
 function go_step1Add() {
-	document.formm.action = "/fems/admin/step1Add";
+	//location.href= location.protocol+"//"+location.host + "/"+main[1]+"/admin/step1Add";
 	document.formm.submit();
+	
+/*	var data = {
+			'returl' : 'admin/step1Add',
+			'userid' : 'admin',
+			'password' : 'admin'
+	};
+	$.ajax({
+		url : 'login',
+		data : data,
+		type : 'POST',
+		dataType : 'json',
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader("Accept", "application/json");
+		}
+	}).done(function(body) {
+		location.href="admin/step1Add";
+	});*/
+	
+	
+	
+	
 }
 
 function go_step2Add() {

@@ -47,21 +47,21 @@ public class SklstfServiceImpl implements SklstfService {
 
 	// 관리자가 직원 등록
 	@Override
-	public void insertSklstf(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException {
-		sklstfDAO.insertSklstf(sklstfVo);
+	public void insertSklstf(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException {
+		sklstfDAO.insertSklstf(sklstfVO);
 		sklstf_AtrtyDAO.insertSklstf_Atrty(sklstf_AtrtyVO);
 	}
 	
 	// 관리자가 직원 정보 수정
 		@Override
-		public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
-			sklstfDAO.updateSklstf(sklstfVo);
+		public void updateSklstf(SklstfVO sklstfVO) throws SQLException {
+			sklstfDAO.updateSklstf(sklstfVO);
 		}
 	
 	// 관리자가 직원 정보와 권한 수정
 	@Override
-	public void updateSklstf_Atrty(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException {
-		sklstfDAO.updateSklstf(sklstfVo);
+	public void updateSklstf_Atrty(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException {
+		sklstfDAO.updateSklstf(sklstfVO);
 		sklstf_AtrtyDAO.updateSklstf_Atrty(sklstf_AtrtyVO);
 	}
 
@@ -80,6 +80,14 @@ public class SklstfServiceImpl implements SklstfService {
 		int totalRecord = sklstfDAO.totalSklstf(searchVO);
 		String page = new Paging().pageNumber(tpage,totalRecord,"sklstfList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
 		return page;
+	}
+
+	// 관리자 최초 가입
+	@Override
+	public void joinAdmin(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO)
+			throws SQLException {
+		sklstfDAO.joinAdmin(sklstfVO);
+		sklstf_AtrtyDAO.insertSklstf_Atrty(sklstf_AtrtyVO);
 	}
 	
 

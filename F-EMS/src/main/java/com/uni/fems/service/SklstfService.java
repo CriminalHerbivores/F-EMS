@@ -77,7 +77,7 @@ public interface SklstfService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void insertSklstf(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO)throws SQLException;
+	void insertSklstf(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO)throws SQLException;
 	
 	/**
 	 * <pre>
@@ -88,7 +88,7 @@ public interface SklstfService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateSklstf(SklstfVO sklstfVo)throws SQLException;
+	void updateSklstf(SklstfVO sklstfVO)throws SQLException;
 	
 	
 	/**
@@ -100,8 +100,19 @@ public interface SklstfService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateSklstf_Atrty(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
+	void updateSklstf_Atrty(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
 	
+	
+	/**
+	 * <pre>
+	 * 관리자 최초 가입
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void joinAdmin(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO)throws SQLException;
 	
 	
 
