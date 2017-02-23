@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sun.security.ntlm.Client;
-import com.uni.fems.common.UnitDate;
+import com.uni.fems.common.Supporter;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
 import com.uni.fems.dto.LctreVO;
@@ -56,20 +56,16 @@ import com.uni.fems.service.ProfsrService;
 @RequestMapping("/profsr")
 @Data
 public class ProfsrController {
-
+	@Autowired
+	private Supporter supporter;
 	@Autowired
 	private ProfsrService profsrService;
-
 	@Autowired
 	private LctreService lctreService;
-	
 	//@Autowired
 	//private Lctre_ActplnService lctre_ActplnService;
-
 	@Autowired
 	private Lctre_Unq_NoService lctre_Unq_NoService;
-
-
 
 	/**
 	 * <pre>
@@ -182,7 +178,7 @@ public class ProfsrController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		int[] i = new UnitDate().getDay();
+		int[] i = supporter.getDay();
 		model.addAttribute("hack",i[3]); //학기
 		
 		model.addAttribute("profsrVO", profsrVO);
