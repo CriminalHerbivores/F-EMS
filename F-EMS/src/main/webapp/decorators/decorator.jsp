@@ -160,7 +160,8 @@
 								class="no-uline">공지 게시판</a> <a
 								href="<%=request.getContextPath()%>/schafs_schdul/schdulList"
 								class="no-uline">학사 일정</a>
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=1" class="no-uline">test 게시판</a>	
+							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=1" class="no-uline">test 게시판</a>
+							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=2" class="no-uline">test2 게시판</a>		
 						</div>
 					</div>
 

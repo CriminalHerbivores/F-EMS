@@ -23,17 +23,19 @@ import lombok.Data;
  * </pre>
  */
  
-@Alias("Lctre_Date")
+@Alias("Lctre_Task_Gnt")
 @Data
-public class Lctre_DateVO implements Serializable {
+public class Lctre_Task_GntVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private int ld_Bbs_No;			//게시판 번호
-	private String ld_Sj;			//게시판 제목
-	private String ld_Cn;			//게시판 내용
-	private Timestamp ld_Writng_Dt;	//게시판 작성날짜
-	private int ld_Rdcnt;			//게시판 조회수
-	private int ld_Flpth_No;		//게시판 파일 경로 번호
+	private String table_Nm;		//테이블 명
+	private int lt_Bbs_No;			//게시판 번호
+	private String lq_Stdnt_No;		//게시판 작성자
+	private String lt_Sj;			//게시판 제목
+	private String lt_Cn;			//게시판 내용
+	private Timestamp lt_Writng_Dt;	//게시판 작성날짜
+	private int lt_Rdcnt;			//게시판 조회수
+	private int lt_Flpth_No;		//게시판 파일 경로 번호
 
 }

@@ -8,7 +8,7 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.21    KJS            최초작성               -->
+<!--  2017.02.23    KJS            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
@@ -28,16 +28,15 @@
 <table class="non-border margin-auto">
 <tr><td>
 <div class="text-center">
-  <h2>${bbs_List_Gnt.bl_Bbs_Nm}</h2>
+  <h2>잘릐 자료 게시판</h2>
  <hr />
 
 <form name="formm">
 <div class="text-right">
   <select name="key" class="combobox-md custom-form-control">
-  	<option value="bb_Sj">제목</option>
-  	<option value="bb_Cn">내용</option>
+  	<option value="ld_Sj">제목</option>
+  	<option value="ld_Cn">내용</option>
   </select>
-  <input type="hidden" name="bl_Bbs_No" value=${bbs_List_Gnt.bl_Bbs_No }>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
 </div>

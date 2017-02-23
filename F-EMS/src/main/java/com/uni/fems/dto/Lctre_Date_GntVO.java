@@ -23,12 +23,13 @@ import lombok.Data;
  * </pre>
  */
  
-@Alias("Lctre_Date")
+@Alias("Lctre_Date_Gnt")
 @Data
-public class Lctre_DateVO implements Serializable {
+public class Lctre_Date_GntVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	private String table_Nm;		//테이블 명
 	private int ld_Bbs_No;			//게시판 번호
 	private String ld_Sj;			//게시판 제목
 	private String ld_Cn;			//게시판 내용

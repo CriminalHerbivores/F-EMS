@@ -354,6 +354,14 @@
 
 	<bean id="lctre_GntDAO" class="com.uni.fems.dao.impl.Lctre_GntDAOImpl"
       p:client-ref="sqlMapClient" /> 
+      
+      <bean id="lctre_DateDAO" class="com.uni.fems.dao.impl.Lctre_DateDAOImpl"
+      p:client-ref="sqlMapClient" /> 
+      
+      <bean id="lctre_DateService" class="com.uni.fems.service.impl.Lctre_DateServiceImpl"
+      p:lctre_DateDAO-ref="lctre_DateDAO" 
+      p:lctre_FlpthDAO-ref="lctre_FlpthDAO"
+      />
      
      
      <bean id="fileDownload" class="com.uni.fems.common.FileDownload"/>

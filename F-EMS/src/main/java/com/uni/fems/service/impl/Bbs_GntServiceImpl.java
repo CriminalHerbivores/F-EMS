@@ -91,7 +91,7 @@ public class Bbs_GntServiceImpl implements Bbs_GntService{
 	@Override
 	public String pageNumber(int tpage,Bbs_List_GntVO bbs_list_gnt, SearchVO searchVO) throws SQLException {
 		int totalRecord = dbs_GntDAO.totalBbs_Gnt(bbs_list_gnt);
-		String page = new Paging().pageNumber(tpage,totalRecord,"noticeList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
+		String page = new Paging().pageNumber(tpage,totalRecord,"bbsList", "&bl_Bbs_No="+bbs_list_gnt.getBl_Bbs_No());
 		return page;
 	}
 	@Override

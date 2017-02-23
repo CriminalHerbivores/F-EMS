@@ -8,7 +8,33 @@
 <!--  ==========   ======    ==============         -->
 <!--  $2017.01.24    KJH       최초작성             -->
 <!--  $2017.02.15    KJH       추가작성             -->
+<!--  $2017.02.23    KJS       추가작성             -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
     
 <sqlMap namespace="Lctre_Flpth">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="lctre_flpth" type="com.uni.fems.dto.Lctre_FlpthVO" />
+	
+	
+	<select id="getLctre_Flpth" parameterClass="int" resultClass="lctre_flpth">
+		select * from lctre_flpth where lf_no=#lf_No#
+	</select>
+	
+	<select id="maxLctre_Flpth" resultClass="int">
+		select max(lf_no) from lctre_flpth
+	</select>
+	
+	<update id="insertLctre_Flpth" parameterClass="lctre_flpth">
+		insert into lctre_flpth(lf_no,lf_file_type,lf_lctre_no,lf_flpth) 
+		values(lf_seq.nextval,#lf_File_Type#,#lf_Lctre_No#,#lf_Flpth#)
+	</update>
+	
+	<update id="deleteLctre_Flpth_lctre" parameterClass="int">
+		delete from lctre_flpth where lf_no=#lf_No#
+	</update>
+	
+	
+	
 </sqlMap>
