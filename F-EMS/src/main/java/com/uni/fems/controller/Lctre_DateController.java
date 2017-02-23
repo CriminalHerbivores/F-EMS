@@ -60,7 +60,7 @@ import com.uni.fems.service.Notice_BbsService;
 
 
 @Controller
-@RequestMapping("/lctre_date")
+@RequestMapping("/lctre")
 public class Lctre_DateController{
 	
 	
@@ -80,9 +80,9 @@ public class Lctre_DateController{
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping("/lctre_date_List")
+	@RequestMapping("/dateList")
 	public String bbsList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		String url="generator/bbs/bbsList";
+		String url="lecture/date/dateList";
 		String tpage = request.getParameter("tpage");
 		String table_Nm = request.getParameter("table_Nm");
 		

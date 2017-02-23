@@ -35,6 +35,6 @@ public class Lctre_Date_GntVO implements Serializable {
 	private String ld_Cn;			//게시판 내용
 	private Timestamp ld_Writng_Dt;	//게시판 작성날짜
 	private int ld_Rdcnt;			//게시판 조회수
-	private int ld_Flpth_No;		//게시판 파일 경로 번호
+	private String ld_Flpth_No;		//게시판 파일 경로 번호
 
 }
