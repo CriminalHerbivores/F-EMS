@@ -68,7 +68,7 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<a href="writeBbs_Gnt?ld_Bbs_No=${lctre_Date_Gnt.ld_Bbs_No}&table_Nm=${bbs_List_Gnt.table_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}">
+	  	<a href="writeLctre_Date?table_Nm=${lctre_Date_Gnt.table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
 </td></tr>  

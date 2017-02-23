@@ -77,7 +77,7 @@ public interface Lctre_DateService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	Lctre_FlpthVO getLctre_Flpth(int lf_No) throws SQLException;
+	Lctre_FlpthVO getLctre_Flpth(String lf_No) throws SQLException;
 
 	/**
 	 * <pre>
@@ -98,13 +98,12 @@ public interface Lctre_DateService {
 	 * </pre>
 	 * <pre>
 	 * @param lctre_Date_Gnt
-	 * @param lf_No
 	 * @param lctre_FlpthVO
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int updateLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, int lf_No,
+	int updateLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt,
 			Lctre_FlpthVO lctre_FlpthVO) throws SQLException;
 
 	/**
@@ -125,12 +124,10 @@ public interface Lctre_DateService {
 	 * </pre>
 	 * <pre>
 	 * @param lctre_Date_Gnt
-	 * @param lctre_FlpthVO
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int deleteLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt,
-			Lctre_FlpthVO lctre_FlpthVO) throws SQLException;
+	int deleteLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt) throws SQLException;
 
 }
