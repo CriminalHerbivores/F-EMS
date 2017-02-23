@@ -67,7 +67,7 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
-			lctre_Date_Gnt.setLd_Flpth_No(maxNo);
+			lctre_Date_Gnt.setLd_Flpth_No(maxNo+"");
 		}
 		lctre_DateDAO.insertLctre_Date(lctre_Date_Gnt);
 	}
@@ -80,7 +80,7 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
-			lctre_Date_Gnt.setLd_Flpth_No(maxNo);
+			lctre_Date_Gnt.setLd_Flpth_No(maxNo+"");
 		}
 		return lctre_DateDAO.updateLctre_Date(lctre_Date_Gnt);
 	}

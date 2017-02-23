@@ -186,7 +186,7 @@
 							<div class="menu-dropdown-content">
 								<a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
 								<a href="<%=request.getContextPath()%>/lctre/noticeList">공지게시판</a>
-								<a href="<%=request.getContextPath()%>/lctre/fileList">자료게시판</a>
+								<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
 								<a href="<%=request.getContextPath()%>/lctre/qnaList">질의응답
 									게시판</a> <a href="<%=request.getContextPath()%>/lctre/hwList">과제
 									게시판</a> <a href="<%=request.getContextPath()%>/lctre/mediaList">동영상
