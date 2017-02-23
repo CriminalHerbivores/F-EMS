@@ -20,6 +20,24 @@
 <title></title>
 <script type="text/javascript">
 
+function go_atrty_update() {
+	 var count = 0;
+	 
+	 for (var i = 0; i < document.formm.sa_Sklstf_No.length; i++) {
+	  if (document.formm.sa_Sklstf_No[i].checked == true) {
+	   
+		  sa_Atrty[i]="ROLE_ADMIN";
+	  }else{
+		  sa_Atrty[i]="ROLE_STF";
+		  
+	  }
+	 }
+	 
+	  document.formm.submit();
+	 
+	}
+
+
 </script>
 </head>
 <body>
@@ -75,8 +93,8 @@
 					<td>
 					<form method="post">
 					<c:choose>
-					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Atrty" value="ROLE_STF" checked="checked"></c:when>
-					<c:otherwise><input type="checkbox" name="sa_Atrty" value="ROLE_ADMIN"></c:otherwise>
+					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Sklstf_No" value="${subjct.sa_Sklstf_No}" checked="checked"></c:when>
+					<c:otherwise><input type="checkbox" name="sa_Sklstf_No" value="${subjct.sa_Sklstf_No}"></c:otherwise>
 					</c:choose>
 					<input type="hidden" name="sa_Sklstf_No"> <!-- 선택한 것의 직원번호 가져오고 싶음 -->
 					</td>
@@ -100,7 +118,7 @@
       		<td colspan="9" style="text-align: center;">${paging }</td>
       	</tr>
 			</table>
-					<input type="submit" class="def-ckbtn btn-md ckbtn-color" value="적용">
+					<input type="submit" class="def-ckbtn btn-md ckbtn-color" value="적용" onclick="go_atrty_update()">
 </div>
 </td></tr></table>
 	</form>

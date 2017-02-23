@@ -22,7 +22,7 @@ import lombok.Data;
  * </pre>
  */
  
-@Alias("Sklstf_Atrty")
+@Alias("sklstf_Atrty")
 @Data
 public class Sklstf_AtrtyVO implements Serializable{
 	
