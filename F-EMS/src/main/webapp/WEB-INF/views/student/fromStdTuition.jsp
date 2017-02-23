@@ -25,10 +25,10 @@
 	<h2>학과 / 등록금 조회</h2>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
-		<td>단과</td>
-		<td>등록금</td>
-		<td>납부기한</td>
-		<td>납부내역</td>
+		<th>단과</th>
+		<th>등록금</th>
+		<th>납부기한</th>
+		<th>납부일자</th>
 	</tr>
 	<c:forEach var="tut" items="${tuitionList}">
 		<tr>
@@ -42,10 +42,9 @@
 		<td colspan="6">${paging}</td>
 	</tr>
 	</table>
-	<form name="searchForm">
-		<input type="text" name="key"/>
-		<input type="text" name="value"/>
+	<!-- <form name="searchForm">
+		<input type="number" name="tu_Dt" placeholder="날짜입력(20170302)"/>
 		<input type="button" value="검색" onclick="searchKey(this.form)" class="def-btn btn-sm btn-color"/>
-	</form>
+	</form> -->
 </body>
 </html>

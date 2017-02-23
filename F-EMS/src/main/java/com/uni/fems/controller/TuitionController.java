@@ -143,7 +143,7 @@ public class TuitionController {
 	 */
 	@RequestMapping("stdTuitionList")
 	public String stdTuitionList(){
-		String url="";
+		String url="manager/tuition/stdTuitionList";
 		return url;
 	}
 	/**
@@ -168,8 +168,13 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping("updateStdTuition")
-	public String updateStdTuition(){
-		String url="";
+	public String updateStdTuition(TuitionVO tuitionVO){
+		String url="redirect:stdTuitionList";
+		try {
+			tuitionService.updateTuitionStdnt(tuitionVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return url;
 	}
 	//학생/////////////////////////////////////////////////////////////
@@ -185,11 +190,16 @@ public class TuitionController {
 	public String fromStdTuition(@Value("1")String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
 		String url="student/fromStdTuition";
 		tuitionVO.setTu_Stdnt_No((String) session.getAttribute("loginUser"));
+//		if(tuitionVO.getTu_Dt()==null)
 		tuitionVO.setTu_Dt("");
-		tuitionVO.setTu_Dt_L("");
-		tuitionVO.setTu_Pay_Dt("");
-		tuitionVO.setKey("tu_No");
-		tuitionVO.setValue("");
+//		if(tuitionVO.getTu_Dt_L()==null)
+//		tuitionVO.setTu_Dt_L("");
+//		if(tuitionVO.getTu_Pay_Dt()==null)
+//		tuitionVO.setTu_Pay_Dt("");
+//		if(tuitionVO.getKey()==null)
+//		tuitionVO.setKey("tu_No");
+//		if(tuitionVO.getValue()==null)
+//		tuitionVO.setValue("");
 		
 		ArrayList<TuitionVO> list=new ArrayList<TuitionVO>();
 		String paging ="";
@@ -197,9 +207,9 @@ public class TuitionController {
 			// 데이터의 총 개수 구해오기
 			int totalRecord = tuitionService.countTuitionStdnt(tuitionVO); 
 			// request 필요. 
-			// 가장 끝의 "&key="+search.getKey()+"&value="+search.getValue()는 파라미터 전달값.
-			// 검색 등을 통해 GET 방식으로 전달할 값이 있을 경우에만 사용. 사용하지 않을 시엔 "" 를 적어주면 됨
-			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "&key="+tuitionVO.getKey()+"&value="+tuitionVO.getValue());
+			// 가장 끝의 파라미터는 전달값 검색 등을 통해 GET 방식으로 전달할 값이 있을 경우에만 사용
+			// 사용하지 않을 시엔 "" 를 적어주면 됨. 보통은 "&key="+search.getKey()+"&value="+search.getValue()
+			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
 			// (현재페이지, 데이터의 총 개수)
 			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
 			// (전달값, int start, int count) 이후 쿼리문에서도 같은 순서로 넣어주면 됨

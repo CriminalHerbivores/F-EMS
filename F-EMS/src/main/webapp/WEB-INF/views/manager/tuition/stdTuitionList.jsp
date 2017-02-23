@@ -21,23 +21,25 @@
 <title></title>
 </head>
 <body>
-	<h2>학과 / 등록금 조회</h2>
+	<h2>등록금 납부 내역 조회</h2>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
-		<td>학생</td>
 		<td>단과</td>
 		<td>학부</td>
 		<td>학과</td>
+		<td>학생번호</td>
 		<td>등록금</td>
-		<td>수정</td>
+		<td>납부기간</td>
+		<td>납부날짜</td>
 	</tr>
 	<c:forEach var="tut" items="${tuitionList}">
 		<tr>
 			<td>${tut.coleg_Nm}</td>
 			<td>${tut.fc_Faculty_Nm}</td>
 			<td>${tut.sit_Subjct}</td>
+			<td>${tut.st_Stdnt_No}</td>
 			<td><fmt:formatNumber value="${tut.sit_Tut}"/> 원</td>
-			<td>${tut.sit_Subjct_Tlphon_No}</td>
+			<td>${tut.st_Dt}</td>
 			<td>
 				<a href="updateSubTuition?sit_Subjct_Code=${tut.sit_Subjct_Code}&tpage=${tpage}"><input type="button" value="수정" class="def-ckbtn btn-sm ckbtn-color"></a>
 			</td>

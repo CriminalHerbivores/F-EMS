@@ -44,7 +44,6 @@
     	and t.TU_STDNT_NO = s.st_stdnt_no
 		and tu_Stdnt_No=#tu_Stdnt_No#
 		and to_char(tu_Dt) like '%'||#tu_Dt#||'%'
-		and $key$ like '%'||#value#||'%'
 		order by tu_no desc
 	</select>
 	<!-- 학생의 등록금 조회 개수 -->
@@ -56,7 +55,6 @@
     	and t.TU_STDNT_NO = s.st_stdnt_no
 		and tu_Stdnt_No=#tu_Stdnt_No#
 		and to_char(tu_Dt) like '%'||#tu_Dt#||'%'
-		and $key$ like '%'||#value#||'%'
 		order by tu_no desc
 	</select>
 	
