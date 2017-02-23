@@ -52,8 +52,7 @@ public interface Lctre_DateService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	String pageNumber(int tpage, Lctre_Date_GntVO lctre_Date_Gnt,
-			SearchVO searchVO) throws SQLException;
+	String pageNumber(int tpage, Lctre_Date_GntVO lctre_Date_Gnt) throws SQLException;
 
 	/**
 	 * <pre>

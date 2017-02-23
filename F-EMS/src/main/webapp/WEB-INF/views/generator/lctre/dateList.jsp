@@ -50,14 +50,14 @@
         <th>조회수</th>
       </tr>
       
-      <c:forEach var="bbs_Gnt" items="${bbs_GntList }">
+      <c:forEach var="lctre_Date" items="${lctre_DateList }">
       	<tr>
-      		<td> ${bbs_Gnt.bb_Bbs_No}</td>
-      		<td><a href="detailBbs_Gnt?bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}">
-      		 ${bbs_Gnt.bb_Sj} </a>
+      		<td> ${lctre_Date.ld_Bbs_No}</td>
+      		<td><a href="detailLctre_Date?ld_Bbs_No=${lctre_Date.ld_Bbs_No}&table_Nm=${lctre_Date.table_Nm}&tpage=${tpage}">
+      		 ${lctre_Date.ld_Sj} </a>
       		</td>
-      		<td><fmt:formatDate value="${bbs_Gnt.bb_Writng_dt}" /> </td>
-      		<td> ${bbs_Gnt.bb_Rdcnt}</td> <!-- 조회수 -->
+      		<td><fmt:formatDate value="${lctre_Date.ld_Writng_Dt}" /> </td>
+      		<td> ${lctre_Date.ld_Rdcnt}</td> <!-- 조회수 -->
       		
       	</tr>
       </c:forEach>
