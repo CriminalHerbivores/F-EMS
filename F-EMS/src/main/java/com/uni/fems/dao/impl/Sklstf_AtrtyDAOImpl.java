@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.Sklstf_AtrtyDAO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
+import com.uni.fems.dto.UserSubjctVO;
 
 /**
  * <pre>
@@ -41,6 +42,14 @@ public class Sklstf_AtrtyDAOImpl implements Sklstf_AtrtyDAO {
 	public void updateSklstf_Atrty(Sklstf_AtrtyVO sklstf_AtrtyVO)
 			throws SQLException {
 		client.update("updateSklstf_Atrty",sklstf_AtrtyVO);
+	}
+	
+	
+	// 권한 받은 직원 인원수
+	@Override
+	public int numOfSklstf(Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException {
+		int count=(int) client.queryForObject("numOfSklstf",sklstf_AtrtyVO);
+		return count;
 	}
 	
 }

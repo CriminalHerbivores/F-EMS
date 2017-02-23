@@ -22,5 +22,9 @@
 		where sa_Sklstf_No=#sa_Sklstf_No#
 	</update>
 	
+		<!-- 전체 직원 인원수 -->
+	<select id="numOfSklstf" parameterClass="sklstf_Atrty" resultClass="int">
+		select count(*) from sklstf_Atrty
+	</select>
 	
 </sqlMap>

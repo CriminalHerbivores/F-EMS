@@ -55,7 +55,7 @@
 <a href="<%=request.getContextPath() %>/lctre/attendList">시청 여부 게시판</a><br/>
 --------- 커뮤니티 ---------<br/>
 --------- 관리자 ---------<br/>
-<a href="<%=request.getContextPath() %>/sklstf/adminJoin">관리자 가입</a><br/>
+<a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a><br/>
 <a href="<%=request.getContextPath() %>/lgLogin">로그인형</a><br/>
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a><br/>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a><br/>

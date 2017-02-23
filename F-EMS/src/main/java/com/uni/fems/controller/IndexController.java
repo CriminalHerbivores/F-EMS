@@ -18,14 +18,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.common.Supporter;
+import com.uni.fems.dao.Sklstf_AtrtyDAO;
 import com.uni.fems.dto.AddressVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ManageVO;
+import com.uni.fems.dto.SklstfVO;
+import com.uni.fems.dto.Sklstf_AtrtyVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.dto.UsersVO;
 import com.uni.fems.dto.request.MessageRequest;
 import com.uni.fems.service.Lctre_Unq_NoService;
 import com.uni.fems.service.ManageService;
+import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Subjct_Info_TableService;
 import com.uni.fems.service.UsersService;
 
@@ -59,6 +63,10 @@ public class IndexController {
 	private Lctre_Unq_NoService lctre_Unq_NoService;
 	@Autowired
 	private MailSender mailSender;
+	@Autowired
+	private Sklstf_AtrtyDAO sklstf_AtrtyDAO;
+	@Autowired
+	private SklstfService sklstfService;
 
 	// css 예시
 	@RequestMapping("/cssExample")
@@ -210,7 +218,7 @@ public class IndexController {
 
 	/**
 	 * <pre>
-	 * 관리자 가입
+	 * 관리자 가입이 가능한 폼으로 가입한 직원이 없을 경우에만 접근 가능
 	 * </pre>
 	 * 
 	 * <pre>
@@ -219,11 +227,70 @@ public class IndexController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/adminJoin")
-	public String adminJoinForm(HttpServletRequest request, HttpSession session) {
-		String url = "admin/admin_management/adminJoin";
+	@RequestMapping(value="/adminJoin",method=RequestMethod.GET)
+	public String adminJoinForm(Model model,Sklstf_AtrtyVO sklstf_AtrtyVO) {
+		
+		
+		//가입한 직원이 0명이면 가입페이지 갈 수 있게 하고싶음
+		String url=null;
+		try {
+			//SearchVO searchVO;
+			int num_sklstf;
+			num_sklstf = sklstf_AtrtyDAO.numOfSklstf(sklstf_AtrtyVO);
+			
+			// 관리자 가입 인원 조절해서 일단 작업할 것
+			if(num_sklstf==9){
+				url = "admin/admin_management/adminJoin";
+				
+			}else{
+				url="redirect:index";
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("sklstf_AtrtyVO",sklstf_AtrtyVO);
 		return url;
 	}
+	
+	
+	/**
+	 * <pre>
+	 * 관리자 가입이 가능한 로직
+	 * </pre>
+	 * 
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/adminJoin",method=RequestMethod.POST)
+	public String adminJoin(Model model,SklstfVO sklstfVO,Sklstf_AtrtyVO sklstf_AtrtyVO) {
+		//String url = "admin/admin_management/adminJoin";
+		String url = "redirect:admin/step1Add";
+		
+		// 현재 가입이 안되며 가입직후 바로 가입한 정보로 로그인할 수 있도록 해야함
+		
+		
+		try {
+			sklstf_AtrtyVO.setSa_Atrty("ROLE_ADMIN");
+			sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVO.getStf_Sklstf_No());
+			sklstfVO.setStf_Useyn("1");
+			sklstfService.joinAdmin(sklstfVO, sklstf_AtrtyVO);
+			
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("sklstfVO",sklstfVO);
+		model.addAttribute("sklstf_AtrtyVO",sklstf_AtrtyVO);
+		return url;
+	}
+	
 	
 	//==========================================================================
 	
