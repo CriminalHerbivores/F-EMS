@@ -39,18 +39,20 @@
 			<td>${tut.sit_Subjct}</td>
 			<td>${tut.st_Stdnt_No}</td>
 			<td><fmt:formatNumber value="${tut.sit_Tut}"/> 원</td>
-			<td>${tut.st_Dt}</td>
-			<td>
-				<a href="updateSubTuition?sit_Subjct_Code=${tut.sit_Subjct_Code}&tpage=${tpage}"><input type="button" value="수정" class="def-ckbtn btn-sm ckbtn-color"></a>
-			</td>
+			<td>${tut.tu_Dt} ~ ${tut.tu_Dt_L}</td>
+			<td>${tut.tu_Pay_Dt}</td>
 		</tr>
 	</c:forEach>
 	<tr>
-		<td colspan="6">${paging}</td>
+		<td colspan="7">${paging}</td>
 	</tr>
 	</table>
 	<form name="searchForm">
-		<input type="hidden" id="key" name="key" value="sit_Subjct"/>
+		<select name="key">
+			<option value="sit_Subjct">학과</option>
+			<option value="tu_Stdnt_No">학생</option>
+			<option value="tu_Dt">날짜</option>
+		</select>
 		<input type="text" name="value"/>
 		<input type="button" value="검색" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color"/>
 	</form>
