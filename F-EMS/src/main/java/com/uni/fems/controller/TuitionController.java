@@ -53,9 +53,9 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping(value="tuitionList")
-	public String tuitionList(@Value("")String sit_Subjct, @Value("1")String tpage, Model model){
+	public String tuitionList(@Value("")String sit_Subjct, String tpage, Model model){
 		String url="manager/tuition/tuitionList";
-		
+		if(tpage==null) tpage="1";
 		model.addAttribute("tpage",tpage);
 		
 		ArrayList<UserSubjctVO> list = new ArrayList<UserSubjctVO>();
@@ -135,28 +135,34 @@ public class TuitionController {
 	}
 	/**
 	 * <pre>
-	 * 학생의 등록금 납부 내역을 조회
+	 * 직원이 학생의 등록금 납부 내역을 조회
 	 * </pre>
 	 * <pre>
 	 * @return
 	 * </pre>
 	 */
 	@RequestMapping("stdTuitionList")
-	public String stdTuitionList(){
+	public String stdTuitionList(String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
 		String url="manager/tuition/stdTuitionList";
-		return url;
-	}
-	/**
-	 * <pre>
-	 * 등록금 미납 내역을 조회
-	 * </pre>
-	 * <pre>
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("notTuitionList")
-	public String notTuitionList(){
-		String url="";
+		tuitionVO.setTu_Stdnt_No("");
+		if(tuitionVO.getKey()==null)
+			tuitionVO.setKey("tu_No");
+		if(tuitionVO.getValue()==null)
+			tuitionVO.setValue("");
+		if(tpage==null) tpage="1";
+		
+		ArrayList<TuitionVO> list=new ArrayList<TuitionVO>();
+		String paging ="";
+		try {
+			int totalRecord = tuitionService.countTuitionStdnt(tuitionVO); 
+			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = tuitionService.tuitionStdnt(tuitionVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("paging",paging);
+		model.addAttribute("tuitionList",list);
 		return url;
 	}
 	/**
@@ -187,19 +193,14 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping("fromStdTuition")
-	public String fromStdTuition(@Value("1")String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
+	public String fromStdTuition(String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
 		String url="student/fromStdTuition";
 		tuitionVO.setTu_Stdnt_No((String) session.getAttribute("loginUser"));
-//		if(tuitionVO.getTu_Dt()==null)
-		tuitionVO.setTu_Dt("");
-//		if(tuitionVO.getTu_Dt_L()==null)
-//		tuitionVO.setTu_Dt_L("");
-//		if(tuitionVO.getTu_Pay_Dt()==null)
-//		tuitionVO.setTu_Pay_Dt("");
-//		if(tuitionVO.getKey()==null)
-//		tuitionVO.setKey("tu_No");
-//		if(tuitionVO.getValue()==null)
-//		tuitionVO.setValue("");
+		if(tuitionVO.getKey()==null)
+		tuitionVO.setKey("tu_No");
+		if(tuitionVO.getValue()==null)
+		tuitionVO.setValue("");
+		if(tpage==null) tpage="1";
 		
 		ArrayList<TuitionVO> list=new ArrayList<TuitionVO>();
 		String paging ="";

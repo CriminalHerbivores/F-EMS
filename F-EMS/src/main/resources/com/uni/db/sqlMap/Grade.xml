@@ -4,4 +4,33 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Grade">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="grade" type="com.uni.fems.dto.GradeVO" />
+	
+	<update id="insertGrade" parameterClass="grade">
+		insert into GRADE(
+			GD_STDNT_NO,
+			GD_LCTRE_NO
+		) values (
+			#gd_Stdnt_No#,
+			#gd_Lctre_No#
+		);
+	</update>
+	<update id="updateGrade" parameterClass="grade">
+		update GRADE
+		set $key$ = #value#
+		where gd_Stdnt_No = #gd_Stdnt_No#
+		and gd_Lctre_No = #gd_Lctre_No#
+	</update>
+	<select id="selectGrade" parameterClass="grade" resultClass="grade">
+		select * from grade
+		where gd_Stdnt_No = #gd_Stdnt_No#
+		and gd_Lctre_No = #gd_Lctre_No#
+	</select>
+	<select id="countGrade" parameterClass="grade" resultClass="int">
+		select count(*) from grade
+		where gd_Stdnt_No = #gd_Stdnt_No#
+		and gd_Lctre_No = #gd_Lctre_No#
+	</select>
 </sqlMap>
