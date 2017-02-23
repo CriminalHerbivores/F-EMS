@@ -157,11 +157,9 @@ function aa() {
 <input type="text" class="def-input-text-sm custom-form-control" value="">
 </td></tr></table>
 	
-	<table class="non-border margin-auto">
-	<tr><td>
+	<table class="non-border margin-auto"><tr><td>
 	이 테이블은 각 페이지의 가장 겉에 둘러주면 맘에 들거임-공지게시판 참고
-	</td></tr>
-	</table>
+	</td></tr></table>
 
 	
 </body>
