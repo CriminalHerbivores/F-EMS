@@ -220,7 +220,7 @@ public class ManageController {
 		}
 		
 		//model.addAttribute("userSubjctVO",userSubjctVO);
-		model.addAttribute("sklstfVo",sklstfVo);
+		//model.addAttribute("sklstfVo",sklstfVo);
 		
 		return url;
 	}

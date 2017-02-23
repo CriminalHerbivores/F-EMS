@@ -29,11 +29,15 @@
 		
 		<div>
 			<table class="def-table tb-border">
-				<tr><td><input type="text" class="def-input-text-md" name="stf_Sklstf_No" placeholder="아이디"></td>
+				<tr><td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No" placeholder="아이디">
+						<!-- <input type="hidden" name="sa_Atrty"  value="ROLE_ADMIN">
+						<input type="hidden" name="sa_Atrty"  value="stf_Sklstf_No"> -->
+						
+				</td>
 					<td rowspan="3">
-					<input type="submit" class="def-btn" id="admin_join_btn" value="회원가입 및 시작하기" onclick="go_step1Add()"></td></tr>
-				<tr><td><input type="password" class="def-input-text-md" name="stf_Pw" placeholder="패스워드"></td></tr>
-				<tr><td><input type="text" class="def-input-text-md" name="stf_Email" placeholder="이메일"></td></tr>
+					<input type="button" class="def-btn btn-lg btn-color" id="admin_join_btn" value="회원가입 및 시작하기" onclick="go_step1Add()"></td></tr>
+				<tr><td><input type="password" class="def-input-text-md custom-form-control" name="stf_Pw" placeholder="패스워드"></td></tr>
+				<tr><td><input type="text" class="def-input-text-md custom-form-control" name="stf_Email" placeholder="이메일"></td></tr>
 				<tr><td colspan="2"><span id='change'></span></td></tr>
 			</table>
 		</div>

@@ -18,12 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.common.SendMail;
-import com.uni.fems.dao.SklstfDAO;
 import com.uni.fems.dao.Sklstf_AtrtyDAO;
 import com.uni.fems.dto.AddressVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ManageVO;
-import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
 import com.uni.fems.dto.UserSubjctVO;
@@ -66,7 +64,7 @@ public class IndexController {
 	@Autowired
 	private MailSender mailSender;
 	@Autowired
-	private SklstfDAO sklstfDAO;
+	private Sklstf_AtrtyDAO sklstf_AtrtyDAO;
 	@Autowired
 	private SklstfService sklstfService;
 
@@ -230,7 +228,7 @@ public class IndexController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/adminJoin",method=RequestMethod.GET)
-	public String adminJoinForm(Model model,SklstfVO sklstfVO) {
+	public String adminJoinForm(Model model,Sklstf_AtrtyVO sklstf_AtrtyVO) {
 		
 		
 		//가입한 직원이 0명이면 가입페이지 갈 수 있게 하고싶음
@@ -238,10 +236,10 @@ public class IndexController {
 		try {
 			//SearchVO searchVO;
 			int num_sklstf;
-			num_sklstf = sklstfDAO.numOfSklstf(sklstfVO);
+			num_sklstf = sklstf_AtrtyDAO.numOfSklstf(sklstf_AtrtyVO);
 			
 			// 관리자 가입 인원 조절해서 일단 작업할 것
-			if(num_sklstf==8){
+			if(num_sklstf==9){
 				url = "admin/admin_management/adminJoin";
 				
 			}else{
@@ -251,7 +249,7 @@ public class IndexController {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("sklstfVO",sklstfVO);
+		model.addAttribute("sklstf_AtrtyVO",sklstf_AtrtyVO);
 		return url;
 	}
 	
@@ -270,21 +268,26 @@ public class IndexController {
 	@RequestMapping(value="/adminJoin",method=RequestMethod.POST)
 	public String adminJoin(Model model,SklstfVO sklstfVO,Sklstf_AtrtyVO sklstf_AtrtyVO) {
 		//String url = "admin/admin_management/adminJoin";
-		String url = "admin/layout_control/step1Add";
+		String url = "redirect:admin/step1Add";
 		
 		// 현재 가입이 안되며 가입직후 바로 가입한 정보로 로그인할 수 있도록 해야함
 		
+		
 		try {
+			sklstf_AtrtyVO.setSa_Atrty("ROLE_ADMIN");
+			sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVO.getStf_Sklstf_No());
+			sklstfVO.setStf_Useyn("1");
 			sklstfService.joinAdmin(sklstfVO, sklstf_AtrtyVO);
 			
+			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//model.addAttribute("sklstfVO",sklstfVO);
-		//model.addAttribute("sklstf_AtrtyVO",sklstf_AtrtyVO);
-
+		model.addAttribute("sklstfVO",sklstfVO);
+		model.addAttribute("sklstf_AtrtyVO",sklstf_AtrtyVO);
 		return url;
 	}
 	
