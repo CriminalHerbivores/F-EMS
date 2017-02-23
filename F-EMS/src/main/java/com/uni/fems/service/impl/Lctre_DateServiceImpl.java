@@ -47,9 +47,9 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 		
 	}
 	@Override
-	public String pageNumber(int tpage,Lctre_Date_GntVO lctre_Date_Gnt, SearchVO searchVO) throws SQLException {
+	public String pageNumber(int tpage,Lctre_Date_GntVO lctre_Date_Gnt) throws SQLException {
 		int totalRecord = lctre_DateDAO.totalLctre_Date(lctre_Date_Gnt);
-		String page = new Paging().pageNumber(tpage,totalRecord,"noticeList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
+		String page = new Paging().pageNumber(tpage,totalRecord,"dateList", "&table_Nm="+lctre_Date_Gnt.getTable_Nm());
 		return page;
 	}
 	@Override

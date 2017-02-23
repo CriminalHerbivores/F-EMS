@@ -31,6 +31,8 @@ import com.uni.fems.dto.Bbs_GntVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
 import com.uni.fems.dto.Bbs_List_GntVO;
 import com.uni.fems.dto.FilesVO;
+import com.uni.fems.dto.Lctre_DateVO;
+import com.uni.fems.dto.Lctre_Date_GntVO;
 import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.Bbs_Comment_GntService;
@@ -82,50 +84,41 @@ public class Lctre_DateController{
 	public String bbsList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
 		String url="generator/bbs/bbsList";
 		String tpage = request.getParameter("tpage");
-		String bl_Bbs_No = request.getParameter("bl_Bbs_No");
-//		
-//		if (tpage ==null){
-//			tpage= "1";
-//		} else if(tpage.equals("")){
-//			tpage="1";
-//		}
-//		model.addAttribute("tpage",tpage);
-//
-//		Bbs_List_AtrtyVO bbs_List_AtrtyVO = null;
-//		try {
-//			bbs_List_AtrtyVO = bbs_ListSvc.getBbs_List_Atrty(Integer.parseInt(bl_Bbs_No));
-//		} catch (NumberFormatException | SQLException e1) {
-//			e1.printStackTrace();
-//		}
-//		
-//		Bbs_List_GntVO bbs_List_GntVO = new Bbs_List_GntVO();
-//		bbs_List_GntVO.setBl_Bbs_No(bbs_List_AtrtyVO.getBl_Bbs_No());
-//		bbs_List_GntVO.setBl_Bbs_Nm(bbs_List_AtrtyVO.getBl_Bbs_Nm());
-//		bbs_List_GntVO.setBl_Table_Nm(bbs_List_AtrtyVO.getBl_Table_Nm());
-//		if(searchVO != null ||searchVO.getKey().equals("bb_Sj")){
-//			bbs_List_GntVO.setBb_Sj(searchVO.getValue());
-//			bbs_List_GntVO.setBb_Cn("%");
-//		}else if(searchVO != null || searchVO.getKey().equals("bb_Cn")){
-//			bbs_List_GntVO.setBb_Sj("%");
-//			bbs_List_GntVO.setBb_Cn(searchVO.getValue());
-//		}else{
-//			bbs_List_GntVO.setBb_Sj("%");
-//			bbs_List_GntVO.setBb_Cn("%");
-//		}
-//		model.addAttribute("bbs_List_Gnt", bbs_List_GntVO);
-//		
-//		List<Bbs_GntVO> bbs_GntList = null;
-//		String paging = null;
-//		try {
-//			bbs_GntList = bbs_GntSvc.listAllBbs_Gnt(Integer.parseInt(tpage), bbs_List_GntVO); 
-//			paging = bbs_GntSvc.pageNumber(Integer.parseInt(tpage), bbs_List_GntVO, searchVO);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("bbs_GntList", bbs_GntList);
-//		int n = bbs_GntList.size();
-//		model.addAttribute("bbs_GntListSize", n);
-//		model.addAttribute("paging", paging);
+		String table_Nm = request.getParameter("table_Nm");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+
+		Lctre_Date_GntVO lctre_Date_Gnt = new Lctre_Date_GntVO();
+		lctre_Date_Gnt.setTable_Nm(table_Nm);
+		if(searchVO != null ||searchVO.getKey().equals("ld_Sj")){
+			lctre_Date_Gnt.setLd_Sj(searchVO.getValue());
+			lctre_Date_Gnt.setLd_Cn("%");
+		}else if(searchVO != null || searchVO.getKey().equals("ld_Cn")){
+			lctre_Date_Gnt.setLd_Sj("%");
+			lctre_Date_Gnt.setLd_Cn(searchVO.getValue());
+		}else{
+			lctre_Date_Gnt.setLd_Sj("%");
+			lctre_Date_Gnt.setLd_Cn("%");
+		}
+		model.addAttribute("lctre_Date_Gnt", lctre_Date_Gnt);
+		
+		List<Lctre_DateVO> lctre_DateList = null;
+		String paging = null;
+		try {
+			lctre_DateList = lctre_DateSvc.listAllLctre_Date(Integer.parseInt(tpage), lctre_Date_Gnt);
+			paging = lctre_DateSvc.pageNumber(Integer.parseInt(tpage), lctre_Date_Gnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_DateList", lctre_DateList);
+		int n = lctre_DateList.size();
+		model.addAttribute("lctre_DateListSize", n);
+		model.addAttribute("paging", paging);
 		return url;
 		
 	}
