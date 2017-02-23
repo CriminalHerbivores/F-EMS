@@ -41,14 +41,14 @@ public class SklstfDAOImpl implements SklstfDAO {
 		return sklstfVo;
 	}
 	@Override
-	public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
-		client.update("updateSklstf", sklstfVo);
+	public void updateSklstf(SklstfVO sklstfVO) throws SQLException {
+		client.update("updateSklstf", sklstfVO);
 	}
 	
 	// 관리자의 직원 등록
 	@Override
-	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
-		client.update("insertSklstf",sklstfVo);
+	public void insertSklstf(SklstfVO sklstfVO) throws SQLException {
+		client.insert("insertSklstf",sklstfVO);
 	}
 	
 	// 전체 직원의 목록
@@ -70,5 +70,13 @@ public class SklstfDAOImpl implements SklstfDAO {
 		total_pages = (Integer) client.queryForObject("totalSklstf",searchVO);
 		return total_pages;
 	}
+	
+	// 관리자 최초 가입
+	@Override
+	public void joinAdmin(SklstfVO sklstfVO) throws SQLException {
+		client.insert("joinAdmin",sklstfVO);
+	}
+	
+
 	
 }

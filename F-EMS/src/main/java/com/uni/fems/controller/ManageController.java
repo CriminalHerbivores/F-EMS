@@ -220,7 +220,7 @@ public class ManageController {
 		}
 		
 		//model.addAttribute("userSubjctVO",userSubjctVO);
-		model.addAttribute("sklstfVo",sklstfVo);
+		//model.addAttribute("sklstfVo",sklstfVo);
 		
 		return url;
 	}
@@ -303,8 +303,9 @@ public class ManageController {
 			throws ServletException, IOException{
 		String url = "redirect:sklstfAtrtyList";	
 		
-//		List<sklstf_AtrtyVO> sklstfAtrtyList=null;
+		//List<sklstf_AtrtyVO> sklstfAtrtyList=null;
 		// 선택한 것의 번호 가져와야할듯
+		//만약 여러개 선택시, 리스트로 가져오고 싶은데...
 		
 		try {
 			System.out.println("1111111111sklstf_AtrtyVO : "+sklstf_AtrtyVO);
@@ -358,7 +359,7 @@ public class ManageController {
 		return url;
 	}*/
 	
-
+	
 	
 	//===================================================
 	

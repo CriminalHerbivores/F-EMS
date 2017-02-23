@@ -46,7 +46,7 @@ public interface SklstfDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateSklstf(SklstfVO sklstfVo)throws SQLException;	
+	void updateSklstf(SklstfVO sklstfVO)throws SQLException;	
 	
 	/**
 	 * <pre>
@@ -57,7 +57,7 @@ public interface SklstfDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void insertSklstf(SklstfVO sklstfVo)throws SQLException;
+	void insertSklstf(SklstfVO sklstfVO)throws SQLException;
 	
 	
 	/**
@@ -83,4 +83,19 @@ public interface SklstfDAO {
 	 * </pre>
 	 */
 	public int totalSklstf(SearchVO searchVO) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 관리자 최초 가입
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void joinAdmin(SklstfVO sklstfVO) throws SQLException;
+	
+
+	
 }
