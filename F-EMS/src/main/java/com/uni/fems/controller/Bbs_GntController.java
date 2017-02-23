@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +28,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uni.fems.common.FileDownload;
 import com.uni.fems.dao.Bbs_ListDAO;
+import com.uni.fems.dto.Bbs_AtrtyVO;
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Bbs_GntVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
 import com.uni.fems.dto.Bbs_List_GntVO;
 import com.uni.fems.dto.FilesVO;
-import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
+import com.uni.fems.service.Bbs_AtrtyService;
 import com.uni.fems.service.Bbs_Comment_GntService;
 import com.uni.fems.service.Bbs_GntService;
 import com.uni.fems.service.Notice_BbsService;
@@ -70,6 +73,8 @@ public class Bbs_GntController implements ApplicationContextAware{
 	private Bbs_ListDAO bbs_ListSvc;
 	@Autowired
 	private Bbs_Comment_GntService bbs_Comment_GntSvc;
+	@Autowired
+	private Bbs_AtrtyService bbs_AtrtySvc;
 	
 	/**
 	 * <pre>
@@ -86,9 +91,38 @@ public class Bbs_GntController implements ApplicationContextAware{
 	 */
 	@RequestMapping("/bbsList")
 	public String bbsList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+		HttpSession session = request.getSession();
 		String url="generator/bbs/bbsList";
 		String tpage = request.getParameter("tpage");
 		String bl_Bbs_No = request.getParameter("bl_Bbs_No");
+		Object[] principal = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray();
+		String loginRole = principal[0].toString();
+		
+		Bbs_AtrtyVO AtrytyVO = new Bbs_AtrtyVO(); 
+				try {
+					AtrytyVO = bbs_AtrtySvc.getBBS_Atrty(Integer.parseInt(bl_Bbs_No));
+				} catch (NumberFormatException | SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+		String returnSec ="";
+		if(loginRole=="ROLE_STF" || loginRole.equals("ROLE_STF")){
+			returnSec = AtrytyVO.getBa_Sklstf();
+		}else if (loginRole=="ROLE_ADMIN" || loginRole.equals("ROLE_ADMIN")){
+			returnSec = AtrytyVO.getBa_Manage();
+		}else if (loginRole=="ROLE_PRO" || loginRole.equals("ROLE_PRO")){
+			returnSec = AtrytyVO.getBa_Profsr();
+		}else if (loginRole=="ROLE_STD" || loginRole.equals("ROLE_STD")){
+			returnSec = AtrytyVO.getBa_Stdnt();
+		}
+		
+/*		System.out.println("============================="+AtrytyVO.toString());
+		System.out.println("============================="+loginRole);
+		System.out.println("============================="+returnSec);
+		System.out.println("============================="+returnSec);*/
+		
+		 session.setAttribute("returnSec", returnSec);
 		
 		if (tpage ==null){
 			tpage= "1";

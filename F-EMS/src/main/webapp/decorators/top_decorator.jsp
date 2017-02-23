@@ -95,7 +95,6 @@
 							<div class="menu-dropdown-content">
 							<a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
 							<a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=test" class="no-uline">test 게시판</a>
 						</div></div>
 						
 						
