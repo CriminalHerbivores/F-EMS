@@ -59,5 +59,16 @@ public class TuitionServiceImpl implements TuitionService {
 		UserSubjctVO sub = subDAO.selectSubjctByCode(sit_Subjct_Code);
 		return sub;
 	}
+	@Override
+	public ArrayList<TuitionVO> tuitionStdnt(TuitionVO tuitionVO,int start, int count)
+			throws SQLException {
+		ArrayList<TuitionVO> list = tuitionDAO.tuitionStdnt(tuitionVO,start, count); 
+		return list;
+	}
+	@Override
+	public int countTuitionStdnt(TuitionVO tuitionVO) throws SQLException {
+		int totalRecord = tuitionDAO.countTuitionStdnt(tuitionVO);
+		return totalRecord;
+	}
 
 }

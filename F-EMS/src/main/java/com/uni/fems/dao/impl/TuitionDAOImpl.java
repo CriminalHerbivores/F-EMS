@@ -15,10 +15,16 @@ public class TuitionDAOImpl implements TuitionDAO {
 		this.client=client;
 	}
 	@Override
-	public ArrayList<TuitionVO> tuitionStdnt(String tu_Stdnt_No)
+	public ArrayList<TuitionVO> tuitionStdnt(TuitionVO tuitionVO,int start, int count)
 			throws SQLException {
-		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("tuitionStdnt",tu_Stdnt_No);
+		
+		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("tuitionStdnt",tuitionVO,start,count);
 		return list;
+	}
+	@Override
+	public int countTuitionStdnt(TuitionVO tuitionVO) throws SQLException {
+		int count = (int) client.queryForObject("counttuitionStdnt",tuitionVO);
+		return count;
 	}
 	@Override
 	public void insertTuition(TuitionVO tuitionVO) throws SQLException {
@@ -29,15 +35,15 @@ public class TuitionDAOImpl implements TuitionDAO {
 		client.update("updateTuition",tuitionVO);
 	}
 	@Override
-	public ArrayList<TuitionVO> selectTuition(SearchVO searchVO)
+	public ArrayList<TuitionVO> selectTuition(TuitionVO tuitionVO)
 			throws SQLException {
-		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("selectTuition",searchVO);
+		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("selectTuition",tuitionVO);
 		return list;
 	}
 	@Override
-	public ArrayList<TuitionVO> selectNotTuition(SearchVO searchVO)
+	public ArrayList<TuitionVO> selectNotTuition(TuitionVO tuitionVO)
 			throws SQLException {
-		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("selectNotTuition",searchVO);
+		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("selectNotTuition",tuitionVO);
 		return list;
 	}
 	

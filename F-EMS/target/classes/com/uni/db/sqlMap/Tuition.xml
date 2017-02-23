@@ -11,13 +11,6 @@
 	
 	<!-- 학과 등록금 수정은 학과xml을 참고 -->
 	
-	<!-- 학생의 등록금 조회 -->
-	<select id="tuitionStdnt" parameterClass="str" resultClass="tuition">
-		select * from tuition
-		where tu_Stdnt_No=#tu_Stdnt_No#
-		order by tu_no desc
-	</select>
-	
 	<!-- 등록금 고지 -->
 	<update id="insertTuition" parameterClass="tuition">
 		insert into tuition(
@@ -38,21 +31,50 @@
 		where tu_No=#tu_No#
 	</update>
 	
+	<!-- 학생의 등록금 조회 -->
+	<select id="tuitionStdnt" parameterClass="tuition" resultClass="tuition">
+		select 
+			sit_Subjct,
+			tu_Tut,
+			tu_Dt,
+			(tu_Dt+7) as tu_Dt_L,
+			tu_Pay_Dt
+		from tuition t, SUBJCT_INFO_TABLE j, stdnt s
+		where s.st_subjct_code = j.sit_subjct_code
+    	and t.TU_STDNT_NO = s.st_stdnt_no
+		and tu_Stdnt_No=#tu_Stdnt_No#
+		and to_char(tu_Dt) like '%'||#tu_Dt#||'%'
+		and $key$ like '%'||#value#||'%'
+		order by tu_no desc
+	</select>
+	<!-- 학생의 등록금 조회 개수 -->
+	<select id="counttuitionStdnt" parameterClass="tuition" resultClass="int">
+		select 
+			count(*)
+		from tuition t, SUBJCT_INFO_TABLE j, stdnt s
+		where s.st_subjct_code = j.sit_subjct_code
+    	and t.TU_STDNT_NO = s.st_stdnt_no
+		and tu_Stdnt_No=#tu_Stdnt_No#
+		and to_char(tu_Dt) like '%'||#tu_Dt#||'%'
+		and $key$ like '%'||#value#||'%'
+		order by tu_no desc
+	</select>
+	
 	<!-- 등록금 조회 및 검색 -->
-	<select id="selectTuition" parameterClass="search" resultClass="tuition">
+	<select id="selectTuition" parameterClass="tuition" resultClass="tuition">
 		select * 
 		from stdnt st, SUBJCT_INFO_TABLE sj, tuition tu
 		where st.ST_SUBJCT_CODE = sj.SIT_SUBJCT_CODE
 		and tu.TU_STDNT_NO = st.ST_STDNT_NO
-		and $key$ like '%'||$value$||'%'
+		and $key$ like '%'||#value#||'%'
 		order by tu_no desc
 	</select>
 	
 	<!-- 미납 등록금 조회 -->
-	<select id="selectNotTuition" parameterClass="search" resultClass="tuition">
+	<select id="selectNotTuition" parameterClass="tuition" resultClass="tuition">
 		select * from tuition
 		where tu_Pay_Dt is null
-		and $key$ like '%'||$value$||'%'
+		and $key$ like '%'||#value#||'%'
 		order by tu_no desc
 	</select>
 	
