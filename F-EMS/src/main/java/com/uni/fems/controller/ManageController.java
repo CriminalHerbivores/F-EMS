@@ -238,14 +238,6 @@ public class ManageController {
 	@RequestMapping(value="/sklstfAtrtyList",method=RequestMethod.GET)
 	public String sklstfAtrtyList(Model model,HttpServletRequest request, SearchVO searchVO) 
 			throws ServletException, IOException{
-//		String url = "admin/sklstf/sklstfAtrtyList";	
-//		try {
-//			userSubjctVO = (UserSubjctVO) sklstfService.listAllSklstf(0, UserSubjctVO);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("userSubjctVO", userSubjctVO);
-//		return url;
 		
 		String url = "admin/sklstf/sklstfAtrtyList";	
 		String tpage = request.getParameter("tpage");
@@ -262,29 +254,25 @@ public class ManageController {
 		if(searchVO.getKey()==null)
 			searchVO.setKey("stf_Nm");
 		
-		//System.out.println("===============11111111111 searchVO.getValue() : "+searchVO.getValue());
-		
 		List<UserSubjctVO> sklstfAtrtyList=null;
 		String paging = null;
-		//System.out.println("===============2222222222222 searchVO.getValue() : "+searchVO.getValue());
 		try {
 			sklstfAtrtyList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
-			paging = sklstfService.pageNumber(Integer.parseInt(tpage),searchVO);
-			//System.out.println("===============3333333333 searchVO.getValue() : "+searchVO.getValue());
+			paging = sklstfService.pageNumberAtrty(Integer.parseInt(tpage),searchVO);
+			
+			
+			
+			
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		//System.out.println("===============4444444444444 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("sklstfAtrtyList", sklstfAtrtyList);
-		//System.out.println("===============55555555555 searchVO.getValue() : "+searchVO.getValue());
 		int n = sklstfAtrtyList.size();
-		//System.out.println("===============666666666666 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("sklstfListSize", n);
-		//System.out.println("===============777777777 searchVO.getValue() : "+searchVO.getValue());
 		model.addAttribute("paging", paging);
-		//System.out.println("===============8888888888 searchVO.getValue() : "+searchVO.getValue());
 		return url;
-		
 	}
 	
 	
@@ -322,7 +310,6 @@ public class ManageController {
 				System.out.println("66666666666666666 sklstf_AtrtyVO : "+sklstf_AtrtyVO);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("777777777777777777777 sklstf_AtrtyVO : "+sklstf_AtrtyVO);

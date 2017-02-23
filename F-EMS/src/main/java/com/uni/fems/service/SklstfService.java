@@ -68,6 +68,20 @@ public interface SklstfService {
 	 */
 	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
+	
+	/**
+	 * <pre>
+	 * 직원 권한 목록 페이지를 설정하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param searchVO
+	 * @return String
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public String pageNumberAtrty(int tpage,SearchVO searchVO) throws SQLException;
+	
 	/**
 	 * <pre>
 	 * 관리자가 직원과 직원의 권한을 등록

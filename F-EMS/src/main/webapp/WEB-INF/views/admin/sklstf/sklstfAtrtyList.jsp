@@ -42,6 +42,7 @@
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
 					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
+					&nbsp;&nbsp;<input type="checkbox" name="sa_Atrty" value="ROLE_STF">전체선택
 	</td></tr>
 	</table>
 			<table class="def-table-full tb-border table-hover">
@@ -58,7 +59,7 @@
 					<th>생년월일</th>
 					<th>연락처</th>
 					<th>관리자</th>
-					<th><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="전체적용" onclick=""></th>
+					<th><!-- <input type="button" class="def-ckbtn btn-sm ckbtn-color" value="전체적용" onclick=""> --></th>
 				</tr>
 				
 				<c:forEach items="${sklstfAtrtyList}" var="subjct">
@@ -81,7 +82,6 @@
 					</td>
 					<td>
 					
-					<input type="submit" class="def-ckbtn btn-sm ckbtn-color" value="적용">
 					
 					<%-- <c:choose>
 					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}">
@@ -100,6 +100,7 @@
       		<td colspan="9" style="text-align: center;">${paging }</td>
       	</tr>
 			</table>
+					<input type="submit" class="def-ckbtn btn-md ckbtn-color" value="적용">
 </div>
 </td></tr></table>
 	</form>
