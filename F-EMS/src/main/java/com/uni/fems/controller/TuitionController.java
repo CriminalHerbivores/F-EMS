@@ -1,13 +1,13 @@
 package com.uni.fems.controller;
 
-import java.security.Principal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.dto.Subjct_Info_TableVO;
+import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.service.TuitionService;
 
@@ -39,6 +40,8 @@ import com.uni.fems.service.TuitionService;
 public class TuitionController {
 	@Autowired
 	private TuitionService tuitionService;
+	@Autowired
+	private Paging callPaging;
 	
 	//직원//////////////////////////////////////////////////////
 	/**
@@ -50,17 +53,10 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping(value="tuitionList")
-	public String tuitionList(String sit_Subjct, String tpage, Model model){
+	public String tuitionList(@Value("")String sit_Subjct, @Value("1")String tpage, Model model){
 		String url="manager/tuition/tuitionList";
 		
-		if (tpage==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
 		model.addAttribute("tpage",tpage);
-		
-		if(sit_Subjct==null) sit_Subjct="";
 		
 		ArrayList<UserSubjctVO> list = new ArrayList<UserSubjctVO>();
 		String paging = "";
@@ -85,8 +81,7 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping(value="toStdTuition")
-	public String toStdTuition(String sit_Subjct, String tpage){
-		if(sit_Subjct==null) sit_Subjct="";
+	public String toStdTuition(@Value("")String sit_Subjct, String tpage){
 		String url="redirect:tuitionList?sit_Subjct="+sit_Subjct+"&tpage="+tpage;
 		try {
 			tuitionService.toStdTuition();
@@ -187,8 +182,33 @@ public class TuitionController {
 	 * </pre>
 	 */
 	@RequestMapping("fromStdTuition")
-	public String fromStdTuition(){
-		String url="";
+	public String fromStdTuition(@Value("1")String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
+		String url="student/fromStdTuition";
+		tuitionVO.setTu_Stdnt_No((String) session.getAttribute("loginUser"));
+		tuitionVO.setTu_Dt("");
+		tuitionVO.setTu_Dt_L("");
+		tuitionVO.setTu_Pay_Dt("");
+		tuitionVO.setKey("tu_No");
+		tuitionVO.setValue("");
+		
+		ArrayList<TuitionVO> list=new ArrayList<TuitionVO>();
+		String paging ="";
+		try {
+			// 데이터의 총 개수 구해오기
+			int totalRecord = tuitionService.countTuitionStdnt(tuitionVO); 
+			// request 필요. 
+			// 가장 끝의 "&key="+search.getKey()+"&value="+search.getValue()는 파라미터 전달값.
+			// 검색 등을 통해 GET 방식으로 전달할 값이 있을 경우에만 사용. 사용하지 않을 시엔 "" 를 적어주면 됨
+			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "&key="+tuitionVO.getKey()+"&value="+tuitionVO.getValue());
+			// (현재페이지, 데이터의 총 개수)
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			// (전달값, int start, int count) 이후 쿼리문에서도 같은 순서로 넣어주면 됨
+			list = tuitionService.tuitionStdnt(tuitionVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("paging",paging);
+		model.addAttribute("tuitionList",list);
 		return url;
 	}
 }
