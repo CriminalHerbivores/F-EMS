@@ -1,5 +1,7 @@
 package com.uni.fems.common;
 
+import java.util.Calendar;
+
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.annotation.Resource;
@@ -18,7 +20,7 @@ import com.uni.fems.dto.request.MessageRequest;
 
 /**
  * <pre>
- * 메일을 보내기 위한 메소드를 작성해둔 클래스
+ * 공용 기능을 모아둔 메서드
  * </pre>
  * @author JAR
  * @since 2017. 2. 22.
@@ -32,17 +34,18 @@ import com.uni.fems.dto.request.MessageRequest;
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
-public class SendMail {
-	//@Resource(name = "mailSender")
-//	@Autowired
-//	private MailSender mailSender;
-//	public void setMailSender(MailSender mailSender) {
-//		this.mailSender = mailSender;
-//	}
+public class Supporter {
 	
 	/**
 	 * <pre>
 	 * 이메일을 전송
+	 * 
+	 * 컨트롤러 단 혹은 사용하려는 곳에서 
+	 * @Autowired
+	 * private MailSender mailSender;
+	 * 선언 한 후 주입 필요
+	 * 
+	 * IndexController 참고
 	 * </pre>
 	 * <pre>
 	 * @param msgCom
@@ -74,5 +77,32 @@ public class SendMail {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * <pre>
+	 * 반환받은 배열의 
+	 * 0번째는 현재년도
+	 * 1번째는 현재월
+	 * 2번째는 현재일
+	 * 3번쨰는 현재학기
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	public int[] getDay(){
+		Calendar c = Calendar.getInstance();
+		int[] uDay = new int[4];
+		uDay[0] = c.get(Calendar.YEAR);
+		uDay[1] = c.get(Calendar.MONTH);
+		uDay[2] = c.get(Calendar.DATE);
+		
+		// 1~6월은 1학기
+		// 7~12월은 2학기
+		if(uDay[1]<7){
+			uDay[3] = 1;
+		}else{
+			uDay[3] = 2;
+		}
+		return uDay;
+	}
 }
