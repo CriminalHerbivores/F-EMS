@@ -13,6 +13,11 @@ public class Bbs_AtrtyServiceImpl implements Bbs_AtrtyService {
  public void setBbs_AtrtyDAO(Bbs_AtrtyDAO bbs_AtrtyDAO){
   this.bbs_AtrtyDAO=bbs_AtrtyDAO;
  }
+@Override
+public Bbs_AtrtyVO getBBS_Atrty(int bbs_no) throws SQLException {
+	
+	return bbs_AtrtyDAO.getBBS_Atrty(bbs_no);
+}
  
  
 }
