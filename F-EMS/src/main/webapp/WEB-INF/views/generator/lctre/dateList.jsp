@@ -53,7 +53,7 @@
       <c:forEach var="lctre_Date" items="${lctre_DateList }">
       	<tr>
       		<td> ${lctre_Date.ld_Bbs_No}</td>
-      		<td><a href="detailLctre_Date?ld_Bbs_No=${lctre_Date.ld_Bbs_No}&table_Nm=${lctre_Date.table_Nm}&tpage=${tpage}">
+      		<td><a href="detailLctre_Date?ld_Bbs_No=${lctre_Date.ld_Bbs_No}&table_Nm=${lctre_Date_Gnt.table_Nm}&tpage=${tpage}">
       		 ${lctre_Date.ld_Sj} </a>
       		</td>
       		<td><fmt:formatDate value="${lctre_Date.ld_Writng_Dt}" /> </td>
@@ -68,7 +68,7 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<a href="writeBbs_Gnt?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}">
+	  	<a href="writeBbs_Gnt?ld_Bbs_No=${lctre_Date_Gnt.ld_Bbs_No}&table_Nm=${bbs_List_Gnt.table_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
 </td></tr>  

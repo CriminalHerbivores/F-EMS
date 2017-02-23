@@ -53,7 +53,7 @@
 	</select>
 	
 	<update id="countBbs_Gnt" parameterClass="bbs_list_gnt">
-		update BBS_$bl_Table_Nm$ set bb_Rdcnt = #bb_Rdcnt#+1
+		update BBS_$bl_Table_Nm$ set bb_Rdcnt = #bb_Rdcnt#
 		where bb_Bbs_No=#bb_Bbs_No#
 	</update>
 	

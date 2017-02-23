@@ -261,13 +261,13 @@ public class Bbs_GntController implements ApplicationContextAware{
 		flpth.setBf_Bbs_Code(values[1]);
 		try {
 			bbs_Gnt = bbs_GntSvc.getBbs_Gnt(bbs_List_Gnt);
-			bbs_GntSvc.countBbs_Gnt(bbs_List_Gnt);
-			flpthList = bbs_GntSvc.getBbs_Flpth(flpth);
 			bbs_List_Gnt.setBb_Cn(bbs_Gnt.getBb_Cn());
 			bbs_List_Gnt.setBb_Rdcnt(bbs_Gnt.getBb_Rdcnt()+1);
 			bbs_List_Gnt.setBb_Sj(bbs_Gnt.getBb_Sj());
 			bbs_List_Gnt.setBb_Sklstf_No(bbs_Gnt.getBb_Sklstf_No());
 			bbs_List_Gnt.setBb_Writng_dt(bbs_Gnt.getBb_Writng_dt());
+			bbs_GntSvc.countBbs_Gnt(bbs_List_Gnt);
+			flpthList = bbs_GntSvc.getBbs_Flpth(flpth);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
