@@ -43,55 +43,17 @@ public interface SklstfService {
 	SklstfVO getSklstf(String stf_Sklstf_No)throws SQLException;
 	
 	
-	
 	/**
 	 * <pre>
-	 * 관리자가 전체 직원 목록 조회
+	 * 전체 직원의 목록
 	 * </pre>
 	 * <pre>
-	 * @param stf_Nm
+	 * @param tpage
+	 * @param searchVO
 	 * @return
 	 * @throws SQLException
-	 * </pre>
 	 */
-	//List<UserSubjctVO> listSklstf(String stf_Nm) throws SQLException; 
-	
-	
-	/**
-	 * <pre>
-	 * 관리자가 직원과 직원의 권한을 등록
-	 * </pre>
-	 * <pre>
-	 * @param sklstfVo
-	 * @throws SQLException
-	 * </pre>
-	 */
-	void insertSklstf(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO)throws SQLException;
-	
-	/**
-	 * <pre>
-	 * 직원 정보를 수정
-	 * </pre>
-	 * <pre>
-	 * @param sklstfVo
-	 * @throws SQLException
-	 * </pre>
-	 */
-	void updateSklstf(SklstfVO sklstfVo)throws SQLException;
-	
-	
-	/**
-	 * <pre>
-	 * 직원 정보와 권한을 수정
-	 * </pre>
-	 * <pre>
-	 * @param sklstf_AtrtyVO
-	 * @throws SQLException
-	 * </pre>
-	 */
-	void updateSklstf_Atrty(SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
-	
-	//==========================================
+	List<UserSubjctVO> listAllSklstf(int tpage, SearchVO searchVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -106,16 +68,52 @@ public interface SklstfService {
 	 */
 	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
+	/**
+	 * <pre>
+	 * 관리자가 직원과 직원의 권한을 등록
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertSklstf(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO)throws SQLException;
 	
 	/**
 	 * <pre>
-	 * 전체 직원의 목록
+	 * 직원 정보를 수정
 	 * </pre>
 	 * <pre>
-	 * @param tpage
-	 * @param searchVO
-	 * @return
+	 * @param sklstfVo
 	 * @throws SQLException
+	 * </pre>
 	 */
-	List<UserSubjctVO> listAllSklstf(int tpage, SearchVO searchVO) throws SQLException;
+	void updateSklstf(SklstfVO sklstfVO)throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 직원 정보와 권한을 수정
+	 * </pre>
+	 * <pre>
+	 * @param sklstf_AtrtyVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateSklstf_Atrty(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 관리자 최초 가입
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void joinAdmin(SklstfVO sklstfVO, Sklstf_AtrtyVO sklstf_AtrtyVO)throws SQLException;
+	
+	
+
 }

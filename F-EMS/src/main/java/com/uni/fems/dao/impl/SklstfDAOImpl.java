@@ -41,30 +41,19 @@ public class SklstfDAOImpl implements SklstfDAO {
 		return sklstfVo;
 	}
 	@Override
-	public void updateSklstf(SklstfVO sklstfVo) throws SQLException {
-		client.update("updateSklstf", sklstfVo);
+	public void updateSklstf(SklstfVO sklstfVO) throws SQLException {
+		client.update("updateSklstf", sklstfVO);
 	}
 	
 	// 관리자의 직원 등록
 	@Override
-	public void insertSklstf(SklstfVO sklstfVo) throws SQLException {
-		client.update("insertSklstf",sklstfVo);
+	public void insertSklstf(SklstfVO sklstfVO) throws SQLException {
+		client.insert("insertSklstf",sklstfVO);
 	}
-	
-	
-	// 관리자가 전체 직원 목록 조회
-//	@Override
-//	public List<UserSubjctVO> listSklstf(String stf_Nm) throws SQLException{
-//		List<UserSubjctVO> listSklstf=client.queryForList("listSklstf",stf_Nm);
-//		return listSklstf;
-//	}
-	
-	//================================================================
 	
 	// 전체 직원의 목록
 	@Override
 	public List<UserSubjctVO> listAllSklstf(SearchVO searchVO, int tpage, int totalRecord) throws SQLException {
-		System.out.println("===================================== 1-22");
 		Paging p = new Paging();
 		
 		int[] rows = p.row(tpage, totalRecord);
@@ -77,12 +66,17 @@ public class SklstfDAOImpl implements SklstfDAO {
 	// 직원목록의 전체직원을 가져오는 메서드
 	@Override	
 	public int totalSklstf(SearchVO searchVO) throws SQLException{
-		System.out.println("===================================== 1-1-1");
 		int total_pages = 0;
-		System.out.println("===================================== 1-1-2");
 		total_pages = (Integer) client.queryForObject("totalSklstf",searchVO);
-		System.out.println("===================================== 1-1-3");
 		return total_pages;
 	}
+	
+	// 관리자 최초 가입
+	@Override
+	public void joinAdmin(SklstfVO sklstfVO) throws SQLException {
+		client.insert("joinAdmin",sklstfVO);
+	}
+	
+
 	
 }

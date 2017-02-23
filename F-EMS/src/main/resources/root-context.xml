@@ -355,6 +355,12 @@
 	<bean id="lctre_GntDAO" class="com.uni.fems.dao.impl.Lctre_GntDAOImpl"
       p:client-ref="sqlMapClient" /> 
      
+     
+     <bean id="fileDownload" class="com.uni.fems.common.FileDownload"/>
+     <bean id="supporter" class="com.uni.fems.common.Supporter"/>
+     <bean id="callPaging" class="com.uni.fems.common.Paging"/>
+     
+     
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />

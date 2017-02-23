@@ -22,8 +22,9 @@
 <body>
 
 <form name="formm" mehtod="post">
-	
-<div class="text-center">
+<table class="non-border margin-auto">	
+<tr><td>
+<div class="text-left">
 <h2>직원 조회</h2>
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
@@ -63,7 +64,7 @@
 					<td>${subjct.coleg_Nm}</td>
 					<td>${subjct.fc_Faculty_Nm}</td>
 					<td>${subjct.sit_Subjct }</td>
-					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Sklstf_No}</a></td>
+					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Nm}</a></td>
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
 					<%-- <td>${subjct.sa_Atrty}</td> --%>
@@ -81,6 +82,8 @@
       	</tr>
 			</table>
 </div>
+</td></tr>
+</table>
 	</form>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.uni.fems.dao;
 import java.sql.SQLException;
 
 import com.uni.fems.dto.Sklstf_AtrtyVO;
+import com.uni.fems.dto.UserSubjctVO;
 
 /**
  * <pre>
@@ -44,4 +45,16 @@ public interface Sklstf_AtrtyDAO {
 	 * </pre>
 	 */
 	void updateSklstf_Atrty(Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 권한 부여받은 직원 인원수
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVo
+	 * @return 
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int numOfSklstf(Sklstf_AtrtyVO sklstf_AtrtyVO) throws SQLException;
 }

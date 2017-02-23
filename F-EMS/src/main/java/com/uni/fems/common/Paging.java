@@ -1,8 +1,7 @@
 package com.uni.fems.common;
 
 import java.sql.SQLException;
-
-import com.ibatis.sqlmap.client.SqlMapClient;
+import javax.servlet.http.HttpServletRequest;
 import com.uni.fems.dto.request.PageRequest;
 
 /**
@@ -25,7 +24,47 @@ public class Paging {
 	
 	static int view_rows = 4; // 페이지의 개수
 	static int counts = 5; // 한 페이지에 나타낼 개수
-	
+	/**
+	 * <pre>
+	 * http://도메인/디렉토리/파일이름.확장자?쿼리키=쿼리값 (request.getRequestURI())
+	 * http://도메인/디렉토리 (request.getContextPath())
+	 * 
+	 * 파일이름을 / 기준으로 잘라서 반환
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	public String[] callPath(HttpServletRequest request){
+
+		String command = request.getRequestURI();
+		
+		if (command.indexOf(request.getContextPath()) == 0) {
+			command = command.substring(request.getContextPath().length()+1);
+		}
+		
+		String[] comm = command.split("/");
+		
+		return comm;
+	}
+	/**
+	 * <pre>
+	 * http://도메인/디렉토리/파일이름.확장자?쿼리키=쿼리값 (request.getRequestURI())
+	 * http://도메인/디렉토리 (request.getContextPath())
+	 * 
+	 * 파일이름을 / 기준으로 잘라서 마지막을 반환
+	 * 페이징의 경로를 줄 때 주로 사용
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	public String lastPath(HttpServletRequest request){
+		String[] comm = callPath(request);
+		return comm[comm.length-1];
+	}
 	/**
 	 * <pre>
 	 * 검색어 변수 값의 유무 체크

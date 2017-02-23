@@ -24,11 +24,11 @@
 	<h2>학과 / 등록금 조회</h2>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
+		<td>학생</td>
 		<td>단과</td>
 		<td>학부</td>
 		<td>학과</td>
 		<td>등록금</td>
-		<td>학과 전화번호</td>
 		<td>수정</td>
 	</tr>
 	<c:forEach var="tut" items="${tuitionList}">
