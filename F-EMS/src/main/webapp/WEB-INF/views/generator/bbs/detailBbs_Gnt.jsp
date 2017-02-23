@@ -238,12 +238,20 @@ $(document).on('click','.realupdateComment',function(e){
 		<br>
 		<!-- 댓글부분 -->
 
+  
+	 
 
+<c:choose>
+  	<c:when test="${returnSec>='2' }">
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
 			name="comment_content"></textarea>
 		<input type="button" value="확인" class="def-btn btn-sm btn-color" id="btnSave" onclick="commm_go();">
 		<div id="comment"></div>
 		<input type="hidden" value="${loginUser}" id="loginUser">
+</c:when>
+	 <c:otherwise>
+	 </c:otherwise> 
+	</c:choose>
 
 	</form>
 

@@ -53,9 +53,21 @@
       <c:forEach var="bbs_Gnt" items="${bbs_GntList }">
       	<tr>
       		<td> ${bbs_Gnt.bb_Bbs_No}</td>
-      		<td><a href="detailBbs_Gnt?bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}">
-      		 ${bbs_Gnt.bb_Sj} </a>
-      		</td>
+      		
+      		
+      		  <c:choose>
+				  	<c:when test="${returnSec>='1' }">
+						<td><a href="detailBbs_Gnt?bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}">
+      		 					${bbs_Gnt.bb_Sj} </a>
+      					</td>
+					 </c:when>
+					 <c:otherwise>
+					 <td>${bbs_Gnt.bb_Sj}</td>
+					 </c:otherwise> 
+			</c:choose>
+      		
+      		
+      		
       		<td><fmt:formatDate value="${bbs_Gnt.bb_Writng_dt}" /> </td>
       		<td> ${bbs_Gnt.bb_Rdcnt}</td> <!-- 조회수 -->
       		
@@ -67,10 +79,17 @@
       	
      
   </table>
+  	
+  <c:choose>
+  	<c:when test="${returnSec>='3' }">
 	  <div id="buttons" style="float:right">
 	  	<a href="writeBbs_Gnt?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
+	 </c:when>
+	 <c:otherwise>
+	 </c:otherwise> 
+	</c:choose>
 </td></tr>  
 </table>	  
 </div>
