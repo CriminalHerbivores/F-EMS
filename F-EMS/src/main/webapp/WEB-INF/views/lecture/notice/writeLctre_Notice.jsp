@@ -6,7 +6,7 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.23    KJS            최초작성               -->
+<!--  2017.02.24    KJS            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
@@ -17,15 +17,14 @@
 </head>
 <body>
 
-	    <h2> 강의 자료 게시판 </h2>
-		<form name="formm" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="table_Nm" value="${table_Nm}">
+	    <h2>강의 공지 게시판</h2>
+		<form name="formm" method="post">
+		<%-- <input type="hidden" name="table_Nm" value="${table_Nm}"> --%>
 			<fieldset>	
 			    <label>제목</label>
-			    <input type="text" name="ld_Sj"  size="64" ><br>
+			    <input type="text" name="ln_Sj"  size="64" ><br>
 				<label>내용</label>
-			    <textarea rows="8" cols="65" name="ld_Cn"></textarea><br>
-			    <input type="file" name="uploadfile">
+			    <textarea rows="8" cols="65" name="ln_Cn"></textarea><br>
 			</fieldset>   
 		<div class="clear"></div>
 		 <div id="buttons" style="float:right">
