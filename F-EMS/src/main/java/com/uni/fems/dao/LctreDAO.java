@@ -82,6 +82,30 @@ public interface LctreDAO {
 	
 	int deleteLctre(int lc_Lctre_No) throws SQLException;	//강의 삭제
 	
+	/**
+	 * <pre>
+	 * 개설된 강의를 조건에 따라 조회
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @param start
+	 * @param count
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<Lctre_SearchVO> selectLctre(Lctre_SearchVO lctre_SearchVO, int start, int count) throws SQLException;
+	/**
+	 * <pre>
+	 * 개설된 강의를 조건에 따라 조회한 개수
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 	 /*
 	    * 관리자페이지에서 사용되는 메서드
