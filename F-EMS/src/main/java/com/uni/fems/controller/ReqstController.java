@@ -1,8 +1,10 @@
 package com.uni.fems.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +20,7 @@ import com.uni.fems.dao.ReqstDAO;
 import com.uni.fems.dto.Intrst_ListVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
+import com.uni.fems.service.Intrst_ListService;
 import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.StdntService;
 
@@ -44,12 +47,14 @@ public class ReqstController {
 	@Autowired
 	private ReqstService reqstService;
 	@Autowired
-	StdntService stdntService;
+	private Intrst_ListService intrst_ListService;
+	@Autowired
+	private StdntService stdntService;
 
 	
 	/**
 	 * <pre>
-	 * 관심 강의 목록 폼
+	 * 수강신청 완료 목록 폼
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -57,7 +62,7 @@ public class ReqstController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseComplete")
+	@RequestMapping(value="/courseComplete",method=RequestMethod.GET)
 	public String courseCompleteForm(Model model, HttpServletRequest request,
 			HttpSession session,ReqstVO reqstVO) {
 		String url = "course_registration/courseComplete";
@@ -75,6 +80,61 @@ public class ReqstController {
 
 		return url;
 	}
+	
+	
+	/**
+	 * <pre>
+	 * 수강 완료 목록에서 선택한 관심강의 및 수강신청을 삭제하는 로직
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/courseComplete",method=RequestMethod.POST)
+	public String deleteCourseComplete(HttpServletRequest request,
+			HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+		String url = "redirect:courseComplete";
+		
+		String stdnt_No = (String) session.getAttribute("loginUser");
+		
+		String[] resultArr_1 = request.getParameterValues("result_1");
+		String[] resultArr_2 = request.getParameterValues("result_2");
+		
+		// 둘 동시에 지우면 괜찮은데 둘 중 하나만 지울경우 널포인트 에러
+		//혹시 지금 쿼리가 연결되어서 그런가? -- 조회라 상관없을듯
+		
+		
+		for (int i = 0; i < resultArr_2.length; i++) {
+			reqstVO.setRe_Stdnt_No(stdnt_No);
+			reqstVO.setRe_Lctre_No(resultArr_2[i]);
+			try {
+				reqstService.deleteReqst(reqstVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		for (int i = 0; i < resultArr_1.length; i++) {
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListVO.setIn_Lctre_No(resultArr_1[i]);
+			try {
+				intrst_ListService.deleteIntrst_List(intrst_ListVO);	// 관심강의를 삭제하려면 수강신청도 삭제해야 하도록 하기
+				//Intrst_ListController intrst_ListController= new Intrst_ListController();
+				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return url;
+	}
+	
+	
+	
+	
 	
 	/**
 	 * <pre>
@@ -97,44 +157,9 @@ public class ReqstController {
 		return url;
 	}	
 	
+
 	
 	
-	
-//	
-//	
-//	/**
-//	 * <pre>
-//	 * 관심 강의로 추가하는 폼
-//	 * </pre>
-//	 * <pre>
-//	 * @param model
-//	 * @param session
-//	 * @return
-//	 * @throws SQLException
-//	 */
-//	@RequestMapping(value="/intrstList", method=RequestMethod.GET)
-//	public String courseCreditForm(Model model, HttpSession session) throws SQLException{
-//		String url="course_registration/courseCredit";
-//		
-//		return url;
-//	}
-//	
-//	
-//	/**
-//	 * <pre>
-//	 * 관심강의 취소, 추가하는 로직
-//	 * </pre>
-//	 * <pre>
-//	 * @param model
-//	 * @param session
-//	 * @return
-//	 * @throws SQLException
-//	 */
-//	@RequestMapping(value="/intrstList", method=RequestMethod.GET)
-//	public String courseCredit(Model model, HttpSession session) throws SQLException{
-//		String url="course_registration/courseCredit";
-//		
-//		return url;
-//	}
+
 	
 }

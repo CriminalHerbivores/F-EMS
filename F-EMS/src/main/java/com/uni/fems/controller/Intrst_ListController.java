@@ -56,8 +56,7 @@ public class Intrst_ListController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseInterest",method=RequestMethod.GET)
-	public String courseInterestForm(Model model, HttpServletRequest request,
-			HttpSession session,Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+	public String courseInterestForm(Model model, HttpSession session,Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		String url = "course_registration/courseInterest";
 		
 		List<Lctre_SearchVO> lctre_SearchVO=null;
@@ -79,7 +78,7 @@ public class Intrst_ListController {
 	
 	/**
 	 * <pre>
-	 * 관심 강의 목록에서 관심강의를 삭제하는 로직
+	 * 관심 강의 목록에서 선택한 관심강의를 삭제하는 로직
 	 * </pre>
 	 * <pre>
 	 * @param request

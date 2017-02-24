@@ -46,7 +46,7 @@ body {
 
 </head>
 <body class="course-list-l-top">
-	<form>
+<form name="formm" method="post">
 	<div class="text-center">
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
@@ -74,8 +74,8 @@ body {
 				</tr> -->
 				<tr><th colspan="13"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<th>수강신청</th>
 					<th>관심강의</th>
+					<th>수강신청</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>분반</th>
@@ -91,16 +91,6 @@ body {
 				
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
-					<td>
-					<c:if test="${lctre.re_Lctre_No==lctre.la_Lctre_No}">
-					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
-					
-						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강" onclick="add_reqst()">
-					 </c:if>
-					<c:if test="${lctre.re_Lctre_No!=lctre.la_Lctre_No}"> 
-						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소" onclick="del_reqst()">				
-					 </c:if>
-						</td>
 					<td>	
 					<c:choose>
 					<c:when test="${lctre.in_Lctre_No==lctre.la_Lctre_No}">
@@ -113,6 +103,16 @@ body {
 					 </c:otherwise>
 					</c:choose>	
 					</td>
+					<td>
+					<c:if test="${lctre.re_Lctre_No==lctre.la_Lctre_No}">
+					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
+					
+						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강" onclick="add_reqst()">
+					 </c:if>
+					<c:if test="${lctre.re_Lctre_No!=lctre.la_Lctre_No}"> 
+						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소" onclick="del_reqst()">				
+					 </c:if>
+						</td>
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}</td>
 					<td>${lctre.lc_Split}</td>

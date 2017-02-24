@@ -142,7 +142,7 @@ body {
 					</c:choose>
 						
 						${intrst.lu_Lctre_Code }-${intrst.lc_Split }
-						<input type="hidden" name="ck_intrst" value="${intrst.in_Lctre_No}"/></td>
+						<input type="hidden" value="${intrst.in_Lctre_No}"/></td>
 						<td><a href="#" >${intrst.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
 					</tr>
 				</c:forEach>
