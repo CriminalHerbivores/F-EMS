@@ -21,6 +21,7 @@ import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.impl.LctreDAOImpl;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.LctreService;
 import com.uni.fems.service.StdntService;
 
@@ -115,18 +116,32 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.GET)
-	public String courseAbleForm(Model model, HttpSession session, String lu_Lctre_Nm) {
+	public String courseAbleForm(Model model, HttpServletRequest request, SearchVO searchVO) {
 		String url = "course_registration/courseAble";
 		
-		List<Lctre_SearchVO> lctre_SearchVO=null;
+	String tpage = request.getParameter("tpage");
 		
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		System.out.println("=======================================st_Stdnt_No : "+st_Stdnt_No);
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("lu_Lctre_Nm");
+		
+		List<Lctre_SearchVO> openLctreList=null;
+		String paging=null;
+		
+		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
 		
 		
 		try {
-			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
-			stdntService.selectStdnt(st_Stdnt_No);
+			openLctreList = lctreService.openLctreList(Integer.parseInt(tpage), searchVO);
+			paging = lctreService.pageNumber(Integer.parseInt(tpage), searchVO);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -136,7 +151,10 @@ public class LctreController {
 		
 		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
 		
-		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
+		model.addAttribute("openLctreList", openLctreList);
+		int n = openLctreList.size();
+		model.addAttribute("openLctreListSize", n);
+		model.addAttribute("paging", paging);
 		return url;
 	}
 	
@@ -158,62 +176,25 @@ public class LctreController {
 	public String courseAble(Model model, HttpSession session,String lu_Lctre_Nm) {
 		String url = "course_registration/courseAble";
 		
-		List<Lctre_SearchVO> lctre_SearchVO=null;
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		System.out.println("=======================================st_Stdnt_No : "+st_Stdnt_No);
-		
-		try {
-			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
-			stdntService.selectStdnt(st_Stdnt_No);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
-		
-		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
+//		List<Lctre_SearchVO> lctre_SearchVO=null;
+//		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+//		System.out.println("=======================================st_Stdnt_No : "+st_Stdnt_No);
+//		
+//		try {
+//			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
+//			stdntService.selectStdnt(st_Stdnt_No);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
+//		
+//		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 		return url;
 	}
 	
-	
-	
 
-
-
-	/**
-	 * <pre>
-	 * 학기내 이수 가능 학점 및 수강신청완료학점 확인 가능
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-//	@RequestMapping("/courseCredit")
-//	public String courseCredit(HttpServletRequest request,
-//			HttpSession session) {
-//		String url = "course_registration/courseCredit";
-//		return url;
-//	}
-
-	/**
-	 * <pre>
-	 * 관심강의 목록을 바탕으로 작성되는 임시 시간표
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-//	@RequestMapping("/courseTimetable")
-//	public String courseTimetable(HttpServletRequest request,
-//			HttpSession session) {
-//		String url = "course_registration/courseTimetable";
-//		return url;
-//	}
 
 }
