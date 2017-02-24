@@ -2,6 +2,21 @@
 
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
-
+<!--  [[개정이력(Modification Information)]]       -->
+<!--     수정일          수정자              수정내용               -->
+<!--  ==========   ======    ==============        -->
+<!--  2017.02.24    송선호            최초작성               -->
+<!--  Copyright (c) 2017 by DDIT All right reserved -->
 <sqlMap namespace="Test_Paper">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	
+	<select id="listAllTestPaper" parameterClass="int" resultClass="Test_Paper">
+		select * from test_paper where tp_lctre_no=#tp_Lctre_No#
+	</select>
+	
+	<update id="insertTestPaper" parameterClass="Test_Paper">
+		insert into test_paper(tp_no,tp_lctre_no,tp_nm,tp_profsr_no) 
+		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#)
+	</update>
 </sqlMap>
