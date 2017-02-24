@@ -1,14 +1,13 @@
 package com.uni.fems.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lombok.Data;
@@ -23,7 +22,9 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.common.FileDownload;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dto.FilesVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SklstfVO;
@@ -32,6 +33,7 @@ import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
+import com.uni.fems.service.LctreService;
 import com.uni.fems.service.ProfsrService;
 import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SklstfService;
@@ -70,6 +72,11 @@ public class SklstfController {
 	private SchlshipService schlshipService;
 	@Autowired
 	private SknrgsService sknrgs_Svc;
+	@Autowired
+	private LctreService lctreService;
+	@Autowired
+	private Paging callPaging;
+	
 	private WebApplicationContext context = null;
 	
 	// 직원 ///////////////////////////////////////////////////////////////
@@ -823,6 +830,34 @@ public class SklstfController {
 		}
 		model.addAttribute("pr_Profsr_No", profsrVO.getPr_Profsr_No());
 		model.addAttribute("tpage", tpage);
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 직원의 교수 이력 조회
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_SearchVO
+	 * @return
+	 * </pre>
+	 */
+	public String profsrHistory(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
+		String url="manager/profsr/profsrHistory";
+		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		String paging = "";
+		if(tpage==null) tpage="1";
+		try {
+			int totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("history",list);
+		model.addAttribute("paging",paging);
 		return url;
 	}
 }
