@@ -35,7 +35,7 @@ import com.uni.fems.service.Lctre_TaskService;
 
 /**
  * <pre>
- * 강의 자료 게시판의 컨트롤러.
+ * 강의 과제 게시판의 컨트롤러.
  * 글 작성(파일 업로드 포함) , 상세보기(파일 다운로드), 수정, 삭제 기능 구현
  * </pre>
  * @author KJS
@@ -89,10 +89,10 @@ public class Lctre_TaskController implements ApplicationContextAware{
 
 		Lctre_Task_GntVO lctre_Task_Gnt = new Lctre_Task_GntVO();
 		lctre_Task_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("ld_Sj")){
+		if(searchVO != null ||searchVO.getKey().equals("lt_Sj")){
 			lctre_Task_Gnt.setLt_Sj(searchVO.getValue());
 			lctre_Task_Gnt.setLt_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("ld_Cn")){
+		}else if(searchVO != null || searchVO.getKey().equals("lt_Cn")){
 			lctre_Task_Gnt.setLt_Sj("%");
 			lctre_Task_Gnt.setLt_Cn(searchVO.getValue());
 		}else{
@@ -123,7 +123,7 @@ public class Lctre_TaskController implements ApplicationContextAware{
 	 * </pre>
 	 * <pre>
 	 * @param model
-	 * @param bbs_List_Gnt
+	 * @param table_Nm
 	 * @return url
 	 * @throws ServletException
 	 * @throws IOException
@@ -141,8 +141,8 @@ public class Lctre_TaskController implements ApplicationContextAware{
 	 *  작성한 게시판을 업로드 한다.
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
-	 * @param bbs_FlpthVO
+	 * @param lctre_Task_Gnt
+	 * @param lctre_FlpthVO
 	 * @param request
 	 * @param uploadfile
 	 * @param session
@@ -182,7 +182,7 @@ public class Lctre_TaskController implements ApplicationContextAware{
 	 * 게시판 리스트중 하나를 상세히 본다.
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Task_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -201,9 +201,7 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			lctre_Task_Gnt.setLt_Cn(lctre_Task.getLt_Cn());
 			lctre_Task_Gnt.setLt_Sj(lctre_Task.getLt_Sj());
 			lctre_Task_Gnt.setLt_Writng_Dt(lctre_Task.getLt_Writng_Dt());
-			lctre_Task_Gnt.setLt_Rdcnt(lctre_Task.getLt_Rdcnt()+1);
 			lctre_Task_Gnt.setLt_Flpth_No(lctre_Task.getLt_Flpth_No());
-			lctre_TaskSvc.countLctre_Task(lctre_Task_Gnt);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -219,7 +217,7 @@ public class Lctre_TaskController implements ApplicationContextAware{
 	 * 게시판의 내용을 수정하기 위한 폼으로 이동
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Task_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -238,7 +236,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			lctre_Task_Gnt.setLt_Cn(lctre_Task.getLt_Cn());
 			lctre_Task_Gnt.setLt_Sj(lctre_Task.getLt_Sj());
 			lctre_Task_Gnt.setLt_Writng_Dt(lctre_Task.getLt_Writng_Dt());
-			lctre_Task_Gnt.setLt_Rdcnt(lctre_Task.getLt_Rdcnt());
 			lctre_Task_Gnt.setLt_Flpth_No(lctre_Task.getLt_Flpth_No());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -257,8 +254,8 @@ public class Lctre_TaskController implements ApplicationContextAware{
 	 * <pre>
 	 * @param tpage
 	 * @param uploadfile
-	 * @param bbs_List_Gnt
-	 * @param bbs_FlpthVO
+	 * @param lctre_Task_Gnt
+	 * @param lctre_FlpthVO
 	 * @param session
 	 * @param request
 	 * @return url
@@ -294,7 +291,7 @@ public class Lctre_TaskController implements ApplicationContextAware{
 	 * 해당하는 게시판을 삭제처리하는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Task_Gnt
 	 * @param tpage
 	 * @param request
 	 * @return url
