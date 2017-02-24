@@ -30,8 +30,8 @@ public interface Lctre_NoticeService {
 	 * </pre>
 	 * <pre>
 	 * @param tpage
-	 * @param lctre_Date_Gnt
-	 * @return List<Lctre_DateVO>
+	 * @param lctre_Notice_Gnt
+	 * @return List<Lctre_NoticeVO>
 	 * @throws SQLException
 	 * </pre>
 	 */
@@ -44,8 +44,7 @@ public interface Lctre_NoticeService {
 	 * </pre>
 	 * <pre>
 	 * @param tpage
-	 * @param lctre_Date_Gnt
-	 * @param searchVO
+	 * @param lctre_Notice_Gnt
 	 * @return String
 	 * @throws SQLException
 	 * </pre>
@@ -58,8 +57,8 @@ public interface Lctre_NoticeService {
 	 *  하나의 게시판 출력
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
-	 * @return Lctre_DateVO
+	 * @param lctre_Notice_Gnt
+	 * @return Lctre_NoticeVO
 	 * @throws SQLException
 	 * </pre>
 	 */
@@ -71,8 +70,7 @@ public interface Lctre_NoticeService {
 	 *  게시판 등록
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
-	 * @param lctre_FlpthVO
+	 * @param lctre_Notice_Gnt
 	 * @throws SQLException
 	 * </pre>
 	 */
@@ -84,8 +82,7 @@ public interface Lctre_NoticeService {
 	 *  게시판 수정
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
-	 * @param lctre_FlpthVO
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
@@ -98,7 +95,7 @@ public interface Lctre_NoticeService {
 	 *  데시판 조회수 증가	
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
@@ -111,7 +108,7 @@ public interface Lctre_NoticeService {
 	 *  게시판 삭제
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>

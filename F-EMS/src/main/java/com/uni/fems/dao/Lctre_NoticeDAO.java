@@ -32,7 +32,7 @@ public interface Lctre_NoticeDAO {
 	 * @param lctre_Date_Gnt
 	 * @param tpage
 	 * @param totalRecord
-	 * @return List<Lctre_DateVO>
+	 * @return List<Lctre_NoticeVO>
 	 * @throws SQLException
 	 * </pre>
 	 */
@@ -44,7 +44,7 @@ public interface Lctre_NoticeDAO {
 	 * 전체 리스트의 개수
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
@@ -57,8 +57,8 @@ public interface Lctre_NoticeDAO {
 	 * 하나의 리스트를 가디고 온다.
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
-	 * @return Lctre_DateVO
+	 * @param lctre_Notice_Gnt
+	 * @return Lctre_NoticeVO
 	 * @throws SQLException
 	 * </pre>
 	 */
@@ -70,7 +70,7 @@ public interface Lctre_NoticeDAO {
 	 * 리스트의 값을 입력한다.
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
@@ -83,7 +83,7 @@ public interface Lctre_NoticeDAO {
 	 * 리스트의 값을 수정한다.
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
@@ -96,7 +96,7 @@ public interface Lctre_NoticeDAO {
 	 * 조회수를 증가시킨다.
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>
@@ -109,7 +109,7 @@ public interface Lctre_NoticeDAO {
 	 * 게시판을 삭제한다.
 	 * </pre>
 	 * <pre>
-	 * @param lctre_Date_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @return int
 	 * @throws SQLException
 	 * </pre>

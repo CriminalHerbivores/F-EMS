@@ -1,11 +1,9 @@
 package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.Lctre_FlpthDAO;
-import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Lctre_FlpthVO;
 
 /**

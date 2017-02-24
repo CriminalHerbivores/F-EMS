@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dto.Lctre_SearchVO;
-import com.uni.fems.dto.Lctre_Unq_NoVO;
 import com.uni.fems.service.Lctre_Unq_NoService;
 
 public class Lctre_Unq_NoServiceImpl implements Lctre_Unq_NoService {
