@@ -76,5 +76,20 @@ public class LctreServiceImpl implements LctreService {
 	}
 
 
+	@Override
+	public List<Lctre_SearchVO> selectLctre(Lctre_SearchVO lctre_SearchVO,
+			int start, int count) throws SQLException {
+		List<Lctre_SearchVO> list = lctreDAO.selectLctre(lctre_SearchVO, start, count);
+		return list;
+	}
+
+
+	@Override
+	public int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		int totalRecord = lctreDAO.countLctre(lctre_SearchVO);
+		return totalRecord;
+	}
+
+
 
 }

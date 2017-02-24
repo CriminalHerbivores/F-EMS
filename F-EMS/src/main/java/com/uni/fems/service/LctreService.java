@@ -71,7 +71,30 @@ public interface LctreService {
 	void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
 	
 	
-	
+	/**
+	 * <pre>
+	 * 개설된 강의를 조건에 따라 조회
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @param start
+	 * @param count
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<Lctre_SearchVO> selectLctre(Lctre_SearchVO lctre_SearchVO, int start, int count) throws SQLException;
+	/**
+	 * <pre>
+	 * 개설된 강의를 조건에 따라 조회한 개수
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 
 		
 	
