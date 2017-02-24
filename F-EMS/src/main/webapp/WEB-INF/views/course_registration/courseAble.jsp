@@ -92,16 +92,14 @@ body {
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td>
-					<c:choose>
-					<c:when test="${lctre.re_Lctre_No==lctre.la_Lctre_No}">
+					<c:if test="${lctre.re_Lctre_No==lctre.la_Lctre_No}">
 					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
 					
 						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강" onclick="add_reqst()">
-					 </c:when>
-					<c:otherwise> 
+					 </c:if>
+					<c:if test="${lctre.re_Lctre_No!=lctre.la_Lctre_No}"> 
 						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소" onclick="del_reqst()">				
-					 </c:otherwise>
-					</c:choose>	 				
+					 </c:if>
 						</td>
 					<td>	
 					<c:choose>

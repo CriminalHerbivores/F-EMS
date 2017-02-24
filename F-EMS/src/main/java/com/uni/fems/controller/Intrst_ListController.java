@@ -96,7 +96,9 @@ public class Intrst_ListController {
 		
 		intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 		try {
+			System.out.println("================ 1111111111111111 intrst_ListVO"+intrst_ListVO);
 			intrst_ListService.deleteIntrst_List(intrst_ListVO);
+			System.out.println("================ 2222222222222222222 intrst_ListVO"+intrst_ListVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
