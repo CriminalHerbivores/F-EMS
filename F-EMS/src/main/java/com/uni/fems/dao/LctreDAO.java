@@ -48,7 +48,7 @@ public interface LctreDAO {
 	
 	/**
 	 * <pre>
-	 * 개설강의 목록의 강이 갯수를 가져오는 메서드
+	 * 개설강의 목록의 강의 갯수를 가져오는 메서드
 	 * </pre>
 	 * <pre>
 	 * @param userSubjctVO
