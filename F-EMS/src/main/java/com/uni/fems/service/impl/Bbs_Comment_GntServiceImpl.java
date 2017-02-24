@@ -73,7 +73,7 @@ public class Bbs_Comment_GntServiceImpl implements Bbs_Comment_GntService{
 	@Override
 	public String pageNumber(int cpage, Bbs_List_Comment_GntVO bbs_List_Comment_Gnt) throws SQLException {
 		int totalRecord = bbs_Comment_GntDAO.totalBbs_Comment_Gnt(bbs_List_Comment_Gnt);
-		String page = new Paging().commentPageNumber(cpage,totalRecord,"detailNotice", "");
+		String page = new Paging().commentPageNumber(cpage,totalRecord,"detailBbs_Gnt", "");
 		return page;
 	}
 

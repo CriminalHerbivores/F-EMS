@@ -24,6 +24,27 @@ function submitNotice(form){
 	document.formm.submit();
 }
 
+function submitGen(form){
+
+	var title = $('#title').val().trim();
+	var content = $('#content').val().trim();
+		if(title=="" || title==null){
+			sweetAlert("Oops...", "제목을 입력해 주세요", "error");
+			/*alert("제목을 입력해 주세요");*/
+			$('#title').focus();
+			return;
+		}
+		
+		$('#title').focus();
+		if(content==""|| content ==null){
+			sweetAlert("Oops...", "내용을 입력해 주세요", "error");
+			/*alert("내용을 입력해 주세요");*/
+			$('#content').focus();
+			return;
+		}
+	document.formm.submit();
+}
+
 /* 메인페이지 주소 반환 */
 function mainpage(){
 	var main = location.pathname.split('/');

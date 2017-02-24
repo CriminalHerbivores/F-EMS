@@ -22,14 +22,14 @@
 		<input type="hidden" name="bl_Bbs_No" value="${bbs_List_Gnt.bl_Bbs_No}">
 			<fieldset>	
 			    <label>제목</label>
-			    <input type="text" name="bb_Sj"  size="64" ><br>
+			    <input type="text" id="title" name="bb_Sj"  size="64" ><br>
 				<label>내용</label>
-			    <textarea rows="8" cols="65" name="bb_Cn"></textarea><br>
+			    <textarea rows="8" id="content" cols="65" name="bb_Cn"></textarea><br>
 			    <input type="file" name="uploadfile">
 			</fieldset>   
 		<div class="clear"></div>
 		 <div id="buttons" style="float:right">
-			<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitForm(this.form);" > 
+			<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitGen(this.form);" > 
 			<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="submitForm(this.form);">	
 		  </div>
 		  
