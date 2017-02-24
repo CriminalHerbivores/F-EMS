@@ -34,12 +34,9 @@ public class Intrst_ListDAOImpl implements Intrst_ListDAO {
 	
 	// 관심 강의 목록
 	@Override
-	public List<Lctre_SearchVO> selectIntrst_list(String in_Stdnt_No,
-			int in_Lctre_No) throws SQLException {
-		List<Lctre_SearchVO> selectIntrst_list;
-		
-		selectIntrst_list = (List<Lctre_SearchVO>) client.queryForObject("selectIntrst_list", in_Stdnt_No,in_Lctre_No);	//이것도 좀 난감
-		return selectIntrst_list;
+	public List<Lctre_SearchVO> selectIntrst_List(String in_Stdnt_No) throws SQLException {
+		List<Lctre_SearchVO> selectIntrst_List = (List<Lctre_SearchVO>)client.queryForList("selectIntrst_List", in_Stdnt_No);
+		return selectIntrst_List;
 	}
 	
 	// 관심 강의 추가
@@ -51,9 +48,9 @@ public class Intrst_ListDAOImpl implements Intrst_ListDAO {
 	
 	// 관심 강의 삭제
 	@Override
-	public void deleteIntrst_List(String in_Stdnt_No, int in_Lctre_No)
+	public void deleteIntrst_List(Intrst_ListVO intrst_ListVO)
 			throws SQLException {
-		client.delete("deleteIntrst_List",in_Stdnt_No);	// 두 개로는 못갖고 오나?
+		client.delete("deleteIntrst_List",intrst_ListVO);	
 	}
 	
 }

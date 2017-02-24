@@ -34,15 +34,11 @@ public class ReqstDAOImpl implements ReqstDAO {
 		this.client=client;
 	}
 	
-	// 수강신청 목록
+	// 수강신청 완료 목록
 	@Override
 	public List<Lctre_SearchVO> selectReqst(String re_Stdnt_No)
 			throws SQLException {
-		List<Lctre_SearchVO> selectReqst;
-		if(re_Stdnt_No==null){
-			re_Stdnt_No="";
-		}
-		selectReqst = (List<Lctre_SearchVO>) client.queryForList("selectReqst", re_Stdnt_No);
+		List<Lctre_SearchVO> selectReqst= (List<Lctre_SearchVO>) client.queryForList("selectReqst", re_Stdnt_No);
 		return selectReqst;
 	}
 	
