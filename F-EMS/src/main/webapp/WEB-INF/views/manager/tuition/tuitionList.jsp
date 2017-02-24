@@ -21,15 +21,16 @@
 <title></title>
 </head>
 <body>
+<table class="non-border margin-auto"><tr><td>
 	<h2>학과 / 등록금 조회</h2>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
-		<td>단과</td>
-		<td>학부</td>
-		<td>학과</td>
-		<td>등록금</td>
-		<td>학과 전화번호</td>
-		<td>수정</td>
+		<th>단과</th>
+		<th>학부</th>
+		<th>학과</th>
+		<th>등록금</th>
+		<th>학과 전화번호</th>
+		<th>수정</th>
 	</tr>
 	<c:forEach var="tut" items="${tuitionList}">
 		<tr>
@@ -49,9 +50,11 @@
 	</table>
 	<form name="searchForm">
 		<input type="hidden" id="key" name="key" value="sit_Subjct"/>
-		<input type="text" name="value"/>
+		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
 		<input type="button" value="검색" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color"/>
-	</form>
 	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
+	<a href="stdTuitionList"><input type="button" value="등록금 납부 내역 조회" class="def-btn btn-color"></a>
+	</form>
+</td></tr></table>
 </body>
 </html>

@@ -32,6 +32,7 @@ public class TuitionDAOImpl implements TuitionDAO {
 	}
 	@Override
 	public void updateTuition(TuitionVO tuitionVO) throws SQLException {
+		System.out.println(tuitionVO.toString());
 		client.update("updateTuition",tuitionVO);
 	}
 	@Override
@@ -45,6 +46,11 @@ public class TuitionDAOImpl implements TuitionDAO {
 			throws SQLException {
 		ArrayList<TuitionVO> list = (ArrayList<TuitionVO>) client.queryForList("selectNotTuition",tuitionVO);
 		return list;
+	}
+	@Override
+	public void updateTuitionNull(TuitionVO tuitionVO) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

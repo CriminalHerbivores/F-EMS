@@ -39,7 +39,7 @@ public class Bbs_List_GntVO implements Serializable{
 	private String bb_Sj;			//게시판 제목
 	private String bb_Cn;			//게시판 내용
 	private Timestamp bb_Writng_dt;	//게시판 작성일
-	private String bb_Rdcnt;		//게시판 조회수
+	private int bb_Rdcnt;		//게시판 조회수
 	
 	
 	

@@ -21,6 +21,7 @@
 <title></title>
 </head>
 <body>
+<table class="non-border margin-auto"><tr><td>
 	<h3>장학금</h3><br/>
 	<h4>기준년도 학기</h4><br/>
 	<table class="def-table-full tb-border table-hover">
@@ -87,5 +88,6 @@
 		</tr>
 		</c:forEach>
 	</table>
+</td></tr></table>
 </body>
 </html>

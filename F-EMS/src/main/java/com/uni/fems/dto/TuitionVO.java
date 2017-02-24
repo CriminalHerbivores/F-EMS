@@ -46,7 +46,7 @@ public class TuitionVO implements Serializable{
 	
 	private String tu_Nm; //???
 	private String coleg_Nm; //단과대학
-	private String sit_Faculty;   // 학부
+	private String fc_Faculty_Nm;   // 학부
 	private String sit_Subjct;   // 학과
 	
 	@Value("tu_No")
