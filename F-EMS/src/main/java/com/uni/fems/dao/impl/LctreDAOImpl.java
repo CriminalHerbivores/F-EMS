@@ -7,9 +7,11 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapSession;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.SearchVO;
 
 /**
  * <pre>
@@ -53,15 +55,23 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	// 현재 개설된 전체 강의 목록
 	@Override
-	public List<Lctre_SearchVO> openLctreList(String lu_Lctre_Nm) throws SQLException { //int tpage, 
-		//개설강의목록 메인
+	public List<Lctre_SearchVO> openLctreList(SearchVO searchVO, int tpage, int totalRecord) throws SQLException { //int tpage, 
+		Paging p = new Paging();
+		int[] rows = p.row(tpage, totalRecord);
+		
 		List<Lctre_SearchVO> openLctreList;
-		if(lu_Lctre_Nm==null){
-			lu_Lctre_Nm="";
-		}
-		openLctreList = (List<Lctre_SearchVO>) client.queryForList("openLctreList", lu_Lctre_Nm);
+		openLctreList = client.queryForList("openLctreList", searchVO,rows[1], rows[0]);
 		return openLctreList;
 	}
+	
+	// 개설 강의 총 갯수
+	@Override
+	public int totalOpenLctre(SearchVO searchVO) throws SQLException{
+		int total_pages = 0;
+		total_pages = (Integer) client.queryForObject("totalOpenLctre",searchVO);
+		return total_pages;
+	}
+	
 	
 	// 교수가 강의 등록 요청
 	@Override

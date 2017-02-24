@@ -85,9 +85,9 @@ public class SklstfServiceImpl implements SklstfService {
 	// 직원 권한 목록 조회 페이지 설정
 		@Override
 		public String pageNumberAtrty(int tpage,SearchVO searchVO) throws SQLException {
-			int totalRecord = sklstfDAO.totalSklstf(searchVO);
-			String page = new Paging().pageNumber(tpage,totalRecord,"sklstfAtrtyList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
-			return page;
+		int totalRecord = sklstfDAO.totalSklstf(searchVO);
+		String page = new Paging().pageNumber(tpage,totalRecord,"sklstfAtrtyList", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
+		return page;
 		}
 
 

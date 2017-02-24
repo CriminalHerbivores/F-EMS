@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
  * <pre>
@@ -18,29 +18,47 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script type="text/javascript">
+function op_timeTable(){
+	alert("시간표");
+/* 
+	swal({
+		title : "Are you sure?",
+		text : "You will not be able to recover this imaginary file!",
+		type : "warning",
+		showCancelButton : true,
+		confirmButtonColor : "#DD6B55",
+		confirmButtonText : "닫기",
+		closeOnConfirm : false
+	}, function (){
+		swal("Deleted!", "Your imaginary file has been deleted.", "success");
+	}); */
+}
+</script>
 <style>
-body{
-	 /* background:#CEFBC9; */
+body {
+	/* background:#CEFBC9; */
+	
 }
 </style>
 
 </head>
 <body class="course-list-r-bottom">
-<form>
+	<form>
 
-<div class="text-center">
-<%-- 
+		<div class="text-center">
+			<%-- 
 <a href="<%=request.getContextPath() %>/course/course_timetable" class="openMask"><input type="button" class="def-btn" value="시간표"></a><br/>
  --%>
 
 
 
 
-  <!-- Trigger the modal with a button -->
-  <!-- <button type="button" class="def-btn btn-md btn-color" id="openmodal" data-toggle="modal" data-target="#myModal">시간표</button> -->
+			<!-- Trigger the modal with a button -->
+			<!-- <button type="button" class="def-btn btn-md btn-color" id="openmodal" data-toggle="modal" data-target="#myModal">시간표</button> -->
 
- <!-- Modal -->
-<!--   <div class="modal fade" id="myModal" role="dialog">
+			<!-- Modal -->
+			<!--   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       Modal content
@@ -69,21 +87,31 @@ body{
 
 
 
-<table  class="def-table-full tb-border table-hover">
-	<h4>관심 강의 목록&nbsp;&nbsp;<button type="button" class="def-btn btn-md btn-color" id="openmodal" data-toggle="modal" data-target="#myModal">시간표</button></h4>
-	<tr><th colspan="2">강의명</th></tr>
-	<c:forEach items="${lctre_SearchVO}" var="intrst">
-	<tr><td>${intrst.lu_Lctre_Nm }</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
-	</c:forEach>
-	
-	<!-- <tr><td>컴퓨터 입문</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
+			<table class="def-table-full tb-border table-hover">
+				<h4>
+					관심 강의 목록&nbsp;&nbsp;
+					<button type="button" class="def-btn btn-md btn-color"
+						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button>
+				</h4>
+				<tr>
+					<th colspan="2">강의명</th>
+				</tr>
+				<c:forEach items="${lctre_SearchVO}" var="intrst">
+					<tr>
+						<td>${intrst.lu_Lctre_Nm }</td>
+						<td><input type="button" class="def-ckbtn btn-sm ckbtn-color"
+							value="해제"></td>
+					</tr>
+				</c:forEach>
+
+				<!-- <tr><td>컴퓨터 입문</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
 	<tr><td>데이터 통신</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
- -->	
-</table>
+ -->
+			</table>
 
-</div>
+		</div>
 
 
-</form>
+	</form>
 </body>
 </html>

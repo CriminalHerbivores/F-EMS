@@ -32,16 +32,19 @@ body {
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
 	<table class="def-table-full">
+	
 	<tr><td class="text-right">
-					<select name="선택" class="combobox-md custom-form-control">
-					<option value="032">전공</option>
-					<option value="033">교양</option>
-					<option value="02">강의</option>
-					<option value="031">학과</option>
-					<option value="041">담당교수</option>
+	<input type="radio" name="lu_Compl_Se" value="">전공&nbsp;<input type="radio" name="lu_Compl_Se" value="">교양&nbsp;&nbsp;
+	<input type="radio" name="knd_Lctre_Knd" value="">일반&nbsp;<input type="radio" name="knd_Lctre_Knd" value="">사이버&nbsp;&nbsp;
+	
+	<tr><td class="text-right">				<select name="key" class="combobox-md custom-form-control">
+					<option value="lu_Lctre_Nm">강의명</option>
+					<option value="pr_Nm">담당교수</option>
+					<option value="sit_Subjct">개설학과</option>
+					<option value="lu_Lctre_Code">강의코드</option>
 				</select>&nbsp;&nbsp;
-					<input type="text" class="def-input-text-md custom-form-control">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" value="조회"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>&nbsp;&nbsp;
+					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
+					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 					<input type="button" class="def-btn btn-search btn-color" value="상세검색">&nbsp;&nbsp;
 	</td></tr>
 	</table>
@@ -67,7 +70,7 @@ body {
 					<th>제한인원</th>
 				</tr>
 				
-				<c:forEach items="${lctre_SearchVO}" var="lctre" begin="0" end="9">
+				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td>
 					<%-- <c:choose>
@@ -98,42 +101,8 @@ body {
 					<td>${lctre.lr_Accept_Nmpr}</td> 
 				</tr>
 			</c:forEach>
-				
-				<!-- <tr>
-					<td>값</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr> -->
-				
-				<!-- ////////////////////////////////////////////////////////// -->
-				
-				
-				
-<!-- <tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td>컴퓨터공학과</td><td>10473</td><td>00</td><td>1</td><td>컴퓨터 입문</td><td>교양</td><td>3/2/2</td><td>유관종</td><td>월(8~9교시), 수(5~6교시)</td><td>1</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>10473</td><td>01</td><td>1</td><td>컴퓨터 입문</td><td>교양</td><td>3/2/2</td><td>김상형</td><td>월(6~7교시), 수(7~8교시)</td><td>0</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="해제"></td><td>컴퓨터공학과</td><td>14773</td><td>01</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>김상하</td><td>수(1교시), 수(6~7교시)</td><td>1</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>14773</td><td>00</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>김상하</td><td>수(2~3교시), 수(~교시)</td><td>0</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>14773</td><td>02</td><td>3</td><td>데이터통신</td><td>전공</td><td>3/3/0</td><td>이영석</td><td>수(1교시), 수(6~7교시)</td><td>0</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>18129</td><td>02</td><td>2</td><td>논리회로및실험</td><td>전공</td><td>3/2/2</td><td>김형신</td><td>월(2~3교시), 수(6~7교시)</td><td>0</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>18129</td><td>00</td><td>2</td><td>논리회로및실험</td><td>전공</td><td>3/2/2</td><td>김형식</td><td>월(2~3교시), 수(6~7교시)</td><td>0</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>18129</td><td>03</td><td>2</td><td>논리회로및실험</td><td>전공</td><td>3/2/2</td><td>김형신</td><td>월(5~6교시), 목(2~3교시)</td><td>0</td><td>40</td></tr>
-<tr><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="신청"></td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심"></td><td>컴퓨터공학과</td><td>22132</td><td>01</td><td>1</td><td>이산수학</td><td>전공</td><td>3/3/0</td><td>황치정</td><td>월(9교시), 화(7~8교시)</td><td>0</td><td>40</td></tr>
- -->				
-				
-				
-				
-				<!-- ///////////////////////////////////////////////////////////// -->
-				
+			<tr><td colspan="13" style="text-align: center;">${paging }</td></tr>				
+					
 			</table>
 </div>
 	</form>

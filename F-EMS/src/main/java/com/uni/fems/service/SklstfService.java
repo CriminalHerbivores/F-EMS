@@ -66,7 +66,7 @@ public interface SklstfService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
+	String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
 	
 	/**
