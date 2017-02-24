@@ -10,12 +10,13 @@
 <sqlMap namespace="Test_Paper">
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="testpaper" type="com.uni.fems.dto.Test_PaperVO" />
 	
-	<select id="listAllTestPaper" parameterClass="int" resultClass="Test_Paper">
+	<select id="listAllTestPaper" parameterClass="int" resultClass="testpaper">
 		select * from test_paper where tp_lctre_no=#tp_Lctre_No#
 	</select>
 	
-	<update id="insertTestPaper" parameterClass="Test_Paper">
+	<update id="insertTestPaper" parameterClass="testpaper">
 		insert into test_paper(tp_no,tp_lctre_no,tp_nm,tp_profsr_no) 
 		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#)
 	</update>

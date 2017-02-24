@@ -10,12 +10,13 @@
 <sqlMap namespace="Test">
 	<typeAlias alias="str" type="java.lang.String" />	
 	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="test" type="com.uni.fems.dto.TestVO" />
 	
-	<select id="listAllTest" parameterClass="int" resultClass="Test">
+	<select id="listAllTest" parameterClass="int" resultClass="test">
 		select * from test where te_tp_no=#te_Tp_No#
 	</select>
 	
-	<update id="insertTest" parameterClass="Test">
+	<update id="insertTest" parameterClass="test">
 	insert into test(te_ques_no,te_tp_no,te_ques,te_ca) 
 	values(te_seq.nextval,#te_Ques_No#,#te_Ques#,#te_Ca#)
 	</update>
