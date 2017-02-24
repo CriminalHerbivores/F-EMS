@@ -13,17 +13,17 @@ import com.uni.fems.service.Lctre_TaskService;
 
 /**
  * <pre>
- * 게시판을 사용하기 위한 서비스
+ * 강의 과제 게시판을 사용하기 위한 서비스
  * </pre>
  * @author KJS
- * @since 2017.02.23
+ * @since 2017.02.24
  * @version 1.0
  * @see javax.servlet.http.HttpServlet
  * <pre>
  * [[개정이력(Modification Information)]]
  *   수정일             수정자                    수정내용
  * --------     --------    ----------------------
- * 2017.02.23     kjs                    최초작성
+ * 2017.02.24     kjs                    최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -85,10 +85,6 @@ public class Lctre_TaskServiceImpl implements Lctre_TaskService{
 			lctre_Task_Gnt.setLt_Flpth_No(maxNo+"");
 		}
 		return lctre_TaskDAO.updateLctre_Task(lctre_Task_Gnt);
-	}
-	@Override
-	public int countLctre_Task(Lctre_Task_GntVO lctre_Task_Gnt) throws SQLException {
-		return lctre_TaskDAO.countLctre_Task(lctre_Task_Gnt);
 	}
 	@Override
 	public int deleteLctre_Task(Lctre_Task_GntVO lctre_Task_Gnt) throws SQLException {

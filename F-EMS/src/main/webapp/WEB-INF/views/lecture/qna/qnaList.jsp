@@ -28,14 +28,14 @@
 <table class="non-border margin-auto">
 <tr><td>
 <div class="text-center">
-  <h2>강의 과제 게시판</h2>
+  <h2>강의 공지 게시판</h2>
  <hr />
 
 <form name="formm">
 <div class="text-right">
   <select name="key" class="combobox-md custom-form-control">
-  	<option value="lt_Sj">제목</option>
-  	<option value="lt_Cn">내용</option>
+  	<option value="ld_Sj">제목</option>
+  	<option value="ld_Cn">내용</option>
   </select>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
@@ -47,18 +47,17 @@
         <th>No</th>
         <th style="width:500px;">제목</th>
         <th>작성날짜</th>
-        <th>작성자</th>
         <th>조회수</th>
       </tr>
       
-      <c:forEach var="lctre_Task" items="${lctre_TaskList }">
+      <c:forEach var="lctre_Notice" items="${lctre_NoticeList }">
       	<tr>
-      		<td> ${lctre_Task.lt_Bbs_No}</td>
-      		<td><a href="detailLctre_Task?lt_Bbs_No=${lctre_Task.lt_Bbs_No}&table_Nm=${lctre_Task_Gnt.table_Nm}&tpage=${tpage}">
-      		 ${lctre_Task.lt_Sj} </a>
+      		<td> ${lctre_Notice.ln_Bbs_No}</td>
+      		<td><a href="detailLctre_Notice?ln_Bbs_No=${lctre_Notice.ln_Bbs_No}&table_Nm=${lctre_Notice_Gnt.table_Nm}&tpage=${tpage}">
+      		 ${lctre_Notice.ln_Sj} </a>
       		</td>
-      		<td><fmt:formatDate value="${lctre_Task.lt_Writng_Dt}" /> </td>
-      		<td> ${lctre_Task.lt_Stdnt_No}</td> <!-- 조회수 -->
+      		<td><fmt:formatDate value="${lctre_Notice.ln_Writng_Dt}" /> </td>
+      		<td> ${lctre_Notice.ln_Rdcnt}</td> <!-- 조회수 -->
       		
       	</tr>
       </c:forEach>
@@ -69,7 +68,7 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<a href="writeLctre_Task?table_Nm=${lctre_Task_Gnt.table_Nm}">
+	  	<a href="writeLctre_Notice?table_Nm=${lctre_Notice_Gnt.table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
 </td></tr>  
