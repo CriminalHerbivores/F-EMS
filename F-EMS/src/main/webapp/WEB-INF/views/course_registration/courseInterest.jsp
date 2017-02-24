@@ -72,9 +72,13 @@ body{
 <table  class="def-table-full tb-border table-hover">
 	<h4>관심 강의 목록&nbsp;&nbsp;<button type="button" class="def-btn btn-md btn-color" id="openmodal" data-toggle="modal" data-target="#myModal">시간표</button></h4>
 	<tr><th colspan="2">강의명</th></tr>
-	<tr><td>컴퓨터 입문</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
-	<tr><td>데이터 통신</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
+	<c:forEach items="${lctre_SearchVO}" var="intrst">
+	<tr><td>${intrst.lu_Lctre_Nm }</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
+	</c:forEach>
 	
+	<!-- <tr><td>컴퓨터 입문</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
+	<tr><td>데이터 통신</td><td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="해제"></td></tr>
+ -->	
 </table>
 
 </div>

@@ -180,39 +180,7 @@ public class LctreController {
 	
 	
 
-	/**
-	 * <pre>
-	 * 수강신청 완료 목록 폼
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value="/courseComplete", method=RequestMethod.GET)
-	public String courseCompleteForm(HttpServletRequest request,
-			HttpSession session) {
-		String url = "course_registration/courseComplete";
-		return url;
-	}
 
-	/**
-	 * <pre>
-	 * 관심 강의 목록 폼
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/courseInterest")
-	public String courseInterest(HttpServletRequest request,
-			HttpSession session) {
-		String url = "course_registration/courseInterest";
-		return url;
-	}
 
 	/**
 	 * <pre>
@@ -224,12 +192,12 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseCredit")
-	public String courseCredit(HttpServletRequest request,
-			HttpSession session) {
-		String url = "course_registration/courseCredit";
-		return url;
-	}
+//	@RequestMapping("/courseCredit")
+//	public String courseCredit(HttpServletRequest request,
+//			HttpSession session) {
+//		String url = "course_registration/courseCredit";
+//		return url;
+//	}
 
 	/**
 	 * <pre>
@@ -241,11 +209,11 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseTimetable")
-	public String courseTimetable(HttpServletRequest request,
-			HttpSession session) {
-		String url = "course_registration/courseTimetable";
-		return url;
-	}
+//	@RequestMapping("/courseTimetable")
+//	public String courseTimetable(HttpServletRequest request,
+//			HttpSession session) {
+//		String url = "course_registration/courseTimetable";
+//		return url;
+//	}
 
 }

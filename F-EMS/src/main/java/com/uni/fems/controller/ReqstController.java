@@ -1,7 +1,9 @@
 package com.uni.fems.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import lombok.Data;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dao.ReqstDAO;
+import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.StdntService;
 
@@ -33,15 +38,52 @@ import com.uni.fems.service.StdntService;
  * </pre>
  */
 @Controller
-//@RequestMapping("/stdnt")
-//@Data
+@RequestMapping("/course")
 public class ReqstController {
 	
-//	@Autowired
-//	private ReqstService reqstService;
-//	
-//	@Autowired
-//	private ReqstDAO reqstDAO; 
+	@Autowired
+	private ReqstService reqstService;
+	@Autowired
+	StdntService stdntService;
+
+	
+	/**
+	 * <pre>
+	 * 관심 강의 목록 폼
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/courseComplete")
+	public String courseCompleteForm(Model model, HttpServletRequest request,
+			HttpSession session,ReqstVO reqstVO) {
+		String url = "course_registration/courseComplete";
+		
+		List<Lctre_SearchVO> lctre_SearchVO=null;
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		try {
+			reqstVO.setRe_Stdnt_No(st_Stdnt_No);
+			lctre_SearchVO=reqstService.selectReqst(reqstVO.getRe_Stdnt_No());
+			stdntService.selectStdnt(st_Stdnt_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
+
+		return url;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	
 //	
 //	/**

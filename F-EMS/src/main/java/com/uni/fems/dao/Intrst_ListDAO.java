@@ -35,7 +35,7 @@ public interface Intrst_ListDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	List<Lctre_SearchVO> selectIntrst_list(String in_Stdnt_No,int in_Lctre_No) throws SQLException;
+	List<Lctre_SearchVO> selectIntrst_List(String in_Stdnt_No) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -57,5 +57,5 @@ public interface Intrst_ListDAO {
 	 * @param in_Lctre_No
 	 * @throws SQLException
 	 */
-	void deleteIntrst_List(String in_Stdnt_No,int in_Lctre_No) throws SQLException;
+	void deleteIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException;
 }
