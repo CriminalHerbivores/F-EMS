@@ -370,6 +370,13 @@
       p:lctre_NoticeDAO-ref="lctre_NoticeDAO" 
       />
      
+     <bean id="lctre_TaskDAO" class="com.uni.fems.dao.impl.Lctre_TaskDAOImpl"
+      p:client-ref="sqlMapClient" /> 
+      
+      <bean id="lctre_TaskService" class="com.uni.fems.service.impl.Lctre_TaskServiceImpl"
+      p:lctre_TaskDAO-ref="lctre_TaskDAO" 
+      p:lctre_FlpthDAO-ref="lctre_FlpthDAO"
+      />
      
      <bean id="fileDownload" class="com.uni.fems.common.FileDownload"/>
      <bean id="supporter" class="com.uni.fems.common.Supporter"/>

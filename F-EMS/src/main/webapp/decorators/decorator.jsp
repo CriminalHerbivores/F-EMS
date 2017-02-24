@@ -187,10 +187,10 @@
 								<a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
 								<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
 								<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
-								<a href="<%=request.getContextPath()%>/lctre/qnaList">질의응답
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/hwList">과제
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/mediaList">동영상
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/attendList">시청
+								<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답
+									게시판</a> <a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제
+									게시판</a> <a href="<%=request.getContextPath()%>/lctre/vdiaList?table_Nm=test">동영상
+									게시판</a> <a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청
 									여부 게시판</a>
 
 							</div>
@@ -404,16 +404,16 @@
 									</div>
 									<div class="inherit-size">
 										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/hwList">과제 게시판</a></li>
+											href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제 게시판</a></li>
 									</div>
 									<div class="inherit-size">
 										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/mediaList">동영상
+											href="<%=request.getContextPath()%>/lctre/mediaList?table_Nm=test">동영상
 												게시판</a></li>
 									</div>
 									<div class="inherit-size">
 										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/attendList">시청
+											href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청
 												여부 게시판</a></li>
 									</div>
 

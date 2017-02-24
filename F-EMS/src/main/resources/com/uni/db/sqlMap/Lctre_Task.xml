@@ -14,36 +14,43 @@
 
  	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="lctre_task" type="com.uni.fems.dto.Lctre_TaskVO" />
+	<typeAlias alias="lctre_task_gnt" type="com.uni.fems.dto.Lctre_Task_GntVO" />
 	
-	<select id="listAllLctre_Task" >
-		select * from LT_$tabl_Nm$ where LT_SJ like '%$lt_Sj$%' order by LT_BBS_NO desc
+	<select id="listAllLctre_Task" parameterClass="lctre_task_gnt" resultClass="lctre_task">
+		select * from Lctre_T$table_Nm$ 
+		where LT_SJ like '%$lt_Sj$%' 
+		and LT_CN like '%$lt_Cn$%' 
+		order by LT_BBS_NO desc
 	</select>
 	
-	<select id="totalLctre_Task" >
-		select count(*) from LT_$tabl_Nm$ where LT_SJ like '%$lt_Sj$%'
+	<select id="totalLctre_Task" parameterClass="lctre_task_gnt" resultClass="int">
+		select count(*) from Lctre_T$table_Nm$ 
+		where LT_SJ like '%$lt_Sj$%'
+		and LT_CN like '%$lt_Cn$%' 
 	</select>
 	 
-	<select id="getLctre_Task" >
-		select * from LT_$tabl_Nm$ where LT_BBS_NO=#lt_Bbs_No#
+	<select id="getLctre_Task" parameterClass="lctre_task_gnt" resultClass="lctre_task">
+		select * from Lctre_T$table_Nm$ where LT_BBS_NO=#lt_Bbs_No#
 	</select>
 	
-	<update id="insertLctre_Task" >
-		insert into LT_$tabl_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,LD_WRITNG_DT,LD_RDCNT,LD_FLPTH_NO) 
-		values(((select max(LT_BBS_NO) from LT_$tabl_Nm)+1)),#lt_Stdnt_No#,#lt_Sj#,#lt_Cn#,sysdate,0,#lt_Flpth_No#)
+	<update id="insertLctre_Task" parameterClass="lctre_task_gnt">
+		insert into Lctre_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,Lt_WRITNG_DT,Lt_RDCNT,Lt_FLPTH_NO) 
+		values(((select max(LT_BBS_NO) from Lctre_T$table_Nm$)+1),#lt_Stdnt_No#,#lt_Sj#,#lt_Cn#,sysdate,0,#lt_Flpth_No#)
 	</update>
 	
-	<update id="updateLctre_Task" >
-		update LT_$tabl_Nm$ set LT_SJ=#lt_Sj#,LT_CN=#lt_Cn#,LT_FLPTH_NO=#lt_Flpth_No# 
+	<update id="updateLctre_Task" parameterClass="lctre_task_gnt">
+		update Lctre_T$table_Nm$ set LT_SJ=#lt_Sj#,LT_CN=#lt_Cn#,LT_FLPTH_NO=#lt_Flpth_No# 
 		where LT_BBS_NO=#lt_Bbs_No#
 	</update>
 	
-	<update id="updateLctre_Task_Rdcnt" >
-		update LT_$tabl_Nm$ set LT_RDCNT=#lt_Rdcnt#
+	<update id="countLctre_Task" parameterClass="lctre_task_gnt">
+		update Lctre_T$table_Nm$ set LT_RDCNT=#lt_Rdcnt#
 		where LT_BBS_NO=#lt_Bbs_No#
 	</update>
 	
-	<update id="deleteLctre_Task" >
-		delete from LT_$tabl_Nm$ where LT_BBS_NO=#lt_Bbs_No#
+	<update id="deleteLctre_Task" parameterClass="lctre_task_gnt">
+		delete from Lctre_T$table_Nm$ where LT_BBS_NO=#lt_Bbs_No#
 	</update>
 	
 	

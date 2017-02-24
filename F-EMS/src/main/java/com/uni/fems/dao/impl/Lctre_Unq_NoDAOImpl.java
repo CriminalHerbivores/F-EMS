@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.Lctre_Unq_NoVO;

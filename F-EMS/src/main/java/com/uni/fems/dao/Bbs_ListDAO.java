@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.uni.fems.dto.Bbs_AtrtyVO;
-import com.uni.fems.dto.Bbs_CommentVO;
 import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
 

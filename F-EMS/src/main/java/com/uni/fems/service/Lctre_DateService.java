@@ -6,7 +6,6 @@ import java.util.List;
 import com.uni.fems.dto.Lctre_DateVO;
 import com.uni.fems.dto.Lctre_Date_GntVO;
 import com.uni.fems.dto.Lctre_FlpthVO;
-import com.uni.fems.dto.SearchVO;
 
 /**
  * <pre>

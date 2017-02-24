@@ -16,34 +16,34 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	
 	<select id="listAllLctre_Qna" >
-		select * from LQ_$tabl_Nm$ where LQ_SJ like '%$lq_Sj$%' order by LQ_BBS_NO desc
+		select * from Lctre_Q$table_Nm$ where LQ_SJ like '%$lq_Sj$%' order by LQ_BBS_NO desc
 	</select>
 	
 	<select id="totalLctre_Qna" >
-		select count(*) from LQ_$tabl_Nm$ where LQ_SJ like '%$lq_Sj$%'
+		select count(*) from Lctre_Q$table_Nm$ where LQ_SJ like '%$lq_Sj$%'
 	</select>
 	
 	<select id="getLctre_Qna" >
-		select * from LQ_$tabl_Nm$ where LQ_BBS_NO=#lq_Bbs_No#
+		select * from Lctre_Q$table_Nm$ where LQ_BBS_NO=#lq_Bbs_No#
 	</select>
 	
 	<update id="insertLctre_Qna" >
-		insert into LQ_$tabl_Nm$(LQ_BBS_NO,LQ_STDNT_NO,LQ_SJ,LQ_CN,LQ_WRITNG_DT,LQ_RDCNT) 
-		values(((select max(LQ_BBS_NO) from LQ_$tabl_Nm)+1)),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0,#ld_Flpth_No#)
+		insert into Lctre_Q$table_Nm$(LQ_BBS_NO,LQ_STDNT_NO,LQ_SJ,LQ_CN,LQ_WRITNG_DT,LQ_RDCNT) 
+		values(((select max(LQ_BBS_NO) from Lctre_Q$table_Nm$)+1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0,#ld_Flpth_No#)
 	</update>
 	
 	<update id="updateLctre_Qna" >
-		update LQ_$tabl_Nm$ set LQ_SJ=#ld_Sj#,LQ_CN=#ld_Cn#,LD_FLPTH_NO=#ld_Flpth_No# 
+		update Lctre_Q$table_Nm$ set LQ_SJ=#ld_Sj#,LQ_CN=#ld_Cn#,LD_FLPTH_NO=#ld_Flpth_No# 
 		where LQ_BBS_NO=#ld_Bbs_No#
 	</update>
 	
 	<update id="updateLctre_Qna_Rdcnt" >
-		update LQ_$tabl_Nm$ set LD_RDCNT=#ld_Rdcnt#
+		update Lctre_Q$table_Nm$ set LD_RDCNT=#ld_Rdcnt#
 		where LD_BBS_NO=#ld_Bbs_No#
 	</update>
 	
 	<update id="deleteLctre_Qna" >
-		delete from LQ_$tabl_Nm$ where LD_BBS_NO=#ld_Bbs_No#
+		delete from Lctre_Q$table_Nm$ where LD_BBS_NO=#ld_Bbs_No#
 	</update>
 	
 	

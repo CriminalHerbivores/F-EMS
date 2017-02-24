@@ -27,11 +27,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uni.fems.common.FileDownload;
 import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.FilesVO;
-import com.uni.fems.dto.Lctre_DateVO;
-import com.uni.fems.dto.Lctre_Date_GntVO;
+import com.uni.fems.dto.Lctre_TaskVO;
+import com.uni.fems.dto.Lctre_Task_GntVO;
 import com.uni.fems.dto.Lctre_FlpthVO;
 import com.uni.fems.dto.SearchVO;
-import com.uni.fems.service.Lctre_DateService;
+import com.uni.fems.service.Lctre_TaskService;
 
 /**
  * <pre>
@@ -54,12 +54,12 @@ import com.uni.fems.service.Lctre_DateService;
 
 @Controller
 @RequestMapping("/lctre")
-public class Lctre_DateController implements ApplicationContextAware{
+public class Lctre_TaskController implements ApplicationContextAware{
 	
 	private WebApplicationContext context = null;
 	
 	@Autowired
-	private Lctre_DateService lctre_DateSvc;
+	private Lctre_TaskService lctre_TaskSvc;
 	
 	/**
 	 * <pre>
@@ -74,9 +74,9 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping("/dateList")
-	public String Lctre_DateList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		String url="lecture/date/dateList";
+	@RequestMapping("/taskList")
+	public String Lctre_TaskList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+		String url="lecture/task/taskList";
 		String tpage = request.getParameter("tpage");
 		String table_Nm = request.getParameter("table_Nm");
 		
@@ -87,31 +87,31 @@ public class Lctre_DateController implements ApplicationContextAware{
 		}
 		model.addAttribute("tpage",tpage);
 
-		Lctre_Date_GntVO lctre_Date_Gnt = new Lctre_Date_GntVO();
-		lctre_Date_Gnt.setTable_Nm(table_Nm);
+		Lctre_Task_GntVO lctre_Task_Gnt = new Lctre_Task_GntVO();
+		lctre_Task_Gnt.setTable_Nm(table_Nm);
 		if(searchVO != null ||searchVO.getKey().equals("ld_Sj")){
-			lctre_Date_Gnt.setLd_Sj(searchVO.getValue());
-			lctre_Date_Gnt.setLd_Cn("%");
+			lctre_Task_Gnt.setLt_Sj(searchVO.getValue());
+			lctre_Task_Gnt.setLt_Cn("%");
 		}else if(searchVO != null || searchVO.getKey().equals("ld_Cn")){
-			lctre_Date_Gnt.setLd_Sj("%");
-			lctre_Date_Gnt.setLd_Cn(searchVO.getValue());
+			lctre_Task_Gnt.setLt_Sj("%");
+			lctre_Task_Gnt.setLt_Cn(searchVO.getValue());
 		}else{
-			lctre_Date_Gnt.setLd_Sj("%");
-			lctre_Date_Gnt.setLd_Cn("%");
+			lctre_Task_Gnt.setLt_Sj("%");
+			lctre_Task_Gnt.setLt_Cn("%");
 		}
-		model.addAttribute("lctre_Date_Gnt", lctre_Date_Gnt);
+		model.addAttribute("lctre_Task_Gnt", lctre_Task_Gnt);
 		
-		List<Lctre_DateVO> lctre_DateList = null;
+		List<Lctre_TaskVO> lctre_TaskList = null;
 		String paging = null;
 		try {
-			lctre_DateList = lctre_DateSvc.listAllLctre_Date(Integer.parseInt(tpage), lctre_Date_Gnt);
-			paging = lctre_DateSvc.pageNumber(Integer.parseInt(tpage), lctre_Date_Gnt);
+			lctre_TaskList = lctre_TaskSvc.listAllLctre_Task(Integer.parseInt(tpage), lctre_Task_Gnt);
+			paging = lctre_TaskSvc.pageNumber(Integer.parseInt(tpage), lctre_Task_Gnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("lctre_DateList", lctre_DateList);
-		int n = lctre_DateList.size();
-		model.addAttribute("lctre_DateListSize", n);
+		model.addAttribute("lctre_TaskList", lctre_TaskList);
+		int n = lctre_TaskList.size();
+		model.addAttribute("lctre_TaskListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -129,9 +129,9 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value="/writeLctre_Date", method=RequestMethod.GET)
-	public String writeLctre_DateForm(Model model, String table_Nm) throws ServletException, IOException {
-		String url="lecture/date/writeLctre_Date";
+	@RequestMapping(value="/writeLctre_Task", method=RequestMethod.GET)
+	public String writeLctre_TaskForm(Model model, String table_Nm) throws ServletException, IOException {
+		String url="lecture/task/writeLctre_Task";
 		model.addAttribute("table_Nm", table_Nm);
 		return url;
 	}
@@ -152,12 +152,15 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value="/writeLctre_Date", method=RequestMethod.POST)
-	public String writeLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO, HttpServletRequest request,
+	@RequestMapping(value="/writeLctre_Task", method=RequestMethod.POST)
+	public String writeLctre_Task(Lctre_Task_GntVO lctre_Task_Gnt, Lctre_FlpthVO lctre_FlpthVO, HttpServletRequest request,
 								@RequestParam("uploadfile")MultipartFile uploadfile, HttpSession session, Model model)
 								throws ServletException, IOException{
-		String url = "redirect:dateList";
+		String url = "redirect:taskList";
 		
+//		String loginUser = (String)session.getAttribute("loginUser");
+		String loginUser = "bbb";
+		lctre_Task_Gnt.setLt_Stdnt_No(loginUser);
 		if(!uploadfile.isEmpty()){
 			FilesVO vo = new FileDownload().uploadFile(uploadfile);
 			
@@ -165,11 +168,11 @@ public class Lctre_DateController implements ApplicationContextAware{
 			lctre_FlpthVO.setLf_Flpth(vo.getFl_File_Nm());
 		}
 		try {
-			lctre_DateSvc.insertLctre_Date(lctre_Date_Gnt, lctre_FlpthVO);
+			lctre_TaskSvc.insertLctre_Task(lctre_Task_Gnt, lctre_FlpthVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("table_Nm", lctre_Date_Gnt.getTable_Nm());
+		model.addAttribute("table_Nm", lctre_Task_Gnt.getTable_Nm());
 		
 		return url;
 	}
@@ -186,26 +189,26 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/detailLctre_Date")
-	public String detailLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
-		String url="lecture/date/detailLctre_Date";
+	@RequestMapping(value="/detailLctre_Task")
+	public String detailLctre_Task(Lctre_Task_GntVO lctre_Task_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
+		String url="lecture/task/detailLctre_Task";
 		
-		Lctre_DateVO lctre_Date = null;
+		Lctre_TaskVO lctre_Task = null;
 		Lctre_FlpthVO lctre_Flpth = null;
 		try {
-			lctre_Date = lctre_DateSvc.getLctre_Date(lctre_Date_Gnt);
-			lctre_Flpth = lctre_DateSvc.getLctre_Flpth(lctre_Date.getLd_Flpth_No());
-			lctre_Date_Gnt.setLd_Cn(lctre_Date.getLd_Cn());
-			lctre_Date_Gnt.setLd_Sj(lctre_Date.getLd_Sj());
-			lctre_Date_Gnt.setLd_Writng_Dt(lctre_Date.getLd_Writng_Dt());
-			lctre_Date_Gnt.setLd_Rdcnt(lctre_Date.getLd_Rdcnt()+1);
-			lctre_Date_Gnt.setLd_Flpth_No(lctre_Date.getLd_Flpth_No());
-			lctre_DateSvc.countLctre_Date(lctre_Date_Gnt);
+			lctre_Task = lctre_TaskSvc.getLctre_Task(lctre_Task_Gnt);
+			lctre_Flpth = lctre_TaskSvc.getLctre_Flpth(lctre_Task.getLt_Flpth_No());
+			lctre_Task_Gnt.setLt_Cn(lctre_Task.getLt_Cn());
+			lctre_Task_Gnt.setLt_Sj(lctre_Task.getLt_Sj());
+			lctre_Task_Gnt.setLt_Writng_Dt(lctre_Task.getLt_Writng_Dt());
+			lctre_Task_Gnt.setLt_Rdcnt(lctre_Task.getLt_Rdcnt()+1);
+			lctre_Task_Gnt.setLt_Flpth_No(lctre_Task.getLt_Flpth_No());
+			lctre_TaskSvc.countLctre_Task(lctre_Task_Gnt);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		model.addAttribute("lctre_Date_Gnt",lctre_Date_Gnt);
+		model.addAttribute("lctre_Task_Gnt",lctre_Task_Gnt);
 		model.addAttribute("tpage",tpage);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;
@@ -223,25 +226,25 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/updateLctre_Date", method=RequestMethod.GET)
-	public String updateBbs_GntForm(Lctre_Date_GntVO lctre_Date_Gnt,@RequestParam int tpage, Model model, HttpServletRequest request){
-		String url="lecture/date/updateLctre_Date";
-		Lctre_DateVO lctre_Date = null;
+	@RequestMapping(value="/updateLctre_Task", method=RequestMethod.GET)
+	public String updateBbs_GntForm(Lctre_Task_GntVO lctre_Task_Gnt,@RequestParam int tpage, Model model, HttpServletRequest request){
+		String url="lecture/task/updateLctre_Task";
+		Lctre_TaskVO lctre_Task = null;
 		Lctre_FlpthVO lctre_Flpth = null;
 		try {
 			
-			lctre_Date = lctre_DateSvc.getLctre_Date(lctre_Date_Gnt);
-			lctre_Flpth = lctre_DateSvc.getLctre_Flpth(lctre_Date.getLd_Flpth_No());
-			lctre_Date_Gnt.setLd_Cn(lctre_Date.getLd_Cn());
-			lctre_Date_Gnt.setLd_Sj(lctre_Date.getLd_Sj());
-			lctre_Date_Gnt.setLd_Writng_Dt(lctre_Date.getLd_Writng_Dt());
-			lctre_Date_Gnt.setLd_Rdcnt(lctre_Date.getLd_Rdcnt());
-			lctre_Date_Gnt.setLd_Flpth_No(lctre_Date.getLd_Flpth_No());
+			lctre_Task = lctre_TaskSvc.getLctre_Task(lctre_Task_Gnt);
+			lctre_Flpth = lctre_TaskSvc.getLctre_Flpth(lctre_Task.getLt_Flpth_No());
+			lctre_Task_Gnt.setLt_Cn(lctre_Task.getLt_Cn());
+			lctre_Task_Gnt.setLt_Sj(lctre_Task.getLt_Sj());
+			lctre_Task_Gnt.setLt_Writng_Dt(lctre_Task.getLt_Writng_Dt());
+			lctre_Task_Gnt.setLt_Rdcnt(lctre_Task.getLt_Rdcnt());
+			lctre_Task_Gnt.setLt_Flpth_No(lctre_Task.getLt_Flpth_No());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		model.addAttribute("lctre_Date_Gnt",lctre_Date_Gnt);
+		model.addAttribute("lctre_Task_Gnt",lctre_Task_Gnt);
 		model.addAttribute("tpage",tpage);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;
@@ -261,21 +264,24 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/updateLctre_Date", method=RequestMethod.POST)
+	@RequestMapping(value="/updateLctre_Task", method=RequestMethod.POST)
 	public String updateBbs_Gnt(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,
-			Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO, HttpSession session, HttpServletRequest request, Model model){
-		String url = "redirect:detailLctre_Date?"
-				+ "table_Nm="+lctre_Date_Gnt.getTable_Nm()
-				+ "&lb_Bbs_No="+lctre_Date_Gnt.getLd_Bbs_No()
+			Lctre_Task_GntVO lctre_Task_Gnt, Lctre_FlpthVO lctre_FlpthVO, HttpSession session, HttpServletRequest request, Model model){
+		String url = "redirect:detailLctre_Task?"
+				+ "table_Nm="+lctre_Task_Gnt.getTable_Nm()
+				+ "&lt_Bbs_No="+lctre_Task_Gnt.getLt_Bbs_No()
 				+ "&tpage="+tpage;
 		
+//		String loginUser = (String)session.getAttribute("loginUser");
+		String loginUser = "bbb";
+		lctre_Task_Gnt.setLt_Stdnt_No(loginUser);
 		if(!uploadfile.isEmpty()){
 			FilesVO vo = new FileDownload().uploadFile(uploadfile);
 			lctre_FlpthVO.setLf_File_Type(vo.getFl_File_Type_Code());
 			lctre_FlpthVO.setLf_Flpth(vo.getFl_File_Nm());
 		}
 		try {
-			lctre_DateSvc.updateLctre_Date(lctre_Date_Gnt, lctre_FlpthVO);
+			lctre_TaskSvc.updateLctre_Task(lctre_Task_Gnt, lctre_FlpthVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -294,19 +300,15 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/deleteLctre_Date")
-	public String deleteNotice(Lctre_Date_GntVO lctre_Date_Gnt,@RequestParam int tpage,HttpServletRequest request, Model model){
-		String url = "redirect:dateList?"
-				+ "table_Nm="+lctre_Date_Gnt.getTable_Nm()
+	@RequestMapping(value="/deleteLctre_Task")
+	public String deleteNotice(Lctre_Task_GntVO lctre_Task_Gnt,@RequestParam int tpage,HttpServletRequest request, Model model){
+		String url = "redirect:taskList?"
+				+ "table_Nm="+lctre_Task_Gnt.getTable_Nm()
 				+ "&tpage="+tpage;
-		String bbs_code = request.getServletPath();
-		String[] values = bbs_code.split("/");
 		
-		Bbs_FlpthVO bbs_flpthVO = new Bbs_FlpthVO();
-		 
-		
+		System.out.println("lctre_Task_Gnt : "+lctre_Task_Gnt);
 		try {
-			lctre_DateSvc.deleteLctre_Date(lctre_Date_Gnt);
+			lctre_TaskSvc.deleteLctre_Task(lctre_Task_Gnt);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -315,34 +317,34 @@ public class Lctre_DateController implements ApplicationContextAware{
 		return url;
 	}
 	
-	
-	/**
-	 * <pre>
-	 * 첨부파일 다운로드를 처리하는 메서드
-	 * </pre>
-	 * <pre>
-	 * @param fileId
-	 * @param response
-	 * @param filename
-	 * @return
-	 * @throws IOException
-	 * </pre>
-	 */
-	@RequestMapping("/file/{fileId}")
-	   public ModelAndView download(@PathVariable String fileId,
-	         HttpServletResponse response, @RequestParam String filename) throws IOException {
-		   
-		   String downloadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
-		   File downloadFile =  new File(downloadFilePath, filename);
-		  
-		   response.setCharacterEncoding("utf-8");
-	      
-	      if(downloadFile == null) {
-	         response.sendError(HttpServletResponse.SC_NOT_FOUND);
-	         return null;
-	      }
-	      return new ModelAndView("download", "downloadFile", downloadFile);
-	   }
+//	
+//	/**
+//	 * <pre>
+//	 * 첨부파일 다운로드를 처리하는 메서드
+//	 * </pre>
+//	 * <pre>
+//	 * @param fileId
+//	 * @param response
+//	 * @param filename
+//	 * @return
+//	 * @throws IOException
+//	 * </pre>
+//	 */
+//	@RequestMapping("/file/{fileId}")
+//	   public ModelAndView download(@PathVariable String fileId,
+//	         HttpServletResponse response, @RequestParam String filename) throws IOException {
+//		   
+//		   String downloadFilePath ="D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
+//		   File downloadFile =  new File(downloadFilePath, filename);
+//		  
+//		   response.setCharacterEncoding("utf-8");
+//	      
+//	      if(downloadFile == null) {
+//	         response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//	         return null;
+//	      }
+//	      return new ModelAndView("download", "downloadFile", downloadFile);
+//	   }
 	   
 	   @Override
 	   public void setApplicationContext(ApplicationContext applicationContext)

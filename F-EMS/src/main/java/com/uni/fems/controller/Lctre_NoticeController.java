@@ -1,13 +1,11 @@
 package com.uni.fems.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeansException;
@@ -16,32 +14,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.uni.fems.common.FileDownload;
-import com.uni.fems.dao.Bbs_ListDAO;
-import com.uni.fems.dto.Bbs_FlpthVO;
-import com.uni.fems.dto.Bbs_GntVO;
-import com.uni.fems.dto.Bbs_List_AtrtyVO;
-import com.uni.fems.dto.Bbs_List_GntVO;
-import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.Lctre_NoticeVO;
 import com.uni.fems.dto.Lctre_Notice_GntVO;
-import com.uni.fems.dto.Lctre_FlpthVO;
-import com.uni.fems.dto.Lctre_Notice_GntVO;
-import com.uni.fems.dto.Notice_BbsVO;
 import com.uni.fems.dto.SearchVO;
-import com.uni.fems.service.Bbs_Comment_GntService;
-import com.uni.fems.service.Bbs_GntService;
 import com.uni.fems.service.Lctre_NoticeService;
-import com.uni.fems.service.Lctre_NoticeService;
-import com.uni.fems.service.Notice_BbsService;
 
 /**
  * <pre>
@@ -49,14 +30,14 @@ import com.uni.fems.service.Notice_BbsService;
  * 글 작성, 상세보기, 수정, 삭제 기능 구현
  * </pre>
  * @author KJS
- * @since 2017.02.23
+ * @since 2017.02.24
  * @version 1.0
  * @see javax.servlet.http.HttpServlet
  * <pre>
  * [[개정이력(Modification Information)]]
  *   수정일             수정자                    수정내용
  * --------     --------    ----------------------
- * 2017.02.23     KJS                    최초작성
+ * 2017.02.24     KJS                    최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -73,7 +54,7 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 제너레이터 게시판의 리스트를 출력해준다
+	 * 공지 게시판의 리스트를 출력해준다
 	 * </pre>
 	 * <pre>
 	 * @param model
@@ -129,11 +110,11 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 게시판 작성 폼을 띄우기 위한 메서드
+	 * 공지 게시판 작성 폼을 띄우기 위한 메서드
 	 * </pre>
 	 * <pre>
 	 * @param model
-	 * @param bbs_List_Gnt
+	 * @param table_Nm
 	 * @return url
 	 * @throws ServletException
 	 * @throws IOException
@@ -151,10 +132,8 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	 *  작성한 게시판을 업로드 한다.
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
-	 * @param bbs_FlpthVO
+	 * @param lctre_Notice_Gnt
 	 * @param request
-	 * @param uploadfile
 	 * @param session
 	 * @param model
 	 * @return url
@@ -179,10 +158,10 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 게시판 리스트중 하나를 상세히 본다.
+	 * 공지 게시판 리스트중 하나를 상세히 본다.
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -211,10 +190,10 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	
 	/**
 	 * <pre>
-	 * 게시판의 내용을 수정하기 위한 폼으로 이동
+	 * 공지 게시판의 내용을 수정하기 위한 폼으로 이동
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -232,7 +211,6 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 			lctre_Notice_Gnt.setLn_Sj(lctre_Notice.getLn_Sj());
 			lctre_Notice_Gnt.setLn_Writng_Dt(lctre_Notice.getLn_Writng_Dt());
 			lctre_Notice_Gnt.setLn_Rdcnt(lctre_Notice.getLn_Rdcnt());
-			lctre_NoticeSvc.countLctre_Notice(lctre_Notice_Gnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -247,9 +225,7 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	 * </pre>
 	 * <pre>
 	 * @param tpage
-	 * @param uploadfile
-	 * @param bbs_List_Gnt
-	 * @param bbs_FlpthVO
+	 * @param lctre_Notice_Gnt
 	 * @param session
 	 * @param request
 	 * @return url
@@ -276,7 +252,7 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	 * 해당하는 게시판을 삭제처리하는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Notice_Gnt
 	 * @param tpage
 	 * @param request
 	 * @return url

@@ -4,17 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.uni.fems.common.Paging;
-import com.uni.fems.dao.Bbs_CommentDAO;
-import com.uni.fems.dao.Bbs_FlpthDAO;
 import com.uni.fems.dao.Bbs_ListDAO;
-import com.uni.fems.dao.Notice_BbsDAO;
 import com.uni.fems.dto.Bbs_AtrtyVO;
-import com.uni.fems.dto.Bbs_FlpthVO;
 import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
-import com.uni.fems.dto.Notice_BbsVO;
-import com.uni.fems.dto.SearchVO;
-import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.Bbs_ListService;
 
 /**

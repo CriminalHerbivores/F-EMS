@@ -8,7 +8,6 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.common.Paging;
 import com.uni.fems.dao.Bbs_ListDAO;
 import com.uni.fems.dto.Bbs_AtrtyVO;
-import com.uni.fems.dto.Bbs_CommentVO;
 import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
 
