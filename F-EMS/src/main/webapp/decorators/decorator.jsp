@@ -131,6 +131,7 @@
 									 class="no-uline">강의 수정 요청</a>	 
 								<a href="<%=request.getContextPath() %>/profsr/openLctreList"
 									 class="no-uline">강의 목록</a>
+									 
 							</div>
 						</div>
 					</sec:authorize>
@@ -192,6 +193,7 @@
 									게시판</a> <a href="<%=request.getContextPath()%>/lctre/vdiaList?table_Nm=test">동영상
 									게시판</a> <a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청
 									여부 게시판</a>
+									<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
 
 							</div>
 						</div>
@@ -416,6 +418,12 @@
 											href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청
 												여부 게시판</a></li>
 									</div>
+									
+									<div class="inherit-size">
+										<li class="sub-menu-li"><a
+											href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a></li>
+									</div>
+									
 
 								</ul>
 							</li>
