@@ -22,6 +22,7 @@ import com.uni.fems.dto.Lctre_SearchVO;
  * 수정일        수정자         수정내용
  * --------     --------    ----------------------
  * 2017. 2. 20.    KJH       최초작성
+ * 2017. 2. 25.    KJH       추가작성 
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */

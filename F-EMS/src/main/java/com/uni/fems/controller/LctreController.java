@@ -19,10 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.impl.LctreDAOImpl;
+import com.uni.fems.dto.Intrst_ListVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.dto.SearchVO;
+import com.uni.fems.service.Intrst_ListService;
 import com.uni.fems.service.LctreService;
+import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.StdntService;
 
 /**
@@ -46,15 +50,15 @@ import com.uni.fems.service.StdntService;
 @Controller
 @RequestMapping("/course")
 public class LctreController {
-
-	
 	
 	@Autowired
 	private LctreService lctreService;
-	
 	@Autowired
 	private StdntService stdntService;
-	
+	@Autowired
+	private Intrst_ListService intrst_ListService;
+	@Autowired
+	private ReqstService reqstService;
 	
 	
 	/**
@@ -70,40 +74,9 @@ public class LctreController {
 	@RequestMapping(value="/courseList", method=RequestMethod.GET)
 	public String courseListForm(HttpServletRequest request, HttpSession session) {
 		String url = "course_registration/courseList";
-		
-//		Lctre_SearchVO lctre_SearchVO = lctreService.insertLctre_Search();
-//		lctre_SearchVO=  lctreService.updateLctre_Search(lctre_SearchVO, request);
-//		
-//		LctreDAO lctreDAO = LctreDAOImpl.getInstance();
-//		
-//		ArrayList<LctreVO> lctreList = null;
-//		
-//
-//		try {
-//			lctreList = lctreDAO.openLctreList(lctre_SearchVO);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		request.setAttribute("lctreList", lctreList);
-		//request.setAttribute("order", lctre_SearchVO.getColumn());
-		
+	
 		return url;
 	}
-	
-
-	// 수강신청 가능 목록
-//	@RequestMapping("/course_able")
-//	public String courseAbleForm(@RequestParam(value = "key", defaultValue = "") int key, Model model)
-//			throws ServletException, IOException {
-//		String url = "course_registration/course_able";
-//		
-//		ArrayList<LctreVO> lctreList = lctreService.getLctreList(key);				
-//
-//		model.addAttribute("lctreList", lctreList);
-//		
-//		
-//		return url;
-//	}
 	
 	/**
 	 * <pre>
@@ -119,7 +92,7 @@ public class LctreController {
 	public String courseAbleForm(Model model, HttpServletRequest request, SearchVO searchVO) {
 		String url = "course_registration/courseAble";
 		
-	String tpage = request.getParameter("tpage");
+		String tpage = request.getParameter("tpage");
 		
 		if (tpage ==null){
 			tpage= "1";
@@ -136,20 +109,12 @@ public class LctreController {
 		List<Lctre_SearchVO> openLctreList=null;
 		String paging=null;
 		
-		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		
-		
 		try {
 			openLctreList = lctreService.openLctreList(Integer.parseInt(tpage), searchVO);
 			paging = lctreService.pageNumber(Integer.parseInt(tpage), searchVO);
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
 		
 		model.addAttribute("openLctreList", openLctreList);
 		int n = openLctreList.size();
@@ -159,41 +124,46 @@ public class LctreController {
 	}
 	
 	
-	
-	
+
 	/**
 	 * <pre>
-	 * 개설강의 목록에서 수강신청 및 관심강의 등록이 가능한 로직
+	 * 개설강의 목록에서 수강신청,관심강의 등록과 삭제가 가능한 로직
 	 * </pre>
 	 * <pre>
-	 * @param model
+	 * @param request
 	 * @param session
-	 * @param lu_Lctre_Nm
+	 * @param intrst_ListVO
+	 * @param reqstVO
 	 * @return
+	 * @throws ServletException
+	 * @throws IOException
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
-	public String courseAble(Model model, HttpSession session,String lu_Lctre_Nm) {
-		String url = "course_registration/courseAble";
+	public String insertCourse(HttpServletRequest request,
+			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO) throws ServletException, IOException{
+		String url = "redirect:courseAble";
 		
-//		List<Lctre_SearchVO> lctre_SearchVO=null;
-//		String st_Stdnt_No = (String) session.getAttribute("loginUser");
-//		System.out.println("=======================================st_Stdnt_No : "+st_Stdnt_No);
-//		
-//		try {
-//			lctre_SearchVO = lctreService.openLctreList(lu_Lctre_Nm);
-//			stdntService.selectStdnt(st_Stdnt_No);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		
-//		//lctre_SearchVO=lctreService.openLctreList(lu_Lctre_Nm);
-//		
-//		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
+		String stdnt_No = (String) session.getAttribute("loginUser");
+		try {
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListService.insertIntrst_List(intrst_ListVO);
+			intrst_ListService.deleteIntrst_List(intrst_ListVO);
+			
+			reqstVO.setRe_Stdnt_No(stdnt_No);
+			reqstService.insertReqst(reqstVO);
+			reqstService.deleteReqst(reqstVO);
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return url;
 	}
+	
+	
 	
 
 

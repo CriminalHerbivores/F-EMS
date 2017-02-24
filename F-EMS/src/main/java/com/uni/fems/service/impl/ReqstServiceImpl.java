@@ -25,5 +25,17 @@ public class ReqstServiceImpl implements ReqstService {
 		List<Lctre_SearchVO> lctre_SearchVO= reqstDAO.selectReqst(re_Stdnt_No);
 		return lctre_SearchVO;
 	}
+	
+	// 수강 신청 등록
+	@Override
+	public void insertReqst(ReqstVO reqstVO) throws SQLException {
+		reqstDAO.insertReqst(reqstVO);
+	}
+	
+	// 수강 신청 삭제
+	@Override
+	public void deleteReqst(ReqstVO reqstVO) throws SQLException {
+		reqstDAO.deleteReqst(reqstVO);
+	}
 
 }

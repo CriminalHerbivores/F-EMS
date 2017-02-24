@@ -23,13 +23,13 @@
 
 	<!-- 수강 신청 -->
 	<update id="insertReqst" parameterClass="reqst">
-		INSERT INTO REQST(re_No,re_Stdnt_No,re_Lctre_No)
-		VALUES(REQ_SEQ.NEXTVAL,#re_Stdnt_No#,#re_Lctre_No#)
+		INSERT INTO REQST(re_Stdnt_No,re_Lctre_No)
+		VALUES(#re_Stdnt_No#,#re_Lctre_No#)
 	</update>
 	
 	<!-- 수강 신청 취소 -->
-	<update id="deleteReqst" parameterClass="int">
-		delete from REQST where re_No=#re_No#
+	<update id="deleteReqst" parameterClass="reqst">
+		delete from REQST where re_Stdnt_No=#re_Stdnt_No# and re_Lctre_No=#re_Lctre_No#
 	</update>
 	
 

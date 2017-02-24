@@ -18,6 +18,25 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script type="text/javascript">
+/* 수강 신청 */
+function add_reqst(){
+	alert("수강신청");
+}
+/* 수강 신청 취소 */
+function del_reqst(){
+	alert("수강취소");
+}
+/* 관심 추가 */
+function add_intrst(){
+	alert("관심추가");
+}
+/* 관심 삭제 */
+function del_intrst(){
+	alert("관심삭제");
+}
+</script>
+
 <style>
 body {
 	/* background: #D4F4FA; */
@@ -73,21 +92,29 @@ body {
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td>
-					<%-- <c:choose>
-					<c:when test="${lctre.lu_Lctre_No=lctre_SearchVO.in_Lctre_No && stdntVO.st_Stdnt_No=lctre_SearchVO.in_Stdnt_No}"> --%>
-					<!-- 로그인한 학생과 in_Stdnt_No가 일치하고
-						해당 라인의 lu_Lctre_No 와 in_Lctre_No중에 일치하는 게 있을 경우-->
+					<c:choose>
+					<c:when test="${lctre.re_Lctre_No==lctre.la_Lctre_No}">
+					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
 					
-						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강">
-					<%-- </c:when>
-					<c:otherwise> --%>
-						<!-- <input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소"> -->					
-					<%-- </c:otherwise>
-					</c:choose>	 --%>				
-					
+						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강" onclick="add_reqst()">
+					 </c:when>
+					<c:otherwise> 
+						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소" onclick="del_reqst()">				
+					 </c:otherwise>
+					</c:choose>	 				
 						</td>
+					<td>	
+					<c:choose>
+					<c:when test="${lctre.in_Lctre_No==lctre.la_Lctre_No}">
+					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
 					
-					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
+					<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심" onclick="add_intrst()">
+					 </c:when>
+					<c:otherwise> 
+						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="삭제" onclick="del_intrst()">				
+					 </c:otherwise>
+					</c:choose>	
+					</td>
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}</td>
 					<td>${lctre.lc_Split}</td>

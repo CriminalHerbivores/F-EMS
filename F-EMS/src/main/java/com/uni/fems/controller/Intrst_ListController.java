@@ -1,8 +1,10 @@
 package com.uni.fems.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,7 +31,8 @@ import com.uni.fems.service.StdntService;
  * [[개정이력(Modification Information)]]
  * 수정일        수정자         수정내용
  * --------     --------    ----------------------
- * 2017. 2. 24.   KJH           최초작성
+ * 2017. 2. 24.    KJH       최초작성
+ * 2017. 2. 25.    KJH       추가작성 
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -38,9 +41,9 @@ import com.uni.fems.service.StdntService;
 public class Intrst_ListController {
 	
 	@Autowired
-	Intrst_ListService intrst_ListService;
+	private Intrst_ListService intrst_ListService;
 	@Autowired
-	StdntService stdntService;
+	private StdntService stdntService;
 	
 	/**
 	 * <pre>
@@ -52,9 +55,9 @@ public class Intrst_ListController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/courseInterest")
+	@RequestMapping(value="/courseInterest",method=RequestMethod.GET)
 	public String courseInterestForm(Model model, HttpServletRequest request,
-			HttpSession session,Intrst_ListVO intrst_ListVO) {
+			HttpSession session,Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		String url = "course_registration/courseInterest";
 		
 		List<Lctre_SearchVO> lctre_SearchVO=null;
@@ -72,6 +75,8 @@ public class Intrst_ListController {
 	}
 	
 	
+	
+	
 	/**
 	 * <pre>
 	 * 관심 강의 목록에서 관심강의를 삭제하는 로직
@@ -83,9 +88,18 @@ public class Intrst_ListController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseInterest",method=RequestMethod.POST)
-	public String courseInterest(HttpServletRequest request,
-			HttpSession session) {
-		String url = "course_registration/courseInterest";
+	public String deleteCourseInterest(HttpServletRequest request,
+			HttpSession session, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+		String url = "redirect:courseInterest";
+		
+		String stdnt_No = (String) session.getAttribute("loginUser");
+		
+		intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+		try {
+			intrst_ListService.deleteIntrst_List(intrst_ListVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return url;
 	}
