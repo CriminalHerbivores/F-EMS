@@ -94,6 +94,7 @@ public class Bbs_GntServiceImpl implements Bbs_GntService{
 		String page = new Paging().pageNumber(tpage,totalRecord,"bbsList", "&bl_Bbs_No="+bbs_list_gnt.getBl_Bbs_No());
 		return page;
 	}
+	
 	@Override
 	public int countBbs_Gnt(Bbs_List_GntVO bbs_list_gnt) throws SQLException {
 		return dbs_GntDAO.countBbs_Gnt(bbs_list_gnt);

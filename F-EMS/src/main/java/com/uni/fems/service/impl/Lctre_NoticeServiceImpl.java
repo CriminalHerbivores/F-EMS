@@ -35,6 +35,7 @@ public class Lctre_NoticeServiceImpl implements Lctre_NoticeService{
 	
 	@Override
 	public List<Lctre_NoticeVO> listAllLctre_Notice(int tpage, Lctre_Notice_GntVO lctre_Notice_Gnt) throws SQLException {
+		System.out.println("lctre_Notice_Gnt : "+lctre_Notice_Gnt);
 		int totalRecord = lctre_NoticeDAO.totalLctre_Notice(lctre_Notice_Gnt);
 		return lctre_NoticeDAO.listAllLctre_Notice(lctre_Notice_Gnt, tpage, totalRecord);
 		

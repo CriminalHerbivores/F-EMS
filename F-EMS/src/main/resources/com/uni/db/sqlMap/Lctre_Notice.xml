@@ -25,7 +25,7 @@
 		order by LN_BBS_NO desc
 	</select>
 	
-	<select id="totalLctre_Notice"  parameterClass="lctre_notice_gnt" resultClass="lctre_notice">
+	<select id="totalLctre_Notice"  parameterClass="lctre_notice_gnt" resultClass="int">
 		select count(*) from LCTRE_N$table_Nm$ 
 		where LN_SJ like '%$ln_Sj$%'
 		and ln_Cn like '%$ln_Cn$%' 
@@ -37,7 +37,7 @@
 	
 	<update id="insertLctre_Notice"  parameterClass="lctre_notice_gnt">
 		insert into LCTRE_N$table_Nm$(LN_BBS_NO,LN_SJ,LN_CN,LN_WRITNG_DT,LN_RDCNT) 
-		values(((select max(LN_BBS_NO) from LCTRE_N$table_Nm$)+1)),#ln_Sj#,#ln_Cn#,sysdate,0)
+		values(((select max(LN_BBS_NO) from LCTRE_N$table_Nm$)+1),#ln_Sj#,#ln_Cn#,sysdate,0)
 	</update>
 	
 	<update id="updateLctre_Notice"  parameterClass="lctre_notice_gnt">
