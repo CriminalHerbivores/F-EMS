@@ -28,7 +28,7 @@
 <table class="non-border margin-auto">
 <tr><td>
 <div class="text-center">
-  <h2>잘릐 자료 게시판</h2>
+  <h2>강의 자료 게시판</h2>
  <hr />
 
 <form name="formm">

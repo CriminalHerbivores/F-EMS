@@ -145,6 +145,17 @@
 		delete from lctre where lc_Lctre_No=#lc_Lctre_No#
 	</update> -->
 	
-
+	<!-- 강의 검색 :: 교수 검색과 개설 여부만 되어 있으나 추후 추가 바람 -->
+	<select id="selectLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
+		select * from lctre_View
+		where pr_profsr_no like '%'||#pr_Profsr_No#||'%'
+		and lc_Open_At like '%'||#lc_Open_At#||'%'
+	</select>
 	
+	<!-- 강의 검색 개수 :: 교수 검색과 개설 여부만 되어 있으나 추후 추가 바람 -->
+	<select id="countLctre" parameterClass="lctre_Search" resultClass="int">
+		select count(*) from lctre_View
+		where pr_profsr_no like '%'||#pr_Profsr_No#||'%'
+		and lc_Open_At like '%'||#lc_Open_At#||'%'
+	</select>
 </sqlMap>
