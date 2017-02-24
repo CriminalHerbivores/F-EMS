@@ -62,6 +62,7 @@
 <a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a><br/>
 --------- 임시 ---------<br/>
 <a href="<%=request.getContextPath() %>/tt/tuitionList">직원>등록금 조회</a><br/>
+<a href="<%=request.getContextPath() %>/tt/stdTuitionList">직원>등록금 내역 조회</a><br/>
 <a href="<%=request.getContextPath() %>/tt/fromStdTuition">학생>등록금 내역 조회</a><br/>
 
 </td>

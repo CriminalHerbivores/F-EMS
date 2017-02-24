@@ -8,7 +8,7 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.23    KJS            최초작성               -->
+<!--  2017.02.24    KJS            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 <table class="non-border margin-auto">
 <tr><td>
 <div class="text-center">
-  <h2>강의 자료 게시판</h2>
+  <h2>강의 공지 게시판</h2>
  <hr />
 
 <form name="formm">
@@ -50,14 +50,14 @@
         <th>조회수</th>
       </tr>
       
-      <c:forEach var="lctre_Date" items="${lctre_DateList }">
+      <c:forEach var="lctre_Notice" items="${lctre_NoticeList }">
       	<tr>
-      		<td> ${lctre_Date.ld_Bbs_No}</td>
-      		<td><a href="detailLctre_Date?ld_Bbs_No=${lctre_Date.ld_Bbs_No}&table_Nm=${lctre_Date_Gnt.table_Nm}&tpage=${tpage}">
-      		 ${lctre_Date.ld_Sj} </a>
+      		<td> ${lctre_Notice.ln_Bbs_No}</td>
+      		<td><a href="detailLctre_Notice?ln_Bbs_No=${lctre_Notice.ln_Bbs_No}&table_Nm=${lctre_Notice_Gnt.table_Nm}&tpage=${tpage}">
+      		 ${lctre_Notice.ln_Sj} </a>
       		</td>
-      		<td><fmt:formatDate value="${lctre_Date.ld_Writng_Dt}" /> </td>
-      		<td> ${lctre_Date.ld_Rdcnt}</td> <!-- 조회수 -->
+      		<td><fmt:formatDate value="${lctre_Notice.ln_Writng_Dt}" /> </td>
+      		<td> ${lctre_Notice.ln_Rdcnt}</td> <!-- 조회수 -->
       		
       	</tr>
       </c:forEach>
@@ -68,7 +68,7 @@
      
   </table>
 	  <div id="buttons" style="float:right">
-	  	<a href="writeLctre_Date?table_Nm=${lctre_Date_Gnt.table_Nm}">
+	  	<a href="writeLctre_Notice?table_Nm=${lctre_Notice_Gnt.table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
 </td></tr>  

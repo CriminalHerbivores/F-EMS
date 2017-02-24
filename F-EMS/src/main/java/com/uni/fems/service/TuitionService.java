@@ -100,4 +100,14 @@ public interface TuitionService {
 	 * </pre>
 	 */
 	int countTuitionStdnt(TuitionVO tuitionVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 등록금 납부일 등록
+	 * </pre>
+	 * <pre>
+	 * @param tuitionVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateTuitionStdnt(TuitionVO tuitionVO) throws SQLException;
 }
