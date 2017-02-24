@@ -35,7 +35,6 @@ public class Lctre_Task_GntVO implements Serializable {
 	private String lt_Sj;			//게시판 제목
 	private String lt_Cn;			//게시판 내용
 	private Timestamp lt_Writng_Dt;	//게시판 작성날짜
-	private int lt_Rdcnt;			//게시판 조회수
 	private String lt_Flpth_No;		//게시판 파일 경로 번호
 
 }

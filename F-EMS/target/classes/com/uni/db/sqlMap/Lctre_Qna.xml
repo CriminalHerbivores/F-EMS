@@ -14,36 +14,48 @@
 
  	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="lctre_qna" type="com.uni.fems.dto.Lctre_QnaVO" />
+	<typeAlias alias="lctre_qna_gnt" type="com.uni.fems.dto.Lctre_Qna_GntVO" />
 	
-	<select id="listAllLctre_Qna" >
-		select * from Lctre_Q$table_Nm$ where LQ_SJ like '%$lq_Sj$%' order by LQ_BBS_NO desc
+	<select id="listAllLctre_Qna" parameterClass="lctre_qna_gnt" resultClass="lctre_qna">
+		select * from Lctre_Q$table_Nm$ 
+		where LQ_SJ like '%$lq_Sj$%' 
+		and LQ_CN like '%$lq_Cn$%' 
+		order by LQ_BBS_NO desc
 	</select>
 	
-	<select id="totalLctre_Qna" >
-		select count(*) from Lctre_Q$table_Nm$ where LQ_SJ like '%$lq_Sj$%'
+	<select id="totalLctre_Qna" parameterClass="lctre_qna_gnt" resultClass="int">
+		select count(*) from Lctre_Q$table_Nm$ 
+		where LQ_SJ like '%$lq_Sj$%'
+		and LQ_CN like '%$lq_Cn$%' 
 	</select>
 	
-	<select id="getLctre_Qna" >
+	<select id="getLctre_Qna" parameterClass="lctre_qna_gnt" resultClass="lctre_qna">
 		select * from Lctre_Q$table_Nm$ where LQ_BBS_NO=#lq_Bbs_No#
 	</select>
 	
-	<update id="insertLctre_Qna" >
+	<update id="insertLctre_Qna" parameterClass="lctre_qna_gnt" >
 		insert into Lctre_Q$table_Nm$(LQ_BBS_NO,LQ_STDNT_NO,LQ_SJ,LQ_CN,LQ_WRITNG_DT,LQ_RDCNT) 
-		values(((select max(LQ_BBS_NO) from Lctre_Q$table_Nm$)+1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0,#ld_Flpth_No#)
+		values(((select max(LQ_BBS_NO) from Lctre_Q$table_Nm$)+1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0)
 	</update>
 	
-	<update id="updateLctre_Qna" >
-		update Lctre_Q$table_Nm$ set LQ_SJ=#ld_Sj#,LQ_CN=#ld_Cn#,LD_FLPTH_NO=#ld_Flpth_No# 
-		where LQ_BBS_NO=#ld_Bbs_No#
+	<update id="updateLctre_Qna" parameterClass="lctre_qna_gnt" >
+		update Lctre_Q$table_Nm$ set LQ_SJ=#lq_Sj#,LQ_CN=#lq_Cn#
+		where LQ_BBS_NO=#lq_Bbs_No#
 	</update>
 	
-	<update id="updateLctre_Qna_Rdcnt" >
-		update Lctre_Q$table_Nm$ set LD_RDCNT=#ld_Rdcnt#
-		where LD_BBS_NO=#ld_Bbs_No#
+	<update id="updateLctre_Qna_Reply" parameterClass="lctre_qna_gnt" >
+		update Lctre_Q$table_Nm$ set LQ_REPLY=#lq_Reply#
+		where LQ_BBS_NO=#lq_Bbs_No#
 	</update>
 	
-	<update id="deleteLctre_Qna" >
-		delete from Lctre_Q$table_Nm$ where LD_BBS_NO=#ld_Bbs_No#
+	<update id="countLctre_Qna" parameterClass="lctre_qna_gnt" >
+		update Lctre_Q$table_Nm$ set LQ_RDCNT=#lq_Rdcnt#
+		where LQ_BBS_NO=#lq_Bbs_No#
+	</update>
+	
+	<update id="deleteLctre_Qna" parameterClass="lctre_qna_gnt" >
+		delete from Lctre_Q$table_Nm$ where LQ_BBS_NO=#lq_Bbs_No#
 	</update>
 	
 	

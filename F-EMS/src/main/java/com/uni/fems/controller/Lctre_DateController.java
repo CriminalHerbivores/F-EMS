@@ -123,7 +123,6 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * </pre>
 	 * <pre>
 	 * @param model
-	 * @param bbs_List_Gnt
 	 * @return url
 	 * @throws ServletException
 	 * @throws IOException
@@ -141,8 +140,8 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 *  작성한 게시판을 업로드 한다.
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
-	 * @param bbs_FlpthVO
+	 * @param lctre_Date_Gnt
+	 * @param lctre_FlpthVO
 	 * @param request
 	 * @param uploadfile
 	 * @param session
@@ -179,7 +178,7 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * 게시판 리스트중 하나를 상세히 본다.
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Date_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -216,7 +215,7 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * 게시판의 내용을 수정하기 위한 폼으로 이동
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Date_Gnt
 	 * @param tpage
 	 * @param model
 	 * @param request
@@ -254,8 +253,8 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * <pre>
 	 * @param tpage
 	 * @param uploadfile
-	 * @param bbs_List_Gnt
-	 * @param bbs_FlpthVO
+	 * @param lctre_Date_Gnt
+	 * @param lctre_FlpthVO
 	 * @param session
 	 * @param request
 	 * @return url
@@ -288,7 +287,7 @@ public class Lctre_DateController implements ApplicationContextAware{
 	 * 해당하는 게시판을 삭제처리하는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param bbs_List_Gnt
+	 * @param lctre_Date_Gnt
 	 * @param tpage
 	 * @param request
 	 * @return url
