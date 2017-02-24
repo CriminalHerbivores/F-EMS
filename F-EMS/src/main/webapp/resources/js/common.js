@@ -136,6 +136,24 @@ function searchKey(form){
 	location.href=url;
 }
 
+
+/* 
+	<전체선택 체크박스사용법> 
+	전체선택 부분 : <tr><th><input type="checkbox" id="check_all" class="input_check" />전체선택</th></tr>
+	개별선택 부분 : <tr><td class="select_subject"><input type="checkbox" class="input_check" /></td></tr>
+ */
+
+$(document).ready(function(){
+	$("#check_all").click(function(){
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) $(".select_ckbox input").prop('checked', true);
+		else  $(".select_ckbox input").prop('checked', false);
+	});
+});
+
+
+
+
 /*학과 검색*/
 function searchSubjct() {
 	var url = mainpage()+"/findSubjct/";
