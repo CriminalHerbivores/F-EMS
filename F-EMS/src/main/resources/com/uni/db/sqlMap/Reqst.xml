@@ -15,8 +15,10 @@
 	
 	<!-- 수강신청 완료 목록 조회 -->
 	<select id="selectReqst" parameterClass="str" resultClass="lctre_Search">
-		SELECT * FROM SUBJCT_VIEW
-		WHERE ST_STDNT_NO=#ST_STDNT_NO# order by RE_NO asc
+		SELECT * FROM course_view
+		WHERE re_Stdnt_No=#re_Stdnt_No# 
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		order by lc_Lctre_Code asc
 	</select>
 
 	<!-- 수강 신청 -->

@@ -11,26 +11,25 @@
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
         
 <sqlMap namespace="Intrst_List">
-	<typeAlias alias="intrst_list" type="com.uni.fems.dto.Intrst_ListVO" />
+	<typeAlias alias="intrst_List" type="com.uni.fems.dto.Intrst_ListVO" />
 	<typeAlias alias="lctre_Search" type="com.uni.fems.dto.Lctre_SearchVO" />
 
 	<!-- 관심목록 조회 -->
-	<select id="selectIntrst_list" parameterClass="str" resultClass="lctre_Search">
-		select * from lctre lc,INTRST_LIST, stdnt
-		where LC_LCTRE_NO=IN_LCTRE_NO
-		and IN_STDNT_NO=ST_STDNT_NO
-		and IN_LCTRE_NO=#IN_LCTRE_NO# and IN_STDNT_NO=#IN_STDNT_NO#
-		order by LC_LCTRE_NO asc
+	<select id="selectIntrst_List" parameterClass="str" resultClass="lctre_Search">
+		select * from INTRST_VIEW
+		where in_Stdnt_No=#in_Stdnt_No#
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		order by lc_Lctre_Code asc
 	</select>
 
 	<!-- 관심목록 등록 -->
-	<update id="insertIntrst_List" parameterClass="intrst_list">
+	<update id="insertIntrst_List" parameterClass="intrst_List">
 		insert into intrst_list(in_Stdnt_No,in_Lctre_No)
 			values(#in_Stdnt_No#,#in_Lctre_No#)
 	</update>
 	
 	<!-- 관심목록 삭제 -->
-	<update id="deleteIntrst_List" parameterClass="intrst_list">
+	<update id="deleteIntrst_List" parameterClass="intrst_List">
 		delete from intrst_list where in_Stdnt_No=#in_Stdnt_No# and in_Lctre_No=#in_Lctre_No#
 	</update>
 	

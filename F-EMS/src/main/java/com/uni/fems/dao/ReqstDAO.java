@@ -27,7 +27,7 @@ public interface ReqstDAO {
 	
 	/**
 	 * <pre>
-	 * 로그인한 학생의 번호로 수강신청한 목록을 조회하는 메서드
+	 * 로그인한 학생의 번호로 수강신청 완료된 목록을 조회하는 메서드
 	 * </pre>
 	 * <pre>
 	 * @param re_Stdnt_No
