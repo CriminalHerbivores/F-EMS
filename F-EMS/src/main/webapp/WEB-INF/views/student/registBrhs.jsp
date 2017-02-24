@@ -20,6 +20,7 @@
 <title></title>
 </head>
 <body>
+<table class="non-border margin-auto"><tr><td>
 	<h3>기숙사 신청</h3>
 	<form name="formm" method="post">
 		<table class="def-table-full tb-border table-hover">
@@ -53,5 +54,6 @@
 			</tr>
 		</table>
 	</form>
+</td></tr></table>
 </body>
 </html>

@@ -34,6 +34,7 @@ $(function(){
 </script>
 </head>
 <body>
+<table class="non-border margin-auto"><tr><td>
 	<h2>학과 정보 조회</h2>
 	<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
@@ -54,11 +55,11 @@ $(function(){
 		<tr>
 			<th colspan="3">등록금 수정</th>
 			<th>상승률</th>
-			<th>수정</th>
+			<th>수정 / 목록</th>
 		</tr>
 		<tr>
 			<td colspan="3">
-				<input type="number" id="sit_Tut" name="sit_Tut">
+				<input type="number" id="sit_Tut" name="sit_Tut" class="def-input-text-full custom-form-control">
 			</td>
 			<td>
 				<input type="hidden" id="orig" value="${tut.sit_Tut}">
@@ -66,10 +67,12 @@ $(function(){
 			</td>
 			<td>
 				<input type="button" value="수정" onclick="submitForm(this.form)" class="def-btn btn-sm btn-color">
+				&nbsp;&nbsp;
+				<input type="button" value="목록" onclick="history.go(-1)" class="def-btn btn-sm btn-color">
 			</td>
 		</tr>
 	</table>
 	</form>
-	<input type="button" value="목록" onclick="history.go(-1)" class="def-btn btn-sm btn-color">
+</td></tr></table>
 </body>
 </html>

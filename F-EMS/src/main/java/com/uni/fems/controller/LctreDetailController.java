@@ -36,243 +36,243 @@ import com.uni.fems.service.Notice_BbsService;
 @Controller
 @RequestMapping("/lctre")
 public class LctreDetailController {
-	@Autowired
-	private Notice_BbsService notice_BbsSvc;
-	public void setNotice_BbsSvc(Notice_BbsService notice_BbsSvc) {
-		this.notice_BbsSvc = notice_BbsSvc;
-	}
-	
-	@RequestMapping("/lctreList")
-	public String lctreList(HttpServletRequest request, HttpSession session) {
-		String url = "lecture/lectureList";
-			
-		return url;
-		
-	}
-	
-	@RequestMapping("/noticeList")
-	public String noticeList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		
-		
-		String url="lecture/noticeList";
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("nb_Sj");
-		
-		List<Notice_BbsVO> noticeList = null;
-		String paging = null;
-		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
-		model.addAttribute("paging", paging);
-		return url;
-		
-	}
-	
-	@RequestMapping("/fileList")
-	public String fileList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		
-		
-		String url="lecture/fileList";
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("nb_Sj");
-		
-		List<Notice_BbsVO> noticeList = null;
-		String paging = null;
-		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
-		model.addAttribute("paging", paging);
-		return url;
-		
-	}
-	
-	@RequestMapping("/qnaList")
-	public String qnaList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		
-		
-		String url="lecture/qnaList";
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("nb_Sj");
-		
-		List<Notice_BbsVO> noticeList = null;
-		String paging = null;
-		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
-		model.addAttribute("paging", paging);
-		return url;
-		
-	}
-	
-	@RequestMapping("/hwList")
-	public String hwList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		
-		
-		String url="lecture/hwList";
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("nb_Sj");
-		
-		List<Notice_BbsVO> noticeList = null;
-		String paging = null;
-		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
-		model.addAttribute("paging", paging);
-		return url;
-		
-	}
-	
-	@RequestMapping("/mediaList")
-	public String mediaList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		
-		
-		String url="lecture/mediaList";
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("nb_Sj");
-		
-		List<Notice_BbsVO> noticeList = null;
-		String paging = null;
-		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
-		model.addAttribute("paging", paging);
-		return url;
-		
-	}
-	
-	@RequestMapping("/attendList")
-	public String attendList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		
-		
-		String url="lecture/attendList";
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("nb_Sj");
-		
-		List<Notice_BbsVO> noticeList = null;
-		String paging = null;
-		try {
-			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
-			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
-		model.addAttribute("paging", paging);
-		return url;
-		
-	}
-	
-	@RequestMapping("/actPln")
-	public String actPln(Model model, HttpServletRequest request, Lctre_ActplnVO actplnVO){
-		
-		String url="lecture/actPln";
-		
-		return url;
-		
-	}
+//	@Autowired
+//	private Notice_BbsService notice_BbsSvc;
+//	public void setNotice_BbsSvc(Notice_BbsService notice_BbsSvc) {
+//		this.notice_BbsSvc = notice_BbsSvc;
+//	}
+//	
+//	@RequestMapping("/lctreList")
+//	public String lctreList(HttpServletRequest request, HttpSession session) {
+//		String url = "lecture/lectureList";
+//			
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/noticeList")
+//	public String noticeList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+//		
+//		
+//		String url="lecture/noticeList";
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("nb_Sj");
+//		
+//		List<Notice_BbsVO> noticeList = null;
+//		String paging = null;
+//		try {
+//			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+//			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("noticeList", noticeList);
+//		int n = noticeList.size();
+//		model.addAttribute("noticeListSize", n);
+//		model.addAttribute("paging", paging);
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/fileList")
+//	public String fileList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+//		
+//		
+//		String url="lecture/fileList";
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("nb_Sj");
+//		
+//		List<Notice_BbsVO> noticeList = null;
+//		String paging = null;
+//		try {
+//			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+//			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("noticeList", noticeList);
+//		int n = noticeList.size();
+//		model.addAttribute("noticeListSize", n);
+//		model.addAttribute("paging", paging);
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/qnaList")
+//	public String qnaList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+//		
+//		
+//		String url="lecture/qnaList";
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("nb_Sj");
+//		
+//		List<Notice_BbsVO> noticeList = null;
+//		String paging = null;
+//		try {
+//			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+//			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("noticeList", noticeList);
+//		int n = noticeList.size();
+//		model.addAttribute("noticeListSize", n);
+//		model.addAttribute("paging", paging);
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/hwList")
+//	public String hwList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+//		
+//		
+//		String url="lecture/hwList";
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("nb_Sj");
+//		
+//		List<Notice_BbsVO> noticeList = null;
+//		String paging = null;
+//		try {
+//			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+//			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("noticeList", noticeList);
+//		int n = noticeList.size();
+//		model.addAttribute("noticeListSize", n);
+//		model.addAttribute("paging", paging);
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/mediaList")
+//	public String mediaList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+//		
+//		
+//		String url="lecture/mediaList";
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("nb_Sj");
+//		
+//		List<Notice_BbsVO> noticeList = null;
+//		String paging = null;
+//		try {
+//			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+//			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("noticeList", noticeList);
+//		int n = noticeList.size();
+//		model.addAttribute("noticeListSize", n);
+//		model.addAttribute("paging", paging);
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/attendList")
+//	public String attendList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+//		
+//		
+//		String url="lecture/attendList";
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("nb_Sj");
+//		
+//		List<Notice_BbsVO> noticeList = null;
+//		String paging = null;
+//		try {
+//			noticeList = notice_BbsSvc.listAllNotice_Bbs(Integer.parseInt(tpage), searchVO);
+//			paging = notice_BbsSvc.pageNumber(Integer.parseInt(tpage),searchVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("noticeList", noticeList);
+//		int n = noticeList.size();
+//		model.addAttribute("noticeListSize", n);
+//		model.addAttribute("paging", paging);
+//		return url;
+//		
+//	}
+//	
+//	@RequestMapping("/actPln")
+//	public String actPln(Model model, HttpServletRequest request, Lctre_ActplnVO actplnVO){
+//		
+//		String url="lecture/actPln";
+//		
+//		return url;
+//		
+//	}
 
 }

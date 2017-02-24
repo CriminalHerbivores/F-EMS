@@ -70,5 +70,9 @@ public class TuitionServiceImpl implements TuitionService {
 		int totalRecord = tuitionDAO.countTuitionStdnt(tuitionVO);
 		return totalRecord;
 	}
+	@Override
+	public void updateTuitionStdnt(TuitionVO tuitionVO) throws SQLException {
+		tuitionDAO.updateTuition(tuitionVO);
+	}
 
 }
