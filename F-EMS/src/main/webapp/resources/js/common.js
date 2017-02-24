@@ -138,9 +138,11 @@ function searchKey(form){
 
 
 /* 
-	<전체선택 체크박스사용법> 
+	<전체선택 체크박스사용법> - 자동실행 
 	전체선택 부분 : <tr><th><input type="checkbox" id="check_all" class="input_check" />전체선택</th></tr>
-	개별선택 부분 : <tr><td class="select_subject"><input type="checkbox" class="input_check" /></td></tr>
+	개별선택 부분 : <tr><td class="select_ckbox"><input type="checkbox" class="input_check" /></td></tr>
+	
+	값 넘기는 것 포함 참고 : deleteCourseInterest (<-선택값 삭제 컨트롤러...Intrst_ListController), course_registration/courseInterest.jsp 
  */
 
 $(document).ready(function(){

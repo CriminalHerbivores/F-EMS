@@ -20,6 +20,7 @@
 		select * from INTRST_VIEW
 		where in_Stdnt_No=#in_Stdnt_No#
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		and lc_Open_At='y'
 		order by lc_Lctre_Code asc
 	</select>
 

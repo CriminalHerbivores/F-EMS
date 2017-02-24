@@ -93,14 +93,16 @@ public class Intrst_ListController {
 		String url = "redirect:courseInterest";
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
+		String[] resultArr = request.getParameterValues("result");
 		
-		intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-		try {
-			System.out.println("================ 1111111111111111 intrst_ListVO"+intrst_ListVO);
-			intrst_ListService.deleteIntrst_List(intrst_ListVO);
-			System.out.println("================ 2222222222222222222 intrst_ListVO"+intrst_ListVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		for (int i = 0; i < resultArr.length; i++) {
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListVO.setIn_Lctre_No(resultArr[i]);
+			try {
+				intrst_ListService.deleteIntrst_List(intrst_ListVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return url;

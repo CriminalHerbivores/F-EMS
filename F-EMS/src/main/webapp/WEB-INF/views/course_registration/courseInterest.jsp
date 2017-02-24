@@ -11,6 +11,7 @@
  * --------     --------    ----------------------
  * 2017.01.24      KJH        최초작성
  * 2017.02.15      KJH        추가작성
+ * 2017.02.25      KJH        추가작성 
  * Copyright (c) 2017 by DDIT All right reserved
  --%>
 <!DOCTYPE html>
@@ -49,10 +50,45 @@ function add_intrst(){
 	alert("관심추가");
 }
 /* 관심 삭제 */
-function del_intrst(){
-	
-	//alert("관심삭제");
+function del_intrst(form){
+    var a="이것도 테스트!<br>";
+    var b="선택 항목 없음!<br>"
+    
+	//alert("테스트");
+	if(document.getElementById("ck_null").ckeched){
+		var c=document.getElementById("click_rst").innerHTML = "선택 항목 없음<br>";
+	}else{
 	document.formm.submit();
+		var c=document.getElementById("click_rst").innerHTML = "if값 왜 못가져오나<br>";
+	}
+    document.getElementById("click_rst").innerHTML = a+b+c;
+	
+    
+    
+    
+    
+/*     var obj = document.getElementsByName('aa[]');
+
+    if(obj.length) { 
+        for(var i=0;i<obj.length;i++) { 
+            tmpObj        = document.createElement("input"); 
+            tmpObj.type    = "hidden"; 
+            tmpObj.name    = "re_aa[]"; 
+
+            if(obj[i].checked) { 
+                tmpObj.value= obj[i].value; 
+            } 
+
+            document.formm[0].appendChild(tmpObj); 
+        } 
+    }  */
+    
+    
+    
+    
+    
+    
+	
 }
 
 /* $(document).ready(function(){
@@ -95,14 +131,26 @@ body {
 					<th>강의명</th>
 				</tr>
 				<c:forEach items="${lctre_SearchVO}" var="intrst">
-					<tr>
-						<td class="select_ckbox"><input type="checkbox" class="input_check" />${intrst.lu_Lctre_Code }-${intrst.lc_Split }</td>
-						<td>${intrst.lu_Lctre_Nm }</td>
+					<tr><td class="select_ckbox">
+					<c:choose>
+						<c:when test="{intrst.result}">
+						<input type="checkbox" class="input_check" id="ck_null" name="result" checked="checked" value="${intrst.in_Lctre_No}" />
+						</c:when>
+						<c:otherwise>
+						<input type="checkbox" class="input_check" id="ck_null" name="result" value="${intrst.in_Lctre_No}" />
+						</c:otherwise>
+					</c:choose>
+						
+						${intrst.lu_Lctre_Code }-${intrst.lc_Split }
+						<input type="hidden" name="ck_intrst" value="${intrst.in_Lctre_No}"/></td>
+						<td><a href="#" >${intrst.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
 					</tr>
 				</c:forEach>
 		</table>
-<input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_intrst(this.form)">
+		<input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_intrst(this.form)">
+
 		</div>
+<p id="click_rst">&nbsp;</p>
 
 
 	</form>
