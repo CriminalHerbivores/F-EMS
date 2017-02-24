@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.SearchVO;
 
 /**
  * <pre>
@@ -34,7 +35,7 @@ public interface LctreService {
 
 	/**
 	 * <pre>
-	 * 전체 강의 목록을 가져오는 메서드
+	 * 전체 개설 강의 목록을 가져오는 메서드
 	 * </pre>
 	 * <pre>
 	 * @param lu_Lctre_Nm
@@ -42,7 +43,20 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Lctre_SearchVO> openLctreList(String lu_Lctre_Nm) throws SQLException; // 전체 강의 목록 int tpage, 
+	List<Lctre_SearchVO> openLctreList(int tpage, SearchVO searchVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 개설 강의 페이지를 설정하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param searchVO
+	 * @return String
+	 * @throws SQLException
+	 * </pre>
+	 */
+	String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
 	
 	
 	/**

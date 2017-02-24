@@ -63,7 +63,7 @@ public class SklstfDAOImpl implements SklstfDAO {
 		return listAllSklstf;
 	}
 	
-	// 직원목록의 전체직원을 가져오는 메서드
+	// 직원목록의 전체직원 인원수를 가져오는 메서드
 	@Override	
 	public int totalSklstf(SearchVO searchVO) throws SQLException{
 		int total_pages = 0;

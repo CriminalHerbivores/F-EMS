@@ -91,5 +91,22 @@ public class Intrst_ListController {
 	}
 	
 	
+	/**
+	 * <pre>
+	 * 관심강의 목록을 바탕으로 작성되는 임시 시간표
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+//	@RequestMapping("/courseTimetable")
+//	public String courseTimetable(HttpServletRequest request,
+//			HttpSession session) {
+//		String url = "course_registration/courseTimetable";
+//		return url;
+//	}
+	
 	
 }

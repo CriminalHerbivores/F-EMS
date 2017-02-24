@@ -57,16 +57,12 @@ public class ManageController {
 	
 	@Autowired
 	private Bbs_ListService bbs_ListSvc;
-	
 	@Autowired
 	private SklstfService sklstfService;
-	
 	@Autowired
 	private Sklstf_AtrtyService sklstf_AtrtyService;
-	
 	@Autowired
 	private Subjct_Info_TableService subjct_Info_TableService;
-	
 	@Autowired
 	private UsersService usersService;
 	

@@ -35,17 +35,12 @@
 	</select>
 	
 	<update id="insertLctre_Task" parameterClass="lctre_task_gnt">
-		insert into Lctre_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,Lt_WRITNG_DT,Lt_RDCNT,Lt_FLPTH_NO) 
-		values(((select max(LT_BBS_NO) from Lctre_T$table_Nm$)+1),#lt_Stdnt_No#,#lt_Sj#,#lt_Cn#,sysdate,0,#lt_Flpth_No#)
+		insert into Lctre_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,Lt_WRITNG_DT,Lt_FLPTH_NO) 
+		values(((select max(LT_BBS_NO) from Lctre_T$table_Nm$)+1),#lt_Stdnt_No#,#lt_Sj#,#lt_Cn#,sysdate,#lt_Flpth_No#)
 	</update>
 	
 	<update id="updateLctre_Task" parameterClass="lctre_task_gnt">
 		update Lctre_T$table_Nm$ set LT_SJ=#lt_Sj#,LT_CN=#lt_Cn#,LT_FLPTH_NO=#lt_Flpth_No# 
-		where LT_BBS_NO=#lt_Bbs_No#
-	</update>
-	
-	<update id="countLctre_Task" parameterClass="lctre_task_gnt">
-		update Lctre_T$table_Nm$ set LT_RDCNT=#lt_Rdcnt#
 		where LT_BBS_NO=#lt_Bbs_No#
 	</update>
 	

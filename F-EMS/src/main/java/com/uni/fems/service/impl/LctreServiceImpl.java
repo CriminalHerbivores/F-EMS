@@ -6,12 +6,14 @@ import java.util.List;
 
 import lombok.Data;
 
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.Lctre_ActplnDAO;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.service.LctreService;
 
 /**
@@ -44,10 +46,18 @@ public class LctreServiceImpl implements LctreService {
 
 	//해당 학기의 전체강의 가져옴
 	@Override
-	public List<Lctre_SearchVO> openLctreList(String lu_Lctre_Nm) throws SQLException{ //int tpage, 
-		List<Lctre_SearchVO> lctre_SearchVO=lctreDAO.openLctreList(lu_Lctre_Nm);
-		
-		return lctre_SearchVO;
+	public List<Lctre_SearchVO> openLctreList(int tpage, SearchVO searchVO) throws SQLException{ 
+
+		int totalRecord =lctreDAO.totalOpenLctre(searchVO);
+		return lctreDAO.openLctreList(searchVO, tpage, totalRecord);
+	}
+	
+	// 개설 강의 목록의 페이징 
+	@Override
+	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException{
+		int totalRecord = lctreDAO.totalOpenLctre(searchVO);
+		String page = new Paging().pageNumber(tpage,totalRecord,"courseAble", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
+		return page;
 	}
 
 	

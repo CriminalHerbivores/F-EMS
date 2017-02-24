@@ -82,7 +82,7 @@ public interface SklstfDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public int totalSklstf(SearchVO searchVO) throws SQLException;
+	int totalSklstf(SearchVO searchVO) throws SQLException;
 	
 	
 	/**
