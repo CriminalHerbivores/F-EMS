@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	    <h2>강의 자료 등록</h2>
+	    <h2> 강의 자료 게시판 </h2>
 		<form name="formm" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="table_Nm" value="${table_Nm}">
 			<fieldset>	
