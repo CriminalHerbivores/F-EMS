@@ -48,7 +48,7 @@ body {
 					<th>분반</th>
 					<th>학년</th>
 					<th>강의명</th>
-					<th>이수구분</th>
+					<th>구분</th>
 					<th>학점/시수</th>
 					<th>담당교수</th>
 					<th>강의시간</th>
@@ -87,7 +87,7 @@ body {
 					<td>${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
 					<td><a href="#" >${lctre.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
-					<td>${lctre.lu_Compl_Se}</td>
+					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.pr_Nm}</td>
 					<td>${lctre.lc_Lctre_Time}</td>

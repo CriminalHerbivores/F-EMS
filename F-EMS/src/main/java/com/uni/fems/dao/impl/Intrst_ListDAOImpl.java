@@ -44,7 +44,7 @@ public class Intrst_ListDAOImpl implements Intrst_ListDAO {
 	@Override
 	public void insertIntrst_List(Intrst_ListVO intrst_ListVO)
 			throws SQLException {
-		client.update("insertIntrst_List",intrst_ListVO);
+		client.insert("insertIntrst_List",intrst_ListVO);
 	}
 	
 	// 관심 강의 삭제

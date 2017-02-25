@@ -7,9 +7,11 @@ import java.util.List;
 import lombok.Data;
 
 import com.uni.fems.common.Paging;
+import com.uni.fems.dao.KindDAO;
 import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.Lctre_ActplnDAO;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
+import com.uni.fems.dto.KindVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
@@ -41,6 +43,7 @@ public class LctreServiceImpl implements LctreService {
 
 	private LctreDAO lctreDAO;
 	private Lctre_ActplnDAO lctre_ActplnDAO;
+	private KindDAO kindDAO;
 	
 	
 
@@ -63,13 +66,16 @@ public class LctreServiceImpl implements LctreService {
 	
 	// 교수가 개설 강의 폼을 작성하여 직원에게 강의 개설 요청
 	@Override
-	public int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException {
+	public int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, KindVO kindVO) throws SQLException {
 		int maxLtr_seq=0;
 		
 		lctreDAO.insertLctre(lctreVO);
 		maxLtr_seq=lctreDAO.selectMaxLc_Lctre_No();
 		lctre_ActplnVO.setLa_Lctre_No(maxLtr_seq);	// 강의번호 최대값을 넣어줌
 		lctre_ActplnDAO.insertLctre_Actpln(lctre_ActplnVO);
+		//knd_Lctre_No=lctreVO.getLc_Lctre_No();
+		kindVO.setKnd_Lctre_No(maxLtr_seq);
+		kindDAO.insertKind(kindVO);
 		
 		return maxLtr_seq;
 	}
@@ -77,11 +83,12 @@ public class LctreServiceImpl implements LctreService {
 
 	// 교수가 강의 수정
 	@Override
-	public void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO)
+	public void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, int knd_Lctre_No)
 			throws SQLException {
 		
 		lctreDAO.updateLctre(lctreVO);
 		lctre_ActplnDAO.updateLctre_Actpl(lctre_ActplnVO);
+		kindDAO.updateKind(knd_Lctre_No);
 		
 	}
 

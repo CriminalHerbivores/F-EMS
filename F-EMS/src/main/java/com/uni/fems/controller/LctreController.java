@@ -127,7 +127,7 @@ public class LctreController {
 
 	/**
 	 * <pre>
-	 * 개설강의 목록에서 수강신청,관심강의 등록과 삭제가 가능한 로직
+	 * 개설강의 목록에서 수강신청,관심강의 추가가 가능한 로직
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -141,30 +141,47 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
 	public String insertCourse(HttpServletRequest request,
-			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO) throws ServletException, IOException{
-		String url = "redirect:courseAble";
+			HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		
+		String url = "redirect:courseAble";
 		String stdnt_No = (String) session.getAttribute("loginUser");
-		try {
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListService.insertIntrst_List(intrst_ListVO);
-			intrst_ListService.deleteIntrst_List(intrst_ListVO);
-			
+		
+		String[] resultArr_1= request.getParameterValues("result_1");
+		String[] resultArr_2= request.getParameterValues("result_2");
+		
+		// 둘 동시에 지우면 괜찮은데 둘 중 하나만 지울경우 널포인트 에러
+		// 지금 전혀 추가가 안되는데...
+		
+		for (int i = 0; i < resultArr_2.length; i++) { //관심 목록만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨...혹은 반대거나
 			reqstVO.setRe_Stdnt_No(stdnt_No);
-			reqstService.insertReqst(reqstVO);
-			reqstService.deleteReqst(reqstVO);
+			reqstVO.setRe_Lctre_No(resultArr_2[i]);
 			
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListVO.setIn_Lctre_No(resultArr_2[i]);
 			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+			try {
+				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+				intrst_ListService.insertIntrst_List(intrst_ListVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		for (int i = 0; i < resultArr_1.length; i++) { // 수강완료만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListVO.setIn_Lctre_No(resultArr_1[i]);
+		
+			try {
+				intrst_ListService.insertIntrst_List(intrst_ListVO);	
+				//Intrst_ListController intrst_ListController= new Intrst_ListController();
+				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return url;
-	}
-	
-	
-	
 
+	}
 
 }

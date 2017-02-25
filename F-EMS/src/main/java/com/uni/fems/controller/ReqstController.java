@@ -82,6 +82,9 @@ public class ReqstController {
 	}
 	
 	
+	
+	
+	
 	/**
 	 * <pre>
 	 * 수강 완료 목록에서 선택한 관심강의 및 수강신청을 삭제하는 로직
@@ -99,11 +102,8 @@ public class ReqstController {
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		
-		String[] resultArr_1= {};
-		String[] resultArr_2= {};
-		
-		resultArr_1 = request.getParameterValues("result_1");
-		resultArr_2 = request.getParameterValues("result_2");
+		String[] resultArr_1= request.getParameterValues("result_1");
+		String[] resultArr_2= request.getParameterValues("result_2");
 		
 		// 둘 동시에 지우면 괜찮은데 둘 중 하나만 지울경우 널포인트 에러
 		//혹시 지금 쿼리가 연결되어서 그런가? -- 조회라 상관없을듯
@@ -111,6 +111,7 @@ public class ReqstController {
 		for (int i = 0; i < resultArr_2.length; i++) { //관심 목록만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨...혹은 반대거나
 			reqstVO.setRe_Stdnt_No(stdnt_No);
 			reqstVO.setRe_Lctre_No(resultArr_2[i]);
+			
 			try {
 				reqstService.deleteReqst(reqstVO);
 			} catch (SQLException e) {

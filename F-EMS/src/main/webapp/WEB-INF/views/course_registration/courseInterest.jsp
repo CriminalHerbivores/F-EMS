@@ -38,17 +38,18 @@ function op_timeTable(){
 }
 
 /* 수강 신청 */
-function add_reqst(){
+/* function add_reqst(){
 	alert("수강신청");
 }
-/* 수강 신청 취소 */
-function del_reqst(){
+ */
+ /* 수강 신청 취소 */
+/* function del_reqst(){
 	alert("수강취소");
-}
+} */
 /* 관심 추가 */
-function add_intrst(){
+/* function add_intrst(){
 	alert("관심추가");
-}
+} */
 /* 관심 삭제 */
 function del_intrst(form){
     var a="이것도 테스트!<br>";

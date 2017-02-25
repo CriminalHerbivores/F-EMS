@@ -103,7 +103,9 @@
 		p:client-ref="sqlMapClient" />
 
 	<bean id="lctreService" class="com.uni.fems.service.impl.LctreServiceImpl"
-		p:lctreDAO-ref="lctreDAO" p:lctre_ActplnDAO-ref="lctre_ActplnDAO" />
+		p:lctreDAO-ref="lctreDAO" 
+		p:lctre_ActplnDAO-ref="lctre_ActplnDAO" 
+		p:kindDAO-ref="kindDAO"/>
 
 	<bean id="lctre_FlpthDAO" class="com.uni.fems.dao.impl.Lctre_FlpthDAOImpl"
 		p:client-ref="sqlMapClient" />

@@ -23,11 +23,13 @@ import com.sun.security.ntlm.Client;
 import com.uni.fems.common.Supporter;
 import com.uni.fems.dao.Lctre_Unq_NoDAO;
 import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
+import com.uni.fems.dto.KindVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.Lctre_Unq_NoVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.service.KindService;
 import com.uni.fems.service.LctreService;
 import com.uni.fems.service.Lctre_ActplnService;
 import com.uni.fems.service.Lctre_Unq_NoService;
@@ -66,6 +68,8 @@ public class ProfsrController {
 	//private Lctre_ActplnService lctre_ActplnService;
 	@Autowired
 	private Lctre_Unq_NoService lctre_Unq_NoService;
+	@Autowired
+	private KindService kindService;
 
 	/**
 	 * <pre>
@@ -201,19 +205,22 @@ public class ProfsrController {
 	 */
 	@RequestMapping(value="/requestLctre", method=RequestMethod.POST)
 	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO,Lctre_SearchVO lctre_SearchVO)
+	public String requestLctre(Model model, HttpSession session,LctreVO lctreVO,Lctre_ActplnVO lctre_ActplnVO,KindVO kindVO)
 			throws ServletException, IOException {
 		String url = "redirect:openLctreList";//교수가 강의개설 요청 끝난 후 어떻게 할지 해야할듯, 개설한 강의 목록을 보게할지 등등
-		
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");
-		
+		//int knd_Lctre_No=0;
+		System.out.println("=========111111111111 kindVO "+kindVO);
 		try {
 			profsrService.selectProfsr(pr_Profsr_No);
-			lctreService.openLctre(lctreVO,lctre_ActplnVO);
+			lctreService.openLctre(lctreVO,lctre_ActplnVO,kindVO);
+			System.out.println("=========222222222222222222 kindVO "+kindVO);
+			//kindService.insertKind(knd_Lctre_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
+		System.out.println("=========33333333333 kindVO "+kindVO);
 		return url;
 	}
 
@@ -272,11 +279,11 @@ public class ProfsrController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/updateLctre", method = RequestMethod.POST)
-	String lctreUpdate(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, Model model) throws ServletException, IOException {
+	String lctreUpdate(Model model, LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, int knd_Lctre_No) throws ServletException, IOException {
 		String url = "redirect:openLctreList";
 		
 		try {
-			lctreService.updateLctre(lctreVO,lctre_ActplnVO);
+			lctreService.updateLctre(lctreVO,lctre_ActplnVO,knd_Lctre_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
