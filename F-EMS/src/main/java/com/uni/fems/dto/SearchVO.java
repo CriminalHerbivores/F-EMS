@@ -35,4 +35,7 @@ public class SearchVO implements Serializable{
 	private String key;
 	private String value;
 	
+	private String lu_Compl_Se;
+	private String knd_Lctre_Knd;
+	
 }
