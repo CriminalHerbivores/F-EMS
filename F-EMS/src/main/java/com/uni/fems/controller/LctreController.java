@@ -86,12 +86,14 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseAble",method=RequestMethod.GET) // 페이징과 검색을 어케 나눠서 메서드로 넣어야 할지..........
-	public String courseAbleForm(Model model, HttpServletRequest request, SearchVO searchVO) {
+	@RequestMapping("/courseAble") // 페이징과 검색을 어케 나눠서 메서드로 넣어야 할지..........
+	public String courseAbleForm(Model model, HttpServletRequest request, HttpSession session, SearchVO searchVO, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		String url = "course_registration/courseAble";
 		
 		String tpage = request.getParameter("tpage");
+		String stdnt_No = (String) session.getAttribute("loginUser");
 		
+		// 일단 검색은 정상 작동
 		if (tpage ==null){
 			tpage= "1";
 		} else if(tpage.equals("")){
@@ -118,6 +120,51 @@ public class LctreController {
 		int n = openLctreList.size();
 		model.addAttribute("openLctreListSize", n);
 		model.addAttribute("paging", paging);
+		
+		//-----------------------------------------------------
+		
+		String[] resultArr_1= request.getParameterValues("result_1");
+		String[] resultArr_2= request.getParameterValues("result_2");
+		System.out.println("1111111111111111111111111");
+		// 둘 동시에 추가 혹은 관심만 추가하면 되고 수강신청만 할라하면 안됨
+		
+		System.out.println("22222222222222222222222");
+		if(resultArr_2 != null){	// 관심과 수강 둘 다 체크
+			System.out.println("33333333333333333");
+		for (int i = 0; i < resultArr_2.length; i++) { 
+			System.out.println("44444444444");
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
+			reqstVO.setRe_Stdnt_No(stdnt_No);
+			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
+			
+			
+			try {
+				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+				intrst_ListService.insertIntrst_List(intrst_ListVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		
+		if(resultArr_1!=null){	//관심만 체크
+			System.out.println("555555555555");
+		for (int i = 0; i < resultArr_1.length; i++) { 
+			System.out.println("6666666666666666666666");
+			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
+		
+			try {
+				intrst_ListService.insertIntrst_List(intrst_ListVO);	
+				//Intrst_ListController intrst_ListController= new Intrst_ListController();
+				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		System.out.println("77777777777777777");
 		return url;
 	}
 	
@@ -137,11 +184,11 @@ public class LctreController {
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
-	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request,
-		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
-		
-		String url = "redirect:courseAble";
+//	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
+//	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request,
+//		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+//		
+//		String url = "redirect:courseAble";
 //
 //		System.out.println("과연...........");
 //		String tpage = request.getParameter("tpage");
@@ -172,56 +219,56 @@ public class LctreController {
 //		int n = openLctreList.size();
 //		model.addAttribute("openLctreListSize", n);
 //		model.addAttribute("paging", paging);
-		//------------------------------------------------------------------------------
-		
-		String stdnt_No = (String) session.getAttribute("loginUser");
-		
-		String[] resultArr_1= request.getParameterValues("result_1");
-		String[] resultArr_2= request.getParameterValues("result_2");
-		System.out.println("1111111111111111111111111");
-		// 둘 동시에 추가하면 괜찮은데 둘 중 하나만 추가하면 널포인트 에러
-		// 둘 다 선택해도 지금 전혀 추가가 안되는데...
-		
-		System.out.println("22222222222222222222222");
-		if(resultArr_2!=null){
-			System.out.println("33333333333333333");
-		for (int i = 0; i < resultArr_2.length; i++) { 
-			System.out.println("44444444444");
-			reqstVO.setRe_Stdnt_No(stdnt_No);
-			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			
-			try {
-				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
-				intrst_ListService.insertIntrst_List(intrst_ListVO);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		}
-		
-		if(resultArr_1!=null){
-			System.out.println("555555555555");
-		for (int i = 0; i < resultArr_1.length; i++) { 
-			System.out.println("6666666666666666666666");
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
-		
-			try {
-				intrst_ListService.insertIntrst_List(intrst_ListVO);	
-				//Intrst_ListController intrst_ListController= new Intrst_ListController();
-				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		}
-		System.out.println("77777777777777777");
-		
-		return url;
-
-	}
+//		//------------------------------------------------------------------------------
+//		
+//		String stdnt_No = (String) session.getAttribute("loginUser");
+//	
+//	String[] resultArr_1= request.getParameterValues("result_1");
+//	String[] resultArr_2= request.getParameterValues("result_2");
+//	System.out.println("1111111111111111111111111");
+//	// 둘 동시에 추가하면 괜찮은데 둘 중 하나만 추가하면 널포인트 에러
+//	// 둘 다 선택해도 지금 전혀 추가가 안되는데...
+//	
+//	System.out.println("22222222222222222222222");
+//	if(resultArr_2!=null){
+//		System.out.println("33333333333333333");
+//	for (int i = 0; i < resultArr_2.length; i++) { 
+//		System.out.println("44444444444");
+//		reqstVO.setRe_Stdnt_No(stdnt_No);
+//		reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
+//		
+//		intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+//		intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
+//		
+//		try {
+//			reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+//			intrst_ListService.insertIntrst_List(intrst_ListVO);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	}
+//	
+//	if(resultArr_1!=null){
+//		System.out.println("555555555555");
+//	for (int i = 0; i < resultArr_1.length; i++) { 
+//		System.out.println("6666666666666666666666");
+//		intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+//		intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
+//	
+//		try {
+//			intrst_ListService.insertIntrst_List(intrst_ListVO);	
+//			//Intrst_ListController intrst_ListController= new Intrst_ListController();
+//			//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	}
+//	System.out.println("77777777777777777");
+//		
+//		return url;
+//
+//	}
 
 }
