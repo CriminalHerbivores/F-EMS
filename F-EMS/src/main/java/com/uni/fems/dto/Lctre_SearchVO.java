@@ -97,7 +97,7 @@ public class Lctre_SearchVO implements Serializable {
 	private String lu_Pnt;   // 학점
 	private String lu_Compl_Se;   // 이수구분
 	private String lu_Presubjct;   // 선수과목
-	private String lu_Grade;   // 학년
+	private int lu_Grade;   // 학년
 	
 	// 종류 KIND
 	private int knd_Lctre_No;   // 강의번호
@@ -109,7 +109,7 @@ public class Lctre_SearchVO implements Serializable {
 	
 	// 신청목록 Reqst
 	private String re_Stdnt_No;   // 학생 번호
-	private String re_Lctre_No;   // 강의 번호
+	private int re_Lctre_No;   // 강의 번호
 	
 	// 교수 PROFSR
 	private String pr_Profsr_No;   // 교수 번호

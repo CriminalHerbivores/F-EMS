@@ -128,17 +128,17 @@ body {
 						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button>
 				</h4>
 				<tr>
-					<th><input type="checkbox" id="check_all" class="input_check" />전체 선택</th>
+					<th><input type="checkbox" id="check_all_1" class="input_check_1" />전체 선택</th>
 					<th>강의명</th>
 				</tr>
 				<c:forEach items="${lctre_SearchVO}" var="intrst">
-					<tr><td class="select_ckbox">
+					<tr><td class="select_ckbox_1">
 					<c:choose>
 						<c:when test="{intrst.result}">
-						<input type="checkbox" class="input_check" id="ck_null" name="result" checked="checked" value="${intrst.in_Lctre_No}" />
+						<input type="checkbox" class="input_check_1" id="ck_null" name="result" checked="checked" value="${intrst.in_Lctre_No}" />
 						</c:when>
 						<c:otherwise>
-						<input type="checkbox" class="input_check" id="ck_null" name="result" value="${intrst.in_Lctre_No}" />
+						<input type="checkbox" class="input_check_1" id="ck_null" name="result" value="${intrst.in_Lctre_No}" />
 						</c:otherwise>
 					</c:choose>
 						
@@ -148,7 +148,8 @@ body {
 					</tr>
 				</c:forEach>
 		</table>
-		<input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_intrst(this.form)">
+		<input type="button" class="def-btn ckbtn-color" value="수강 신청" onclick="add_reqst(this.form)">&nbsp;&nbsp;
+		<input type="button" class="def-btn ckbtn-gray" value="선택 삭제" onclick="del_intrst(this.form)">
 
 		</div>
 <p id="click_rst">&nbsp;</p>

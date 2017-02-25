@@ -140,24 +140,55 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
-	public String insertCourse(HttpServletRequest request,
-			HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request,
+		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		
 		String url = "redirect:courseAble";
+
+		String tpage = request.getParameter("tpage");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("lu_Lctre_Nm");
+		
+		List<Lctre_SearchVO> openLctreList=null;
+		String paging=null;
+		
+		try {
+			openLctreList = lctreService.openLctreList(Integer.parseInt(tpage), searchVO);
+			paging = lctreService.pageNumber(Integer.parseInt(tpage), searchVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("openLctreList", openLctreList);
+		int n = openLctreList.size();
+		model.addAttribute("openLctreListSize", n);
+		model.addAttribute("paging", paging);
+		//------------------------------------------------------------------------------
+		
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		
 		String[] resultArr_1= request.getParameterValues("result_1");
 		String[] resultArr_2= request.getParameterValues("result_2");
 		
-		// 둘 동시에 지우면 괜찮은데 둘 중 하나만 지울경우 널포인트 에러
-		// 지금 전혀 추가가 안되는데...
+		// 둘 동시에 추가하면 괜찮은데 둘 중 하나만 추가하면 널포인트 에러
+		// 둘 다 선택해도 지금 전혀 추가가 안되는데...
 		
-		for (int i = 0; i < resultArr_2.length; i++) { //관심 목록만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨...혹은 반대거나
+		for (int i = 0; i < resultArr_2.length; i++) { 
 			reqstVO.setRe_Stdnt_No(stdnt_No);
-			reqstVO.setRe_Lctre_No(resultArr_2[i]);
+			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(resultArr_2[i]);
+			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			
 			try {
 				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
@@ -167,9 +198,9 @@ public class LctreController {
 			}
 		}
 		
-		for (int i = 0; i < resultArr_1.length; i++) { // 수강완료만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨
+		for (int i = 0; i < resultArr_1.length; i++) { 
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(resultArr_1[i]);
+			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 		
 			try {
 				intrst_ListService.insertIntrst_List(intrst_ListVO);	

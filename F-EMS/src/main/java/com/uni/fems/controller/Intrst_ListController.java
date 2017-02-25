@@ -94,7 +94,7 @@ public class Intrst_ListController {
 		
 		for (int i = 0; i < resultArr.length; i++) {
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(resultArr[i]);
+			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
 			try {
 				intrst_ListService.deleteIntrst_List(intrst_ListVO);
 			} catch (SQLException e) {

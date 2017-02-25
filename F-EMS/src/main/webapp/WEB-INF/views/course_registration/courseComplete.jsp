@@ -37,17 +37,16 @@ body {
 <div class="text-center">
 			<table  class="def-table-full tb-border table-hover">
 				<tr>
-					<th><input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_reqst(this.form)"></th>
-					<th colspan="12"><h4>수강 신청 완료 목록</h4></th>
+					<th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_reqst(this.form)"></th>
+					<th colspan="11"><h4>수강 신청 완료 목록</h4></th>
 				</tr>
 				<tr>
-					<th><input type="checkbox" id="check_all_1" class="input_check_1" />관심강의</th>
-					<th><input type="checkbox" id="check_all_2" class="input_check_2" />수강완료</th>
+					<th><input type="checkbox" id="check_all_3" class="input_check_1" />관심삭제</th>
+					<th><input type="checkbox" id="check_all_2" class="input_check_2" />수강철회</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
-					<th>분반</th>
-					<th>학년</th>
 					<th>강의명</th>
+					<th>학년</th>
 					<th>구분</th>
 					<th>학점/시수</th>
 					<th>담당교수</th>
@@ -83,13 +82,12 @@ body {
 						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
 					<td>${lctre.sit_Subjct}</td>
-					<td>${lctre.lu_Lctre_Code}</td>
-					<td>${lctre.lc_Split}</td>
+					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
 					<td><a href="#" >${lctre.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
 					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
-					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.pr_Nm}</td>
+					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.lc_Lctre_Time}</td>
 					<td>${lctre.lc_Lctre_Nmpr}</td>
 					<td>${lctre.lr_Accept_Nmpr}</td> 

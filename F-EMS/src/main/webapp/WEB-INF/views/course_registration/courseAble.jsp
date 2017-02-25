@@ -62,16 +62,15 @@ body {
 					<td colspan="12"  class="text-right">
 					</td>
 				</tr> -->
-				<tr><th><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
-				<th colspan="12"><h4>개설 강의 목록</h4></th></tr>
+				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
+				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<th><input type="checkbox" id="check_all_1" class="input_check_1" />관심강의</th>
-					<th><input type="checkbox" id="check_all_2" class="input_check_2" />수강신청</th>
+					<th><input type="checkbox" id="check_all_1" class="" />관심강의</th>
+					<th><input type="checkbox" id="check_all_3" class="" />수강신청</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
-					<th>분반</th>
-					<th>학년</th>
 					<th>강의명</th>
+					<th>학년</th>
 					<th>구분</th>
 					<th>학점/시수</th>
 					<th>담당교수</th>
@@ -82,7 +81,7 @@ body {
 				
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
-					<td>	
+					<td class="select_ckbox_1">	
 						<c:choose>
 						<c:when test="{lctre.result_1}">
 						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" checked="checked" value="${lctre.in_Lctre_No}" />
@@ -109,13 +108,12 @@ body {
 						 --%></td>
 						
 					<td>${lctre.sit_Subjct}</td>
-					<td>${lctre.lu_Lctre_Code}</td>
-					<td>${lctre.lc_Split}</td>
+					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
 					<td>${lctre.lu_Lctre_Nm}</td>
 					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
-					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.pr_Nm}</td>
+					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.lc_Lctre_Time}</td>
 					<td>${lctre.lc_Lctre_Nmpr}</td>
 					<td>${lctre.lr_Accept_Nmpr}</td> 

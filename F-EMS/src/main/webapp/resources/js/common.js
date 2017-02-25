@@ -156,6 +156,21 @@ $(document).ready(function(){
 		if(chk) $(".select_ckbox_2 input").prop('checked', true);
 		else  $(".select_ckbox_2 input").prop('checked', false);
 	});
+	$("#check_all_3").click(function(){ // 하나 체크로 1,2 모두 체크하게 할 경우
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) {
+		$(".select_ckbox_1 input").prop('checked', true);
+		$(".select_ckbox_2 input").prop('checked', true);
+		$("#check_all_1").prop('checked', true);
+		$("#check_all_2").prop('checked', true);
+		}
+		else  {
+			$(".select_ckbox_1 input").prop('checked', false);
+			$(".select_ckbox_2 input").prop('checked', false);
+			$("#check_all_1").prop('checked', false);
+			$("#check_all_2").prop('checked', false);
+		}
+	});
 });
 
 
