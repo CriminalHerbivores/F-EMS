@@ -23,11 +23,11 @@ import com.uni.fems.service.StdntService;
  * <pre>
  * 관심 강의로 조회, 추가, 삭제가 가능한 ServiceImpl
  * </pre>
+ * 
  * @author KJH
  * @since 2017. 2. 24.
  * @version 1.0
- * @see javax.servlet.http.HttpServlet
- * <pre>
+ * @see javax.servlet.http.HttpServlet <pre>
  * [[개정이력(Modification Information)]]
  * 수정일        수정자         수정내용
  * --------     --------    ----------------------
@@ -39,89 +39,110 @@ import com.uni.fems.service.StdntService;
 @Controller
 @RequestMapping("/course")
 public class Intrst_ListController {
-	
+
 	@Autowired
 	private Intrst_ListService intrst_ListService;
 	@Autowired
 	private StdntService stdntService;
-	
+	@Autowired
+	private LctreController lctreController;
+
 	/**
 	 * <pre>
 	 * 관심 강의 목록 폼
 	 * </pre>
+	 * 
 	 * <pre>
 	 * @param request
 	 * @param session
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseInterest",method=RequestMethod.GET)
-	public String courseInterestForm(Model model, HttpSession session,Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+	@RequestMapping(value = "/courseInterest", method = RequestMethod.GET)
+	public String courseInterestForm(Model model, HttpSession session,
+			Intrst_ListVO intrst_ListVO) throws ServletException, IOException {
 		String url = "course_registration/courseInterest";
-		
-		List<Lctre_SearchVO> lctre_SearchVO=null;
+
+		List<Lctre_SearchVO> lctre_SearchVO = null;
 		String st_Stdnt_No = (String) session.getAttribute("loginUser");
 		try {
 			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
-			lctre_SearchVO=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
+			lctre_SearchVO = intrst_ListService.selectIntrst_List(intrst_ListVO
+					.getIn_Stdnt_No());
 			stdntService.selectStdnt(st_Stdnt_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
+		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 
 		return url;
 	}
-	
-		
+
 	/**
 	 * <pre>
 	 * 관심 강의 목록에서 선택한 관심강의를 삭제하는 로직
 	 * </pre>
+	 * 
 	 * <pre>
 	 * @param request
 	 * @param session
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseInterest",method=RequestMethod.POST)
+	@RequestMapping(value = "/courseInterest", method = RequestMethod.POST)
 	public String deleteCourseInterest(HttpServletRequest request,
-			HttpSession session, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+			HttpSession session, Intrst_ListVO intrst_ListVO)
+			throws ServletException, IOException {
 		String url = "redirect:courseInterest";
-		
+
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr = request.getParameterValues("result");
-		
-		for (int i = 0; i < resultArr.length; i++) {
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-			try {
-				intrst_ListService.deleteIntrst_List(intrst_ListVO);
-			} catch (SQLException e) {
-				e.printStackTrace();
+		String ck_result=request.getParameter("btn_result");
+		System.out.println("==============1111111111  ck_result  "+ck_result);
+		if (ck_result=="수강 신청") {
+			for (int i = 0; i < resultArr.length; i++) {
+				System.out.println("==============222222222222  ck_result  "+ck_result);
+				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
+				try {
+					intrst_ListService.insertIntrst_List(intrst_ListVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
+		} else if(ck_result=="선택 삭제") {
+			for (int i = 0; i < resultArr.length; i++) {
+				System.out.println("==============333333333333  ck_result  "+ck_result);
+				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
+				try {
+					intrst_ListService.deleteIntrst_List(intrst_ListVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
 		}
-		
+		// lctreController.courseListForm();//호출 되려나
 		return url;
 	}
-	
-	
+
 	/**
 	 * <pre>
 	 * 관심강의 목록을 바탕으로 작성되는 임시 시간표
 	 * </pre>
+	 * 
 	 * <pre>
 	 * @param request
 	 * @param session
 	 * @return
 	 * </pre>
 	 */
-//	@RequestMapping("/courseTimetable")
-//	public String courseTimetable(HttpServletRequest request,
-//			HttpSession session) {
-//		String url = "course_registration/courseTimetable";
-//		return url;
-//	}
-	
-	
+	// @RequestMapping("/courseTimetable")
+	// public String courseTimetable(HttpServletRequest request,
+	// HttpSession session) {
+	// String url = "course_registration/courseTimetable";
+	// return url;
+	// }
+
 }
