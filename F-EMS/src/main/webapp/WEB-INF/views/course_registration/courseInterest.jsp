@@ -51,6 +51,14 @@ function op_timeTable(){
 	alert("관심추가");
 } */
 /* 관심 삭제 */
+
+
+function add_reqst(form){
+	document.getElementById("click_rst").innerHTML = "수강신청좀 제발<br>";
+	document.formm.submit();
+}
+
+
 function del_intrst(form){
     var a="이것도 테스트!<br>";
     var b="선택 항목 없음!<br>"
@@ -59,6 +67,7 @@ function del_intrst(form){
 	if(document.getElementById("ck_null").ckeched){
 		var c=document.getElementById("click_rst").innerHTML = "선택 항목 없음<br>";
 	}else{
+	
 	document.formm.submit();
 		var c=document.getElementById("click_rst").innerHTML = "if값 왜 못가져오나<br>";
 	}
@@ -140,8 +149,8 @@ body {
 					</tr>
 				</c:forEach>
 		</table>
-		<input type="button" class="def-btn ckbtn-color" value="수강 신청" onclick="add_reqst(this.form)">&nbsp;&nbsp;
-		<input type="button" class="def-btn ckbtn-gray" value="선택 삭제" onclick="del_intrst(this.form)">
+		<input type="button" class="def-btn ckbtn-color" value="수강 신청" name="btn_result" onclick="add_reqst(this.form)">&nbsp;&nbsp;
+		<input type="button" class="def-btn ckbtn-gray" value="선택 삭제" name="btn_result" onclick="del_intrst(this.form)">
 
 		</div>
 <p id="click_rst">&nbsp;</p>

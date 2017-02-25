@@ -66,13 +66,11 @@ public class LctreController {
 	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인 폼
 	 * </pre>
 	 * <pre>
-	 * @param request
-	 * @param session
 	 * @return
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseList", method=RequestMethod.GET)
-	public String courseListForm(HttpServletRequest request, HttpSession session) {
+	public String courseListForm() {
 		String url = "course_registration/courseList";
 	
 		return url;
@@ -88,7 +86,7 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseAble", method=RequestMethod.GET)
+	@RequestMapping(value="/courseAble",method=RequestMethod.GET) // 페이징과 검색을 어케 나눠서 메서드로 넣어야 할지..........
 	public String courseAbleForm(Model model, HttpServletRequest request, SearchVO searchVO) {
 		String url = "course_registration/courseAble";
 		
@@ -144,46 +142,51 @@ public class LctreController {
 		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		
 		String url = "redirect:courseAble";
-
-		String tpage = request.getParameter("tpage");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		if(searchVO.getValue()==null)
-			searchVO.setValue("");
-		if(searchVO.getKey()==null)
-			searchVO.setKey("lu_Lctre_Nm");
-		
-		List<Lctre_SearchVO> openLctreList=null;
-		String paging=null;
-		
-		try {
-			openLctreList = lctreService.openLctreList(Integer.parseInt(tpage), searchVO);
-			paging = lctreService.pageNumber(Integer.parseInt(tpage), searchVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("openLctreList", openLctreList);
-		int n = openLctreList.size();
-		model.addAttribute("openLctreListSize", n);
-		model.addAttribute("paging", paging);
+//
+//		System.out.println("과연...........");
+//		String tpage = request.getParameter("tpage");
+//		
+//		if (tpage ==null){
+//			tpage= "1";
+//		} else if(tpage.equals("")){
+//			tpage="1";
+//		}
+//		model.addAttribute("tpage",tpage);
+//		
+//		if(searchVO.getValue()==null)
+//			searchVO.setValue("");
+//		if(searchVO.getKey()==null)
+//			searchVO.setKey("lu_Lctre_Nm");
+//		
+//		List<Lctre_SearchVO> openLctreList=null;
+//		String paging=null;
+//		
+//		try {
+//			openLctreList = lctreService.openLctreList(Integer.parseInt(tpage), searchVO);
+//			paging = lctreService.pageNumber(Integer.parseInt(tpage), searchVO);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		model.addAttribute("openLctreList", openLctreList);
+//		int n = openLctreList.size();
+//		model.addAttribute("openLctreListSize", n);
+//		model.addAttribute("paging", paging);
 		//------------------------------------------------------------------------------
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		
 		String[] resultArr_1= request.getParameterValues("result_1");
 		String[] resultArr_2= request.getParameterValues("result_2");
-		
+		System.out.println("1111111111111111111111111");
 		// 둘 동시에 추가하면 괜찮은데 둘 중 하나만 추가하면 널포인트 에러
 		// 둘 다 선택해도 지금 전혀 추가가 안되는데...
 		
+		System.out.println("22222222222222222222222");
+		if(resultArr_2!=null){
+			System.out.println("33333333333333333");
 		for (int i = 0; i < resultArr_2.length; i++) { 
+			System.out.println("44444444444");
 			reqstVO.setRe_Stdnt_No(stdnt_No);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			
@@ -197,8 +200,12 @@ public class LctreController {
 				e.printStackTrace();
 			}
 		}
+		}
 		
+		if(resultArr_1!=null){
+			System.out.println("555555555555");
 		for (int i = 0; i < resultArr_1.length; i++) { 
+			System.out.println("6666666666666666666666");
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 		
@@ -210,6 +217,8 @@ public class LctreController {
 				e.printStackTrace();
 			}
 		}
+		}
+		System.out.println("77777777777777777");
 		
 		return url;
 
