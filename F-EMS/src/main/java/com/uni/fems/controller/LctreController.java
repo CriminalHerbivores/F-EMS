@@ -90,6 +90,7 @@ public class LctreController {
 		String url = "course_registration/courseAble";
 		
 		String tpage = request.getParameter("tpage");
+		String stdnt_No = (String) session.getAttribute("loginUser");
 		
 		if (tpage ==null){
 			tpage= "1";
