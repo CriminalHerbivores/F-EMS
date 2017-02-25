@@ -54,13 +54,14 @@ function op_timeTable(){
 
 
 function add_reqst(form){
-	document.getElementById("click_rst").innerHTML = "수강신청좀 제발<br>";
+	alert(document.formm.value);
+	document.getElementById("click_rst").innerHTML = "수강신청 좀 제발<br>";
 	document.formm.submit();
 }
 
 
 function del_intrst(form){
-    var a="이것도 테스트!<br>";
+/*     var a="이것도 테스트!<br>";
     var b="선택 항목 없음!<br>"
     
 	//alert("테스트");
@@ -71,9 +72,10 @@ function del_intrst(form){
 	document.formm.submit();
 		var c=document.getElementById("click_rst").innerHTML = "if값 왜 못가져오나<br>";
 	}
-    document.getElementById("click_rst").innerHTML = a+b+c;
-	
-    
+    document.getElementById("click_rst").innerHTML = a+b+c; */
+    alert(document.formm.value);
+    document.getElementById("click_rst").innerHTML = "관심삭제 좀 제발<br>";
+    document.formm.submit();
     
     
     
@@ -149,8 +151,8 @@ body {
 					</tr>
 				</c:forEach>
 		</table>
-		<input type="button" class="def-btn ckbtn-color" value="수강 신청" name="btn_result" onclick="add_reqst(this.form)">&nbsp;&nbsp;
-		<input type="button" class="def-btn ckbtn-gray" value="선택 삭제" name="btn_result" onclick="del_intrst(this.form)">
+		<button class="def-btn ckbtn-color" value="add" name="btn_result" onclick="add_reqst(this.form)">수강신청</button>&nbsp;&nbsp;
+		<button class="def-btn ckbtn-gray" value="del" name="btn_result" onclick="del_intrst(this.form)">관심삭제</button>
 
 		</div>
 <p id="click_rst">&nbsp;</p>

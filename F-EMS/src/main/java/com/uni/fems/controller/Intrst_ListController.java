@@ -99,7 +99,8 @@ public class Intrst_ListController {
 		String[] resultArr = request.getParameterValues("result");
 		String ck_result=request.getParameter("btn_result");
 		System.out.println("==============1111111111  ck_result  "+ck_result);
-		if (ck_result=="수강 신청") {
+		
+		if (ck_result=="add") {
 			for (int i = 0; i < resultArr.length; i++) {
 				System.out.println("==============222222222222  ck_result  "+ck_result);
 				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
@@ -110,7 +111,7 @@ public class Intrst_ListController {
 					e.printStackTrace();
 				}
 			}
-		} else if(ck_result=="선택 삭제") {
+		} else if(ck_result=="del") {
 			for (int i = 0; i < resultArr.length; i++) {
 				System.out.println("==============333333333333  ck_result  "+ck_result);
 				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
