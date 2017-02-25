@@ -43,8 +43,8 @@ body {
 	<table class="def-table-full">
 	
 	<tr><td class="text-right">
-	<label><input type="checkbox" name="lctre_type" value="" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lctre_type" value="" >교양</label>&nbsp;&nbsp;
-	<label><input type="checkbox" name="lctre_type" value="" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="lctre_type" value="" >사이버</label>&nbsp;&nbsp;
+	<label><input type="checkbox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
+	<label><input type="checkbox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
 	<!-- </td></tr>
 	<tr><td class="text-right">	 -->			<select name="key" class="combobox-md custom-form-control">
 					<option value="lu_Lctre_Nm">강의명</option>

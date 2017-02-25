@@ -31,7 +31,10 @@ public class Lctre_SearchVO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	private String key;
+	private String value;
+	
 	private String column;
 	private String tpage;
 	
