@@ -125,8 +125,8 @@
 	 <tr>
 	 	<th>구분</th>
 	 	<td><input type="text" class="def-input-text-sm custom-form-control" name="lu_Compl_Se" readonly>&nbsp;&nbsp;
-	 		<input type="radio" class="" name="knd_Lctre_Knd" value="일반" checked="checked">일반&nbsp;&nbsp;
-	 		<input type="radio" class="" name="knd_Lctre_Knd" value="사이버">사이버
+	 		<label><input type="radio" class="" name="knd_Lctre_Knd" value="일반" checked="checked">일반</label>&nbsp;&nbsp;
+	 		<label><input type="radio" class="" name="knd_Lctre_Knd" value="사이버">사이버</label>
 	 		</td>
 	 	<th>이수학점</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Pnt" readonly></td>

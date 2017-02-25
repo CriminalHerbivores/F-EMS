@@ -41,10 +41,10 @@
 		<tr><td>사용 여부</td><td>
 		<c:choose>
 		<c:when test="${bd_Useyn=='y'|| bd_Useyn=='Y'}">
-		<input type="radio" name="bd_Useyn" value="y" checked="checked" >사용&nbsp;&nbsp;<input type="radio" name="bd_Useyn" value="n">사용 안함
+		<label><input type="radio" name="bd_Useyn" value="y" checked="checked" >사용</label>&nbsp;&nbsp;<label><input type="radio" name="bd_Useyn" value="n">사용 안함</label>
 		</c:when>
 	<c:otherwise>
-	<input type="radio" name="bd_Useyn" value="y" >사용&nbsp;&nbsp;<input type="radio" name="bd_Useyn" value="n" checked="checked" >사용 안함
+	<label><input type="radio" name="bd_Useyn" value="y" >사용</label>&nbsp;&nbsp;<label><input type="radio" name="bd_Useyn" value="n" checked="checked" >사용 안함</label>
 	</c:otherwise>		
 		</c:choose>
 		</td><td></td><td></td></tr>

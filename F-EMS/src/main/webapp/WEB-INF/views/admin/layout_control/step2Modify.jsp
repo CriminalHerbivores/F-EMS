@@ -42,8 +42,8 @@
 		<div class="set-layout-center">
 			<table class="tb-layout def-table tb-border">
 			<tr><td>
-			왼쪽 메뉴 사용</td><td colspan="5"><input type="radio" name="sub-menu" value="use" checked="checked">사용&nbsp;&nbsp;
-						<input type="radio" name="sub-menu" value="unuse">사용 안함</td></tr>
+			왼쪽 메뉴 사용</td><td colspan="5"><label><input type="radio" name="sub-menu" value="use" checked="checked">사용</label>&nbsp;&nbsp;
+						<label><input type="radio" name="sub-menu" value="unuse">사용 안함</label></td></tr>
 			
 			<tr><td>게시판 추가</td><td colspan="5"><input type="text" class=".def-input-text-md">&nbsp;>&nbsp;<input type="button" class="def-btn" value="추가" onclick=""></td></tr>
 			<tr><td colspan="6">
@@ -67,8 +67,8 @@
 			
 			</td></tr>
 			<tr><td><input type="text" class=".def-input-text-md"></td><td>댓글 사용</td><td colspan="4"> 
-				<input type="radio" name="sub-menu" value="use">사용&nbsp;&nbsp;
-						<input type="radio" name="sub-menu" value="unuse">사용 안함</td></tr>
+				<label><input type="radio" name="sub-menu" value="use">사용</label>&nbsp;&nbsp;
+						<label><input type="radio" name="sub-menu" value="unuse">사용 안함</label></td></tr>
 			<tr><td rowspan="5"></td><td>권한 설정</td><td></td><td>읽기</td><td>쓰기</td><td>댓글</td></tr>
 			<tr><td rowspan="4"></td><td>학생</td><td><input type="checkbox" name="student" value="read"></td><td><input type="checkbox" name="student" value="write"></td><td><input type="checkbox" name="student" value="comment"></td></tr>
 			<tr><td>교수</td><td><input type="checkbox" name="professor" value="read"></td><td><input type="checkbox" name="professor" value="write"></td><td><input type="checkbox" name="professor" value="comment"></td></tr>

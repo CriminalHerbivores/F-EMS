@@ -41,8 +41,8 @@
 		<div class="set-layout-center">
 			<table class="tb-layout  out-border">
 			<tr><td>
-			왼쪽 메뉴 사용</td><td colspan="2"><input type="radio" name="sub-menu" value="use" checked="checked">사용&nbsp;&nbsp;
-						<input type="radio" name="sub-menu" value="unuse">사용 안함</td></tr>
+			왼쪽 메뉴 사용</td><td colspan="2"><label><input type="radio" name="sub-menu" value="use" checked="checked">사용</label>&nbsp;&nbsp;
+						<label><input type="radio" name="sub-menu" value="unuse">사용 안함</label></td></tr>
 			
 			<tr><td>게시판 추가</td><td colspan="2"><input type="text" class="def-input-text-md custom-form-control">&nbsp;&nbsp;<input type="button" class="def-btn btn-sm btn-gray" value="추가"></td></tr>
 			<tr><td></td><td colspan="2">
@@ -67,8 +67,8 @@
 			
 			</td></tr>
 			<tr><td><input type="text" class="def-input-text-md custom-form-control">&nbsp;&nbsp;<input type="button" class="def-btn btn-sm btn-gray" value="적용"></td><td>댓글 사용</td><td> 
-				<input type="radio" name="sub-menu" value="use">사용&nbsp;&nbsp;
-						<input type="radio" name="sub-menu" value="unuse">사용 안함</td></tr>
+				<label><input type="radio" name="sub-menu" value="use">사용</label>&nbsp;&nbsp;
+						<label><input type="radio" name="sub-menu" value="unuse">사용 안함</label></td></tr>
 			<tr><td></td><td>권한설정</td><td>
 						
 			<table class="def-table-auto tb-border">			

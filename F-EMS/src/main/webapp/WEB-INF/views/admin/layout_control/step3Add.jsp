@@ -38,15 +38,15 @@
 	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
 			<table class="tb-layout out-border text-center">
-				<tr><td>1. Login형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_login" />
-				</td><td>2.복합형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_multi" checked="checked"/></td></tr>
+				<tr><td><label>1. Login형 <input type="radio" id="imgCheck" name="layout-select" value="layout_login" /></label>
+				</td><td><label>2.복합형 <input type="radio" id="imgCheck" name="layout-select" value="layout_multi" checked="checked"/></label></td></tr>
 				<tr><td>
 						<img src="<%=request.getContextPath()%>/resources/images/layout_login.png" title="blr" id="blr" class="" />
 						</td><td>
 						<img src="<%=request.getContextPath()%>/resources/images/layout_multi.png" title="blr" id="blr" class="" />
 						</td></tr>
-				<tr><td>3. 게시판형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_board" />
-				</td><td>4. 메뉴 강조형 <input type="checkbox" id="imgCheck" name="layout-select" value="layout_menu" /></td></tr>
+				<tr><td><label>3. 게시판형 <input type="radio" id="imgCheck" name="layout-select" value="layout_board" /></label>
+				</td><td><label>4. 메뉴 강조형 <input type="radio" id="imgCheck" name="layout-select" value="layout_menu" /></label></td></tr>
 				<tr><td>
 					<img src="<%=request.getContextPath()%>/resources/images/layout_board.png" title="blr" id="blr" class="" />
 				</td><td>

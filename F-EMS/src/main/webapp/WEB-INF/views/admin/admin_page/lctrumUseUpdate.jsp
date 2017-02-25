@@ -41,9 +41,9 @@
 			</table>
 			
 <table class="def-table tb-border">			
-			<tr><td colspan="6"></td><td><input type="checkbox" name="cc" value="100"></td><td>전체선택</td></tr>
+			<tr><td colspan="6"></td><td colspan="2"><label><input type="checkbox" name="cc" value="100">전체선택</label></td></tr>
 	<tr><td>강의실 번호</td><td>건물 번호</td><td>건물 이름</td><td>층수</td><td>호실</td><td>수용인원</td><td>사용</td><td></td></tr>
-	<tr><td>E01202</td><td>E01</td><td>공학관</td><td>5</td><td>15</td><td>50</td><td><input type="checkbox" name="cc" value="100"></td><td><input type="button" class="def-btn" value="적용"></td></tr>
+	<tr><td>E01202</td><td>E01</td><td>공학관</td><td>5</td><td>15</td><td>50</td><td colspan="2"><label><input type="checkbox" name="cc" value="100"><input type="button" class="def-btn" value="적용"></label></td></tr>
 	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 
