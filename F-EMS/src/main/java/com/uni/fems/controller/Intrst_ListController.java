@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dto.Intrst_ListVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.service.Intrst_ListService;
+import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.StdntService;
 
 /**
@@ -42,6 +44,8 @@ public class Intrst_ListController {
 	
 	@Autowired
 	private Intrst_ListService intrst_ListService;
+	@Autowired
+	private ReqstService reqstService;
 	@Autowired
 	private StdntService stdntService;
 	
@@ -86,24 +90,45 @@ public class Intrst_ListController {
 	 */
 	@RequestMapping(value="/courseInterest",method=RequestMethod.POST)
 	public String deleteCourseInterest(HttpServletRequest request,
-			HttpSession session, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO) throws ServletException, IOException{
 		String url = "redirect:courseInterest";
-		
+
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr = request.getParameterValues("result");
+		String ck_result = request.getParameter("btn_result");
+		System.out.println("==============1111111111  ck_result  "+ck_result);
+		System.out.println("=========================11111111 in_Lctre_No "+intrst_ListVO.getIn_Lctre_No());
+		// 값은 받아오는데 왜 if문 안으로 들어오지 못할까? if문 내부는 잘 돌아가는거 확인함(신청하는대로 잘 들어감)
 		
-		for (int i = 0; i < resultArr.length; i++) {
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-			try {
-				intrst_ListService.deleteIntrst_List(intrst_ListVO);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+//		if(ck_result=="addReqst"){
+//			for (int i = 0; i < resultArr.length; i++) {
+//				System.out.println("==============222222222222  ck_result  "+ck_result);
+//				reqstVO.setRe_Stdnt_No(stdnt_No);
+//				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
+//				try {
+//					reqstService.insertReqst(reqstVO);
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}else if(ck_result=="delIntrst"){
+			for (int i = 0; i < resultArr.length; i++) {
+				System.out.println("==============333333333333  ck_result  "+ck_result);
+				System.out.println("=========================2222222222 in_Lctre_No "+intrst_ListVO.getIn_Lctre_No());
+				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
+				System.out.println("=========================333333333 in_Lctre_No " +intrst_ListVO.getIn_Lctre_No());
+				try {
+					intrst_ListService.deleteIntrst_List(intrst_ListVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+//			}
 		}
-		
-		return url;
-	}
+
+		// lctreController.courseListForm();//호출 되려나
+		return url;	
+		}
 	
 	
 	/**

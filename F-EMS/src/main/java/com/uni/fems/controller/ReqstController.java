@@ -107,13 +107,14 @@ public class ReqstController {
 
 		// 둘 동시에 지우면 괜찮은데 둘 중 하나만 지울경우 널포인트 에러
 		
-		if(resultArr_2!=null){
-			//관심&수강삭제
+		if((resultArr_1==null&&resultArr_2!=null)||(resultArr_1!=null&&resultArr_2!=null)){
+			//관심&수강삭제 : 관심 널 수강 값 혹은 관심 값 수강 값
 		for (int i = 0; i < resultArr_2.length; i++) { //관심 목록만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨...혹은 반대거나
 			reqstVO.setRe_Stdnt_No(stdnt_No);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
+			System.out.println("둘 다 삭제되어야 함!!  관심 "+intrst_ListVO.getIn_Lctre_No()+" //강의 "+reqstVO.getRe_Lctre_No());
 			
 			try {
 				reqstService.deleteReqst(reqstVO);
@@ -122,15 +123,14 @@ public class ReqstController {
 			}
 		}
 		}
-		if(resultArr_1!=null){
-			//수강만 삭제
+		if(resultArr_1!=null&&resultArr_2 == null){
+			//수강만 삭제 : 관심만 값 있어야함
 		for (int i = 0; i < resultArr_1.length; i++) { // 수강완료만 삭제시 여기서 에러+위에 있으면 값 삭제안되고 아래에 있으면 삭제됨
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 			try {
 				intrst_ListService.deleteIntrst_List(intrst_ListVO);	// 관심강의를 삭제하려면 수강신청도 삭제해야 하도록 하기
-				//Intrst_ListController intrst_ListController= new Intrst_ListController();
-				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
+				System.out.println("관심만  관심 "+intrst_ListVO.getIn_Lctre_No()+" //강의 "+reqstVO.getRe_Lctre_No());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
