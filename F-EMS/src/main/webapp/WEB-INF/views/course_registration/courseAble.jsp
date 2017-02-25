@@ -24,14 +24,12 @@ function add_reqst(form){
 	alert("수강신청");
 	document.formm.submit();
 }
-
 </script>
 
 <style>
 body {
 	/* background: #D4F4FA; */
 }
-
 </style>
 
 </head>
@@ -82,22 +80,18 @@ body {
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td class="select_ckbox_1">	
-						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />관심</label>
-						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />관심
+						<input type="hidden" value="${lctre.in_Lctre_No}"/><%-- <input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></label></td>
 					
 					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />수강</label>
+						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />수강
 						
-						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/>
-						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/>
-						
-						<%-- <input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/>
-						 --%></td>
+						<input type="hidden" value="${lctre.re_Lctre_No}"/><%-- <input type="hidden" value="${lctre.re_Stdnt_No}"/> --%></label></td>
 						
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
-					<td>${lctre.lu_Lctre_Nm}</td>
+					<td><a href="#" >${lctre.lu_Lctre_Nm}</a></td>
 					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.pr_Nm}</td>
 					<td>${lctre.lu_Pnt}</td>

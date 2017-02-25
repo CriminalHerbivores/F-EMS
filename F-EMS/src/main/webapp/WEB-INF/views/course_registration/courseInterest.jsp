@@ -36,7 +36,6 @@ function op_timeTable(){
 		swal("Deleted!", "Your imaginary file has been deleted.", "success");
 	}); */
 }
-
 /* 수강 신청 */
 /* function add_reqst(){
 	alert("수강신청");
@@ -51,15 +50,11 @@ function op_timeTable(){
 	alert("관심추가");
 } */
 /* 관심 삭제 */
-
-
 function add_reqst(form){
 	alert(document.formm.value);
 	document.getElementById("click_rst").innerHTML = "수강신청 좀 제발<br>";
 	document.formm.submit();
 }
-
-
 function del_intrst(form){
 /*     var a="이것도 테스트!<br>";
     var b="선택 항목 없음!<br>"
@@ -80,17 +75,14 @@ function del_intrst(form){
     
     
 /*     var obj = document.getElementsByName('aa[]');
-
     if(obj.length) { 
         for(var i=0;i<obj.length;i++) { 
             tmpObj        = document.createElement("input"); 
             tmpObj.type    = "hidden"; 
             tmpObj.name    = "re_aa[]"; 
-
             if(obj[i].checked) { 
                 tmpObj.value= obj[i].value; 
             } 
-
             document.formm[0].appendChild(tmpObj); 
         } 
     }  */
@@ -102,9 +94,7 @@ function del_intrst(form){
     
 	
 }
-
 /* $(document).ready(function(){
-
     $("#check_all").click(function(){
         var chk = $(this).is(":checked");//.attr('checked');
         if(chk) $(".select_ckbox input").prop('checked', true);
@@ -116,9 +106,7 @@ function del_intrst(form){
 	<tr><td class="select_subject">
 	<label><input type="checkbox" class="input_check" />선택1<label></td></tr>
  
-
 }); */
-
 </script>
 
 <style>
@@ -151,8 +139,8 @@ body {
 					</tr>
 				</c:forEach>
 		</table>
-		<button class="def-btn ckbtn-color" value="add" name="btn_result" onclick="add_reqst(this.form)">수강신청</button>&nbsp;&nbsp;
-		<button class="def-btn ckbtn-gray" value="del" name="btn_result" onclick="del_intrst(this.form)">관심삭제</button>
+		<button class="def-btn ckbtn-color" value="addReqst" name="btn_result" onclick="add_reqst(this.form)">수강신청</button>&nbsp;&nbsp;
+		<button class="def-btn ckbtn-gray" value="delIntrst" name="btn_result" onclick="del_intrst(this.form)">관심삭제</button>
 
 		</div>
 <p id="click_rst">&nbsp;</p>
