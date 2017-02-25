@@ -91,7 +91,6 @@ public class Intrst_ListController {
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr = request.getParameterValues("result");
-<<<<<<< HEAD
 		
 		for (int i = 0; i < resultArr.length; i++) {
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
@@ -100,37 +99,7 @@ public class Intrst_ListController {
 				intrst_ListService.deleteIntrst_List(intrst_ListVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
-=======
-		String ck_result=request.getParameter("btn_result");
-		System.out.println("==============1111111111  ck_result  "+ck_result);
-		
-		if (ck_result=="add") {
-			for (int i = 0; i < resultArr.length; i++) {
-				System.out.println("==============222222222222  ck_result  "+ck_result);
-				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-				try {
-					intrst_ListService.insertIntrst_List(intrst_ListVO);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
->>>>>>> refs/heads/kjh
 			}
-<<<<<<< HEAD
-=======
-		} else if(ck_result=="del") {
-			for (int i = 0; i < resultArr.length; i++) {
-				System.out.println("==============333333333333  ck_result  "+ck_result);
-				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-				try {
-					intrst_ListService.deleteIntrst_List(intrst_ListVO);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
->>>>>>> refs/heads/kjh
 		}
 		
 		return url;

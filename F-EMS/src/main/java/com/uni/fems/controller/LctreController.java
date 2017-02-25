@@ -86,7 +86,7 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.GET)
-	public String courseAbleForm(Model model, HttpServletRequest request, SearchVO searchVO) {
+	public String courseAbleForm(Model model, HttpSession session, HttpServletRequest request, SearchVO searchVO) {
 		String url = "course_registration/courseAble";
 		
 		String tpage = request.getParameter("tpage");
