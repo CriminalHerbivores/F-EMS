@@ -43,10 +43,10 @@ body {
 	<table class="def-table-full">
 	
 	<tr><td class="text-right">
-	<input type="radio" name="lu_Compl_Se" value="">전공&nbsp;<input type="radio" name="lu_Compl_Se" value="">교양&nbsp;&nbsp;
-	<input type="radio" name="knd_Lctre_Knd" value="">일반&nbsp;<input type="radio" name="knd_Lctre_Knd" value="">사이버&nbsp;&nbsp;
-	
-	<tr><td class="text-right">				<select name="key" class="combobox-md custom-form-control">
+	<label><input type="checkbox" name="lctre_type" value="" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lctre_type" value="" >교양</label>&nbsp;&nbsp;
+	<label><input type="checkbox" name="lctre_type" value="" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="lctre_type" value="" >사이버</label>&nbsp;&nbsp;
+	<!-- </td></tr>
+	<tr><td class="text-right">	 -->			<select name="key" class="combobox-md custom-form-control">
 					<option value="lu_Lctre_Nm">강의명</option>
 					<option value="pr_Nm">담당교수</option>
 					<option value="sit_Subjct">개설학과</option>
@@ -65,8 +65,8 @@ body {
 				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
 				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<th><input type="checkbox" id="check_all_1" class="" />관심강의</th>
-					<th><input type="checkbox" id="check_all_3" class="" />수강신청</th>
+					<th><label><input type="checkbox" id="check_all_1" class="" />관심강의</label></th>
+					<th><label><input type="checkbox" id="check_all_3" class="" />수강신청</label></th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>강의명</th>
@@ -82,25 +82,12 @@ body {
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td class="select_ckbox_1">	
-						<c:choose>
-						<c:when test="{lctre.result_1}">
-						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" checked="checked" value="${lctre.in_Lctre_No}" />
-						</c:when>
-						<c:otherwise>
-						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />추가
-						</c:otherwise>
-					</c:choose>
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />관심</label>
 						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
 					<td class="select_ckbox_2">
-					<c:choose>
-						<c:when test="{lctre.result_2}">
-						<input type="checkbox" class="input_check_2" id="ck_null" name="result_2" checked="checked" value="${lctre.re_Lctre_No}" />
-						</c:when>
-						<c:otherwise>
-						<input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />추가
-						</c:otherwise>
-					</c:choose>
+						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />수강</label>
+						
 						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/>
 						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/>
 						

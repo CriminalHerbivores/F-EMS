@@ -41,8 +41,8 @@ body {
 					<th colspan="11"><h4>수강 신청 완료 목록</h4></th>
 				</tr>
 				<tr>
-					<th><input type="checkbox" id="check_all_3" class="input_check_1" />관심삭제</th>
-					<th><input type="checkbox" id="check_all_2" class="input_check_2" />수강철회</th>
+					<th><label><input type="checkbox" id="check_all_3" class="input_check_1" />관심삭제</label></th>
+					<th><label><input type="checkbox" id="check_all_2" class="input_check_2" />수강취소</label></th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>강의명</th>
@@ -60,25 +60,11 @@ body {
 				<c:when test="{ requestVO.re_NO}" > --%>
 				<tr>
 					<td class="select_ckbox_1">
-					<c:choose>
-						<c:when test="{lctre.result_1}">
-						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" checked="checked" value="${lctre.in_Lctre_No}" />
-						</c:when>
-						<c:otherwise>
-						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />삭제
-						</c:otherwise>
-					</c:choose>
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
 						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
 					<td class="select_ckbox_2">
-					<c:choose>
-						<c:when test="{lctre.result_2}">
-						<input type="checkbox" class="input_check_2" id="ck_null" name="result_2" checked="checked" value="${lctre.re_Lctre_No}" />
-						</c:when>
-						<c:otherwise>
-						<input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />취소
-						</c:otherwise>
-					</c:choose>
+						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
 						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
 					<td>${lctre.sit_Subjct}</td>

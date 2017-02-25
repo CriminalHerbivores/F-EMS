@@ -224,8 +224,8 @@ function login_go() {
         <th>직원 전화번호</th>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_Tlphon_No" ></td>
       </tr>
-      <tr><th>권한</th><td><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원&nbsp;&nbsp;<input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</td>
-      <th>근무여부</th><td><input type="radio" name="stf_Useyn" value="1" checked="checked">근무&nbsp;&nbsp;<input type="radio" name="stf_Useyn" value="0">근무 안함</td>
+      <tr><th>권한</th><td><label><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원</label>&nbsp;&nbsp;<label><input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</label></td>
+      <th>근무여부</th><td><label><input type="radio" name="stf_Useyn" value="1" checked="checked">근무</label>&nbsp;&nbsp;<label><input type="radio" name="stf_Useyn" value="0">근무 안함</label></td>
       <td></td><td></td></tr>
   </table>
   	</td></tr>

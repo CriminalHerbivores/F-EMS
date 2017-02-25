@@ -101,9 +101,9 @@ function del_intrst(form){
     });
  
 	전체선택 체크박스사용법 : 
-	<tr><th><input type="checkbox" id="check_all" class="input_check" />전체선택</th></tr>
+	<tr><th><label><input type="checkbox" id="check_all" class="input_check" />전체선택<label></th></tr>
 	<tr><td class="select_subject">
-		<input type="checkbox" class="input_check" /></td></tr>
+	<label><input type="checkbox" class="input_check" />선택1<label></td></tr>
  
 
 }); */
@@ -128,22 +128,14 @@ body {
 						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button>
 				</h4>
 				<tr>
-					<th><input type="checkbox" id="check_all_1" class="input_check_1" />전체 선택</th>
+					<th><label><input type="checkbox" id="check_all_1" class="input_check_1" />전체 선택</label></th>
 					<th>강의명</th>
 				</tr>
 				<c:forEach items="${lctre_SearchVO}" var="intrst">
 					<tr><td class="select_ckbox_1">
-					<c:choose>
-						<c:when test="{intrst.result}">
-						<input type="checkbox" class="input_check_1" id="ck_null" name="result" checked="checked" value="${intrst.in_Lctre_No}" />
-						</c:when>
-						<c:otherwise>
-						<input type="checkbox" class="input_check_1" id="ck_null" name="result" value="${intrst.in_Lctre_No}" />
-						</c:otherwise>
-					</c:choose>
-						
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result" value="${intrst.in_Lctre_No}" />
 						${intrst.lu_Lctre_Code }-${intrst.lc_Split }
-						<input type="hidden" value="${intrst.in_Lctre_No}"/></td>
+						<input type="hidden" value="${intrst.in_Lctre_No}"/></label></td>
 						<td><a href="#" >${intrst.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
 					</tr>
 				</c:forEach>
