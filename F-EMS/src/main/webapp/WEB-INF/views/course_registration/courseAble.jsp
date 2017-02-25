@@ -20,21 +20,11 @@
 <title></title>
 <script type="text/javascript">
 /* 수강 신청 */
-function add_reqst(){
+function add_reqst(form){
 	alert("수강신청");
+	document.formm.submit();
 }
-/* 수강 신청 취소 */
-function del_reqst(){
-	alert("수강취소");
-}
-/* 관심 추가 */
-function add_intrst(){
-	alert("관심추가");
-}
-/* 관심 삭제 */
-function del_intrst(){
-	alert("관심삭제");
-}
+
 </script>
 
 <style>
@@ -72,16 +62,17 @@ body {
 					<td colspan="12"  class="text-right">
 					</td>
 				</tr> -->
-				<tr><th colspan="13"><h4>개설 강의 목록</h4></th></tr>
+				<tr><th><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
+				<th colspan="12"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<th>관심강의</th>
-					<th>수강신청</th>
+					<th><input type="checkbox" id="check_all_1" class="input_check_1" />관심강의</th>
+					<th><input type="checkbox" id="check_all_2" class="input_check_2" />수강신청</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>분반</th>
 					<th>학년</th>
 					<th>강의명</th>
-					<th>이수구분</th>
+					<th>구분</th>
 					<th>학점/시수</th>
 					<th>담당교수</th>
 					<th>강의시간</th>
@@ -92,33 +83,37 @@ body {
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td>	
+						<c:choose>
+						<c:when test="{lctre.result_1}">
+						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" checked="checked" value="${lctre.in_Lctre_No}" />
+						</c:when>
+						<c:otherwise>
+						<input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />추가
+						</c:otherwise>
+					</c:choose>
+						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
+					
+					<td class="select_ckbox_2">
 					<c:choose>
-					<c:when test="${lctre.in_Lctre_No==lctre.la_Lctre_No}">
-					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
-					
-					<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심" onclick="add_intrst()">
-					 </c:when>
-					<c:otherwise> 
-						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="삭제" onclick="del_intrst()">				
-					 </c:otherwise>
-					</c:choose>	
-					</td>
-					<td>
-					<c:if test="${lctre.re_Lctre_No==lctre.la_Lctre_No}">
-					<!--해당라인의 lu_Lctre_No가 in_Lctre_No중에 일치하는 게 있을 경우-->
-					
-						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강" onclick="add_reqst()">
-					 </c:if>
-					<c:if test="${lctre.re_Lctre_No!=lctre.la_Lctre_No}"> 
-						<input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소" onclick="del_reqst()">				
-					 </c:if>
-						</td>
+						<c:when test="{lctre.result_2}">
+						<input type="checkbox" class="input_check_2" id="ck_null" name="result_2" checked="checked" value="${lctre.re_Lctre_No}" />
+						</c:when>
+						<c:otherwise>
+						<input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />추가
+						</c:otherwise>
+					</c:choose>
+						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/>
+						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/>
+						
+						<%-- <input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/>
+						 --%></td>
+						
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}</td>
 					<td>${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
 					<td>${lctre.lu_Lctre_Nm}</td>
-					<td>${lctre.lu_Compl_Se}</td>
+					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.pr_Nm}</td>
 					<td>${lctre.lc_Lctre_Time}</td>

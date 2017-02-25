@@ -73,9 +73,7 @@ public class Intrst_ListController {
 		return url;
 	}
 	
-	
-	
-	
+		
 	/**
 	 * <pre>
 	 * 관심 강의 목록에서 선택한 관심강의를 삭제하는 로직

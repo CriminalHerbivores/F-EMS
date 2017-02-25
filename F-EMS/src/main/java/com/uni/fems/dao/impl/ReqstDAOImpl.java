@@ -45,7 +45,7 @@ public class ReqstDAOImpl implements ReqstDAO {
 	// 수강신청
 	@Override
 	public void insertReqst(ReqstVO reqstVO) throws SQLException {
-		client.update("insertReqst",reqstVO);
+		client.insert("insertReqst",reqstVO);
 		
 	}
 	
