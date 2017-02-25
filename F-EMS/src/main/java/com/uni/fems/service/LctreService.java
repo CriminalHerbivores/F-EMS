@@ -44,7 +44,7 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Lctre_SearchVO> openLctreList(int tpage, SearchVO searchVO) throws SQLException;
+	List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -57,7 +57,7 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
+	int countLctreList(int tpage,SearchVO searchVO) throws SQLException;
 	
 	
 	/**

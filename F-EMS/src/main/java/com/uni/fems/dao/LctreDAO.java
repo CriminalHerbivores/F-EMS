@@ -44,7 +44,7 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Lctre_SearchVO> openLctreList(SearchVO searchVO, int tpage, int totalRecord) throws SQLException; // 전체 강의 목록  int tpage, 
+	List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException; // 전체 강의 목록  int tpage, 
 	
 	/**
 	 * <pre>

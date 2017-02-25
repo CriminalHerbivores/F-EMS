@@ -2,7 +2,6 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,15 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.uni.fems.dao.LctreDAO;
-import com.uni.fems.dao.impl.LctreDAOImpl;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dto.Intrst_ListVO;
-import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.dto.SearchVO;
@@ -59,6 +54,8 @@ public class LctreController {
 	private Intrst_ListService intrst_ListService;
 	@Autowired
 	private ReqstService reqstService;
+	@Autowired
+	private Paging callPaging;
 	
 	
 	/**
@@ -109,9 +106,16 @@ public class LctreController {
 		List<Lctre_SearchVO> openLctreList=null;
 		String paging=null;
 		
+		int view_rows = 10; //페이지의 개수
+		int counts = 10; //한 페이지에 나타낼 개수
+		
 		try {
-			openLctreList = lctreService.openLctreList(Integer.parseInt(tpage), searchVO);
-			paging = lctreService.pageNumber(Integer.parseInt(tpage), searchVO);
+			int totalRecord = lctreService.countLctreList(Integer.parseInt(tpage), searchVO);
+			paging = callPaging.pageNumber(Integer.parseInt(tpage)
+					,totalRecord,"courseAble", "&key="+searchVO.getKey()+"&value="+searchVO.getValue()
+					,view_rows,counts);
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord,view_rows,counts);
+			openLctreList = lctreService.openLctreList(searchVO,rows[1], rows[0]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -144,7 +148,8 @@ public class LctreController {
 		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		
 		String url = "redirect:courseAble";
-
+		
+		/*
 		String tpage = request.getParameter("tpage");
 		
 		if (tpage ==null){
@@ -169,10 +174,12 @@ public class LctreController {
 			e.printStackTrace();
 		}
 		
+		
 		model.addAttribute("openLctreList", openLctreList);
 		int n = openLctreList.size();
 		model.addAttribute("openLctreListSize", n);
 		model.addAttribute("paging", paging);
+		*/
 		//------------------------------------------------------------------------------
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");

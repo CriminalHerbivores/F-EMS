@@ -55,12 +55,9 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	// 현재 개설된 전체 강의 목록
 	@Override
-	public List<Lctre_SearchVO> openLctreList(SearchVO searchVO, int tpage, int totalRecord) throws SQLException { //int tpage, 
-		Paging p = new Paging();
-		int[] rows = p.row(tpage, totalRecord);
-		
+	public List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException { //int tpage, 
 		List<Lctre_SearchVO> openLctreList;
-		openLctreList = client.queryForList("openLctreList", searchVO,rows[1], rows[0]);
+		openLctreList = client.queryForList("openLctreList", searchVO,start,counts);
 		return openLctreList;
 	}
 	

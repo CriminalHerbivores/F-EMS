@@ -49,18 +49,15 @@ public class LctreServiceImpl implements LctreService {
 
 	//해당 학기의 전체강의 가져옴
 	@Override
-	public List<Lctre_SearchVO> openLctreList(int tpage, SearchVO searchVO) throws SQLException{ 
-
-		int totalRecord =lctreDAO.totalOpenLctre(searchVO);
-		return lctreDAO.openLctreList(searchVO, tpage, totalRecord);
+	public List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException{ 
+		return lctreDAO.openLctreList(searchVO, start, counts);
 	}
 	
 	// 개설 강의 목록의 페이징 
 	@Override
-	public String pageNumber(int tpage,SearchVO searchVO) throws SQLException{
+	public int countLctreList(int tpage,SearchVO searchVO) throws SQLException{
 		int totalRecord = lctreDAO.totalOpenLctre(searchVO);
-		String page = new Paging().pageNumber(tpage,totalRecord,"courseAble", "&key="+searchVO.getKey()+"&value="+searchVO.getValue());
-		return page;
+		return totalRecord;
 	}
 
 	
