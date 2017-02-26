@@ -47,4 +47,16 @@ public interface Test_PaperDAO {
 	 */
 	public int insertTestPaper(Test_PaperVO test_paperVO) throws SQLException;
 	
+	/**
+	 * <pre>
+	 * 가장 최근에 생성된 시험지번호를 가져오는 것(test 데이터 추가할 때 사용)
+	 * </pre>
+	 * <pre>
+	 * @param test_paperVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int maxTp_No() throws SQLException;
+	
 }

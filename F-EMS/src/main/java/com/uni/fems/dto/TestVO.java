@@ -1,6 +1,7 @@
 package com.uni.fems.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class TestVO implements Serializable{
 	private String te_Tp_No;   // 시험지번호
 	private String te_Ques;   // 문제
 	private String te_Ca;   // 정답
+	private List<TestVO> list; 
 	
 
 }

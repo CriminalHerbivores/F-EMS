@@ -8,13 +8,13 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.01    송선호            최초작성               -->
+<!--  2017.02.24    송선호            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>직원-공지게시판</title>
+  <title>온라인 시험</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -34,24 +34,29 @@
  </div>
   <table class="def-table-auto tb-border table-hover">
       <tr>
-        <th>시험명</th>
-        <th style="width:500px;">출제자</th>
+      	<th>No</th>
+        <th style="width:600px;">시험명</th>
+        <th>출제자</th>
         <th>출제날짜</th>
       </tr>
       
-      <tr>
-      	<td></td>
-      	<td></td>
-      	<td></td>
-      </tr>
-      
-     
+      <c:forEach var="testlist" items="${testlist }">
+      	<tr>
+      		<td>${testlist.tp_No }</td>
+      		<td><a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">  ${testlist.tp_Nm} </a></td>
+      		<td>${testlist.tp_Profsr_No} </td>
+      		<%-- <td><a href="detailNotice?no=${testlist.nb_Bbs_No}&tpage=${tpage}">
+      		 ${notice.nb_Sj} </a>
+      		</td> --%>
+      		<td>${testlist.tp_Dt} </td>
+      	</tr>
+      </c:forEach>
       
      
   </table>
   <%-- <sec:authorize access="hasRole('ROLE_STF')"> --%>
 	  <div id="buttons" style="float:right">
-	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
+	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeTestForm();">
 	  </div>
 <%-- </sec:authorize> --%>
 </td></tr>  

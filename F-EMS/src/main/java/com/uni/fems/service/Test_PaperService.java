@@ -44,4 +44,5 @@ public interface Test_PaperService {
 	 * </pre>
 	 */
 	public int insertTestPaper(Test_PaperVO test_paperVO) throws SQLException;
+	
 }
