@@ -1,22 +1,21 @@
 package com.uni.fems.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dto.TestVO;
 import com.uni.fems.dto.Test_PaperVO;
-import com.uni.fems.service.Notice_BbsService;
 import com.uni.fems.service.TestService;
 import com.uni.fems.service.Test_PaperService;
-import com.uni.fems.service.impl.TestServiceImpl;
 
 /**
  * <pre>
@@ -50,9 +49,18 @@ public class Lctre_TestController {
 	}
 
 	@RequestMapping("/testList")
-	public String testList(){
+	public String testList(Model model){
 		String url = "lecture/test/testList";
 		
+		List<Test_PaperVO> testlist = null;
+		try {
+			testlist = test_paperSvc.listAllTestPapaer(50);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("testlist", testlist);
 		return url;
 	}
 	
@@ -65,13 +73,10 @@ public class Lctre_TestController {
 	@RequestMapping(value="/writeTest", method=RequestMethod.POST)
 	public String writeTest(TestVO testVO, Test_PaperVO test_paperVO, HttpServletRequest request,String[] ques, String[] ca){
 		String url ="redirect:testList";
-		
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
-		
 		test_paperVO.setTp_Lctre_No(50);
 		test_paperVO.setTp_Profsr_No(loginUser);
-		
 		try {
 			test_paperSvc.insertTestPaper(test_paperVO);
 		} catch (SQLException e) {
@@ -88,12 +93,29 @@ public class Lctre_TestController {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				
 			}
-		
 		}
 		return url;
 	}
-	
+	@RequestMapping(value="/detailTest")
+	public String detailTeset(Model model,String tpNo,String tpNm, HttpServletRequest request){
+		String url = "lecture/test/detailTest";
+		
+		List<TestVO> Qlist = null;
+		try {
+			Qlist = testSvc.listAllTest(Integer.parseInt(tpNo));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("tpNm", tpNm);
+		model.addAttribute("Qlist", Qlist);
+		
+		return url;
+	}
 
 }
