@@ -8,7 +8,7 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.01    송선호            최초작성               -->
+<!--  2017.02.24    송선호            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
@@ -46,12 +46,10 @@
       </tr>
       
      
-      
-     
   </table>
   <%-- <sec:authorize access="hasRole('ROLE_STF')"> --%>
 	  <div id="buttons" style="float:right">
-	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeNoticeForm();">
+	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeTestForm();">
 	  </div>
 <%-- </sec:authorize> --%>
 </td></tr>  

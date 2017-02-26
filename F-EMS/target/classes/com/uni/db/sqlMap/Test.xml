@@ -18,7 +18,7 @@
 	
 	<update id="insertTest" parameterClass="test">
 	insert into test(te_ques_no,te_tp_no,te_ques,te_ca) 
-	values(te_seq.nextval,#te_Ques_No#,#te_Ques#,#te_Ca#)
+	values(te_seq.nextval,#te_Tp_No#,#te_Ques#,#te_Ca#)
 	</update>
 
 	
