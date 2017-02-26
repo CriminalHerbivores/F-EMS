@@ -18,7 +18,8 @@ import com.uni.fems.dto.Lctre_SearchVO;
  * [[개정이력(Modification Information)]]
  * 수정일        수정자       수정내용
  * --------     --------    ----------------------
- * 2017. 2. 24.   KJH         최초작성
+ * 2017. 2. 24.    KJH       최초작성
+ * 2017. 2. 25.    KJH       추가작성 
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -37,5 +38,27 @@ public interface Intrst_ListService {
 	 * </pre>
 	 */
 	List<Lctre_SearchVO> selectIntrst_List(String in_Stdnt_No) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 관심 강의로 추가하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param intrst_ListVO
+	 * @throws SQLException
+	 */
+	void insertIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 관심 강의에서 삭제하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param in_Stdnt_No
+	 * @param in_Lctre_No
+	 * @throws SQLException
+	 */
+	void deleteIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException;
 	
 }

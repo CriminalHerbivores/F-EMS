@@ -136,6 +136,46 @@ function searchKey(form){
 	location.href=url;
 }
 
+
+/* 
+	<전체선택 체크박스사용법> - 자동실행 
+	전체선택 부분 : <tr><th><input type="checkbox" id="check_all_1" class="input_check" />전체선택</th></tr>
+	개별선택 부분 : <tr><td class="select_ckbox_1"><input type="checkbox" class="input_check" /></td></tr>
+	
+	값 넘기는 것 포함 참고 : deleteCourseInterest (<-선택값 삭제 컨트롤러...Intrst_ListController), course_registration/courseInterest.jsp 
+ */
+
+$(document).ready(function(){
+	$("#check_all_1").click(function(){
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) $(".select_ckbox_1 input").prop('checked', true);
+		else  $(".select_ckbox_1 input").prop('checked', false);
+	});
+	$("#check_all_2").click(function(){
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) $(".select_ckbox_2 input").prop('checked', true);
+		else  $(".select_ckbox_2 input").prop('checked', false);
+	});
+	$("#check_all_3").click(function(){ // 하나 체크로 1,2 모두 체크하게 할 경우
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) {
+		$(".select_ckbox_1 input").prop('checked', true);
+		$(".select_ckbox_2 input").prop('checked', true);
+		$("#check_all_1").prop('checked', true);
+		$("#check_all_2").prop('checked', true);
+		}
+		else  {
+			$(".select_ckbox_1 input").prop('checked', false);
+			$(".select_ckbox_2 input").prop('checked', false);
+			$("#check_all_1").prop('checked', false);
+			$("#check_all_2").prop('checked', false);
+		}
+	});
+});
+
+
+
+
 /*학과 검색*/
 function searchSubjct() {
 	var url = mainpage()+"/findSubjct/";

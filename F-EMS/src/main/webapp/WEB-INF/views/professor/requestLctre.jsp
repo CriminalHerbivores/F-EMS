@@ -123,8 +123,11 @@
 	 </tr>
 	 
 	 <tr>
-	 	<th>이수구분</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Compl_Se" readonly></td>
+	 	<th>구분</th>
+	 	<td><input type="text" class="def-input-text-sm custom-form-control" name="lu_Compl_Se" readonly>&nbsp;&nbsp;
+	 		<label><input type="radio" class="" name="knd_Lctre_Knd" value="일반" checked="checked">일반</label>&nbsp;&nbsp;
+	 		<label><input type="radio" class="" name="knd_Lctre_Knd" value="사이버">사이버</label>
+	 		</td>
 	 	<th>이수학점</th>
 	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lu_Pnt" readonly></td>
 	 </tr>
@@ -164,9 +167,9 @@
 	
 	 <tr>
 	 	<th>주간 강의 요일</th>
-	 	<td><input type="text" class="def-input-text-sm custom-form-control"   name="lc_Wik_Lctre_Dayweek"></td> 
+	 	<td><input type="text" class="def-input-text-sm custom-form-control" name="lc_Wik_Lctre_Dayweek"></td>
 	 	<th>강의시간</th>
-	 	<td><input type="text" class="def-input-text-md custom-form-control"   name="lc_Lctre_Time"></td>
+	 	<td><input type="text" class="def-input-text-md custom-form-control" name="lc_Lctre_Time"></td>
 	 	<!-- 강의 테이블의 강의실번호 lc_Lctrum_No 를 갖고와야 할텐데... -->
 	 </tr>
 	   <tr>

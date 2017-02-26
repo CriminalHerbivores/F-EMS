@@ -57,7 +57,7 @@ function submitForm1(form) {
 	<table class="def-table-auto tb-border table-hover">
 		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_No"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
 		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_Nm"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
-		<tr><td>사용 여부</td><td><input type="radio" name="bd_Useyn" value="y" checked="checked">사용&nbsp;&nbsp;<input type="radio" name="bd_Useyn" value="n">사용 안함</td><td></td><td></td></tr>
+		<tr><td>사용 여부</td><td><label><input type="radio" name="bd_Useyn" value="y" checked="checked">사용</label>&nbsp;&nbsp;<label><input type="radio" name="bd_Useyn" value="n">사용 안함</label></td><td></td><td></td></tr>
 	</table>
 
 <br/>

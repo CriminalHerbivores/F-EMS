@@ -35,8 +35,7 @@ public class Lctre_Unq_NoVO implements Serializable {
 	private String lu_Pnt;   // 학점
 	private String lu_Compl_Se;   // 이수구분
 	private String lu_Presubjct;   // 선수과목
-	
-	private String lc_Grade;   // 학년
+	private int lu_Grade;   // 학년
 	
 
 }

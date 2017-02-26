@@ -12,6 +12,7 @@ import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.SearchVO;
+import com.uni.fems.dto.request.PageRequest;
 
 /**
  * <pre>
@@ -55,12 +56,10 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	// 현재 개설된 전체 강의 목록
 	@Override
-	public List<Lctre_SearchVO> openLctreList(SearchVO searchVO, int tpage, int totalRecord) throws SQLException { //int tpage, 
-		Paging p = new Paging();
-		int[] rows = p.row(tpage, totalRecord);
-		
+	public List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException { //int tpage, 
+
 		List<Lctre_SearchVO> openLctreList;
-		openLctreList = client.queryForList("openLctreList", searchVO,rows[1], rows[0]);
+		openLctreList = client.queryForList("openLctreList", searchVO,start,counts);
 		return openLctreList;
 	}
 	
@@ -218,7 +217,6 @@ public class LctreDAOImpl implements LctreDAO {
 		
 		int total_pages = totalRecord(name);
 		int page_count = total_pages / counts + 1;
-
 		if (total_pages % counts == 0) {
 			page_count--;
 		}
@@ -231,7 +229,6 @@ public class LctreDAOImpl implements LctreDAO {
 		
 		int start_page = page - (page % view_rows) + 1;
 		int end_page = start_page + (counts - 1);
-
 		if (end_page > page_count) {
 			end_page = page_count;
 		}
@@ -243,7 +240,6 @@ public class LctreDAOImpl implements LctreDAO {
 			str += "&key=<%=lu_Lctre_Nm%>'>&lt;</a>&nbsp;&nbsp;";
 			
 		}
-
 		for (int i = start_page; i <= end_page; i++) {
 			if (i == tpage) {
 				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
@@ -252,7 +248,6 @@ public class LctreDAOImpl implements LctreDAO {
 						+ i + "&key=" + name + "'>[" + i + "]</a>&nbsp;&nbsp;";
 			}
 		}
-
 		if (page_count > end_page) {
 			str += "<a href='course/courseAble?tpage="
 					+ (end_page + 1) + "&key=" + name
@@ -273,7 +268,6 @@ public class LctreDAOImpl implements LctreDAO {
 		int page_count = total_pages / counts;
 		
 		if (total_pages % counts != 0) page_count++;
-
 		int page=tpage;
 		if(tpage%view_rows==0) page--;
 		
@@ -322,3 +316,24 @@ public class LctreDAOImpl implements LctreDAO {
 	//===========================================================================================
 	
 }
+
+ class Paging2 extends Paging{
+	static int view_rows = 5; // 페이지의 개수
+	static int counts = 10; // 한 페이지에 나타낼 개수
+	
+	public int[] row2(int tpage, int totalRecord){
+		int startRow = -1;
+		int endRow = -1;
+
+		startRow = (tpage - 1) * counts ;
+		endRow = startRow + counts - 1;
+		
+		if (endRow > totalRecord)
+			endRow = totalRecord;
+		
+		int[] rows = {counts,startRow,endRow};
+		return rows;
+	}
+
+	
+ }

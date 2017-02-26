@@ -8,6 +8,7 @@
 <!--  ==========   ======    ==============         -->
 <!--  $2017.01.24    KJH       최초작성             -->
 <!--  $2017.02.15    KJH       추가작성             -->
+<!--  $2017.02.25    KJH       추가작성             -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
     
 <sqlMap namespace="Lctre">
@@ -22,88 +23,7 @@
 	<!-- <select id="getLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
 		select * from lctre_view 
 		where lc_Lctre_No=#lc_Lctre_No# 
-	</select>
-	
-	
-	강의 콤보박스로 검색
-	<select id="listComboLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
-		select * from lctre_view
-		where lu_lctre_nm like '%'||#lu_lctre_nm#||'%'
-		and lu_lctre_code like '%'||#lu_lctre_code#||'%'
-		and pr_nm like '%'||#pr_nm#||'%'
-		and coleg_nm like '%'||#coleg_nm#||'%'
-		and fc_faculty_nm like '%'||#fc_faculty_nm#||'%'
-		and sit_subjct like '%'||#sit_subjct#||'%'
-		and knd_lctre_knd like '%'||#knd_lctre_knd#||'%'
-		order by lu_Lctre_code asc, lc_split asc 
-	</select>
-	
-	강의 상세 검색
-	<select id="listDetailLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
-		select * from lctre_view
-		where LU_PNT like '%'||#LU_PNT#||'%'
-		and LU_COMPL_SE like '%'||#LU_COMPL_SE#||'%'
-		and LU_PRESUBJCT like '%'||#LU_PRESUBJCT#||'%'
-		and LA_MAIN_TXTBOOK like '%'||#LA_MAIN_TXTBOOK#||'%'
-		and LA_SUB_TXTBOOK like '%'||#LA_SUB_TXTBOOK#||'%'
-		and LA_LCTRE_GOAL like '%'||#LA_LCTRE_GOAL#||'%'
-		and LA_LCTRE_PROGRS_FORM like '%'||#LA_LCTRE_PROGRS_FORM#||'%'
-		and LA_MIDEX like '%'||#LA_MIDEX#||'%'
-		and LA_FNEX like '%'||#LA_FNEX#||'%'
-		and LA_INDVDL_TASK like '%'||#LA_INDVDL_TASK#||'%'
-		and LA_TEAM_TASK like '%'||#LA_TEAM_TASK#||'%'
-		and LA_PRESNATN like '%'||#LA_PRESNATN#||'%'
-		and LA_ATEND like '%'||#LA_ATEND#||'%'
-		and LA_ATTD like '%'||#LA_ATTD#||'%'
-		and BD_NO like '%'||#BD_NO#||'%'
-		and BD_NM like '%'||#BD_NM#||'%'
-		and FC_FACULTY_CODE like '%'||#FC_FACULTY_CODE#||'%'
-		and FC_FACULTY_NM like '%'||#FC_FACULTY_NM#||'%'
-		and FC_COLEG_CODE like '%'||#FC_COLEG_CODE#||'%'
-		and IN_STDNT_NO like '%'||#IN_STDNT_NO#||'%'
-		and LC_PROFSR_NO like '%'||#LC_PROFSR_NO#||'%'
-		and LC_LCTRBGN_DT like '%'||#LC_LCTRBGN_DT#||'%'
-		and LC_LCTRE_NMPR like '%'||#LC_LCTRE_NMPR#||'%'
-		and LC_WIK_LCTRE_DAYWEEK like '%'||#LC_WIK_LCTRE_DAYWEEK#||'%'
-		and LC_LCTRE_TIME like '%'||#LC_LCTRE_TIME#||'%'
-		and LC_LCTRUM_NO like '%'||#LC_LCTRUM_NO#||'%'
-		and LC_PNT like '%'||#LC_PNT#||'%'
-		and LC_GRADE like '%'||#LC_GRADE#||'%'
-		and LC_LCTRE_EVL_SCOPE like '%'||#LC_LCTRE_EVL_SCOPE#||'%'
-		and LC_OPEN_AT like '%'||#LC_OPEN_AT#||'%'
-		and LC_LCTRE_ORG like '%'||#LC_LCTRE_ORG#||'%'
-		and LC_LCTRE_CODE like '%'||#LC_LCTRE_CODE#||'%'
-		and LC_SPLIT like '%'||#LC_SPLIT#||'%'
-		and LR_LCTRUM_NO like '%'||#LR_LCTRUM_NO#||'%'
-		and LR_BD_NO like '%'||#LR_BD_NO#||'%'
-		and PR_PROFSR_NO like '%'||#PR_PROFSR_NO#||'%'
-		and PR_PW like '%'||#PR_PW#||'%'
-		and PR_NM like '%'||#PR_NM#||'%'
-		and PR_ENG_NM like '%'||#PR_ENG_NM#||'%'
-		and PR_IHIDNUM like '%'||#PR_IHIDNUM#||'%'
-		and PR_MOBLPHON_NO like '%'||#PR_MOBLPHON_NO#||'%'
-		and PR_HOUSE_TLPHON_NO like '%'||#PR_HOUSE_TLPHON_NO#||'%'
-		and PR_PROFSR_TLPHON_NO like '%'||#PR_PROFSR_TLPHON_NO#||'%'
-		and PR_POST_NO like '%'||#PR_POST_NO#||'%'
-		and PR_ADRES1 like '%'||#PR_ADRES1#||'%'
-		and PR_ADRES2 like '%'||#PR_ADRES2#||'%'
-		and PR_EMAIL like '%'||#PR_EMAIL#||'%'
-		and PSA_SUBJCT_CODE like '%'||#PSA_SUBJCT_CODE#||'%'
-		and PSA_PROFSR_NO like '%'||#PSA_PROFSR_NO#||'%'
-		and PSA_CODE like '%'||#PSA_CODE#||'%'
-		and SIT_SUBJCT_CODE like '%'||#SIT_SUBJCT_CODE#||'%'
-		and SIT_SUBJCT like '%'||#SIT_SUBJCT#||'%'
-		and SIT_SUBJCT_TLPHON_NO like '%'||#SIT_SUBJCT_TLPHON_NO#||'%'
-		and SIT_FACULTY like '%'||#SIT_FACULTY#||'%'
-		and COLEG_CODE like '%'||#COLEG_CODE#||'%'
-		and COLEG_NM like '%'||#COLEG_NM#||'%'
-		and LU_LCTRE_CODE like '%'||#LU_LCTRE_CODE#||'%'
-		and LU_LCTRE_NM like '%'||#LU_LCTRE_NM#||'%'
-		and KND_LCTRE_KND like '%'||#KND_LCTRE_KND#||'%'
-		order by lu_Lctre_code asc, lc_split asc
-	</select>
-	-->
-	
+	</select>-->
 		
 		<!-- 개설된 강의의 갯수 -->
 	<select id="totalOpenLctre" parameterClass="searchvo" resultClass="int">
@@ -115,30 +35,34 @@
 	
 	<!-- 개설 학기의 전체 강의 목록 -->
 	<select id="openLctreList" parameterClass="searchvo" resultClass="lctre_Search">
-		select * from lctre_view where $key$ like '%'||#value#||'%'
+		select sit_Subjct,lu_Lctre_Code,lc_Split,lu_Grade,lu_Lctre_Nm,lu_Compl_Se,knd_Lctre_Knd,pr_Nm,lu_Pnt,lc_Lctre_Time,lc_Lctre_Nmpr,lr_Accept_Nmpr
+   		from LCTRE_VIEW where lu_Compl_Se like '%'||#lu_Compl_Se#||'%' and knd_Lctre_Knd like '%'||#knd_Lctre_Knd#||'%'
+		and lc_Open_At='y'
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		intersect
+   		select sit_Subjct,lu_Lctre_Code,lc_Split,lu_Grade,lu_Lctre_Nm,lu_Compl_Se,knd_Lctre_Knd,pr_Nm,lu_Pnt,lc_Lctre_Time,lc_Lctre_Nmpr,lr_Accept_Nmpr 
+    	from lctre_view 
+    	where $key$ like '%'||#value#||'%'
+		and lc_Open_At='y'
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+    	order by lu_Lctre_code asc, lc_split asc
+	</select>
+	<!-- 	select * from lctre_view where $key$ like '%'||#value#||'%'
+		and lc_Open_At='y'
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		intersect
+		select * from LCTRE_VIEW
+		where lu_Compl_Se like '%'||#lu_Compl_Se#||'%'
+		and knd_Lctre_Knd like '%'||#knd_Lctre_Knd#||'%'
 		and lc_Open_At='y'
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 		order by lu_Lctre_code asc, lc_split asc 
-	</select>
-	
-	 
-	<!-- 개설 학기의 전체 강의 목록 -->
-<!-- 	<select id="openLctreList" parameterClass="searchvo" resultClass="lctre_Search">
-		select * from lctre_view where Lu_Lctre_Nm like '%'||#Lu_Lctre_Nm#||'%' 
-		 and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
-		order by lu_Lctre_code asc, lc_split asc 
-	</select> -->
-	
-	<!-- [수강신청] 현재 학기의 전체 강의 갯수 : 페이징 안 함 -->
-	<!-- <select id="selectCount" resultClass="int">
-		select count(*) from lctre where lc_Lctrbgn_Dt=to_date(#lc_Lctrbgn_Dt#)
 	</select> -->
 	
 	<!-- 강의번호중 가장 큰 값 가져온다 -->
 	<select id="selectMaxLc_Lctre_No" resultClass="int">
 		select max(lc_Lctre_No) from lctre
 	</select>
-		
 	
 	<!-- 강의 등록 -->
 	<update id="insertLctre" parameterClass="lctre">
@@ -164,7 +88,7 @@
 		delete from lctre where lc_Lctre_No=#lc_Lctre_No#
 	</update> -->
 	
-	<!-- 강의 검색 :: 교수 검색과 개설 여부만 되어 있으나 추후 추가 바람 -->
+	<!-- 강의 검색 :: 교수 검색과 개설 여부 -->
 	<select id="selectLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
 		select * from lctre_View
 		where la_Lctre_No like '%%'
@@ -176,7 +100,7 @@
 		</isNotNull>
 	</select>
 	
-	<!-- 강의 검색 개수 :: 교수 검색과 개설 여부만 되어 있으나 추후 추가 바람 -->
+	<!-- 강의 검색 개수 :: 교수 검색과 개설 여부 -->
 	<select id="countLctre" parameterClass="lctre_Search" resultClass="int">
 		select count(*) from lctre_View
 		where la_Lctre_No like '%%'

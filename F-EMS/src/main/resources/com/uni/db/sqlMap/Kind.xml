@@ -22,7 +22,7 @@
 	</update>
 	
 	<!-- 강의종류 수정 -->
-	<update id="updateKind" parameterClass="kind">
+	<update id="updateKind" parameterClass="int">
 		update kind set knd_Lctre_No=#knd_Lctre_No#,knd_Lctre_Knd=#knd_Lctre_Knd#
 		where knd_Lctre_No=#knd_Lctre_No#
 	</update>

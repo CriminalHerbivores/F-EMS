@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.uni.fems.dto.Intrst_ListVO;
 import com.uni.fems.dto.Lctre_SearchVO;
+import com.uni.fems.dto.ReqstVO;
 
 /**
  * <pre>
@@ -35,6 +36,27 @@ public interface ReqstService {
 	 * </pre>
 	 */
 	List<Lctre_SearchVO> selectReqst(String re_Stdnt_No) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 수강 신청하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param reqstVO
+	 * @throws SQLException
+	 */
+	void insertReqst(ReqstVO reqstVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 수강신청 내역을 삭제하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param reqstVO
+	 * @throws SQLException
+	 */
+	void deleteReqst(ReqstVO reqstVO) throws SQLException;
+	
 	
 	
 	// 개설강의 목록에서 관심등록 버튼을 눌러서 관심강의로 추가되어 관심목록으로 나타남

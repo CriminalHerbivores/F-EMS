@@ -31,7 +31,10 @@ public class Lctre_SearchVO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	private String key;
+	private String value;
+	
 	private String column;
 	private String tpage;
 	
@@ -91,25 +94,25 @@ public class Lctre_SearchVO implements Serializable {
 	private String la_Week14;   // 14주차
 	private String la_Week15;   // 15주차
 
-	
-	
-	
-	
 	// 강의고유번호 LCTRE_UNQ_NO
 	private String lu_Lctre_Code;   // 강의 코드
 	private String lu_Lctre_Nm;   // 강의명
 	private String lu_Pnt;   // 학점
 	private String lu_Compl_Se;   // 이수구분
 	private String lu_Presubjct;   // 선수과목
-	private String lu_Grade;   // 학년
+	private int lu_Grade;   // 학년
 	
 	// 종류 KIND
 	private int knd_Lctre_No;   // 강의번호
 	private String knd_Lctre_Knd;   // 강의종류
 	
 	// 관심목록 INTRST_LIST
-//	private String in_Stdnt_No;   // 학생번호
-//	private int in_Lctre_No;   // 강의번호
+	private String in_Stdnt_No;   // 학생번호
+	private int in_Lctre_No;   // 강의번호
+	
+	// 신청목록 Reqst
+	private String re_Stdnt_No;   // 학생 번호
+	private int re_Lctre_No;   // 강의 번호
 	
 	// 교수 PROFSR
 	private String pr_Profsr_No;   // 교수 번호

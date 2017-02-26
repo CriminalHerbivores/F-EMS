@@ -18,26 +18,33 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script type="text/javascript">
+/* 수강 신청 */
+function add_reqst(form){
+	alert("수강신청");
+	document.formm.submit();
+}
+</script>
+
 <style>
 body {
 	/* background: #D4F4FA; */
 }
-
 </style>
 
 </head>
 <body class="course-list-l-top">
-	<form>
+<form name="formm" method="post">
 	<div class="text-center">
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
 	<table class="def-table-full">
 	
 	<tr><td class="text-right">
-	<input type="radio" name="lu_Compl_Se" value="">전공&nbsp;<input type="radio" name="lu_Compl_Se" value="">교양&nbsp;&nbsp;
-	<input type="radio" name="knd_Lctre_Knd" value="">일반&nbsp;<input type="radio" name="knd_Lctre_Knd" value="">사이버&nbsp;&nbsp;
-	
-	<tr><td class="text-right">				<select name="key" class="combobox-md custom-form-control">
+	<label><input type="checkbox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
+	<label><input type="checkbox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
+	<!-- </td></tr>
+	<tr><td class="text-right">	 -->			<select name="key" class="combobox-md custom-form-control">
 					<option value="lu_Lctre_Nm">강의명</option>
 					<option value="pr_Nm">담당교수</option>
 					<option value="sit_Subjct">개설학과</option>
@@ -53,16 +60,16 @@ body {
 					<td colspan="12"  class="text-right">
 					</td>
 				</tr> -->
-				<tr><th colspan="13"><h4>개설 강의 목록</h4></th></tr>
+				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
+				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<th>수강신청</th>
-					<th>관심강의</th>
+					<th><label><input type="checkbox" id="check_all_1" class="" />관심강의</label></th>
+					<th><label><input type="checkbox" id="check_all_3" class="" />수강신청</label></th>
 					<th>개설학과</th>
 					<th>강의코드</th>
-					<th>분반</th>
-					<th>학년</th>
 					<th>강의명</th>
-					<th>이수구분</th>
+					<th>학년</th>
+					<th>구분</th>
 					<th>학점/시수</th>
 					<th>담당교수</th>
 					<th>강의시간</th>
@@ -72,30 +79,22 @@ body {
 				
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
-					<td>
-					<%-- <c:choose>
-					<c:when test="${lctre.lu_Lctre_No=lctre_SearchVO.in_Lctre_No && stdntVO.st_Stdnt_No=lctre_SearchVO.in_Stdnt_No}"> --%>
-					<!-- 로그인한 학생과 in_Stdnt_No가 일치하고
-						해당 라인의 lu_Lctre_No 와 in_Lctre_No중에 일치하는 게 있을 경우-->
+					<td class="select_ckbox_1">	
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />관심
+						<input type="hidden" value="${lctre.in_Lctre_No}"/><%-- <input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></label></td>
 					
-						<input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강">
-					<%-- </c:when>
-					<c:otherwise> --%>
-						<!-- <input type="button" class="def-ckbtn btn-sm ckbtn-gray" value="취소"> -->					
-					<%-- </c:otherwise>
-					</c:choose>	 --%>				
-					
-						</td>
-					
-					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
+					<td class="select_ckbox_2">
+						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />수강
+						
+						<input type="hidden" value="${lctre.re_Lctre_No}"/><%-- <input type="hidden" value="${lctre.re_Stdnt_No}"/> --%></label></td>
+						
 					<td>${lctre.sit_Subjct}</td>
-					<td>${lctre.lu_Lctre_Code}</td>
-					<td>${lctre.lc_Split}</td>
+					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
-					<td>${lctre.lu_Lctre_Nm}</td>
-					<td>${lctre.lu_Compl_Se}</td>
-					<td>${lctre.lu_Pnt}</td>
+					<td><a href="#" >${lctre.lu_Lctre_Nm}</a></td>
+					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.pr_Nm}</td>
+					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.lc_Lctre_Time}</td>
 					<td>${lctre.lc_Lctre_Nmpr}</td>
 					<td>${lctre.lr_Accept_Nmpr}</td> 

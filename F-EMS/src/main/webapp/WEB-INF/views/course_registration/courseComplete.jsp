@@ -18,6 +18,13 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
+<script type="text/javascript">
+function del_reqst(form){
+	document.formm.submit();
+}
+
+</script>
 <style>
 body {
 	/* background: #D9E5FF; */
@@ -26,21 +33,21 @@ body {
 
 </head>
 <body class="course-list-l-bottom">
-	<form>
+	<form name="formm" method="post">
 <div class="text-center">
 			<table  class="def-table-full tb-border table-hover">
 				<tr>
-					<th colspan="13"><h4>수강 신청 완료 목록</h4></th>
+					<th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_reqst(this.form)"></th>
+					<th colspan="11"><h4>수강 신청 완료 목록</h4></th>
 				</tr>
 				<tr>
-					<th>수강해제</th>
-					<th>관심강의</th>
+					<th><label><input type="checkbox" id="check_all_3" class="input_check_1" />관심삭제</label></th>
+					<th><label><input type="checkbox" id="check_all_2" class="input_check_2" />수강취소</label></th>
 					<th>개설학과</th>
 					<th>강의코드</th>
-					<th>분반</th>
-					<th>학년</th>
 					<th>강의명</th>
-					<th>이수구분</th>
+					<th>학년</th>
+					<th>구분</th>
 					<th>학점/시수</th>
 					<th>담당교수</th>
 					<th>강의시간</th>
@@ -52,29 +59,30 @@ body {
 				<%-- <c:choose>
 				<c:when test="{ requestVO.re_NO}" > --%>
 				<tr>
-					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="수강해제"></td>
-					<td><input type="button" class="def-ckbtn btn-sm ckbtn-color" value="관심추가"></td>
+					<td class="select_ckbox_1">
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
+						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
+					
+					<td class="select_ckbox_2">
+						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
+						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
+					
 					<td>${lctre.sit_Subjct}</td>
-					<td>${lctre.lu_Lctre_Code}</td>
-					<td>${lctre.lc_Split}</td>
+					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
 					<td>${lctre.lu_Grade }</td>
-					<td>${lctre.lu_Lctre_Nm}</td>
-					<td>${lctre.lu_Compl_Se}</td>
-					<td>${lctre.lu_Pnt}</td>
+					<td><a href="#" >${lctre.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
+					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.pr_Nm}</td>
+					<td>${lctre.lu_Pnt}</td>
 					<td>${lctre.lc_Lctre_Time}</td>
 					<td>${lctre.lc_Lctre_Nmpr}</td>
 					<td>${lctre.lr_Accept_Nmpr}</td> 
 				</tr>
-				<%-- </c:when>
-				<c:otherwise>
-				
-				</c:otherwise>
-				</c:choose> --%>
+
 			</c:forEach> 
 				
-				
 			</table>
+				<!-- <input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_reqst(this.form)"> -->
 
 </div>
 	</form>

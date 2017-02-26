@@ -60,7 +60,7 @@ function go_atrty_update() {
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
 					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
-					&nbsp;&nbsp;<input type="checkbox" name="sa_Atrty" value="ROLE_STF">전체선택
+					&nbsp;&nbsp;<label><input type="checkbox" name="sa_Atrty" value="ROLE_STF">전체선택</label>
 	</td></tr>
 	</table>
 			<table class="def-table-full tb-border table-hover">
@@ -93,8 +93,8 @@ function go_atrty_update() {
 					<td>
 					<form method="post">
 					<c:choose>
-					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><input type="checkbox" name="sa_Sklstf_No" value="${subjct.sa_Sklstf_No}" checked="checked"></c:when>
-					<c:otherwise><input type="checkbox" name="sa_Sklstf_No" value="${subjct.sa_Sklstf_No}"></c:otherwise>
+					<c:when test="${subjct.sa_Atrty=='ROLE_ADMIN'}"><label><input type="checkbox" name="sa_Sklstf_No" value="${subjct.sa_Sklstf_No}" checked="checked">관리자</label></c:when>
+					<c:otherwise><label><input type="checkbox" name="sa_Sklstf_No" value="${subjct.sa_Sklstf_No}">직원</label></c:otherwise>
 					</c:choose>
 					<input type="hidden" name="sa_Sklstf_No"> <!-- 선택한 것의 직원번호 가져오고 싶음 -->
 					</td>

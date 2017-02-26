@@ -52,9 +52,9 @@ public interface ReqstDAO {
 	 * 수강신청 내역을 삭제하는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param re_No
+	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void deleteReqst(int re_No) throws SQLException;
+	void deleteReqst(ReqstVO reqstVO) throws SQLException;
 
 }

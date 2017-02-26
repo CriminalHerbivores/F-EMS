@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.uni.fems.dto.KindVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
@@ -43,7 +44,7 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Lctre_SearchVO> openLctreList(int tpage, SearchVO searchVO) throws SQLException;
+	List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -56,7 +57,7 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	String pageNumber(int tpage,SearchVO searchVO) throws SQLException;
+	int countLctreList(int tpage,SearchVO searchVO) throws SQLException;
 	
 	
 	/**
@@ -68,7 +69,7 @@ public interface LctreService {
 	 * @param lctreVO
 	 * @throws SQLException
 	 */
-	int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
+	int openLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, KindVO kindVO) throws SQLException;
 
 	
 	
@@ -82,7 +83,7 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO) throws SQLException;
+	void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, int knd_Lctre_No) throws SQLException;
 	
 	
 	/**

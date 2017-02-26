@@ -40,9 +40,9 @@
 			</table>
 			
 <table class="def-table tb-border">			
-			<tr><td colspan="4"></td><td><input type="checkbox" name="cc" value="100"></td><td>전체선택</td></tr>
+			<tr><td colspan="4"></td><td colspan="2"><label><input type="checkbox" name="cc" value="100">전체선택</label></td></tr>
 	<tr><td>학과 코드</td><td>단과대학 이름</td><td>학부 이름</td><td>학과 이름</td><td>사용</td><td></td></tr>
-	<tr><td>00000</td><td>공학대학</td><td>공학부</td><td>컴퓨터 공학과</td><td><input type="checkbox" name="cc" value="100"></td><td><input type="button" class="def-btn" value="적용"></td></tr>
+	<tr><td>00000</td><td>공학대학</td><td>공학부</td><td>컴퓨터 공학과</td><td colspan="2"><label><input type="checkbox" name="cc" value="100"><input type="button" class="def-btn" value="적용"></label></td></tr>
 	<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
 

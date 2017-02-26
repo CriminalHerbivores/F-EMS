@@ -15,21 +15,40 @@
 	
 	<!-- 수강신청 완료 목록 조회 -->
 	<select id="selectReqst" parameterClass="str" resultClass="lctre_Search">
+		SELECT * FROM lctre_view, reqst,intrst_list
+		WHERE re_Stdnt_No=#re_Stdnt_No# 
+		and re_Lctre_No=lc_Lctre_No
+   		and in_Lctre_No=lc_Lctre_No
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		and lc_Open_At='y'
+		order by lc_Lctre_Code asc
+	 </select>
+	<!--
+		SELECT * FROM lctre_view, reqst,intrst_list
+		WHERE re_Stdnt_No=#re_Stdnt_No# 
+		and re_Lctre_No=lc_Lctre_No
+   		and in_Lctre_No=lc_Lctre_No
+		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		and lc_Open_At='y'
+		order by lc_Lctre_Code asc
+	
+	
 		SELECT * FROM course_view
 		WHERE re_Stdnt_No=#re_Stdnt_No# 
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+		and lc_Open_At='y'
 		order by lc_Lctre_Code asc
-	</select>
+ -->	
 
 	<!-- 수강 신청 -->
 	<update id="insertReqst" parameterClass="reqst">
-		INSERT INTO REQST(re_No,re_Stdnt_No,re_Lctre_No)
-		VALUES(REQ_SEQ.NEXTVAL,#re_Stdnt_No#,#re_Lctre_No#)
+		INSERT INTO REQST(re_Stdnt_No,re_Lctre_No)
+		VALUES(#re_Stdnt_No#,#re_Lctre_No#)
 	</update>
 	
 	<!-- 수강 신청 취소 -->
-	<update id="deleteReqst" parameterClass="int">
-		delete from REQST where re_No=#re_No#
+	<update id="deleteReqst" parameterClass="reqst">
+		delete from REQST where re_Stdnt_No=#re_Stdnt_No# and re_Lctre_No=#re_Lctre_No#
 	</update>
 	
 

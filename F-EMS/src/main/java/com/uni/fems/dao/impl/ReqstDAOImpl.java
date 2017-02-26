@@ -45,14 +45,14 @@ public class ReqstDAOImpl implements ReqstDAO {
 	// 수강신청
 	@Override
 	public void insertReqst(ReqstVO reqstVO) throws SQLException {
-		client.update("insertReqst",reqstVO);
+		client.insert("insertReqst",reqstVO);
 		
 	}
 	
 	// 수강신청 취소
 	@Override
-	public void deleteReqst(int re_No) throws SQLException {
-		client.delete("deleteReqst",re_No);
+	public void deleteReqst(ReqstVO reqstVO) throws SQLException {
+		client.delete("deleteReqst",reqstVO);
 	}
 	
 }

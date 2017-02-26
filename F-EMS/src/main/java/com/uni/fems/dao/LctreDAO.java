@@ -44,11 +44,11 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Lctre_SearchVO> openLctreList(SearchVO searchVO, int tpage, int totalRecord) throws SQLException; // 전체 강의 목록  int tpage, 
+	List<Lctre_SearchVO> openLctreList(SearchVO searchVO,int start,int counts) throws SQLException; // 전체 강의 목록  int tpage, 
 	
 	/**
 	 * <pre>
-	 * 개설강의 목록의 강이 갯수를 가져오는 메서드
+	 * 개설강의 목록의 강의 갯수를 가져오는 메서드
 	 * </pre>
 	 * <pre>
 	 * @param userSubjctVO

@@ -119,7 +119,7 @@
 					<option value="여">여</option>
 					</select>
 				</td></tr>			
-			<tr><td>비밀번호 확인 <input type="radio" name="find_pw" value="이메일">이메일&nbsp;&nbsp;<input type="radio" name="find_pw" value="휴대폰">휴대폰</td></tr>
+			<tr><td>비밀번호 확인 <label><input type="radio" name="find_pw" value="이메일">이메일</label>&nbsp;&nbsp;<label><input type="radio" name="find_pw" value="휴대폰">휴대폰</label></td></tr>
 			</table></td></tr>
 			<tr><td><button
 						class="def-btn" value="닫기" onclick="window_close()">닫기</button></td></tr>
