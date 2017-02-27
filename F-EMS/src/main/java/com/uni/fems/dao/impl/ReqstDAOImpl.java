@@ -46,13 +46,18 @@ public class ReqstDAOImpl implements ReqstDAO {
 	@Override
 	public void insertReqst(ReqstVO reqstVO) throws SQLException {
 		client.insert("insertReqst",reqstVO);
-		
 	}
 	
 	// 수강신청 취소
 	@Override
 	public void deleteReqst(ReqstVO reqstVO) throws SQLException {
 		client.delete("deleteReqst",reqstVO);
+	}
+
+	// 한 학생의 개설강의중 수강신청한 학점의 합계
+	@Override
+	public void getSumReqst(String re_Stdnt_No) throws SQLException {
+		client.insert("getSumReqst",re_Stdnt_No);
 	}
 	
 }
