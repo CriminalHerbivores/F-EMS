@@ -125,4 +125,8 @@ public interface Bbs_ListDAO {
 	 */
 	int insertComment_Table(String name) throws SQLException;
 
+	int insertBbs_Table_Gnt(String name) throws SQLException;
+
+	int insertBbs_Comment_Table_Gnt(String name) throws SQLException;
+
 }

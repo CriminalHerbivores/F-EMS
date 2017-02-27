@@ -61,7 +61,7 @@
 		and LC_LCTRUM_NO like '%'||#LC_LCTRUM_NO#||'%'
 		and LC_PNT like '%'||#LC_PNT#||'%'
 		and LC_GRADE like '%'||#LC_GRADE#||'%'
-		and LC_LCTRE_EVL_SCOPE like '%'||#LC_LCTRE_EVL_SCOPE#||'%'
+		and LC_LCTRE_EVL_SCORE like '%'||#LC_LCTRE_EVL_SCORE#||'%'
 		and LC_OPEN_AT like '%'||#LC_OPEN_AT#||'%'
 		and LC_LCTRE_ORG like '%'||#LC_LCTRE_ORG#||'%'
 		and LC_LCTRE_CODE like '%'||#LC_LCTRE_CODE#||'%'

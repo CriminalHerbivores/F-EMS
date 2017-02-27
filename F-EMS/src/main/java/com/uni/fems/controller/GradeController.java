@@ -12,5 +12,10 @@ public class GradeController {
 	@Autowired
 	private GradeService gradeService;
 	
-	
+	@RequestMapping(value="registGrade")
+	public String gradeIn(){
+		String url ="professor/registGrade";
+		
+		return url;
+	}
 }

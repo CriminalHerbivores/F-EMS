@@ -54,16 +54,6 @@
 	
 	</update>
 
-	<!-- <insert id="comment_Table" parameterClass="str">
-		create table LQC_$value$(	
-			LQC_COMNT_NO NUMBER NOT NULL,
-			LQC_BBS_NO NUMBER,
-			LQC_COMNT_CONTENT varchar2(4000),
-			LQC_WRITNG_DT DATE,
-			LQC_STDNT_NO varchar2(50),
-			CONSTRAINT LQC__$value$_PK PRIMARY KEY(LQC_COMNT_NO),
-		)
-	</insert> -->
 	<update id="task_Table" parameterClass="str">
 		create table LCTRE_T$value$(	
 			LT_BBS_NO number NOT NULL,
@@ -83,25 +73,48 @@
 			LV_BBS_NO number NOT NULL,
 			LV_SJ varchar2(200),
 			LV_CN varchar2(3000),
-			LV_WRITNG_DT date,
+			LV_start_DT date,
+			LV_End_DT date,
+			LV_Time number,
 			LV_FLPTH_NO NUMBER,
 			CONSTRAINT LV_$value$_PK PRIMARY KEY(LV_BBS_NO),
 			CONSTRAINT LV_$value$_LCTRE_FLPTH_FK FOREIGN KEY(LV_FLPTH_NO) REFERENCES LCTRE_FLPTH(LF_NO)
 		)
-	
 	</update>
 	<update id="watch_Table" parameterClass="str">
 		create table LCTRE_W$value$(	
 			LW_BBS_NO number NOT NULL,
 			LW_STDNT_NO varchar2(50),
 			LW_VIDEO_BBS_NO NUMBER,
-			LW_VIDEO_DT date,
+			LW_Lead_Time number,
 			LW_STDNT_VIDEO_DT date,
 			CONSTRAINT LW_$value$_PK PRIMARY KEY(LW_BBS_NO),
 			CONSTRAINT LW_$value$_LV_$value$_FK FOREIGN KEY(LW_VIDEO_BBS_NO) REFERENCES LCTRE_V$value$(LV_BBS_NO),
 			CONSTRAINT LW_$value$_STDNT_FK FOREIGN KEY(LW_STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
 		)
-	
 	</update>
-	
+	<insert id="insertLctreTable_Date" parameterClass="str">
+		insert into LCTRE_D$table_Nm$(LD_BBS_NO,LD_SJ,LD_CN,LD_WRITNG_DT,LD_RDCNT,LD_FLPTH_NO) 
+		values(0,'강의 생성','자료 게시판이 생성되었습니다.',sysdate,0,null)
+	</insert>
+	<insert id="insertLctreTable_Notice" parameterClass="str">
+		insert into LCTRE_N$table_Nm$(LN_BBS_NO,LN_SJ,LN_CN,LN_WRITNG_DT,LN_RDCNT) 
+		values(0,'강의 생성','공지 게시판이 생성되었습니다.',sysdate,0)
+	</insert>
+	<insert id="insertLctreTable_Qna" parameterClass="str">
+		insert into LCTRE_Q$table_Nm$(LQ_BBS_NO,LQ_STDNT_NO,LQ_SJ,LQ_CN,LQ_REPLY,LQ_WRITNG_DT,LQ_RDCNT) 
+		values(0,null,'강의 생성','질의 응답 게시판이 생성되었습니다.',null,sysdate,0)
+	</insert>
+	<insert id="insertLctreTable_Task" parameterClass="str">
+		insert into LCTRE_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,LT_WRITNG_DT,LD_FLPTH_NO) 
+		values(0,null,'강의 생성','과제 게시판이 생성되었습니다.',sysdate,null)
+	</insert>
+	<insert id="insertLctreTable_Video" parameterClass="str">
+		insert into LCTRE_V$table_Nm$(LV_BBS_NO,LV_SJ,LV_CN,LV_start_DT,LV_End_DT,LV_Time,LV_FLPTH_NO) 
+		values(0,'강의 생성','동영상 게시판이 생성되었습니다.',null,null,0,null)
+	</insert>
+	<insert id="insertLctreTable_Watch" parameterClass="str">
+		insert into LCTRE_W$table_Nm$(LW_BBS_NO,LW_STDNT_NO,LW_VIDEO_BBS_NO,LW_VIDEO_DT,LW_STDNT_VIDEO_DT) 
+		values(0,'강의 생성','시청여부 게시판이 생성되었습니다.',0,null)
+	</insert>
 </sqlMap>
