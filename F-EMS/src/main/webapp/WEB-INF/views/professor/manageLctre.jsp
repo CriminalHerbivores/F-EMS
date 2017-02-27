@@ -18,29 +18,26 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script>
-function manageLctre(data){
-	$.ajax({
-		url:'msgLctre',
-		contentType: 'application/json; charset=utf-8',
-		dataType:'json',
-		/* data:$('form input').serialize(), */
-		data:data,
-		type:'post',
-		success : function(result){
-			alert(result);
-		},
-		error:function(request,status,error){
-		  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		  }
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.mngLctre').keyup(function(){
+		var id='#'+$(this).attr('id');
+		var att = $(id+'>td>input[name="gd_Attd_Score"]').val()*1;
+		var ate = $(id+'>td>input[name="gd_Atend_Score"]').val()*1;
+		var tsk = $(id+'>td>input[name="gd_Task_Score"]').val()*1;
+		var mid = $(id+'>td>input[name="gd_Midex_Score"]').val()*1;
+		var fne = $(id+'>td>input[name="gd_Fnex_Score"]').val()*1;
+		var min = $(id+'>td>input[name="gd_Mini_Score"]').val()*1;
+		var total = att+ate+tsk+mid+fne+min;
+		$(id+'>td>input[name="gd_Tot_Score"]').val(total);
 	});
-}
+});
 </script>
 </head>
 <body>
 <table class="non-border margin-auto"><tr><td>
 <h2>성적 관리</h2>
-<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>학생번호</th>
@@ -52,25 +49,27 @@ function manageLctre(data){
 			<th>중간 점수</th>
 			<th>기말 점수</th>
 			<th>수시 점수</th>
-			<!-- <th>등록</th> -->
+			<th>등록</th>
 		</tr>
 		<c:forEach items="${lctreList}" var="lct" varStatus="status">
-		<tr data-id="${lct.gd_Stdnt_No}">
-			<td><input type="text" name="gradeList[${status.index}].gd_Stdnt_No" readonly value="${lct.gd_Stdnt_No}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Grade" value="${lct.gd_Grade}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Tot_Score" value="${lct.gd_Tot_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Attd_Score" value="${lct.gd_Attd_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Atend_Score" value="${lct.gd_Atend_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Task_Score" value="${lct.gd_Task_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Midex_Score" value="${lct.gd_Midex_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Fnex_Score" value="${lct.gd_Fnex_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<td><input type="text" name="gradeList[${status.index}].gd_Mini_Score" value="${lct.gd_Mini_Score}" class="def-input-text-sm custom-form-control"/></td>
-			<!-- <td><button onclick="manageLctre(this.form)" class="def-ckbtn btn-sm ckbtn-color">등록</button></td> -->
+		<tr class="mngLctre" id="${status.count}">
+			<td><input type="text" name="gd_Stdnt_No" readonly value="${lct.gd_Stdnt_No}" class="def-input-text-lg custom-form-control"/></td>
+			<td><input type="number" name="gd_Grade" value="${lct.gd_Grade}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Tot_Score" readonly value="${lct.gd_Tot_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Attd_Score" value="${lct.gd_Attd_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Atend_Score" value="${lct.gd_Atend_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Task_Score" value="${lct.gd_Task_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Midex_Score" value="${lct.gd_Midex_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Fnex_Score" value="${lct.gd_Fnex_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td><input type="number" name="gd_Mini_Score" value="${lct.gd_Mini_Score}" class="def-input-text-sm custom-form-control"/></td>
+			<td>
+			<input type="hidden" name="gd_Lctre_No" value="${lct.gd_Lctre_No}"/>
+			<button onclick="manageLctre(${status.count})" class="def-ckbtn btn-sm ckbtn-color">등록</button>
+			</td>
 		</tr>
 		</c:forEach>
 	</table>
-</form>
-<button onclick="submitForm(this.form)" class="def-btn btn-sm btn-color">등록</button>
+<a href="<%=request.getContextPath()%>/profsr/ongoingLctreList?tpage=${tpage}"><button class="def-btn btn-sm ckbtn-color">진행 강의 목록</button></a>
 </td></tr></table>
 </body>
 </html>
