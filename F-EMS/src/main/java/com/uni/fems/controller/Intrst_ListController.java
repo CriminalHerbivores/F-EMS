@@ -80,7 +80,7 @@ public class Intrst_ListController {
 		
 	/**
 	 * <pre>
-	 * 관심 강의 목록에서 선택한 관심강의를 삭제하는 로직
+	 * 관심 강의 목록에서 선택한 관심강의를 수강신청 혹은 삭제하는 로직
 	 * </pre>
 	 * <pre>
 	 * @param request
@@ -96,16 +96,12 @@ public class Intrst_ListController {
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr = request.getParameterValues("result");
 		String ck_result = request.getParameter("btn_result");
-		System.out.println("111111111111111 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 		if(ck_result.equals("addReqst")){
 			for (int i = 0; i < resultArr.length; i++) {
-				System.out.println("222222 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 
 				reqstVO.setRe_Stdnt_No(stdnt_No);
 				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
-				System.out.println("333333333333 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 				try {
-					System.out.println("444444444444 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 					reqstService.insertReqst(reqstVO);
 					
 				} catch (SQLException e) {
@@ -113,22 +109,18 @@ public class Intrst_ListController {
 				}
 			}
 		}else if(ck_result.equals("delIntrst")){
-			System.out.println("555555555555 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
-			for (int i = 0; i < resultArr.length; i++) {
-				System.out.println("666666666666 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
 				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-				System.out.println("777777777 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
 				try {
 					intrst_ListService.deleteIntrst_List(intrst_ListVO);
-					System.out.println("888888 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 
-		// lctreController.courseListForm();//호출 되려나
 		return url;	
 		}
 	

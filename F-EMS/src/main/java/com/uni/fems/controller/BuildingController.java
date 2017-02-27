@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -107,8 +108,32 @@ public class BuildingController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/buildingUpdate", method=RequestMethod.GET)
-	public String buildingUpdateForm(HttpServletRequest request, HttpSession session) {
+	public String buildingUpdateForm(Model model, HttpServletRequest request, HttpSession session, BuildingVO buildingVO) {
 		String url = "admin/admin_page/buildingUpdate";
+		
+		List<BuildingVO> BuildingList = null;
+				
+		System.out.println("========================1111111111  null");
+
+		if(buildingVO.getBd_Useyn()==null){
+			buildingVO.setBd_Useyn("y");
+		}
+	
+			System.out.println("======================== null");
+		try {
+			System.out.println("======================== 111111111   buildingVO.getBd_Useyn()  "+buildingVO.getBd_Useyn());
+			BuildingList = buildingService.selectUseBuilding(buildingVO);
+			if(buildingVO.getBd_Useyn()==null){
+			}
+			System.out.println("======================== 22222222222   buildingVO.getBd_Useyn()  "+buildingVO.getBd_Useyn());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e){
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("buildingVO",BuildingList);
+		
 		return url;
 	}
 	
@@ -129,11 +154,10 @@ public class BuildingController {
 		try {
 			buildingService.updateBuilding(buildingVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("buildingVO"+buildingVO);
-		//model.addAttribute("buildingVO",buildingVO);
+		model.addAttribute("buildingVO",buildingVO);
 
 		return url;
 	}

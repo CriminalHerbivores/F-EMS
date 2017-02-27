@@ -176,7 +176,7 @@ $(document).ready(function(){
 	});
 	
 	$("#check_all_5").click(function(){
-		var chk = $(this).is(":checked");//.attr('checked');
+		var chk = $(this).not(":disabled").is(":checked");//.attr('checked');
 		if(chk) $(".select_ckbox_5 input").prop('checked', true);
 		else  $(".select_ckbox_5 input").prop('checked', false);
 	});

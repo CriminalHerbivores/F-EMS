@@ -13,11 +13,11 @@ import com.uni.fems.service.BuildingService;
  * <pre>
  * 건물 등록, 수정 사용안함을 구현하는 ServiceImpl
  * </pre>
+ * 
  * @author USER
  * @since 2017. 2. 18.
  * @version 1.0
- * @see javax.servlet.http.HttpServlet
- * <pre>
+ * @see javax.servlet.http.HttpServlet <pre>
  * [[개정이력(Modification Information)]]
  * 수정일        수정자          수정내용
  * --------     --------    ----------------------
@@ -28,26 +28,31 @@ import com.uni.fems.service.BuildingService;
  */
 @Data
 public class BuildingServiceImpl implements BuildingService {
- 
- private BuildingDAO buildingDAO;
 
- 
-// 건물 등록
-@Override
-public void insertBuilding(BuildingVO buildingVO) throws SQLException {
+	private BuildingDAO buildingDAO;
+
+	// 건물 등록
+	@Override
+	public void insertBuilding(BuildingVO buildingVO) throws SQLException {
 		buildingDAO.insertBuilding(buildingVO);
-}
+	}
 
-// 건물 수정
-@Override
-public void updateBuilding(BuildingVO buildingVO) throws SQLException {
-	buildingDAO.updateBuilding(buildingVO);
-}
+	// 전체 건물 조회
+	@Override
+	public List<BuildingVO> selectUseBuilding(BuildingVO buildingVO) throws SQLException {
+		List<BuildingVO> selectUseBuilding = buildingDAO.selectBuilding(buildingVO);
+		return selectUseBuilding;
+	}
 
-//@Override
-//public void deleteBuilding(String bd_No) throws SQLException {
-//	buildingDAO.deleteBuilding(bd_No);
-//}
- 
- 
+	// 건물 수정
+	@Override
+	public void updateBuilding(BuildingVO buildingVO) throws SQLException {
+		buildingDAO.updateBuilding(buildingVO);
+	}
+
+	// @Override
+	// public void deleteBuilding(String bd_No) throws SQLException {
+	// buildingDAO.deleteBuilding(bd_No);
+	// }
+
 }

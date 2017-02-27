@@ -1,7 +1,9 @@
 package com.uni.fems.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import com.ibatis.sqlmap.client.SqlMapException;
 import com.uni.fems.dto.BuildingVO;
 
 /**
@@ -31,6 +33,18 @@ public interface BuildingDAO {
 	 * @throws SQLException
 	 */
 	int insertBuilding(BuildingVO buildingVO) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 전체건물 목록
+	 * </pre>
+	 * <pre>
+	 * @param buildingVO
+	 * @throws SqlMapException
+	 */
+	List<BuildingVO> selectBuilding(BuildingVO buildingVO) throws SQLException;
+	
 	
 	/**
 	 * <pre>

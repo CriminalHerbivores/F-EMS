@@ -98,7 +98,7 @@ tbody .tb-border{
 				</tr>
 				</thead>
 				<tbody>
-				
+				<!-- 체크박스 forEach안에서 행마다 연결되게 가능할까? -->
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td class="select_ckbox_1 select_ckbox_5">	
@@ -107,7 +107,6 @@ tbody .tb-border{
 					
 					<td class="select_ckbox_2 select_ckbox_5">
 						<label><input type="checkbox" class="input_check_2" id="check_all_5" name="result_2" value="${lctre.lc_Lctre_No}" />수강
-						
 						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 						
 					<td>${lctre.sit_Subjct}</td>
