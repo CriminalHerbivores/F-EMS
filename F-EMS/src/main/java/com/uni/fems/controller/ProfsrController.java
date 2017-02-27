@@ -14,9 +14,11 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
@@ -372,7 +374,7 @@ public class ProfsrController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="manageLctre")
+	@RequestMapping(value="manageLctre", method = RequestMethod.GET)
 	public String manageLctre(GradeVO gradeVO, Model model){
 		String url="professor/manageLctre";
 		List<GradeVO> list = new ArrayList<GradeVO>();
@@ -384,6 +386,37 @@ public class ProfsrController {
 		}
 		
 		model.addAttribute("lctreList",list);
+		return url;
+	}
+	@RequestMapping(value="manageLctre", method = RequestMethod.POST)
+	public String manageLctreGrade(List<GradeVO> gradeList, String gd_Lctre_No, Model model){
+		String url="redirect:manageLctre?gd_Lctre_No="+gd_Lctre_No;
+		if(gradeList!=null){
+			for(GradeVO g : gradeList){
+				g.setGd_Lctre_No(Integer.parseInt(gd_Lctre_No));
+				try {
+					gradeService.updateGrade(g);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return url;
+	}
+	@RequestMapping(value="msgLctre", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String msgLctre(@RequestBody List<GradeVO> grade, String gd_Lctre_No, Model model){
+		String url="redirect:manageLctre?gd_Lctre_No="+gd_Lctre_No;
+		if(grade!=null){
+			for(GradeVO g : grade){
+				g.setGd_Lctre_No(Integer.parseInt(gd_Lctre_No));
+				try {
+					gradeService.updateGrade(g);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return url;
 	}
 }
