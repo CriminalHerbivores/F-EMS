@@ -15,7 +15,7 @@
 </select>
 
 <select id="listAllAnswer" parameterClass="str" resultClass="answerVO">
-
+	select * from answer where an_stdnt_no=#an_Stdnt_No#
 </select>
 
 <update id="insertAnswer" parameterClass="answerVO">

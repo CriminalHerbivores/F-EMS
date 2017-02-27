@@ -60,18 +60,30 @@ public class Lctre_TestController {
 	}
 
 	@RequestMapping("/testList")
-	public String testList(Model model){
+	public String testList(Model model,HttpServletRequest request){
 		String url = "lecture/test/testList";
+		HttpSession session = request.getSession();
+		String loginUser = (String) session.getAttribute("loginUser");
 		
 		List<Test_PaperVO> testlist = null;
+		List<AnswerVO> answerList = null;
 		try {
 			testlist = test_paperSvc.listAllTestPapaer(50);
+			answerList = answerSvc.listAllAnswer(loginUser);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("========================"+answerList);
+		
+		/*for(AnswerVO answer:answerList){
+			if(answer.getAn_Tp_No()==
+			
+		}*/
 		
 		model.addAttribute("testlist", testlist);
+		model.addAttribute("answerList", answerList);
+		
 		return url;
 	}
 	
