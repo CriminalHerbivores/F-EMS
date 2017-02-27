@@ -108,12 +108,12 @@ public class LctreDAOImpl implements LctreDAO {
 	public List<Lctre_SearchVO> selectLctre(Lctre_SearchVO lctre_SearchVO,
 			int start, int count) throws SQLException {
 		List<Lctre_SearchVO> list = client.queryForList("selectLctre",lctre_SearchVO, start,count);
-		return null;
+		return list;
 	}
 	// 개설 강의 검색 개수
 	@Override
 	public int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
-		int totalRecord = (int) client.queryForObject("countLctre");
+		int totalRecord = (int) client.queryForObject("countLctre",lctre_SearchVO);
 		return totalRecord;
 	}
 	
