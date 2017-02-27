@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lombok.Data;
@@ -17,21 +16,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sun.security.ntlm.Client;
+import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
-import com.uni.fems.dao.Lctre_Unq_NoDAO;
-import com.uni.fems.dao.impl.Lctre_Unq_NoDAOImpl;
 import com.uni.fems.dto.KindVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
-import com.uni.fems.dto.Lctre_Unq_NoVO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.service.KindService;
 import com.uni.fems.service.LctreService;
-import com.uni.fems.service.Lctre_ActplnService;
 import com.uni.fems.service.Lctre_Unq_NoService;
 import com.uni.fems.service.ProfsrService;
 
@@ -70,6 +64,8 @@ public class ProfsrController {
 	private Lctre_Unq_NoService lctre_Unq_NoService;
 	@Autowired
 	private KindService kindService;
+	@Autowired
+	private Paging callPaging;
 
 	/**
 	 * <pre>
@@ -225,12 +221,44 @@ public class ProfsrController {
 	}
 
 	
-	// 봐서 삭제할거임
+	/**
+	 * <pre>
+	 * 교수의 강의이력 조회
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_SearchVO
+	 * @param request
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
 	@RequestMapping(value="/openLctreList", method=RequestMethod.GET)
 	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctreListForm(Model model, HttpSession session)
+	public String requestLctreListForm(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model, HttpSession session)
 			throws ServletException, IOException {
 		String url = "professor/requestLctreList";
+		String loginUser = (String) session.getAttribute("loginUser");
+		lctre_SearchVO.setPr_Profsr_No(loginUser);
+		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		String paging = "";
+		if(tpage==null) tpage="1";
+		int totalRecord = 0;
+		try {
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("paging",paging);
 		
 		return url;
 	}
