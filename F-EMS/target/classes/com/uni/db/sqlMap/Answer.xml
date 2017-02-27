@@ -6,4 +6,17 @@
     
 <sqlMap namespace="Answer">
 
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="answerVO" type="com.uni.fems.dto.AnswerVO" />
+	
+<select id="getAnswer" parameterClass="answerVO" resultClass="answerVO">
+	select * from answer where an_tp_no=#an_Tp_No# and an_ques_no=#an_Ques_No#
+</select>
+
+<update id="insertAnswer" parameterClass="answerVO">
+	insert into answer(an_ques_no,an_tp_no,an_stdnt_no,an_ans) 
+	values(#an_Ques_No#,#an_Tp_No#,#an_Stdnt_No#,#an_Ans#)
+</update>
+
 </sqlMap>

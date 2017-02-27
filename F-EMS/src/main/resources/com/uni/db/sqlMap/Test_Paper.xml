@@ -20,4 +20,8 @@
 		insert into test_paper(tp_no,tp_lctre_no,tp_nm,tp_profsr_no) 
 		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#)
 	</update>
+	
+	<select id="maxTp_No" resultClass="int">
+		select max(Tp_No) from test_paper
+	</select>
 </sqlMap>

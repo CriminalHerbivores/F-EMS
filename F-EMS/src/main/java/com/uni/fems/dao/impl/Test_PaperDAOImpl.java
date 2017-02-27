@@ -40,4 +40,10 @@ public class Test_PaperDAOImpl implements Test_PaperDAO {
 		return client.update("insertTestPaper", test_paperVO);
 	}
 	
+	@Override
+	public int maxTp_No() throws SQLException {
+		
+		return (int) client.queryForObject("maxTp_No");
+	}
+	
 }
