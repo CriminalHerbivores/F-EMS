@@ -67,7 +67,7 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	 */
 	@RequestMapping("/qnaList")
 	public String Lctre_QnaList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		String url="lecture/qna/QnaList";
+		String url="lecture/qna/qnaList";
 		String tpage = request.getParameter("tpage");
 		String table_Nm = request.getParameter("table_Nm");
 		
@@ -145,6 +145,10 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	public String writeLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, HttpServletRequest request,HttpSession session, Model model)
 								throws ServletException, IOException{
 		String url = "redirect:qnaList";
+
+		//		String loginUser = (String)session.getAttribute("loginUser");
+		String loginUser = "bbb";
+		lctre_Qna_Gnt.setLq_Stdnt_No(loginUser);
 		
 		try {
 			lctre_QnaSvc.insertLctre_Qna(lctre_Qna_Gnt);
@@ -175,14 +179,17 @@ public class Lctre_QnaController implements ApplicationContextAware{
 		Lctre_QnaVO lctre_Qna = null;
 		try {
 			lctre_Qna = lctre_QnaSvc.getLctre_Qna(lctre_Qna_Gnt);
+			lctre_Qna_Gnt.setLq_Stdnt_No(lctre_Qna.getLq_Stdnt_No());
 			lctre_Qna_Gnt.setLq_Cn(lctre_Qna.getLq_Cn());
 			lctre_Qna_Gnt.setLq_Sj(lctre_Qna.getLq_Sj());
+			lctre_Qna_Gnt.setLq_Reply(lctre_Qna.getLq_Reply());
 			lctre_Qna_Gnt.setLq_Writng_Dt(lctre_Qna.getLq_Writng_Dt());
 			lctre_Qna_Gnt.setLq_Rdcnt(lctre_Qna.getLq_Rdcnt()+1);
 			lctre_QnaSvc.countLctre_Qna(lctre_Qna_Gnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("2lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		model.addAttribute("lctre_Qna_Gnt",lctre_Qna_Gnt);
 		model.addAttribute("tpage",tpage);
 		return url;
@@ -247,6 +254,64 @@ public class Lctre_QnaController implements ApplicationContextAware{
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 공지 게시판의 내용을 수정하기 위한 폼으로 이동
+	 * </pre>
+	 * <pre>
+	 * @param lctre_Qna_Gnt
+	 * @param tpage
+	 * @param model
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
+	@RequestMapping(value="/updateLctre_Qna_Reply", method=RequestMethod.GET)
+	public String updateBbs_Gnt_ReplyForm(Lctre_Qna_GntVO lctre_Qna_Gnt,@RequestParam int tpage, Model model, HttpServletRequest request){
+		String url="lecture/qna/updateLctre_Qna_Reply";
+		Lctre_QnaVO lctre_Qna = null;
+		try {
+			
+			lctre_Qna = lctre_QnaSvc.getLctre_Qna(lctre_Qna_Gnt);
+			lctre_Qna_Gnt.setLq_Cn(lctre_Qna.getLq_Cn());
+			lctre_Qna_Gnt.setLq_Sj(lctre_Qna.getLq_Sj());
+			lctre_Qna_Gnt.setLq_Writng_Dt(lctre_Qna.getLq_Writng_Dt());
+			lctre_Qna_Gnt.setLq_Rdcnt(lctre_Qna.getLq_Rdcnt());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_Qna_Gnt",lctre_Qna_Gnt);
+		model.addAttribute("tpage",tpage);
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 수정한 게시판의 내용을 업로드 한다.
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_Qna_Gnt
+	 * @param session
+	 * @param request
+	 * @return url
+	 * </pre>
+	 */
+	@RequestMapping(value="/updateLctre_Qna_Reply", method=RequestMethod.POST)
+	public String updateBbs_Gnt_Reply(@RequestParam int tpage,Lctre_Qna_GntVO lctre_Qna_Gnt, HttpSession session, HttpServletRequest request, Model model){
+		String url = "redirect:detailLctre_Qna?"
+				+ "table_Nm="+lctre_Qna_Gnt.getTable_Nm()
+				+ "&lq_Bbs_No="+lctre_Qna_Gnt.getLq_Bbs_No()
+				+ "&tpage="+tpage;
+		
+		try {
+			lctre_QnaSvc.updateLctre_Qna_Reply(lctre_Qna_Gnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
 	/**
 	 * <pre>
 	 * 해당하는 게시판을 삭제처리하는 메서드
