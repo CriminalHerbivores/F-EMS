@@ -38,27 +38,34 @@
         <th style="width:600px;">시험명</th>
         <th>출제자</th>
         <th>출제날짜</th>
+        <th>응시여부</th>
       </tr>
       
       <c:forEach var="testlist" items="${testlist }">
       	<tr>
       		<td>${testlist.tp_No }</td>
-      		<td><a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">  ${testlist.tp_Nm} </a></td>
+      		<td>${testlist.tp_Nm}</td>
       		<td>${testlist.tp_Profsr_No} </td>
       		<%-- <td><a href="detailNotice?no=${testlist.nb_Bbs_No}&tpage=${tpage}">
       		 ${notice.nb_Sj} </a>
       		</td> --%>
       		<td>${testlist.tp_Dt} </td>
+      		<td>	
+      	<sec:authorize access="hasRole('ROLE_STD')">
+      				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">
+      				<input type="button" class="def-btn btn-sm btn-color" value="응시"> </a>
+      	</sec:authorize>
+      		</td>
       	</tr>
       </c:forEach>
       
      
   </table>
-  <%-- <sec:authorize access="hasRole('ROLE_STF')"> --%>
+  <sec:authorize access="hasRole('ROLE_PRO')">
 	  <div id="buttons" style="float:right">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeTestForm();">
 	  </div>
-<%-- </sec:authorize> --%>
+</sec:authorize>
 </td></tr>  
 </table>	  
 </div>
