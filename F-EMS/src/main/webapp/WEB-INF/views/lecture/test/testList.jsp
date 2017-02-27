@@ -44,7 +44,14 @@
       <c:forEach var="testlist" items="${testlist }">
       	<tr>
       		<td>${testlist.tp_No }</td>
-      		<td>${testlist.tp_Nm}</td>
+      		<sec:authorize access="hasRole('ROLE_PRO')">
+      		<td>
+      		<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">${testlist.tp_Nm}</a>
+      		</td>
+      		</sec:authorize>
+      		<sec:authorize access="hasRole('ROLE_STD')">
+      		 	<td>${testlist.tp_Nm}</td>
+      		</sec:authorize>
       		<td>${testlist.tp_Profsr_No} </td>
       		<%-- <td><a href="detailNotice?no=${testlist.nb_Bbs_No}&tpage=${tpage}">
       		 ${notice.nb_Sj} </a>

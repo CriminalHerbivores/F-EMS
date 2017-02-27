@@ -12,6 +12,19 @@
 <title></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+<script>
+
+$(function(){
+	$('#addrow').click(function(){
+		$('#testtable > tbody:last').append('<tr><td><input type="text" class="def-input-text-full custom-form-control" name="addQue" ></td><td><input type="text" class="def-input-text-md custom-form-control" name="addCa"> <input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
+	});
+});
+function deltest(obj){
+	var tr = $(obj).parent().parent();
+	tr.remove();
+}
+</script>
 </head>
 <body>
 <table style="width:100%;" class="non-border margin-auto">
@@ -23,13 +36,15 @@
 				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 					<tr>
 						<th>시험명</th>
-							<td style="width:80%;"> ${tpNm } 
-							<input type="hidden" name="an_Tp_No" value="${tpNo }">
+							<td style="width:80%;">
+							<input type="text" class="def-input-text-full custom-form-control" name="tp_Nm" value=" ${tpNm }"> 
+							<input type="hidden" name="tp_No" value="${tpNo}">
 							</td>
 					</tr>
 				</table>
 			</td>
 			<td>
+			<input type="button" id="addrow" class="def-btn btn-md btn-color" value="+추가">
 			</td>
 		</tr>
 	
@@ -41,17 +56,14 @@
 		<c:forEach var="Qlist" items="${Qlist }" >
 		<tr>
 			<td>
-				${Qlist.te_Ques}
-				<input type="hidden" name="queNo" value="${Qlist.te_Ques_No }">
+				<input type="text" class="def-input-text-full custom-form-control"  name="que" value="${Qlist.te_Ques }">
 			</td>
 			<td>
-			<sec:authorize access="hasRole('ROLE_PRO')">
-				${Qlist.te_Ca }
-			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_STD')">	
-				<input type="text" class="def-input-text-md custom-form-control" name="answer">
-			</sec:authorize>
-				<%-- ${Qlist.te_Ca} --%>			
+				<input type="text" class="def-input-text-md custom-form-control" name="ca" value="${Qlist.te_Ca }">
+				<input type="hidden" name="queNo" value="${Qlist.te_Ques_No }">
+				 
+				 
+				 <input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="">
 			</td>
 		</tr>
 		</c:forEach>
@@ -59,14 +71,11 @@
 		
 		
 	</table>
-		<sec:authorize access="hasRole('ROLE_STD')">
-			<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="제출" onclick="submitForm(this.form);">
-		</sec:authorize>
 		
 		
 		<sec:authorize access="hasRole('ROLE_PRO')">
 		<div style="float:right;">
-			<a href="updateTest?tpNo=${tpNo }&tpNm=${tpNm}"><input type="button" class="def-btn btn-md btn-color" value="수정"></a>
+			<input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
 			<a href="deleteTest?tpNo=${tpNo }"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
 			<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.back()">
 		</div>
