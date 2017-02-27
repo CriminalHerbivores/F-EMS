@@ -1,6 +1,7 @@
 package com.uni.fems.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.uni.fems.dto.AnswerVO;
 
@@ -46,4 +47,15 @@ public interface AnswerDAO {
 	 */
 	public int insertAnswer(AnswerVO answerVO) throws SQLException;
 	
+	/**
+	 * <pre>
+	 * 로그인 학생의 시험 유효성 위해 만든 메서드
+	 * </pre>
+	 * <pre>
+	 * @param loginUser
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException;
 }

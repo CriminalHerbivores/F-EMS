@@ -1,6 +1,7 @@
 package com.uni.fems.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.uni.fems.dto.AnswerVO;
 /**
@@ -44,4 +45,16 @@ public interface AnswerService {
 	 * </pre>
 	 */
 	public int insertAnswer(AnswerVO answerVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 로그인 학생의 시험 유효성 위해 만든 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param loginUser
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException;
 }

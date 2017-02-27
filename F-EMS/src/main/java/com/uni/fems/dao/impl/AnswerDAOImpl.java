@@ -1,6 +1,7 @@
 package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.AnswerDAO;
@@ -34,6 +35,10 @@ public class AnswerDAOImpl implements AnswerDAO  {
 	@Override
 	public int insertAnswer(AnswerVO answerVO) throws SQLException {
 		return client.update("insertAnswer", answerVO);
+	}
+	@Override
+	public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException {
+		return client.queryForList("listAllAnswer", loginUser);
 	}
 	
 }

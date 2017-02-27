@@ -59,8 +59,17 @@
       		<td>${testlist.tp_Dt} </td>
       		<td>	
       	<sec:authorize access="hasRole('ROLE_STD')">
+      		<c:forEach var="answerList" items="${answerList }">
+      			<c:choose>
+      				<c:when test= "${answerList.an_Tp_No =='${testlist.tp_No}' }">
+      				<input type="button" class="def-btn btn-sm btn-color" value="완료"> </a>
+      				</c:when>
+      				<c:otherwise>
       				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">
       				<input type="button" class="def-btn btn-sm btn-color" value="응시"> </a>
+      				</c:otherwise>
+      			</c:choose>
+      		</c:forEach>
       	</sec:authorize>
       		</td>
       	</tr>
