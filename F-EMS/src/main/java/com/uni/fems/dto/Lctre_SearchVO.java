@@ -55,7 +55,7 @@ public class Lctre_SearchVO implements Serializable {
 	private int lc_Lctre_No;   // 강의번호
 	private String lc_Profsr_No;   // 교수번호
 	private String lc_Lctre_Code;   // 강의코드
-	private Timestamp lc_Lctrbgn_Dt;   // 강의개강일
+	private String lc_Lctrbgn_Dt;   // 강의개강일
 	private int lc_Lctre_Nmpr;   // 강의 인원
 	private String lc_Wik_Lctre_Dayweek;   // 주간 강의 요일
 	private String lc_Lctre_Time;   // 강의 시간
