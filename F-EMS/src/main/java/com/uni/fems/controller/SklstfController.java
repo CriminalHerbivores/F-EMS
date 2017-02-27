@@ -892,6 +892,7 @@ public class SklstfController {
 		//String url="manager/profsr/profsrHistory";
 		String url="professor/requestLctreList";
 		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
 		lctre_SearchVO.setLc_Open_At("y");
 		String paging = "";
 		if(tpage==null) tpage="1";

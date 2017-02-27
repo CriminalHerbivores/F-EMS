@@ -76,7 +76,7 @@
 			<option value="tu_Stdnt_No">학생</option>
 		</select>
 		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
-		<input type="button" value="검색" onclick="searchKey(this.form)" class="def-btn btn-sm btn-color"/>
+		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
 	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
 	<a href="tuitionList"><input type="button" value="등록금 정보 조회" class="def-btn btn-color"></a>
 	</form>

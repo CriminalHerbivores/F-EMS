@@ -45,7 +45,7 @@
 	</table>
 	<!-- <form name="searchForm">
 		<input type="number" name="tu_Dt" placeholder="날짜입력(20170302)"/>
-		<input type="button" value="검색" onclick="searchKey(this.form)" class="def-btn btn-sm btn-color"/>
+		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
 	</form> -->
 </td></tr></table>
 </body>

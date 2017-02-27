@@ -29,10 +29,12 @@
 <a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/profsrLctreList" class="no-uline">교수 이력 관리</a><br/>
 --------- 교수 ---------<br/>
 <a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 정보 조회</a><br/>
 <a href="<%=request.getContextPath() %>/profsr/profsrUpdate" class="no-uline">교수 정보 수정</a><br/>
 <a href="<%=request.getContextPath() %>/profsr/requestLctre" class="no-uline">강의 등록 요청</a><br/>
+<a href="<%=request.getContextPath() %>/profsr/openLctreList" class="no-uline">개설 강의 조회</a><br/>
 --------- 학생 ---------<br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a><br/>
