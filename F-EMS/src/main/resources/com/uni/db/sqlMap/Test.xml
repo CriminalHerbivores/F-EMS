@@ -17,9 +17,20 @@
 	</select>
 	
 	<update id="insertTest" parameterClass="test">
-	insert into test(te_ques_no,te_tp_no,te_ques,te_ca) 
-	values(te_seq.nextval,#te_Tp_No#,#te_Ques#,#te_Ca#)
+		insert into test(te_ques_no,te_tp_no,te_ques,te_ca) 
+		values(te_seq.nextval,#te_Tp_No#,#te_Ques#,#te_Ca#)
 	</update>
-
+	
+	<update id="updateTest" parameterClass="test">
+		update test set te_ques=#te_Ques#, te_ca=#te_Ca# where te_ques_no=#te_Ques_No#
+	</update>
+	
+	<update id="deleteTest" parameterClass="int">
+		delete from test where te_ques_no=#te_Ques_No#
+	</update>
+	
+	<update id="deleteTestForTestPaper" parameterClass="int">
+		delete from test where te_tp_no=#te_Tp_No#
+	</update>
 	
 </sqlMap>

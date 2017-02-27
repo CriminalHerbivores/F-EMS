@@ -13,7 +13,7 @@
 	<typeAlias alias="testpaper" type="com.uni.fems.dto.Test_PaperVO" />
 	
 	<select id="listAllTestPaper" parameterClass="int" resultClass="testpaper">
-		select * from test_paper where tp_lctre_no=#tp_Lctre_No#
+		select * from test_paper where tp_lctre_no=#tp_Lctre_No# order by tp_no desc
 	</select>
 	
 	<update id="insertTestPaper" parameterClass="testpaper">
@@ -21,7 +21,17 @@
 		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#)
 	</update>
 	
+	<update id="updateTestPaper" parameterClass="testpaper">
+		update test_paper set tp_nm=#tp_Nm# where tp_no=#tp_No#
+	</update>
+	
+	<update id="deleteTestPaper" parameterClass="int">
+		delete from test_paper where tp_no=#tp_No#
+	</update>
+	
 	<select id="maxTp_No" resultClass="int">
 		select max(Tp_No) from test_paper
 	</select>
+	
+	
 </sqlMap>

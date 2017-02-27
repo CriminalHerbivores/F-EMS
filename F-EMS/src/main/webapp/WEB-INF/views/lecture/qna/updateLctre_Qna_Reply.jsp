@@ -23,9 +23,11 @@
 				 <input type="hidden" name="table_Nm" value=${lctre_Qna_Gnt.table_Nm }>
 				 <input type="hidden" name="lq_Bbs_No" value=${lctre_Qna_Gnt.lq_Bbs_No }>
 			    <label>제목</label>
-			    <input type="text" name="lq_Sj" value="${lctre_Qna_Gnt.lq_Sj }"  size="64" ><br>
+			    <input type="text" name="lq_Sj" value="${lctre_Qna_Gnt.lq_Sj }"  size="64" readonly="readonly"><br>
 				<label>내용</label>
-			    <textarea rows="8" cols="65" name="lq_Cn">${lctre_Qna_Gnt.lq_Cn }</textarea><br>
+			    <textarea rows="8" cols="65" name="lq_Cn" readonly="readonly">${lctre_Qna_Gnt.lq_Cn }</textarea><br>
+			    <label>답변</label>
+			    <textarea rows="8" cols="65" name="lq_Reply">${lctre_Qna_Gnt.lq_Reply }</textarea><br>
 			</fieldset>   
 		<div class="clear"></div>
 			 <div id="buttons" style="float:right">

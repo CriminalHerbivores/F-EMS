@@ -46,5 +46,42 @@ public interface TestDAO {
 	 * </pre>
 	 */
 	public int insertTest(TestVO testVO)throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 시험 문제를 수정하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param testVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int updateTest(TestVO testVO)throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 시험 문제를 삭제하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param queNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int deleteTest(int queNo) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 시험지를 지우기 위해 시험문제를 먼저 지우는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int deleteTestForTestPaper(int tpNo) throws SQLException;
 
 }

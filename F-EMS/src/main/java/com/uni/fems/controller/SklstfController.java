@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
+import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
@@ -76,6 +77,10 @@ public class SklstfController {
 	private LctreService lctreService;
 	@Autowired
 	private Paging callPaging;
+	@Autowired
+	private Supporter supporter;
+	@Autowired
+	private FileDownload fileDownload;
 	
 	private WebApplicationContext context = null;
 	
@@ -167,36 +172,42 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO, @RequestParam String file, Model model){
-		String url = "/manager/index";
-		if(file != null && !file.equals("")){
+	String stdntInsert(StdntVO stdntVO, @RequestParam("f")MultipartFile uploadfile, Model model){
+		String url = "redirect:stdntInsert";
+		if(!uploadfile.isEmpty()){
+			FilesVO vo = fileDownload.uploadFile(uploadfile);
+			
 			ReadOption ro = new ReadOption();
-			ro.setFilePath(file);		//경로 입력
-			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S");	//배열 명 입력
+			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
+			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N");	//배열 명 입력
 			ro.setStartRow(2);
 			
 			List<Map<String, String>> result = ExcelRead.read(ro);
 			
 			for(Map<String, String> map : result) {
-				stdntVO.setSt_Stdnt_No(map.get("A"));
-				stdntVO.setSt_Subjct_Code(map.get("B"));
-				stdntVO.setSt_Pw(map.get("C"));
-				stdntVO.setSt_Nm(map.get("D"));
-				stdntVO.setSt_Eng_Nm(map.get("E"));
-				stdntVO.setSt_Ihidnum(map.get("F"));
-				stdntVO.setSt_Moblphon_No(map.get("G"));
-				stdntVO.setSt_House_Tlphon_No(map.get("H"));
-				stdntVO.setSt_Entsch_Dt(map.get("I"));
-				stdntVO.setSt_Prtctor_Nm(map.get("J"));
-				stdntVO.setSt_Family_Relate(map.get("K"));
-				stdntVO.setSt_Post_No(map.get("L"));
-				stdntVO.setSt_Adres1(map.get("M"));
-				stdntVO.setSt_Adres2(map.get("N"));
-				stdntVO.setSt_Cnslt_At(map.get("O"));
-				stdntVO.setSt_Email(map.get("P"));
-				stdntVO.setSt_Brhs_At(map.get("Q"));
-				stdntVO.setSt_Profsr_No(map.get("R"));
-				stdntVO.setSt_Grdtn_Dt(map.get("S"));
+				stdntVO.setSt_Stdnt_No(map.get("A")); // 학생번호
+				stdntVO.setSt_Subjct_Code(map.get("B")); //학과코드
+				stdntVO.setSt_Pw(map.get("C")); //비밀번호
+				stdntVO.setSt_Nm(map.get("D")); //이름
+				stdntVO.setSt_Eng_Nm(map.get("E")); //영문이름
+				stdntVO.setSt_Ihidnum(map.get("F")); //주민번호
+				stdntVO.setSt_Moblphon_No(map.get("G")); //핸드폰번호
+				stdntVO.setSt_House_Tlphon_No(map.get("H")); //집 전화번호
+				stdntVO.setSt_Prtctor_Nm(map.get("I")); //보호자 이름
+				stdntVO.setSt_Family_Relate(map.get("J")); //가족관계
+				stdntVO.setSt_Post_No(map.get("K")); //우편번호
+				stdntVO.setSt_Adres1(map.get("L")); //주소
+				stdntVO.setSt_Adres2(map.get("M")); //상세주소
+				stdntVO.setSt_Email(map.get("N")); //이메일
+				
+				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
+				
+				//stdntVO.setSt_Entsch_Dt(map.get("I")); //입학일자
+				//stdntVO.setSt_Cnslt_At(map.get("O")); //상담여부
+				//stdntVO.setSt_Brhs_At(map.get("Q")); //기숙사 여부
+				//stdntVO.setSt_Profsr_No(map.get("R")); //교수번호
+				//stdntVO.setSt_Grdtn_Dt(map.get("S")); //졸업일자
+				
 				try {
 					stdntService.insertStdnt(stdntVO);
 				} catch (SQLException e) {
@@ -206,6 +217,7 @@ public class SklstfController {
 			
 		}else{
 			try {
+				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
 				stdntService.insertStdnt(stdntVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -691,15 +703,47 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.POST)
-	String profsrInsert(ProfsrVO profsrVO, @RequestParam String file,
-			Model model) {
+	String profsrInsert(ProfsrVO profsrVO, @RequestParam("f")MultipartFile uploadfile, Model model) {
 		String url = "redirect:profsrInsert";
-		try {
-			profsrService.insertProfsr(profsrVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(!uploadfile.isEmpty()){
+			FilesVO vo = fileDownload.uploadFile(uploadfile);
+			
+			ReadOption ro = new ReadOption();
+			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
+			
+			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L");	//배열 명 입력
+			ro.setStartRow(2);
+			
+			List<Map<String, String>> result = ExcelRead.read(ro);
+			
+			for(Map<String, String> map : result) {
+				profsrVO.setPr_Profsr_No(map.get("A")); // 교수번호
+				profsrVO.setPr_Pw(map.get("B")); //비밀번호
+				profsrVO.setPr_Nm(map.get("C")); //이름
+				profsrVO.setPr_Eng_Nm(map.get("D")); //영문이름
+				profsrVO.setPr_Ihidnum(map.get("E")); //주민번호
+				profsrVO.setPr_Moblphon_No(map.get("F")); //핸드폰 번호
+				profsrVO.setPr_House_Tlphon_No(map.get("G")); //집 전화번호
+				profsrVO.setPr_Profsr_Tlphon_No(map.get("H")); //교수 전화번호
+				profsrVO.setPr_Post_No(map.get("I")); //우편번호
+				profsrVO.setPr_Adres1(map.get("J")); //주소1
+				profsrVO.setPr_Adres2(map.get("K")); //주소2
+				profsrVO.setPr_Email(map.get("L")); //이메일
+				
+				try {
+					profsrService.insertProfsr(profsrVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}else{
+			try {
+				profsrService.insertProfsr(profsrVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
 		return url;
 	}
 
@@ -843,21 +887,27 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
+	@RequestMapping("/profsrLctreList")
 	public String profsrHistory(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
-		String url="manager/profsr/profsrHistory";
+		//String url="manager/profsr/profsrHistory";
+		String url="professor/requestLctreList";
 		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
+		lctre_SearchVO.setLc_Open_At("y");
 		String paging = "";
 		if(tpage==null) tpage="1";
+		int totalRecord = 0;
 		try {
-			int totalRecord = lctreService.countLctre(lctre_SearchVO);
-			System.out.println("======= 11111111 totalRecord"+totalRecord);
-			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
 			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
 			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("history",list);
+		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
 		return url;
 	}

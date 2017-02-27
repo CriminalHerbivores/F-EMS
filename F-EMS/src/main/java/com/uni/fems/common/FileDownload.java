@@ -44,7 +44,7 @@ import com.uni.fems.dto.FilesVO;
 @Data
 public class FileDownload implements ApplicationContextAware {
 	private WebApplicationContext context = null;
-	private String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
+	public String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 
 	/**
 	 * <pre>
@@ -104,6 +104,12 @@ public class FileDownload implements ApplicationContextAware {
 	public ModelAndView download(@PathVariable String fileId,
 			HttpServletResponse response, @RequestParam String filename)
 			throws IOException {
+//		File downloadFile = getFile(fileId);
+//		if (downloadFile == null) {
+//			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//			return null;
+//		}
+//		return new ModelAndView("download", "downloadFile", downloadFile);
 		File downloadFile = new File(filePath, filename);
 		response.setCharacterEncoding("utf-8");
 		if (downloadFile == null) {
@@ -111,6 +117,13 @@ public class FileDownload implements ApplicationContextAware {
 			return null;
 		}
 		return new ModelAndView("download", "downloadFile", downloadFile);
+	}
+
+	private File getFile(String fileId) {
+		String baseDir = context.getServletContext().getRealPath("/WEB-INF/files");
+		if (fileId.equals("1"))
+			return new File(baseDir, "1486450785194$$excelFile.xlsx");
+		return null;
 	}
 
 	@Override

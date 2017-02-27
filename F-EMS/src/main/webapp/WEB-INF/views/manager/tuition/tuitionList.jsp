@@ -49,9 +49,8 @@
 	</tr>
 	</table>
 	<form name="searchForm">
-		<input type="hidden" id="key" name="key" value="sit_Subjct"/>
-		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
-		<input type="button" value="검색" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color"/>
+		<input type="text" name="sit_Subjct" class="def-input-text-lg custom-form-control"/>
+		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
 	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
 	<a href="stdTuitionList"><input type="button" value="등록금 납부 내역 조회" class="def-btn btn-color"></a>
 	</form>

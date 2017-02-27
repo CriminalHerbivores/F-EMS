@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.uni.fems.dto.AnswerVO;
 import com.uni.fems.dto.TestVO;
 import com.uni.fems.dto.Test_PaperVO;
+import com.uni.fems.service.AnswerService;
 import com.uni.fems.service.TestService;
 import com.uni.fems.service.Test_PaperService;
 
@@ -46,6 +48,12 @@ public class Lctre_TestController {
 	private Test_PaperService test_paperSvc;
 	public void setTest_paperSvc(Test_PaperService test_paperSvc) {
 		this.test_paperSvc = test_paperSvc;
+	}
+	
+	@Autowired
+	private AnswerService answerSvc;
+	public void setAnswerSvc(AnswerService answerSvc) {
+		this.answerSvc = answerSvc;
 	}
 
 	@RequestMapping("/testList")
@@ -98,7 +106,7 @@ public class Lctre_TestController {
 		return url;
 	}
 	@RequestMapping(value="/detailTest")
-	public String detailTeset(Model model,String tpNo,String tpNm, HttpServletRequest request){
+	public String detailTest(Model model,String tpNo,String tpNm, HttpServletRequest request){
 		String url = "lecture/test/detailTest";
 		
 		List<TestVO> Qlist = null;
@@ -113,9 +121,53 @@ public class Lctre_TestController {
 		}
 		
 		model.addAttribute("tpNm", tpNm);
+		model.addAttribute("tpNo", tpNo);
 		model.addAttribute("Qlist", Qlist);
 		
 		return url;
 	}
+	
+	@RequestMapping(value="/detailTest", method=RequestMethod.POST)
+	public String writeTest(HttpServletRequest request, AnswerVO answerVO, String[] answer, String[] queNo){
+		String url="redirect:testList";
+		HttpSession session = request.getSession();
+		String loginUser = (String) session.getAttribute("loginUser");
+		
+		for(int i=0;i<answer.length;i++){
+			/*AnswerVO answerVO = new AnswerVO();*/
+			answerVO.setAn_Stdnt_No(loginUser);
+			answerVO.setAn_Ans(answer[i]);
+			answerVO.setAn_Ques_No(queNo[i]);
+			
+			
+			try {
+				answerSvc.insertAnswer(answerVO);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			
+		return url;
+		
+	}
+	
+	@RequestMapping(value="/deleteTest")
+	public String deleteTest(String tpNo){
+		String url="redirect:testList";
+		
+		try {
+			test_paperSvc.deleteTestPaper(Integer.parseInt(tpNo));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return url;
+	}
+		
+	
 
 }

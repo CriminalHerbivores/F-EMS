@@ -77,8 +77,8 @@
       </tr>
       
   </table>
-		파일 경로: <input type="text" name="file"><br /> 파일경로: <input
-			type="file" name="f"><br />
+		학생등록양식: <a href="<%=request.getContextPath() %>/download/file/list?filename=학생등록.xlsx">다운로드</a><br /> 
+		파일경로: <input type="file" name="f"><br />
    <button type="button" class="btn btn-default" onclick="go_stdnt()">등록</button>
     <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>

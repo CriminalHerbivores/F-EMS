@@ -6,7 +6,7 @@
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
-<!--  2017.02.24    KJS            최초작성               -->
+<!--  2017.02.26    KJS            최초작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <!DOCTYPE html>
@@ -22,36 +22,57 @@
 <body>
 <div id="detailBbs_Gnt" style="float:left;">
 	<form name="formm" method="post" action="detailBbs_Gnt">
-		<h2>강의 공지 게시판</h2>
+		<h2>강의 질의응답 게시판</h2>
 		<hr>
 		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
 			<tr>
 				<th>제목</th>
-				<td colspan="3" style="text-align: left;">${lctre_Notice_Gnt.ln_Sj}</td>
+				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Sj}</td>
+				<th>작성자</th>
+				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Stdnt_No}</td>
 			</tr>
 			<tr>
 				<th>작성날짜</th>
-				<td style="text-align: left;">${lctre_Notice_Gnt.ln_Writng_Dt}</td>
+				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Writng_Dt}</td>
 				<th>조회수</th>
-				<td style="text-align: left;">${lctre_Notice_Gnt.ln_Rdcnt}</td>
+				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Rdcnt}</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ln_Cn" readonly="readonly">${lctre_Notice_Gnt.ln_Cn }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ln_Cn" readonly="readonly">${lctre_Qna_Gnt.lq_Cn }</textarea><br></td>
+			</tr>
+			<tr>
+				<th>답변</th>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align: center;">
+				<a href="updateLctre_Qna_Reply?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> 
+				<button class="def-btn btn-color">
+				<c:choose>
+					<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
+						답변 작성
+					</c:when>
+					<c:otherwise>
+						답변 수정
+					</c:otherwise>
+				</c:choose>
+				</button>
+				</a>
+				</td>
 			</tr>
 
 		</table>
 		<br>
-		<!-- 댓글부분 -->
 	</form>
 
 	<!--버튼들  -->
 	<div id="buttons" style="float: right">
-		<a href="updateLctre_Notice?ln_Bbs_No=${lctre_Notice_Gnt.ln_Bbs_No}&table_Nm=${lctre_Notice_Gnt.table_Nm}&tpage=${tpage}"> <input
+		<a href="updateLctre_Qna?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
 			data-toggle="modal" value="삭제"> <a
-			href="noticeList?tpage=${tpage}&table_Nm=${lctre_Notice_Gnt.table_Nm }"> <input
+			href="qnaList?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }"> <input
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>
@@ -71,7 +92,7 @@
 				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
 				<!-- Footer -->
 				<div class="modal-footer" style="text-align: center;">
-					<a href="deleteLctre_Notice?tpage=${tpage}&table_Nm=${lctre_Notice_Gnt.table_Nm }&ln_Bbs_No=${lctre_Notice_Gnt.ln_Bbs_No}"> <!--삭제 모달  -->
+					<a href="deleteLctre_Qna?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }&lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}"> <!--삭제 모달  -->
 						<input type="button" class="btn btn-default" value="예">
 					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
 						value="아니오">

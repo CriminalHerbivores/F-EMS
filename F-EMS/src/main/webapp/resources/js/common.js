@@ -79,6 +79,7 @@ function disp(){
 4. 컨트롤러에 넘어가는 값
 	컬럼값=입력값
  */
+/*
 function searchMe(form){
 	var pro = location.protocol+"//"; // http:
 	var host = location.host; // localhost:8181
@@ -101,6 +102,7 @@ function searchMe(form){
 	
 	location.href=url;
 }
+*/
 /*
 1. 검색으로 입력받을 컬럼 값을 key란 이름의 input 태그에 넣어줌
 2. 값을 입력 받는 곳에 value란 이름의 input 태그를 넣어줌
@@ -113,6 +115,7 @@ function searchMe(form){
 4. 컨트롤러에 넘어가는 값
 	key=키값&value=입력값
  */
+/*
 function searchKey(form){
 	var pro = location.protocol+"//"; // http:
 	var host = location.host; // localhost:8181
@@ -135,7 +138,7 @@ function searchKey(form){
 	
 	location.href=url;
 }
-
+*/
 
 /* 
 	<전체선택 체크박스사용법> - 자동실행 

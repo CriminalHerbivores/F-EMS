@@ -45,5 +45,13 @@ public class Test_PaperDAOImpl implements Test_PaperDAO {
 		
 		return (int) client.queryForObject("maxTp_No");
 	}
+	@Override
+	public int updateTestPaper(Test_PaperVO test_paperVO) throws SQLException {
+		return client.update("updateTestPaper", test_paperVO);
+	}
+	@Override
+	public int deleteTestPaper(int tpNo) throws SQLException {
+		return client.update("deleteTestPaper", tpNo);
+	}
 	
 }

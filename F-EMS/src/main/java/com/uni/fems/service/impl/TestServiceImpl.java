@@ -46,6 +46,18 @@ public int insertTest(TestVO testVO) throws SQLException {
 	testVO.setTe_Tp_No(Integer.toString(test_PaperDAO.maxTp_No()));
 	return testDAO.insertTest(testVO);
 }
+
+
+@Override
+public int updateTest(TestVO testVO) throws SQLException {
+	return testDAO.updateTest(testVO);
+}
+
+
+@Override
+public int deleteTest(int queNo) throws SQLException {
+	return testDAO.deleteTest(queNo);
+}
  
  
 }
