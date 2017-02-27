@@ -60,27 +60,7 @@ public class ManageController {
 	private Subjct_Info_TableService subjct_Info_TableService;
 	@Autowired
 	private UsersService usersService;
-	
-	
-	// @RequestMapping("/")
-	// public String in(){
-	// String url = "redirect:index";
-	// return url;
-	// }
-	//
-	// @RequestMapping("/index")
-	// public String index(){
-	// String url = "index";
-	// return url;
-	// }
-	//
-	// @RequestMapping("/logout")
-	// public String logout(HttpSession session) {
-	// String url = "redirect:/index";
-	// session.invalidate();
-	// return url;
-	// }
-	
+
 	
 	/**
 	 * <pre>
@@ -514,9 +494,13 @@ public class ManageController {
 		String url = "admin/layout_control/step4Modify";	
 		return url;
 	}
+
 	
-	
-	
-	
+	//이것저것 테스트용 페이지
+	@RequestMapping("/test")
+	public String test(HttpServletRequest request,HttpSession session) {
+		String url = "admin/admin_management/test";	
+		return url;
+	}
 	
 }

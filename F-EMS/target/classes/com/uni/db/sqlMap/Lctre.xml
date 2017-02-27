@@ -49,17 +49,6 @@
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
     	order by lu_Lctre_code asc, lc_split asc
 	</select>
-	<!-- 	select * from lctre_view where $key$ like '%'||#value#||'%'
-		and lc_Open_At='y'
-		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
-		intersect
-		select * from LCTRE_VIEW
-		where lu_Compl_Se like '%'||#lu_Compl_Se#||'%'
-		and knd_Lctre_Knd like '%'||#knd_Lctre_Knd#||'%'
-		and lc_Open_At='y'
-		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
-		order by lu_Lctre_code asc, lc_split asc 
-	</select> -->
 	
 	<!-- 강의번호중 가장 큰 값 가져온다 -->
 	<select id="selectMaxLc_Lctre_No" resultClass="int">

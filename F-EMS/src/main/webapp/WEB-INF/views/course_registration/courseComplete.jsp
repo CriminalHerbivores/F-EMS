@@ -56,15 +56,13 @@ body {
 				</tr>
 
 	 			<c:forEach items="${lctre_SearchVO}" var="lctre">
-				<%-- <c:choose>
-				<c:when test="{ requestVO.re_NO}" > --%>
 				<tr>
 					<td class="select_ckbox_1">
-						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
+						<label><input type="checkbox" class="input_check_1" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
 						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
 					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
+						<label><input type="checkbox" class="input_check_2" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
 						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
 					<td>${lctre.sit_Subjct}</td>
@@ -78,11 +76,8 @@ body {
 					<td>${lctre.lc_Lctre_Nmpr}</td>
 					<td>${lctre.lr_Accept_Nmpr}</td> 
 				</tr>
-
 			</c:forEach> 
-				
 			</table>
-				<!-- <input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_reqst(this.form)"> -->
 
 </div>
 	</form>

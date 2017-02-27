@@ -8,9 +8,7 @@
 	<decorator name="non" page="nondecorator.jsp">
 		<pattern>/admin/step**</pattern>
 		<pattern>/course/courseAble</pattern>
-		<pattern>/course/courseComplete</pattern>
-		<pattern>/course/courseInterest</pattern>
-		<pattern>/course/courseCredit</pattern>
+		<pattern>/course/course**</pattern>
 		<pattern>/find**</pattern>
 		<pattern>/cssExample</pattern>
 		<pattern>/lgBoard</pattern>

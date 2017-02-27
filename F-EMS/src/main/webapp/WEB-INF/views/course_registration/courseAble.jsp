@@ -35,16 +35,32 @@ function submitForm(form){
 body {
 	/* background: #D4F4FA; */
 }
+/* .tb-border table {
+  border-collapse:collapse;
+}   */
+/* .fix-top {
+  position: fixed;
+  top:0%;
+}
+.fix-mid {
+  position: fixed;
+  top:12%;
+  
+}
+tbody .tb-border{
+	position:relative;
+}
+.tbtb tbody{
+	margin-top:23.3%;
+} */
 </style>
 
 </head>
 <body class="course-list-l-top">
 	<div class="text-center">
-	<!-- <div class="container out-border"> -->
-	<!-- <table class="def-table-full tb-border"> -->
 <form name="forrm" method="get">
 	<table class="def-table-full">
-	
+	<thead class="def-table-full fix-top">
 	<tr><td class="text-right">
 	<label><input type="checkbox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
 	<label><input type="checkbox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
@@ -58,15 +74,12 @@ body {
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
 					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 					<input type="button" class="def-btn btn-search btn-color" value="상세검색">&nbsp;&nbsp;
-	</td></tr>
+	</td></tr></thead>
 	</table>
 	</form>
 	<form name="formm" method="post">
 			<table class="def-table-full tb-border table-hover">
-				<!-- <tr>
-					<td colspan="12"  class="text-right">
-					</td>
-				</tr> -->
+				<thead class="def-table-full fix-mid">
 				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
 				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
@@ -83,17 +96,18 @@ body {
 					<th>수강인원</th>
 					<th>제한인원</th>
 				</tr>
-				
+				</thead>
+				<tbody>
+				<!-- 체크박스 forEach안에서 행마다 연결되게 가능할까? -->
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
-					<td class="select_ckbox_1">	
-						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.lc_Lctre_No}" />관심
-						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/><%-- <input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></label></td>
+					<td class="select_ckbox_1 select_ckbox_5">	
+						<label><input type="checkbox" class="input_check_1 input_check_5" name="result_1" value="${lctre.lc_Lctre_No}" />관심
+						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 					
-					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.lc_Lctre_No}" />수강
-						
-						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/><%-- <input type="hidden" value="${lctre.re_Stdnt_No}"/> --%></label></td>
+					<td class="select_ckbox_2 select_ckbox_5">
+						<label><input type="checkbox" class="input_check_2" id="check_all_5" name="result_2" value="${lctre.lc_Lctre_No}" />수강
+						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 						
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
@@ -108,7 +122,7 @@ body {
 				</tr>
 			</c:forEach>
 			<tr><td colspan="13" style="text-align: center;">${paging }</td></tr>				
-					
+					</tbody>
 			</table>
 	</form>
 </div>

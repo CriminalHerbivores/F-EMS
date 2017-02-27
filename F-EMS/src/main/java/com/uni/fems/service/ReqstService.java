@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 
@@ -40,23 +41,23 @@ public interface ReqstService {
 	
 	/**
 	 * <pre>
-	 * 수강 신청하는 메서드
+	 * 수강 신청하는 메서드 (수강 인원 증가)
 	 * </pre>
 	 * <pre>
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void insertReqst(ReqstVO reqstVO) throws SQLException;
+	void insertReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 	/**
 	 * <pre>
-	 * 수강신청 내역을 삭제하는 메서드
+	 * 수강신청 내역을 삭제하는 메서드 (수강 인원 감소)
 	 * </pre>
 	 * <pre>
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void deleteReqst(ReqstVO reqstVO) throws SQLException;
+	void deleteReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 	
 	/**
@@ -69,6 +70,35 @@ public interface ReqstService {
 	 * </pre>
 	 */
 	int getSumReqst(ReqstVO reqstVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 한 개설강의의 강의실 수용가능 인원수
+	 * </pre>
+	 * <pre>
+	 * @param lc_Lctre_No
+	 * @return
+	 * @throws SQLException
+	 */
+	int acceptNumOfStdnt(String lc_Lctre_No) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 한 과목을 수강중인 학생의 인원수
+	 * </pre>
+	 * <pre>
+	 * @param re_Lctre_No
+	 * @return
+	 * @throws SQLException
+	 */
+	int stdntNumOfLctre(String re_Lctre_No) throws SQLException;
+	
+	
+	
+	
+	
+	
+	
 	
 	// 개설강의 목록에서 관심등록 버튼을 눌러서 관심강의로 추가되어 관심목록으로 나타남
 	// 이때 시간표상으로 겹치는 것은 관심목록으로 담기지 않는다

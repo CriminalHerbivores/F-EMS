@@ -33,13 +33,13 @@ public class Lctre_ActplnVO implements Serializable {
 	private String la_Sub_Txtbook;   // 부교재
 	private String la_Lctre_Goal;   // 강의목표
 	private String la_Lctre_Progrs_Form;   // 강의진행형태
-	private String la_Midex;   // 중간고사
-	private String la_Fnex;   // 기말고사
-	private String la_Indvdl_Task;   // 개인과제
-	private String la_Team_Task;   // 팀별과제
-	private String la_Presnatn;   // 발표
-	private String la_Atend;   // 출석
-	private String la_Attd;   // 태도
+	private int la_Midex;   // 중간고사
+	private int la_Fnex;   // 기말고사
+	private int la_Indvdl_Task;   // 개인과제
+	private int la_Team_Task;   // 팀별과제
+	private int la_Presnatn;   // 발표
+	private int la_Atend;   // 출석
+	private int la_Attd;   // 태도
 	private String la_Week1;   // 1주차
 	private String la_Week2;   // 2주차
 	private String la_Week3;   // 3주차

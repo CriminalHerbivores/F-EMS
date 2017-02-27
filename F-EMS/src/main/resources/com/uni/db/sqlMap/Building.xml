@@ -21,8 +21,16 @@
 			values(#bd_No#,#bd_Nm#,#bd_Useyn#)
 	</update>
 	
+	<!-- 사용여부에 따른 전체 건물 조회 -->
+	<select id="selectBuilding" parameterClass="building" resultClass="building">
+		select * from building 
+		where bd_No like '%'||#bd_No#||'%' 
+		and bd_Useyn=NVL(#bd_Useyn#,'y')
+		order by bd_Nm asc
+	</select>
+	
 	<!-- 건물 수정 -->
-	<update id="updateBuilding" parameterClass="building">
+	<update id="updateBuilding" parameterClass="building" >
 		update building set bd_No=#bd_No#,bd_Nm=#bd_Nm#,bd_Useyn=#bd_Useyn#
 		where bd_No=#bd_No#
 	</update>

@@ -146,57 +146,95 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
 	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request,
-		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
 		String url = "redirect:courseAble";
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
+		String[] resultArr_1= request.getParameterValues("result_1");	// 관심
+		String[] resultArr_2= request.getParameterValues("result_2");	// 수강
+		
+		if(resultArr_1 !=null){
+			for (int i = 0; i < resultArr_1.length; i++) { 
+				if(resultArr_1[i] !=null){	// 관심만 추가한 경우
+					intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
+					System.out.println("===================1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
 
-		
-		String[] resultArr_1= request.getParameterValues("result_1");
-		String[] resultArr_2= request.getParameterValues("result_2");
-		
-		System.out.println("1111111111111111111111111 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
-		// 이제 왜 강의번호가 0만 들어가는지 해결해야 하겠지...
-		// if문이나 for문 안에는 매우 잘 들어오고 있음
-		System.out.println("22222222222222222222222");
-		if((resultArr_1 == null && resultArr_2 != null) || (resultArr_1 != null && resultArr_2 != null)){	// 수강만 체크하거나 관심과 수강 둘 다 체크
-			System.out.println("33333333333333333 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+					try {
+						intrst_ListService.insertIntrst_List(intrst_ListVO);	
+						System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+		}
+			
+		if(resultArr_2 !=null){
 		for (int i = 0; i < resultArr_2.length; i++) { 
-			System.out.println("44444444444 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No()); // 사실상 여기서는 값이 들어가야 하는데...!!!!!!!!!!
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
+			if(resultArr_2[i] !=null){	// 강의 추가한 경우
+				System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
 			reqstVO.setRe_Stdnt_No(stdnt_No);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			System.out.println("5555555555555555 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+			System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+
 			try {
-				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
-				intrst_ListService.insertIntrst_List(intrst_ListVO);
+				reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+				System.out.println("===================555555555  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			System.out.println("6666666666666 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+			}
+
+			}
 		}
-		}
+			}
 		
-		if(resultArr_1!=null && resultArr_2 == null){	//관심만 체크
-			System.out.println("777777777777 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
-		for (int i = 0; i < resultArr_1.length; i++) { 
-			System.out.println("88888888888888888888 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
-			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
-			System.out.println("9999999999999 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
-			try {
-				intrst_ListService.insertIntrst_List(intrst_ListVO);	
-				//Intrst_ListController intrst_ListController= new Intrst_ListController();
-				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		}
-		System.out.println("101010101010101010 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 		return url;
 
+		
+		
+		
+		
+		
+//		if((resultArr_1 == null && resultArr_2 != null) || (resultArr_1 != null && resultArr_2 != null)){	// 수강만 체크하거나 관심과 수강 둘 다 체크
+//			System.out.println("33333333333333333 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//		for (int i = 0; i < resultArr_2.length; i++) { 
+//			System.out.println("44444444444 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No()); // 사실상 여기서는 값이 들어가야 하는데...!!!!!!!!!!
+//			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+//			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
+//			reqstVO.setRe_Stdnt_No(stdnt_No);
+//			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
+//			System.out.println("5555555555555555 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//			try {
+//				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+//				intrst_ListService.insertIntrst_List(intrst_ListVO);
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//			System.out.println("6666666666666 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//		}
+//		}
+//		
+//		if(resultArr_1!=null && resultArr_2 == null){	//관심만 체크
+//			System.out.println("777777777777 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//		for (int i = 0; i < resultArr_1.length; i++) { 
+//			System.out.println("88888888888888888888 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+//			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
+//			System.out.println("9999999999999 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//			try {
+//				intrst_ListService.insertIntrst_List(intrst_ListVO);	
+//				//Intrst_ListController intrst_ListController= new Intrst_ListController();
+//				//intrst_ListController.courseInterestForm(model, session, intrst_ListVO);
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		}
+//		System.out.println("101010101010101010 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+//		return url;
+		
+		
 	}
 
 }
