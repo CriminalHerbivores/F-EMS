@@ -66,11 +66,10 @@ public class Bbs_ListServiceImpl implements Bbs_ListService {
 	@Override
 	public int insertBbs_List_Atrty(Bbs_List_AtrtyVO bbs_List_AtrtyVO)
 			throws SQLException {
-		System.out.println("1");
 		bbs_ListDAO.insertBbs_Table(bbs_List_AtrtyVO.getBl_Table_Nm());
-		System.out.println("2");
 		bbs_ListDAO.insertComment_Table(bbs_List_AtrtyVO.getBl_Table_Nm());
-		System.out.println("3");
+		bbs_ListDAO.insertBbs_Table_Gnt(bbs_List_AtrtyVO.getBl_Table_Nm());
+		bbs_ListDAO.insertBbs_Comment_Table_Gnt(bbs_List_AtrtyVO.getBl_Table_Nm());
 		return bbs_ListDAO.insertBbs_List_Atrty(bbs_List_AtrtyVO);
 	}
 

@@ -66,6 +66,29 @@ public class Lctre_GntDAOImpl implements Lctre_GntDAO {
 		return client.update("watch_Table", table_nm);
 		
 	}
-	
+	@Override
+	public void insertLctreTable_Date(String table_nm)throws SQLException{
+		client.insert("insertLctreTable_Date", table_nm);
+	}
+	@Override
+	public void insertLctreTable_Notice(String table_nm)throws SQLException{
+		client.insert("insertLctreTable_Notice", table_nm);
+	}
+	@Override
+	public void insertLctreTable_Qna(String table_nm)throws SQLException{
+		client.insert("insertLctreTable_Qna", table_nm);
+	}
+	@Override
+	public void insertLctreTable_Task(String table_nm)throws SQLException{
+		client.insert("insertLctreTable_Task", table_nm);
+	}
+	@Override
+	public void insertLctreTable_Video(String table_nm)throws SQLException{
+		client.insert("insertLctreTable_Video", table_nm);
+	}
+	@Override
+	public void insertLctreTable_Watch(String table_nm)throws SQLException{
+		client.insert("insertLctreTable_Watch", table_nm);
+	}
 
 }

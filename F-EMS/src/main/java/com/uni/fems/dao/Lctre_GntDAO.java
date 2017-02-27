@@ -87,6 +87,66 @@ public interface Lctre_GntDAO {
 	 */
 	int watch_Table(String table_nm) throws SQLException;
 
+	/**
+	 * <pre>
+	 * 초기값 생성
+	 * </pre>
+	 * @param table_nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertLctreTable_Date(String table_nm) throws SQLException;
+
+	/**
+	 * <pre>
+	 * 초기값 생성
+	 * </pre>
+	 * @param table_nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertLctreTable_Notice(String table_nm) throws SQLException;
+
+	/**
+	 * <pre>
+	 * 초기값 생성
+	 * </pre>
+	 * @param table_nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertLctreTable_Qna(String table_nm) throws SQLException;
+
+	/**
+	 * <pre>
+	 * 초기값 생성
+	 * </pre>
+	 * @param table_nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertLctreTable_Task(String table_nm) throws SQLException;
+
+	/**
+	 * <pre>
+	 * 초기값 생성
+	 * </pre>
+	 * @param table_nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertLctreTable_Video(String table_nm) throws SQLException;
+
+	/**
+	 * <pre>
+	 * 초기값 생성
+	 * </pre>
+	 * @param table_nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertLctreTable_Watch(String table_nm) throws SQLException;
+
 
 	
 }

@@ -85,6 +85,16 @@ public class Bbs_ListDAOImpl implements Bbs_ListDAO {
 			throws SQLException {
 		return client.update("insertComment_Table", name);
 	}
+	@Override
+	public int insertBbs_Table_Gnt(String name)
+			throws SQLException {
+		return client.update("insertBbs_Table_Gnt", name);
+	}
+	@Override
+	public int insertBbs_Comment_Table_Gnt(String name)
+			throws SQLException {
+		return client.update("insertBbs_Comment_Table_Gnt", name);
+	}
 	
 	
 }

@@ -1,7 +1,7 @@
 package com.uni.fems.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
@@ -33,8 +33,9 @@ public class Lctre_Video_GntVO implements Serializable {
 	private int lv_Bbs_No;			//게시판 번호
 	private String lv_Sj;			//게시판 제목
 	private String lv_Cn;			//게시판 내용
-	private Timestamp lv_Writng_Dt;	//게시판 작성날짜
-	private int lv_Rdcnt;			//게시판 조회수
-	private int lv_Flpth_No;		//게시판 파일 경로 번호
+	private Date lv_Start_Dt;	//동영상 시천 가능날짜
+	private Date lv_End_Dt;	//동여앙 시청 출석 마지막 날짜
+	private int lv_Time;			//총 시청 시간
+	private String lv_Flpth_No;		//게시판 파일 경로 번호
 
 }

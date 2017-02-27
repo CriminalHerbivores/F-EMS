@@ -77,6 +77,13 @@
 			CONSTRAINT COMMENT_$value$_PK PRIMARY KEY(BC_COMNT_NO)
 		)
 	</insert>
-	
+	<update id="insertBbs_Table_Gnt" parameterClass="str">
+		insert into BBS_$bl_Table_Nm$(bb_Bbs_No,bb_Sklstf_No,bb_Sj,bb_Cn,bb_Writng_dt,bb_Rdcnt) 
+		values(0,null,'게시판 생성',sysdate|'부로 게시판이 생성되었습니다',sysdate,0)
+	</update>
+	<update id="insertBbs_Comment_Table_Gnt" parameterClass="str">
+		insert into COMMENT_$bl_Table_Nm$(bc_comnt_no,bc_bbs_no,bc_user_id,bc_comnt_content,bc_Writng_Dt) 
+		values(0,null,null,null,sysdate)
+	</update>
 	
 </sqlMap>
