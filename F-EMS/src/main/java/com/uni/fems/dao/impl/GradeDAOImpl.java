@@ -6,6 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.GradeDAO;
 import com.uni.fems.dto.GradeVO;
+import com.uni.fems.dto.ReqstVO;
 
 public class GradeDAOImpl implements GradeDAO {
 
@@ -14,8 +15,12 @@ public class GradeDAOImpl implements GradeDAO {
 		this.client=client;
 	}
 	@Override
-	public void insertGrade(GradeVO gradeVO) throws SQLException {
-		client.update("insertGrade", gradeVO);
+	public void insertGrade(ReqstVO reqstVO) throws SQLException {
+		client.update("insertGrade", reqstVO);
+	}
+	@Override
+	public void deleteGrade(ReqstVO reqstVO) throws SQLException {
+		client.delete("deleteGrade",reqstVO);
 	}
 	@Override
 	public void updateGrade(GradeVO gradeVO) throws SQLException {

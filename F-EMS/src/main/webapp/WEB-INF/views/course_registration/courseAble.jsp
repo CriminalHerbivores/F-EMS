@@ -24,6 +24,11 @@ function add_reqst(form){
 	alert("수강신청");
 	document.formm.submit();
 }
+
+function submitForm(form){
+	
+	document.forrm.submit();
+}
 </script>
 
 <style>
@@ -34,10 +39,10 @@ body {
 
 </head>
 <body class="course-list-l-top">
-<form name="formm" method="post">
 	<div class="text-center">
 	<!-- <div class="container out-border"> -->
 	<!-- <table class="def-table-full tb-border"> -->
+<form name="forrm" method="get">
 	<table class="def-table-full">
 	
 	<tr><td class="text-right">
@@ -55,6 +60,8 @@ body {
 					<input type="button" class="def-btn btn-search btn-color" value="상세검색">&nbsp;&nbsp;
 	</td></tr>
 	</table>
+	</form>
+	<form name="formm" method="post">
 			<table class="def-table-full tb-border table-hover">
 				<!-- <tr>
 					<td colspan="12"  class="text-right">
@@ -63,8 +70,8 @@ body {
 				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
 				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
-					<th><label><input type="checkbox" id="check_all_1" class="" />관심강의</label></th>
-					<th><label><input type="checkbox" id="check_all_3" class="" />수강신청</label></th>
+					<th><label><input type="checkbox" id="check_all_1" class="input_check_1" />관심강의</label></th>
+					<th><label><input type="checkbox" id="check_all_3" class="input_check_2" />수강신청</label></th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>강의명</th>
@@ -80,13 +87,13 @@ body {
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
 					<td class="select_ckbox_1">	
-						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.in_Lctre_No}" />관심
-						<input type="hidden" value="${lctre.in_Lctre_No}"/><%-- <input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></label></td>
+						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.lc_Lctre_No}" />관심
+						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/><%-- <input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></label></td>
 					
 					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.re_Lctre_No}" />수강
+						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.lc_Lctre_No}" />수강
 						
-						<input type="hidden" value="${lctre.re_Lctre_No}"/><%-- <input type="hidden" value="${lctre.re_Stdnt_No}"/> --%></label></td>
+						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/><%-- <input type="hidden" value="${lctre.re_Stdnt_No}"/> --%></label></td>
 						
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
@@ -103,7 +110,7 @@ body {
 			<tr><td colspan="13" style="text-align: center;">${paging }</td></tr>				
 					
 			</table>
-</div>
 	</form>
+</div>
 </body>
 </html>

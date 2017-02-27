@@ -160,7 +160,8 @@
 		p:client-ref="sqlMapClient" />
 
 	<bean id="reqstService" class="com.uni.fems.service.impl.ReqstServiceImpl"
-		p:reqstDAO-ref="reqstDAO" />
+		p:reqstDAO-ref="reqstDAO"
+		p:gradeDAO-ref="gradeDAO" />
 
 	<bean id="schafs_SchdulDAO" class="com.uni.fems.dao.impl.Schafs_SchdulDAOImpl"
 		p:client-ref="sqlMapClient" />
