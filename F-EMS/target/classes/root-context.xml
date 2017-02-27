@@ -331,6 +331,14 @@
 	<bean id="lctre_TaskService" class="com.uni.fems.service.impl.Lctre_TaskServiceImpl"
 		p:lctre_TaskDAO-ref="lctre_TaskDAO" p:lctre_FlpthDAO-ref="lctre_FlpthDAO" />
 
+	<bean id="lctre_Video_ProfsrDAO" class="com.uni.fems.dao.impl.Lctre_Video_ProfsrDAOImpl"
+		p:client-ref="sqlMapClient" />
+
+	<bean id="lctre_Video_ProfsrService" class="com.uni.fems.service.impl.Lctre_Video_ProfsrServiceImpl"
+		p:lctre_Video_ProfsrDAO-ref="lctre_Video_ProfsrDAO" 
+		p:lctre_FlpthDAO-ref="lctre_FlpthDAO" />
+		
+		
 	<bean id="fileDownload" class="com.uni.fems.common.FileDownload" />
 	<bean id="supporter" class="com.uni.fems.common.Supporter" />
 	<bean id="callPaging" class="com.uni.fems.common.Paging" />

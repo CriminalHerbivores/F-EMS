@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
 <!--  ==========   ======    ==============        -->
@@ -27,23 +27,29 @@
 		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
 			<tr>
 				<th>제목</th>
-				<td colspan="3" style="text-align: left;">${lctre_Task_Gnt.lt_Sj}</td>
+				<td colspan="3" style="text-align: left;">${lctre_Video_Gnt.lv_Sj}</td>
 			</tr>
 			<tr>
-				<th>작성날짜</th>
-				<td style="text-align: left;">${lctre_Task_Gnt.lt_Writng_Dt}</td>
-				<th>작성자</th>
-				<td style="text-align: left;">${lctre_Task_Gnt.lt_Stdnt_No}</td>
+				<th>기간</th>
+				<td style="text-align: left;">
+					<fmt:formatDate value="${lctre_Video_Gnt.lv_Start_Dt}"/>
+		      		~
+		      		<fmt:formatDate value="${lctre_Video_Gnt.lv_End_Dt}"/> </td>
+				<th>시간</th>
+				<td style="text-align: left;"><fmt:parseNumber var="i" integerOnly="true" 
+                       type="number" value="${lctre_Video_Gnt.lv_Time/60}" />
+				<c:out value="${i}" />:${lctre_Video_Gnt.lv_Time%60}</td>
 			</tr>
-				<tr>
-					<th>파일첨부</th>
-					<td colspan="3" style="text-align: left;"><a href="<%=request.getContextPath() %>/download/file/list?filename=${lctre_Flpth.lf_Flpth}">${lctre_Flpth.lf_Flpth}</a></td>
-				</tr>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ld_Cn" readonly="readonly">${lctre_Task_Gnt.lt_Cn }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ld_Cn" readonly="readonly">${lctre_Video_Gnt.lv_Cn }</textarea><br></td>
 			</tr>
-
+			<tr>
+				<th>동영상</th>
+				<td colspan="3" style="text-align: left;">
+					<video id="myVideo" src="<%=request.getContextPath() %>/resources/files/${lctre_Flpth.lf_Flpth}" controls width="300pt" height="200pt" ></video>
+				</td>
+			</tr>
 		</table>
 		<br>
 		<!-- 댓글부분 -->
@@ -51,11 +57,11 @@
 
 	<!--버튼들  -->
 	<div id="buttons" style="float: right">
-		<a href="updateLctre_Task?lt_Bbs_No=${lctre_Task_Gnt.lt_Bbs_No}&table_Nm=${lctre_Task_Gnt.table_Nm}&tpage=${tpage}"> <input
+		<a href="updateLctre_Video?lv_Bbs_No=${lctre_Video_Gnt.lv_Bbs_No}&table_Nm=${lctre_Video_Gnt.table_Nm}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
 			data-toggle="modal" value="삭제"> <a
-			href="taskList?tpage=${tpage}&table_Nm=${lctre_Task_Gnt.table_Nm }"> <input
+			href="videoList?tpage=${tpage}&table_Nm=${lctre_Video_Gnt.table_Nm }"> <input
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
 	</div>
@@ -75,7 +81,7 @@
 				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
 				<!-- Footer -->
 				<div class="modal-footer" style="text-align: center;">
-					<a href="deleteLctre_Task?tpage=${tpage}&table_Nm=${lctre_Task_Gnt.table_Nm }& lt_Bbs_No=${lctre_Task_Gnt.lt_Bbs_No}"> <!--삭제 모달  -->
+					<a href="deleteLctre_Video?lv_Bbs_No=${lctre_Video_Gnt.lv_Bbs_No}&tpage=${tpage}&table_Nm=${lctre_Video_Gnt.table_Nm }"> <!--삭제 모달  -->
 						<input type="button" class="btn btn-default" value="예">
 					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
 						value="아니오">

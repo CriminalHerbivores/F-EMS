@@ -9,11 +9,43 @@
 <!--  ==========   ======    ==============         -->
 <!--  $2017.02.19    KJS       최초작성             -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
-<sqlMap namespace="Lctre_Video">
+<sqlMap namespace="Lctre_Video_Profsr">
 
  	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="lctre_video" type="com.uni.fems.dto.Lctre_VideoVO" />
+	<typeAlias alias="lctre_video_gnt" type="com.uni.fems.dto.Lctre_Video_GntVO" />
 	
+	<select id="listAllLctre_Video_Profsr" parameterClass="lctre_video_gnt" resultClass="lctre_video">
+		select * from LCTRE_V$table_Nm$ 
+		where LV_SJ like '%$lv_Sj$%' 
+		and LV_CN like '%$lv_Cn$%' 
+		order by LV_BBS_NO desc
+	</select>
+	 
+	<select id="totalLctre_Video_Profsr" parameterClass="lctre_video_gnt" resultClass="int">
+		select count(*) from LCTRE_V$table_Nm$ 
+		where LV_SJ like '%$lv_Sj$%' 
+		and LV_CN like '%$lv_Cn$%' 
+	</select>
+	
+	<select id="getLctre_Video_Profsr" parameterClass="lctre_video_gnt" resultClass="lctre_video">
+		select * from LCTRE_V$table_Nm$ where LV_BBS_NO=#lv_Bbs_No#
+	</select>
+	
+	<update id="insertLctre_Video_Profsr" parameterClass="lctre_video_gnt">
+		insert into LCTRE_V$table_Nm$(LV_BBS_NO,LV_SJ,LV_CN,LV_start_DT,LV_End_DT,LV_Time,LV_FLPTH_NO) 
+		values(((select max(LV_BBS_NO) from LCTRE_V$table_Nm$)+1),#lv_Sj#,#lv_Cn#,#lv_Start_Dt#,#lv_End_Dt#,#lv_Time#,#lv_Flpth_No#)
+	</update>
+	
+	<update id="updateLctre_Video_Profsr" parameterClass="lctre_video_gnt">
+		update LCTRE_V$table_Nm$ set Lv_SJ=#lv_Sj#,Lv_CN=#lv_Cn#,LV_start_DT=#lv_Start_Dt#,LV_End_DT=#lv_End_Dt#,LV_Time=#lv_Time#,Lv_FLPTH_NO=#lv_Flpth_No# 
+		where LV_BBS_NO=#lv_Bbs_No#
+	</update>
+	
+	<update id="deleteLctre_Video_Profsr" parameterClass="lctre_video_gnt">
+		delete from LCTRE_V$table_Nm$ where LV_BBS_NO=#lv_Bbs_No#
+	</update>
 	
 	
 	
