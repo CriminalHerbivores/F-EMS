@@ -37,7 +37,7 @@ body{
 <table  class="def-table-full tb-border">
 	<tr><th>수강 신청 학점
 	</th></tr>
-	<tr><td><h3>{reqst.sumOfReqst }</h3>
+	<tr><td><h3>${reqst.sumOfReqst }</h3>
 	</td></tr>
 </table>
 

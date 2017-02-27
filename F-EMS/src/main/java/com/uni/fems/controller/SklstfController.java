@@ -850,6 +850,7 @@ public class SklstfController {
 		if(tpage==null) tpage="1";
 		try {
 			int totalRecord = lctreService.countLctre(lctre_SearchVO);
+			System.out.println("======= 11111111 totalRecord"+totalRecord);
 			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
 			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
 			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);

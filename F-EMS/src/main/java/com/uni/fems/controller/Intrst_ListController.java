@@ -107,6 +107,7 @@ public class Intrst_ListController {
 				try {
 					System.out.println("444444444444 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 					reqstService.insertReqst(reqstVO);
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

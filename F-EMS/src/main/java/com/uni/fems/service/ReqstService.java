@@ -68,7 +68,7 @@ public interface ReqstService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int getSumReqst(String re_Stdnt_No) throws SQLException;
+	int getSumReqst(ReqstVO reqstVO) throws SQLException;
 	
 	// 개설강의 목록에서 관심등록 버튼을 눌러서 관심강의로 추가되어 관심목록으로 나타남
 	// 이때 시간표상으로 겹치는 것은 관심목록으로 담기지 않는다
