@@ -45,5 +45,29 @@ public interface TestService {
 	 * </pre>
 	 */
 	public int insertTest(TestVO testVO)throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 시험 문제를 수정하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param testVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int updateTest(TestVO testVO)throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 시험 문제를 삭제하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param queNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int deleteTest(int queNo) throws SQLException; 
 
 }

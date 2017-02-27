@@ -37,5 +37,17 @@ public class TestDAOImpl implements TestDAO {
 		
 		return client.update("insertTest", testVO);
 	}
+	@Override
+	public int updateTest(TestVO testVO) throws SQLException {
+		return client.update("updateTest",testVO);
+	}
+	@Override
+	public int deleteTest(int queNo) throws SQLException {
+		return client.update("deleteTest",queNo);
+	}
+	@Override
+	public int deleteTestForTestPaper(int tpNo) throws SQLException {
+		return client.update("deleteTestForTestPaper", tpNo);
+	}
 	
 }

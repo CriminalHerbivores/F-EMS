@@ -59,4 +59,29 @@ public interface Test_PaperDAO {
 	 */
 	public int maxTp_No() throws SQLException;
 	
+	/**
+	 * <pre>
+	 * 시험지를 수정하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param test_paperVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int updateTestPaper(Test_PaperVO test_paperVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 시험지를 삭제하는 메서드 
+	 * </pre>
+	 * <pre>
+	 * @param tpNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int deleteTestPaper(int tpNo) throws SQLException;
+	
+	
 }
