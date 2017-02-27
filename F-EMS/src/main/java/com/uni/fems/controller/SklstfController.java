@@ -1046,8 +1046,10 @@ public class SklstfController {
 		String paging = "";
 		if(tpage==null) tpage="1";
 		int totalRecord = 0;
+		System.out.println("================= 1111111 totalRecord "+totalRecord);
 		try {
 			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			System.out.println("================= 222222222222 totalRecord "+totalRecord);
 			paging = callPaging.pageNumber(
 					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
 					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
