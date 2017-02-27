@@ -52,8 +52,8 @@
 	</update>
 	
 	<!-- 접속한 학생의 개설된 학기에서의 수강 신청한 학점의 합계 조회 -->
-	<select id="getSumReqst" parameterClass="str" resultClass="int">
-		select sum(to_number(substr(lu_Pnt,1,1))) from COURSE_VIEW 
+	<select id="getSumReqst" parameterClass="reqst" resultClass="int">
+		select nvl(sum(to_number(substr(lu_Pnt,1,1))),0) from COURSE_VIEW 
 		where re_Stdnt_No=#re_Stdnt_No#
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 	</select>

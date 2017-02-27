@@ -66,5 +66,5 @@ public interface ReqstDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int getSumReqst(String re_Stdnt_No) throws SQLException;
+	int getSumReqst(ReqstVO reqstVO) throws SQLException;
 }

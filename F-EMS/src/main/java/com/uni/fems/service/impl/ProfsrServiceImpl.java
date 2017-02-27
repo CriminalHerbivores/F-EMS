@@ -3,8 +3,12 @@ package com.uni.fems.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.uni.fems.common.Paging;
+import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.ProfsrDAO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.service.ProfsrService;
 
@@ -31,7 +35,9 @@ public class ProfsrServiceImpl implements ProfsrService {
 	public void setProfsrDAO(ProfsrDAO profsrDAO){
 		this.profsrDAO=profsrDAO;
 	}
- 
+	@Autowired
+	private LctreDAO lctreDAO;
+	
  	@Override
 	public void insertProfsr(ProfsrVO profsrVO) throws SQLException {
  		profsrDAO.insertProfsr(profsrVO);

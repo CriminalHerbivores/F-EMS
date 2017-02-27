@@ -47,8 +47,8 @@ public class ReqstServiceImpl implements ReqstService {
 
 	// 학생의 개설학기내 수강신청완료한 학점들의 총합
 	@Override
-	public int getSumReqst(String re_Stdnt_No) throws SQLException {
-		int sum=reqstDAO.getSumReqst(re_Stdnt_No);
+	public int getSumReqst(ReqstVO reqstVO) throws SQLException {
+		int sum=reqstDAO.getSumReqst(reqstVO);
 		return sum;
 		
 	}
