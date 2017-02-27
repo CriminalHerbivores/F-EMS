@@ -45,6 +45,12 @@ public class Lctre_ActplnServiceImpl implements Lctre_ActplnService {
 	 lctre_GntDAO.task_Table(lctre_Table_Nm);
 	 lctre_GntDAO.video_Table(lctre_Table_Nm);
 	 lctre_GntDAO.watch_Table(lctre_Table_Nm);
+	 lctre_GntDAO.insertLctreTable_Date(lctre_Table_Nm);
+	 lctre_GntDAO.insertLctreTable_Notice(lctre_Table_Nm);
+	 lctre_GntDAO.insertLctreTable_Qna(lctre_Table_Nm);
+	 lctre_GntDAO.insertLctreTable_Task(lctre_Table_Nm);
+	 lctre_GntDAO.insertLctreTable_Video(lctre_Table_Nm);
+	 lctre_GntDAO.insertLctreTable_Watch(lctre_Table_Nm);
 }
  
 //@Override

@@ -3,6 +3,7 @@ package com.uni.fems.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
 
 /**
@@ -87,4 +88,5 @@ public interface ProfsrService {
 	 * </pre>
 	 */
 	void updateProfsr(ProfsrVO profsrVO) throws SQLException;
+	
 }

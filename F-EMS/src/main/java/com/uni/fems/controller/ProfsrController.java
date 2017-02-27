@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
@@ -186,8 +187,6 @@ public class ProfsrController {
 		return url;
 	}
 
-	
-	
 	/**
 	 * <pre>
 	 * 교수가 강의 개설폼을 작성하여 등록 요청하는 로직
@@ -220,49 +219,6 @@ public class ProfsrController {
 		return url;
 	}
 
-	
-	/**
-	 * <pre>
-	 * 교수의 강의이력 조회
-	 * </pre>
-	 * <pre>
-	 * @param tpage
-	 * @param lctre_SearchVO
-	 * @param request
-	 * @param model
-	 * @param session
-	 * @return
-	 * @throws ServletException
-	 * @throws IOException
-	 * </pre>
-	 */
-	@RequestMapping(value="/openLctreList", method=RequestMethod.GET)
-	// (value = "/requestLctre", method = RequestMethod.GET)
-	public String requestLctreListForm(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model, HttpSession session)
-			throws ServletException, IOException {
-		String url = "professor/requestLctreList";
-		String loginUser = (String) session.getAttribute("loginUser");
-		lctre_SearchVO.setPr_Profsr_No(loginUser);
-		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
-		String paging = "";
-		if(tpage==null) tpage="1";
-		int totalRecord = 0;
-		try {
-			totalRecord = lctreService.countLctre(lctre_SearchVO);
-			paging = callPaging.pageNumber(
-					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
-					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
-			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
-			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("lctre_SearchVO",list);
-		model.addAttribute("paging",paging);
-		
-		return url;
-	}
-		
 	/**
 	 * <pre>
 	 * 교수가 개설 강의 및 강의계획서 수정하는 폼
@@ -314,6 +270,91 @@ public class ProfsrController {
 		return url;
 	}
 
+	/**
+	 * <pre>
+	 * 교수의 강의이력 조회
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_SearchVO
+	 * @param request
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value="/openLctreList", method=RequestMethod.GET)
+	// (value = "/requestLctre", method = RequestMethod.GET)
+	public String requestLctreListForm(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model, HttpSession session)
+			throws ServletException, IOException {
+		String url = "professor/requestLctreList";
+		String loginUser = (String) session.getAttribute("loginUser");
+		lctre_SearchVO.setPr_Profsr_No(loginUser);
+		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		String paging = "";
+		if(tpage==null) tpage="1";
+		int totalRecord = 0;
+		try {
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("paging",paging);
+		
+		return url;
+	}
 
-
+	/**
+	 * <pre>
+	 * 교수의 현재 강의 조회
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_SearchVO
+	 * @param request
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value="/ongingLctreList")
+	// (value = "/requestLctre", method = RequestMethod.GET)
+	public String selectLctreList(@RequestParam(value="tpage",defaultValue="1")String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model, HttpSession session)
+			throws ServletException, IOException {
+		String url = "professor/requestLctreList";
+		String loginUser = (String) session.getAttribute("loginUser");
+		
+		lctre_SearchVO.setPr_Profsr_No(loginUser);
+		lctre_SearchVO.setLc_Lctre_Evl_Score(-1);
+		lctre_SearchVO.setLc_Open_At("y");
+		lctre_SearchVO.setLc_Period(supporter.getDay()[0]+"");
+		
+		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		String paging = "";
+		int totalRecord = 0;
+		try {
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("paging",paging);
+		
+		return url;
+	}
 }

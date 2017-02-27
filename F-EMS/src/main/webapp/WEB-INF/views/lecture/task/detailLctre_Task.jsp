@@ -27,7 +27,7 @@
 		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
 			<tr>
 				<th>제목</th>
-				<td style="text-align: left;">${lctre_Task_Gnt.lt_Sj}</td>
+				<td colspan="3" style="text-align: left;">${lctre_Task_Gnt.lt_Sj}</td>
 			</tr>
 			<tr>
 				<th>작성날짜</th>
