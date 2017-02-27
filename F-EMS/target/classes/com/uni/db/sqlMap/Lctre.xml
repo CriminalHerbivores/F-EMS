@@ -115,5 +115,8 @@
 		<isNotNull prepend="and" property="lc_Open_At">
 		to_char(lc_Lctrbgn_Dt) like '%'||'#lc_Lctrbgn_Dt#'||'%'
 		</isNotNull>
+		<isLessThan property="lc_Lctre_Evl_Score" compareValue="0">
+		lc_Lctre_Evl_Score is null
+		</isLessThan>
 	</select>
 </sqlMap>
