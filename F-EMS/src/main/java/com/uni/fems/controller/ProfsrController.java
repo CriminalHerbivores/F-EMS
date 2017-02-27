@@ -390,10 +390,15 @@ public class ProfsrController {
 		return url;
 	}
 
+	/**
+	 * 강의 성적 업데이트
+	 * @param grade
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("msgLctre")
 	public @ResponseBody String msgLctre(GradeVO grade, Model model){
 		String url="redirect:manageLctre?gd_Lctre_No="+grade.getGd_Lctre_No();
-		System.out.println(grade.toString());
 		try {
 			gradeService.updateGrade(grade);
 		} catch (SQLException e) {

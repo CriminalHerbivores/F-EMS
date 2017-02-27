@@ -126,9 +126,26 @@
 	</select>
 	
 	<!-- 재학 중인 학생 조회 -->
-	<select id="notGrdStdnt" resultClass="stdnt">
+	<select id="selectStdntList" parameterClass="stdnt" resultClass="stdnt">
 		select * from stdnt
-		where ST_GRDTN_DT is null
+		where st_Stdnt_No like '%%'
+		<isNull prepend="and" property="st_Grdtn_Dt">
+		ST_GRDTN_DT is null
+		</isNull>
+		<isNotNull prepend="and" property="st_Brhs_At">
+		st_Brhs_At is not null
+		</isNotNull>
 	</select>
 	
+	<!-- 재학 중인 학생 조회 개수 -->
+	<select id="countStdntList" parameterClass="stdnt" resultClass="int">
+		select count(*) from stdnt
+		where st_Stdnt_No like '%%'
+		<isNull prepend="and" property="st_Grdtn_Dt">
+		ST_GRDTN_DT is null
+		</isNull> 
+		<isNotNull prepend="and" property="st_Brhs_At">
+		st_Brhs_At is not null
+		</isNotNull>
+	</select>
 </sqlMap>

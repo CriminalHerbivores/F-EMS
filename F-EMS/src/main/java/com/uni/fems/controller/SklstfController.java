@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -366,7 +367,7 @@ public class SklstfController {
 		
 	}
 	
-	// 기숙사 (미완성) ////////////////////////////////////////////////////////////////////
+	// 기숙사 ////////////////////////////////////////////////////////////////////
 	
 	/**
 	 * <pre>
@@ -377,8 +378,27 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="stdntBrhs", method = RequestMethod.GET) 
-	public String stdntBrhs(){
+	public String stdntBrhs(@RequestParam(defaultValue="1")String tpage,StdntVO stdntVO,Model model, HttpServletRequest request){
 		String url ="manager/student/stdntBrhsYn";
+		
+		stdntVO.setSt_Brhs_At("신청");
+		
+		ArrayList<StdntVO> list = new ArrayList<StdntVO>();
+		String paging ="";
+		int totalRecord=0;
+		try {
+			totalRecord = stdntService.countStdntList(stdntVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = stdntService.selectStdntList(stdntVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("tpage",tpage);
+		model.addAttribute("paging",paging);
+		model.addAttribute("stdntList",list);
 		return url;
 	}
 	/**
@@ -390,8 +410,21 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="stdntBrhs", method = RequestMethod.POST)
-	public String updatestdntBrhs(){
-		String url ="";
+	public String updatestdntBrhs(String[] st_Brhs_At,String[] st_Stdnt_No){
+		String url ="redirect:stdntBrhs";
+		
+		if(st_Brhs_At!=null){
+			for(int i=0;i<st_Brhs_At.length;i++){
+				StdntVO stdntVO = new StdntVO();
+				stdntVO.setSt_Stdnt_No(st_Stdnt_No[i]);
+				stdntVO.setSt_Brhs_At(st_Brhs_At[i]);
+				try {
+					stdntService.registBrhs(stdntVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return url;
 	}
 	
@@ -747,6 +780,15 @@ public class SklstfController {
 		return url;
 	}
 	
+	/**
+	 * 장학금 사용/사용안함
+	 * @param ss_Schlship_Code
+	 * @param tpage
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/deleteSchlship")
 	public String schlshipDelete(@RequestParam String ss_Schlship_Code,
 			@RequestParam int tpage,Model model) throws ServletException,
