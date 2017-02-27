@@ -843,20 +843,26 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
+	@RequestMapping("/profsrLctreList")
 	public String profsrHistory(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
-		String url="manager/profsr/profsrHistory";
+		//String url="manager/profsr/profsrHistory";
+		String url="professor/requestLctreList";
 		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		lctre_SearchVO.setLc_Open_At("y");
 		String paging = "";
 		if(tpage==null) tpage="1";
+		int totalRecord = 0;
 		try {
-			int totalRecord = lctreService.countLctre(lctre_SearchVO);
-			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
 			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
 			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("history",list);
+		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
 		return url;
 	}
