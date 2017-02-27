@@ -39,13 +39,18 @@
 	</tr>	
 	</c:forEach>
 	<tr>
+		<sec:authorize access="hasRole('ROLE_STF')">
+		<td colspan="5">${paging}</td>
+		</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_PRO')">
 		<td colspan="4">${paging}</td>
+		</sec:authorize>
 	</tr>
 	
 	<sec:authorize access="hasRole('ROLE_STF')">
 	<form name="searchForm">
-	<input type="text" placeholder="교수번호" name="pr_Profsr_No" />
-	<input type="submit" value="검색"/>
+	<input type="text" placeholder="교수번호" name="pr_Profsr_No" class="def-input-text-lg custom-form-control"/>
+	<input type="submit" value="검색" class="def-btn btn-search btn-color"/>
 	</form>
 	</sec:authorize>
 	
