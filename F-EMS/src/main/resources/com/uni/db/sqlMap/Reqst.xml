@@ -23,22 +23,6 @@
 		and lc_Open_At='y'
 		order by lc_Lctre_Code asc
 	 </select>
-	<!--
-		SELECT * FROM lctre_view, reqst,intrst_list
-		WHERE re_Stdnt_No=#re_Stdnt_No# 
-		and re_Lctre_No=lc_Lctre_No
-   		and in_Lctre_No=lc_Lctre_No
-		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
-		and lc_Open_At='y'
-		order by lc_Lctre_Code asc
-	
-	
-		SELECT * FROM course_view
-		WHERE re_Stdnt_No=#re_Stdnt_No# 
-		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
-		and lc_Open_At='y'
-		order by lc_Lctre_Code asc
- -->	
 
 	<!-- 수강 신청 -->
 	<update id="insertReqst" parameterClass="reqst">
@@ -57,5 +41,35 @@
 		where re_Stdnt_No=#re_Stdnt_No#
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 	</select>
+	
+	
+	<!-- ==================== 수강 신청 및 취소로 인한 인원 조절 ==================== -->
+	
+	<!-- 인원 조절할 강의의 강의실 수용인원 -->
+	<select id="acceptNumOfStdnt" resultClass="int">
+		select lr_Accept_Nmpr from lctre
+		inner join lctrum on (lr_Lctrum_No = lc_Lctrum_No)
+		where lc_Lctre_No=#lc_Lctre_No#
+	</select>
+	
+	<!-- 그 과목을 수강중인 학생수 -->
+	<select id="stdntNumOfLctre" resultClass="int">
+		select count(*) from reqst where re_Lctre_No=#re_Lctre_No#
+	</select>
+	
+	<!-- 그 과목의 수강 학생 추가 : 학생의 수강 신청과 연결하기 -->
+	<update id="addNumOfStdnt" parameterClass="lctre_Search">
+		update lctre  
+		set lc_Lctre_Nmpr = (select count(*) from reqst where re_Lctre_No=#re_Lctre_No#)+1
+		where lc_Lctre_No=#lc_Lctre_No#
+	</update>
+	
+	<!-- 그 과목의 수강 학생 감소 : 학생의 수강취소와 연결하기 -->
+	<update id="delNumOfStdnt" parameterClass="lctre_Search">
+		update lctre  
+		set lc_Lctre_Nmpr = (select count(*) from reqst where re_Lctre_No=#re_Lctre_No#)-1
+		where lc_Lctre_No=#lc_Lctre_No#
+	</update>
+	
 
 </sqlMap>

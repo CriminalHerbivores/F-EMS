@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 
@@ -46,7 +47,7 @@ public interface ReqstService {
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void insertReqst(ReqstVO reqstVO) throws SQLException;
+	void insertReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -56,7 +57,7 @@ public interface ReqstService {
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void deleteReqst(ReqstVO reqstVO) throws SQLException;
+	void deleteReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 	
 	/**

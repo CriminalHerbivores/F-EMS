@@ -12,6 +12,7 @@ import com.uni.fems.dao.Intrst_ListDAO;
 import com.uni.fems.dao.ReqstDAO;
 import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.service.ReqstService;
@@ -32,17 +33,19 @@ public class ReqstServiceImpl implements ReqstService {
 	
 	// 수강 신청 등록
 	@Override
-	public void insertReqst(ReqstVO reqstVO) throws SQLException {
+	public void insertReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		reqstDAO.insertReqst(reqstVO);
 		gradeDAO.insertGrade(reqstVO);
+		reqstDAO.addNumOfStdnt(lctre_SearchVO);	// 수강 신청시 수강중 인원 증가
 		
 	}
 	
 	// 수강 신청 삭제
 	@Override
-	public void deleteReqst(ReqstVO reqstVO) throws SQLException {
+	public void deleteReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		reqstDAO.deleteReqst(reqstVO);
 		gradeDAO.deleteGrade(reqstVO);
+		reqstDAO.delNumOfStdnt(lctre_SearchVO);	// 수강 취소시 수강중 인원 감소
 	}
 
 	// 학생의 개설학기내 수강신청완료한 학점들의 총합

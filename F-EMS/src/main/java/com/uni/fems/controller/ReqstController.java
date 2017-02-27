@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dao.ReqstDAO;
 import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.service.Intrst_ListService;
@@ -97,7 +98,7 @@ public class ReqstController {
 	 */
 	@RequestMapping(value="/courseComplete",method=RequestMethod.POST)
 	public String deleteCourseComplete(HttpServletRequest request,
-			HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+			HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
 		String url = "redirect:courseComplete";
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
@@ -117,7 +118,7 @@ public class ReqstController {
 			System.out.println("둘 다 삭제되어야 함!!  관심 "+intrst_ListVO.getIn_Lctre_No()+" //강의 "+reqstVO.getRe_Lctre_No());
 			
 			try {
-				reqstService.deleteReqst(reqstVO);
+				reqstService.deleteReqst(reqstVO, lctre_SearchVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

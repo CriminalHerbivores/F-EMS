@@ -146,7 +146,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
 	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request,
-		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
 		String url = "redirect:courseAble";
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
@@ -178,7 +178,7 @@ public class LctreController {
 			System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
 
 			try {
-				reqstService.insertReqst(reqstVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+				reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
 				System.out.println("===================555555555  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
 			} catch (SQLException e) {
 				e.printStackTrace();

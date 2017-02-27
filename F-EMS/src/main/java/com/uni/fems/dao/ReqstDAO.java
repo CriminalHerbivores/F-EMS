@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 
@@ -67,4 +68,52 @@ public interface ReqstDAO {
 	 * </pre>
 	 */
 	int getSumReqst(ReqstVO reqstVO) throws SQLException;
+	
+	//----------------------------------------------------------------------
+	
+	/**
+	 * <pre>
+	 * 한 개설강의의 강의실 수용가능 인원수
+	 * </pre>
+	 * <pre>
+	 * @param lc_Lctre_No
+	 * @return
+	 * @throws SQLException
+	 */
+	int acceptNumOfStdnt(String lc_Lctre_No) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 한 과목을 수강중인 학생의 인원수
+	 * </pre>
+	 * <pre>
+	 * @param re_Lctre_No
+	 * @return
+	 * @throws SQLException
+	 */
+	int stdntNumOfLctre(String re_Lctre_No) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 한 과목의 수강중인 인원수 한명 추가
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @throws SQLException
+	 */
+	void addNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 한 과목의 수강중인 인원수 한명 감소
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @throws SQLException
+	 */
+	void delNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	
+	
+	
+	
 }

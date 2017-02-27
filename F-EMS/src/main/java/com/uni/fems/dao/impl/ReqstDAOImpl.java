@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.ReqstDAO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 
@@ -59,6 +60,34 @@ public class ReqstDAOImpl implements ReqstDAO {
 	public int getSumReqst(ReqstVO reqstVO) throws SQLException {
 		int sum= (int) client.queryForObject("getSumReqst",reqstVO);
 		return sum;
+	}
+	
+	//----------------------------------------------------------------------------------
+	
+	// 한 개설강의의 강의실 수용가능 인원수
+	@Override
+	public int acceptNumOfStdnt(String lc_Lctre_No) throws SQLException {
+		int acceptNumOfStdnt=(int) client.queryForObject(lc_Lctre_No);
+		return acceptNumOfStdnt;
+	}
+	
+	// 한 과목을 수강중인 학생의 인원수
+	@Override
+	public int stdntNumOfLctre(String re_Lctre_No) throws SQLException {
+		int stdntNumOfLctre=(int) client.queryForObject(re_Lctre_No);
+		return stdntNumOfLctre;
+	}
+	
+	// 한 과목의 수강중인 인원수 한명 추가
+	@Override
+	public void addNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		client.update("addNumOfStdnt",lctre_SearchVO);
+	}
+	
+	// 한 과목의 수강중인 인원수 한명 감소
+	@Override
+	public void delNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		client.update("delNumOfStdnt",lctre_SearchVO);
 	}
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uni.fems.dto.Intrst_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.service.Intrst_ListService;
@@ -90,7 +91,7 @@ public class Intrst_ListController {
 	 */
 	@RequestMapping(value="/courseInterest",method=RequestMethod.POST)
 	public String deleteCourseInterest(HttpServletRequest request,
-			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO) throws ServletException, IOException{
+			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
 		String url = "redirect:courseInterest";
 
 		String stdnt_No = (String) session.getAttribute("loginUser");
@@ -102,7 +103,7 @@ public class Intrst_ListController {
 				reqstVO.setRe_Stdnt_No(stdnt_No);
 				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
 				try {
-					reqstService.insertReqst(reqstVO);
+					reqstService.insertReqst(reqstVO, lctre_SearchVO);
 					
 				} catch (SQLException e) {
 					e.printStackTrace();
