@@ -21,24 +21,27 @@
 </head>
 <body>
 
-<article>
-<form id="add_building" action="/fems/admin/main" method="post" name="formm">
+<form method="post" name="formm">
+<table class="non-border margin-auto"><tr><td>
 <h1>건물 정보 수정</h1>
 <br/>
-
-		<table class="def-table-auto tb-border table-hover">
-		<tr><td>건물 이름</td><td>
-				<select name="선택" class="combobox-lg">
+</td></tr><tr><td>
+		<table class="def-table-auto tb-border">
+		<tr><th>건물 이름</th><td>
+		
+				<select name="selectBd" class="combobox-lg custom-form-control">
 				<c:forEach items="${buildingVO}" var="building">
 									
-					<option value="${building.bd_Nm}">${building.bd_Nm}</option>
-				</c:forEach><!-- 건물명 쭉 가져오고 싶음 -->
+					<option value="${building.bd_No}">${building.bd_Nm}</option>
+				</c:forEach>
 				</select>
-			</td><td colspan="2"><input type="button" class="def-btn" value="선택"></td>
+				
+				
+			</td><td><input type="button" class="def-btn btn-sm btn-color" value="선택"></td><td></td>
 		</tr>
-		<tr><td>건물 번호</td><td><input type="text" class=".def-input-text-lg" name="bd_No" value="${bd_No}"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
-		<tr><td>건물 이름</td><td><input type="text" class=".def-input-text-lg" name="bd_Nm" value="${bd_Nm }"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
-		<tr><td>사용 여부</td><td>
+		<tr><th>건물 번호</th><td><input type="text" class=".def-input-text-lg custom-form-control" name="bd_No" value="${bd_No}"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
+		<tr><th>건물 이름</th><td><input type="text" class=".def-input-text-lg custom-form-control" name="bd_Nm" value="${bd_Nm }"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
+		<tr><th>사용 여부</th><td>
 		<c:choose>
 		<c:when test="${bd_Useyn=='y'|| bd_Useyn=='Y'}">
 		<label><input type="radio" name="bd_Useyn" value="y" checked="checked" >사용</label>&nbsp;&nbsp;<label><input type="radio" name="bd_Useyn" value="n">사용 안함</label>
@@ -48,13 +51,13 @@
 	</c:otherwise>		
 		</c:choose>
 		</td><td></td><td></td></tr>
-	</table>
-
+	</table></td></tr>
+<tr><td class="text-right">
 <input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">&nbsp;&nbsp;
 <input type="button" class="def-btn btn-md btn-gray" value="목록" onclick="go.history(-1);">
 
 
+</td></tr></table>
 </form>
-</article>
 </body>
 </html>

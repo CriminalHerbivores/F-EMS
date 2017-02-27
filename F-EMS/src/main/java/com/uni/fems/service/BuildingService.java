@@ -1,7 +1,9 @@
 package com.uni.fems.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import com.ibatis.sqlmap.client.SqlMapException;
 import com.uni.fems.dto.BuildingVO;
 
 /**
@@ -32,6 +34,16 @@ public interface BuildingService {
 	 * @throws SQLException
 	 */
 	void insertBuilding(BuildingVO buildingVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 전체건물 목록
+	 * </pre>
+	 * <pre>
+	 * @param buildingVO
+	 * @throws SqlMapException
+	 */
+	List<BuildingVO> selectUseBuilding(BuildingVO buildingVO) throws SQLException;
 	
 	/**
 	 * <pre>

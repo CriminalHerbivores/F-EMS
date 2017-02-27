@@ -44,9 +44,9 @@
 
 .course-list-l-top {
 	width: 100%;
-	min-height:420px;
+	min-height:600px;
 	height: 60%;
-	padding: 5px;
+	padding: 10px;
 	border: 0px;
 	overflow: auto;
 	align: top;
@@ -54,9 +54,9 @@
 
 .course-list-l-bottom {
 	width: 100%;
-	min-height:280px;
+	min-height:350px;
 	height: 40%;
-	padding: 5px;
+	padding: 10px;
 	border: 0px;
 	overflow: auto;
 	align: middle;
@@ -64,9 +64,9 @@
 
 .course-list-r-top {
 	width: 100%;
-	min-height:420px;
+	min-height:600px;
 	height: 60%;
-	padding: 5px;
+	padding: 10px;
 	border: 0px;
 	overflow: auto;
 	align: right;
@@ -74,9 +74,9 @@
 
 .course-list-r-bottom {
 	width: 100%;
-	min-height:280px;
+	min-height:350px;
 	height: 40%;
-	padding: 5px;
+	padding: 10px;
 	border: 0px;
 	overflow: auto;
 	align: right;

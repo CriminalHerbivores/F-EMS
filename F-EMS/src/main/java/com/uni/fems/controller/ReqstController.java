@@ -161,13 +161,10 @@ public class ReqstController {
 		int ableOfReqst=18;
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
-		System.out.println("============ 11111111111111111111 sumOfReqst  "+sumOfReqst+"  stdnt_No  "+stdnt_No);
 		try {
 			reqstVO.setRe_Stdnt_No(stdnt_No);
-			System.out.println("============ 22222222222222222 sumOfReqst  "+sumOfReqst+"  stdnt_No  "+stdnt_No);
 			sumOfReqst=reqstService.getSumReqst(reqstVO);
 			ableOfReqst=ableOfReqst-sumOfReqst;
-			System.out.println("============ 33333333333333 sumOfReqst  "+sumOfReqst+"  stdnt_No  "+stdnt_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
