@@ -58,7 +58,7 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="6" style="text-align: center;">${paging}</td>
+				<td colspan="7" style="text-align: center;">${paging}</td>
 			</tr>
 		</table>
 		<div id="buttons" style="float:right">

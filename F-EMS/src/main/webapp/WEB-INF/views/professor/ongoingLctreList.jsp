@@ -27,7 +27,7 @@
 		<td><fmt:formatDate value="${lctre.lc_Lctrbgn_Dt }"/></td><!-- 개설일 년도 가져와야 할거같음 -->
 		<td>${lctre.lc_Term}</td>
 		<td>${lctre.lu_Lctre_Nm}</td>
-		<td><a href="<%=request.getContextPath() %>/profsr/manageLctre?gd_Lctre_No=${lctre.lc_Lctre_No}">성적관리</a></td>
+		<td><a href="<%=request.getContextPath() %>/profsr/manageLctre?gd_Lctre_No=${lctre.lc_Lctre_No}&tpage=${tpage}">성적관리</a></td>
 	</tr>	
 	</c:forEach>
 	<tr>
