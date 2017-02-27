@@ -20,10 +20,35 @@ $(function(){
 		$('#testtable > tbody:last').append('<tr><td><input type="text" class="def-input-text-full custom-form-control" name="addQue" ></td><td><input type="text" class="def-input-text-md custom-form-control" name="addCa"> <input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
 	});
 });
+
 function deltest(obj){
 	var tr = $(obj).parent().parent();
 	tr.remove();
 }
+
+function deleteQues(qno){
+
+	var data ={'queNo' : qno};
+	
+	$.ajax({
+		url:'<%=request.getContextPath()%>/lctre/deleteQues',
+		contentType: 'application/json; charset=utf-8',
+		dataType:'text',
+		data:JSON.stringify(data),
+		type:'post',
+		success : function(data){
+			var result = "#"+data;
+			$(result).remove();
+		},
+		error:function(request,status,error){
+		  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		  }
+	});
+};
+
+
+
+
 </script>
 </head>
 <body>
@@ -53,25 +78,26 @@ function deltest(obj){
 			<th>정답</th>
 		</tr>
 		
+
 		<c:forEach var="Qlist" items="${Qlist }" >
-		<tr>
+		<form method="post">
+		<tr id="${Qlist.te_Ques_No }">
 			<td>
 				<input type="text" class="def-input-text-full custom-form-control"  name="que" value="${Qlist.te_Ques }">
 			</td>
 			<td>
 				<input type="text" class="def-input-text-md custom-form-control" name="ca" value="${Qlist.te_Ca }">
-				<input type="hidden" name="queNo" value="${Qlist.te_Ques_No }">
-				 
-				 
-				 <input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="">
+				<input type="hidden" id="queNo" name="queNo" value="${Qlist.te_Ques_No }">
+				<input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="deleteQues(${Qlist.te_Ques_No });">
 			</td>
 		</tr>
+		</form>
+
 		</c:forEach>
 			<tbody></tbody>
 		
 		
 	</table>
-		
 		
 		<sec:authorize access="hasRole('ROLE_PRO')">
 		<div style="float:right;">
@@ -83,6 +109,6 @@ function deltest(obj){
 	</form>
 </td></tr>
 </table>
-
+	
 </body>
 </html>
