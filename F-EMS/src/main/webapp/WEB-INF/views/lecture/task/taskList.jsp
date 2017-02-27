@@ -48,7 +48,6 @@
         <th style="width:500px;">제목</th>
         <th>작성날짜</th>
         <th>작성자</th>
-        <th>조회수</th>
       </tr>
       
       <c:forEach var="lctre_Task" items="${lctre_TaskList }">
