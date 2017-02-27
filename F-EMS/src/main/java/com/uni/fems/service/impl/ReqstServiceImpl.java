@@ -55,5 +55,19 @@ public class ReqstServiceImpl implements ReqstService {
 		return sum;
 		
 	}
+	
+	// 한 강의의 강의실 수용 인원
+	@Override
+	public int acceptNumOfStdnt(String lc_Lctre_No) throws SQLException {
+		int lctrumNum = reqstDAO.acceptNumOfStdnt(lc_Lctre_No);
+		return lctrumNum;
+	}
+	
+	// 한 강의를 수강중인 학생 수
+	@Override
+	public int stdntNumOfLctre(String re_Lctre_No) throws SQLException {
+		int lctreStdntNum = reqstDAO.stdntNumOfLctre(re_Lctre_No);
+		return lctreStdntNum;
+	}
 
 }
