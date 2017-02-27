@@ -35,6 +35,24 @@ function submitForm(form){
 body {
 	/* background: #D4F4FA; */
 }
+/* .tb-border table {
+  border-collapse:collapse;
+}   */
+/* .fix-top {
+  position: fixed;
+  top:0%;
+}
+.fix-mid {
+  position: fixed;
+  top:12%;
+  
+}
+tbody .tb-border{
+	position:relative;
+}
+.tbtb tbody{
+	margin-top:23.3%;
+} */
 </style>
 
 </head>
@@ -44,7 +62,7 @@ body {
 	<!-- <table class="def-table-full tb-border"> -->
 <form name="forrm" method="get">
 	<table class="def-table-full">
-	
+	<thead class="def-table-full fix-top">
 	<tr><td class="text-right">
 	<label><input type="checkbox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
 	<label><input type="checkbox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
@@ -58,11 +76,12 @@ body {
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
 					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 					<input type="button" class="def-btn btn-search btn-color" value="상세검색">&nbsp;&nbsp;
-	</td></tr>
+	</td></tr></thead>
 	</table>
 	</form>
 	<form name="formm" method="post">
 			<table class="def-table-full tb-border table-hover">
+				<thead class="def-table-full fix-mid">
 				<!-- <tr>
 					<td colspan="12"  class="text-right">
 					</td>
@@ -83,6 +102,8 @@ body {
 					<th>수강인원</th>
 					<th>제한인원</th>
 				</tr>
+				</thead>
+				<tbody>
 				
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
@@ -108,7 +129,7 @@ body {
 				</tr>
 			</c:forEach>
 			<tr><td colspan="13" style="text-align: center;">${paging }</td></tr>				
-					
+					</tbody>
 			</table>
 	</form>
 </div>
