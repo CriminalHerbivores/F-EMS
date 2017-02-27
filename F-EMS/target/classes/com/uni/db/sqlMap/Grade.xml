@@ -20,7 +20,15 @@
 	</update>
 	<update id="updateGrade" parameterClass="grade">
 		update GRADE
-		set $key$ = #value#
+		set
+			gd_Grade=#gd_Grade#,
+			gd_Tot_Score=#gd_Tot_Score#,
+			gd_Attd_Score=#gd_Attd_Score#,
+			gd_Atend_Score=#gd_Atend_Score#,
+			gd_Task_Score=#gd_Task_Score#,
+			gd_Midex_Score=#gd_Midex_Score#,
+			gd_Fnex_Score=#gd_Fnex_Score#,
+			gd_Mini_Score=#gd_Mini_Score#
 		where gd_Stdnt_No = #gd_Stdnt_No#
 		and gd_Lctre_No = #gd_Lctre_No#
 	</update>
@@ -33,12 +41,12 @@
 	
 	<select id="selectGrade" parameterClass="grade" resultClass="grade">
 		select * from grade
-		where gd_Stdnt_No = #gd_Stdnt_No#
-		and gd_Lctre_No = #gd_Lctre_No#
+		where gd_Stdnt_No like '%'||#gd_Stdnt_No#||'%'
+		and gd_Lctre_No like '%'||#gd_Lctre_No#||'%'
 	</select>
 	<select id="countGrade" parameterClass="grade" resultClass="int">
 		select count(*) from grade
-		where gd_Stdnt_No = #gd_Stdnt_No#
-		and gd_Lctre_No = #gd_Lctre_No#
+		where gd_Stdnt_No like '%'||#gd_Stdnt_No#||'%'
+		and gd_Lctre_No like '%'||#gd_Lctre_No#||'%'
 	</select>
 </sqlMap>

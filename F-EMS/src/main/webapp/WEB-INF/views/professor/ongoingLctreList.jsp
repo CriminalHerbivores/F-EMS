@@ -13,36 +13,25 @@
 </head>
 <body>
 
-<h2>개설 강의</h2>
+<h2>진행 강의</h2>
 <table class="def-table-auto tb-border table-hover">
 	<tr>
-		<sec:authorize access="hasRole('ROLE_STF')">
-		<th>교수번호</th>
-		</sec:authorize>
 		<th>개설년도</th>
 		<th>학기</th>
 		<th>강의명</th>
-		<th>개설여부</th>
+		<th>성적관리</th>
 	</tr>
 	<!-- 로그인한 교수가 개설요청한 강의목록 가져오기 -->
 	<c:forEach items="${lctre_SearchVO}" var="lctre">
 	<tr>
-		<sec:authorize access="hasRole('ROLE_STF')">
-		<td>${lctre.pr_Profsr_No}</td>
-		</sec:authorize>
 		<td><fmt:formatDate value="${lctre.lc_Lctrbgn_Dt }"/></td><!-- 개설일 년도 가져와야 할거같음 -->
 		<td>${lctre.lc_Term}</td>
 		<td>${lctre.lu_Lctre_Nm}</td>
-		<td>${lctre.lc_Open_At}</td>
+		<td><a href="<%=request.getContextPath() %>/profsr/manageLctre?gd_Lctre_No=${lctre.lc_Lctre_No}">성적관리</a></td>
 	</tr>	
 	</c:forEach>
 	<tr>
-		<sec:authorize access="hasRole('ROLE_STF')">
-		<td colspan="5">${paging}</td>
-		</sec:authorize>
-		<sec:authorize access="hasRole('ROLE_PRO')">
 		<td colspan="4">${paging}</td>
-		</sec:authorize>
 	</tr>
 	
 	<sec:authorize access="hasRole('ROLE_STF')">

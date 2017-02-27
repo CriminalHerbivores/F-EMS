@@ -34,7 +34,7 @@
 <a href="<%=request.getContextPath() %>/profsr/profsrUpdate" class="no-uline">교수 정보 수정</a><br/>
 <a href="<%=request.getContextPath() %>/profsr/requestLctre" class="no-uline">강의 등록 요청</a><br/>
 <a href="<%=request.getContextPath() %>/profsr/openLctreList" class="no-uline">개설 강의 조회</a><br/>
-<a href="<%=request.getContextPath() %>/profsr/ongingLctreList" class="no-uline">진행 강의 조회</a><br/>
+<a href="<%=request.getContextPath() %>/profsr/ongoingLctreList" class="no-uline">진행 강의 조회</a><br/>
 --------- 학생 ---------<br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a><br/>

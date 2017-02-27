@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
+import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.KindVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.service.GradeService;
 import com.uni.fems.service.KindService;
 import com.uni.fems.service.LctreService;
 import com.uni.fems.service.Lctre_Unq_NoService;
@@ -63,6 +65,8 @@ public class ProfsrController {
 	//private Lctre_ActplnService lctre_ActplnService;
 	@Autowired
 	private Lctre_Unq_NoService lctre_Unq_NoService;
+	@Autowired
+	private GradeService gradeService;
 	@Autowired
 	private KindService kindService;
 	@Autowired
@@ -327,11 +331,11 @@ public class ProfsrController {
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value="/ongingLctreList")
+	@RequestMapping(value="/ongoingLctreList")
 	// (value = "/requestLctre", method = RequestMethod.GET)
 	public String selectLctreList(@RequestParam(value="tpage",defaultValue="1")String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model, HttpSession session)
 			throws ServletException, IOException {
-		String url = "professor/requestLctreList";
+		String url = "professor/ongoingLctreList";
 		String loginUser = (String) session.getAttribute("loginUser");
 		
 		lctre_SearchVO.setPr_Profsr_No(loginUser);
@@ -355,6 +359,31 @@ public class ProfsrController {
 		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
 		
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 진행 중인 강의의 성적 관리
+	 * </pre>
+	 * <pre>
+	 * @param gradeVO
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="manageLctre")
+	public String manageLctre(GradeVO gradeVO, Model model){
+		String url="professor/manageLctre";
+		List<GradeVO> list = new ArrayList<GradeVO>();
+		gradeVO.setGd_Stdnt_No("");
+		try {
+			list = gradeService.selectGrade(gradeVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("lctreList",list);
 		return url;
 	}
 }
