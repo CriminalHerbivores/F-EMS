@@ -68,7 +68,8 @@
         <td><input type="text" class="form-control" id="pr_Profsr_Tlphon_No" name="pr_Profsr_Tlphon_No" ></td>
       </tr>
   </table>
-		파일 경로: <input type="text" name="file"><br /> 파일경로: <input type="file" name="f"><br />
+		교수등록양식: <a href="<%=request.getContextPath() %>/download/file/list?filename=교수등록.xlsx">다운로드</a><br /> 
+		파일경로: <input type="file" name="f"><br />
    <button type="button" class="btn btn-default" onclick="go_profsr()">등록</button>
    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>
