@@ -28,6 +28,7 @@
 		<!-- 개설된 강의의 갯수 -->
 	<select id="totalOpenLctre" parameterClass="searchvo" resultClass="int">
 		select count(*) from lctre_view where $key$ like '%'||#value#||'%'
+		and lu_Compl_Se like '%'||#lu_Compl_Se#||'%' and knd_Lctre_Knd like '%'||#knd_Lctre_Knd#||'%'
 		and lc_Open_At='y'
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 		order by lu_Lctre_code asc, lc_split asc
@@ -35,12 +36,13 @@
 	
 	<!-- 개설 학기의 전체 강의 목록 -->
 	<select id="openLctreList" parameterClass="searchvo" resultClass="lctre_Search">
-		select sit_Subjct,lu_Lctre_Code,lc_Split,lu_Grade,lu_Lctre_Nm,lu_Compl_Se,knd_Lctre_Knd,pr_Nm,lu_Pnt,lc_Lctre_Time,lc_Lctre_Nmpr,lr_Accept_Nmpr
-   		from LCTRE_VIEW where lu_Compl_Se like '%'||#lu_Compl_Se#||'%' and knd_Lctre_Knd like '%'||#knd_Lctre_Knd#||'%'
+		select lc_Lctre_No, sit_Subjct,lu_Lctre_Code,lc_Split,lu_Grade,lu_Lctre_Nm,lu_Compl_Se,knd_Lctre_Knd,pr_Nm,lu_Pnt,lc_Lctre_Time,lc_Lctre_Nmpr,lr_Accept_Nmpr
+   		from LCTRE_VIEW 
+   		where lu_Compl_Se like '%'||#lu_Compl_Se#||'%' and knd_Lctre_Knd like '%'||#knd_Lctre_Knd#||'%'
 		and lc_Open_At='y'
 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 		intersect
-   		select sit_Subjct,lu_Lctre_Code,lc_Split,lu_Grade,lu_Lctre_Nm,lu_Compl_Se,knd_Lctre_Knd,pr_Nm,lu_Pnt,lc_Lctre_Time,lc_Lctre_Nmpr,lr_Accept_Nmpr 
+   		select lc_Lctre_No, sit_Subjct,lu_Lctre_Code,lc_Split,lu_Grade,lu_Lctre_Nm,lu_Compl_Se,knd_Lctre_Knd,pr_Nm,lu_Pnt,lc_Lctre_Time,lc_Lctre_Nmpr,lr_Accept_Nmpr 
     	from lctre_view 
     	where $key$ like '%'||#value#||'%'
 		and lc_Open_At='y'

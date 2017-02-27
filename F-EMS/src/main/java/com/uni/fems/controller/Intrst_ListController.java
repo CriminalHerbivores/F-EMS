@@ -96,34 +96,35 @@ public class Intrst_ListController {
 		String stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr = request.getParameterValues("result");
 		String ck_result = request.getParameter("btn_result");
-		System.out.println("==============1111111111  ck_result  "+ck_result);
-		System.out.println("=========================11111111 in_Lctre_No "+intrst_ListVO.getIn_Lctre_No());
-		// 값은 받아오는데 왜 if문 안으로 들어오지 못할까? if문 내부는 잘 돌아가는거 확인함(신청하는대로 잘 들어감)
-		
-//		if(ck_result=="addReqst"){
-//			for (int i = 0; i < resultArr.length; i++) {
-//				System.out.println("==============222222222222  ck_result  "+ck_result);
-//				reqstVO.setRe_Stdnt_No(stdnt_No);
-//				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
-//				try {
-//					reqstService.insertReqst(reqstVO);
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}else if(ck_result=="delIntrst"){
+		System.out.println("111111111111111 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+		if(ck_result.equals("addReqst")){
 			for (int i = 0; i < resultArr.length; i++) {
-				System.out.println("==============333333333333  ck_result  "+ck_result);
-				System.out.println("=========================2222222222 in_Lctre_No "+intrst_ListVO.getIn_Lctre_No());
-				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-				System.out.println("=========================333333333 in_Lctre_No " +intrst_ListVO.getIn_Lctre_No());
+				System.out.println("222222 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+
+				reqstVO.setRe_Stdnt_No(stdnt_No);
+				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
+				System.out.println("333333333333 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
 				try {
-					intrst_ListService.deleteIntrst_List(intrst_ListVO);
+					System.out.println("444444444444 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+					reqstService.insertReqst(reqstVO);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-//			}
+			}
+		}else if(ck_result.equals("delIntrst")){
+			System.out.println("555555555555 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+			for (int i = 0; i < resultArr.length; i++) {
+				System.out.println("666666666666 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
+				System.out.println("777777777 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+				try {
+					intrst_ListService.deleteIntrst_List(intrst_ListVO);
+					System.out.println("888888 수강신청" +reqstVO.getRe_Lctre_No()+"//// 관심 "+intrst_ListVO.getIn_Lctre_No());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		// lctreController.courseListForm();//호출 되려나

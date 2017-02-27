@@ -154,12 +154,28 @@ public class ReqstController {
 	 * </pre>
 	 */
 	@RequestMapping("/courseCredit")
-	public String courseCredit(HttpServletRequest request,
-			HttpSession session) {
+	public String courseCredit(Model model,HttpServletRequest request,
+			HttpSession session, String re_Stdnt_No, ReqstVO reqstVO) {
 		String url = "course_registration/courseCredit";
-		//학생이 수강신청한 과목의 학점(맨 앞에것)값을 숫자로 읽어오고 합해준 다음에
-		//한 학기에 수강할 수 있는 학점(학과마다 다름)을 빼준다
-		//그 값을 조회해오면 되지 않을까...힘내라 나!!
+//		int sumOfReqst =0;
+//		
+//		String stdnt_No = (String) session.getAttribute("loginUser");
+//		System.out.println("============ 11111111111111111111 sumOfReqst  "+sumOfReqst);
+//		try {
+//			reqstVO.setRe_Stdnt_No(stdnt_No);
+//			sumOfReqst=reqstService.getSumReqst(re_Stdnt_No);
+//			System.out.println("============ 22222222222222222 sumOfReqst  "+sumOfReqst);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		//학생이 수강신청한 과목의 학점(맨 앞에것)값을 숫자로 읽어오고 합해준 다음에
+//		//한 학기에 수강할 수 있는 학점(학과마다 다름)을 빼준다
+//		//그 값을 조회해오면 되지 않을까...힘내라 나!!
+//		
+//		model.addAttribute("reqst",sumOfReqst);
 		
 		return url;
 	}	
