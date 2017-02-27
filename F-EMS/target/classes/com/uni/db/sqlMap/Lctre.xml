@@ -112,5 +112,8 @@
 		<isNotNull prepend="and" property="lc_Open_At">
 		lc_Open_At like '%'||#lc_Open_At#||'%'
 		</isNotNull>
+		<isNotNull prepend="and" property="lc_Open_At">
+		to_char(lc_Lctrbgn_Dt) like '%'||'#lc_Lctrbgn_Dt#'||'%'
+		</isNotNull>
 	</select>
 </sqlMap>

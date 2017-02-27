@@ -156,7 +156,6 @@ public class ManageController {
 	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) 
 			throws ServletException, IOException{
 		String url = "redirect:sklstfList";	
-		System.out.println("111111111111111111111111111111111111111111111111111111");
 		//ArrayList<UserSubjctVO> userSubjctVO = null;
 		//String sit_Subjct=null;
 		
@@ -185,25 +184,18 @@ public class ManageController {
 				sklstfVo.setStf_Useyn(map.get("N"));
 				try {
 					sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
-					System.out.println("sklstfVo.getStf_Sklstf_No()=============="+sklstfVo.getStf_Sklstf_No());
 					sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
-					System.out.println("===============getSa_Sklstf_No  "+sklstf_AtrtyVO.getSa_Sklstf_No());
 						//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
 						//System.out.println("if : sit_Subjct:================= "+sit_Subjct);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
-			System.out.println("여기는 if문 내부임=================================");
-			
 		}else{
 			try {
 				sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
-				System.out.println("sklstfVo.getStf_Sklstf_No()=============="+sklstfVo.getStf_Sklstf_No());
 				sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
-				System.out.println("===============getSa_Sklstf_No  "+sklstf_AtrtyVO.getSa_Sklstf_No());
 				//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
-				System.out.println("else : sklstfVo================="+sklstfVo);
 				//System.out.println("else : sit_Subjct:================= "+sit_Subjct);
 			} catch (SQLException e) {
 				e.printStackTrace();
