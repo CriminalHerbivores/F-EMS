@@ -1,7 +1,7 @@
 package com.uni.fems.dto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.List;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
@@ -50,5 +50,7 @@ public class StdntVO implements Serializable{
 	private String st_Brhs_At;   // 기숙사 여부
 	private String st_Profsr_No;   // 교수 번호
 	private String st_Grdtn_Dt;   // 졸업 일자
+	
+	private List<StdntVO> list;
 	
 }

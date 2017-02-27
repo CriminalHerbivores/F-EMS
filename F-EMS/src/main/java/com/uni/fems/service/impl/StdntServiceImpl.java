@@ -1,6 +1,7 @@
 package com.uni.fems.service.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.fems.common.Paging;
@@ -66,6 +67,19 @@ public class StdntServiceImpl implements StdntService {
 	@Override
 	public void registBrhs(StdntVO stdntVO) throws SQLException {
 		stdntDAO.registBrhs(stdntVO);
+	}
+
+	@Override
+	public ArrayList<StdntVO> selectStdntList(StdntVO stdntVO, int start,
+			int count) throws SQLException {
+		ArrayList<StdntVO> list = stdntDAO.selectStdntList(stdntVO, start, count);
+		return list;
+	}
+
+	@Override
+	public int countStdntList(StdntVO stdntVO) throws SQLException {
+		int totalRecord = stdntDAO.countStdntList(stdntVO);
+		return totalRecord;
 	}
 
 }

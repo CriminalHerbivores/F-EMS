@@ -71,8 +71,14 @@ public class StdntDAOImpl implements StdntDAO {
 	}
 
 	@Override
-	public ArrayList<StdntVO> notGrdStdnt() throws SQLException {
-		ArrayList<StdntVO> list = (ArrayList<StdntVO>) client.queryForList("notGrdStdnt");
+	public ArrayList<StdntVO> selectStdntList(StdntVO stdntVO, int start, int count) throws SQLException {
+		ArrayList<StdntVO> list = (ArrayList<StdntVO>) client.queryForList("selectStdntList",stdntVO, start, count);
 		return list;
+	}
+
+	@Override
+	public int countStdntList(StdntVO stdntVO) throws SQLException {
+		int totalRecord = (int) client.queryForObject("countStdntList",stdntVO);
+		return totalRecord;
 	}
 }

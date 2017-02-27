@@ -112,13 +112,19 @@ public interface StdntDAO {
 	 */
 	ArrayList<StdntVO> subjctStdnt(String st_Subjct_Code) throws SQLException;
 	/**
-	 * <pre>
-	 * 재학 중인 학생 조회
-	 * </pre>
-	 * <pre>
+	 * 학생 리스트 조회
+	 * @param stdntVO
+	 * @param start
+	 * @param count
 	 * @return
 	 * @throws SQLException
-	 * </pre>
 	 */
-	ArrayList<StdntVO> notGrdStdnt() throws SQLException;
+	ArrayList<StdntVO> selectStdntList(StdntVO stdntVO, int start, int count) throws SQLException;
+	/**
+	 * 학생 리스트 조회 개수
+	 * @param stdntVO
+	 * @return
+	 * @throws SQLException
+	 */
+	int countStdntList(StdntVO stdntVO) throws SQLException;
 }

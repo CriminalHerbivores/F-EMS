@@ -359,6 +359,7 @@ public class ProfsrController {
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("tpage",tpage);
 		model.addAttribute("paging",paging);
 		
 		return url;
@@ -388,34 +389,20 @@ public class ProfsrController {
 		model.addAttribute("lctreList",list);
 		return url;
 	}
-	@RequestMapping(value="manageLctre", method = RequestMethod.POST)
-	public String manageLctreGrade(List<GradeVO> gradeList, String gd_Lctre_No, Model model){
-		String url="redirect:manageLctre?gd_Lctre_No="+gd_Lctre_No;
-		if(gradeList!=null){
-			for(GradeVO g : gradeList){
-				g.setGd_Lctre_No(Integer.parseInt(gd_Lctre_No));
-				try {
-					gradeService.updateGrade(g);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return url;
-	}
-	@RequestMapping(value="msgLctre", produces = "application/json; charset=utf8")
-	@ResponseBody
-	public String msgLctre(@RequestBody List<GradeVO> grade, String gd_Lctre_No, Model model){
-		String url="redirect:manageLctre?gd_Lctre_No="+gd_Lctre_No;
-		if(grade!=null){
-			for(GradeVO g : grade){
-				g.setGd_Lctre_No(Integer.parseInt(gd_Lctre_No));
-				try {
-					gradeService.updateGrade(g);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+
+	/**
+	 * 강의 성적 업데이트
+	 * @param grade
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("msgLctre")
+	public @ResponseBody String msgLctre(GradeVO grade, Model model){
+		String url="redirect:manageLctre?gd_Lctre_No="+grade.getGd_Lctre_No();
+		try {
+			gradeService.updateGrade(grade);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return url;
 	}
