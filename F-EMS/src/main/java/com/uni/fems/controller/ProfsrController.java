@@ -14,17 +14,21 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
+import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.KindVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.service.GradeService;
 import com.uni.fems.service.KindService;
 import com.uni.fems.service.LctreService;
 import com.uni.fems.service.Lctre_Unq_NoService;
@@ -63,6 +67,8 @@ public class ProfsrController {
 	//private Lctre_ActplnService lctre_ActplnService;
 	@Autowired
 	private Lctre_Unq_NoService lctre_Unq_NoService;
+	@Autowired
+	private GradeService gradeService;
 	@Autowired
 	private KindService kindService;
 	@Autowired
@@ -327,11 +333,11 @@ public class ProfsrController {
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value="/ongingLctreList")
+	@RequestMapping(value="/ongoingLctreList")
 	// (value = "/requestLctre", method = RequestMethod.GET)
 	public String selectLctreList(@RequestParam(value="tpage",defaultValue="1")String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model, HttpSession session)
 			throws ServletException, IOException {
-		String url = "professor/requestLctreList";
+		String url = "professor/ongoingLctreList";
 		String loginUser = (String) session.getAttribute("loginUser");
 		
 		lctre_SearchVO.setPr_Profsr_No(loginUser);
@@ -355,6 +361,62 @@ public class ProfsrController {
 		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
 		
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 진행 중인 강의의 성적 관리
+	 * </pre>
+	 * <pre>
+	 * @param gradeVO
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="manageLctre", method = RequestMethod.GET)
+	public String manageLctre(GradeVO gradeVO, Model model){
+		String url="professor/manageLctre";
+		List<GradeVO> list = new ArrayList<GradeVO>();
+		gradeVO.setGd_Stdnt_No("");
+		try {
+			list = gradeService.selectGrade(gradeVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("lctreList",list);
+		return url;
+	}
+	@RequestMapping(value="manageLctre", method = RequestMethod.POST)
+	public String manageLctreGrade(List<GradeVO> gradeList, String gd_Lctre_No, Model model){
+		String url="redirect:manageLctre?gd_Lctre_No="+gd_Lctre_No;
+		if(gradeList!=null){
+			for(GradeVO g : gradeList){
+				g.setGd_Lctre_No(Integer.parseInt(gd_Lctre_No));
+				try {
+					gradeService.updateGrade(g);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return url;
+	}
+	@RequestMapping(value="msgLctre", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String msgLctre(@RequestBody List<GradeVO> grade, String gd_Lctre_No, Model model){
+		String url="redirect:manageLctre?gd_Lctre_No="+gd_Lctre_No;
+		if(grade!=null){
+			for(GradeVO g : grade){
+				g.setGd_Lctre_No(Integer.parseInt(gd_Lctre_No));
+				try {
+					gradeService.updateGrade(g);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return url;
 	}
 }

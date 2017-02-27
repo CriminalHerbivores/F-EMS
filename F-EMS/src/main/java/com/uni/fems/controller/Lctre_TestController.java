@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.AnswerVO;
 import com.uni.fems.dto.TestVO;
@@ -57,18 +60,30 @@ public class Lctre_TestController {
 	}
 
 	@RequestMapping("/testList")
-	public String testList(Model model){
+	public String testList(Model model,HttpServletRequest request){
 		String url = "lecture/test/testList";
+		HttpSession session = request.getSession();
+		String loginUser = (String) session.getAttribute("loginUser");
 		
 		List<Test_PaperVO> testlist = null;
+		List<AnswerVO> answerList = null;
 		try {
 			testlist = test_paperSvc.listAllTestPapaer(50);
+			answerList = answerSvc.listAllAnswer(loginUser);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("========================"+answerList);
+		
+		/*for(AnswerVO answer:answerList){
+			if(answer.getAn_Tp_No()==
+			
+		}*/
 		
 		model.addAttribute("testlist", testlist);
+		model.addAttribute("answerList", answerList);
+		
 		return url;
 	}
 	
@@ -207,6 +222,7 @@ public class Lctre_TestController {
 			e.printStackTrace();
 		}
 		
+		if(que!=null)
 		for(int i=0;i<que.length;i++){
 		testVO.setTe_Ques_No(queNo[i]);
 		testVO.setTe_Ques(que[i]);
@@ -241,13 +257,13 @@ public class Lctre_TestController {
 		
 	}
 	
-	
-	
-	
-	@RequestMapping(value="/deleteQues")
-	public String deleteQues(String queNo){
-		String url="";
-			
+	@RequestMapping(value="/deleteQues", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String deleteQues(@RequestBody Map<String,Object> jsonMap){
+		String queNo =  jsonMap.get("queNo")+"";
+		System.out.println("======================="+queNo);
+		
+		
 			try {
 				testSvc.deleteTest(Integer.parseInt(queNo));
 			} catch (NumberFormatException e) {
@@ -257,8 +273,7 @@ public class Lctre_TestController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
-		return url;
+		return queNo;
 	}
 		
 	

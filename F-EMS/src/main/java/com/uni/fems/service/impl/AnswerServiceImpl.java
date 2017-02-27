@@ -36,6 +36,10 @@ public AnswerVO getAnswerVO(AnswerVO answerVO) throws SQLException {
 public int insertAnswer(AnswerVO answerVO) throws SQLException {
 	return answerDAO.insertAnswer(answerVO);
 }
+@Override
+public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException {
+	return answerDAO.listAllAnswer(loginUser);
+}
  
  
 }

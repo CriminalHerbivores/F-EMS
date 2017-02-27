@@ -1,6 +1,7 @@
 package com.uni.fems.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;
@@ -39,6 +40,8 @@ public class GradeVO implements Serializable {
 	private String gd_Task_Score;   // 과제 점수
 	private String gd_Midex_Score;   // 중간 점수
 	private String gd_Fnex_Score;   // 기말 점수
+	private String gd_Mini_Score; // 수시 점수
+	private List<GradeVO> gradeList;
 	
 	private String key; //컬럼값
 	private String value; //입력값

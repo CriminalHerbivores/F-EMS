@@ -14,6 +14,10 @@
 	select * from answer where an_tp_no=#an_Tp_No# and an_ques_no=#an_Ques_No#
 </select>
 
+<select id="listAllAnswer" parameterClass="str" resultClass="answerVO">
+	select * from answer where an_stdnt_no=#an_Stdnt_No#
+</select>
+
 <update id="insertAnswer" parameterClass="answerVO">
 	insert into answer(an_ques_no,an_tp_no,an_stdnt_no,an_ans) 
 	values(#an_Ques_No#,#an_Tp_No#,#an_Stdnt_No#,#an_Ans#)
