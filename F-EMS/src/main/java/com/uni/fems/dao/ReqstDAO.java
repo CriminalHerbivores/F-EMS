@@ -62,9 +62,9 @@ public interface ReqstDAO {
 	 * 한 학생이 개설된 강의중 수강신청한 학점들의 총합계
 	 * </pre>
 	 * <pre>
-	 * @param re_Stdnt_No
+	 * @param sumReqst
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void getSumReqst(String re_Stdnt_No) throws SQLException;
+	int getSumReqst(String re_Stdnt_No) throws SQLException;
 }

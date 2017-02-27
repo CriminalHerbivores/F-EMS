@@ -56,8 +56,10 @@ public class ReqstDAOImpl implements ReqstDAO {
 
 	// 한 학생의 개설강의중 수강신청한 학점의 합계
 	@Override
-	public void getSumReqst(String re_Stdnt_No) throws SQLException {
-		client.insert("getSumReqst",re_Stdnt_No);
+	public int getSumReqst(String re_Stdnt_No) throws SQLException {
+		int sum=0;
+		sum=(Integer) client.queryForObject("getSumReqst",re_Stdnt_No);
+		return sum;
 	}
 	
 }

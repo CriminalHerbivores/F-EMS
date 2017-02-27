@@ -14,10 +14,6 @@ public class GradeServiceImpl implements GradeService {
 		this.gradeDAO = gradeDAO;
 	}
 	@Override
-	public void insertGrade(GradeVO gradeVO) throws SQLException {
-		gradeDAO.insertGrade(gradeVO);
-	}
-	@Override
 	public void updateGrade(GradeVO gradeVO) throws SQLException {
 		gradeDAO.updateGrade(gradeVO);
 	}
