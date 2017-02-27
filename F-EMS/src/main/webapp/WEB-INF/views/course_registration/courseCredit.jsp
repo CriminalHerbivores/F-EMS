@@ -30,7 +30,7 @@ body{
 <div class="text-center"><table  class="def-table-full tb-border">
 	<tr><th>신청 가능 학점
 	</th></tr>
-	<tr><td><h3>${ableOfReqst}</h3>
+	<tr><td><h3>18 - ${sumOfReqst} = ${ableOfReqst}</h3>
 	</td></tr>
 </table>
 <br/>

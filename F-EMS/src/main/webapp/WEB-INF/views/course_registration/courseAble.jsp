@@ -58,8 +58,6 @@ tbody .tb-border{
 </head>
 <body class="course-list-l-top">
 	<div class="text-center">
-	<!-- <div class="container out-border"> -->
-	<!-- <table class="def-table-full tb-border"> -->
 <form name="forrm" method="get">
 	<table class="def-table-full">
 	<thead class="def-table-full fix-top">
@@ -82,10 +80,6 @@ tbody .tb-border{
 	<form name="formm" method="post">
 			<table class="def-table-full tb-border table-hover">
 				<thead class="def-table-full fix-mid">
-				<!-- <tr>
-					<td colspan="12"  class="text-right">
-					</td>
-				</tr> -->
 				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_reqst(this.form)"></th>
 				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
@@ -107,14 +101,14 @@ tbody .tb-border{
 				
 				<c:forEach items="${openLctreList}" var="lctre">
 				<tr>
-					<td class="select_ckbox_1">	
-						<label><input type="checkbox" class="input_check_1" id="ck_null" name="result_1" value="${lctre.lc_Lctre_No}" />관심
-						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/><%-- <input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></label></td>
+					<td class="select_ckbox_1 select_ckbox_5">	
+						<label><input type="checkbox" class="input_check_1 input_check_5" name="result_1" value="${lctre.lc_Lctre_No}" />관심
+						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 					
-					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" id="ck_null" name="result_2" value="${lctre.lc_Lctre_No}" />수강
+					<td class="select_ckbox_2 select_ckbox_5">
+						<label><input type="checkbox" class="input_check_2" id="check_all_5" name="result_2" value="${lctre.lc_Lctre_No}" />수강
 						
-						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/><%-- <input type="hidden" value="${lctre.re_Stdnt_No}"/> --%></label></td>
+						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 						
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
