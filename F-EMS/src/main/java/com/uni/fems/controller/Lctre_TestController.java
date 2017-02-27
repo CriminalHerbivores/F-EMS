@@ -143,7 +143,7 @@ public class Lctre_TestController {
 			try {
 				answerSvc.insertAnswer(answerVO);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				// TODO Auto-gener	ated catch block
 				e.printStackTrace();
 			}
 		}
@@ -165,6 +165,99 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return url;
+	}
+	
+	@RequestMapping(value="/updateTest", method=RequestMethod.GET)
+	public String updateTestForm(Model model,String tpNo, String tpNm){
+		String url="lecture/test/updateTest";
+		
+		List<TestVO> Qlist = null;
+		try {
+			Qlist = testSvc.listAllTest(Integer.parseInt(tpNo));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("Qlist", Qlist);
+		model.addAttribute("tpNm", tpNm);
+		model.addAttribute("tpNo", tpNo);
+		return url;
+	}
+	
+	@RequestMapping(value="/updateTest", method=RequestMethod.POST)
+	public String updateTest(HttpServletRequest request, TestVO testVO, Test_PaperVO test_paperVO,
+							String[] que, String[] ca, String tpNm,String queNo[],
+							String[] addQue, String[] addCa, String tp_No){
+		
+		String url = "redirect:testList";
+		HttpSession session = request.getSession();
+		String loginUser = (String) session.getAttribute("loginUser");
+		
+	
+		
+		try {
+			test_paperSvc.updateTestPaper(test_paperVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(int i=0;i<que.length;i++){
+		testVO.setTe_Ques_No(queNo[i]);
+		testVO.setTe_Ques(que[i]);
+		testVO.setTe_Ca(ca[i]);
+			
+		try {
+			testSvc.updateTest(testVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		}
+		
+		if(addQue!=null){
+		TestVO insertVO = new TestVO();
+		for(int i=0; i<addQue.length;i++){
+			insertVO.setTe_Ques(addQue[i]);
+			insertVO.setTe_Ca(addCa[i]);
+			insertVO.setTe_Tp_No(tp_No);
+			
+			try {
+				testSvc.insertTest(insertVO);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		}
+		return url;
+		
+		
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/deleteQues")
+	public String deleteQues(String queNo){
+		String url="";
+			
+			try {
+				testSvc.deleteTest(Integer.parseInt(queNo));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		return url;
 	}
 		
