@@ -262,13 +262,6 @@ public class ProfsrController {
 		
 		return url;
 	}
-	
-	
-	
-	
-	
-	
-
 		
 	/**
 	 * <pre>
