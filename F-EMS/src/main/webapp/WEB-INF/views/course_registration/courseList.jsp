@@ -79,8 +79,9 @@ function op_timeTable(){
 									class="def-btn float-right">Logout</button></a>
 						</c:otherwise>
 					</c:choose>
+					<a href="<%=request.getContextPath()%>/course/courseTimetable">
 					<button type="button" class="def-btn btn-md btn-color"
-						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button>&nbsp;&nbsp;
+						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button></a>&nbsp;&nbsp;
 					<input type="button" class="def-btn btn-md btn-gray" onclick="go.history(-1)" value="이전" >
 				</div>
 			</div>
