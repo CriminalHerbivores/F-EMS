@@ -52,7 +52,7 @@
         <td><input type="text" class="form-control" id="pr_Ihidnum" name="pr_Ihidnum" ></td>
       </tr>
       <tr>
-        <td>우편주소</td>
+        <td>우편번호</td>
         <td><input type="text" class="form-control" id="pr_Post_No" name="pr_Post_No"></td>
         <td>주소</td>
         <td><input type="text" class="form-control" id="pr_Adres1" name="pr_Adres1"></td>

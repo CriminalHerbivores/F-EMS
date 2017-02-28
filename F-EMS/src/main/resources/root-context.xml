@@ -215,7 +215,7 @@
 		p:client-ref="sqlMapClient" />
 
 	<bean id="test_PaperService" class="com.uni.fems.service.impl.Test_PaperServiceImpl"
-		p:test_PaperDAO-ref="test_PaperDAO" p:testDAO-ref="testDAO" />
+		p:test_PaperDAO-ref="test_PaperDAO" p:testDAO-ref="testDAO" p:answerDAO-ref ="answerDAO"  />
 
 	<bean id="tuitionDAO" class="com.uni.fems.dao.impl.TuitionDAOImpl"
 		p:client-ref="sqlMapClient" />

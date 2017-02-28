@@ -28,7 +28,7 @@
 
 	<!-- 교수 한명 출력 -->
 	<select id="selectProfsr" parameterClass="str" resultClass="profsr">
-		select * from profsr where pr_profsr_no = #pr_profsr_no#
+		select * from profsr_view where pr_profsr_no = #pr_profsr_no#
 	</select>
 
 	<update id="insertProfsr" parameterClass="profsr">

@@ -44,17 +44,19 @@
       <tr>
         <td>비밀번호</td>
         <td><input type="text" class="form-control" name="st_Pw" value="${stdntVO.st_Pw}"></td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td><input type="text" class="form-control" name="st_Pw_on" value="${stdntVO.st_Pw}"></td>
         <td>주민 번호</td>
         <td><input type="text" class="form-control" name="st_Ihidnum" value="${stdntVO.st_Ihidnum}"></td>
       </tr>
       <tr>
         <td>우편번호</td>
+        <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No" value="${stdntVO.st_Post_No}"></td>
+        <td>우편번호</td>
         <td><input type="text" class="form-control" id="zipNum" name="st_Post_No" value="${stdntVO.st_Post_No}" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
-        <td>주소1</td>
+        <td>주소</td>
         <td><input type="text" class="form-control" id="addres1" name="st_Adres1" value="${stdntVO.st_Adres1}" readonly></td>
-        <td>주소2</td>
+        <td>상세 주소</td>
         <td><input type="text" class="form-control" value="${stdntVO.st_Adres2}"></td>
       </tr>
       <tr>
@@ -62,7 +64,7 @@
         <td><input type="text" class="form-control" name="st_Moblphon_No" value="${stdntVO.st_Moblphon_No}"></td>
         <td>집 전화번호</td>
         <td><input type="text" class="form-control" name="st_House_Tlphon_No" value="${stdntVO.st_House_Tlphon_No}"></td>
-        <td>교수 번호</td>
+        <td>담당 교수</td>
         <td><input type="text" class="form-control" name="st_Profsr_No" value="${stdntVO.st_Profsr_No}"></td>
       </tr>
       <tr>

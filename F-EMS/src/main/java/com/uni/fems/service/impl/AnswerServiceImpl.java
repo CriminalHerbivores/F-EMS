@@ -40,6 +40,14 @@ public int insertAnswer(AnswerVO answerVO) throws SQLException {
 public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException {
 	return answerDAO.listAllAnswer(loginUser);
 }
+@Override
+public int countAnswerSTD(int tpNo) throws SQLException {
+	return answerDAO.countAnswerSTD(tpNo);
+}
+@Override
+public List<String> nameAnswerSTD(int tpNo) throws SQLException {
+	return answerDAO.nameAnswerSTD(tpNo);
+}
  
  
 }

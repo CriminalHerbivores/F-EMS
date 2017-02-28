@@ -40,5 +40,17 @@ public class AnswerDAOImpl implements AnswerDAO  {
 	public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException {
 		return client.queryForList("listAllAnswer", loginUser);
 	}
+	@Override
+	public int deleteAnswer(int tpNo) throws SQLException {
+		return client.update("deleteAnswer", tpNo);
+	}
+	@Override
+	public int countAnswerSTD(int tpNo) throws SQLException {
+		return (int) client.queryForObject("countAnswerSTD", tpNo);
+	}
+	@Override
+	public List<String> nameAnswerSTD(int tpNo) throws SQLException {
+		return client.queryForList("nameAnswerSTD", tpNo);
+	}
 	
 }

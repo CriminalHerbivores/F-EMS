@@ -46,12 +46,14 @@
       <tr>
         <td>비밀번호</td>
         <td><input type="text" class="form-control" id="st_Pw" name="st_Pw"></td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td><input type="text" class="form-control" id="st_Pw_on" name="st_Pw_on"></td>
         <td>주민등록번호</td>
         <td><input type="text" class="form-control" id="st_Ihidnum" name="st_Ihidnum" ></td>
       </tr>
       <tr>
+        <td>우편번호</td>
+        <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No"></td>
         <td>우편번호</td>
         <td><input type="text" class="form-control" id="zipNum" name="st_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
@@ -64,7 +66,7 @@
         <td><input type="text" class="form-control" id="st_Moblphon_No" name="st_Moblphon_No"></td>
         <td>집 전화번호</td>
         <td><input type="text" class="form-control" id="st_House_Tlphon_No" name="st_House_Tlphon_No"></td>
-        <td>교수 번호</td>
+        <td>담당 교수</td>
         <td><input type="text" class="form-control" id="st_Profsr_No" name="st_Profsr_No" ></td>
       </tr>
       <tr>

@@ -16,9 +16,6 @@
 <title></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
-
 <script>
 $(function(){
 	$('#addrow').click(function(){
@@ -33,6 +30,7 @@ function deltest(obj){
 </script>
 </head>
 <body>
+
 <table style="width:100%;" class="non-border margin-auto">
 <tr><td>
   <form name="formm" method="post">

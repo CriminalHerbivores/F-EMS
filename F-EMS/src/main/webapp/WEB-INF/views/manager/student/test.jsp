@@ -42,17 +42,17 @@
       <tr>
         <td>비밀번호</td>
         <td><input type="text" class="form-control" id="st_Pw" name="st_Pw"></td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td><input type="text" class="form-control" id="st_Pw_on" name="st_Pw_on"></td>
         <td>주민 번호</td>
         <td><input type="text" class="form-control" id="st_Ihidnum" name="st_Ihidnum" ></td>
       </tr>
       <tr>
-        <td>우편주소</td>
+        <td>우편번호</td>
         <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No"></td>
-        <td>주소1</td>
+        <td>주소</td>
         <td><input type="text" class="form-control" id="st_Adres1" name="st_Adres1"></td>
-        <td>주소2</td>
+        <td>상세 주소</td>
         <td><input type="text" class="form-control" id="st_Adres2" name="st_Adres2"></td>
       </tr>
       <tr>

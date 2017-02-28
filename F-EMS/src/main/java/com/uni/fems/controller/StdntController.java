@@ -354,23 +354,42 @@ public class StdntController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/schlshipList")
-	public String schlshipList(Model model, HttpServletRequest request, HttpSession session){
+	public String schlshipList(Model model, HttpServletRequest request, HttpSession session, @RequestParam(defaultValue="1")String tpage){
 		String url="student/schlship";
 		
 		String loginUser = (String) session.getAttribute("loginUser");
+		SchlshipVO schlshipVO = new SchlshipVO();
+		schlshipVO.setPy_Stdnt_No(loginUser);
 		
-		List<SchlshipVO> schlshipList = null;
-		List<SchlshipVO> stdntSchlshipList = null;
-		String paging = null;
+		List<SchlshipVO> schlshipList = new ArrayList<SchlshipVO>();
+		List<SchlshipVO> stdntSchlshipList = new ArrayList<SchlshipVO>();
+		String paging = "";
 		try {
 			schlshipList = schlshipService.selectAllSchlship();
-			stdntSchlshipList = schlshipService.selectSchlshipByStdnt(loginUser);
+			
+			int totalRecord = schlshipService.countSchlshipByStdnt(schlshipVO); 
+			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			stdntSchlshipList = schlshipService.selectSchlshipByStdnt(schlshipVO, rows[1], rows[0]);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		List<Integer> code = new ArrayList<Integer>();
+		for(SchlshipVO vo : stdntSchlshipList){
+			code.add(vo.getPy_Schlship_Code());
+		}
+		
+		for(int i=0;i<schlshipList.size();i++){
+			if(code.contains(schlshipList.get(i).getSs_Schlship_Code())){
+				schlshipList.get(i).setSs_Schlship_Code(0);
+			}
+		}
+		
 		int[] i = supporter.getDay();
+		model.addAttribute("tpage",tpage); //페이지
 		model.addAttribute("hack",i[3]); //학기
+		model.addAttribute("paging",paging);
 		model.addAttribute("schlshipList", schlshipList);
 		model.addAttribute("stdntSchlshipList", stdntSchlshipList);
 		return url;

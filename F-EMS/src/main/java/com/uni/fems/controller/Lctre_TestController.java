@@ -67,6 +67,7 @@ public class Lctre_TestController {
 		
 		List<Test_PaperVO> testlist = null;
 		List<AnswerVO> answerList = null;
+		List<String> answeredSTD = null;
 		try {
 			testlist = test_paperSvc.listAllTestPapaer(50);
 			answerList = answerSvc.listAllAnswer(loginUser);
@@ -74,13 +75,8 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("========================"+answerList);
 		
-		/*for(AnswerVO answer:answerList){
-			if(answer.getAn_Tp_No()==
-			
-		}*/
-		
+	
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
 		
@@ -199,7 +195,7 @@ public class Lctre_TestController {
 		}
 		
 		model.addAttribute("Qlist", Qlist);
-		model.addAttribute("tpNm", tpNm);
+		model.addAttribute("tpNm", tpNm.trim());
 		model.addAttribute("tpNo", tpNo);
 		return url;
 	}
@@ -236,14 +232,12 @@ public class Lctre_TestController {
 		}
 		
 		}
-		
 		if(addQue!=null){
 		TestVO insertVO = new TestVO();
 		for(int i=0; i<addQue.length;i++){
 			insertVO.setTe_Ques(addQue[i]);
 			insertVO.setTe_Ca(addCa[i]);
 			insertVO.setTe_Tp_No(tp_No);
-			
 			try {
 				testSvc.insertTest(insertVO);
 			} catch (SQLException e) {
@@ -261,7 +255,6 @@ public class Lctre_TestController {
 	@ResponseBody
 	public String deleteQues(@RequestBody Map<String,Object> jsonMap){
 		String queNo =  jsonMap.get("queNo")+"";
-		System.out.println("======================="+queNo);
 		
 		
 			try {
@@ -274,6 +267,13 @@ public class Lctre_TestController {
 				e.printStackTrace();
 			}
 		return queNo;
+	}
+	
+	@RequestMapping(value="/nameAnswerSTD", method=RequestMethod.POST )
+	@ResponseBody
+	public String nameAnswerSTD(Map<String,Object> jsonMap){
+		String url="";
+		return url;
 	}
 		
 	

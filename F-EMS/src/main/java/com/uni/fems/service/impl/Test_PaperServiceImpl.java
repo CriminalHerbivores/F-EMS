@@ -3,6 +3,7 @@ package com.uni.fems.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.uni.fems.dao.AnswerDAO;
 import com.uni.fems.dao.TestDAO;
 import com.uni.fems.dao.Test_PaperDAO;
 import com.uni.fems.dto.Test_PaperVO;
@@ -34,6 +35,12 @@ public class Test_PaperServiceImpl implements Test_PaperService {
  public void setTestDAO(TestDAO testDAO) {
 	this.testDAO = testDAO;
  }
+ 
+ private AnswerDAO answerDAO;
+ public void setAnswerDAO(AnswerDAO answerDAO){
+	 this.answerDAO = answerDAO;
+ }
+ 
 @Override
 public List<Test_PaperVO> listAllTestPapaer(int lctre_no) throws SQLException {
 	return test_PaperDAO.listAllTestPapaer(lctre_no);
@@ -49,6 +56,8 @@ public int updateTestPaper(Test_PaperVO test_paperVO) throws SQLException {
 }
 @Override
 public int deleteTestPaper(int tpNo) throws SQLException {
+		
+		answerDAO.deleteAnswer(tpNo);
 		testDAO.deleteTestForTestPaper(tpNo);
 		test_PaperDAO.deleteTestPaper(tpNo);
 	return 0; 
