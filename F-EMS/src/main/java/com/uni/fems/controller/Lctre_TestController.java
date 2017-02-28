@@ -67,6 +67,7 @@ public class Lctre_TestController {
 		
 		List<Test_PaperVO> testlist = null;
 		List<AnswerVO> answerList = null;
+		List<String> answeredSTD = null;
 		try {
 			testlist = test_paperSvc.listAllTestPapaer(50);
 			answerList = answerSvc.listAllAnswer(loginUser);
@@ -74,37 +75,8 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("========================"+answerList);
 		
 	
-/*	if(answerList.size()>=testlist.size()){
-		for(Test_PaperVO test_paper:testlist){
-			for(AnswerVO answer:answerList){
-				if(answer.getAn_Tp_No()==test_paper.getTp_No()|| answer.getAn_Tp_No().equals(test_paper.getTp_No())){
-					System.out.println("===="+answer.getAn_Tp_No());
-					System.out.println("----"+test_paper.getTp_No());
-					result="already";
-				}else{
-					result="notyet";
-				}
-			}
-		}
-	}else if(answerList.size()<testlist.size()){
-		for(AnswerVO answer:answerList){
-			for(Test_PaperVO test_paper:testlist){
-				if(answer.getAn_Tp_No()==test_paper.getTp_No() || answer.getAn_Tp_No().equals(test_paper.getTp_No())){
-					result="already";
-					System.out.println("0000"+answer.getAn_Tp_No());
-					System.out.println("1111"+test_paper.getTp_No());
-				}else{
-					result="notyet";
-				}
-			}
-		}
-	}
-		System.out.println(result);
-		model.addAttribute("result", result);
-*/
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
 		
@@ -223,7 +195,7 @@ public class Lctre_TestController {
 		}
 		
 		model.addAttribute("Qlist", Qlist);
-		model.addAttribute("tpNm", tpNm);
+		model.addAttribute("tpNm", tpNm.trim());
 		model.addAttribute("tpNo", tpNo);
 		return url;
 	}
@@ -260,14 +232,12 @@ public class Lctre_TestController {
 		}
 		
 		}
-		
 		if(addQue!=null){
 		TestVO insertVO = new TestVO();
 		for(int i=0; i<addQue.length;i++){
 			insertVO.setTe_Ques(addQue[i]);
 			insertVO.setTe_Ca(addCa[i]);
 			insertVO.setTe_Tp_No(tp_No);
-			
 			try {
 				testSvc.insertTest(insertVO);
 			} catch (SQLException e) {
@@ -285,7 +255,6 @@ public class Lctre_TestController {
 	@ResponseBody
 	public String deleteQues(@RequestBody Map<String,Object> jsonMap){
 		String queNo =  jsonMap.get("queNo")+"";
-		System.out.println("======================="+queNo);
 		
 		
 			try {
@@ -298,6 +267,13 @@ public class Lctre_TestController {
 				e.printStackTrace();
 			}
 		return queNo;
+	}
+	
+	@RequestMapping(value="/nameAnswerSTD", method=RequestMethod.POST )
+	@ResponseBody
+	public String nameAnswerSTD(Map<String,Object> jsonMap){
+		String url="";
+		return url;
 	}
 		
 	

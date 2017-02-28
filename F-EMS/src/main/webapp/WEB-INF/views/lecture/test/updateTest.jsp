@@ -62,7 +62,7 @@ function deleteQues(qno){
 					<tr>
 						<th>시험명</th>
 							<td style="width:80%;">
-							<input type="text" class="def-input-text-full custom-form-control" name="tp_Nm" value=" ${tpNm }"> 
+							<input type="text" class="def-input-text-full custom-form-control" name="tp_Nm" value="${tpNm }"> 
 							<input type="hidden" name="tp_No" value="${tpNo}">
 							</td>
 					</tr>
@@ -103,7 +103,7 @@ function deleteQues(qno){
 		<div style="float:right;">
 			<input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
 			<a href="deleteTest?tpNo=${tpNo }"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
-			<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.back()">
+			<input type="button" class="def-btn btn-md btn-color" value="취소" onclick="history.back()">
 		</div>
 		</sec:authorize>
 	</form>

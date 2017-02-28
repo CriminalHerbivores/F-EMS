@@ -71,4 +71,28 @@ public interface AnswerDAO {
 	 */
 	public int deleteAnswer(int tpNo) throws SQLException;
 	
+	
+	/**
+	 * <pre>
+	 * 해당 시험을 본 학생 수를 구하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int countAnswerSTD(int tpNo) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 해당 시험을 본 학생 이름 list를 구하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public List<String> nameAnswerSTD(int tpNo) throws SQLException;
 }

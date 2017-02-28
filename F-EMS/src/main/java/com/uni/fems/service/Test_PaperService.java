@@ -31,7 +31,7 @@ public interface Test_PaperService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public List<Test_PaperVO> listAllTestPapaer(int lctre_no)throws SQLException;
+	public List<Test_PaperVO> listAllTestPapaer(int z)throws SQLException;
 	
 	/**
 	 * <pre>

@@ -44,5 +44,13 @@ public class AnswerDAOImpl implements AnswerDAO  {
 	public int deleteAnswer(int tpNo) throws SQLException {
 		return client.update("deleteAnswer", tpNo);
 	}
+	@Override
+	public int countAnswerSTD(int tpNo) throws SQLException {
+		return (int) client.queryForObject("countAnswerSTD", tpNo);
+	}
+	@Override
+	public List<String> nameAnswerSTD(int tpNo) throws SQLException {
+		return client.queryForList("nameAnswerSTD", tpNo);
+	}
 	
 }

@@ -13,7 +13,10 @@
 	<typeAlias alias="testpaper" type="com.uni.fems.dto.Test_PaperVO" />
 	
 	<select id="listAllTestPaper" parameterClass="int" resultClass="testpaper">
-		select * from test_paper where tp_lctre_no=#tp_Lctre_No# order by tp_no desc
+		select tp.*,
+    (select COUNT(DISTINCT an_stdnt_no) from answer an where an.an_tp_no =tp.tp_no) as countAnswerSTD
+    from test_paper tp
+     where tp_lctre_no=#tp_Lctre_No# order by tp_no desc
 	</select>
 	
 	<update id="insertTestPaper" parameterClass="testpaper">
