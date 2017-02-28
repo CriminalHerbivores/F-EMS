@@ -13,17 +13,17 @@ import com.uni.fems.service.Lctre_Video_ProfsrService;
 
 /**
  * <pre>
- * 강의 과제 게시판을 사용하기 위한 서비스
+ * 강의 동영상 게시판을 사용하기 위한 서비스
  * </pre>
  * @author KJS
- * @since 2017.02.24
+ * @since 2017.02.27
  * @version 1.0
  * @see javax.servlet.http.HttpServlet
  * <pre>
  * [[개정이력(Modification Information)]]
  *   수정일             수정자                    수정내용
  * --------     --------    ----------------------
- * 2017.02.24     kjs                    최초작성
+ * 2017.02.27     kjs                    최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */

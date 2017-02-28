@@ -191,7 +191,7 @@
 								<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답
 									게시판</a> <a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제
 									게시판</a> <a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청
+									게시판</a> <a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">시청
 									여부 게시판</a>
 									<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
 
@@ -415,7 +415,7 @@
 									</div>
 									<div class="inherit-size">
 										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청
+											href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">시청
 												여부 게시판</a></li>
 									</div>
 									

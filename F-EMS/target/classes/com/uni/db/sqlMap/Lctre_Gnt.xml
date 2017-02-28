@@ -8,6 +8,8 @@
 <!--  수정일       수정자      수정내용             -->
 <!--  ==========   ======    ==============         -->
 <!--  $2017.02.19    KJS       최초작성             -->
+<!--  $2017.02.26    KJS       수정작성             -->
+<!--  $2017.02.28    KJS       수정작성             -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 <sqlMap namespace="Lctre_Gnt">
 
@@ -86,8 +88,8 @@
 			LW_BBS_NO number NOT NULL,
 			LW_STDNT_NO varchar2(50),
 			LW_VIDEO_BBS_NO NUMBER,
-			LW_Lead_Time number,
-			LW_STDNT_VIDEO_DT date,
+			LW_Watch_Time number,
+			LW_ATTENDANCE varchar2(50)
 			CONSTRAINT LW_$value$_PK PRIMARY KEY(LW_BBS_NO),
 			CONSTRAINT LW_$value$_LV_$value$_FK FOREIGN KEY(LW_VIDEO_BBS_NO) REFERENCES LCTRE_V$value$(LV_BBS_NO),
 			CONSTRAINT LW_$value$_STDNT_FK FOREIGN KEY(LW_STDNT_NO) REFERENCES STDNT(ST_STDNT_NO)
@@ -114,7 +116,7 @@
 		values(0,'강의 생성','동영상 게시판이 생성되었습니다.',null,null,0,null)
 	</insert>
 	<insert id="insertLctreTable_Watch" parameterClass="str">
-		insert into LCTRE_W$table_Nm$(LW_BBS_NO,LW_STDNT_NO,LW_VIDEO_BBS_NO,LW_VIDEO_DT,LW_STDNT_VIDEO_DT) 
-		values(0,'강의 생성','시청여부 게시판이 생성되었습니다.',0,null)
+		insert into LCTRE_W$table_Nm$(LW_BBS_NO,LW_STDNT_NO,LW_VIDEO_BBS_NO,LW_Watch_Time,LW_ATTENDANCE) 
+		values(0,null,null,null,0,null)
 	</insert>
 </sqlMap>
