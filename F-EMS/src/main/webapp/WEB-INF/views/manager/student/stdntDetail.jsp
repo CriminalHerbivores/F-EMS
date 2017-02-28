@@ -43,17 +43,17 @@
       <tr>
         <td>비밀번호</td>
         <td>${stdntVO.st_Pw}</td>
-        <td>비밀번화 확인</td>
+        <td>비밀번호 확인</td>
         <td>${stdntVO.st_Pw}</td>
         <td>주민 번호</td>
         <td>${stdntVO.st_Ihidnum}</td>
       </tr>
       <tr>
-        <td>우편주소</td>
+        <td>우편번호</td>
         <td>${stdntVO.st_Post_No}</td>
-        <td>주소1</td>
+        <td>주소</td>
         <td>${stdntVO.st_Adres1}</td>
-        <td>주소2</td>
+        <td>상세주소</td>
         <td>${stdntVO.st_Adres2}</td>
       </tr>
       <tr>
@@ -61,7 +61,7 @@
         <td>${stdntVO.st_Moblphon_No}</td>
         <td>집 전화번호</td>
         <td>${stdntVO.st_House_Tlphon_No}</td>
-        <td>교수 번호</td>
+        <td>담당 교수</td>
         <td>${stdntVO.st_Profsr_No}</td>
       </tr>
       <tr>
