@@ -76,11 +76,35 @@ public class Lctre_TestController {
 		}
 		System.out.println("========================"+answerList);
 		
-		/*for(AnswerVO answer:answerList){
-			if(answer.getAn_Tp_No()==
-			
-		}*/
-		
+	
+/*	if(answerList.size()>=testlist.size()){
+		for(Test_PaperVO test_paper:testlist){
+			for(AnswerVO answer:answerList){
+				if(answer.getAn_Tp_No()==test_paper.getTp_No()|| answer.getAn_Tp_No().equals(test_paper.getTp_No())){
+					System.out.println("===="+answer.getAn_Tp_No());
+					System.out.println("----"+test_paper.getTp_No());
+					result="already";
+				}else{
+					result="notyet";
+				}
+			}
+		}
+	}else if(answerList.size()<testlist.size()){
+		for(AnswerVO answer:answerList){
+			for(Test_PaperVO test_paper:testlist){
+				if(answer.getAn_Tp_No()==test_paper.getTp_No() || answer.getAn_Tp_No().equals(test_paper.getTp_No())){
+					result="already";
+					System.out.println("0000"+answer.getAn_Tp_No());
+					System.out.println("1111"+test_paper.getTp_No());
+				}else{
+					result="notyet";
+				}
+			}
+		}
+	}
+		System.out.println(result);
+		model.addAttribute("result", result);
+*/
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
 		
