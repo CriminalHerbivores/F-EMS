@@ -64,10 +64,11 @@ table#zipcode a:hover{
 
 /* 관리자- 직원등록에서 학과명으로 검색하여 학과 선택시 값 입력 */
 function resultSubjct(coleg_Nm,fc_Faculty_Nm,sit_Subjct,sit_Subjct_Code) {
-   opener.document.formm.coleg_Nm.value=coleg_Nm;
-   opener.document.formm.fc_Faculty_Nm.value=fc_Faculty_Nm;
-   opener.document.formm.sit_Subjct.value=sit_Subjct;
-   opener.document.formm.stf_Subject_Code.value=sit_Subjct_Code;
+    opener.document.formm.coleg_Nm.value=coleg_Nm;
+    opener.document.formm.faculty_Nm.value=fc_Faculty_Nm;
+    opener.document.formm.subjct_Nm.value=sit_Subjct;
+    opener.document.formm.subjct_Code.value=sit_Subjct_Code;
+    
    self.close();
 };
 </script>

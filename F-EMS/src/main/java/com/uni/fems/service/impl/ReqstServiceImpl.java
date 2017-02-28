@@ -36,8 +36,7 @@ public class ReqstServiceImpl implements ReqstService {
 	public void insertReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		reqstDAO.insertReqst(reqstVO);
 		gradeDAO.insertGrade(reqstVO);
-		reqstDAO.addNumOfStdnt(lctre_SearchVO);	// 수강 신청시 수강중 인원 증가
-		
+		reqstDAO.setNumOfStdnt(lctre_SearchVO);	// 수강 신청시 수강중 인원 증가
 	}
 	
 	// 수강 신청 삭제
@@ -45,7 +44,7 @@ public class ReqstServiceImpl implements ReqstService {
 	public void deleteReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		reqstDAO.deleteReqst(reqstVO);
 		gradeDAO.deleteGrade(reqstVO);
-		reqstDAO.delNumOfStdnt(lctre_SearchVO);	// 수강 취소시 수강중 인원 감소
+		reqstDAO.setNumOfStdnt(lctre_SearchVO);	// 수강 취소시 수강중 인원 감소
 	}
 
 	// 학생의 개설학기내 수강신청완료한 학점들의 총합

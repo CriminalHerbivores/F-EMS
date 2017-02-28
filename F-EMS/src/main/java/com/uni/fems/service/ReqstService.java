@@ -41,7 +41,7 @@ public interface ReqstService {
 	
 	/**
 	 * <pre>
-	 * 수강 신청하는 메서드 (수강 인원 증가)
+	 * 수강 신청하는 메서드
 	 * </pre>
 	 * <pre>
 	 * @param reqstVO
@@ -51,7 +51,7 @@ public interface ReqstService {
 	
 	/**
 	 * <pre>
-	 * 수강신청 내역을 삭제하는 메서드 (수강 인원 감소)
+	 * 수강신청 내역을 삭제하는 메서드
 	 * </pre>
 	 * <pre>
 	 * @param reqstVO
@@ -92,9 +92,6 @@ public interface ReqstService {
 	 * @throws SQLException
 	 */
 	int stdntNumOfLctre(String re_Lctre_No) throws SQLException;
-	
-	
-	
 	
 	
 	
