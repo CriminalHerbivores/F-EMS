@@ -66,7 +66,7 @@
 		</tr>
 	</c:forEach>
 	<tr>
-		<td colspan="7">${paging}</td>
+		<td colspan="8">${paging}</td>
 	</tr>
 	</table>
 	<form name="searchForm">

@@ -19,22 +19,10 @@
 <meta charset="UTF-8">
 <title></title>
 <script type="text/javascript">
-/* 
-function userNo_check(){	
-	
-	var stf_Sklstf_No = document.formm.stf_Sklstf_No.value;
-	var stfNo_ck = /^[0-9]{1-9}$/;		//영소문자로 시작, 영소문, 영대문, 숫자로 8~20글자 사이
-	
-	if(stfNo_ck.test(stf_Sklstf_No)==false){
-		alert("직원번호는 9글자 숫자로 가능");
-	}
-} */
 
 function submit_sklstf(){
 
 if(true){
-	
-
 	
 // id검사 버튼 위에서 안 눌렀을 때를 위한 유효성 검사
 	var stf_Sklstf_No = document.formm.stf_Sklstf_No.value;
@@ -119,7 +107,7 @@ if(document.formm.stf_Post_No.value==""){
 	alert("우편번호 선택 필수");
 }
 
-//학과 선택
+//나머지 주소 입력
 if(document.formm.stf_Adres2.value==""){
 	alert("주소 입력 필수");
 }
@@ -181,14 +169,12 @@ function login_go() {
       <tr>
         <th>직원 번호</th>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No">&nbsp;
-        <input type="hidden" name="sa_Sklstf_No"></td>
+        <th>단과대학</th>
+        <td><input type="text" class="def-input-text-md custom-form-control" id="coleg_Nm" name="coleg_Nm" readonly>
         <th>학부</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="fc_Faculty_Nm" readonly>
-        <input type="hidden" name="coleg_Nm" > 
-        <input type="hidden" name="stf_Subject_Code"> 
-        </td>
+        <td><input type="text" class="def-input-text-md custom-form-control" id="faculty_Nm" name="fc_Faculty_Nm" readonly>
         <th>학과</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" id="subjct_Nm" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
       </tr>
       
       <tr>
@@ -210,9 +196,9 @@ function login_go() {
       </tr>
       <tr>
         <th>우편번호</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Post_No" id="zipNum" >&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <th>주소</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres1" readonly></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres1" id="addres1" readonly></td>
         <th>상세 주소</th>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres2"></td>
       </tr>

@@ -85,6 +85,7 @@ tbody .tb-border{
 				<tr>
 					<th><label><input type="checkbox" id="check_all_1" class="input_check_1" />관심강의</label></th>
 					<th><label><input type="checkbox" id="check_all_3" class="input_check_2" />수강신청</label></th>
+					<th>번호</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>강의명</th>
@@ -108,11 +109,11 @@ tbody .tb-border{
 					<td class="select_ckbox_2 select_ckbox_5">
 						<label><input type="checkbox" class="input_check_2" id="check_all_5" name="result_2" value="${lctre.lc_Lctre_No}" />수강
 						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
-						
+					<td>${lctre.lc_Lctre_No}</td>	
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
-					<td>${lctre.lu_Grade }</td>
 					<td><a href="#" >${lctre.lu_Lctre_Nm}</a></td>
+					<td>${lctre.lu_Grade }</td>
 					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.pr_Nm}</td>
 					<td>${lctre.lu_Pnt}</td>

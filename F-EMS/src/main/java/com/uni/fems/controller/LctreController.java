@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -146,7 +147,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseAble", method=RequestMethod.POST)
 	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request,
-		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
+		HttpSession session, ReqstVO reqstVO, Intrst_ListVO intrst_ListVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException, SQLIntegrityConstraintViolationException{
 		String url = "redirect:courseAble";
 		
 		String stdnt_No = (String) session.getAttribute("loginUser");
@@ -158,11 +159,13 @@ public class LctreController {
 				if(resultArr_1[i] !=null){	// 관심만 추가한 경우
 					intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
-					System.out.println("===================1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+					
+					System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
+							+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 
 					try {
 						intrst_ListService.insertIntrst_List(intrst_ListVO);	
-						System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+						System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -172,17 +175,25 @@ public class LctreController {
 		if(resultArr_2 !=null){
 		for (int i = 0; i < resultArr_2.length; i++) { 
 			if(resultArr_2[i] !=null){	// 강의 추가한 경우
-				System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+				System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 			reqstVO.setRe_Stdnt_No(stdnt_No);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+			lctre_SearchVO.setLc_Lctre_No(reqstVO.getRe_Lctre_No());
+			lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
+			System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 
 			try {
 				reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
-				System.out.println("===================555555555  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No());
+				System.out.println("===================555555555 reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+				System.out.println("===================66666666  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+				
+				intrst_ListService.insertIntrst_List(intrst_ListVO);
+				System.out.println("===================77777777  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 			} catch (SQLException e) {
 				e.printStackTrace();
+
 			}
+			
 			}
 
 			}

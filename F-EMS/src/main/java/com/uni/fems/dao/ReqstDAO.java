@@ -95,25 +95,12 @@ public interface ReqstDAO {
 	
 	/**
 	 * <pre>
-	 * 한 과목의 수강중인 인원수 한명 추가
+	 * 수강신청 결과에 따라 한 과목의 수강중인 인원수 변경
 	 * </pre>
 	 * <pre>
 	 * @param lctreVO
 	 * @throws SQLException
 	 */
-	void addNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException;
-	
-	/**
-	 * <pre>
-	 * 한 과목의 수강중인 인원수 한명 감소
-	 * </pre>
-	 * <pre>
-	 * @param lctreVO
-	 * @throws SQLException
-	 */
-	void delNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException;
-	
-	
-	
+	void setNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 	
 }

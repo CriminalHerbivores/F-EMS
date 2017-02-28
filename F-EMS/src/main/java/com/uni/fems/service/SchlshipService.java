@@ -8,7 +8,7 @@ import com.uni.fems.dto.SchlshipVO;
 
 /**
  * <pre>
- * 등록금을 관리하기 위한 Service
+ * 장학금을 관리하기 위한 Service
  * </pre>
  * @author JAR
  * @since 2017. 01. 24.
@@ -26,7 +26,7 @@ import com.uni.fems.dto.SchlshipVO;
 public interface SchlshipService {
 	/**
 	 * <pre>
-	 * 등록금 정보를 등록
+	 * 장학금 정보를 등록
 	 * </pre>
 	 * <pre>
 	 * @param schlshipVO
@@ -36,7 +36,7 @@ public interface SchlshipService {
 	void insertSchlship(SchlshipVO schlshipVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 이름으로 검색한 정보
+	 * 장학금 이름으로 검색한 정보
 	 * </pre>
 	 * <pre>
 	 * @param tpage
@@ -48,7 +48,7 @@ public interface SchlshipService {
 	List<SchlshipVO> selectNameAllPage(int tpage, String ss_Schlship_Nm) throws SQLException;
 	/**
 	 * <pre>
-	 * 사용 가능한 등록금 리스트
+	 * 사용 가능한 장학금 리스트
 	 * </pre>
 	 * <pre>
 	 * @return
@@ -58,7 +58,7 @@ public interface SchlshipService {
 	List<SchlshipVO> selectAllSchlship() throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 이름으로 검색한 정보의 페이지
+	 * 장학금 이름으로 검색한 정보의 페이지
 	 * </pre>
 	 * <pre>
 	 * @param tpage
@@ -70,7 +70,7 @@ public interface SchlshipService {
 	String pageNumber(int tpage, String ss_Schlship_Nm) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 정보를 상세 조회
+	 * 장학금 정보를 상세 조회
 	 * </pre>
 	 * <pre>
 	 * @param ss_Schlship_Code
@@ -81,7 +81,7 @@ public interface SchlshipService {
 	SchlshipVO selectSchlship(String ss_Schlship_Code) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 정보를 수정
+	 * 장학금 정보를 수정
 	 * </pre>
 	 * <pre>
 	 * @param schlshipVO
@@ -91,7 +91,7 @@ public interface SchlshipService {
 	void updateSchlship(SchlshipVO schlshipVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 사용유무를 바꿈
+	 * 장학금 사용유무를 바꿈
 	 * </pre>
 	 * <pre>
 	 * @param ss_Schlship_Code
@@ -100,7 +100,7 @@ public interface SchlshipService {
 	void deleteSchlship(String ss_Schlship_Code) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금을 신청함
+	 * 장학금을 신청함
 	 * </pre>
 	 * <pre>
 	 * @param pymntVO
@@ -110,7 +110,7 @@ public interface SchlshipService {
 	void requestschlship(PymntVO pymntVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 학생의 등록금 신청 내역을 조회
+	 * 학생의 장학금 신청 내역을 조회
 	 * </pre>
 	 * <pre>
 	 * @param loginUser
@@ -118,5 +118,26 @@ public interface SchlshipService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<SchlshipVO> selectSchlshipByStdnt(String loginUser) throws SQLException;
+	List<SchlshipVO> selectSchlshipByStdnt(SchlshipVO schlshipVO,int start,int count) throws SQLException;
+	/**
+	 * <pre>
+	 * 학생의 장학금 신청 내역을 조회 개수
+	 * </pre>
+	 * <pre>
+	 * @param schlshipVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int countSchlshipByStdnt(SchlshipVO schlshipVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 장학금 신청 내역 수정
+	 * </pre>
+	 * <pre>
+	 * @param pymntVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updatePymnt(PymntVO pymntVO) throws SQLException;
 }

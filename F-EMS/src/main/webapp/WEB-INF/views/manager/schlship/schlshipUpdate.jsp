@@ -36,7 +36,11 @@
 			</tr>
 			<tr>
 				<td>내용 :</td>
-				<td><input type="text" name="ss_Papers_Content" value="${schlshipVO.ss_Papers_Content}"></td>
+				<td>
+<textarea name="ss_Papers_Content">
+${schlshipVO.ss_Papers_Content}
+</textarea>
+				</td>
 			</tr>
 			<tr>
 				<td>첨부파일 :</td>

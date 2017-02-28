@@ -51,6 +51,10 @@ a.select a:hover{	/* hover 밑줄 안 생기도록 */
 	margin:0px !important;	
 }
 
+.margin-btm-0{
+	margin-bottom:0px !important;
+}
+
 .w-h-100{
 	width: 100% !important;
     height: 100% !important;

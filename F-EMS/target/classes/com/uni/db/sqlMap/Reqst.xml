@@ -16,10 +16,12 @@
 	<!-- 수강신청 완료 목록 조회 -->
 	<select id="selectReqst" parameterClass="str" resultClass="lctre_Search">
 		SELECT * FROM lctre_view, reqst,intrst_list
-		WHERE re_Stdnt_No=#re_Stdnt_No# 
-		and re_Lctre_No=lc_Lctre_No
+		WHERE re_Lctre_No=lc_Lctre_No
    		and in_Lctre_No=lc_Lctre_No
-		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
+   		and re_Stdnt_No=in_Stdnt_No
+   		and re_Stdnt_No=#re_Stdnt_No# 
+   		and in_Stdnt_No=#in_Stdnt_No#
+ 		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 		and lc_Open_At='y'
 		order by lc_Lctre_Code asc
 	 </select>
@@ -57,19 +59,12 @@
 		select count(*) from reqst where re_Lctre_No=#re_Lctre_No#
 	</select>
 	
-	<!-- 그 과목의 수강 학생 추가 : 학생의 수강 신청과 연결하기 -->
-	<update id="addNumOfStdnt" parameterClass="lctre_Search">
-		update lctre  
-		set lc_Lctre_Nmpr = (select count(*) from reqst where re_Lctre_No=#re_Lctre_No#)+1
-		where lc_Lctre_No=#lc_Lctre_No#
+	<!-- 그 과목의 수강 학생 변경 : 학생의 수강 신청과 연결하기 -->
+	<update id="setNumOfStdnt" parameterClass="lctre_Search">
+		update lctre set lc_Lctre_Nmpr = (select count(*) from reqst where re_Lctre_No=#re_Lctre_No#)
+		where lc_Lctre_No=#re_Lctre_No# 
+		and (select count(*) from reqst where re_Lctre_No=#re_Lctre_No#) > 0
+		and <![CDATA[ lc_Lctre_Nmpr < (select lr_Accept_Nmpr from lctrum, lctre where lr_Lctrum_No=lc_Lctrum_No and lc_Lctre_No=#re_Lctre_No#) ]]>
 	</update>
-	
-	<!-- 그 과목의 수강 학생 감소 : 학생의 수강취소와 연결하기 -->
-	<update id="delNumOfStdnt" parameterClass="lctre_Search">
-		update lctre  
-		set lc_Lctre_Nmpr = (select count(*) from reqst where re_Lctre_No=#re_Lctre_No#)-1
-		where lc_Lctre_No=#lc_Lctre_No#
-	</update>
-	
 
 </sqlMap>
