@@ -41,8 +41,8 @@ body {
 					<th colspan="11"><h4>수강 신청 완료 목록</h4></th>
 				</tr>
 				<tr>
-					<th><label><input type="checkbox" id="check_all_3" class="input_check_1" />관심삭제</label></th>
-					<th><label><input type="checkbox" id="check_all_2" class="input_check_2" />수강취소</label></th>
+					<th><label><input type="checkbox" id="check_all_3" class="input_check_2" />관심삭제</label></th>
+					<th><label><input type="checkbox" id="check_all_1" class="input_check_1" />수강취소</label></th>
 					<th>번호</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
@@ -58,12 +58,12 @@ body {
 
 	 			<c:forEach items="${lctre_SearchVO}" var="lctre">
 				<tr>
-					<td class="select_ckbox_1">
-						<label><input type="checkbox" class="input_check_1" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
+					<td class="select_ckbox_2">
+						<label><input type="checkbox" class="input_check_2" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
 						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					
-					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
+					<td class="select_ckbox_1">
+						<label><input type="checkbox" class="input_check_1" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
 						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					<td>${lctre.lc_Lctre_No}</td>
 					<td>${lctre.sit_Subjct}</td>

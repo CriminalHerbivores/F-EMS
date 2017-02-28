@@ -51,8 +51,8 @@ table#zipcode a:hover{
 </style>
 <script type="text/javascript">
 function result(zipNum,sido,gugun,dong) {
-   opener.document.formm.stf_Post_No.value=zipNum;
-   opener.document.formm.stf_Adres1.value=sido+" "+gugun+" "+dong;
+   opener.document.formm.zipNum.value=zipNum;
+   opener.document.formm.addres1.value=sido+" "+gugun+" "+dong;
    self.close();
 };
 </script>

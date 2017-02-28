@@ -179,6 +179,7 @@ public class LctreController {
 			reqstVO.setRe_Stdnt_No(stdnt_No);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			lctre_SearchVO.setLc_Lctre_No(reqstVO.getRe_Lctre_No());
+			lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
 			System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 
 			try {

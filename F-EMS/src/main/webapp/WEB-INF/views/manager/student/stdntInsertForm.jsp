@@ -29,9 +29,9 @@
         <td>학생 번호</td>
         <td><input type="text" class="form-control" id="st_Stdnt_No" name="st_Stdnt_No"></td>
         <td>학부</td>
-        <td><input type="text" class="form-control" id="" name="" value=""></td>
+        <td><input type="text" class="form-control" id="faculty_Nm" name="" value="" readonly></td>
         <td>학과</td>
-        <td><input type="text" class="form-control" id="st_Subjct_Code" name="st_Subjct_Code"></td>
+        <td><input type="text" class="form-control" id="subjct_Nm" name="st_Subjct_Code" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
       </tr>
       
       <tr>
@@ -48,14 +48,14 @@
         <td><input type="text" class="form-control" id="st_Pw" name="st_Pw"></td>
         <td>비밀번화 확인</td>
         <td><input type="text" class="form-control" id="st_Pw_on" name="st_Pw_on"></td>
-        <td>주민 번호</td>
+        <td>주민등록번호</td>
         <td><input type="text" class="form-control" id="st_Ihidnum" name="st_Ihidnum" ></td>
       </tr>
       <tr>
-        <td>우편주소</td>
-        <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No"></td>
+        <td>우편번호</td>
+        <td><input type="text" class="form-control" id="zipNum" name="st_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
-        <td><input type="text" class="form-control" id="st_Adres1" name="st_Adres1"></td>
+        <td><input type="text" class="form-control" id="addres1" name="st_Adres1" readonly></td>
         <td>상세주소</td>
         <td><input type="text" class="form-control" id="st_Adres2" name="st_Adres2"></td>
       </tr>

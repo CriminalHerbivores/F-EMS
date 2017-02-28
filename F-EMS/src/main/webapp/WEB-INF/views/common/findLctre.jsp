@@ -71,6 +71,14 @@ function resultLctre(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_
    opener.document.formm.lu_Pnt.value=lu_Pnt;
    opener.document.formm.lu_Grade.value=lu_Grade;
    opener.document.formm.lu_Presubjct.value=lu_Presubjct;
+/*    opener.document.formm.getelementByid('lctre_Nm').value=lu_Lctre_Nm;
+   opener.document.formm.getelementByid('subjct_Nm').value=sit_Subjct;
+   opener.document.formm.getelementByid('lctre_Code').value=lu_Lctre_Code;
+   opener.document.formm.getelementByid('compl_Se').value=lu_Compl_Se;
+   opener.document.formm.getelementByid('pnt').value=lu_Pnt;
+   opener.document.formm.getelementByid('grade').value=lu_Grade;
+   opener.document.formm.getelementByid('presubjct').value=lu_Presubjct; */
+   
    self.close();
 };
 </script>
