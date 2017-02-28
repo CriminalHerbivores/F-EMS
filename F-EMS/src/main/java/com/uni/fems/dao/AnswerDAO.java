@@ -58,4 +58,17 @@ public interface AnswerDAO {
 	 * </pre>
 	 */
 	public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 시험본 답안지를 삭제하는 메서드(TEST_PAPER 지우기 위해) 
+	 * </pre>
+	 * <pre>
+	 * @param tpNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public int deleteAnswer(int tpNo) throws SQLException;
+	
 }
