@@ -4,4 +4,35 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Work">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="work" type="com.uni.fems.dto.WorkVO" />
+
+	<!-- 교수 재직 상태 등록 -->
+	<update id="insertWork" parameterClass="work">
+		insert into work(
+		  wk_no,
+		  WK_PROFSR_NO,
+		  wk_work_status
+		)values(
+		  wk_seq.nextval,
+		  #wk_Profsr_No#,
+		  #wk_Work_Status#
+		)
+	</update>
+	
+	<!-- 교수 재직 상태 수정 -->
+	<update id="updateWork" parameterClass="work">
+		update profsr_subjct_asnm set 
+			wk_Profsr_No=#wk_Profsr_No#,
+			wk_Work_Status=#wk_Work_Status#,
+			wk_Dt=#wk_Dt#
+		where wk_No=#wk_No#
+	</update>
+	
+	<!-- 교수번호로 재직 상태 조회 -->
+	<select id="selectWork" parameterClass="str" resultClass="work">
+		select * from profsr
+		where wk_Profsr_No like '%'||#wk_Profsr_No#||'%'
+	</select>
 </sqlMap>

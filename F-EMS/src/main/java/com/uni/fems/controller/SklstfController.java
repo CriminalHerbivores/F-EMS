@@ -866,7 +866,13 @@ public class SklstfController {
 		}
 		return url;
 	}
-
+	
+	@RequestMapping("stdntNprofsr")
+	public String stdntNprofsr(Model model){
+		String url = "manager/stdntNprofsr";
+		return url;
+	}
+	
 	// 교수 //////////////////////////////////////////////////////////////////////////////
 	/**
 	 * <pre>
@@ -1100,6 +1106,12 @@ public class SklstfController {
 		}
 		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
+		return url;
+	}
+	
+	@RequestMapping("profsrWork")
+	public String profsrWork(){
+		String url="";
 		return url;
 	}
 }
