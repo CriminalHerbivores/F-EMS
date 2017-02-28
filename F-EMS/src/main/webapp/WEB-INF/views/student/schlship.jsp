@@ -58,11 +58,19 @@
 			<td>${schlship.ss_Papers_Content}</td>
 			<td><a href="<%=request.getContextPath() %>/download/file/list?filename=${schlship.ss_File}">${schlship.ss_File}</a></td>
 			<td>
-				<a href="requestschlship?ss_Schlship_Code=${schlship.ss_Schlship_Code}&tpage=${tpage}"><input type="button" value="신청" class="def-ckbtn btn-sm ckbtn-color"></a>
+				<c:choose>
+					<c:when test="${schlship.ss_Schlship_Code eq 0}">
+						신청완료
+					</c:when>
+					<c:otherwise>
+						<a href="requestschlship?ss_Schlship_Code=${schlship.ss_Schlship_Code}&tpage=${tpage}"><input type="button" value="신청" class="def-ckbtn btn-sm ckbtn-color"></a>
+					</c:otherwise>
+				</c:choose>
 			</td>
 		</tr>
 		</c:forEach>
 	</table>
+	<br/>
 	<h4>장학금 신청 내역</h4>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
@@ -87,7 +95,11 @@
 			<td>${schlship.py_Useyn}</td>
 		</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="7">${paging}</td>
+		</tr>
 	</table>
+	<br/><br/><br/>
 </td></tr></table>
 </body>
 </html>
