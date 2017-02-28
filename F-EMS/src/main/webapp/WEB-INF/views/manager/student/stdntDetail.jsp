@@ -21,55 +21,55 @@
 </head>
 <body>
 <h2>학생 정보 조회</h2>
- <table class="table table-bordered">
+ <table class="def-table-full tb-border table-hover">
       <tr>
-        <td>학생 번호</td>
+        <th>단과</th>
+        <td>${stdntVO.coleg_Nm}</td>
+        <th>학부</th>
+        <td>${stdntVO.fc_Faculty_Nm}</td>
+        <th>학과</th>
+        <td>${stdntVO.sit_Subjct}</td>
+      </tr>
+      
+      <tr>
+        <th>학생 번호</th>
         <td>${stdntVO.st_Stdnt_No}</td>
-        <td>학부</td>
-        <td></td>
-        <td>학과</td>
-        <td>${stdntVO.st_Subjct_Code}</td>
-      </tr>
-      
-      <tr>
-        <td>이름</td>
+        <th>이름</th>
         <td>${stdntVO.st_Nm}</td>
-        <td>영문이름</td>
+        <th>영문이름</th>
         <td>${stdntVO.st_Eng_Nm}</td>
-        <td>이메일</td>
-        <td>${stdntVO.st_Email}</td>
       </tr>
       
       <tr>
-        <td>비밀번호</td>
-        <td>${stdntVO.st_Pw}</td>
-        <td>비밀번호 확인</td>
-        <td>${stdntVO.st_Pw}</td>
-        <td>주민 번호</td>
+        <th>학적상태</th>
+        <td>${stdntVO.st_Sknrgs}</td>
+        <th>이메일</th>
+        <td>${stdntVO.st_Email}</td>
+        <th>주민 번호</th>
         <td>${stdntVO.st_Ihidnum}</td>
       </tr>
       <tr>
-        <td>우편번호</td>
+        <th>우편번호</th>
         <td>${stdntVO.st_Post_No}</td>
-        <td>주소</td>
+        <th>주소</th>
         <td>${stdntVO.st_Adres1}</td>
-        <td>상세주소</td>
+        <th>상세주소</th>
         <td>${stdntVO.st_Adres2}</td>
       </tr>
       <tr>
-        <td>핸드폰 번호</td>
+        <th>핸드폰 번호</th>
         <td>${stdntVO.st_Moblphon_No}</td>
-        <td>집 전화번호</td>
+        <th>집 전화번호</th>
         <td>${stdntVO.st_House_Tlphon_No}</td>
-        <td>담당 교수</td>
+        <th>담당 교수</th>
         <td>${stdntVO.st_Profsr_No}</td>
       </tr>
       <tr>
-        <td>보호자 이름</td>
+        <th>보호자 이름</th>
         <td>${stdntVO.st_Prtctor_Nm}</td>
-        <td>가족관계</td>
+        <th>가족관계</th>
         <td>${stdntVO.st_Family_Relate}</td>
-        <td>입학일</td>
+        <th>입학일</th>
         <td>${stdntVO.st_Entsch_Dt}</td>
       </tr>
       

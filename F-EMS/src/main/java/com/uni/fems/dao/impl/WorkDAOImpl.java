@@ -15,14 +15,20 @@ public class WorkDAOImpl implements WorkDAO {
 	}
 	@Override
 	public void insertWork(WorkVO workVO) throws SQLException {
-		
+		client.update("insertWork",workVO);
 	}
 	@Override
 	public void updateWork(WorkVO workVO) throws SQLException {
-		
+		client.update("updateWork",workVO);
 	}
 	@Override
-	public List<WorkVO> selectWork(WorkVO workVO) throws SQLException {
-		return null;
+	public List<WorkVO> selectWork(WorkVO workVO,int start,int count) throws SQLException {
+		List<WorkVO> list = client.queryForList("selectWork",workVO,start,count);
+		return list;
+	}
+	@Override
+	public int countWork(WorkVO workVO) throws SQLException {
+		int totalRecord = (int) client.queryForObject("countWork",workVO);
+		return totalRecord;
 	}
 }

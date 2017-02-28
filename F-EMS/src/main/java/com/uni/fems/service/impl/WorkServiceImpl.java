@@ -22,9 +22,14 @@ public class WorkServiceImpl implements WorkService {
 		workDAO.updateWork(workVO);
 	}
 	@Override
-	public List<WorkVO> selectWork(WorkVO workVO) throws SQLException {
-		List<WorkVO> list = workDAO.selectWork(workVO);
+	public List<WorkVO> selectWork(WorkVO workVO,int start,int count) throws SQLException {
+		List<WorkVO> list = workDAO.selectWork(workVO,start,count);
 		return list;
+	}
+	@Override
+	public int countWork(WorkVO workVO) throws SQLException {
+		int totalRecord = workDAO.countWork(workVO);
+		return totalRecord;
 	}
 
 }

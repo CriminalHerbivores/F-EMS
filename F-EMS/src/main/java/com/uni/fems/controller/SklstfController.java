@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +37,7 @@ import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.UserSubjctVO;
+import com.uni.fems.dto.WorkVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.LctreService;
@@ -46,6 +47,7 @@ import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
 import com.uni.fems.service.TuitionService;
+import com.uni.fems.service.WorkService;
 
 /**
  * <pre>
@@ -70,6 +72,12 @@ import com.uni.fems.service.TuitionService;
 public class SklstfController {
 	
 	@Autowired
+	private Paging callPaging;
+	@Autowired
+	private Supporter supporter;
+	@Autowired
+	private FileDownload fileDownload;
+	@Autowired
 	private SklstfService sklstfService;
 	@Autowired
 	private StdntService stdntService;
@@ -82,13 +90,9 @@ public class SklstfController {
 	@Autowired
 	private LctreService lctreService;
 	@Autowired
-	private Paging callPaging;
-	@Autowired
-	private Supporter supporter;
-	@Autowired
-	private FileDownload fileDownload;
-	@Autowired
 	private TuitionService tuitionService;
+	@Autowired
+	private WorkService workService;
 	
 	private WebApplicationContext context = null;
 	
@@ -106,7 +110,7 @@ public class SklstfController {
 	@RequestMapping(value="/sklstfUpdate", method = RequestMethod.GET)
 	public String sklstfUpdateForm(HttpSession session, Model model){
 		String url = "manager/sklstfUpdateForm";
-		String userid = (String)session.getAttribute("userid");
+		String userid = (String)session.getAttribute("loginUser");
 		SklstfVO sklstfVO = null;
 		try {
 			sklstfVO = sklstfService.getSklstf(userid);
@@ -1110,8 +1114,23 @@ public class SklstfController {
 	}
 	
 	@RequestMapping("profsrWork")
-	public String profsrWork(){
-		String url="";
+	public String profsrWork(WorkVO workVO,@RequestParam(defaultValue="1")String tpage,Model model, HttpServletRequest request){
+		String url="manager/profsr/profsrWork";
+		List<WorkVO> list = new ArrayList<WorkVO>();
+		String paging="";
+		try {
+			int totalRecord = workService.countWork(workVO); 
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&wk_Profsr_No="+workVO.getWk_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = workService.selectWork(workVO,rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("tpage",tpage);
+		model.addAttribute("workList",list);
+		model.addAttribute("paging",paging);
 		return url;
 	}
 }

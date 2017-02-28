@@ -49,5 +49,12 @@ public class ProfsrVO implements Serializable{
 	private String psa_Subjct_Code;   // 학과코드
 	private String psa_Profsr_No;   // 교수번호
 	private Timestamp psa_Dt;   // 배정일
-
+	
+	// Subjct
+	private String coleg_Nm; // 단과
+	private String fc_Faculty_Nm; // 학부
+	private String sit_Subjct; // 학과
+	
+	// Work
+	private String pr_Work; // 재직상태
 }

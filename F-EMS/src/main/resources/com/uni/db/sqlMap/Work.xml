@@ -23,7 +23,7 @@
 	
 	<!-- 교수 재직 상태 수정 -->
 	<update id="updateWork" parameterClass="work">
-		update profsr_subjct_asnm set 
+		update work set 
 			wk_Profsr_No=#wk_Profsr_No#,
 			wk_Work_Status=#wk_Work_Status#,
 			wk_Dt=#wk_Dt#
@@ -31,8 +31,15 @@
 	</update>
 	
 	<!-- 교수번호로 재직 상태 조회 -->
-	<select id="selectWork" parameterClass="str" resultClass="work">
-		select * from profsr
+	<select id="selectWork" parameterClass="work" resultClass="work">
+		select * from work
 		where wk_Profsr_No like '%'||#wk_Profsr_No#||'%'
 	</select>
+	
+	<!-- 교수번호로 재직 상태 조회 개수 -->
+	<select id="countWork" parameterClass="work" resultClass="int">
+		select count(*) from work
+		where wk_Profsr_No like '%'||#wk_Profsr_No#||'%'
+	</select>
+	
 </sqlMap>

@@ -36,5 +36,16 @@ public interface WorkDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<WorkVO> selectWork(WorkVO workVO) throws SQLException;
+	List<WorkVO> selectWork(WorkVO workVO,int start,int count) throws SQLException;
+	/**
+	 * <pre>
+	 * 교수번호로 재직 상태 조회 개수
+	 * </pre>
+	 * <pre>
+	 * @param workVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int countWork(WorkVO workVO) throws SQLException;
 }
