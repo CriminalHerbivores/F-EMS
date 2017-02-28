@@ -61,7 +61,7 @@ public class Intrst_ListController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseInterest",method=RequestMethod.GET)
-	public String courseInterestForm(Model model, HttpSession session,Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+	public String courseInterestForm(Model model, HttpSession session, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
 		String url = "course_registration/courseInterest";
 		
 		List<Lctre_SearchVO> lctre_SearchVO=null;
@@ -143,10 +143,19 @@ public class Intrst_ListController {
 	 * </pre>
 	 */
 	@RequestMapping("/courseTimetable")
-	public String courseTimetable(HttpServletRequest request,
-			HttpSession session) {
+	public String courseTimetableForm(Model model, HttpServletRequest request,
+			HttpSession session, Intrst_ListVO intrst_ListVO) {
 		String url = "course_registration/courseTimetable";
-		
+		List<Lctre_SearchVO> lctre_SearchVO=null;
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		try {
+			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
+			lctre_SearchVO=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
+			stdntService.selectStdnt(st_Stdnt_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
 		
 		
 		return url;
