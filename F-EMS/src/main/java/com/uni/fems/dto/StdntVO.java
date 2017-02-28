@@ -50,6 +50,13 @@ public class StdntVO implements Serializable{
 	private String st_Brhs_At;   // 기숙사 여부
 	private String st_Profsr_No;   // 교수 번호
 	private String st_Grdtn_Dt;   // 졸업 일자
+
+	// Subjct
+	private String coleg_Nm; // 단과
+	private String fc_Faculty_Nm; // 학부
+	private String sit_Subjct; // 학과
+	
+	private String st_Sknrgs; //학적 상태
 	
 	private List<StdntVO> list;
 	

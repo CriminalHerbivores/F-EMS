@@ -90,9 +90,20 @@ public class SchlshipServiceImpl implements SchlshipService {
 	}
 
 	@Override
-	public List<SchlshipVO> selectSchlshipByStdnt(String loginUser)
+	public List<SchlshipVO> selectSchlshipByStdnt(SchlshipVO schlshipVO,int start,int count)
 			throws SQLException {
-		List<SchlshipVO> list = schlshipDAO.selectSchlshipByStdnt(loginUser);
+		List<SchlshipVO> list = schlshipDAO.selectSchlshipByStdnt(schlshipVO,start,count);
 		return list;
+	}
+
+	@Override
+	public int countSchlshipByStdnt(SchlshipVO schlshipVO) throws SQLException {
+		int totalRecord = schlshipDAO.countSchlshipByStdnt(schlshipVO);
+		return totalRecord;
+	}
+
+	@Override
+	public void updatePymnt(PymntVO pymntVO) throws SQLException {
+		schlshipDAO.updatePymnt(pymntVO);
 	}
 }

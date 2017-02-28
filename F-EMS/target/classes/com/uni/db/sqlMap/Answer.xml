@@ -23,4 +23,8 @@
 	values(#an_Ques_No#,#an_Tp_No#,#an_Stdnt_No#,#an_Ans#)
 </update>
 
+<update id="deleteAnswer" parameterClass="int">
+	delete from answer where an_tp_no=#an_Tp_No#
+</update>
+
 </sqlMap>

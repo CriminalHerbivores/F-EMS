@@ -9,7 +9,7 @@ import com.uni.fems.dto.SchlshipVO;
 
 /**
  * <pre>
- * 등록금 관련 사항을 처리하는 DAO
+ * 장학금 관련 사항을 처리하는 DAO
  * </pre>
  * @author JAR
  * @since 2017. 01. 24.
@@ -27,17 +27,17 @@ import com.uni.fems.dto.SchlshipVO;
 public interface SchlshipDAO {
 	/**
 	 * <pre>
-	 * 등록금을 모두 가져옴
+	 * 장학금을 모두 가져옴
 	 * </pre>
 	 * <pre>
 	 * @return
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public List<Schafs_SchdulVO> listAllSchafs_Schdul() throws SQLException;
+	List<Schafs_SchdulVO> listAllSchafs_Schdul() throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 등록
+	 * 장학금 등록
 	 * </pre>
 	 * <pre>
 	 * @param schlshipVO
@@ -47,7 +47,7 @@ public interface SchlshipDAO {
 	void insertSchlship(SchlshipVO schlshipVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 이름으로 조회한 등록금 리스트 총 개수
+	 * 장학금 이름으로 조회한 장학금 리스트 총 개수
 	 * </pre>
 	 * <pre>
 	 * @param ss_Schlship_Nm
@@ -58,7 +58,7 @@ public interface SchlshipDAO {
 	int totalRecord(String ss_Schlship_Nm) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 이름으로 조회한 등록금 리스트
+	 * 장학금 이름으로 조회한 장학금 리스트
 	 * </pre>
 	 * <pre>
 	 * @param tpage
@@ -71,7 +71,7 @@ public interface SchlshipDAO {
 	List<SchlshipVO> selectNameAllPage(int tpage, int totalRecord, String ss_Schlship_Nm) throws SQLException;
 	/**
 	 * <pre>
-	 * 사용 가능한 등록금 리스트
+	 * 사용 가능한 장학금 리스트
 	 * </pre>
 	 * <pre>
 	 * @return
@@ -81,7 +81,7 @@ public interface SchlshipDAO {
 	List<SchlshipVO> selectAllSchlship() throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 조회
+	 * 장학금 조회
 	 * </pre>
 	 * <pre>
 	 * @param ss_Schlship_Code
@@ -92,7 +92,7 @@ public interface SchlshipDAO {
 	SchlshipVO selectSchlship(String ss_Schlship_Code) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 수정
+	 * 장학금 수정
 	 * </pre>
 	 * <pre>
 	 * @param schlshipVO
@@ -102,26 +102,26 @@ public interface SchlshipDAO {
 	void updateSchlship(SchlshipVO schlshipVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금 사용유무를 바꿈
+	 * 장학금 사용유무를 바꿈
 	 * </pre>
 	 * <pre>
 	 * @param ss_Schlship_Code
 	 * </pre>
 	 */
-	public void deleteSchlship(SchlshipVO schlshipVO) throws SQLException;
+	void deleteSchlship(SchlshipVO schlshipVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 등록금을 신청함
+	 * 장학금을 신청함
 	 * </pre>
 	 * <pre>
 	 * @param pymntVO
 	 * @throws SQLException
 	 * </pre>
 	 */
-	public void requestschlship(PymntVO pymntVO) throws SQLException;
+	void requestschlship(PymntVO pymntVO) throws SQLException;
 	/**
 	 * <pre>
-	 * 학생의 등록금 신청 내역을 조회
+	 * 학생의 장학금 신청 내역을 조회
 	 * </pre>
 	 * <pre>
 	 * @param loginUser
@@ -129,5 +129,26 @@ public interface SchlshipDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<SchlshipVO> selectSchlshipByStdnt(String loginUser) throws SQLException;
+	List<SchlshipVO> selectSchlshipByStdnt(SchlshipVO schlshipVO,int start,int count) throws SQLException;
+	/**
+	 * <pre>
+	 * 학생의 장학금 신청 내역을 조회 개수
+	 * </pre>
+	 * <pre>
+	 * @param schlshipVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int countSchlshipByStdnt(SchlshipVO schlshipVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 장학금 신청 내역 수정
+	 * </pre>
+	 * <pre>
+	 * @param pymntVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updatePymnt(PymntVO pymntVO) throws SQLException;
 }

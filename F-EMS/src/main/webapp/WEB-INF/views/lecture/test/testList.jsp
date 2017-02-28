@@ -30,7 +30,6 @@
 <div class="text-center">
   <h2>온라인 시험 게시판</h2>
  <hr />
-
  </div>
   <table class="def-table-auto tb-border table-hover">
       <tr>
@@ -59,21 +58,37 @@
       		<td>${testlist.tp_Dt} </td>
       		<td>	
       	<sec:authorize access="hasRole('ROLE_STD')">
-      		<c:forEach var="answerList" items="${answerList }">
+      		<c:set var="testtpNo" value="${testlist.tp_No}" />
+      	    <c:set var="doneLoop" value="false"/>
+      			<c:forEach var="answerList" items="${answerList }">
+      			<c:if test="${not doneLoop}"> 
+      			    <c:set var="answertpNo" value="${answerList.an_Tp_No }" />
       			<c:choose>
-      				<c:when test= "${answerList.an_Tp_No =='${testlist.tp_No}' }">
-      				<input type="button" class="def-btn btn-sm btn-color" value="완료"> </a>
+      				<c:when test= "${testtpNo == answertpNo }">
+      					<c:set var="result" value="already" />
+      					<c:set var="doneLoop" value="true"/>
+      				</c:when>
+      				<c:otherwise>
+      					<c:set var="result" value="notyet" />
+      				</c:otherwise>
+      			</c:choose>
+      			</c:if>
+      			</c:forEach>	
+      			
+      			<c:choose>
+      				<c:when test="${result =='already'}">
+      				<input type="button" class="def-btn btn-sm btn-gray" value="완료">
       				</c:when>
       				<c:otherwise>
       				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">
       				<input type="button" class="def-btn btn-sm btn-color" value="응시"> </a>
       				</c:otherwise>
       			</c:choose>
-      		</c:forEach>
       	</sec:authorize>
       		</td>
       	</tr>
       </c:forEach>
+      
       
      
   </table>
