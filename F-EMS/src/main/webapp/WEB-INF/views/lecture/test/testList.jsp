@@ -20,6 +20,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script>
+$(document).ready(function(){
+	
+	$.ajax({
+		url:'<%=request.getContextPath()%>/lctre/nameAnswerSTD',
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'text',
+		data:$('#tpNo').serialize(),
+		type:'post',
+		success : function(data){
+			
+		},
+		error:function(request,status,error){
+			  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			  }
+	});
+});
+</script>
 </head>
 <body>
 
@@ -37,55 +57,74 @@
         <th style="width:600px;">시험명</th>
         <th>출제자</th>
         <th>출제날짜</th>
+    <sec:authorize access="hasRole('ROLE_STD')">       
         <th>응시여부</th>
+    </sec:authorize>
+    <sec:authorize access="hasRole('ROLE_PRO')">
+    	<th>응시자수</th>
+    	<th>상세정보</th>
+    </sec:authorize>
       </tr>
       
       <c:forEach var="testlist" items="${testlist }">
       	<tr>
-      		<td>${testlist.tp_No }</td>
-      		<sec:authorize access="hasRole('ROLE_PRO')">
+      	<sec:authorize access="hasRole('ROLE_PRO')">
+      		<td id="tpNo">${testlist.tp_No }</td>
       		<td>
-      		<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">${testlist.tp_Nm}</a>
+      			<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">${testlist.tp_Nm}</a>
       		</td>
-      		</sec:authorize>
-      		<sec:authorize access="hasRole('ROLE_STD')">
-      		 	<td>${testlist.tp_Nm}</td>
-      		</sec:authorize>
       		<td>${testlist.tp_Profsr_No} </td>
+      		<td>${testlist.tp_Dt} </td>
+      		<td>${testlist.countAnswerSTD} / </td>
+      		<td>
+      			<select name="answerSTD" id="answerSTD">
+      				<option value="${testlist.nameAnswerSTD }"></option>
+      			</select>
+      		</td>
+      	</sec:authorize>
+      	<sec:authorize access="hasRole('ROLE_STD')">
+      		<td>${testlist.tp_No }</td>
+      	 	<td>${testlist.tp_Nm}</td>
+      		<td>${testlist.tp_Profsr_No} </td>
+      		<td>${testlist.tp_Dt} </td>
+      	</sec:authorize>
+	   		
       		<%-- <td><a href="detailNotice?no=${testlist.nb_Bbs_No}&tpage=${tpage}">
       		 ${notice.nb_Sj} </a>
       		</td> --%>
-      		<td>${testlist.tp_Dt} </td>
-      		<td>	
-      	<sec:authorize access="hasRole('ROLE_STD')">
-      		<c:set var="testtpNo" value="${testlist.tp_No}" />
-      	    <c:set var="doneLoop" value="false"/>
-      			<c:forEach var="answerList" items="${answerList }">
-      			<c:if test="${not doneLoop}"> 
-      			    <c:set var="answertpNo" value="${answerList.an_Tp_No }" />
-      			<c:choose>
-      				<c:when test= "${testtpNo == answertpNo }">
-      					<c:set var="result" value="already" />
-      					<c:set var="doneLoop" value="true"/>
-      				</c:when>
-      				<c:otherwise>
-      					<c:set var="result" value="notyet" />
-      				</c:otherwise>
-      			</c:choose>
-      			</c:if>
-      			</c:forEach>	
-      			
-      			<c:choose>
-      				<c:when test="${result =='already'}">
-      				<input type="button" class="def-btn btn-sm btn-gray" value="완료">
-      				</c:when>
-      				<c:otherwise>
-      				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">
-      				<input type="button" class="def-btn btn-sm btn-color" value="응시"> </a>
-      				</c:otherwise>
-      			</c:choose>
-      	</sec:authorize>
-      		</td>
+      <!--학생 응시 / 완료 가리기  -->
+		      	<sec:authorize access="hasRole('ROLE_STD')">
+			<td>
+		      		<c:set var="testtpNo" value="${testlist.tp_No}" />
+		      	    <c:set var="doneLoop" value="false"/>
+		      			<c:forEach var="answerList" items="${answerList }">
+		      			<c:if test="${not doneLoop}"> 
+		      			    <c:set var="answertpNo" value="${answerList.an_Tp_No }" />
+		      			<c:choose>
+		      				<c:when test= "${testtpNo == answertpNo }">
+		      					<c:set var="result" value="already" />
+		      					<c:set var="doneLoop" value="true"/>
+		      				</c:when>
+		      				<c:otherwise>
+		      					<c:set var="result" value="notyet" />
+		      				</c:otherwise>
+		      			</c:choose>
+		      			</c:if>
+		      			</c:forEach>	
+		      			
+		      			<c:choose>
+		      				<c:when test="${result =='already'}">
+		      				<input type="button" class="def-btn btn-sm btn-gray" value="완료">
+		      				</c:when>
+		      				<c:otherwise>
+		      				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">
+		      				<input type="button" class="def-btn btn-sm btn-color" value="응시"> </a>
+		      				</c:otherwise>
+		      			</c:choose>
+		  	</td>
+		   <!--학생 응시 / 완료 가리기  -->
+	
+		      	</sec:authorize>
       	</tr>
       </c:forEach>
       

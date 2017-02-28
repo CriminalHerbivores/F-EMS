@@ -36,6 +36,8 @@ public class Test_PaperVO implements Serializable {
 	private String tp_Profsr_No;   // 강의번호
 	private String tp_Nm; // 시험명
 	private Timestamp tp_Dt;   // 날짜
+	private int countAnswerSTD; // 시험본학생수
+	private String nameAnswerSTD; //시험본학생이름
 	
 
 }

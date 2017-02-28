@@ -43,6 +43,7 @@ public List<TestVO> listAllTest(int tp_no) throws SQLException {
 }
 @Override
 public int insertTest(TestVO testVO) throws SQLException {
+	if(testVO.getTe_Tp_No()==null)
 	testVO.setTe_Tp_No(Integer.toString(test_PaperDAO.maxTp_No()));
 	return testDAO.insertTest(testVO);
 }

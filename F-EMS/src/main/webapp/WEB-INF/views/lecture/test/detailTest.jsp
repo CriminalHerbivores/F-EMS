@@ -105,13 +105,14 @@ function getTimeRemaining(endtime) {
 	
 });
 </script>
-
+<sec:authorize access="hasRole('ROLE_STD')">
 <script>
 history.pushState(null, null, location.href); 
 window.onpopstate = function(event) { 
 history.go(1); 
 }
 </script>
+</sec:authorize>
 	
 </head>
 
