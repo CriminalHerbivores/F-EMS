@@ -20,48 +20,49 @@
 <title></title>
 </head>
 <body>
+<table class="non-border margin-auto"><tr><td>
 	<h2>교수 정보 조회</h2>
- <table class="table table-bordered">
+ <table class="def-table-full tb-border table-hover">
       <tr>
-        <td>교수 번호</td>
+        <th>단과</th>
+        <td>${profsrVO.coleg_Nm}</td>
+        <th>학부</th>
+        <td>${profsrVO.fc_Faculty_Nm}</td>
+        <th>학과</th>
+        <td>${profsrVO.sit_Subjct}</td>
+      </tr>
+      
+      <tr>
+        <th>교수 번호</th>
         <td>${profsrVO.pr_Profsr_No}</td>
-        <td>학부</td>
-        <td></td>
-        <td>학과</td>
-        <td></td>
-      </tr>
-      
-      <tr>
-        <td>이름</td>
+        <th>이름</th>
         <td>${profsrVO.pr_Nm}</td>
-        <td>영문이름</td>
+        <th>영문이름</th>
         <td>${profsrVO.pr_Eng_Nm}</td>
-        <td>이메일</td>
-        <td>${profsrVO.pr_Email}</td>
       </tr>
       
       <tr>
-        <td>비밀번호</td>
-        <td>${profsrVO.pr_Pw}</td>
-        <td>비밀번호 확인</td>
-        <td>${profsrVO.pr_Pw}</td>
-        <td>주민 번호</td>
+        <th>재직상태</th>
+        <td>${profsrVO.pr_Work}</td>
+        <th>이메일</th>
+        <td>${profsrVO.pr_Email}</td>
+        <th>주민 번호</th>
         <td>${profsrVO.pr_Ihidnum}</td>
       </tr>
       <tr>
-        <td>우편번호</td>
+        <th>우편번호</th>
         <td>${profsrVO.pr_Post_No}</td>
-        <td>주소</td>
+        <th>주소</th>
         <td>${profsrVO.pr_Adres1}</td>
-        <td>상세주소</td>
+        <th>상세주소</th>
         <td>${profsrVO.pr_Adres2}</td>
       </tr>
       <tr>
-        <td>핸드폰 번호</td>
+        <th>핸드폰 번호</th>
         <td>${profsrVO.pr_Moblphon_No}</td>
-        <td>집 전화번호</td>
+        <th>집 전화번호</th>
         <td>${profsrVO.pr_House_Tlphon_No}</td>
-        <td>교수 전화번호</td>
+        <th>교수 전화번호</th>
         <td>${profsrVO.pr_Profsr_Tlphon_No}</td>
       </tr>
       
@@ -74,6 +75,7 @@
 	<a href="profsrList?&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
 	</sec:authorize>
 </div>
+</td></tr></table>
 <!--모달부분  -->
 <div class="modal fade" id="layerpop" >
   <div class="modal-dialog">

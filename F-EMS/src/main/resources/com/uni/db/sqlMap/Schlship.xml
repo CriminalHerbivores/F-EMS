@@ -16,42 +16,38 @@
 	<typeAlias alias="schlship" type="com.uni.fems.dto.SchlshipVO" />
 	<typeAlias alias="pymnt" type="com.uni.fems.dto.PymntVO" />
 
-	<!-- 등록금 개수 -->
+	<!-- 장학금 개수 -->
 	<select id="totalSchlship" parameterClass="str" resultClass="int">
 		select count(*) from schlship where ss_Schlship_Nm like
 		'%$ss_Schlship_Nm$%'
 	</select>
 
-	<!-- 등록금 목록 페이지로 출력 -->
+	<!-- 장학금 목록 페이지로 출력 -->
 	<select id="selectAllSchlshipPage" parameterClass="str"
 		resultClass="schlship">
 		select * from schlship where ss_Schlship_Nm like
 		'%$ss_Schlship_Nm$%' order by SS_SCHLSHIP_CODE desc
 	</select>
 
-	<!-- 등록금 하나 출력 -->
+	<!-- 장학금 하나 출력 -->
 	<select id="selectSchlship" parameterClass="str" resultClass="schlship">
 		select * from schlship where ss_Schlship_Code = #ss_Schlship_Code#
 	</select>
 	
-	<!-- 사용가능한 등록금 목록 페이지로 출력 -->
+	<!-- 사용가능한 장학금 목록 페이지로 출력 -->
 	<select id="selectAllSchlship" parameterClass="str" resultClass="schlship">
 		select * from schlship where ss_useyn = 'y'
 	</select>
 	
-	<select id="selectSchlshipByStdnt" parameterClass="str" resultClass="schlship">
-		select * from schlship_view
-		where PY_STDNT_NO = #py_Stdnt_No#
-		order by py_schlship_dt desc
-	</select>
-	
+	<!-- 장학금 추가 -->
 	<update id="insertSchlship" parameterClass="schlship">
 		insert into schlship(
 		ss_Schlship_Code,ss_Schlship_Nm,ss_Schlship_Type,ss_Amount,ss_Papers_Content,ss_File,ss_useyn)
 		values
 		(ss_seq.nextval,#ss_Schlship_Nm#,#ss_Schlship_Type#,#ss_Amount#,#ss_Papers_Content#,#ss_File#,'y')
 	</update>
-
+	
+	<!-- 장학금 수정 -->
 	<update id="updateSchlship" parameterClass="schlship">
 		update schlship set
 		ss_Schlship_Nm = #ss_Schlship_Nm#,
@@ -62,17 +58,39 @@
 		where ss_Schlship_Code = #ss_Schlship_Code#
 	</update>
 	
+	<!-- 장학금 삭제 -->
 	<update id="deleteSchlship" parameterClass="schlship">
 		update schlship set
 		ss_useyn = #ss_useyn#
 		where ss_Schlship_Code = #ss_Schlship_Code#
 	</update>
 	
+	<!-- 장학금 신청 -->
 	<update id="requestSchlship" parameterClass="pymnt">
 		insert into pymnt(
 		PY_SCHLSHIP_BRKDN_NO,py_Stdnt_No,py_Schlship_Code,py_Crrspnd_Year,PY_SEMSTR,PY_SCHLSHIP_DT,PY_USEYN
 		)values(
 		py_seq.nextval,#py_Stdnt_No#,#py_Schlship_Code#,#py_Crrspnd_Year#,#py_Semstr#,sysdate,'n'
 		)
+	</update>
+	
+	<!-- 학생의 장학금 신청 내역 -->
+	<select id="selectSchlshipByStdnt" parameterClass="schlship" resultClass="schlship">
+		select * from schlship_view
+		where PY_STDNT_NO like '%'||#py_Stdnt_No#||'%'
+		order by py_schlship_dt desc
+	</select>
+	
+	<!-- 학생의 장학금 신청 내역 개수 -->
+	<select id="countSchlshipByStdnt" parameterClass="schlship" resultClass="int">
+		select count(*) from schlship_view
+		where PY_STDNT_NO like '%'||#py_Stdnt_No#||'%'
+		order by py_schlship_dt desc
+	</select>
+	
+	<update id="updatePymnt" parameterClass="pymnt">
+		update pymnt
+		set py_Useyn=#py_Useyn#
+		where py_Schlship_Brkdn_No=#py_Schlship_Brkdn_No#
 	</update>
 </sqlMap>

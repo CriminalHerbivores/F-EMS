@@ -63,6 +63,7 @@
 		</table>
 		<div id="buttons" style="float:right">
 	  	<input type="button" class="def-btn btn-sm btn-color" value="등록하기" onclick="writeschlshipForm()">
+	  	<a href="<%=request.getContextPath()%>/sklstf/requestschlship"><input type="button" value="장학금 신청 내역" class="def-btn btn-sm btn-color"></a>
 	  </div>
 </td></tr></table>
 	</div>

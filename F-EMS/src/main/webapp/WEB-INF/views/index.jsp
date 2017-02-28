@@ -28,6 +28,7 @@
 <a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역 조회</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a><br/>
+<a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 신청 내역</a><br/>
 <a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a><br/>
 --------- 교수 ---------<br/>
 <a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 정보 조회</a><br/>

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +29,7 @@ import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.SknrgsVO;
@@ -37,6 +38,7 @@ import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.UserSubjctVO;
+import com.uni.fems.dto.WorkVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.LctreService;
@@ -46,6 +48,7 @@ import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
 import com.uni.fems.service.TuitionService;
+import com.uni.fems.service.WorkService;
 
 /**
  * <pre>
@@ -70,6 +73,12 @@ import com.uni.fems.service.TuitionService;
 public class SklstfController {
 	
 	@Autowired
+	private Paging callPaging;
+	@Autowired
+	private Supporter supporter;
+	@Autowired
+	private FileDownload fileDownload;
+	@Autowired
 	private SklstfService sklstfService;
 	@Autowired
 	private StdntService stdntService;
@@ -82,13 +91,9 @@ public class SklstfController {
 	@Autowired
 	private LctreService lctreService;
 	@Autowired
-	private Paging callPaging;
-	@Autowired
-	private Supporter supporter;
-	@Autowired
-	private FileDownload fileDownload;
-	@Autowired
 	private TuitionService tuitionService;
+	@Autowired
+	private WorkService workService;
 	
 	private WebApplicationContext context = null;
 	
@@ -106,7 +111,7 @@ public class SklstfController {
 	@RequestMapping(value="/sklstfUpdate", method = RequestMethod.GET)
 	public String sklstfUpdateForm(HttpSession session, Model model){
 		String url = "manager/sklstfUpdateForm";
-		String userid = (String)session.getAttribute("userid");
+		String userid = (String)session.getAttribute("loginUser");
 		SklstfVO sklstfVO = null;
 		try {
 			sklstfVO = sklstfService.getSklstf(userid);
@@ -804,6 +809,69 @@ public class SklstfController {
 		return url;
 	}
 	
+	
+	/**
+	 * <pre>
+	 * 장학금 신청 내역을 조회
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="requestschlship", method = RequestMethod.GET)
+	public String requestschlship(SchlshipVO schlshipVO,Model model, HttpServletRequest request, HttpSession session, @RequestParam(defaultValue="1")String tpage){
+		String url="manager/schlship/requestschlship";
+		if(schlshipVO.getPy_Stdnt_No()==null)
+			schlshipVO.setPy_Stdnt_No("");
+		List<SchlshipVO> schlshipList = new ArrayList<SchlshipVO>();
+		List<SchlshipVO> stdntSchlshipList = new ArrayList<SchlshipVO>();
+		String paging = "";
+		try {
+			int totalRecord = schlshipService.countSchlshipByStdnt(schlshipVO); 
+			paging = callPaging.pageNumber(Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request), "");
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			stdntSchlshipList = schlshipService.selectSchlshipByStdnt(schlshipVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("tpage",tpage); //페이지
+		model.addAttribute("paging",paging);
+		model.addAttribute("schlshipList", schlshipList);
+		model.addAttribute("stdntSchlshipList", stdntSchlshipList);
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 장학금을 신청 내역 변경
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="requestschlship", method = RequestMethod.POST)
+	public String requestschlship(int[] py_Schlship_Brkdn_No, String[] py_Useyn, HttpSession session,@RequestParam(defaultValue="1")String tpage){
+		String url="redirect:requestschlship?tpage="+tpage;
+		
+		if(py_Useyn!=null){
+			for(int i=0;i<py_Useyn.length;i++){
+				PymntVO pymntVO = new PymntVO();
+				pymntVO.setPy_Schlship_Brkdn_No(py_Schlship_Brkdn_No[i]);
+				pymntVO.setPy_Useyn(py_Useyn[i]);
+				
+				try {
+					schlshipService.updatePymnt(pymntVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return url;
+	}
+	
 	// 학적 ////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -866,7 +934,13 @@ public class SklstfController {
 		}
 		return url;
 	}
-
+	
+	@RequestMapping("stdntNprofsr")
+	public String stdntNprofsr(Model model){
+		String url = "manager/stdntNprofsr";
+		return url;
+	}
+	
 	// 교수 //////////////////////////////////////////////////////////////////////////////
 	/**
 	 * <pre>
@@ -1099,6 +1173,39 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("paging",paging);
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 교수의 재직 상태 조회 (미완성)
+	 * </pre>
+	 * <pre>
+	 * @param workVO
+	 * @param tpage
+	 * @param model
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("profsrWork")
+	public String profsrWork(WorkVO workVO,@RequestParam(defaultValue="1")String tpage,Model model, HttpServletRequest request){
+		String url="manager/profsr/profsrWork";
+		List<WorkVO> list = new ArrayList<WorkVO>();
+		String paging="";
+		try {
+			int totalRecord = workService.countWork(workVO); 
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&wk_Profsr_No="+workVO.getWk_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = workService.selectWork(workVO,rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("tpage",tpage);
+		model.addAttribute("workList",list);
 		model.addAttribute("paging",paging);
 		return url;
 	}

@@ -68,11 +68,11 @@
         <td><input type="text" class="form-control" id="stf_House_Tlphon_No" name="stf_House_Tlphon_No" value="${sklstfVO.stf_House_Tlphon_No }"></td>
       </tr>
       <tr>
-        <td>우편주소</td>
+        <td>우편번호</td>
         <td><input type="text" class="form-control" id="stf_Post_No" name="stf_Post_No" value="${sklstfVO.stf_Post_No }"></td>
-        <td>주소1</td>
+        <td>주소</td>
         <td><input type="text" class="form-control" id="stf_Adres1" name="stf_Adres1" value="${sklstfVO.stf_Adres1 }"></td>
-        <td>주소2</td>
+        <td>상세주소</td>
         <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
       </tr>
   </table>
