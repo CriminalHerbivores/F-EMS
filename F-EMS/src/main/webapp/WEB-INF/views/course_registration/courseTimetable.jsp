@@ -19,15 +19,32 @@
 <meta charset="UTF-8">
 <title></title>
 
-<script>
+<script type="text/javascript">
+function resultLctre(lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Lctrum_No) {
+	   
+
+var str=lc_Wik_Lctre_Dayweek;
+var arr = str.split("/");
+var arr1 = arr[0];
+var arr2 = arr[1];
+
+document.formm.getElementById("demo1").innerHTML = arr[0];
+
+document.formm.getElementById("demo2").innerHTML=arr[1];
+}
+
+
 	
 </script>
 
 
 </head>
 <body>
-
-	시간표
+<c:forEach items="${lctre_SearchVO}" var="lctre">
+	<input type="button" value="${lctre_SearchVO.lc_Lctre_Nm }" onclick="return resultLctre('${lctre_SearchVO.lc_Wik_Lctre_Dayweek}','${lctre_SearchVO.lc_Lctre_Time}', '${lctre_SearchVO.lc_Lctrum_No}')" ><br/>
+	</c:forEach>
+	
+	<h1>시간표 (${loginUser})</h1>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>시간</th>
@@ -39,8 +56,8 @@
 		</tr>
 		<tr>
 			<td>1교시</td>
-			<td rowspan="2"></td>
-			<td rowspan="2"></td>
+			<td rowspan="2"><p id="demo1"></p></td>
+			<td rowspan="2"><p id="demo2"></td>
 			<td rowspan="2"></td>
 			<td rowspan="2"></td>
 			<td rowspan="2"></td>

@@ -112,7 +112,7 @@ tbody .tb-border{
 					<td>${lctre.lc_Lctre_No}</td>	
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
-					<td><a href="#" >${lctre.lu_Lctre_Nm}</a></td>
+					<td><td><a href="<%=request.getContextPath() %>/course/courseAble?lc_Lctre_No=${lctre.lc_Lctre_No}&tpage=${tpage}">${lctre.lu_Lctre_Nm}</a></td>
 					<td>${lctre.lu_Grade }</td>
 					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.pr_Nm}</td>

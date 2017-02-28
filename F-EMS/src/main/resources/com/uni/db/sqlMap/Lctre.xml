@@ -76,6 +76,11 @@
 		delete from lctre where lc_Lctre_No=#lc_Lctre_No#
 	</update> -->
 	
+	<!-- 강의계획서 조회 -->
+	<select id="" parameterClass="int">
+		select * from Lctre_View where lc_Lctre_No=#lc_Lctre_No#
+	</select>
+	
 	<!-- 강의 검색 :: 교수 검색과 개설 여부 -->
 	<select id="selectLctre" parameterClass="lctre_Search" resultClass="lctre_Search">
 		select * from lctre_View

@@ -142,12 +142,15 @@ public class Intrst_ListController {
 	 * @return
 	 * </pre>
 	 */
-//	@RequestMapping("/courseTimetable")
-//	public String courseTimetable(HttpServletRequest request,
-//			HttpSession session) {
-//		String url = "course_registration/courseTimetable";
-//		return url;
-//	}
+	@RequestMapping("/courseTimetable")
+	public String courseTimetable(HttpServletRequest request,
+			HttpSession session) {
+		String url = "course_registration/courseTimetable";
+		
+		
+		
+		return url;
+	}
 	
 	
 }
