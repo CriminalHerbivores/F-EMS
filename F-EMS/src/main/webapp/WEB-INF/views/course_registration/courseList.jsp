@@ -19,7 +19,22 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script>
+<script type="text/javascript">
+function op_timeTable(){
+ 
+	swal({
+		title : "Are you sure?",
+		text : "You will not be able to recover this imaginary file!",
+		type : "warning",
+		showCancelButton : true,
+		confirmButtonColor : "#DD6B55",
+		confirmButtonText : "닫기",
+		closeOnConfirm : false
+	}, function (){
+		swal("Deleted!", "Your imaginary file has been deleted.", "success");
+	}); 
+}
+
 /* modal 관련 3.jquery로 포함시키기 */
 <%-- $(document).ready(function(){
     $("#course_able").load("<%=request.getContextPath()%>/course/course_able");
@@ -32,6 +47,49 @@
 
 </head>
 <body>
+
+
+	<!-- 상단바 시작 -->
+	<nav class="navbar top-navbar-inverse" id="topnav">
+		<div class="container-fluid" id="toptable">
+			<div class="navbar-header" style="width: 100%;">
+				<table id="topnav-table" style="width: 100%;">
+					<tr style="width: 900px;">
+					
+						<td><a href="<%=request.getContextPath()%>/"> <img
+								src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"
+								id="logo"></a></td>
+				</table> 
+				
+				<div class="float-right">
+				
+				
+				
+					<c:choose>
+						<c:when test="${empty loginUser}">
+							
+		<input class="def-btn btn-sm btn-color" type="button" value="학생"
+								onclick="login_student();" />&nbsp;&nbsp;
+		<a href="<%=request.getContextPath()%>/loginForm" class="no-uline"><button
+									class="def-btn">Login</button></a>&nbsp;&nbsp;
+				</c:when>
+						<c:otherwise>
+							<span>${loginUser}</span>&nbsp;&nbsp;
+				<a href="<%=request.getContextPath()%>/logout"><button
+									class="def-btn float-right">Logout</button></a>
+						</c:otherwise>
+					</c:choose>
+					<button type="button" class="def-btn btn-md btn-color"
+						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button>&nbsp;&nbsp;
+					<input type="button" class="def-btn btn-md btn-gray" onclick="go.history(-1)" value="이전" >
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- 상단바 끝 --> 
+				<!-- <hr class="margin-btm-0"></hr> -->
+
+
 
 <!-- 
 1. iframe : modal 영역이 프레임 내에만 적용되는 문제가 있었음 <<이걸로 하고싶긴 함

@@ -43,6 +43,7 @@ body {
 				<tr>
 					<th><label><input type="checkbox" id="check_all_3" class="input_check_1" />관심삭제</label></th>
 					<th><label><input type="checkbox" id="check_all_2" class="input_check_2" />수강취소</label></th>
+					<th>번호</th>
 					<th>개설학과</th>
 					<th>강의코드</th>
 					<th>강의명</th>
@@ -64,11 +65,11 @@ body {
 					<td class="select_ckbox_2">
 						<label><input type="checkbox" class="input_check_2" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
 						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
-					
+					<td>${lctre.lc_Lctre_No}</td>
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
-					<td>${lctre.lu_Grade }</td>
 					<td><a href="#" >${lctre.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
+					<td>${lctre.lu_Grade }</td>
 					<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>
 					<td>${lctre.pr_Nm}</td>
 					<td>${lctre.lu_Pnt}</td>

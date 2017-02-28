@@ -37,7 +37,6 @@ public class ReqstServiceImpl implements ReqstService {
 		reqstDAO.insertReqst(reqstVO);
 		gradeDAO.insertGrade(reqstVO);
 		reqstDAO.addNumOfStdnt(lctre_SearchVO);	// 수강 신청시 수강중 인원 증가
-		
 	}
 	
 	// 수강 신청 삭제

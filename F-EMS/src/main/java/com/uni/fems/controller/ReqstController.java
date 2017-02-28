@@ -116,9 +116,10 @@ public class ReqstController {
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			
+			reqstVO.setRe_Lctre_No(intrst_ListVO.getIn_Lctre_No());
+			System.out.println("============== 11111111111 reqstVO.getRe_Lctre_No() "+reqstVO.getRe_Lctre_No());
 			try {
-				reqstService.deleteReqst(reqstVO, lctre_SearchVO);
+				reqstService.deleteReqst(reqstVO,lctre_SearchVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

@@ -67,14 +67,14 @@ public class ReqstDAOImpl implements ReqstDAO {
 	// 한 개설강의의 강의실 수용가능 인원수
 	@Override
 	public int acceptNumOfStdnt(String lc_Lctre_No) throws SQLException {
-		int acceptNumOfStdnt=(int) client.queryForObject(lc_Lctre_No);
+		int acceptNumOfStdnt=(Integer) client.queryForObject(lc_Lctre_No);
 		return acceptNumOfStdnt;
 	}
 	
 	// 한 과목을 수강중인 학생의 인원수
 	@Override
 	public int stdntNumOfLctre(String re_Lctre_No) throws SQLException {
-		int stdntNumOfLctre=(int) client.queryForObject(re_Lctre_No);
+		int stdntNumOfLctre=(Integer) client.queryForObject(re_Lctre_No);
 		return stdntNumOfLctre;
 	}
 	
