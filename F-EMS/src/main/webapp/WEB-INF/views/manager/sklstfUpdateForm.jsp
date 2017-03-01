@@ -33,23 +33,14 @@
       
       <tr>
       	<td>단과</td>
-        <td><select name="fc_Coleg_Code" class="combobox-lg custom-form-control">
-        		<c:forEach var="colegVO" items="${colegList }">
-			  		<option value="${colegVO.coleg_Code }">${colegVO.coleg_Nm }</option>
-			  	</c:forEach>
-			</select></td>
+        <td>
+        <input type="text" class="form-control" id="coleg_Nm" name="" value="" readonly>
+        <input type="hidden" id="subjct_Code" name="" value="" readonly>
+        </td>
       	<td>학부</td>
-        <td><select name="sit_Faculty" class="combobox-lg custom-form-control">
-        		<c:forEach var="facultyVO" items="${colegList }">
-			  		<option value="${facultyVO.fc_Faculty_Code }">${facultyVO.fc_Faculty_Nm }</option>
-			  	</c:forEach>
-			</select></td>
+        <td><input type="text" class="form-control" id="faculty_Nm" name="" value="" readonly></td>
         <td>학과</td>
-        <td><select name="st_Subjct_Code" class="combobox-lg custom-form-control">
-			  	<c:forEach var="subjctVO" items="${subjctList }">
-			  		<option value="${subjctVO.sit_Subjct_Code }">${subjctVO.sit_Subjct }</option>
-			  	</c:forEach>
-			</select></td></td>
+        <td><input type="text" class="form-control" id="subjct_Nm" name="" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
       </tr>
       <tr>
         <td>비밀번호</td>
@@ -69,9 +60,9 @@
       </tr>
       <tr>
         <td>우편번호</td>
-        <td><input type="text" class="form-control" id="stf_Post_No" name="stf_Post_No" value="${sklstfVO.stf_Post_No }"></td>
+        <td><input type="text" class="form-control" id="zipNum" name="stf_Post_No" value="${sklstfVO.stf_Post_No }" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
-        <td><input type="text" class="form-control" id="stf_Adres1" name="stf_Adres1" value="${sklstfVO.stf_Adres1 }"></td>
+        <td><input type="text" class="form-control" id="addres1" name="stf_Adres1" value="${sklstfVO.stf_Adres1 }" readonly></td>
         <td>상세주소</td>
         <td><input type="text" class="form-control" id="stf_Adres2" name="stf_Adres2" value="${sklstfVO.stf_Adres2 }"></td>
       </tr>

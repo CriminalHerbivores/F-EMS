@@ -28,7 +28,7 @@
 	<tr>
 		<th>단과</th>
 		<th>등록금</th>
-		<th>납부기한</th>
+		<th width="200">납부기한</th>
 		<th>납부일자</th>
 	</tr>
 	<c:forEach var="tut" items="${tuitionList}">

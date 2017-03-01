@@ -14,7 +14,7 @@
 <body>
 
 <h2>개설 강의</h2>
-<table class="def-table-auto tb-border table-hover">
+<table class="def-table-full tb-border table-hover">
 	<tr>
 		<sec:authorize access="hasRole('ROLE_STF')">
 		<th>교수번호</th>

@@ -23,7 +23,7 @@
 <body>
 <table class="non-border margin-auto"><tr><td>
 	<h3>장학금</h3><br/>
-	<h4>기준년도 학기</h4><br/>
+	<h4>기준년도 학기</h4>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th width=150px>신청년도</th>

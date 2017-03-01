@@ -20,8 +20,8 @@
 <title></title>
 </head>
 <body>
-<h2>기숙사 관리</h2>
 	<table class="non-border margin-auto"><tr><td>
+	<h2>기숙사 관리</h2>
 	<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
 	<tr>

@@ -14,7 +14,7 @@
 <body>
 
 <h2>진행 강의</h2>
-<table class="def-table-auto tb-border table-hover">
+<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>개설년도</th>
 		<th>학기</th>

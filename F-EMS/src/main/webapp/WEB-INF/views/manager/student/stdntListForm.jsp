@@ -30,7 +30,6 @@
 <script src="../js/notice_bbs.js"></script>
 </head>
 <body>
-	<div class="container">
 		<h2>학생 관리</h2>
 			<form name="formm">
 		<table>
@@ -72,6 +71,5 @@
 			</tr>
 
 		</table>
-	</div>
 </body>
 </html>

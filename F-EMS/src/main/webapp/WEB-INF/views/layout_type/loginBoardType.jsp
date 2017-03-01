@@ -235,7 +235,8 @@
 		<div class="row content">
 			
 			<div class="custom-col-sm-4 sidenav">
-			
+<c:choose>
+<c:when test="${empty loginUser}">
 			<table class="def-table-full out-border">
 			<!-- <form action="login" id="loginForm" method="post"> -->
 				<tr><td>
@@ -248,6 +249,17 @@
 <!-- </form> -->
 		<tr><td><input type="button" class="def-btn btn-sm btn-color" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" class="def-btn btn-sm btn-color" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 			</table>
+</c:when>
+<c:otherwise>
+<table class="def-table-full out-border">
+<tr><td>
+<span>${loginUser}</span>&nbsp;&nbsp;</td><td>
+<a href="<%=request.getContextPath()%>/logout"><button class="def-btn float-right">Logout</button></a>
+</td></tr>
+</table>
+</c:otherwise>
+</c:choose>
+
 			<div>
 <br/>
 			<table class="def-table-full tb-border"><tr><td>

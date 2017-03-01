@@ -20,7 +20,6 @@
 <title></title>
 </head>
 <body>
-	<div class="container">
 <table class="non-border margin-auto"><tr><td>
 		<h2>장학금 관리</h2>
 		<form name="search">
@@ -66,6 +65,5 @@
 	  	<a href="<%=request.getContextPath()%>/sklstf/requestschlship"><input type="button" value="장학금 신청 내역" class="def-btn btn-sm btn-color"></a>
 	  </div>
 </td></tr></table>
-	</div>
 </body>
 </html>
