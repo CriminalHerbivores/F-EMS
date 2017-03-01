@@ -295,8 +295,28 @@ public class Lctre_TestController {
 	}
 	
 	@RequestMapping(value="/completedTest")
-	public String completedTest(Model model, String stdNm){
+	public String completedTest(Model model, String stdNm, String tpNo){
 		String url="lecture/test/completedTest";
+		AnswerVO answerVO = new AnswerVO();
+		answerVO.setAn_Stdnt_No(stdNm);
+		answerVO.setAn_Tp_No(tpNo);
+		
+		Test_PaperVO tpVO = null;
+		List<TestVO> queList = null;
+		List<AnswerVO> answerList = null;
+		try {
+			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(tpNo));
+			queList = testSvc.listAllTest(Integer.parseInt(tpNo));
+			answerList = answerSvc.completeAnswer(answerVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("tpVO", tpVO);
+		model.addAttribute("queList", queList);
+		model.addAttribute("answerList", answerList);
+		
+		
 		return url;
 	}
 	
