@@ -23,31 +23,45 @@
 <title></title>
 </head>
 <body>
-<table style="width:100%;" class="non-border margin-auto">
+<table style="width:80%;" class="non-border margin-auto">
 <tr><td>
 	<table class="def-table-auto tb-border table-hover" id="testtable">
 			<tr>
-				<td style="padding-top: 0;padding-bottom: 0; width:700px; ">	
+				<td colspan="4" style="padding-top: 0;padding-bottom: 0;">	
 					<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 						<tr>
-							<th>시험명</th>
-								<td style="width:80%;"> ${tpVO.tp_Nm } 
+							<th style="width:9%;">시험명</th>
+								<td style="width:60%;"> ${tpVO.tp_Nm } 	
 								</td>
+							<th style="width:9%;">응시자</th>
+								<td>${stdNm}</td>
+							<th>점수</th>
+								<td>몇점</td>
 						</tr>
 					</table>
 				</td>
-				<td>
-				</td>
+				
 			</tr>
 	
 			<tr>
+				<th>No</th>
 				<th style="width:80%;">문제</th>
-				<th>정답</th>
+				<th>응시자 답안</th>
+				<th>채점</th>
 			</tr>
 		<c:forEach var="queList" items="${queList }" varStatus="status" >
 				<tr>
+					<td>${status.count }</td>
 					<td>${queList.te_Ques }</td>
 					<td>${answerList[status.index].an_Ans}</td>
+				<c:choose>
+  				  <c:when test="${queList.te_Ca =='${answerList[status.index].anAns' }">
+						<td>O</td>
+				  </c:when>
+				  <c:otherwise>
+						<td>X</td>
+				  </c:otherwise>
+				</c:choose>
 				</tr>
 		</c:forEach>
 	</table>
