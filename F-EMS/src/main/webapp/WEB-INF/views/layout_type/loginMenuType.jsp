@@ -68,7 +68,7 @@ function login_go() {
 	<tr><td colspan="3">	
 			<table class="def-table-auto out-border">
 				<div id="section">
-		<form action="login" id="loginForm" method="post">
+		<form action="login" id="loginMenuForm" method="post">
 				
 				<tr><td>
 <input type="hidden" name="returl" value="${param.returl }" />
