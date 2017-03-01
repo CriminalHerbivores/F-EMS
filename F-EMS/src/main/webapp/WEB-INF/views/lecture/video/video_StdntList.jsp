@@ -22,8 +22,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<script type="text/javascript">
-	function detailLctre_Video(lv_Bbs_No,table_Nm,tpage){
-	var url = "detailLctre_Video_Stdnt?lv_Bbs_No="+lv_Bbs_No+"&table_Nm="+table_Nm+"&tpage="+tpage;
+	function detailLctre_Video(lv_Bbs_No,table_Nm,lw_Stdnt_No){
+	var url = "detailLctre_Video_Stdnt?lv_Bbs_No="+lv_Bbs_No+"&table_Nm="+table_Nm+"&lw_Stdnt_No="+lw_Stdnt_No;
 	  window.open( url, "_blank_1",
 	"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=1000, top=300, left=300, ");
 }
@@ -61,7 +61,7 @@
       <c:if test="${lctre_Video.lv_Start_Dt <= Date}">
       	<tr>
       		<td> ${lctre_Video.lv_Bbs_No}</td>
-      		<td><a href="#" onclick="detailLctre_Video('${lctre_Video.lv_Bbs_No}','${lctre_Video_Gnt.table_Nm}','${tpage}');">
+      		<td><a href="#" onclick="detailLctre_Video('${lctre_Video.lv_Bbs_No}','${lctre_Video_Gnt.table_Nm}','${lctre_Video_Gnt.lw_Stdnt_No}');">
       		 ${lctre_Video.lv_Sj} </a>
       		</td>
       		<td><fmt:formatDate value="${lctre_Video.lv_Start_Dt}"/>
