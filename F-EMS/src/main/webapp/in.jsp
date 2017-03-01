@@ -4,11 +4,10 @@
 <html>
 <head>
 <script>
-
- setTimeout("move()",0);
- function move(){
-    location.href="<%=request.getContextPath() %>/"
- }
+setTimeout("move()",0);
+function move(){
+   location.href="<%=request.getContextPath() %>/"
+}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>

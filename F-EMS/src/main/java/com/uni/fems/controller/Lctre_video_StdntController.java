@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -104,7 +105,6 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("lctre_VideoList : "+lctre_VideoList);
 		model.addAttribute("lctre_VideoList", lctre_VideoList);
 		int n = lctre_VideoList.size();
 		model.addAttribute("lctre_VideoListSize", n);
@@ -127,7 +127,7 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 	 * </pre>
 	 */
 	@RequestMapping(value="/detailLctre_Video_Stdnt")
-	public String detailLctre_Video_Stdnt(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt, @RequestParam String table_Nm, @RequestParam int tpage, Model model, HttpServletRequest request){
+	public String detailLctre_Video_Stdnt(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt, @RequestParam String table_Nm, Model model, HttpServletRequest request){
 		String url="lecture/video/detailLctre_Video_Stdnt";
 		//lctre_Watch_Video_Gnt.setLw_Stdnt_No("bbb");
 		Lctre_FlpthVO lctre_Flpth = null;
@@ -137,10 +137,9 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
 		System.out.println("lctre_Watch_Video_Gnt : "+lctre_Watch_Video_Gnt);
+		lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
 		model.addAttribute("lctre_Video_Gnt",lctre_Watch_Video_Gnt);
-		model.addAttribute("tpage",tpage);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;
 	}
@@ -171,49 +170,62 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			
 			HttpSession session = request.getSession();
 			String loginUser = (String) session.getAttribute("loginUser");
-			
+//			String lw_Stdnt_No = loginUser;
+			String lw_Stdnt_No = "bbb";
 			String table_Nm = (String)jsonMap.get("table_Nm");
-			String lv_End_Dt = (String)jsonMap.get("lv_End_Dt");
-			String lv_Time = (String)jsonMap.get("lv_Time");
-			String lw_Bbs_No = (String)jsonMap.get("lw_Bbs_No");
-			String lw_Stdnt_No = (String)jsonMap.get("lw_Stdnt_No");
-			String lw_Video_Bbs_No = (String)jsonMap.get("lw_Video_Bbs_No");
-			String lw_Watch_Time = (String)jsonMap.get("lw_Watch_Time");
-			String lw_Attendance = (String)jsonMap.get("lw_Attendance");
+			String lv_Bbs_No = (String)jsonMap.get("lv_Bbs_No");
+			int lw_Watch_Time = (int)((double)jsonMap.get("lw_Watch_Time"));
+			
+			System.out.println("table_Nm : "+table_Nm);
+			System.out.println("lv_Bbs_No : "+lv_Bbs_No);
+			System.out.println("lw_Stdnt_No : "+lw_Stdnt_No);
+			System.out.println("lw_Watch_Time : "+lw_Watch_Time);
 			
 			Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt = new Lctre_Watch_Video_GntVO();
 			
 			lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
+			lctre_Watch_Video_Gnt.setLv_Bbs_No(Integer.parseInt(lv_Bbs_No));
+			lctre_Watch_Video_Gnt.setLw_Stdnt_No(lw_Stdnt_No);
 			
-//			Date date = new Date(System.currentTimeMillis());
-//			
-//			long times = date.getTime()	- lctre_Watch_Video_Gnt.getLv_End_Dt().getTime();
-//			 
-//			if(times < 0){
-//				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Attendance())<0){
-//					lctre_Watch_Video_Gnt.setLw_Attendance("출석");
-//				}else{
-//					lctre_Watch_Video_Gnt.setLw_Attendance("");
-//				}
-//			}else{
-//				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Watch_Time())<0){
-//					lctre_Watch_Video_Gnt.setLw_Attendance("지각");
-//				}else{
-//					lctre_Watch_Video_Gnt.setLw_Attendance("결석");
-//				}
-//			}
-//			
-//			try {
-//				if(lctre_Watch_Video_Gnt.getLw_Bbs_No() == null || lctre_Watch_Video_Gnt.getLw_Bbs_No().equals("")){
-//					lctre_Watch_Video_Gnt.setLw_Stdnt_No("bbb");
-//					lctre_Video_StdntSvc.insertLctre_Video(lctre_Watch_Video_Gnt);
-//				}else{
-//					lctre_Video_StdntSvc.updateLctre_Video(lctre_Watch_Video_Gnt);
-//				}
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//			
+			try {
+				lctre_Watch_Video_Gnt = lctre_Video_StdntSvc.getLctre_Video(lctre_Watch_Video_Gnt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			lctre_Watch_Video_Gnt.setLw_Watch_Time(lw_Watch_Time+"");
+			
+			lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
+			
+			Date date = new Date(System.currentTimeMillis());
+			
+			long times = date.getTime()	- lctre_Watch_Video_Gnt.getLv_End_Dt().getTime();
+			 
+			if(times < 0){
+				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Attendance())<0){
+					lctre_Watch_Video_Gnt.setLw_Attendance("출석");
+				}else{
+					lctre_Watch_Video_Gnt.setLw_Attendance("");
+				}
+			}else{
+				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Watch_Time())<0){
+					lctre_Watch_Video_Gnt.setLw_Attendance("지각");
+				}else{
+					lctre_Watch_Video_Gnt.setLw_Attendance("결석");
+				}
+			}
+			
+			try {
+				if(lctre_Watch_Video_Gnt.getLw_Bbs_No() == null || lctre_Watch_Video_Gnt.getLw_Bbs_No().equals("")){
+					lctre_Watch_Video_Gnt.setLw_Stdnt_No(lw_Stdnt_No);
+					lctre_Video_StdntSvc.insertLctre_Video(lctre_Watch_Video_Gnt);
+				}else{
+					lctre_Video_StdntSvc.updateLctre_Video(lctre_Watch_Video_Gnt);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			return "null";
 			
 		} 

@@ -19,23 +19,30 @@
 <script src="<%=request.getContextPath()%>/resources/js/lctre_video.js"></script>
 <script type="text/javascript">
 $(function(){
-var deadline = new Date(Date.parse(new Date()));
-	initializeClock('clockdiv', deadline);
-})
+var date1 = new Date();
 
+var deadline = new Date(Date.parse(new Date()) - '${lctre_Video_Gnt.lw_Watch_Time}'*1000 );
+	initializeClock('clockdiv', deadline);
+
+$(document).on('click','#test',function(e){
+    e.preventDefault();
+  	var minutesSpan = document.getElementById('minutes').value;
+  	var secondsSpan = document.getElementById('seconds').value;
+  	var date2 = new Date();
+  	var date = (date2 - date1 + '${lctre_Video_Gnt.lw_Watch_Time}'*1000) / 1000;
+	alert(date);
+});
 $(document).on('click','#end',function(e){
     e.preventDefault();
-    var minutes = $('.minutes').val *60;
-    var seconds = $('.seconds').val;
-    var lw_Watch_Time = minutes + seconds;
+    var date2 = new Date();
+  	var date = (date2 - date1 + '${lctre_Video_Gnt.lw_Watch_Time}'*1000) / 1000;
     var data ={
     		'table_Nm' : '${lctre_Video_Gnt.table_Nm}',
-    		'lv_End_Dt' : '${lctre_Video_Gnt.lv_End_Dt}',
-    		'lv_Time' : '${lctre_Video_Gnt.lv_Time}',
+    		'lv_Bbs_No' : '${lctre_Video_Gnt.lv_Bbs_No}',
     		'lw_Bbs_No' : '${lctre_Video_Gnt.lw_Bbs_No}',
     		'lw_Stdnt_No' : '${lctre_Video_Gnt.lw_Stdnt_No}',
     		'lw_Video_Bbs_No' : '${lctre_Video_Gnt.lv_Bbs_No}',
-    		'lw_Watch_Time' : lw_Watch_Time,
+    		'lw_Watch_Time' : date,
     		'lw_Attendance' : '${lctre_Video_Gnt.lw_Attendance}'
     		};
     
@@ -53,6 +60,7 @@ $(document).on('click','#end',function(e){
        }
     });
 });
+})
 
 </script>
 </head>
@@ -74,7 +82,7 @@ $(document).on('click','#end',function(e){
 		      		<fmt:formatDate value="${lctre_Video_Gnt.lv_End_Dt}"/> </td>
 				<th>시간</th>
 				<td id="clockdiv" style="text-align: left;">
-    				<span class="minutes"></span>:<span class="seconds"></span>
+    				<span id="minutes" class="minutes"></span>:<span id="seconds" class="seconds"></span>
    					/
 					<fmt:parseNumber var="i" integerOnly="true" 
                        type="number" value="${lctre_Video_Gnt.lv_Time/60}" />
@@ -101,6 +109,7 @@ $(document).on('click','#end',function(e){
 
 	<!--버튼들  -->
 	<div id="buttons" style="float: right">
+		<input id="test" type="button" value="test" class="def-btn btn-md btn-color">
 		<input id="end" type="button" value="종료" class="def-btn btn-md btn-color">
 	</div>
 </div>
