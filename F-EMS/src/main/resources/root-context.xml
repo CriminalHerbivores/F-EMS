@@ -338,7 +338,12 @@
 	<bean id="lctre_Video_ProfsrService" class="com.uni.fems.service.impl.Lctre_Video_ProfsrServiceImpl"
 		p:lctre_Video_ProfsrDAO-ref="lctre_Video_ProfsrDAO" 
 		p:lctre_FlpthDAO-ref="lctre_FlpthDAO" />
-		
+	
+	<bean id="eventDAO" class="com.uni.fems.dao.impl.EventDAOImpl"
+		p:client-ref="sqlMapClient" />
+
+	<bean id="eventService" class="com.uni.fems.service.impl.EventServiceImpl"
+		p:eventDAO-ref="eventDAO" />
 		
 	<bean id="fileDownload" class="com.uni.fems.common.FileDownload" />
 	<bean id="supporter" class="com.uni.fems.common.Supporter" />
