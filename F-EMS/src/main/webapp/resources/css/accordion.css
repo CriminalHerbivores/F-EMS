@@ -27,12 +27,12 @@
 }
 
 
-
-.accordion-menu>li {
+/* dbCSS로 이사 */	
+/* .accordion-menu>li {
     overflow:hidden;
     border:1px solid #000;
     cursor:pointer;
-}
+} */
 
 
 /* dbCSS로 이사 */	
@@ -130,11 +130,15 @@
 
 .accordion-menu li ul.sub li {
     height:30px;
-    padding:5px;
+    margin-top:3px;
+    margin-bottom:3px;
+    padding-top:7px;
+    padding-bottom:5px;
     padding-left:30px;
     line-height:15px;
     vertical-align:middle;
     cursor:pointer;
+    /* font-weight:600; */
 }
 
 /* dbCSS로 이사 */

@@ -1,7 +1,9 @@
 package com.uni.fems.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
+import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.ManageVO;
 
 /**
@@ -23,7 +25,6 @@ import com.uni.fems.dto.ManageVO;
  */
 public interface ManageDAO {
 	
-	
 	/**
 	 * <pre>
 	 * 대학이름과 일치하는 하나의 대학정보 가져오기
@@ -35,6 +36,15 @@ public interface ManageDAO {
 	 * </pre>
 	 */
 	ManageVO getManage() throws SQLException;
-	
+	/**
+	 * <pre>
+	 * 게시판 리스트를 가져옴
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<Bbs_ListVO> getBbsList(String name) throws SQLException;
 
 }

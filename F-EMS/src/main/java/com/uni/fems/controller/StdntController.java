@@ -21,12 +21,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
+import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.request.PageRequest;
+import com.uni.fems.service.GradeService;
 import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
@@ -55,6 +57,8 @@ public class StdntController {
 	@Autowired
 	private Supporter supporter;
 	@Autowired
+	private Paging callPaging;
+	@Autowired
 	private StdntService stdntService;
 	@Autowired
 	private SknrgsService sknrgs_Svc;
@@ -63,7 +67,7 @@ public class StdntController {
 	@Autowired
 	private TuitionService tuitionService;
 	@Autowired
-	private Paging callPaging;
+	private GradeService gradeService;
 	
 	/**
 	 * <pre>
@@ -423,6 +427,44 @@ public class StdntController {
 			e.printStackTrace();
 		}
 		
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 강의 평가 (미완성)
+	 * </pre>
+	 * <pre>
+	 * @param session
+	 * @param tpage
+	 * @param ss_Schlship_Code
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value = "/evlScope")
+	public String evlScope(HttpSession session,String tpage,int ss_Schlship_Code){
+		String url="student/evlScope";
+		
+		return url;
+	}
+	
+	@RequestMapping(value="viewGrade")
+	public String viewGrade(HttpSession session, Model model){
+		String url = "student/viewGrade";
+		GradeVO grade = new GradeVO();
+		String loginUser = (String) session.getAttribute("loginUser");
+		grade.setGd_Stdnt_No(loginUser);
+		
+		List<GradeVO> list = null;
+		GradeVO vo = null;
+		try {
+			list = gradeService.lctreGrade(grade);
+			vo = gradeService.totalGrade(loginUser);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("gradeList",list);
+		model.addAttribute("grade",vo);
 		return url;
 	}
 }

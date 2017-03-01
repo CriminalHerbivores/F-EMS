@@ -1,6 +1,8 @@
 package com.uni.fems.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.AnswerVO;
@@ -150,7 +153,6 @@ public class Lctre_TestController {
 			answerVO.setAn_Ans(answer[i]);
 			answerVO.setAn_Ques_No(queNo[i]);
 			
-			
 			try {
 				answerSvc.insertAnswer(answerVO);
 			} catch (SQLException e) {
@@ -269,13 +271,56 @@ public class Lctre_TestController {
 		return queNo;
 	}
 	
-	@RequestMapping(value="/nameAnswerSTD", method=RequestMethod.POST )
+	@RequestMapping(value="/nameAnswerSTD", produces = "application/json")
 	@ResponseBody
-	public String nameAnswerSTD(Map<String,Object> jsonMap){
-		String url="";
+	public Map<String,List> nameAnswerSTD(@RequestParam(value="no[]")List<String> tpNo){
+		
+		Map<String,List> map = new HashMap<String,List>();
+		
+		for(String tpno : tpNo){
+			try {
+				List<String> nameList = new ArrayList<String>();
+				nameList = answerSvc.nameAnswerSTD(Integer.parseInt(tpno));
+				map.put(tpno, nameList);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return map;
+	}
+	
+	@RequestMapping(value="/completedTest")
+	public String completedTest(Model model, String stdNm, String tpNo){
+		String url="lecture/test/completedTest";
+		AnswerVO answerVO = new AnswerVO();
+		answerVO.setAn_Stdnt_No(stdNm);
+		answerVO.setAn_Tp_No(tpNo);
+		
+		Test_PaperVO tpVO = null;
+		List<TestVO> queList = null;
+		List<AnswerVO> answerList = null;
+		try {
+			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(tpNo));
+			queList = testSvc.listAllTest(Integer.parseInt(tpNo));
+			answerList = answerSvc.completeAnswer(answerVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("stdNm",stdNm);
+		model.addAttribute("tpVO", tpVO);
+		model.addAttribute("queList", queList);
+		model.addAttribute("answerList", answerList);
+		
+		
 		return url;
 	}
-		
+	
 	
 
 }

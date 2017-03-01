@@ -37,6 +37,18 @@ public interface Test_PaperDAO {
 	
 	/**
 	 * <pre>
+	 * 해당 시험지 번호로 시험 정보 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param tpNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public Test_PaperVO getTestPaper(int tpNo) throws SQLException;
+	
+	/**
+	 * <pre>
 	 * 온라인 시험(지)을 추가하는 메서드
 	 * </pre>
 	 * <pre>

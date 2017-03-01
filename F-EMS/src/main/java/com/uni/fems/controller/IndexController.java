@@ -103,34 +103,28 @@ public class IndexController {
 	public String index(Model model, HttpSession session) {
 		String url=null;
 		
-		ManageVO manageVO = null;
+		ManageVO manageVO = (ManageVO) session.getAttribute("manageVO");
 
-		try {
-			manageVO = manageService.getManage();
-
-			switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
-			case 1: //url= "redirect:lgLogin";
-					url = "layout_type/loginLoginType";
-				break;
-			case 2: //url= "redirect:lgBoard"; 
-					url = "layout_type/loginBoardType";
-				break;
-			case 3: //url= "redirect:lgMenu"; 
-					url = "layout_type/loginMenuType";
-				break;
-			case 4: //url= "redirect:lgMulti";
-					url = "layout_type/loginMultiType";
-				break;
-			default: url = "/index";
-			
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace(); 
+		switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
+		case 1: //url= "redirect:lgLogin";
+				url = "layout_type/loginLoginType";
+			break;
+		case 2: //url= "redirect:lgBoard"; 
+				url = "layout_type/loginBoardType";
+			break;
+		case 3: //url= "redirect:lgMenu"; 
+				url = "layout_type/loginMenuType";
+			break;
+		case 4: //url= "redirect:lgMulti";
+				url = "layout_type/loginMultiType";
+			break;
+		default: url = "/index";
 		}
-
-		// session.setAttribute("manageVO", manageVO);
-
+		
+		if(session.getAttribute("loginUser")!=null){
+			url="layout_type/loginBoardType";
+		}
+		
 		return url;
 	}
 

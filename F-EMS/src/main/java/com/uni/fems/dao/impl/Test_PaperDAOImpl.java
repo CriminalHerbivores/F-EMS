@@ -53,5 +53,9 @@ public class Test_PaperDAOImpl implements Test_PaperDAO {
 	public int deleteTestPaper(int tpNo) throws SQLException {
 		return client.update("deleteTestPaper", tpNo);
 	}
+	@Override
+	public Test_PaperVO getTestPaper(int tpNo) throws SQLException {
+		return (Test_PaperVO) client.queryForObject("getTestPaper", tpNo);
+	}
 	
 }

@@ -52,5 +52,9 @@ public class AnswerDAOImpl implements AnswerDAO  {
 	public List<String> nameAnswerSTD(int tpNo) throws SQLException {
 		return client.queryForList("nameAnswerSTD", tpNo);
 	}
+	@Override
+	public List<AnswerVO> completeAnswer(AnswerVO answerVO) throws SQLException {
+		return client.queryForList("completeAnswer", answerVO);
+	}
 	
 }

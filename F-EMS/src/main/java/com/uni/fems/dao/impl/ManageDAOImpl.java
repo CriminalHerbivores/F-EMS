@@ -1,9 +1,11 @@
 package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.ManageDAO;
+import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.ManageVO;
 
 /**
@@ -33,8 +35,13 @@ public class ManageDAOImpl implements ManageDAO {
 	// 대학정보 하나 가져오기
 	@Override
 	public ManageVO getManage() throws SQLException {
-		ManageVO manageVO = (ManageVO) client.queryForObject("getManage","");
-		
+		ManageVO manageVO = (ManageVO) client.queryForObject("getManage");
 		return manageVO;
+	}
+
+	@Override
+	public List<Bbs_ListVO> getBbsList(String name) throws SQLException {
+		List<Bbs_ListVO> bbsListVO = client.queryForList("getBbsList",name);
+		return bbsListVO;
 	}
 }

@@ -10,7 +10,7 @@
 <title></title>
 <style type="text/css">
 body {
- font-family: calibri;
+ font-family: Malgun Gothic;	/* calibri; */
 }
 input[type=radio], input[type=checkbox] {
 		display:none;

@@ -11,8 +11,10 @@
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Manage">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="Manage" type="com.uni.fems.dto.ManageVO" />
-	
+	<typeAlias alias="bbs_listvo" type="com.uni.fems.dto.Bbs_ListVO" />
 	
 	<!-- <select id="selectManage" parameterClass="str" resultClass="Manage">
 		select * from Manage 
@@ -23,5 +25,9 @@
 		select * from Manage 
 	</select>
 	
-
+	<select id="getBbsList" parameterClass="str" resultClass="bbs_listvo">
+		select * from bbs_list
+		where bl_use_ennc='y'
+		and bl_table_nm like #name#||'%'
+	</select>
 </sqlMap>

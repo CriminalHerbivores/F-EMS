@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="sec"
@@ -43,7 +43,7 @@
 
 	<!-- 상단바 시작 -->
 	<nav class="navbar top-navbar-inverse" id="topnav">
-		<div class="container-fluid" id="toptable">
+		<div id="toptable"><!-- class="container-fluid" -->
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
 					<tr style="width: 900px;">
@@ -97,22 +97,19 @@
 								<a href="#">직원</a>
 							</button>
 							<div class="menu-dropdown-content">
-								<a href="<%=request.getContextPath()%>/sklstf/sklstfUpdate"
-									class="no-uline">직원 정보 수정</a> <a
-									href="<%=request.getContextPath()%>/sklstf/stdntInsert"
-									class="no-uline">학생 등록 </a> <a
-									href="<%=request.getContextPath()%>/sklstf/stdntList"
-									class="no-uline">학생 조회 </a> <a
-									href="<%=request.getContextPath()%>/sklstf/sknrgListForm"
-									class="no-uline">학적 관리 </a> <a
-									href="<%=request.getContextPath()%>/sklstf/stdntBrhs"
-									class="no-uline">기숙사 신청 </a> <a
-									href="<%=request.getContextPath()%>/sklstf/profsrInsert"
-									class="no-uline">교수 등록 </a> <a
-									href="<%=request.getContextPath()%>/sklstf/profsrList"
-									class="no-uline">교수 조회 </a> <a
-									href="<%=request.getContextPath()%>/sklstf/schlshipList"
-									class="no-uline">장학금 양식</a>
+<a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록</a>
+<a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/profsrLctreList" class="no-uline">교수 이력 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/tuitionList">등록금 조회</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역 조회</a>
+<a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a>
+<a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 신청 내역</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -123,15 +120,11 @@
 								<a href="#">교수</a>
 							</button>
 							<div class="menu-dropdown-content">
-								<a href="<%=request.getContextPath()%>/profsr/profsrDetail"
-									class="no-uline">교수 조회 </a>
-								<a href="<%=request.getContextPath() %>/profsr/requestLctre"
-									 class="no-uline">강의 등록 요청</a>
-								<a href="<%=request.getContextPath() %>/profsr/updateLctre"
-									 class="no-uline">강의 수정 요청</a>	 
-								<a href="<%=request.getContextPath() %>/profsr/openLctreList"
-									 class="no-uline">강의 목록</a>
-									 
+<a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 정보 조회</a>
+<a href="<%=request.getContextPath() %>/profsr/profsrUpdate" class="no-uline">교수 정보 수정</a>
+<a href="<%=request.getContextPath() %>/profsr/requestLctre" class="no-uline">강의 등록 요청</a>
+<a href="<%=request.getContextPath() %>/profsr/openLctreList" class="no-uline">개설 강의 조회</a>
+<a href="<%=request.getContextPath() %>/profsr/ongoingLctreList" class="no-uline">진행 강의 조회</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -142,10 +135,13 @@
 								<a href="#">학생</a>
 							</button>
 							<div class="menu-dropdown-content">
-								<a href="<%=request.getContextPath()%>/stdnt/sknrgsList"
-									class="no-uline">학적관리</a> <a
-									href="<%=request.getContextPath()%>/stdnt/atBrhs"
-									class="no-uline">기숙사신청</a>
+<a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a>
+<a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a>
+<a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적 조회</a>
+<a href="<%=request.getContextPath() %>/stdnt/viewGrade" class="no-uline">성적 조회</a>
+<a href="<%=request.getContextPath() %>/stdnt/fromStdTuition" class="no-uline">등록금 조회</a>
+<a href="<%=request.getContextPath() %>/stdnt/schlshipList" class="no-uline">장학금 조회</a>
+<a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사 조회</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -157,14 +153,14 @@
 							<a href="#">학사</a>
 						</button>
 						<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath()%>/notice_bbs/noticeList"
-								class="no-uline">공지 게시판</a> <a
-								href="<%=request.getContextPath()%>/schafs_schdul/schdulList"
-								class="no-uline">학사 일정</a>
-							<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>	
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=1" class="no-uline">test 게시판</a>
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=2" class="no-uline">test2 게시판</a>
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=3" class="no-uline">test3 게시판</a>	
+<a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
+<a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
+<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>	
+<c:if test="${not empty noticeBBS}">
+<c:forEach items="${noticeBBS}" var="bbs">
+<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
+</c:forEach>
+</c:if>
 						</div>
 					</div>
 
@@ -174,7 +170,7 @@
 								<a href="#">수강신청</a>
 							</button>
 							<div class="menu-dropdown-content">
-								<a href="<%=request.getContextPath()%>/course/courseList">수강신청목록</a>
+<a href="<%=request.getContextPath()%>/course/courseList">수강신청목록</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -185,6 +181,7 @@
 								<a href="#">강의</a>
 							</button>
 							<div class="menu-dropdown-content">
+<<<<<<< HEAD
 								<a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
 								<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
 								<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
@@ -195,31 +192,47 @@
 									여부 게시판</a>
 									<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
 
+=======
+<a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
+<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청여부 게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
+>>>>>>> branch 'hotfix' of https://github.com/CriminalHerbivores/F-EMS.git
 							</div>
 						</div>
 					</sec:authorize>
-
+					
+					<c:if test="${not empty bbsList}">
+					
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn">
 							<a href="#">커뮤니티</a>
 						</button>
 						<div class="menu-dropdown-content">
-							<a href="#">커뮤니티메뉴1 </a>
+<c:forEach items="${bbsList}" var="bbs">
+<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
+</c:forEach>
 						</div>
 					</div>
-
+					
+					</c:if>
+					
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
 								<a href="#" onclick="op_menu_admin()">관리자</a>
 							</button>
 							<div class="menu-dropdown-content">
-								<a href="<%=request.getContextPath()%>/admin/main">관리자 페이지</a> <a
-									href="<%=request.getContextPath()%>/adminJoin">관리자
-									가입</a> <a href="<%=request.getContextPath()%>/lgLogin">로그인형</a> <a
-									href="<%=request.getContextPath()%>/lgMulti">복합형</a> <a
-									href="<%=request.getContextPath()%>/lgBoard">게시판형</a> <a
-									href="<%=request.getContextPath()%>/lgMenu">메뉴강조형</a>
+<a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a>
+<a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
+<a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
+<a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
+<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
+<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -245,7 +258,7 @@
 
 	<!-- 좌측메뉴 시작 -->
 	
-	<div class="container-fluid">
+	<div class="container-fluid-side-menu">
 		<div class="row content">
 
 	<c:if test="${manageVO.mng_Left_Menu_Use_Ennc=='y'||'Y'}">
@@ -260,46 +273,19 @@
 									<span class="folder main_menu"></span><a href="#">직원</a>
 								</div>
 								<ul class="sub sub_meun">
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/sklstfUpdate"
-											class="no-uline">직원 정보 수정</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/stdntInsert"
-											class="no-uline">학생 등록 </a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/stdntList"
-											class="no-uline">학생 조회 </a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/sknrgListForm"
-											class="no-uline">학적 관리 </a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/stdntBrhs"
-											class="no-uline">기숙사 신청 </a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/profsrInsert"
-											class="no-uline">교수 등록 </a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/profsrList"
-											class="no-uline">교수 조회 </a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/sklstf/schlshipList"
-											class="no-uline">장학금 양식</a></li>
-									</div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 관리</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 관리</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/profsrLctreList" class="no-uline">교수 이력 관리</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/tuitionList">등록금 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 신청 내역</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a></li></div>
 								</ul>
 							</li>
 						</sec:authorize>
@@ -310,20 +296,11 @@
 									<span class="folder main_menu"> </span><a href="#">교수</a>
 								</div>
 								<ul class="sub sub_meun">
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/profsr/profsrDetail"
-											class="no-uline">교수 조회 </a></li>
-										<li class="sub-menu-li">	
-											<a href="<%=request.getContextPath() %>/profsr/requestLctre" 
-												class="no-uline">강의 등록 요청</a></li>
-										<li class="sub-menu-li">			
-										<a href="<%=request.getContextPath() %>/profsr/updateLctre"
-									 class="no-uline">강의 수정 요청</a></li>		
-										<li class="sub-menu-li">		
-											<a href="<%=request.getContextPath() %>/profsr/openLctreList"
-												 class="no-uline">강의 목록</a></li>		
-									</div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrDetail" class="no-uline">교수 정보 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/profsrUpdate" class="no-uline">교수 정보 수정</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/requestLctre" class="no-uline">강의 등록 요청</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/openLctreList" class="no-uline">개설 강의 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/profsr/ongoingLctreList" class="no-uline">진행 강의 조회</a></li></div>
 								</ul>
 							</li>
 						</sec:authorize>
@@ -334,16 +311,13 @@
 									<span class="folder main_menu"> </span><a href="#">학생</a>
 								</div>
 								<ul class="sub sub_meun">
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/stdnt/sknrgsList"
-											class="no-uline">학적관리</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/stdnt/atBrhs"
-											class="no-uline">기숙사신청</a></li>
-									</div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/viewGrade" class="no-uline">성적 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/fromStdTuition" class="no-uline">등록금 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/schlshipList" class="no-uline">장학금 조회</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사 조회</a></li></div>
 								</ul>
 							</li>
 						</sec:authorize>
@@ -353,16 +327,13 @@
 								<span class="folder main_menu"> </span><a href="#">학사</a>
 							</div>
 							<ul class="sub sub_meun">
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a
-										href="<%=request.getContextPath()%>/notice_bbs/noticeList">공지
-											게시판</a></li>
-								</div>
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a
-										href="<%=request.getContextPath()%>/schafs_schdul/schdulList"
-										class="no-uline">학사 일정</a></li>
-								</div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/notice_bbs/noticeList">공지게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/schafs_schdul/schdulList" class="no-uline">학사 일정</a></li></div>
+<c:if test="${not empty noticeBBS}">
+<c:forEach items="${noticeBBS}" var="bbs">
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a></li></div>
+</c:forEach>
+</c:if>
 							</ul>
 						</li>
 
@@ -372,11 +343,7 @@
 									<span class="folder main_menu"> </span><a href="#">수강신청</a>
 								</div>
 								<ul class="sub sub_meun">
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/course/courseList">수강신청
-												목록</a></li>
-									</div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/course/courseList">수강신청목록</a></li></div>
 								</ul>
 							</li>
 						</sec:authorize>
@@ -387,6 +354,7 @@
 									<span class="folder main_menu"> </span><a href="#">강의</a>
 								</div>
 								<ul class="sub sub_meun">
+<<<<<<< HEAD
 									<div class="inherit-size">
 										<li class="sub-menu-li"><a
 											href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li>
@@ -425,54 +393,45 @@
 									</div>
 									
 
+=======
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test"">공지게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제 게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청여부 게시판</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a></li></div>
+>>>>>>> branch 'hotfix' of https://github.com/CriminalHerbivores/F-EMS.git
 								</ul>
 							</li>
 						</sec:authorize>
-
+						
+						<c:if test="${not empty bbsList}">
 						<li>
 							<div class="main-title">
 								<span class="folder main_menu"> </span><a href="#">커뮤니티</a>
 							</div>
 							<ul class="sub sub_meun">
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a href="#">커뮤니티메뉴1</a></li>
-								</div>
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a href="#">커뮤니티메뉴2</a></li>
-								</div>
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a href="#">커뮤니티메뉴3</a></li>
-								</div>
+<c:forEach items="${bbsList}" var="bbs">
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a></li></div>
+</c:forEach>
 							</ul>
 						</li>
-
+						</c:if>
+						
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
 							<li>
 								<div class="main-title">
 									<span class="folder main_menu"> </span><a href="#">관리자</a>
 								</div>
 								<ul class="sub sub_meun">
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/adminJoin">관리자
-												가입</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lgLogin">로그인형</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lgMulti">복합형</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lgBoard">게시판형</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lgMenu">메뉴강조형</a></li>
-									</div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgLogin">로그인형</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMulti">복합형</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgBoard">게시판형</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a></li></div>
 								</ul>
 							</li>
 						</sec:authorize>

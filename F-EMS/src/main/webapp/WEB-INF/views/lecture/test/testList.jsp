@@ -24,20 +24,38 @@
 
 <script>
 $(document).ready(function(){
+	var ar = [];
+	var no = $("input[name='no']").each(function(i){
+		ar.push($(this).val());
+	});
+	
+	var data = {"no":ar};
 	
 	$.ajax({
 		url:'<%=request.getContextPath()%>/lctre/nameAnswerSTD',
-		contentType: 'application/json; charset=utf-8',
-		dataType: 'text',
-		data:$('#tpNo').serialize(),
+		dataType: 'json',
+		data:data,
 		type:'post',
 		success : function(data){
-			
+		$.each(data, function(key,value){
+			var aa = "."+key;
+			var temp = "";
+			temp += '<select name="" onchange="location.href=this.value">';
+			temp += '<option value="">선택</option>';
+			$.each(value,function(k,v){
+				temp += '<option value="'+'<%=request.getContextPath()%>/lctre/completedTest?stdNm='+v+'&tpNo='+key+'">'+v+'</option>'
+			});
+			temp += '</select>';
+			$(aa).html(temp);
+		});
+		
 		},
 		error:function(request,status,error){
-			  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			  /* alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); */
 			  }
 	});
+	
+	
 });
 </script>
 </head>
@@ -66,20 +84,20 @@ $(document).ready(function(){
     </sec:authorize>
       </tr>
       
-      <c:forEach var="testlist" items="${testlist }">
+      <c:forEach var="testlist" items="${testlist }" varStatus="status"  >
       	<tr>
       	<sec:authorize access="hasRole('ROLE_PRO')">
-      		<td id="tpNo">${testlist.tp_No }</td>
+      		<td>${status.count }
+      			<input type="hidden" name="no" value="${testlist.tp_No}">
+      		</td>
       		<td>
       			<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">${testlist.tp_Nm}</a>
       		</td>
       		<td>${testlist.tp_Profsr_No} </td>
-      		<td>${testlist.tp_Dt} </td>
+      		<td><fmt:formatDate value="${testlist.tp_Dt}" /> </td>
       		<td>${testlist.countAnswerSTD} / </td>
       		<td>
-      			<select name="answerSTD" id="answerSTD">
-      				<option value="${testlist.nameAnswerSTD }"></option>
-      			</select>
+      			<div class="${testlist.tp_No}"></div>
       		</td>
       	</sec:authorize>
       	<sec:authorize access="hasRole('ROLE_STD')">

@@ -46,6 +46,7 @@
 <!--  ============= css =============  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/accordion.css">
@@ -75,7 +76,7 @@
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/kendo.default.mobile.min.css"> --%>
-	
+
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/calendarstyle.css">
 	
@@ -87,44 +88,41 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/sweetalert.css">	
 
-
-
 <!--  ============= js =============  -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
-<!--  ============= js =============  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
+	<!--  ============= js ============= 
+<%-- <script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script> --%>
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+
+
+
+<!-- //////////////////////////////////// -->
+
+<!-- calendar js  -->
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/calendarscript.js"></script>
+
 
 <!--alert js  -->
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
 
 
-<!-- calendar js  -->
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/calendarscript.js"></script>
-
-<!-- //////////////////////////////////// -->
-
-<!--ssh추가2  -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
-
-<!-- ssh 추가 -->
+<!-- ssh 추가 -->	
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jszip.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/kendo.all.min.js"></script>
+<%-- <script type="text/javascript"
+	src="<%=request.getContextPath()%>/resources/js/kendo.all.min.js"></script> --%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/console.js"></script>
 
