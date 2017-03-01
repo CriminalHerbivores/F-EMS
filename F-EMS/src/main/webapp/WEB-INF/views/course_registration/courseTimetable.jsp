@@ -21,48 +21,41 @@
 <script src="https://code.jquery.com/jquery.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function () {	// ,bd_Nm,pr_Nm  왜 건물명,교수명을 못불러오는가?
-	   var a = $("input[name='timetable']").val();
-	   var b = $("input[name='lc_Wik_Lctre_Dayweek']").val();
-	   console.log(b);
+$(document).ready(function () {
+	var lc_Wik_Lctre_Dayweek = $("input[name='lc_Wik_Lctre_Dayweek']").val();
+	var lc_Lctre_Time = $("input[name='lc_Lctre_Time']").val();
+	var lc_Lctrum_No = $("input[name='lc_Lctrum_No']").val();
+	var lu_Lctre_Nm = $("input[name='lu_Lctre_Nm']").val();
+	var bd_Nm = $("input[name='bd_Nm']").val();
+	var pr_Nm = $("input[name='pr_Nm']").val();
+	var lc_Lctre_No = $("input[name='lc_Lctre_No']").val();
+	var lc_Lctre_Code = $("input[name='lc_Lctre_Code']").val();
+	var lc_Split = $("input[name='lc_Split']").val();
+
+	var timeTbValues=[];
+	$("input[id='TimeTale']").each(function(i) {
+		timeTbValues.push($(this).val());
+    });
+	
+	var allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, "lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, "bd_Nm": bd_Nm, "pr_Nm": pr_Nm, "lc_Lctre_No": lc_Lctre_No, "lc_Lctre_Code": lc_Lctre_Code, "lc_Split": lc_Split}
+
 // 요일 처리
 var str=lc_Wik_Lctre_Dayweek;
 var arr = str.split("/");
 var arr1 = arr[0];
 var arr2 = arr[1];
-//alert(arr1);
-//alert(arr2);
-
-// 교시 처리
-// var aa=lc_Lctre_Time.split("/")[0];
-// var bb=lc_Lctre_Time.split("/")[1];
-// var cc=aa.split(",")[0];
-// var dd=bb.split(",")[0];
-// var ee=aa.split(",")[1];
-// var ff=bb.split(",")[1];
-// alert(cc+ee+"-"+dd+ff);
-
 
 var period1=lc_Lctre_Time.split("/")[0].split(",")[0]+"-"+lc_Lctre_Time.split("/")[0].split(",")[1]
 var period2=lc_Lctre_Time.split("/")[1].split(",")[0]+"-"+lc_Lctre_Time.split("/")[1].split(",")[1]
-//alert(period1+"   "+period2);
 
 // 강의실 처리
 var roomNm=lc_Lctrum_No.split("-")[1];
-//alert(roomNm)
-//var bd_Nmm="공과대학 2호관";
-//alert(bd_Nm); 
-		
-//var bdNm1=bd_Nmm.slice(0,1);
-//var bdNm2=bd_Nmm.split(" ")[1].slice(0,1);
+
 var bdNm=bd_Nm.slice(0,1).concat("",bd_Nm.split(" ")[1].slice(0,1)).concat("-",roomNm);
+
 //---------------------------------------
 var rst1 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm+pr_Nm+"<br>";
 var rst2 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm+pr_Nm+"<br>";
-
-//alert("rst1 : "+rst1);
-//alert("rst2 : "+rst2);
-
 
 /* var thArray = new Array();
 var contentArray = new Array();
@@ -421,28 +414,7 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 	}	
 }
 
-
-
-/* var aaa="올ㅋㅋㅋㅋ"
-$("td:eq(0)").text("0번인듯");
-$("td:eq(2)").css("background", "yellow");
-$("td:eq(5)").text(aaa);
-$("td:eq(4)").text("4번인가");  */
-//$("td:eq(0)").text("0번인듯");	$("td:eq(1)").text("1번인듯");	$("td:eq(2)").text("2번인듯");	$("td:eq(3)").text("3번인듯");	$("td:eq(4)").text("4번인듯");	$("td:eq(5)").text("5번인듯");	$("td:eq(6)").text("6번인듯");	$("td:eq(7)").text("7번인듯");	$("td:eq(8)").text("8번인듯");	$("td:eq(9)").text("9번인듯");	$("td:eq(10)").text("10번인듯");	$("td:eq(11)").text("11번인듯");	$("td:eq(12)").text("12번인듯");	$("td:eq(13)").text("13번인듯");	$("td:eq(14)").text("14번인듯");	$("td:eq(15)").text("15번인듯");	$("td:eq(16)").text("16번인듯");	$("td:eq(17)").text("17번인듯");	$("td:eq(18)").text("18번인듯");	$("td:eq(19)").text("19번인듯");	$("td:eq(20)").text("20번인듯");	$("td:eq(21)").text("21번인듯");	$("td:eq(22)").text("22번인듯");	$("td:eq(23)").text("23번인듯");	$("td:eq(24)").text("24번인듯");	$("td:eq(25)").text("25번인듯");	$("td:eq(26)").text("26번인듯");	$("td:eq(27)").text("27번인듯");	$("td:eq(28)").text("28번인듯");	$("td:eq(29)").text("29번인듯");	$("td:eq(30)").text("30번인듯");	$("td:eq(31)").text("31번인듯");	$("td:eq(32)").text("32번인듯");	$("td:eq(33)").text("33번인듯");	$("td:eq(34)").text("34번인듯");	$("td:eq(35)").text("35번인듯");	$("td:eq(36)").text("36번인듯");	$("td:eq(37)").text("37번인듯");	$("td:eq(38)").text("38번인듯");	$("td:eq(39)").text("39번인듯");	$("td:eq(40)").text("40번인듯");	$("td:eq(41)").text("41번인듯");	$("td:eq(42)").text("42번인듯");	$("td:eq(43)").text("43번인듯");	$("td:eq(44)").text("44번인듯");	$("td:eq(45)").text("45번인듯");	$("td:eq(46)").text("46번인듯");	$("td:eq(47)").text("47번인듯");	$("td:eq(48)").text("48번인듯");	$("td:eq(49)").text("49번인듯");	$("td:eq(50)").text("50번인듯");	$("td:eq(51)").text("51번인듯");	$("td:eq(52)").text("52번인듯");	$("td:eq(53)").text("53번인듯");	$("td:eq(54)").text("54번인듯");	$("td:eq(55)").text("55번인듯");	$("td:eq(56)").text("56번인듯");	$("td:eq(57)").text("57번인듯");	$("td:eq(58)").text("58번인듯");	$("td:eq(59)").text("59번인듯");	$("td:eq(60)").text("60번인듯");	$("td:eq(61)").text("61번인듯");	$("td:eq(62)").text("62번인듯");	$("td:eq(63)").text("63번인듯");	$("td:eq(64)").text("64번인듯");	$("td:eq(65)").text("65번인듯");
-
-//--------------------------------------
-
-
-//document.getElementById("demo1").innerHTML = lu_Lctre_Nm+"<br>"+pr_Nm+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm;
-//document.getElementById("demo2").innerHTML = lu_Lctre_Nm+"<br>"+pr_Nm+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm;
-
-
-// document.formm.getElementById("demo1").innerHTML = arr1;
-// document.formm.getElementById("demo2").innerHTML = arr2;
-
-
 });
-
 
 	
 </script>
@@ -458,10 +430,16 @@ $("td:eq(4)").text("4번인가");  */
 	,'${timeTb.bd_Nm}','${timeTb.pr_Nm}'
 	</div> --%>
 	
-	<input type="hidden" name="timetable" value="'${timeTb.lc_Wik_Lctre_Dayweek}','${timeTb.lc_Lctre_Time}','${timeTb.lc_Lctrum_No}','${timeTb.lu_Lctre_Nm}','${timeTb.bd_Nm}','${timeTb.pr_Nm}','${timeTb.lc_Lctre_No}','${timeTb.lc_Lctre_Code}','${timeTb.lc_Split}'" ><br/>
-	<input type="hidden" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}"><br/>
-	
-	
+	<input type="hidden" id="TimeTale" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}"><br/>
+	<input type="hidden" id="TimeTale" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}"><br/>
+	<input type="hidden" id="TimeTale" name="bd_Nm" value="${timeTb.bd_Nm}"><br/>
+	<input type="hidden" id="TimeTale" name="pr_Nm" value="${timeTb.pr_Nm}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Split" value="${timeTb.lc_Split}"><br/>
+		
 	</c:forEach>
 	
 	<h1>시간표 (${loginUser}&nbsp;&nbsp;<%-- ${lctre_SearchVO.st_Nm} --%>)</h1>

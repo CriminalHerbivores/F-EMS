@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
  * <pre>
  * 수강신청을 할 수 있는 개설된 강의 목록을 보여주는 JSP
@@ -18,18 +19,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript">
-/* 수강 신청 */
-function add_reqst(form){
-	alert("수강신청");
-	document.formm.submit();
-}
-
-function submitForm(form){
-	
-	document.forrm.submit();
-}
-</script>
 
 <style>
 body {
@@ -57,6 +46,8 @@ tbody .tb-border{
 
 </head>
 <body class="course-list-l-top">
+<article>
+
 	<div class="text-center">
 <form name="forrm" method="get">
 	<table class="def-table-full">
@@ -73,7 +64,11 @@ tbody .tb-border{
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
 					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
-					<input type="button" class="def-btn btn-search btn-color" value="상세검색">&nbsp;&nbsp;
+					<input type="button" class="def-btn btn-search btn-color" id="courseDetailBtn" value="상세검색" onClick="disp()">&nbsp;&nbsp;
+      <div class="non-disp">
+      	<jsp:include page="courseDetailSearch.jsp" />
+      </div>
+					
 	</td></tr></thead>
 	</table>
 	</form>
@@ -126,6 +121,6 @@ tbody .tb-border{
 					</tbody>
 			</table>
 	</form>
-</div>
+</div></article>
 </body>
 </html>
