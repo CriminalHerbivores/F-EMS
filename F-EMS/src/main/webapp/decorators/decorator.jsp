@@ -156,8 +156,8 @@
 <a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
 <a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
 <a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>	
-<c:if test="${not empty noticeList}">
-<c:forEach items="${noticeList}" var="bbs">
+<c:if test="${not empty noticeBBS}">
+<c:forEach items="${noticeBBS}" var="bbs">
 <a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
 </c:forEach>
 </c:if>
@@ -316,8 +316,8 @@
 							<ul class="sub sub_meun">
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/notice_bbs/noticeList">공지게시판</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/schafs_schdul/schdulList" class="no-uline">학사 일정</a></li></div>
-<c:if test="${not empty noticeList}">
-<c:forEach items="${noticeList}" var="bbs">
+<c:if test="${not empty noticeBBS}">
+<c:forEach items="${noticeBBS}" var="bbs">
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a></li></div>
 </c:forEach>
 </c:if>
