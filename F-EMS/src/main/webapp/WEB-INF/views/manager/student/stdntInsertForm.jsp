@@ -29,7 +29,11 @@
         <td>학생 번호</td>
         <td><input type="text" class="form-control" id="st_Stdnt_No" name="st_Stdnt_No"></td>
         <td>학부</td>
-        <td><input type="text" class="form-control" id="faculty_Nm" name="" value="" readonly></td>
+        <td>
+        <input type="hidden" id="coleg_Nm" name="" value="" readonly>
+        <input type="hidden" id="subjct_Code" name="" value="" readonly>
+        <input type="text" class="form-control" id="faculty_Nm" name="" value="" readonly>
+        </td>
         <td>학과</td>
         <td><input type="text" class="form-control" id="subjct_Nm" name="st_Subjct_Code" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
       </tr>
@@ -52,8 +56,6 @@
         <td><input type="text" class="form-control" id="st_Ihidnum" name="st_Ihidnum" ></td>
       </tr>
       <tr>
-        <td>우편번호</td>
-        <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No"></td>
         <td>우편번호</td>
         <td><input type="text" class="form-control" id="zipNum" name="st_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
@@ -80,7 +82,7 @@
       
   </table>
 		학생등록양식: <a href="<%=request.getContextPath() %>/download/file/list?filename=학생등록.xlsx">다운로드</a><br /> 
-		파일경로: <input type="file" name="f"><br />
+		<input type="file" name="f"><br />
    <button type="button" class="btn btn-default" onclick="go_stdnt()">등록</button>
     <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>

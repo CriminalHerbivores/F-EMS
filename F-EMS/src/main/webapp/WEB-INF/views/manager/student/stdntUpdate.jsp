@@ -50,9 +50,7 @@
         <td><input type="text" class="form-control" name="st_Ihidnum" value="${stdntVO.st_Ihidnum}"></td>
       </tr>
       <tr>
-        <td>우편번호</td>
-        <td><input type="text" class="form-control" id="st_Post_No" name="st_Post_No" value="${stdntVO.st_Post_No}"></td>
-        <td>우편번호</td>
+      	<td>우편번호</td>
         <td><input type="text" class="form-control" id="zipNum" name="st_Post_No" value="${stdntVO.st_Post_No}" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
         <td><input type="text" class="form-control" id="addres1" name="st_Adres1" value="${stdntVO.st_Adres1}" readonly></td>

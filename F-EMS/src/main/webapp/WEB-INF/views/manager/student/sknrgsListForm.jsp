@@ -21,7 +21,6 @@
 
 <body>
 	<form name="formm" method="POST">
-		<div class="container">
 			<h2>학적 관리</h2>
 			<table class="table table-bordered">
 				<tr>
@@ -68,7 +67,6 @@
 					<td colspan="6" style="text-align: center;">${paging }</td>
 				</tr>
 			</table>
-		</div>
 		<input type="button" class="btn btn-default" onClick="submitForm(this.form);" value="등록"/>
 	</form>
 

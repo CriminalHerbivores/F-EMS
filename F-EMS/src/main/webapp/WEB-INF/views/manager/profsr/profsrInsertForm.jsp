@@ -29,9 +29,13 @@
         <td>교수 번호</td>
         <td><input type="text" class="form-control" id="pr_Profsr_No" name="pr_Profsr_No"></td>
         <td>학부</td>
-        <td><input type="text" class="form-control" id="" name="" value=""></td>
+        <td>
+        <input type="hidden" id="coleg_Nm" name="" value="" readonly>
+        <input type="hidden" id="subjct_Code" name="" value="" readonly>
+        <input type="text" class="form-control" id="faculty_Nm" name="" value="" readonly>
+        </td>
         <td>학과</td>
-        <td><input type="text" class="form-control" id="" name=""></td>
+        <td><input type="text" class="form-control" id="subjct_Nm" name="" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
       </tr>
       
       <tr>
@@ -53,11 +57,11 @@
       </tr>
       <tr>
         <td>우편번호</td>
-        <td><input type="text" class="form-control" id="pr_Post_No" name="pr_Post_No"></td>
+        <td><input type="text" class="form-control" id="zipNum" name="pr_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
-        <td><input type="text" class="form-control" id="pr_Adres1" name="pr_Adres1"></td>
+        <td><input type="text" class="form-control" id="addres1" name="pr_Adres1" readonly></td>
         <td>상세 주소</td>
-        <td><input type="text" class="form-control" id="pr_Adres2" name="pr_Adres2"></td>
+        <td><input type="text" class="form-control" id="st_Adres2" name="pr_Adres2"></td>
       </tr>
       <tr>
         <td>핸드폰 번호</td>
@@ -69,7 +73,7 @@
       </tr>
   </table>
 		교수등록양식: <a href="<%=request.getContextPath() %>/download/file/list?filename=교수등록.xlsx">다운로드</a><br /> 
-		파일경로: <input type="file" name="f"><br />
+		<input type="file" name="f"><br />
    <button type="button" class="btn btn-default" onclick="go_profsr()">등록</button>
    <button type="button" class="btn btn-default" onclick="history.go(-1)">취소</button>
   </form>

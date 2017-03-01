@@ -30,7 +30,7 @@
 					<input type="hidden" name="skn_Stdnt_No" value="${loginUser}">
 					<table class="def-table-full tb-border table-hover">
 						<tr>
-							<th>학적상태</th>
+							<th>상태</th>
 							<td><c:choose>
 									<c:when test="${type=='졸업'}">
 								      졸업
@@ -40,10 +40,10 @@
 								      </c:otherwise>
 								</c:choose></td>
 							<th>학적상세</th>
-							<td>${type}</td>
+							<td width="100">${type}</td>
 						</tr>
 						<tr>
-							<th>학적변동 구분</th>
+							<th>구분</th>
 							<td colspan="3"><c:choose>
 									<c:when test="${type=='졸업'}">
 								   	졸업

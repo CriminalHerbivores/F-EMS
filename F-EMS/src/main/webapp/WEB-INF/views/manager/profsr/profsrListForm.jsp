@@ -22,7 +22,6 @@
 
 </head>
 <body>
-	<div class="container">
 		<h2>교수 관리</h2><br>
 		<form name="formm">
 		<table>
@@ -61,6 +60,5 @@
 				<td colspan="5" style="text-align: center;">${paging }</td>
 			</tr>
 		</table>
-	</div>
 </body>
 </html>
