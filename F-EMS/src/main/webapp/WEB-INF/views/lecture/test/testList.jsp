@@ -40,9 +40,10 @@ $(document).ready(function(){
 		$.each(data, function(key,value){
 			var aa = "."+key;
 			var temp = "";
-			temp += '<select name="">';
+			temp += '<select name="" onchange="location.href=this.value">';
+			temp += '<option value="">선택</option>';
 			$.each(value,function(k,v){
-				temp += '<option value="'+v+'">'+v+'</option>'
+				temp += '<option value="'+'<%=request.getContextPath()%>/lctre/completedTest?stdNm='+v+'&tpNo='+key+'">'+v+'</option>'
 			});
 			temp += '</select>';
 			$(aa).html(temp);
@@ -50,9 +51,11 @@ $(document).ready(function(){
 		
 		},
 		error:function(request,status,error){
-			  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			  /* alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); */
 			  }
 	});
+	
+	
 });
 </script>
 </head>
