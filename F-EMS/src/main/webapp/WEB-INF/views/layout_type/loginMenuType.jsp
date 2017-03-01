@@ -20,70 +20,73 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<script>
-// Get the modal
-$(document).ready(function(){
-    $("#course_able").load("<%=request.getContextPath()%>/find_id_pw");
+<script type="text/javascript">
+function get_msg(message) {
+	jQuery('#message').text(message);
+	$('#message').show(300).delay(500);
+	$('#message').hide(300).delay(500);
+}
+<c:if test="${error == 'true'}">
+jQuery(function() {
+	get_msg("로그인실패하였습니다.");
 });
-
-
-
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it -> 아무곳이나 눌러도 닫히도록 설정
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+</c:if>
+function emptyMsg(){
+	get_msg("");
+}
+function login_go() {
+	$.ajax({
+		url : 'login',
+		data : $('form input').serialize(),
+		type : 'POST',
+		dataType : 'json',
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader("Accept", "application/json");
+		}
+	}).done(function(body) {
+		var message = body.response.message;
+		var error = body.response.error;
+		var returl=body.response.returl;			
+		if (error)
+			get_msg(message);
+		if (error == false) {
+			if (returl == '')
+				returl = '<c:url value="/" />';
+			location.href = returl;
+		}
+	});
 }
 </script>
-		
-
 </head>
 <body>
+<div id="header">
 
-<form id="" method="post" name="formm">
-		<!-- <div class="custom-col-sm-10-top sidenav text-left">	 -->
 <div class=" array-center ">			
 			<table class="def-table-auto">
 	<tr><td colspan="3"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Img}"></td>
 	<td colspan="2" rowspan="2"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></td></tr>
 	<tr><td colspan="3">	
 			<table class="def-table-auto out-border">
-			<form action="login" id="loginForm" method="post">
-				
+				<div id="section">
+		<form action="login" id="loginMenuForm" method="post">
 				
 				<tr><td>
 <input type="hidden" name="returl" value="${param.returl }" />
 <input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/>
 				</td>
 					<td rowspan="2">
-<input type="submit" class="def-btn btn-lg btn-color" value="로그인">
+<input type="button" class="def-btn btn-lg btn-color" value="로그인" onclick="login_go();"/>
 				<tr><td>
 <input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드">
 				</td></tr>
-				<!-- <tr><td colspan="2"><span id='change'>여기 아작스</span></td></tr> -->
-		<tr><td><div class="w3-container">
+				<tr><td colspan="2"><div><span id="message"></span></div></td></tr>
+		<tr><td>
   <button onclick="document.getElementById('id01').style.display='block'" class="def-btn btn-sm btn-color">ID찾기</button>
-		</td><td><input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()"></td></tr>
+		</td><td><input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()"></td></tr></form></div>
 				
-				</table>
-</form>
+				</table></td></tr>
+
   
-  <!-- ///////////////////// modal START ///////////////////// -->
-<%--  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-animate-opacity modal-md">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
-        <jsp:include page="find_id_pw.jsp"></jsp:include>       
-       </div>
-    </div>
-  </div> --%>
-  <!-- ///////////////////// modal END ///////////////////// -->
-  
-  </div>
   <tr><td colspan="5">
 		<table class="def-table-full" style="width:100% !important;">
 		<tr><td class="login-menu-gray"><div>메뉴1</div></td><td  class="login-menu"><div>메뉴2</div></td><td class="login-menu-gray"><div>메뉴3</div></td><td class="login-menu"><div>메뉴4</div></td><td class="login-menu-gray"><div>메뉴5</div></td></tr>	
@@ -92,8 +95,9 @@ window.onclick = function(event) {
 	</table></td></tr>
 	</table>
 	</div>
+	
+	</div>
 		<!-- </div> -->
-</form>	
 
 
 
