@@ -22,8 +22,8 @@ public class ManageServiceImpl implements ManageService {
 	}
 
 	@Override
-	public List<Bbs_ListVO> getBbsList() throws SQLException {
-		List<Bbs_ListVO> bbsListVO = manageDAO.getBbsList();
+	public List<Bbs_ListVO> getBbsList(String name) throws SQLException {
+		List<Bbs_ListVO> bbsListVO = manageDAO.getBbsList(name);
 		return bbsListVO;
 	}
 

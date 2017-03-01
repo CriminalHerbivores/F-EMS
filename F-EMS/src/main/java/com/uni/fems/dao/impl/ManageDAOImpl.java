@@ -40,8 +40,8 @@ public class ManageDAOImpl implements ManageDAO {
 	}
 
 	@Override
-	public List<Bbs_ListVO> getBbsList() throws SQLException {
-		List<Bbs_ListVO> bbsListVO = client.queryForList("getBbsList");
+	public List<Bbs_ListVO> getBbsList(String name) throws SQLException {
+		List<Bbs_ListVO> bbsListVO = client.queryForList("getBbsList",name);
 		return bbsListVO;
 	}
 }
