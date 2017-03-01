@@ -312,6 +312,7 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		model.addAttribute("stdNm",stdNm);
 		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("queList", queList);
 		model.addAttribute("answerList", answerList);
