@@ -46,7 +46,7 @@ public class AaaController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			session.setAttribute("noticeList", noticeList);
+			session.setAttribute("noticeBBS", noticeList);
 		
 		return url;
 		
