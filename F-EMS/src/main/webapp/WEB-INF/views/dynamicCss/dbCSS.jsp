@@ -8,13 +8,14 @@
 .custom-navbar-inverse{
 	background-color: ${manageVO.mng_Main_Color};
 	border-color: ${manageVO.mng_Main_Color};
-	
+	border-radius:8px;
+	width:97%;
+	margin:auto;
 }
 
 
 .menu-dropbtn {
     background-color: ${manageVO.mng_Main_Color};	<%-- 색상:상단 드롭다운 버튼 --%>
-    padding: 16px;
     width:120px;
     height:50px;
     font-size: 16px;
@@ -40,9 +41,28 @@
    color: ${manageVO.mng_Sub_Txtclr1};
 }
 
+
+.menu-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    <%--font-weight:600;--%>
+} 
+
 .menu-dropdown-content a:hover {
 	background-color : ${manageVO.mng_Sub_Color2};
 	color: ${manageVO.mng_Sub_Txtclr2};
+}
+
+.accordion-menu>li {	<%-- 아코디언 메뉴 상위 --%>
+    overflow:hidden;
+    border:1px solid ${manageVO.mng_Main_Color};
+    cursor:pointer;
+   border-radius:8px;
+   margin-bottom: 10px;
+   <%--border-top-right-radius:8px;	--%>
+   
 }
 
 <%--  --%>
@@ -114,7 +134,8 @@
     padding:10px;	
     vertical-align:middle;
     position:relative;
-    z-index:100;	
+    z-index:100;
+    <%-- border-radius:6px; --%>	
 }
 
 

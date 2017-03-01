@@ -9,10 +9,7 @@
 <meta charset=UTF-8">
 <title></title>
 <style type="text/css">
-body{   
-   background-color:#ffffff;
-   font-family: Verdana;
-}
+
 #popup{   
    padding: 0 10px;
 }

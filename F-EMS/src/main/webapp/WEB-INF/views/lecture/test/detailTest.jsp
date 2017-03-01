@@ -14,7 +14,7 @@
 body{
 	text-align: center;
 	background: #00ECB9;
-  font-family: sans-serif;
+  font-family: Malgun Gothic;	/* sans-serif; */
   font-weight: 100;
 }
 
@@ -26,7 +26,7 @@ h1{
 }
 
 #clockdiv{
-	font-family: sans-serif;
+	font-family: Malgun Gothic;	/* sans-serif; */
 	color: #fff;
 	display: inline-block;
 	font-weight: 100;
