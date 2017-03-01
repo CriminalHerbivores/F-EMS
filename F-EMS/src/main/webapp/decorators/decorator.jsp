@@ -43,7 +43,7 @@
 
 	<!-- 상단바 시작 -->
 	<nav class="navbar top-navbar-inverse" id="topnav">
-		<div class="container-fluid" id="toptable">
+		<div id="toptable"><!-- class="container-fluid" -->
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
 					<tr style="width: 900px;">
@@ -245,7 +245,7 @@
 
 	<!-- 좌측메뉴 시작 -->
 	
-	<div class="container-fluid">
+	<div class="container-fluid-side-menu">
 		<div class="row content">
 
 	<c:if test="${manageVO.mng_Left_Menu_Use_Ennc=='y'||'Y'}">

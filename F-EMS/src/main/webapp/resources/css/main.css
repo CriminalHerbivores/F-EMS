@@ -175,7 +175,7 @@ a:hover {
 
 .btn-search{
 	height:32px;
-	width:70px;
+	min-width:70px;
 }
 
 .btn-gray{
@@ -220,7 +220,7 @@ a:hover {
 	border-bottom-left-radius:5px;
 	text-indent:0px;
 	display:inline-block;
-	font-family:Georgia;
+	font-family:Malgun Gothic;	/* Georgia; */
 	font-size:15px;
 	font-weight:bold;
 	font-style:normal;
@@ -299,7 +299,7 @@ a:hover {
 	border-bottom-left-radius:0px;
 	text-indent:0px;
 	display:inline-block;
-	font-family:Georgia;
+	font-family:Malgun Gothic;	/* Georgia; */
 	font-size:15px;
 	font-weight:bold;
 	font-style:normal;
