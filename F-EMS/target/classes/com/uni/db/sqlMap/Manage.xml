@@ -12,7 +12,7 @@
 
 <sqlMap namespace="Manage">
 	<typeAlias alias="Manage" type="com.uni.fems.dto.ManageVO" />
-	
+	<typeAlias alias="bbs_listvo" type="com.uni.fems.dto.Bbs_ListVO" />
 	
 	<!-- <select id="selectManage" parameterClass="str" resultClass="Manage">
 		select * from Manage 
@@ -23,5 +23,7 @@
 		select * from Manage 
 	</select>
 	
-
+	<select id="getBbsList" resultClass="bbs_listvo">
+		select * from bbs_list
+	</select>
 </sqlMap>
