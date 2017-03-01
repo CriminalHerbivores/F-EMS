@@ -15,9 +15,9 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public List<EventVO> selectEvent() throws SQLException {
-		List<EventVO> list = eventDAO.selectEvent();
-		return list;
+	public EventVO selectEvent(String evt_Nm) throws SQLException {
+		EventVO vo = eventDAO.selectEvent(evt_Nm);
+		return vo;
 	}
 
 	@Override

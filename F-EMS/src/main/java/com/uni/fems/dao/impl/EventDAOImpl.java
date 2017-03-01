@@ -16,9 +16,9 @@ public class EventDAOImpl implements EventDAO{
 	}
 	
 	@Override
-	public List<EventVO> selectEvent() throws SQLException {
-		List<EventVO> list = client.queryForList("selectEvent");
-		return list;
+	public EventVO selectEvent(String evt_Nm) throws SQLException {
+		EventVO vo = (EventVO) client.queryForObject("selectEvent",evt_Nm);
+		return vo;
 	}
 
 	@Override
