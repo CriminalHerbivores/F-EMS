@@ -55,11 +55,15 @@
 					<td>${queList.te_Ques }</td>
 					<td>${answerList[status.index].an_Ans}</td>
 				<c:choose>
-  				  <c:when test="${queList.te_Ca =='${answerList[status.index].anAns' }">
+  				  <c:when test="${queList.te_Ca == answerList[status.index].an_Ans}">
 						<td>O</td>
 				  </c:when>
 				  <c:otherwise>
-						<td>X</td>
+				  		
+						<td>X<br>
+						${queList.te_Ca }<br>
+						${answerList[status.index].an_Ans}
+						</td>
 				  </c:otherwise>
 				</c:choose>
 				</tr>
