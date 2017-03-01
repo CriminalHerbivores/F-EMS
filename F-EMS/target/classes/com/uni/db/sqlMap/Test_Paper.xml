@@ -19,6 +19,10 @@
      where tp_lctre_no=#tp_Lctre_No# order by tp_no desc
 	</select>
 	
+	<select id="getTestPaper" parameterClass="int" resultClass="testpaper">
+		select * from test_paper where tp_no=#tp_No#
+	</select>
+	
 	<update id="insertTestPaper" parameterClass="testpaper">
 		insert into test_paper(tp_no,tp_lctre_no,tp_nm,tp_profsr_no) 
 		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#)

@@ -62,6 +62,11 @@ public int deleteTestPaper(int tpNo) throws SQLException {
 		test_PaperDAO.deleteTestPaper(tpNo);
 	return 0; 
 }
+
+@Override
+public Test_PaperVO getTestPaper(int tpNo) throws SQLException {
+	return test_PaperDAO.getTestPaper(tpNo);
+}
  
  
 }
