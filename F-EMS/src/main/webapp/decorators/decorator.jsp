@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="sec"
@@ -209,11 +209,11 @@
 						<button class="menu-dropbtn">
 							<a href="#">커뮤니티</a>
 						</button>
-						<c:forEach items="${bbsList}" var="bbs">
 						<div class="menu-dropdown-content">
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
-						</div>
+						<c:forEach items="${bbsList}" var="bbs">
+						<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
 						</c:forEach>
+						</div>
 					</div>
 					
 					</c:if>

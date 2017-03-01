@@ -54,9 +54,9 @@ public class DecoInterceptor extends HandlerInterceptorAdapter{
 			session.setAttribute("bbsList", bbsList);
 		}
 		if(session.getAttribute("noticeList")==null){
-			List<Bbs_ListVO> bbsList=null;
-			bbsList=manageService.getBbsList("b");
-			session.setAttribute("noticeList", bbsList);
+			List<Bbs_ListVO> noticeList=null;
+			noticeList=manageService.getBbsList("b");
+			session.setAttribute("noticeList", noticeList);
 		}
 		return super.preHandle(request, response, handler);
 	}
