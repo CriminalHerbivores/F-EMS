@@ -47,10 +47,13 @@
 
 	<!--버튼들  -->
 	<div id="buttons" style="float: right">
+	<sec:authorize access="hasRole('ROLE_PRO')">
 		<a href="updateLctre_Notice?ln_Bbs_No=${lctre_Notice_Gnt.ln_Bbs_No}&table_Nm=${lctre_Notice_Gnt.table_Nm}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> <a
+			data-toggle="modal" value="삭제"> 
+			</sec:authorize>
+			<a
 			href="noticeList?tpage=${tpage}&table_Nm=${lctre_Notice_Gnt.table_Nm }"> <input
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>

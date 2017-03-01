@@ -83,15 +83,10 @@
       	<tr>
       		<td colspan="4" style="text-align: center;">${paging }</td>
       	</tr>
-      	
-     
-  </table>
-	  <div id="buttons" style="float:right">
-	  	<a href="writeLctre_Video?table_Nm=${lctre_Video_Gnt.table_Nm}">
-	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
-	  </div>
-</td></tr>  
-</table>	  
+      	</table>
+</td>
+</tr>
+</table>
 </div>
 </body>
 </html>

@@ -67,10 +67,12 @@
       	
      
   </table>
+  <sec:authorize access="hasRole('ROLE_PRO')">
 	  <div id="buttons" style="float:right">
 	  	<a href="writeLctre_Notice?table_Nm=${lctre_Notice_Gnt.table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
 	  </div>
+	  </sec:authorize>
 </td></tr>  
 </table>	  
 </div>
