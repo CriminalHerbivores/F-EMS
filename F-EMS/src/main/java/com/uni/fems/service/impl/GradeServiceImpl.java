@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.uni.fems.dao.GradeDAO;
 import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dto.GradeVO;
+import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.service.GradeService;
 
 public class GradeServiceImpl implements GradeService {
@@ -19,6 +20,15 @@ public class GradeServiceImpl implements GradeService {
 	@Autowired
 	private LctreDAO lctreDAO;
 	
+	@Override
+	public void insertGrade(ReqstVO reqstVO) throws SQLException {
+		gradeDAO.insertGrade(reqstVO);
+		
+	}
+	@Override
+	public void deleteGrade(ReqstVO reqstVO) throws SQLException {
+		gradeDAO.deleteGrade(reqstVO);
+	}
 	@Override
 	public void updateGrade(GradeVO gradeVO) throws SQLException {
 		gradeDAO.updateGrade(gradeVO);
@@ -32,6 +42,12 @@ public class GradeServiceImpl implements GradeService {
 	public int countGrade(GradeVO gradeVO) throws SQLException {
 		int totalRecord = gradeDAO.countGrade(gradeVO);
 		return totalRecord;
+	}
+	
+	@Override
+	public List<GradeVO> lctreGrade(GradeVO grade) throws SQLException {
+		List<GradeVO> list = gradeDAO.lctreGrade(grade);
+		return list;
 	}
 }
 

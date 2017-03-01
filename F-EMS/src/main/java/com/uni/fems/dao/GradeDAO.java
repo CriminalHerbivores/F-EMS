@@ -75,4 +75,15 @@ public interface GradeDAO {
 	 * </pre>
 	 */
 	int countGrade(GradeVO gradeVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 학생 성적 조회
+	 * </pre>
+	 * <pre>
+	 * @param grade
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<GradeVO> lctreGrade(GradeVO grade) throws SQLException; 
 }
