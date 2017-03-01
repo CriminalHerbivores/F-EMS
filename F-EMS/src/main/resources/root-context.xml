@@ -345,6 +345,13 @@
 	<bean id="eventService" class="com.uni.fems.service.impl.EventServiceImpl"
 		p:eventDAO-ref="eventDAO" />
 		
+	<bean id="lctre_Video_StdntDAO" class="com.uni.fems.dao.impl.Lctre_Video_StdntDAOImpl"
+		p:client-ref="sqlMapClient" />
+
+	<bean id="lctre_Video_StdntService" class="com.uni.fems.service.impl.Lctre_Video_StdntServiceImpl"
+		p:lctre_Video_StdntDAO-ref="lctre_Video_StdntDAO" 
+		p:lctre_FlpthDAO-ref="lctre_FlpthDAO" />
+		
 	<bean id="fileDownload" class="com.uni.fems.common.FileDownload" />
 	<bean id="supporter" class="com.uni.fems.common.Supporter" />
 	<bean id="callPaging" class="com.uni.fems.common.Paging" />
