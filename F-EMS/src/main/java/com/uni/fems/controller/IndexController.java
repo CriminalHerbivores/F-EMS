@@ -141,6 +141,7 @@ public class IndexController {
 		return url;
 	}
 
+
 	/**
 	 * 로그인
 	 * @param request
@@ -152,6 +153,21 @@ public class IndexController {
 		String url = "member/loginForm";
 		return url;
 	}
+	
+
+	/**
+	 * 로그인
+	 * @param request
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/loginMenuForm")
+	public String loginMenuTypeForm(HttpServletRequest request, HttpSession session) {
+		String url = "member/loginMenuType";
+		return url;
+	}
+	
+	
 	
 	/**
 	 * 아이디 또는 비밀번호 찾기
