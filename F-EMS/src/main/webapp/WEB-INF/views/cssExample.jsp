@@ -117,7 +117,7 @@ function aa() {
 	
 	<!-- 테이블: 화면의 80% 폭 맞춤, 권장형 -->
 	<div class="container">
-			<table class="def-table-full tb-border table-hover">
+			<table class="def-table-full tb-border table-hover tr-child-color">
 				<thead>
 					<tr>
 						<th>꽉 찬 90% 폭</th>

@@ -55,15 +55,6 @@
 	color: ${manageVO.mng_Sub_Txtclr2};
 }
 
-.accordion-menu>li {	<%-- 아코디언 메뉴 상위 --%>
-    overflow:hidden;
-    border:1px solid ${manageVO.mng_Main_Color};
-    cursor:pointer;
-   border-radius:8px;
-   margin-bottom: 10px;
-   <%--border-top-right-radius:8px;	--%>
-   
-}
 
 <%--  --%>
 <%--  --%>
@@ -90,7 +81,17 @@
 	background:-moz-linear-gradient( center top, #79BFAD 5%, #ccc 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79BFAD', endColorstr='#79BFAD'); --%>
 	<%-- opacity:0.7; --%>
+	-moz-box-shadow: 0px 0px 0px 0px #ffffff;
+	-webkit-box-shadow: 0px 0px 0px 0px #ffffff;
+	box-shadow: 0px 0px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, ${manageVO.mng_Main_Color}), color-stop(1, ${manageVO.mng_Main_Color}) ); <%-- 버튼 바탕색 --%>
+	background:-moz-linear-gradient( center top, ${manageVO.mng_Main_Color} 5%, ${manageVO.mng_Main_Color} 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='${manageVO.mng_Main_Color}', endColorstr='${manageVO.mng_Main_Color}');
+	
+	
+	border:1px solid ${manageVO.mng_Sub_Color1};
 	background-color:${manageVO.mng_Main_Color};
+	color:${manageVO.mng_Main_Txtclr};
 }
 
 .ckbtn-color{
@@ -106,10 +107,59 @@
 }
 
 
+
+
+.def-table-auto th, .def-table-full th, .def-table-100 th{
+	background-color: ${manageVO.mng_Sub_Color1};
+	color:${manageVO.mng_Sub_Txtclr1};
+	padding-left: 15px;
+	padding-right:15px;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-size:15px !important;
+	text-align:center;
+	vertical-align: middle;
+}
+
+.tr-child-color tr:nth-child(even){background-color: #f2f2f2}
+
+.table-hover>tbody>tr:hover{
+background-color:${manageVO.mng_Sub_Color2} !important;
+color:${manageVO.mng_Sub_Txtclr2} !important;
+}
+
+<%-- 테이블 border 
+tb-border td {
+	border: 1px solid ${manageVO.mng_Sub_Color2} !important;
+}
+
+.tb-border td,.tb-border th{
+border:1px solid ${manageVO.mng_Sub_Color2} !important}
+
+.tb-border{border:1px solid ${manageVO.mng_Sub_Color2}; }
+.tb-border>tbody>tr>td,
+.tb-border>tbody>tr>th,
+.tb-border>tfoot>tr>td,
+.tb-border>tfoot>tr>th,
+.tb-border>thead>tr>td,
+.tb-border>thead>tr>th{
+border:1px solid ${manageVO.mng_Sub_Color2};
+}--%>
+
+
 <%--/////////////////// accodion.css ///////////////////--%>
 .main-title a{
 	color: ${manageVO.mng_Sub_Txtclr1} !important;	<%-- 좌측 메뉴 글자 색상 --%>
 	font-weight: 900;
+}
+
+.accordion-menu>li {	<%-- 아코디언 메뉴 상위 --%>
+    overflow:hidden;
+    border:1px solid ${manageVO.mng_Main_Color};
+    cursor:pointer;
+   border-radius:8px;
+   margin-bottom: 10px;
+   <%--border-top-right-radius:8px;	--%>
 }
 
 
