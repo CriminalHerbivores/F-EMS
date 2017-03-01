@@ -153,7 +153,6 @@ public class Lctre_TestController {
 			answerVO.setAn_Ans(answer[i]);
 			answerVO.setAn_Ques_No(queNo[i]);
 			
-			
 			try {
 				answerSvc.insertAnswer(answerVO);
 			} catch (SQLException e) {
@@ -294,7 +293,13 @@ public class Lctre_TestController {
 		
 		return map;
 	}
-		
+	
+	@RequestMapping(value="/completedTest")
+	public String completedTest(Model model, String stdNm){
+		String url="lecture/test/completedTest";
+		return url;
+	}
+	
 	
 
 }
