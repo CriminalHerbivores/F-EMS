@@ -62,31 +62,25 @@ function login_go() {
 <div id="header">
 
 <div class=" array-center ">			
-			<table class="def-table-auto">
+<form action="login" id="loginMenuForm" method="post">
+<table class="def-table-auto tb-border">
 	<tr><td colspan="3"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Img}"></td>
 	<td colspan="2" rowspan="2"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></td></tr>
 	<tr><td colspan="3">	
-			<table class="def-table-auto out-border">
-				<div id="section">
-		<form action="login" id="loginMenuForm" method="post">
-				
-				<tr><td>
+
 <input type="hidden" name="returl" value="${param.returl }" />
 <input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/>
-				</td>
-					<td rowspan="2">
 <input type="button" class="def-btn btn-lg btn-color" value="로그인" onclick="login_go();"/>
-				<tr><td>
 <input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드">
-				</td></tr>
-				<tr><td colspan="2"><div><span id="message"></span></div></td></tr>
-		<tr><td>
-  <button onclick="document.getElementById('id01').style.display='block'" class="def-btn btn-sm btn-color">ID찾기</button>
-		</td><td><input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()"></td></tr></form></div>
-				
-				</table></td></tr>
+<div><span id="message"></span></div>
 
-  
+<button onclick="document.getElementById('id01').style.display='block'" class="def-btn btn-sm btn-color">ID찾기</button>
+<input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()">
+</td>
+</tr>
+</table>
+</form>
+<table class="def-table-auto out-border">
   <tr><td colspan="5">
 		<table class="def-table-full" style="width:100% !important;">
 		<tr><td class="login-menu-gray"><div>메뉴1</div></td><td  class="login-menu"><div>메뉴2</div></td><td class="login-menu-gray"><div>메뉴3</div></td><td class="login-menu"><div>메뉴4</div></td><td class="login-menu-gray"><div>메뉴5</div></td></tr>	
