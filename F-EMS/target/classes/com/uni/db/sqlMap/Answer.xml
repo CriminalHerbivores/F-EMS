@@ -27,11 +27,11 @@
 	delete from answer where an_tp_no=#an_Tp_No#
 </update>
 
-<select id="countAnswerSTD" parameterClass="int">
+<select id="countAnswerSTD" parameterClass="int" resultClass="int">
 	select count(an_stdnt_no) from answer where an_tp_no =#an_Tp_No#
 </select>
 
-<select id="nameAnswerSTD" parameterClass="int">
+<select id="nameAnswerSTD" parameterClass="int" resultClass="str">
 	select distinct(an_stdnt_no) from answer where an_tp_no =#an_Tp_No#
 </select>
 
