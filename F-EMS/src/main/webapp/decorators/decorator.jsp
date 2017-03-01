@@ -162,9 +162,13 @@
 								href="<%=request.getContextPath()%>/schafs_schdul/schdulList"
 								class="no-uline">학사 일정</a>
 							<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>	
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=1" class="no-uline">test 게시판</a>
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=2" class="no-uline">test2 게시판</a>
-							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=3" class="no-uline">test3 게시판</a>	
+							
+							<c:if test="${not empty noticeList}">
+							<c:forEach items="${noticeList}" var="bbs">
+							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
+							</c:forEach>
+							</c:if>
+							
 						</div>
 					</div>
 
@@ -198,16 +202,22 @@
 							</div>
 						</div>
 					</sec:authorize>
-
+					
+					<c:if test="${not empty bbsList}">
+					
 					<div class="menu-dropdown">
 						<button class="menu-dropbtn">
 							<a href="#">커뮤니티</a>
 						</button>
+						<c:forEach items="${bbsList}" var="bbs">
 						<div class="menu-dropdown-content">
-							<a href="#">커뮤니티메뉴1 </a>
+							<a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
 						</div>
+						</c:forEach>
 					</div>
-
+					
+					</c:if>
+					
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
@@ -363,6 +373,15 @@
 										href="<%=request.getContextPath()%>/schafs_schdul/schdulList"
 										class="no-uline">학사 일정</a></li>
 								</div>
+								
+								<c:if test="${not empty noticeList}">
+								<c:forEach items="${noticeList}" var="bbs">
+								<div class="inherit-size">
+									<li class="sub-menu-li"><a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a></li>
+								</div>
+								</c:forEach>
+								</c:if>
+								
 							</ul>
 						</li>
 
@@ -428,24 +447,24 @@
 								</ul>
 							</li>
 						</sec:authorize>
-
+						
+						<c:if test="${not empty bbsList}">
+						
 						<li>
 							<div class="main-title">
 								<span class="folder main_menu"> </span><a href="#">커뮤니티</a>
 							</div>
 							<ul class="sub sub_meun">
+								<c:forEach items="${bbsList}" var="bbs">
 								<div class="inherit-size">
-									<li class="sub-menu-li"><a href="#">커뮤니티메뉴1</a></li>
+									<li class="sub-menu-li"><a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a></li>
 								</div>
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a href="#">커뮤니티메뉴2</a></li>
-								</div>
-								<div class="inherit-size">
-									<li class="sub-menu-li"><a href="#">커뮤니티메뉴3</a></li>
-								</div>
+								</c:forEach>
 							</ul>
 						</li>
-
+						
+						</c:if>
+						
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
 							<li>
 								<div class="main-title">

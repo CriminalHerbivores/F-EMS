@@ -51,5 +51,5 @@ public interface ManageService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<Bbs_ListVO> getBbsList() throws SQLException;
+	List<Bbs_ListVO> getBbsList(String name) throws SQLException;
 }
