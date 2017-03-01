@@ -506,6 +506,15 @@ public class ManageController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 일정 관리
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("eventHandler")
 	public String eventHandle(Model model){
 		String url = "admin/admin_page/eventHandler";
@@ -519,6 +528,17 @@ public class ManageController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 일정 수정
+	 * </pre>
+	 * <pre>
+	 * @param vo
+	 * @param start
+	 * @param end
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("updateEvent")
 	public String eventHandler(EventVO vo,String start,String end){
 		String url = "redirect:eventHandler";
