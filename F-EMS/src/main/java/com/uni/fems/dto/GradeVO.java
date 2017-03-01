@@ -45,4 +45,12 @@ public class GradeVO implements Serializable {
 	
 	private String key; //컬럼값
 	private String value; //입력값
+	
+	private String lu_Lctre_Code; //강의코드
+	private String lc_Split; //분반
+	private String lu_Lctre_Nm; //강의명
+	private String pr_Nm; //교수명
+	private String lc_Year; //년도
+	private String lc_Term; // 학기
+	private String gd_Al; //학점
 }

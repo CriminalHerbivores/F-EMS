@@ -49,4 +49,21 @@
 		where gd_Stdnt_No like '%'||#gd_Stdnt_No#||'%'
 		and gd_Lctre_No like '%'||#gd_Lctre_No#||'%'
 	</select>
+	
+	<select id="lctreGrade" parameterClass="grade" resultClass="grade">
+		select g.*,l.*, extract(year from(lc_lctrbgn_dt)) as lc_year,
+		case when ROUND(g.GD_GRADE,2) >=4.25 then 'A+'
+		     when ROUND(g.GD_GRADE,2) >=3.75 then 'A'
+		     when ROUND(g.GD_GRADE,2) >=3.25 then 'B+'
+		     when ROUND(g.GD_GRADE,2) >=2.75 then 'B'
+		     when ROUND(g.GD_GRADE,2) >=2.25 then 'C+'
+		     when ROUND(g.GD_GRADE,2) >=1.75 then 'C'
+		     when ROUND(g.GD_GRADE,2) >=1.25 then 'D+'
+		     when ROUND(g.GD_GRADE,2) >=0.75 then 'D'
+		     else 'F'
+		end as gd_al
+		from grade g, lctre_view l
+		where g.GD_LCTRE_NO = l.lc_lctre_no
+		and g.gd_stdnt_no = #gd_Stdnt_No#
+	</select>
 </sqlMap>
