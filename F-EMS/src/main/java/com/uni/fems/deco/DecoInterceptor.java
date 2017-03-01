@@ -36,7 +36,7 @@ public class DecoInterceptor extends HandlerInterceptorAdapter{
 	
 	/**
 	 * <pre>
-	 * manage 테이블의 값을 가져와서 설정함
+	 * decorator에 적용할 정보들을 가져와서 설정함
 	 * </pre>
 	 */
 	@Override
