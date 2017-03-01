@@ -49,7 +49,7 @@ public class Intrst_ListController {
 	private ReqstService reqstService;
 	@Autowired
 	private StdntService stdntService;
-	
+
 	/**
 	 * <pre>
 	 * 관심 강의 목록 폼

@@ -18,46 +18,44 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 
 <script type="text/javascript">
-function resultLctre(lc_Wik_Lctre_Dayweek,lc_Lctre_Time,lc_Lctrum_No,lu_Lctre_Nm) {	// ,bd_Nm,pr_Nm  왜 건물명,교수명을 못불러오는가?
-	   
+$(document).ready(function () {
+	var lc_Wik_Lctre_Dayweek = $("input[name='lc_Wik_Lctre_Dayweek']").val();
+	var lc_Lctre_Time = $("input[name='lc_Lctre_Time']").val();
+	var lc_Lctrum_No = $("input[name='lc_Lctrum_No']").val();
+	var lu_Lctre_Nm = $("input[name='lu_Lctre_Nm']").val();
+	var bd_Nm = $("input[name='bd_Nm']").val();
+	var pr_Nm = $("input[name='pr_Nm']").val();
+	var lc_Lctre_No = $("input[name='lc_Lctre_No']").val();
+	var lc_Lctre_Code = $("input[name='lc_Lctre_Code']").val();
+	var lc_Split = $("input[name='lc_Split']").val();
+
+	var timeTbValues=[];
+	$("input[id='TimeTale']").each(function(i) {
+		timeTbValues.push($(this).val());
+    });
+	
+	var allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, "lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, "bd_Nm": bd_Nm, "pr_Nm": pr_Nm, "lc_Lctre_No": lc_Lctre_No, "lc_Lctre_Code": lc_Lctre_Code, "lc_Split": lc_Split}
+
 // 요일 처리
 var str=lc_Wik_Lctre_Dayweek;
 var arr = str.split("/");
 var arr1 = arr[0];
 var arr2 = arr[1];
-//alert(arr1);
-//alert(arr2);
-
-// 교시 처리
-// var aa=lc_Lctre_Time.split("/")[0];
-// var bb=lc_Lctre_Time.split("/")[1];
-// var cc=aa.split(",")[0];
-// var dd=bb.split(",")[0];
-// var ee=aa.split(",")[1];
-// var ff=bb.split(",")[1];
-// alert(cc+ee+"-"+dd+ff);
-
 
 var period1=lc_Lctre_Time.split("/")[0].split(",")[0]+"-"+lc_Lctre_Time.split("/")[0].split(",")[1]
 var period2=lc_Lctre_Time.split("/")[1].split(",")[0]+"-"+lc_Lctre_Time.split("/")[1].split(",")[1]
-alert(period1+"   "+period2);
 
 // 강의실 처리
 var roomNm=lc_Lctrum_No.split("-")[1];
-//alert(roomNm)
-var bd_Nmm="공과대학 2호관";
-//alert(bd_Nm); 
-		
-//var bdNm1=bd_Nmm.slice(0,1);
-//var bdNm2=bd_Nmm.split(" ")[1].slice(0,1);
-var bdNm=bd_Nmm.slice(0,1).concat("",bd_Nmm.split(" ")[1].slice(0,1)).concat("-",roomNm);
-//---------------------------------------
-var rst1 = lu_Lctre_Nm+"<br>"+"pr_Nm 와야함"+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm;
-var rst2 = lu_Lctre_Nm+"<br>"+"pr_Nm 와야함"+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm;
 
-alert("rst1 : "+rst1);
+var bdNm=bd_Nm.slice(0,1).concat("",bd_Nm.split(" ")[1].slice(0,1)).concat("-",roomNm);
+
+//---------------------------------------
+var rst1 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm+pr_Nm+"<br>";
+var rst2 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm+pr_Nm+"<br>";
 
 /* var thArray = new Array();
 var contentArray = new Array();
@@ -74,33 +72,47 @@ $('tr').each(function(indexParent) {
     });
 }); */
 
+
 if(period1.split("-")[0]=="1"||period1.split("-")[1]=="1"){
 	if(arr1=="월"){
-		$("td:eq(1)").html(rst1);
+		$("td:eq(0)").html(rst1);
 	}else if(arr1=="화"){
-		$("td:eq(2)").html(rst1);
+		$("td:eq(1)").html(rst1);
 	}else if(arr1=="수"){
-		$("td:eq(3)").html(rst1);
+		$("td:eq(2)").html(rst1);
 	}else if(arr1=="목"){
-		$("td:eq(4)").html(rst1);
+		$("td:eq(3)").html(rst1);
 	}else if(arr1=="금"){
-		$("td:eq(5)").html(rst1);
+		$("td:eq(4)").html(rst1);
 	}	
 }
 if(period1.split("-")[0]=="2"||period1.split("-")[1]=="2"){
 	if(arr1=="월"){
-		$("td:eq(8)").html(rst1);
+		$("td:eq(5)").html(rst1);
 	}else if(arr1=="화"){
-		$("td:eq(9)").html(rst1);
+		$("td:eq(6)").html(rst1);
 	}else if(arr1=="수"){
-		$("td:eq(10)").html(rst1);
+		$("td:eq(7)").html(rst1);
 	}else if(arr1=="목"){
-		$("td:eq(11)").html(rst1);
+		$("td:eq(8)").html(rst1);
 	}else if(arr1=="금"){
-		$("td:eq(12)").html(rst1);
+		$("td:eq(9)").html(rst1);
 	}	
 }
 if(period1.split("-")[0]=="3"||period1.split("-")[1]=="3"){
+	if(arr1=="월"){
+		$("td:eq(10)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(11)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(12)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(13)").html(rst1);
+	}else if(arr1=="금"){
+		$("td:eq(14").html(rst1);
+	}	
+}
+if(period1.split("-")[0]=="4"||period1.split("-")[1]=="4"){
 	if(arr1=="월"){
 		$("td:eq(15)").html(rst1);
 	}else if(arr1=="화"){
@@ -113,120 +125,296 @@ if(period1.split("-")[0]=="3"||period1.split("-")[1]=="3"){
 		$("td:eq(19)").html(rst1);
 	}	
 }
-if(period1.split("-")[0]=="4"||period1.split("-")[1]=="4"){
-	if(arr1=="월"){
-		$("td:eq(22)").html(rst1);
-	}else if(arr1=="화"){
-		$("td:eq(23)").html(rst1);
-	}else if(arr1=="수"){
-		$("td:eq(24)").html(rst1);
-	}else if(arr1=="목"){
-		$("td:eq(25)").html(rst1);
-	}else if(arr1=="금"){
-		$("td:eq(26)").html(rst1);
-	}	
-}
 if(period1.split("-")[0]=="5"||period1.split("-")[1]=="5"){
 	if(arr1=="월"){
+		$("td:eq(20)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(21)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(22)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(23)").html(rst1);
+	}else if(arr1=="금"){
+		$("td:eq(24)").html(rst1);
+	}	
+}
+if(period1.split("-")[0]=="56"||period1.split("-")[1]=="6"){
+	if(arr1=="월"){
+		$("td:eq(25)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(26)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(27)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(28)").html(rst1);
+	}else if(arr1=="금"){
 		$("td:eq(29)").html(rst1);
-	}else if(arr1=="화"){
+	}	
+}
+if(period1.split("-")[0]=="7"||period1.split("-")[1]=="7"){
+	if(arr1=="월"){
 		$("td:eq(30)").html(rst1);
-	}else if(arr1=="수"){
+	}else if(arr1=="화"){
 		$("td:eq(31)").html(rst1);
-	}else if(arr1=="목"){
+	}else if(arr1=="수"){
 		$("td:eq(32)").html(rst1);
-	}else if(arr1=="금"){
+	}else if(arr1=="목"){
 		$("td:eq(33)").html(rst1);
+	}else if(arr1=="금"){
+		$("td:eq(34)").html(rst1);
 	}	
 }
-if(period1.split("-")[0]=="5"||period1.split("-")[1]=="6"){
+if(period1.split("-")[0]=="8"||period1.split("-")[1]=="8"){
 	if(arr1=="월"){
+		$("td:eq(35)").html(rst1);
+	}else if(arr1=="화"){
 		$("td:eq(36)").html(rst1);
-	}else if(arr1=="화"){
+	}else if(arr1=="수"){
 		$("td:eq(37)").html(rst1);
-	}else if(arr1=="수"){
+	}else if(arr1=="목"){
 		$("td:eq(38)").html(rst1);
-	}else if(arr1=="목"){
+	}else if(arr1=="금"){
 		$("td:eq(39)").html(rst1);
-	}else if(arr1=="금"){
+	}	
+}
+if(period1.split("-")[0]=="9"||period1.split("-")[1]=="9"){
+	if(arr1=="월"){
 		$("td:eq(40)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(41)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(42)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(43)").html(rst1);
+	}else if(arr1=="금"){
+		$("td:eq(44)").html(rst1);
 	}	
 }
-if(period1.split("-")[0]=="5"||period1.split("-")[1]=="7"){
+if(period1.split("-")[0]=="10"||period1.split("-")[1]=="10"){
 	if(arr1=="월"){
+		$("td:eq(45)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(46)").html(rst1);
+	}else if(arr1=="수"){
 		$("td:eq(47)").html(rst1);
-	}else if(arr1=="화"){
+	}else if(arr1=="목"){
 		$("td:eq(48)").html(rst1);
-	}else if(arr1=="수"){
+	}else if(arr1=="금"){
 		$("td:eq(49)").html(rst1);
-	}else if(arr1=="목"){
+	}	
+}
+if(period1.split("-")[0]=="11"||period1.split("-")[1]=="11"){
+	if(arr1=="월"){
 		$("td:eq(50)").html(rst1);
-	}else if(arr1=="금"){
+	}else if(arr1=="화"){
 		$("td:eq(51)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(52)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(53)").html(rst1);
+	}else if(arr1=="금"){
+		$("td:eq(54)").html(rst1);
 	}	
 }
-if(period1.split("-")[0]=="5"||period1.split("-")[1]=="8"){
+if(period1.split("-")[0]=="12"||period1.split("-")[1]=="12"){
 	if(arr1=="월"){
+		$("td:eq(55)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(56)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(57)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(58)").html(rst1);
+	}else if(arr1=="금"){
+		$("td:eq(59)").html(rst1);
+	}	
+}
+if(period1.split("-")[0]=="13"||period1.split("-")[1]=="13"){
+	if(arr1=="월"){
+		$("td:eq(60)").html(rst1);
+	}else if(arr1=="화"){
+		$("td:eq(61)").html(rst1);
+	}else if(arr1=="수"){
+		$("td:eq(62)").html(rst1);
+	}else if(arr1=="목"){
+		$("td:eq(63)").html(rst1);
+	}else if(arr1=="금"){
 		$("td:eq(64)").html(rst1);
-	}else if(arr1=="화"){
-		$("td:eq(65)").html(rst1);
-	}else if(arr1=="수"){
-		$("td:eq(66)").html(rst1);
-	}else if(arr1=="목"){
-		$("td:eq(67)").html(rst1);
-	}else if(arr1=="금"){
-		$("td:eq(68)").html(rst1);
 	}	
 }
-if(period1.split("-")[0]=="5"||period1.split("-")[1]=="9"){
-	if(arr1=="월"){
-		$("td:eq(71)").html(rst1);
-	}else if(arr1=="화"){
-		$("td:eq(72)").html(rst1);
-	}else if(arr1=="수"){
-		$("td:eq(73)").html(rst1);
-	}else if(arr1=="목"){
-		$("td:eq(74)").html(rst1);
-	}else if(arr1=="금"){
-		$("td:eq(75)").html(rst1);
+//------------------------------------------------------------
+
+if(period2.split("-")[0]=="1"||period2.split("-")[1]=="1"){
+	if(arr2=="월"){
+		$("td:eq(0)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(1)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(2)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(3)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(4)").html(rst2);
 	}	
 }
-if(period1.split("-")[0]=="5"||period1.split("-")[1]=="10"){
-	if(arr1=="월"){
-		$("td:eq(78)").html(rst1);
-	}else if(arr1=="화"){
-		$("td:eq(79)").html(rst1);
-	}else if(arr1=="수"){
-		$("td:eq(80)").html(rst1);
-	}else if(arr1=="목"){
-		$("td:eq(81)").html(rst1);
-	}else if(arr1=="금"){
-		$("td:eq(82)").html(rst1);
+if(period2.split("-")[0]=="2"||period2.split("-")[1]=="2"){
+	if(arr2=="월"){
+		$("td:eq(5)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(6)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(7)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(8)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(9)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="3"||period2.split("-")[1]=="3"){
+	if(arr2=="월"){
+		$("td:eq(10)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(11)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(12)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(13)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(14").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="4"||period2.split("-")[1]=="4"){
+	if(arr2=="월"){
+		$("td:eq(15)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(16)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(17)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(18)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(19)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="5"||period2.split("-")[1]=="5"){
+	if(arr2=="월"){
+		$("td:eq(20)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(21)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(22)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(23)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(24)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="6"||period2.split("-")[1]=="6"){
+	if(arr2=="월"){
+		$("td:eq(25)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(26)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(27)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(28)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(29)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="7"||period2.split("-")[1]=="7"){
+	if(arr2=="월"){
+		$("td:eq(30)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(31)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(32)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(33)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(34)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="8"||period2.split("-")[1]=="8"){
+	if(arr2=="월"){
+		$("td:eq(35)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(36)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(37)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(38)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(39)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="9"||period2.split("-")[1]=="9"){
+	if(arr2=="월"){
+		$("td:eq(40)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(41)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(42)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(43)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(44)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="10"||period2.split("-")[1]=="10"){
+	if(arr2=="월"){
+		$("td:eq(45)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(46)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(47)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(48)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(49)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="11"||period2.split("-")[1]=="11"){
+	if(arr2=="월"){
+		$("td:eq(50)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(51)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(52)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(53)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(54)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="12"||period2.split("-")[1]=="12"){
+	if(arr2=="월"){
+		$("td:eq(55)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(56)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(57)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(58)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(59)").html(rst2);
+	}	
+}
+if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
+	if(arr2=="월"){
+		$("td:eq(60)").html(rst2);
+	}else if(arr2=="화"){
+		$("td:eq(61)").html(rst2);
+	}else if(arr2=="수"){
+		$("td:eq(62)").html(rst2);
+	}else if(arr2=="목"){
+		$("td:eq(63)").html(rst2);
+	}else if(arr2=="금"){
+		$("td:eq(64)").html(rst2);
 	}	
 }
 
-
-
-/* var aaa="올ㅋㅋㅋㅋ"
-$("td:eq(0)").text("0번인듯");
-$("td:eq(2)").css("background", "yellow");
-$("td:eq(5)").text(aaa);
-$("td:eq(4)").text("4번인가"); */
-
-
-//--------------------------------------
-
-
-//document.getElementById("demo1").innerHTML = lu_Lctre_Nm+"<br>"+"pr_Nm 와야함"+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm;
-//document.getElementById("demo2").innerHTML = lu_Lctre_Nm+"<br>"+"pr_Nm 와야함"+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm;
-
-
-// document.formm.getElementById("demo1").innerHTML = arr1;
-// document.formm.getElementById("demo2").innerHTML = arr2;
-
-
-}
-
+});
 
 	
 </script>
@@ -236,15 +424,26 @@ $("td:eq(4)").text("4번인가"); */
 <form id="formm" name="formm">
 	<c:forEach items="${lctre_SearchVO}" var="timeTb">
 	
+	<%-- <div style="margin:auto">[${timeTb.lc_Lctre_No}]&nbsp;&nbsp;
+	${timeTb.lu_Lctre_Nm}&nbsp;&nbsp;
+	<input type="button" value="${timeTb.lc_Lctre_No}" onclick="return resultLctre('${timeTb.lc_Wik_Lctre_Dayweek}','${timeTb.lc_Lctre_Time}','${timeTb.lc_Lctrum_No}','${timeTb.lu_Lctre_Nm}','${timeTb.bd_Nm}','${timeTb.pr_Nm}','${timeTb.lc_Lctre_No}','${timeTb.lc_Lctre_Code}','${timeTb.lc_Split}')" ><br/>
+	,'${timeTb.bd_Nm}','${timeTb.pr_Nm}'
+	</div> --%>
 	
-	${timeTb.lu_Lctre_Nm}
-	<input type="button" value="${timeTb.lc_Lctre_No}" onclick="return resultLctre('${timeTb.lc_Wik_Lctre_Dayweek}','${timeTb.lc_Lctre_Time}','${timeTb.lc_Lctrum_No}','${timeTb.lu_Lctre_Nm}')" ><br/>
-	<%-- ,'${timeTb.bd_Nm}','${timeTb.pr_Nm}' --%>
-	
+	<input type="hidden" id="TimeTale" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}"><br/>
+	<input type="hidden" id="TimeTale" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}"><br/>
+	<input type="hidden" id="TimeTale" name="bd_Nm" value="${timeTb.bd_Nm}"><br/>
+	<input type="hidden" id="TimeTale" name="pr_Nm" value="${timeTb.pr_Nm}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}"><br/>
+	<input type="hidden" id="TimeTale" name="lc_Split" value="${timeTb.lc_Split}"><br/>
+		
 	</c:forEach>
 	
 	<h1>시간표 (${loginUser}&nbsp;&nbsp;<%-- ${lctre_SearchVO.st_Nm} --%>)</h1>
-	<table class="def-table-full tb-border table-hover">
+	<table class="def-table-full tb-border">
 		<tr>
 			<th>시간</th>
 			<th>월</th>
@@ -254,18 +453,7 @@ $("td:eq(4)").text("4번인가"); */
 			<th>금</th>
 		</tr>
 		<tr>
-			<td>1교시</td>
-			<td rowspan="2"><p id="demo1"></p></td>
-			<td rowspan="2"><p id="demo2"></p></td>
-			<td rowspan="2"></td>
-			<td rowspan="2"></td>
-			<td rowspan="2"></td>
-		</tr>
-		<tr>
-			<td>09:00</td>
-		</tr>
-		<tr>
-			<td>2교시</td>
+			<th>1교시</th>
 			<td rowspan="2"></td>
 			<td rowspan="2"></td>
 			<td rowspan="2"></td>
@@ -273,10 +461,10 @@ $("td:eq(4)").text("4번인가"); */
 			<td rowspan="2"></td>
 		</tr>
 		<tr>
-			<td>10:00</td>
+			<th>09:00</th>
 		</tr>
 		<tr>
-			<td>3교시</td>
+			<th>2교시</th>
 			<td rowspan="2"></td>
 			<td rowspan="2"></td>
 			<td rowspan="2"></td>
@@ -284,10 +472,21 @@ $("td:eq(4)").text("4번인가"); */
 			<td rowspan="2"></td>
 		</tr>
 		<tr>
-			<td>11:00</td>
+			<th>10:00</th>
 		</tr>
 		<tr>
-		<td>4교시</td>
+			<th>3교시</th>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+			<td rowspan="2"></td>
+		</tr>
+		<tr>
+			<th>11:00</th>
+		</tr>
+		<tr>
+		<th>4교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -295,10 +494,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>12:00</td>
+	<th>12:00</th>
 	</tr>
 	<tr>
-		<td>5교시</td>
+		<th>5교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -306,10 +505,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>13:00</td>
+	<th>13:00</th>
 	</tr>
 	<tr>
-		<td>6교시</td>
+		<th>6교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -317,10 +516,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>14:00</td>
+	<th>14:00</th>
 	</tr>
 	<tr>
-		<td>7교시</td>
+		<th>7교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -328,10 +527,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>15:00</td>
+	<th>15:00</th>
 	</tr>
 	<tr>
-		<td>8교시</td>
+		<th>8교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -339,10 +538,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>16:00</td>
+	<th>16:00</th>
 	</tr>
 	<tr>
-		<td>9교시</td>
+		<th>9교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -350,10 +549,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>17:00</td>
+	<th>17:00</th>
 	</tr>
 	<tr>
-		<td>10교시</td>
+		<th>10교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -361,10 +560,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>18:00</td>
+	<th>18:00</th>
 	</tr>
 	<tr>
-		<td>11교시</td>
+		<th>11교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -372,10 +571,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>19:00</td>
+	<th>19:00</th>
 	</tr>
 	<tr>
-		<td>12교시</td>
+		<th>12교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -383,10 +582,10 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>20:00</td>
+	<th>20:00</th>
 	</tr>
 	<tr>
-		<td>13교시</td>
+		<th>13교시</th>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
 		<td rowspan="2"></td>
@@ -394,7 +593,7 @@ $("td:eq(4)").text("4번인가"); */
 		<td rowspan="2"></td>
 	</tr>
 	<tr>
-	<td>21:00</td>
+	<th>21:00</th>
 	</tr>
 	</table>
 

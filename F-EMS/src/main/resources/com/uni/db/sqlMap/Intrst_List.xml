@@ -26,8 +26,12 @@
 
 	<!-- 관심목록 등록 -->
 	<update id="insertIntrst_List" parameterClass="intrst_List">
-		insert into intrst_list(in_Stdnt_No,in_Lctre_No)
-			values(#in_Stdnt_No#,#in_Lctre_No#)
+		MERGE INTO intrst_list
+		USING DUAL
+		on (in_Stdnt_No=#in_Stdnt_No# and in_Lctre_No=#in_Lctre_No#)
+		WHEN NOT MATCHED THEN
+		insert (in_Stdnt_No,in_Lctre_No) 
+		values (#in_Stdnt_No#,#in_Lctre_No#);
 	</update>
 	
 	<!-- 관심목록 삭제 -->
