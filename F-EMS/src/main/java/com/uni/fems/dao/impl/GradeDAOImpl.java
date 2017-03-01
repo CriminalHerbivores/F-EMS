@@ -41,4 +41,9 @@ public class GradeDAOImpl implements GradeDAO {
 		List<GradeVO> list = client.queryForList("lctreGrade",grade);
 		return list;
 	}
+	@Override
+	public GradeVO totalGrade(String gd_Stdnt_No) throws SQLException {
+		GradeVO vo = (GradeVO) client.queryForObject("totalGrade",gd_Stdnt_No);
+		return vo;
+	}
 }

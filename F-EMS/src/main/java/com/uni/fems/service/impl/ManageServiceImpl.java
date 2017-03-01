@@ -1,24 +1,30 @@
 package com.uni.fems.service.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.uni.fems.dao.ManageDAO;
+import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.ManageVO;
 import com.uni.fems.service.ManageService;
 
 public class ManageServiceImpl implements ManageService {
- 
- private ManageDAO manageDAO;
- public void setManageDAO(ManageDAO manageDAO){
-  this.manageDAO=manageDAO;
- }
-@Override
-public ManageVO getManage() throws SQLException {
-	ManageVO manageVO = manageDAO.getManage();
-	return manageVO;
-}
- 
- 
-}
 
+	private ManageDAO manageDAO;
+	public void setManageDAO(ManageDAO manageDAO) {
+		this.manageDAO = manageDAO;
+	}
 
+	@Override
+	public ManageVO getManage() throws SQLException {
+		ManageVO manageVO = manageDAO.getManage();
+		return manageVO;
+	}
+
+	@Override
+	public List<Bbs_ListVO> getBbsList() throws SQLException {
+		List<Bbs_ListVO> bbsListVO = manageDAO.getBbsList();
+		return bbsListVO;
+	}
+
+}

@@ -49,6 +49,11 @@ public class GradeServiceImpl implements GradeService {
 		List<GradeVO> list = gradeDAO.lctreGrade(grade);
 		return list;
 	}
+	@Override
+	public GradeVO totalGrade(String gd_Stdnt_No) throws SQLException {
+		GradeVO vo = gradeDAO.totalGrade(gd_Stdnt_No);
+		return vo;
+	}
 }
 
 

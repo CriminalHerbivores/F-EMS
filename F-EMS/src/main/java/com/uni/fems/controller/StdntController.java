@@ -456,12 +456,15 @@ public class StdntController {
 		grade.setGd_Stdnt_No(loginUser);
 		
 		List<GradeVO> list = null;
+		GradeVO vo = null;
 		try {
 			list = gradeService.lctreGrade(grade);
+			vo = gradeService.totalGrade(loginUser);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("gradeList",list);
+		model.addAttribute("grade",vo);
 		return url;
 	}
 }

@@ -21,6 +21,26 @@
 </head>
 <body>
 <h2>성적 조회</h2>
+<br/>
+<table class="def-table-full tb-border table-hover">
+	<tr>
+		<th>학번</th>
+		<th>취득학점</th>
+		<th>평점계</th>
+		<th>평균평점</th>
+		<th>학점</th>
+	</tr>
+	<tr>
+		<td>${grade.gd_Stdnt_No}</td>
+		<td>${grade.cppnt}</td>
+		<td>${grade.totalPnt}</td>
+		<td>${grade.avgPnt}</td>
+		<td>${grade.allPnt}</td>
+	</tr>
+</table>
+<br/>
+<hr>
+<br/>
 <table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>강의번호</th>
