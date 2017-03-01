@@ -13,6 +13,12 @@ public class EventServiceImpl implements EventService {
 	public void setEventDAO(EventDAO eventDAO) {
 		this.eventDAO = eventDAO;
 	}
+	
+	@Override
+	public List<EventVO> selectEventList() throws SQLException {
+		List<EventVO> list = eventDAO.selectEventList();
+		return list;
+	}
 
 	@Override
 	public EventVO selectEvent(String evt_Nm) throws SQLException {

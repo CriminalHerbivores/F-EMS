@@ -113,4 +113,19 @@ function go_admin_page() {
 	document.formm.submit();
 }
 
+function manageEvent(r){
+	var i = "#"+r+" input"; 
+	$.ajax({
+		url:'updateEvent',
+		dataType:'text',
+		data:$(i).serialize(),
+		type:'get',
+		success : function(result){
+			swal("","일정이 수정되었습니다.");
+		},
+		error:function(request,status,error){
+		  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		  }
+	});
+}
 
