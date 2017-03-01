@@ -13,8 +13,8 @@ public class EventVO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String evt_Nm; //일정이름
+	private String evt_Code; //일정코드
 	private Timestamp evt_Start; //시작일
 	private Timestamp evt_End; //종료일
-	private String evt_Useyn; //일정사용유무
+	private String evt_Nm; //일정이름
 }

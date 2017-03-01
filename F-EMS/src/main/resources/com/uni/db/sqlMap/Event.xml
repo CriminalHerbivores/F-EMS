@@ -15,19 +15,22 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="event" type="com.uni.fems.dto.EventVO" />
 	
+	<select id="selectEventList" resultClass="event">
+		select * from event
+	</select>
+	
 	<select id="selectEvent" parameterClass="str" resultClass="event">
 		select * from event
-		where evt_Nm = #evt_Nm#
+		where evt_Code = #evt_Code#
 	</select>
 	
 	<update id="updateEvent">
 		update event
 		set 
-			eve_Start=#eve_Start#,
-			eve_End=#eve_End#,
-			eve_Useyn=#eve_Useyn#
+			evt_Start=#evt_Start#,
+			evt_End=#evt_End#
 		where 
-			eve_Nm = #eve_Nm#
+			evt_Code = #evt_Code#
 	</update>
 	
 </sqlMap>
