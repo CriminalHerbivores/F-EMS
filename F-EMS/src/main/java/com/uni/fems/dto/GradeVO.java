@@ -53,4 +53,10 @@ public class GradeVO implements Serializable {
 	private String lc_Year; //년도
 	private String lc_Term; // 학기
 	private String gd_Al; //학점
+	
+	private String cppnt; //이수학점 총합
+	private String totalPnt; //이수*수료학점 총합
+	private String avgPnt; //이수*수료학점 평균
+	private String allPnt; //총 학점
+	
 }

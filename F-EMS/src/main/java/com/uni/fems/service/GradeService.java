@@ -70,4 +70,11 @@ public interface GradeService {
 	 * </pre>
 	 */
 	List<GradeVO> lctreGrade(GradeVO grade) throws SQLException; 
+	/**
+	 * 학생의 총 학점 조회
+	 * @param gd_Stdnt_No
+	 * @return
+	 * @throws SQLException
+	 */
+	GradeVO totalGrade(String gd_Stdnt_No) throws SQLException;
 }

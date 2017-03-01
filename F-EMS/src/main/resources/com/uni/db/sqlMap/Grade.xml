@@ -66,4 +66,9 @@
 		where g.GD_LCTRE_NO = l.lc_lctre_no
 		and g.gd_stdnt_no = #gd_Stdnt_No#
 	</select>
+	
+	<select id="totalGrade" parameterClass="str" resultClass="grade">
+		select * from grade_view
+		where gd_Stdnt_No = #gd_Stdnt_No#
+	</select>
 </sqlMap>
