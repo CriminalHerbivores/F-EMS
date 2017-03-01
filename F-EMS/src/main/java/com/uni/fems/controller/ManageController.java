@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.dto.EventVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
@@ -23,6 +24,7 @@ import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
+import com.uni.fems.service.EventService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Sklstf_AtrtyService;
 import com.uni.fems.service.Subjct_Info_TableService;
@@ -60,7 +62,8 @@ public class ManageController {
 	private Subjct_Info_TableService subjct_Info_TableService;
 	@Autowired
 	private UsersService usersService;
-
+	@Autowired
+	private EventService eventService;
 	
 	/**
 	 * <pre>
@@ -503,4 +506,50 @@ public class ManageController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 일정 관리
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("eventHandler")
+	public String eventHandle(Model model){
+		String url = "admin/admin_page/eventHandler";
+		List<EventVO> list = null;
+		try {
+			list = eventService.selectEventList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("eventList",list);
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 일정 수정
+	 * </pre>
+	 * <pre>
+	 * @param vo
+	 * @param start
+	 * @param end
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("updateEvent")
+	public String eventHandler(EventVO vo,String start,String end){
+		String url = "redirect:eventHandler";
+		
+		vo.setEvt_Start(java.sql.Timestamp.valueOf(start));
+		vo.setEvt_End(java.sql.Timestamp.valueOf(end));
+		try {
+			eventService.updateEvent(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return url;
+	}
 }

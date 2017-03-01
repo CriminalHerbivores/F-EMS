@@ -40,6 +40,7 @@
 <a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적 조회</a><br/>
+<a href="<%=request.getContextPath() %>/stdnt/viewGrade" class="no-uline">성적 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/fromStdTuition" class="no-uline">등록금 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/schlshipList" class="no-uline">장학금 조회</a><br/>
 <a href="<%=request.getContextPath() %>/stdnt/atBrhs" class="no-uline">기숙사 조회</a><br/>
@@ -63,6 +64,7 @@
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a><br/>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a><br/>
 <a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a><br/>
+<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a><br/>
 --------- 임시 ---------<br/>
 
 </td>
