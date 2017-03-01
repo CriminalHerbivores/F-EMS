@@ -28,7 +28,7 @@ public interface AnswerDAO {
 	 * 해당 시험의 문제에 답변을 가져오는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param tp_no
+	 * @param answerVO
 	 * @return
 	 * @throws SQLException
 	 * </pre>
@@ -40,7 +40,7 @@ public interface AnswerDAO {
 	 * 해당 시험의 문제에 답변을 추가하는 메서드
 	 * </pre>
 	 * <pre>
-	 * @param tp_no
+	 * @param answerVO
 	 * @return
 	 * @throws SQLException
 	 * </pre>
@@ -58,6 +58,20 @@ public interface AnswerDAO {
 	 * </pre>
 	 */
 	public List<AnswerVO> listAllAnswer(String loginUser) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 시험본 학생의 시험지를 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param answerVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public List<AnswerVO> completeAnswer(AnswerVO answerVO) throws SQLException;
+	
 	
 	/**
 	 * <pre>
@@ -95,4 +109,6 @@ public interface AnswerDAO {
 	 * </pre>
 	 */
 	public List<String> nameAnswerSTD(int tpNo) throws SQLException;
+	
+	
 }

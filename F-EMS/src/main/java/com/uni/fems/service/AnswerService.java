@@ -44,7 +44,20 @@ public interface AnswerService {
 	 * @throws SQLException
 	 * </pre>
 	 */
+	
+	
 	public int insertAnswer(AnswerVO answerVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 시험본 학생의 시험지를 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param answerVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	public List<AnswerVO> completeAnswer(AnswerVO answerVO) throws SQLException;
 	
 	/**
 	 * <pre>

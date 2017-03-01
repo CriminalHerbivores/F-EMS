@@ -48,6 +48,10 @@ public int countAnswerSTD(int tpNo) throws SQLException {
 public List<String> nameAnswerSTD(int tpNo) throws SQLException {
 	return answerDAO.nameAnswerSTD(tpNo);
 }
+@Override
+public List<AnswerVO> completeAnswer(AnswerVO answerVO) throws SQLException {
+	return answerDAO.completeAnswer(answerVO);
+}
  
  
 }
