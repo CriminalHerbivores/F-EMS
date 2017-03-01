@@ -63,6 +63,7 @@
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a><br/>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a><br/>
 <a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a><br/>
+<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a><br/>
 --------- 임시 ---------<br/>
 
 </td>

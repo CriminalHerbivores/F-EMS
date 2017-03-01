@@ -213,6 +213,12 @@ public class IndexController {
 		return pw;
 	}
 	
+	@RequestMapping("event")
+	public String event(){
+		String url="notEvent";
+		return url;
+	}
+	
 	// 관리자
 	// /////////////////////////////////////////////////////////////////////////
 
