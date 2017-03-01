@@ -49,5 +49,22 @@ public class Lctre_Video_StdntDAOImpl implements Lctre_Video_StdntDAO {
 		return total_pages;
 	}
 
+	@Override
+	public Lctre_Watch_Video_GntVO getLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
+		Lctre_Watch_Video_GntVO result = (Lctre_Watch_Video_GntVO)client.queryForObject("getLctre_Video_Stdnt", lctre_Watch_Video_Gnt);
+		return result;
+	}
 	
+	@Override
+	public int insertLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt)
+			throws SQLException {
+		int result = client.update("insertLctre_Video_Stdnt", lctre_Watch_Video_Gnt);
+		return result;
+	}
+
+	@Override
+	public int updateLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
+		int result = client.update("updateLctre_Video_Stdnt", lctre_Watch_Video_Gnt);
+		return result;
+	}
 }

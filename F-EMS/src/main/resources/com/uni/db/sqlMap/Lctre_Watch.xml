@@ -43,5 +43,36 @@
 		and LV_CN like '%$lv_Cn$%' 
 	</select>
 	
+	<select id="getLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt" resultClass="lctre_watch_video_gnt">
+		select 
+		  V.LV_BBS_NO,
+		  V.LV_SJ,
+		  V.LV_CN,
+		  V.LV_START_DT,
+		  V.LV_END_DT,
+		  V.LV_TIME,
+		  V.LV_FLPTH_NO,
+		  W.LW_BBS_NO,
+		  W.LW_STDNT_NO,
+		  W.LW_VIDEO_BBS_NO,
+		  W.LW_WATCH_TIME,
+		  W.LW_ATTRNDANCE
+		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
+		ON(V.LV_BBS_NO = W.LW_VIDEO_BBS_NO)
+		where V.LV_BBS_NO = #lv_Bbs_No#
+		order by V.LV_BBS_NO desc
+	</select>
+	
+	<update id="insertLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">
+		insert into LCTRE_V$table_Nm$(W.LW_BBS_NO, W.LW_STDNT_NO, W.LW_VIDEO_BBS_NO, W.LW_WATCH_TIME, W.LW_ATTRNDANCE) 
+		values(((select max(LW_BBS_NO) from LCTRE_W$table_Nm$)+1),#lw_Stdnt_No#,#lw_Video_Bbs_No#,#lw_Watch_Time#,#lw_Attendance#)
+	</update>
+	
+	<update id="updateLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">
+		update LCTRE_W$table_Nm$ set LW_WATCH_TIME=#lw_Watch_Time#,LW_ATTRNDANCE=#lw_Attendance#
+		where LW_BBS_NO=#lw_Bbs_No#
+	</update>
+	
+	
 	
 </sqlMap>

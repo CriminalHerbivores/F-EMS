@@ -14,4 +14,13 @@ public interface Lctre_Video_StdntDAO {
 	int totalLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt)
 			throws SQLException;
 
+	Lctre_Watch_Video_GntVO getLctre_Video(
+			Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException;
+
+	int insertLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt)
+			throws SQLException;
+
+	int updateLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt)
+			throws SQLException;
+
 }

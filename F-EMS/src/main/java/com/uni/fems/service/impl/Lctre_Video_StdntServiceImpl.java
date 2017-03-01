@@ -55,6 +55,30 @@ public class Lctre_Video_StdntServiceImpl implements Lctre_Video_StdntService{
 		return page;
 	}
 	
+	@Override
+	public Lctre_Watch_Video_GntVO getLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
+		return lctre_Video_StdntDAO.getLctre_Video(lctre_Watch_Video_Gnt);
+	}
+	@Override
+	public Lctre_FlpthVO getLctre_Flpth(String lf_No)
+			throws SQLException {
+		Lctre_FlpthVO lctre_Flpth;
+		if(lf_No == null)
+			lctre_Flpth = null;
+		else{ 
+			lctre_Flpth = lctre_FlpthDAO.getLctre_Flpth(Integer.parseInt(lf_No));
+		}
+		return lctre_Flpth;
+	}
+	
+	@Override
+	public void insertLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
+		lctre_Video_StdntDAO.insertLctre_Video(lctre_Watch_Video_Gnt);
+	}
+	@Override
+	public int updateLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
+		return lctre_Video_StdntDAO.updateLctre_Video(lctre_Watch_Video_Gnt);
+	}
 
 }
 

@@ -2,7 +2,6 @@ package com.uni.fems.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 import kr.or.ddit.commons.ibatis.Alias;
 import lombok.Data;

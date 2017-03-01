@@ -55,15 +55,12 @@ import com.uni.fems.service.Lctre_Video_StdntService;
 
 @Controller
 @RequestMapping("/lctre")
-public class Lctre_videoController implements ApplicationContextAware{
+public class Lctre_video_ProfsrController implements ApplicationContextAware{
 	
 	private WebApplicationContext context = null;
 	
 	@Autowired
 	private Lctre_Video_ProfsrService lctre_VideoSvc;
-	
-	@Autowired
-	private Lctre_Video_StdntService lctre_Video_StdntSvc;
 	
 	/**
 	 * <pre>
@@ -129,51 +126,7 @@ public class Lctre_videoController implements ApplicationContextAware{
 		
 	}
 	
-	@RequestMapping("/video_StdntList")
-	public String Lctre_Video_StdntList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
-		String url= "lecture/video/video_StdntList";
-		String tpage = request.getParameter("tpage");
-		String table_Nm = request.getParameter("table_Nm");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt = new Lctre_Watch_Video_GntVO();
-		lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
-		lctre_Watch_Video_Gnt.setLw_Stdnt_No("bbb");
-		if(searchVO != null ||searchVO.getKey().equals("lv_Sj")){
-			lctre_Watch_Video_Gnt.setLv_Sj(searchVO.getValue());
-			lctre_Watch_Video_Gnt.setLv_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lv_Cn")){
-			lctre_Watch_Video_Gnt.setLv_Sj("%");
-			lctre_Watch_Video_Gnt.setLv_Cn(searchVO.getValue());
-		}else{
-			lctre_Watch_Video_Gnt.setLv_Sj("%");
-			lctre_Watch_Video_Gnt.setLv_Cn("%");
-		}
-		model.addAttribute("lctre_Video_Gnt", lctre_Watch_Video_Gnt);
-		
-		List<Lctre_Watch_Video_GntVO> lctre_VideoList = null;
-		String paging = null;
-		try {
-			lctre_VideoList = lctre_Video_StdntSvc.listAllLctre_Video(Integer.parseInt(tpage), lctre_Watch_Video_Gnt);
-			paging = lctre_Video_StdntSvc.pageNumber(Integer.parseInt(tpage), lctre_Watch_Video_Gnt);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		System.out.println("lctre_VideoList : "+lctre_VideoList);
-		model.addAttribute("lctre_VideoList", lctre_VideoList);
-		int n = lctre_VideoList.size();
-		model.addAttribute("lctre_VideoListSize", n);
-		model.addAttribute("paging", paging);
-		model.addAttribute("Date", new Date(System.currentTimeMillis()));
-		return url;
-		
-	}
+	
 	/**
 	 * <pre>
 	 * 게시판 작성 폼을 띄우기 위한 메서드
@@ -271,36 +224,6 @@ public class Lctre_videoController implements ApplicationContextAware{
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;
 	}
-	
-//	/**
-//	 * <pre>
-//	 * 게시판 리스트중 하나를 상세히 본다.
-//	 * </pre>
-//	 * <pre>
-//	 * @param lctre_Video_Gnt
-//	 * @param tpage
-//	 * @param model
-//	 * @param request
-//	 * @return url
-//	 * </pre>
-//	 */
-//	@RequestMapping(value="/detailLctre_Video_Stdnt")
-//	public String detailLctre_Video_Stdnt(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
-//		String url="lecture/video/detailLctre_Video_Stdnt";
-//		
-//		Lctre_VideoVO lctre_Video = null;
-//		Lctre_FlpthVO lctre_Flpth = null;
-//		try {
-//			lctre_Video = lctre_VideoSvc.getLctre_Video(lctre_Video_Gnt);
-//			lctre_Flpth = lctre_VideoSvc.getLctre_Flpth(lctre_Video.getLv_Flpth_No());
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("lctre_Video_Gnt",lctre_Video_Gnt);
-//		model.addAttribute("tpage",tpage);
-//		model.addAttribute("lctre_Flpth",lctre_Flpth);
-//		return url;
-//	}
 	
 	/**
 	 * <pre>
