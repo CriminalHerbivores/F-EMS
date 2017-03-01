@@ -1,6 +1,7 @@
 package com.uni.fems.deco;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.ManageVO;
 import com.uni.fems.service.ManageService;
 
@@ -43,12 +45,13 @@ public class DecoInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		if(session.getAttribute("manageVO")==null){
 			ManageVO manageVO=null;
-			try {
-				manageVO=manageService.getManage();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			manageVO=manageService.getManage();
 			session.setAttribute("manageVO", manageVO);
+		}
+		if(session.getAttribute("bbsList")==null){
+			List<Bbs_ListVO> bbsList=null;
+			bbsList=manageService.getBbsList();
+			session.setAttribute("bbsList", bbsList);
 		}
 		return super.preHandle(request, response, handler);
 	}
