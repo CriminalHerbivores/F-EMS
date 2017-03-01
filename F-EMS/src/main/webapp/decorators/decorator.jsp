@@ -68,12 +68,12 @@
 		<input class="def-btn btn-sm btn-color" type="button" value="학생"
 								onclick="login_student();" />&nbsp;&nbsp;
 		<a href="<%=request.getContextPath()%>/loginForm" class="no-uline"><button
-									class="def-btn">Login</button></a>&nbsp;&nbsp;
+									class="def-btn btn-sm btn-color">Login</button></a>&nbsp;&nbsp;
 				</c:when>
 						<c:otherwise>
 							<span>${loginUser}</span>&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/logout"><button
-									class="def-btn float-right">Logout</button></a>
+									class="def-btn btn-sm btn-color float-right">Logout</button></a>
 						</c:otherwise>
 					</c:choose>
 				</div>

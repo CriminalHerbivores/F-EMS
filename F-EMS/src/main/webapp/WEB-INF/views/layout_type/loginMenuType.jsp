@@ -62,38 +62,48 @@ function login_go() {
 <div id="header">
 
 <div class=" array-center ">			
-			<table class="def-table-auto">
-	<tr><td colspan="3"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Img}"></td>
-	<td colspan="2" rowspan="2"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></td></tr>
-	<tr><td colspan="3">	
-			<table class="def-table-auto out-border">
-				<div id="section">
-		<form action="login" id="loginMenuForm" method="post">
-				
-				<tr><td>
+<form action="login" id="loginMenuForm" method="post">
+<table class="def-table-auto">
+	<tr><td rowspan="5"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Img}"></td>
+	<td colspan="2" ><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></td></tr>
+	<!-- 만약 로그인유저가 널이라면 이거 보여주고 아닐경우 다른거 보여주고픔 -->
+	<c:choose>
+	
+	<c:when test="${empty loginUser}" >
+	<tr><td class="vertical-bottom">	
 <input type="hidden" name="returl" value="${param.returl }" />
-<input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/>
-				</td>
-					<td rowspan="2">
-<input type="button" class="def-btn btn-lg btn-color" value="로그인" onclick="login_go();"/>
-				<tr><td>
-<input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드">
-				</td></tr>
-				<tr><td colspan="2"><div><span id="message"></span></div></td></tr>
-		<tr><td>
-  <button onclick="document.getElementById('id01').style.display='block'" class="def-btn btn-sm btn-color">ID찾기</button>
-		</td><td><input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()"></td></tr></form></div>
-				
-				</table></td></tr>
+<input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/></td>
+<td rowspan="2"><input type="button" class="def-btn btn-lg btn-color" value="로그인" onclick="login_go();"/></td></tr>
+<tr><td class="vertical-top"><input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드"></td></tr>
+<tr><td colspan="2">
+<button onclick="document.getElementById('id01').style.display='block'" class="def-btn btn-sm btn-color">ID찾기</button>
+<input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()"></td></tr>
+<tr  style="height:50px;"><td colspan="2"><div><span id="message"></span></div></td></tr>
+	</c:when>
+	<c:otherwise>
+		
+		
+			<tr><td class="vertical-bottom">	
+<input type="hidden" name="returl" value="${param.returl }" />
+${loginUser} </td>
+<td rowspan="2"><input type="button" class="def-btn btn-lg btn-color" value="로그인" onclick="login_go();"/></td></tr>
+<tr><td class="vertical-top"><input type="password" class="def-input-text-md custom-form-control" name="password" placeholder="패스워드"></td></tr>
+<tr><td colspan="2">
+<button onclick="document.getElementById('id01').style.display='block'" class="def-btn btn-sm btn-color">ID찾기</button>
+<input type="button" value="PW찾기" class="def-btn btn-sm btn-color" onclick="modal_find_pw()"></td></tr>
+<tr  style="height:50px;"><td colspan="2"><div><span id="message"></span></div></td></tr>
+		
+		
+	</c:otherwise>
+	</c:choose>
 
-  
+</form>
   <tr><td colspan="5">
-		<table class="def-table-full" style="width:100% !important;">
+		<table class="def-table-full tb-border" style="width:100% !important;">
 		<tr><td class="login-menu-gray"><div>메뉴1</div></td><td  class="login-menu"><div>메뉴2</div></td><td class="login-menu-gray"><div>메뉴3</div></td><td class="login-menu"><div>메뉴4</div></td><td class="login-menu-gray"><div>메뉴5</div></td></tr>	
 		<tr><td class="login-menu"><div>메뉴6</div></td><td  class="login-menu-gray"><div>메뉴7</div></td><td class="login-menu"><div>메뉴8</div></td><td class="login-menu-gray"><div>메뉴9</div></td><td class="login-menu"><div>메뉴10</div></td></tr>	
 		<tr><td class="login-menu-gray"><div>메뉴11</div></td><td  class="login-menu"><div>메뉴12</div></td><td class="login-menu-gray"><div>메뉴13</div></td><td class="login-menu"><div>메뉴14</div></td><td class="login-menu-gray"><div>메뉴15</div></td></tr>	
-	</table></td></tr>
-	</table>
+	</table></td></tr></table>
 	</div>
 	
 	</div>
