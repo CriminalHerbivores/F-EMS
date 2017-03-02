@@ -166,15 +166,22 @@ function login_go() {
  	<tr><td><h2>직원 등록</h2></td></tr>
  	<tr><td colspan="2">
  	<table class="def-table-auto tb-border table-hover">
+ 	<tr><th>직원 번호</th>
+        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No">&nbsp;</td>
+ 	<th>권한</th><td><label><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원</label>&nbsp;&nbsp;<label><input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</label></td>
+      <th>근무여부</th><td><label><input type="radio" name="stf_Useyn" value="1" checked="checked">근무</label>&nbsp;&nbsp;<label><input type="radio" name="stf_Useyn" value="0">근무 안함</label></td>
+      </tr>
       <tr>
-        <th>직원 번호</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No">&nbsp;
+        
         <th>단과대학</th>
         <td><input type="text" class="def-input-text-md custom-form-control" id="coleg_Nm" name="coleg_Nm" readonly>
         <th>학부</th>
         <td><input type="text" class="def-input-text-md custom-form-control" id="faculty_Nm" name="fc_Faculty_Nm" readonly>
+        </td>
         <th>학과</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" id="subjct_Nm" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()"></td>
+        <td><input type="text" class="def-input-text-md custom-form-control" id="subjct_Nm" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()">
+        <input type="hidden" id="subjct_Code" name="sit_Subjct" value="">
+        </td>
       </tr>
       
       <tr>
@@ -210,9 +217,6 @@ function login_go() {
         <th>직원 전화번호</th>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_Tlphon_No" ></td>
       </tr>
-      <tr><th>권한</th><td><label><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원</label>&nbsp;&nbsp;<label><input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</label></td>
-      <th>근무여부</th><td><label><input type="radio" name="stf_Useyn" value="1" checked="checked">근무</label>&nbsp;&nbsp;<label><input type="radio" name="stf_Useyn" value="0">근무 안함</label></td>
-      <td></td><td></td></tr>
   </table>
   	</td></tr>
 	<tr><td>파일 경로:&nbsp;<input type="text" class="def-input-text-lg custom-form-control" name="file"></td><td rowspan="2"><span id="message" class="text-right"></span></td></tr><tr><td><input type="file" name="f"></td></tr>

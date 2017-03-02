@@ -68,12 +68,12 @@
 		<input class="def-btn btn-sm btn-color" type="button" value="학생"
 								onclick="login_student();" />&nbsp;&nbsp;
 		<a href="<%=request.getContextPath()%>/loginForm" class="no-uline"><button
-									class="def-btn">Login</button></a>&nbsp;&nbsp;
+									class="def-btn btn-sm btn-color">Login</button></a>&nbsp;&nbsp;
 				</c:when>
 						<c:otherwise>
 							<span>${loginUser}</span>&nbsp;&nbsp;
 				<a href="<%=request.getContextPath()%>/logout"><button
-									class="def-btn float-right">Logout</button></a>
+									class="def-btn btn-sm btn-color float-right">Logout</button></a>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -155,7 +155,6 @@
 						<div class="menu-dropdown-content">
 <a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
 <a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
-<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>	
 <c:if test="${not empty noticeBBS}">
 <c:forEach items="${noticeBBS}" var="bbs">
 <a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
@@ -181,18 +180,7 @@
 								<a href="#">강의</a>
 							</button>
 							<div class="menu-dropdown-content">
-<<<<<<< HEAD
-								<a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
-								<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
-								<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
-								<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상
-									게시판</a> <a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">시청
-									여부 게시판</a>
-									<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
 
-=======
 <a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
 <a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
 <a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
@@ -201,7 +189,6 @@
 <a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상게시판</a>
 <a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청여부 게시판</a>
 <a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
->>>>>>> branch 'hotfix' of https://github.com/CriminalHerbivores/F-EMS.git
 							</div>
 						</div>
 					</sec:authorize>
@@ -227,12 +214,14 @@
 								<a href="#" onclick="op_menu_admin()">관리자</a>
 							</button>
 							<div class="menu-dropdown-content">
+<a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a>								
 <a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a>
-<a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
+<%-- <a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
-<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
+<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a> --%>
 <a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
+<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -354,46 +343,6 @@
 									<span class="folder main_menu"> </span><a href="#">강의</a>
 								</div>
 								<ul class="sub sub_meun">
-<<<<<<< HEAD
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test"">공지게시판</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답
-												게시판</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제 게시판</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상
-												게시판</a></li>
-									</div>
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">시청
-												여부 게시판</a></li>
-									</div>
-									
-									<div class="inherit-size">
-										<li class="sub-menu-li"><a
-											href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a></li>
-									</div>
-									
-
-=======
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test"">공지게시판</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a></li></div>
@@ -402,7 +351,6 @@
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상게시판</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/attendList?table_Nm=test">시청여부 게시판</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a></li></div>
->>>>>>> branch 'hotfix' of https://github.com/CriminalHerbivores/F-EMS.git
 								</ul>
 							</li>
 						</sec:authorize>
@@ -426,11 +374,12 @@
 									<span class="folder main_menu"> </span><a href="#">관리자</a>
 								</div>
 								<ul class="sub sub_meun">
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a></li></div>								
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a></li></div>
-<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgLogin">로그인형</a></li></div>
+<%-- <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgLogin">로그인형</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMulti">복합형</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgBoard">게시판형</a></li></div>
-<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a></li></div> --%>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a></li></div>
 								</ul>
 							</li>
