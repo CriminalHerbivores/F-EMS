@@ -51,8 +51,9 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	// 한개의 강의로 강의상세(강의계획서) 조회
 	@Override
-	public void selectDetailLctre(int lc_Lctre_No) throws SQLException {
-		client.queryForObject("selectDetailLctre",lc_Lctre_No);
+	public Lctre_SearchVO getDetailLctre(int lc_Lctre_No) throws SQLException {
+		Lctre_SearchVO lctre_SearchVO=(Lctre_SearchVO) client.queryForObject("getDetailLctre",lc_Lctre_No);
+		return lctre_SearchVO;
 	}
 	
 	

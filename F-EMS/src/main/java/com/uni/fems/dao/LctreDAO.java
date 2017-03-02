@@ -38,7 +38,7 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void selectDetailLctre(int lc_Lctre_No) throws SQLException;
+	Lctre_SearchVO getDetailLctre(int lc_Lctre_No) throws SQLException;
 	
 	/**
 	 * <pre>

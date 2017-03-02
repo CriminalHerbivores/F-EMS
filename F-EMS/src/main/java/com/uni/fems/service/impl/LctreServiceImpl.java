@@ -47,8 +47,9 @@ public class LctreServiceImpl implements LctreService {
 	
 	// 하나의 강의를 선택하여 강의상세(강의계획서) 조회
 	@Override
-	public void selectDetailLctre(int lc_Lctre_No) throws SQLException {
-		lctreDAO.selectDetailLctre(lc_Lctre_No);
+	public Lctre_SearchVO getDetailLctre(int lc_Lctre_No) throws SQLException {
+		Lctre_SearchVO lctre_SearchVO=lctreDAO.getDetailLctre(lc_Lctre_No);
+		return lctre_SearchVO;
 	}
 
 	//해당 학기의 전체강의 가져옴
