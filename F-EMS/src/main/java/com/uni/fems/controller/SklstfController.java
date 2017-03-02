@@ -473,7 +473,7 @@ public class SklstfController {
 	 */
 	@RequestMapping(value="toStdTuition")
 	public String toStdTuition(@Value("")String sit_Subjct, String tpage){
-		String url="redirect:tuitionList?sit_Subjct="+sit_Subjct+"&tpage="+tpage;
+		String url="redirect:stdTuitionList?tpage="+tpage;
 		try {
 			tuitionService.toStdTuition();
 		} catch (SQLException e) {
@@ -533,7 +533,7 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping("stdTuitionList")
-	public String stdTuitionList(String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
+	public String stdTuitionList(@RequestParam(defaultValue="1")String tpage, TuitionVO tuitionVO, HttpSession session, HttpServletRequest request, Model model){
 		String url="manager/tuition/stdTuitionList";
 		tuitionVO.setTu_Stdnt_No("");
 		if(tuitionVO.getKey()==null)
@@ -552,6 +552,7 @@ public class SklstfController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		model.addAttribute("tpage",tpage);
 		model.addAttribute("paging",paging);
 		model.addAttribute("tuitionList",list);
 		return url;
