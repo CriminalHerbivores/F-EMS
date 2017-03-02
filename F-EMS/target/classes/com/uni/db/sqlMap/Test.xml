@@ -13,7 +13,7 @@
 	<typeAlias alias="test" type="com.uni.fems.dto.TestVO" />
 	
 	<select id="listAllTest" parameterClass="int" resultClass="test">
-		select * from test where te_tp_no=#te_Tp_No#
+		select * from test where te_tp_no=#te_Tp_No# order by te_ques_no
 	</select>
 	
 	<update id="insertTest" parameterClass="test">
