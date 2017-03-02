@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.dto.Intrst_ListVO;
@@ -59,27 +60,30 @@ public class LctreController {
 	private Paging callPaging;
 	
 	
+	
 	/**
 	 * <pre>
-	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인 폼
+	 * 강의계획서를 조회하는 폼
 	 * </pre>
 	 * <pre>
-	 * @param request
-	 * @param session
+	 * @param model
+	 * @param lc_Lctre_No
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/actPln")
-	public String detailLctreForm(Model model, int lc_Lctre_No) {
-		String url = "lecture/actPln";
+	@RequestMapping("/lectrePlan")
+	public String detailLctreForm(Model model, @RequestParam int lc_Lctre_No) {
+		String url = "lecture/lectrePlan";
+		
+		Lctre_SearchVO lctre_SearchVO =null;
 		
 		try {
-			lctreService.selectDetailLctre(lc_Lctre_No);
+			lctre_SearchVO=lctreService.getDetailLctre(lc_Lctre_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("lctreDetail",lc_Lctre_No);
+		model.addAttribute("lectreDetail",lctre_SearchVO);
 		
 		return url;
 	}
