@@ -37,7 +37,7 @@ function login_staff() {
 function login_professor() {
 	var data = {
 			'returl' : 'index',
-			'userid' : '2017010101',
+			'userid' : '2017010001',
 			'password' : '0'
 	};
 	$.ajax({
