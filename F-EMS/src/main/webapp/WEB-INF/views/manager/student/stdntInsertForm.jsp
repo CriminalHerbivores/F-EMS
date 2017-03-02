@@ -31,7 +31,7 @@
         <td>학부</td>
         <td>
         <input type="hidden" id="coleg_Nm" name="" value="" readonly>
-        <input type="hidden" id="subjct_Code" name="" value="" readonly>
+        <input type="hidden" id="subjct_Code" name="subjct_Code" value="" readonly>
         <input type="text" class="form-control" id="faculty_Nm" name="" value="" readonly>
         </td>
         <td>학과</td>
@@ -49,9 +49,9 @@
       
       <tr>
         <td>비밀번호</td>
-        <td><input type="text" class="form-control" id="st_Pw" name="st_Pw"></td>
+        <td><input type="password" class="form-control" id="st_Pw" name="st_Pw"></td>
         <td>비밀번호 확인</td>
-        <td><input type="text" class="form-control" id="st_Pw_on" name="st_Pw_on"></td>
+        <td><input type="password" class="form-control" id="st_Pw_on" name="st_Pw_on"></td>
         <td>주민등록번호</td>
         <td><input type="text" class="form-control" id="st_Ihidnum" name="st_Ihidnum" ></td>
       </tr>
@@ -68,16 +68,12 @@
         <td><input type="text" class="form-control" id="st_Moblphon_No" name="st_Moblphon_No"></td>
         <td>집 전화번호</td>
         <td><input type="text" class="form-control" id="st_House_Tlphon_No" name="st_House_Tlphon_No"></td>
-        <td>담당 교수</td>
-        <td><input type="text" class="form-control" id="st_Profsr_No" name="st_Profsr_No" ></td>
       </tr>
       <tr>
         <td>보호자 이름</td>
         <td><input type="text" class="form-control" id="st_Prtctor_Nm" name="st_Prtctor_Nm" ></td>
         <td>가족관계</td>
         <td><input type="text" class="form-control" id="st_Family_Relate" name="st_Family_Relate"></td>
-        <td>입학일</td>
-        <td><input type="text" class="form-control" id="st_Entsch_Dt" name="st_Entsch_Dt" ></td>
       </tr>
       
   </table>

@@ -49,9 +49,9 @@
       
       <tr>
         <td>비밀번호</td>
-        <td><input type="text" class="form-control" id="pr_Pw" name="pr_Pw"></td>
+        <td><input type="password" class="form-control" id="pr_Pw" name="pr_Pw"></td>
         <td>비밀번호 확인</td>
-        <td><input type="text" class="form-control" id="pr_Pw_on" name="pr_Pw_on"></td>
+        <td><input type="password" class="form-control" id="pr_Pw_on" name="pr_Pw_on"></td>
         <td>주민 번호</td>
         <td><input type="text" class="form-control" id="pr_Ihidnum" name="pr_Ihidnum" ></td>
       </tr>
@@ -68,7 +68,7 @@
         <td><input type="text" class="form-control" id="pr_Moblphon_No" name="pr_Moblphon_No"></td>
         <td>집 전화번호</td>
         <td><input type="text" class="form-control" id="pr_House_Tlphon_No" name="pr_House_Tlphon_No"></td>
-        <td>교수 번호</td>
+        <td>교수 전화 번호</td>
         <td><input type="text" class="form-control" id="pr_Profsr_Tlphon_No" name="pr_Profsr_Tlphon_No" ></td>
       </tr>
   </table>

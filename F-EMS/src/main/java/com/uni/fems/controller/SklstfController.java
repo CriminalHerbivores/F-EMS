@@ -185,21 +185,27 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO, @RequestParam("f")MultipartFile uploadfile, Model model){
+	String stdntInsert(StdntVO stdntVO, @RequestParam String subjct_Code, @RequestParam("f")MultipartFile uploadfile, Model model){
 		String url = "redirect:stdntInsert";
 		if(!uploadfile.isEmpty()){
 			FilesVO vo = fileDownload.uploadFile(uploadfile);
 			
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
+			System.out.println(fileDownload.filePath+"/"+vo.getFl_File_Nm());
 			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N");	//배열 명 입력
 			ro.setStartRow(2);
 			
 			List<Map<String, String>> result = ExcelRead.read(ro);
 			
 			for(Map<String, String> map : result) {
+				if(map.get("A").equals("")|| map.get("A")==null){
+					continue;
+				}
+				System.out.println("A : "+map.get("A"));
 				stdntVO.setSt_Stdnt_No(map.get("A")); // 학생번호
 				stdntVO.setSt_Subjct_Code(map.get("B")); //학과코드
+				System.out.println("B : "+stdntVO.getSt_Subjct_Code());
 				stdntVO.setSt_Pw(map.get("C")); //비밀번호
 				stdntVO.setSt_Nm(map.get("D")); //이름
 				stdntVO.setSt_Eng_Nm(map.get("E")); //영문이름
@@ -230,6 +236,8 @@ public class SklstfController {
 			
 		}else{
 			try {
+				stdntVO.setSt_Stdnt_No(supporter.getDay()[0]+subjct_Code+stdntVO.getSt_Stdnt_No());
+				stdntVO.setSt_Subjct_Code(subjct_Code);
 				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
 				stdntService.insertStdnt(stdntVO);
 			} catch (SQLException e) {

@@ -41,13 +41,9 @@
 				<c:out value="${i}" />:${lctre_Video_Gnt.lv_Time%60}</td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ld_Cn" readonly="readonly">${lctre_Video_Gnt.lv_Cn }</textarea><br></td>
-			</tr>
-			<tr>
 				<th>동영상</th>
 				<td colspan="3" style="text-align: left;">
-					<video id="myVideo" src="<%=request.getContextPath() %>/resources/files/${lctre_Flpth.lf_Flpth}" controls width="300pt" height="200pt" ></video>
+					<video id="myVideo" src="<%=request.getContextPath() %>/resources/files/${lctre_Flpth.lf_Flpth}" controls width="600pt" height="500pt" ></video>
 				</td>
 			</tr>
 		</table>
