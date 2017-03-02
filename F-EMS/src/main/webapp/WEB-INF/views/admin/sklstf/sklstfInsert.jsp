@@ -162,68 +162,65 @@ function login_go() {
 </head>
 <body>
 <form id="formm" name="formm" method="post" enctype="multipart/form-data">
-<table class="non-border margin-auto">
- 	<tr><td><h2>직원 등록</h2></td></tr>
- 	<tr><td colspan="2">
- 	<table class="def-table-auto tb-border table-hover">
- 	<tr><th>직원 번호</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_No">&nbsp;</td>
- 	<th>권한</th><td><label><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원</label>&nbsp;&nbsp;<label><input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</label></td>
-      <th>근무여부</th><td><label><input type="radio" name="stf_Useyn" value="1" checked="checked">근무</label>&nbsp;&nbsp;<label><input type="radio" name="stf_Useyn" value="0">근무 안함</label></td>
+<h2>직원 등록</h2><br/>
+<table class="def-table-full tb-border table-hover">
+ 	<tr>
+ 	    <th>주민번호</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Ihidnum" ></td>
+ 		<th>권한</th><td><label><input type="radio" name="sa_Atrty" value="ROLE_STF" checked="checked">직원</label>&nbsp;&nbsp;<label><input type="radio" name="sa_Atrty" value="ROLE_ADMIN">관리자</label></td>
+        <th>학과 검색</th>
+		<td>
+		<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()">
+		<input type="hidden" id="subjct_Code" name="stf_Subject_Code" class="def-input-text-lg custom-form-control" readonly>
+		</td>
       </tr>
       <tr>
-        
         <th>단과대학</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" id="coleg_Nm" name="coleg_Nm" readonly>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="coleg_Nm" name="coleg_Nm" readonly>
         <th>학부</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" id="faculty_Nm" name="fc_Faculty_Nm" readonly>
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="faculty_Nm" name="fc_Faculty_Nm" readonly>
         </td>
         <th>학과</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" id="subjct_Nm" name="sit_Subjct" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchSubjct()">
-        <input type="hidden" id="subjct_Code" name="sit_Subjct" value="">
+        <td><input type="text" class="def-input-text-lg custom-form-control" id="subjct_Nm" name="sit_Subjct" readonly>
         </td>
       </tr>
       
       <tr>
         <th>이름</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Nm"></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Nm"></td>
         <th>영문이름</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Eng_Nm"></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Eng_Nm"></td>
         <th>이메일</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Email"></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Email"></td>
       </tr>
       
-      <tr>
-        <th>비밀번호</th>
-        <td><input type="password" class="def-input-text-md custom-form-control" name="stf_Pw"></td>
-        <th>비밀번호 확인</th>
-        <td><input type="password" class="def-input-text-md custom-form-control" name="stf_Pw_ck"></td>
-        <th>주민등록번호</th>
-        <td><input type="password" class="def-input-text-md custom-form-control" name="stf_Ihidnum" ></td>
-      </tr>
       <tr>
         <th>우편번호</th>
         <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Post_No" id="zipNum" >&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <th>주소</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres1" id="addres1" readonly></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Adres1" id="addres1" readonly></td>
         <th>상세 주소</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Adres2"></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Adres2"></td>
       </tr>
       <tr>
         <th>핸드폰 번호</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Moblphon_No"></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Moblphon_No"></td>
         <th>집 전화번호</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_House_Tlphon_No"></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_House_Tlphon_No"></td>
         <th>직원 전화번호</th>
-        <td><input type="text" class="def-input-text-md custom-form-control" name="stf_Sklstf_Tlphon_No" ></td>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Sklstf_Tlphon_No" ></td>
+      </tr>
+      <tr>
+        <th>등록양식</th>
+        <td><input type="text" class="def-input-text-lg custom-form-control" name="stf_Moblphon_No"></td>
+        <th>업로드</th>
+        <td colspan="3"><input type="file" name="f"></td>
       </tr>
   </table>
-  	</td></tr>
-	<tr><td>파일 경로:&nbsp;<input type="text" class="def-input-text-lg custom-form-control" name="file"></td><td rowspan="2"><span id="message" class="text-right"></span></td></tr><tr><td><input type="file" name="f"></td></tr>
-	<tr><td colspan="2">
-   <div id="buttons" class="float-right">
-   <input type="button" class="def-btn btn-md btn-color"  value="등록" onclick="submit_sklstf()">&nbsp;&nbsp; <input type="button" class="def-btn btn-md btn-gray"  value="취소" onclick="go.history(-1)"></div></td></tr>
-   </table>
-  </form>
+<table class="def-table-full"><tr><td style="text-align: right;">
+   <input type="button" class="def-btn btn-sm btn-color" value="등록" onclick="submit_sklstf()">&nbsp;&nbsp; 
+   <input type="button" class="def-btn btn-sm btn-color"  value="취소" onclick="go.history(-1)">
+</td></tr></table>
+</form>
 </body>
 </html>

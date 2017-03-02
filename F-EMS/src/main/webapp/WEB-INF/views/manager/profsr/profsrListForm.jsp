@@ -19,27 +19,11 @@
 <meta charset="UTF-8">
 <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 <body>
 		<h2>교수 관리</h2><br>
-		<form name="formm">
-		<table>
-			<tr>
-				<td colspan="5" class="text-right">
-				<select name="선택" class="combobox-sm">
-						<option value="pr_Profsr_No">교수 번호</option>
-						<option value="sit_Subjct">학과</option>
-						<option value="pr_Nm">이름</option>
-						<option value="pr_Ihidnum">생년월일</option>
-				</select>&nbsp;&nbsp; 
-				<input type="text"  name="key" class="def-input-text-sm">&nbsp;&nbsp;
-				<input type="button" class="def-btn" value="조회">&nbsp;&nbsp;
-				</td>
-			</tr>
-		</table>
-		</form>
-		<table class="table table-bordered">
+
+		<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>교수 번호</th>
 				<th>이름</th>
@@ -60,5 +44,18 @@
 				<td colspan="5" style="text-align: center;">${paging }</td>
 			</tr>
 		</table>
+		<form name="searchForm">
+		<table class="def-table-full"><tr><td style="text-align: right;">
+			<select name="선택" class="combobox-md custom-form-control">
+					<option value="pr_Profsr_No">교수 번호</option>
+					<option value="sit_Subjct">학과</option>
+					<option value="pr_Nm">이름</option>
+					<option value="pr_Ihidnum">생년월일</option>
+			</select>&nbsp;&nbsp; 
+			<input type="text"  name="key" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
+			<input type="button" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color" value="조회">&nbsp;&nbsp;
+			<a href="<%=request.getContextPath()%>/sklstf/profsrInsert"><input type="button" class="def-btn btn-sm btn-color" value="등록"></a>
+		</td></tr></table>
+		</form>
 </body>
 </html>

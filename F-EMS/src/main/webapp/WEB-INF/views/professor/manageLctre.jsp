@@ -36,8 +36,7 @@ $(function(){
 </script>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
-<h2>성적 관리</h2>
+<h2>성적 관리</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>학생번호</th>
@@ -69,6 +68,7 @@ $(function(){
 		</tr>
 		</c:forEach>
 	</table>
+<table class="def-table-full"><tr><td style="text-align: right;">
 <a href="<%=request.getContextPath()%>/profsr/ongoingLctreList?tpage=${tpage}"><button class="def-btn btn-sm ckbtn-color">진행 강의 목록</button></a>
 </td></tr></table>
 </body>

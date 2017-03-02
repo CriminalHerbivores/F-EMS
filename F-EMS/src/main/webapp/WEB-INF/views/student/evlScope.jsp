@@ -20,8 +20,8 @@
 <title></title>
 </head>
 <body>
-<h2>강의 평가</h2>
-	<table>
+<h2>강의 평가</h2><br/>
+	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<td>강의명</td>
 			<td>점수</td>

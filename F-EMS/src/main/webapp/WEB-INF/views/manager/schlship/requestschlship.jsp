@@ -21,8 +21,7 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
-<h2>장학금 신청 내역</h2>
+<h2>장학금 신청 내역</h2><br/>
 <form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
 		<tr>
@@ -71,11 +70,10 @@
 			<td colspan="8">${paging}</td>
 		</tr>
 	</table>
-	<div id="buttons" style="float:right">
+<table class="def-table-full"><tr><td style="text-align: right;">
 	<button onclick="submitForm(this.form)" class="def-btn btn-sm btn-color">등록</button>
 	<a href="<%=request.getContextPath() %>/sklstf/schlshipList"><input type="button" value="장학금 관리" class="def-btn btn-sm btn-color"></a>
-	</div>
-</form>
 </td></tr></table>
+</form>
 </body>
 </html>
