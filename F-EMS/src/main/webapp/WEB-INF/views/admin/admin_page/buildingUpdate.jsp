@@ -39,8 +39,8 @@
 				
 			</td><td><input type="button" class="def-btn btn-sm btn-color" value="선택"></td><td></td>
 		</tr>
-		<tr><th>건물 번호</th><td><input type="text" class=".def-input-text-lg custom-form-control" name="bd_No" value="${bd_No}"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
-		<tr><th>건물 이름</th><td><input type="text" class=".def-input-text-lg custom-form-control" name="bd_Nm" value="${bd_Nm }"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 아작스로 사용가능여부</td></tr>
+		<tr><th>건물 번호</th><td><input type="text" class=".def-input-text-lg custom-form-control" name="bd_No" value="${bd_No}"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 사용가능여부</td></tr>
+		<tr><th>건물 이름</th><td><input type="text" class=".def-input-text-lg custom-form-control" name="bd_Nm" value="${bd_Nm }"></td><td><input type="button" class="def-btn btn-sm btn-color" value="중복 확인"></td><td>여기에 사용가능여부</td></tr>
 		<tr><th>사용 여부</th><td>
 		<c:choose>
 		<c:when test="${bd_Useyn=='y'|| bd_Useyn=='Y'}">
