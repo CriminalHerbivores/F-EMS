@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.dao.SknrgsDAO;
+import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.request.PageRequest;
@@ -34,6 +36,25 @@ public class SknrgsServiceImpl implements SknrgsService {
 	public void setSknrgsDAO(SknrgsDAO sknrgsDAO) {
 		this.sknrgsDAO = sknrgsDAO;
 	}
+	
+	@Override
+	public List<SknrgsViewVO> listAllSknrgs(int tpage, SknrgsViewVO sknrgsView) throws SQLException {
+		int totalRecord = sknrgsDAO.totalSknrgs(sknrgsView);
+		return sknrgsDAO.listAllSknrgs(sknrgsView,tpage, totalRecord);
+		
+	}
+	
+	@Override
+	public String pageNumberSknrgs(int tpage,SknrgsViewVO sknrgsView) throws SQLException {
+		int totalRecord = sknrgsDAO.totalSknrgs(sknrgsView);
+		String page = new Paging().pageNumber(tpage,totalRecord,"sknrgListForm", "");
+		return page;
+	}
+	
+	
+	
+	
+	
 	
 	@Override
 	public List<SknrgsViewVO> getSknrgsType(String skn_Typen) throws SQLException {

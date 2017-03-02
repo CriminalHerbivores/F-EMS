@@ -57,7 +57,7 @@
       </tr>
       <tr>
         <td>우편번호</td>
-        <td><input type="text" class="form-control" id="zipNum" name="st_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
+        <td><input type="text" class="form-control def-input-text-md" id="zipNum" name="st_Post_No" readonly>&nbsp;<input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td>
         <td>주소</td>
         <td><input type="text" class="form-control" id="addres1" name="st_Adres1" readonly></td>
         <td>상세주소</td>
