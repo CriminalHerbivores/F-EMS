@@ -93,6 +93,12 @@ public class IndexController {
 		return url;
 	}
 	
+	@RequestMapping("/sample")
+	public String sample() {
+		String url = "/sample";
+		return url;
+	}
+	
 	/**
 	 * <pre>
 	 * 첫 화면으로 이동
