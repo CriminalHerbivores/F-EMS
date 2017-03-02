@@ -79,8 +79,22 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
-	
+		List<Boolean> flaglist = new ArrayList<Boolean>();
+		boolean flag;
+		for(Test_PaperVO test : testlist){
+			Date today = new Date(System.currentTimeMillis());
+				if(today.compareTo(test.getTp_Start_Dt())<0 || today.compareTo(test.getTp_End_Dt())>1){
+					 flag = false;
+					 flaglist.add(flag);
+				}else{
+					flag = true;
+					flaglist.add(flag);
+				}
+		}
+		
+		model.addAttribute("flaglist", flaglist);
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
 		
@@ -251,7 +265,7 @@ public class Lctre_TestController {
 			insertVO.setTe_Ca(addCa[i]);
 			insertVO.setTe_Tp_No(tp_No);
 			try {
-				testSvc.insertTest(insertVO);
+				testSvc.insertTest(insertVO);	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
