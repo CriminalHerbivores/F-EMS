@@ -23,6 +23,7 @@
 <form method="POST" name="formm">
 <input type="hidden" name="tpage" value="${tpage}">
 <table class="def-table-auto tb-border table-hover">
+ <input type="hidden" name="st_Subjct_Code" value="${stdntVO.st_Subjct_Code}" readonly>
       <tr>
         <th>학생 번호</th>
         <td colspan="3"><input type="text" value="${stdntVO.st_Stdnt_No}" class="def-input-text-lg custom-form-control" readonly></td>
