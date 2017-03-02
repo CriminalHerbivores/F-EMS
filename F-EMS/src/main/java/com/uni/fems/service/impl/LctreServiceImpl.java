@@ -45,7 +45,11 @@ public class LctreServiceImpl implements LctreService {
 	private Lctre_ActplnDAO lctre_ActplnDAO;
 	private KindDAO kindDAO;
 	
-	
+	// 하나의 강의를 선택하여 강의상세(강의계획서) 조회
+	@Override
+	public void selectDetailLctre(int lc_Lctre_No) throws SQLException {
+		lctreDAO.selectDetailLctre(lc_Lctre_No);
+	}
 
 	//해당 학기의 전체강의 가져옴
 	@Override
@@ -103,6 +107,8 @@ public class LctreServiceImpl implements LctreService {
 		int totalRecord = lctreDAO.countLctre(lctre_SearchVO);
 		return totalRecord;
 	}
+
+
 
 
 
