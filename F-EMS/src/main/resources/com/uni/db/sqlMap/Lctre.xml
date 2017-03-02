@@ -66,7 +66,7 @@
 	</update>
 	
 	<!-- 강의 상세조회(강의계획서) -->
-	<select id="selectDetailLctre" resultClass="int">
+	<select id="getDetailLctre" parameterClass="int" resultClass="lctre_Search">
 		select * from LCTRE_VIEW where lc_Lctre_No=#lc_Lctre_No#
 	</select>
 	
