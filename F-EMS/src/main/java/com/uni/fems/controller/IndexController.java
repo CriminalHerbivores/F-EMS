@@ -118,19 +118,19 @@ public class IndexController {
 		}
 		
 		if(session.getAttribute("loginUser")!=null){
-			//url="layout_type/loginBoardType";
+			url="layout_type/loginBoardType";
 
-			switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
-			case 1: url = "layout_type/indexLoginType";
-				break;
-			case 2: url = "layout_type/indexBoardType";
-				break;
-			case 3:url = "layout_type/indexMenuType";
-				break;
-			case 4: url = "layout_type/indexMultiType";
-				break;
-			default: url = "/index";
-			}
+//			switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
+//			case 1: url = "layout_type/indexLoginType";
+//				break;
+//			case 2: url = "layout_type/indexBoardType";
+//				break;
+//			case 3:url = "layout_type/indexMenuType";
+//				break;
+//			case 4: url = "layout_type/indexMultiType";
+//				break;
+//			default: url = "/index";
+//			}
 			
 			
 			
