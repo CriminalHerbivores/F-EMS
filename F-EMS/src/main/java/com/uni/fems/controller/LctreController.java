@@ -69,6 +69,32 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
+	@RequestMapping("/actPln")
+	public String detailLctreForm(Model model, int lc_Lctre_No) {
+		String url = "lecture/actPln";
+		
+		try {
+			lctreService.selectDetailLctre(lc_Lctre_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("lctreDetail",lc_Lctre_No);
+		
+		return url;
+	}
+	
+	
+	/**
+	 * <pre>
+	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인 폼
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="/courseList", method=RequestMethod.GET)
 	public String courseListForm(HttpServletRequest request, HttpSession session) {
 		String url = "course_registration/courseList";
