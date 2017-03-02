@@ -44,7 +44,7 @@ import com.uni.fems.dto.FilesVO;
 @Data
 public class FileDownload implements ApplicationContextAware {
 	private WebApplicationContext context = null;
-	public String filePath = "files";
+	public String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
 
 	/**
 	 * <pre>
@@ -110,7 +110,7 @@ public class FileDownload implements ApplicationContextAware {
 //			return null;
 //		}
 //		return new ModelAndView("download", "downloadFile", downloadFile);
-		File downloadFile = new File(filePath, filename);
+		File downloadFile = new File(filePath+"/"+ filename);
 		response.setCharacterEncoding("utf-8");
 		if (downloadFile == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
