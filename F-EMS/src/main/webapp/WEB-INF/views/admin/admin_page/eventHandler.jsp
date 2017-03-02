@@ -33,7 +33,7 @@
 	<tr id="${status.count}">
 		<td><input type="hidden" name="evt_Code" value="${evt.evt_Code}">${evt.evt_Nm}</td>
 		<td><input type="text" name="start" value="${evt.evt_Start}" class="def-input-text-lg custom-form-control"></td>
-		<td><input type="text" name="end" value="${evt.evt_Start}" class="def-input-text-lg custom-form-control"></td>
+		<td><input type="text" name="end" value="${evt.evt_End}" class="def-input-text-lg custom-form-control"></td>
 		<td><input type="button" value="수정" onclick="manageEvent(${status.count})" class="def-ckbtn btn-sm ckbtn-color"></td>
 	</tr>
 	</c:forEach>

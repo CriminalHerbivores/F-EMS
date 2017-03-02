@@ -140,7 +140,6 @@
 						<div class="menu-dropdown-content">
 <a href="<%=request.getContextPath() %>/notice_bbs/noticeList" class="no-uline">공지 게시판</a>
 <a href="<%=request.getContextPath() %>/schafs_schdul/schdulList" class="no-uline">학사 일정</a>
-<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>	
 <c:if test="${not empty noticeBBS}">
 <c:forEach items="${noticeBBS}" var="bbs">
 <a href="<%=request.getContextPath() %>/bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</a>
@@ -200,11 +199,13 @@
 							</button>
 							<div class="menu-dropdown-content">
 <a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a>
-<a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
+<a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a>
+<%-- <a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
-<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
+<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a> --%>
 <a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
+<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>
 							</div>
 						</div>
 					</sec:authorize>
