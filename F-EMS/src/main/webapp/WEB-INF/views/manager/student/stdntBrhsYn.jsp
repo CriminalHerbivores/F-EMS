@@ -20,8 +20,7 @@
 <title></title>
 </head>
 <body>
-	<table class="non-border margin-auto"><tr><td>
-	<h2>기숙사 관리</h2>
+	<h2>기숙사 관리</h2><br/>
 	<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
 	<tr>
@@ -72,8 +71,9 @@
 	<td colspan="6">${paging}</td>
 	</tr>
 	</table>
+	<table class="def-table-full"><tr><td style="text-align: right;">
 	<input type="submit" class="def-btn btn-sm btn-color" value="등록">
-	</form>
 	</td></tr></table>
+	</form>
 </body>
 </html>

@@ -23,7 +23,7 @@
 </head>
 <body>
 <table class="non-border margin-auto"><tr><td>
-	<h2>등록금 납부 내역 조회</h2>
+	<h2>등록금 납부 내역 조회</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>단과</th>
@@ -70,15 +70,17 @@
 	</tr>
 	</table>
 	<form name="searchForm">
+	<table class="def-table-full"><tr><td style="text-align: right;">
 		<!-- <input type="date" name="tu_Dt"> -->
 		<select name="key" class="combobox-md custom-form-control">
 			<option value="sit_Subjct">학과</option>
 			<option value="tu_Stdnt_No">학생</option>
 		</select>
 		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
-		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
+		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
 	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
 	<a href="tuitionList"><input type="button" value="등록금 정보 조회" class="def-btn btn-color"></a>
+	</td></tr></table>
 	</form>
 </td></tr></table>
 </body>

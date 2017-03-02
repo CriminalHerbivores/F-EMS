@@ -160,7 +160,10 @@ function aa() {
 	<table class="non-border margin-auto"><tr><td>
 	이 테이블은 각 페이지의 가장 겉에 둘러주면 맘에 들거임-공지게시판 참고
 	</td></tr></table>
-
 	
+	<table class="def-table-full tb-border table-hover"><tr><td>
+	</td></tr></table>
+	
+	<br/><br/><br/><br/><br/><br/>
 </body>
 </html>

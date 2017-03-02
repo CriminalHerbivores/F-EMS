@@ -22,8 +22,7 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
-	<h2>학과 / 등록금 조회</h2>
+	<h2>학과 / 등록금 조회</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>단과</th>
@@ -47,6 +46,5 @@
 		<input type="number" name="tu_Dt" placeholder="날짜입력(20170302)"/>
 		<input type="button" value="검색" class="def-btn btn-sm btn-color"/>
 	</form> -->
-</td></tr></table>
 </body>
 </html>

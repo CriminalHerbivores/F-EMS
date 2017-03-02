@@ -20,8 +20,7 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
-	<h2>교수 정보 조회</h2>
+	<h2>교수 정보 조회</h2><br/>
  <table class="def-table-full tb-border table-hover">
       <tr>
         <th>단과</th>
@@ -68,13 +67,12 @@
       
   </table>
   <!--버튼들  -->
-<div id="buttons" style="float:right">
-	<a href="profsrUpdate?pr_Profsr_No=${profsrVO.pr_Profsr_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn"> </a>
+<table class="def-table-full"><tr><td style="text-align: right;">
+	<a href="profsrUpdate?pr_Profsr_No=${profsrVO.pr_Profsr_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn btn-sm btn-color""> </a>
 	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
-	<input type="button" class="def-btn" data-target="#layerpop" data-toggle="modal" value="삭제">
-	<a href="profsrList?&tpage=${tpage}"> <input type="button" class="def-btn" value="목록"> </a>
+	<input type="button" class="def-btn btn-sm btn-color" data-target="#layerpop" data-toggle="modal" value="삭제">
+	<a href="profsrList?&tpage=${tpage}"> <input type="button" class="def-btn btn-sm btn-color" value="목록"> </a>
 	</sec:authorize>
-</div>
 </td></tr></table>
 <!--모달부분  -->
 <div class="modal fade" id="layerpop" >

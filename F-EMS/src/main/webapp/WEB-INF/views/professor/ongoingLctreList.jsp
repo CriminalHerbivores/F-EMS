@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h2>진행 강의</h2>
+<h2>진행 강의</h2><br/>
 <table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>개설년도</th>

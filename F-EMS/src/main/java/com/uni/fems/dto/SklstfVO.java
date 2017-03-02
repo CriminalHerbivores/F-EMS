@@ -45,5 +45,8 @@ public class SklstfVO implements Serializable {
 	private String stf_Email;   // 이메일
 	private String stf_Useyn;   // 직원 사용여부
 	
-	
+	// Subjct
+	private String coleg_Nm; // 단과
+	private String fc_Faculty_Nm; // 학부
+	private String sit_Subjct; // 학과
 }

@@ -21,7 +21,6 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
 		<c:forEach var="sknrgs" items="${sknrgsList}" begin="0" end="0" step="1">
 			<c:if test="${flag}">
 
@@ -83,8 +82,10 @@
 							</td>
 						</tr>
 					</table>
+					<table class="def-table-full"><tr><td style="text-align: right;">
 					<input type="button" class="def-btn btn-sm btn-color" id="selAll"
 						disabled value="신청하기" onclick="submitForm(this.form);">
+					</td></tr></table>
 				</form>
 			</c:if>
 		</c:forEach>
@@ -122,6 +123,6 @@
 				<td colspan="5" style="text-align: center;">${paging }</td>
 			</tr>
 		</table>
-</td></tr></table>
+		<br/><br/><br/>
 </body>
 </html>
