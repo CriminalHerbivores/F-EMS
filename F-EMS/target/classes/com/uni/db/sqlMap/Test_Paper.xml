@@ -24,12 +24,12 @@
 	</select>
 	
 	<update id="insertTestPaper" parameterClass="testpaper">
-		insert into test_paper(tp_no,tp_lctre_no,tp_nm,tp_profsr_no) 
-		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#)
+		insert into test_paper(tp_no,tp_lctre_no,tp_nm,tp_profsr_no,tp_start_dt,tp_end_dt) 
+		values(tp_seq.nextval,#tp_Lctre_No#,#tp_Nm#,#tp_Profsr_No#,#tp_Start_Dt#,#tp_End_Dt#)
 	</update>
 	
 	<update id="updateTestPaper" parameterClass="testpaper">
-		update test_paper set tp_nm=#tp_Nm# where tp_no=#tp_No#
+		update test_paper set tp_nm=#tp_Nm#,tp_start_dt=#tp_Start_Dt#, tp_end_dt=#tp_End_Dt# where tp_no=#tp_No#
 	</update>
 	
 	<update id="deleteTestPaper" parameterClass="int">
