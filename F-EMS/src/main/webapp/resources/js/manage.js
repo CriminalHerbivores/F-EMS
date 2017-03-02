@@ -114,7 +114,7 @@ function go_admin_page() {
 }
 
 function manageEvent(r){
-	var i = "#"+r+" input"; 
+	var i = "#"+r+" input";
 	$.ajax({
 		url:'updateEvent',
 		dataType:'text',

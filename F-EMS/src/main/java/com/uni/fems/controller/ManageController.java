@@ -540,8 +540,15 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping("updateEvent")
-	public String eventHandler(EventVO vo,String start,String end){
+	public String eventHandler(EventVO vo,String st1,String st2,String en1,String en2){
 		String url = "redirect:eventHandler";
+		
+		if(st2.indexOf(':', 4)<0)
+			st2+=":00";
+		String start = st1+" "+st2+".0";
+		if(en2.indexOf(':', 4)<0)
+			en2+=":00";
+		String end = en1+" "+en2+".0";
 		
 		vo.setEvt_Start(java.sql.Timestamp.valueOf(start));
 		vo.setEvt_End(java.sql.Timestamp.valueOf(end));
