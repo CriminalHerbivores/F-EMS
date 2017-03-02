@@ -36,6 +36,17 @@ public interface LctreService {
 
 	/**
 	 * <pre>
+	 * 강의번호로 하나의 강의를 선택하여 강의상세(강의계획서) 조회
+	 * </pre>
+	 * <pre>
+	 * @param lc_Lctre_No
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void selectDetailLctre(int lc_Lctre_No) throws SQLException;
+	
+	/**
+	 * <pre>
 	 * 전체 개설 강의 목록을 가져오는 메서드
 	 * </pre>
 	 * <pre>
