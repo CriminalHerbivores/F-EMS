@@ -25,7 +25,7 @@
  <table class="table table-bordered">
       <tr>
         <td>학생 번호</td>
-        <td><input type="text" class="form-control" readonly value="${stdntVO.st_Stdnt_No}"></td>
+        <td><input type="text" class="form-control" readonly value="${stdntVO.st_Stdnt_No}" readonly></td>
         <td>학부</td>
         <td><input type="text" class="form-control" id="faculty_Nm" name="fc_Faculty_Nm" readonly></td>
         <td>학과</td>
@@ -43,11 +43,11 @@
       
       <tr>
         <td>비밀번호</td>
-        <td><input type="text" class="form-control" name="st_Pw" value="${stdntVO.st_Pw}"></td>
+        <td><input type="password" class="form-control" name="st_Pw" value="${stdntVO.st_Pw}" readonly></td>
         <td>비밀번호 확인</td>
-        <td><input type="text" class="form-control" name="st_Pw_on" value="${stdntVO.st_Pw}"></td>
+        <td><input type="password" class="form-control" name="st_Pw_on" value="${stdntVO.st_Pw}" readonly></td>
         <td>주민 번호</td>
-        <td><input type="text" class="form-control" name="st_Ihidnum" value="${stdntVO.st_Ihidnum}"></td>
+        <td><input type="text" class="form-control" name="st_Ihidnum" value="${stdntVO.st_Ihidnum}" readonly></td>
       </tr>
       <tr>
       	<td>우편번호</td>
@@ -63,15 +63,15 @@
         <td>집 전화번호</td>
         <td><input type="text" class="form-control" name="st_House_Tlphon_No" value="${stdntVO.st_House_Tlphon_No}"></td>
         <td>담당 교수</td>
-        <td><input type="text" class="form-control" name="st_Profsr_No" value="${stdntVO.st_Profsr_No}"></td>
+        <td><input type="text" class="form-control" name="st_Profsr_No" value="${stdntVO.st_Profsr_No}" readonly></td>
       </tr>
       <tr>
         <td>보호자 이름</td>
-        <td><input type="text" class="form-control" name="st_Prtctor_Nm" value="${stdntVO.st_Prtctor_Nm}"></td>
+        <td><input type="text" class="form-control" name="st_Prtctor_Nm" value="${stdntVO.st_Prtctor_Nm}" readonly></td>
         <td>가족관계</td>
-        <td><input type="text" class="form-control" name="st_Family_Relate" value="${stdntVO.st_Family_Relate}"></td>
+        <td><input type="text" class="form-control" name="st_Family_Relate" value="${stdntVO.st_Family_Relate}" readonly></td>
         <td>입학일</td>
-        <td><input type="text" class="form-control" name="st_Entsch_Dt" value="${stdntVO.st_Entsch_Dt}"></td>
+        <td><input type="text" class="form-control" name="st_Entsch_Dt" value="${stdntVO.st_Entsch_Dt}" readonly></td>
       </tr>
       
   </table>

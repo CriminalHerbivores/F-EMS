@@ -70,6 +70,8 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 	public void insertLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
 		
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
+			//임시
+			lctre_FlpthVO.setLf_Lctre_No(38);
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
 			lctre_Date_Gnt.setLd_Flpth_No(maxNo+"");
@@ -80,6 +82,8 @@ public class Lctre_DateServiceImpl implements Lctre_DateService{
 	public int updateLctre_Date(Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO) throws SQLException {
 		
 		if(!(lctre_FlpthVO.getLf_Flpth()==null)){
+			//임시
+			lctre_FlpthVO.setLf_Lctre_No(38);
 			lctre_FlpthDAO.insertLctre_Flpth(lctre_FlpthVO);
 			int maxNo = lctre_FlpthDAO.maxLctre_Flpth();
 			lctre_Date_Gnt.setLd_Flpth_No(maxNo+"");
