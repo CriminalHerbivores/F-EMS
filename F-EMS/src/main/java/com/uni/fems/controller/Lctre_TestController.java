@@ -85,7 +85,7 @@ public class Lctre_TestController {
 		boolean flag;
 		for(Test_PaperVO test : testlist){
 			Date today = new Date(System.currentTimeMillis());
-				if(today.compareTo(test.getTp_Start_Dt())<0 || today.compareTo(test.getTp_End_Dt())>1){
+				if(today.compareTo(test.getTp_Start_Dt())<0 || today.compareTo(test.getTp_End_Dt())>0){
 					 flag = false;
 					 flaglist.add(flag);
 				}else{
