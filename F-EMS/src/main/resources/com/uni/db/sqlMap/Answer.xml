@@ -15,7 +15,7 @@
 </select>
 
 <select id="completeAnswer" parameterClass="answerVO" resultClass="answerVO">
-	select * from answer where an_tp_no=#an_Tp_No# and an_Stdnt_No=#an_Stdnt_No#
+	select * from answer where an_tp_no=#an_Tp_No# and an_Stdnt_No=#an_Stdnt_No# order by an_Ques_No
 </select>
 
 <select id="listAllAnswer" parameterClass="str" resultClass="answerVO">

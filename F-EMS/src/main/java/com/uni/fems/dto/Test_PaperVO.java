@@ -1,6 +1,7 @@
 package com.uni.fems.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import kr.or.ddit.commons.ibatis.Alias;
@@ -27,9 +28,6 @@ import lombok.Data;
 @Data
 public class Test_PaperVO implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String tp_No;   // 시험지번호
 	private int tp_Lctre_No;   // 교수번호
@@ -38,6 +36,8 @@ public class Test_PaperVO implements Serializable {
 	private Timestamp tp_Dt;   // 날짜
 	private int countAnswerSTD; // 시험본학생수
 	private String nameAnswerSTD; //시험본학생이름
+	private Date tp_Start_Dt; // 시작날짜
+	private Date tp_End_Dt; // 끝날짜
 	
 
 }

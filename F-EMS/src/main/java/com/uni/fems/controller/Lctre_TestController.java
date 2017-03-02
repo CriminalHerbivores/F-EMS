@@ -1,5 +1,6 @@
 package com.uni.fems.controller;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,12 +94,15 @@ public class Lctre_TestController {
 	}
 	
 	@RequestMapping(value="/writeTest", method=RequestMethod.POST)
-	public String writeTest(TestVO testVO, Test_PaperVO test_paperVO, HttpServletRequest request,String[] ques, String[] ca){
+	public String writeTest(TestVO testVO, Test_PaperVO test_paperVO, HttpServletRequest request,String[] ques, String[] ca,
+							Date Start_Dt, Date End_Dt){
 		String url ="redirect:testList";
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
 		test_paperVO.setTp_Lctre_No(50);
 		test_paperVO.setTp_Profsr_No(loginUser);
+		test_paperVO.setTp_Start_Dt(Start_Dt);
+		test_paperVO.setTp_End_Dt(End_Dt);
 		try {
 			test_paperSvc.insertTestPaper(test_paperVO);
 		} catch (SQLException e) {
@@ -124,8 +128,10 @@ public class Lctre_TestController {
 		String url = "lecture/test/detailTest";
 		
 		List<TestVO> Qlist = null;
+		Test_PaperVO tpVO = null;
 		try {
 			Qlist = testSvc.listAllTest(Integer.parseInt(tpNo));
+			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(tpNo));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,7 +139,7 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("tpNm", tpNm);
 		model.addAttribute("tpNo", tpNo);
 		model.addAttribute("Qlist", Qlist);
@@ -186,7 +192,9 @@ public class Lctre_TestController {
 		String url="lecture/test/updateTest";
 		
 		List<TestVO> Qlist = null;
+		Test_PaperVO tpVO = null;
 		try {
+			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(tpNo));
 			Qlist = testSvc.listAllTest(Integer.parseInt(tpNo));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -195,7 +203,8 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("============================"+tpVO.toString());
+		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("Qlist", Qlist);
 		model.addAttribute("tpNm", tpNm.trim());
 		model.addAttribute("tpNo", tpNo);
@@ -205,7 +214,8 @@ public class Lctre_TestController {
 	@RequestMapping(value="/updateTest", method=RequestMethod.POST)
 	public String updateTest(HttpServletRequest request, TestVO testVO, Test_PaperVO test_paperVO,
 							String[] que, String[] ca, String tpNm,String queNo[],
-							String[] addQue, String[] addCa, String tp_No){
+							String[] addQue, String[] addCa, String tp_No
+							){
 		
 		String url = "redirect:testList";
 		HttpSession session = request.getSession();
