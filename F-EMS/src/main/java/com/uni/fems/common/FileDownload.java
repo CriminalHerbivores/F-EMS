@@ -44,7 +44,7 @@ import com.uni.fems.dto.FilesVO;
 @Data
 public class FileDownload implements ApplicationContextAware {
 	private WebApplicationContext context = null;
-	public String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/files";
+	public String filePath = "files";
 
 	/**
 	 * <pre>
