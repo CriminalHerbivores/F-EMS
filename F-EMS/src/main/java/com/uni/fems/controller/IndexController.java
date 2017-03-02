@@ -83,10 +83,16 @@ public class IndexController {
 	 */
 	@RequestMapping("/")
 	public String in() {
-		String url = "redirect:index";
+		String url = "redirect:temp";
 		return url;
 	}
-
+	
+	@RequestMapping("/temp")
+	public String aa() {
+		String url = "/index";
+		return url;
+	}
+	
 	/**
 	 * <pre>
 	 * 첫 화면으로 이동
