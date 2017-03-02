@@ -93,6 +93,12 @@ public class IndexController {
 		return url;
 	}
 	
+	@RequestMapping("/sample")
+	public String sample() {
+		String url = "/sample";
+		return url;
+	}
+	
 	/**
 	 * <pre>
 	 * 첫 화면으로 이동
@@ -123,9 +129,9 @@ public class IndexController {
 		default: url = "/index";
 		}
 		
-		if(session.getAttribute("loginUser")!=null){
-			url="layout_type/loginBoardType";
-
+//		if(session.getAttribute("loginUser")!=null){
+//			url="layout_type/loginBoardType";
+//
 //			switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
 //			case 1: url = "layout_type/indexLoginType";
 //				break;
@@ -137,11 +143,7 @@ public class IndexController {
 //				break;
 //			default: url = "/index";
 //			}
-			
-			
-			
-			
-		}
+//		}
 		
 		return url;
 	}

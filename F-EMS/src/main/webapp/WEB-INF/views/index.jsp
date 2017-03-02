@@ -12,6 +12,7 @@
 <table>
 <tr>
 <td>
+<h2><a href="<%=request.getContextPath() %>/sample">jsp 샘플 보기</a></h2><br/>
 <h2><a href="<%=request.getContextPath() %>/cssExample">CSS 예시 보기</a></h2><br/>
 ※ 각각 메뉴에 반영하고 싶은 url 및 메뉴 이름(순서 맞춰서) 해당영역에 넣어두면 데코레이터에 반영 ※<br/>
 --------- 기타 ---------<br/>

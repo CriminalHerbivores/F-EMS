@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.dto.Intrst_ListVO;
@@ -57,6 +58,35 @@ public class LctreController {
 	private ReqstService reqstService;
 	@Autowired
 	private Paging callPaging;
+	
+	
+	
+	/**
+	 * <pre>
+	 * 강의계획서를 조회하는 폼
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param lc_Lctre_No
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/lectrePlan")
+	public String detailLctreForm(Model model, @RequestParam int lc_Lctre_No) {
+		String url = "lecture/lectrePlan";
+		
+		Lctre_SearchVO lctre_SearchVO =null;
+		
+		try {
+			lctre_SearchVO=lctreService.getDetailLctre(lc_Lctre_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("lectreDetail",lctre_SearchVO);
+		
+		return url;
+	}
 	
 	
 	/**

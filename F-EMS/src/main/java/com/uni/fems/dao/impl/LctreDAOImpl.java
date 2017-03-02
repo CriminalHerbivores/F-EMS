@@ -49,9 +49,12 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	ArrayList<Lctre_SearchVO> listForComboLctre=null;
 	
-//	static int view_rows = 5; // 페이지의 개수
-//	static int counts = 6; // 한 페이지에 나타낼 강의 개수
-	
+	// 한개의 강의로 강의상세(강의계획서) 조회
+	@Override
+	public Lctre_SearchVO getDetailLctre(int lc_Lctre_No) throws SQLException {
+		Lctre_SearchVO lctre_SearchVO=(Lctre_SearchVO) client.queryForObject("getDetailLctre",lc_Lctre_No);
+		return lctre_SearchVO;
+	}
 	
 	
 	// 현재 개설된 전체 강의 목록

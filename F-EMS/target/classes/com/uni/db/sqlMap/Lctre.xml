@@ -51,7 +51,7 @@
 	</select>
 	
 	<!-- 강의번호중 가장 큰 값 가져온다 -->
-	<select id="selectMaxLc_Lctre_No" resultClass="int">
+	<select id="selectMaxLc_Lctre_No" parameterClass="int">
 		select max(lc_Lctre_No) from lctre
 	</select>
 	
@@ -65,9 +65,9 @@
 	</dynamic>
 	</update>
 	
-	<!-- 강의 상세조회 -->
-	<select id="selectDetailLctre" resultClass="lctre_Search">
-	
+	<!-- 강의 상세조회(강의계획서) -->
+	<select id="getDetailLctre" parameterClass="int" resultClass="lctre_Search">
+		select * from LCTRE_VIEW where lc_Lctre_No=#lc_Lctre_No#
 	</select>
 	
 	

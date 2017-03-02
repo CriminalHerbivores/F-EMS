@@ -9,7 +9,6 @@ import com.uni.fems.common.Paging;
 import com.uni.fems.dao.SknrgsDAO;
 import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.SknrgsVO;
-import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.request.PageRequest;
 
 public class SknrgsDAOImpl implements SknrgsDAO {
@@ -19,6 +18,23 @@ public class SknrgsDAOImpl implements SknrgsDAO {
 	public void setClient(SqlMapClient client) {
 		this.client = client;
 	}
+	
+	//직원 부분에서의 학적 관리
+	@Override
+	public List<SknrgsViewVO> listAllSknrgs(SknrgsViewVO sknrgsView, int tpage, int totalRecord) throws SQLException {
+		Paging p = new Paging();
+		int[] rows = p.row(tpage, totalRecord);
+		List<SknrgsViewVO> listAllLctre_Date = client.queryForList("listAllSknrgs",sknrgsView, rows[1], rows[0]);
+		return listAllLctre_Date;
+	}
+	@Override
+	public int totalSknrgs(SknrgsViewVO sknrgsView) throws SQLException{
+		int total_pages = 0;
+		total_pages = (Integer) client.queryForObject("totalSknrgs",sknrgsView);
+		return total_pages;
+	}
+	
+	
 	
 //	직원의 학적 관리
 	@Override
