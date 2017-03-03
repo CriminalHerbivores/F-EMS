@@ -117,7 +117,7 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble",method=RequestMethod.GET)
-	public String courseAbleForm(@RequestParam(value="checkLctre_Knd[]") String knd_Lctre_Knd, @RequestParam(value="checkCompl_Se[]") String lu_Compl_Se,
+	public String courseAbleForm( //@RequestParam(value="checkLctre_Knd[]") List<String> knd_Lctre_Knd, @RequestParam(value="checkCompl_Se[]") List<String> lu_Compl_Se,
 			Model model, HttpServletRequest request, SearchVO searchVO) {
 		String url = "course_registration/courseAble";
 		
@@ -159,7 +159,8 @@ public class LctreController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ"+searchVO.getKnd_Lctre_Knd());
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ 종류 : "+searchVO.getKnd_Lctre_Knd());
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ이수구분 : "+searchVO.getLu_Compl_Se());
 		model.addAttribute("openLctreList", openLctreList);
 		int n = openLctreList.size();
 		model.addAttribute("openLctreListSize", n);

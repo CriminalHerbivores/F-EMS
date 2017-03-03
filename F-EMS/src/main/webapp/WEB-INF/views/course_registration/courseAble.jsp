@@ -29,23 +29,33 @@ body {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-	$("#selectCkBox").click(function(){
+	
+	// 체크박스로 체크하는 것에 따라 적용
+	//http://zero-gravity.tistory.com/241
+	<%-- $("#selectCkBox").click(function(){
 		
 		 //var userId = $("#userId").val();
 		 
 		    // name이 같은 체크박스의 값들을 배열에 담는다.
 		    var arrLctre_Knd = [];
+		    var arrCompl_Se = [];
+		    
 		    $("input[name='knd_Lctre_Knd']:checked").each(function(i) {
 		    	arrLctre_Knd.push($(this).val());
 		    });
+		    
+		    $("input[name='lu_Compl_Se']:checked").each(function(i) {
+		    	arrCompl_Se.push($(this).val());
+		    });
+		    
 		     
 		    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
-		    var allData = { "checkLctre_Knd": arrLctre_Knd };
 		     
 		    $.ajax({
 		        url:'<%=request.getContextPath()%>/course/courseAble',
-		        type:'GET',
-		        data: allData,
+		        contentType:'application/json;',
+		        type:'get',
+		        data:{ "checkLctre_Knd": arrLctre_Knd, "checkCompl_Se": arrCompl_Se },
 		        success:function(data){
 		            alert("완료!");
 		            window.opener.location.reload();
@@ -59,35 +69,54 @@ $(document).ready(function(){
 		    
 		    //---------------------------------------------------------------------
 		    
-		    var arrCompl_Se = [];
-		    $("input[name='lu_Compl_Se']:checked").each(function(i) {
-		    	arrCompl_Se.push($(this).val());
-		    });
-		     
-		    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
-		    var allData = { "checkCompl_Se": arrCompl_Se };
-		     
-		    $.ajax({
-		        url:'<%=request.getContextPath()%>/course/courseAble',
-		        type:'GET',
-		        data: allData,
-		        success:function(data){
-		            alert("완료!");
-		            window.opener.location.reload();
-		            self.close();
-		        },
-		        error:function(jqXHR, textStatus, errorThrown){
-		            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-		            self.close();
-		        }
-		    });
-		    
-		    
-		    
-		    
 	});	// click
 
-});
+}); --%>
+
+function add_reqst(form){
+	alert("수강신청");
+	
+	
+	
+	document.formm.submit();
+	
+	
+}
+function go_searchLctre(){
+	
+	
+<%-- 	 var userId = $("#userId").val();
+	 
+    // name이 같은 체크박스의 값들을 배열에 담는다.
+    var checkboxValues = [];
+    $("input[name='hobby']:checked").each(function(i) {
+        checkboxValues.push($(this).val());
+    });
+     
+    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
+    var allData = { "userId": userId, "checkArray": checkboxValues };
+     
+    $.ajax({
+        url:'<%=request.getContextPath()%>/course/courseList',
+        type:'GET',
+        data: allData,
+        success:function(data){
+            alert("완료!");
+            window.opener.location.reload();
+            self.close();
+        },
+        error:function(jqXHR, textStatus, errorThrown){
+            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+            self.close();
+        }
+    });
+	 --%>
+	
+	
+	
+	
+	document.formm.submit();
+}
 
 </script>
 
@@ -98,21 +127,23 @@ $(document).ready(function(){
 <article>
 
 	<div class="text-center">
-<form name="forrm" method="get">
 	<table class="def-table-full">
 	<thead class="def-table-full fix-top">
 	<tr><td class="text-right">
+<form name="forrm" method="get">
+	<input type="hidden" id="userId" value="${loginUser}">
 	<label><input type="checkbox" id="selectCkBox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" id="selectCkBox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
 	<label><input type="checkbox" id="selectCkBox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" id="selectCkBox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
-	<!-- </td></tr>
-	<tr><td class="text-right">	 -->			<select name="key" class="combobox-md custom-form-control">
+	
+	<select name="key" class="combobox-md custom-form-control">
 					<option value="lu_Lctre_Nm">강의명</option>
 					<option value="pr_Nm">담당교수</option>
 					<option value="sit_Subjct">개설학과</option>
 					<option value="lu_Lctre_Code">강의코드</option>
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
+					<button class="def-btn btn-search btn-color" onclick="go_searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button></form>
+					
 					<input type="button" class="def-btn btn-search btn-color" id="courseDetailBtn" value="상세검색" onClick="disp()">&nbsp;&nbsp;
       <div class="non-disp">
       	<jsp:include page="courseDetailSearch.jsp" />
@@ -120,7 +151,9 @@ $(document).ready(function(){
 					
 	</td></tr></thead>
 	</table>
-	</form>
+	
+	
+	
 	<form name="formm" method="post">
 			<table class="def-table-full tb-border table-hover">
 				<thead class="def-table-full fix-mid">

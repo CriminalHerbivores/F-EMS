@@ -39,7 +39,7 @@ $(document).ready(function() {
        }
     });
 });
-$(document).on('click','.pageComment',function(e){
+<%-- $(document).on('click','.pageComment',function(e){
     e.preventDefault();
     var cpage = $(this).attr('id');
     
@@ -64,7 +64,7 @@ $(document).on('click','.pageComment',function(e){
        alert("오류났음");   
        }
     });
-});
+}); --%>
 $(document).on('click','.pageComment',function(e){
     e.preventDefault();
     var cpage = $(this).attr('id');
