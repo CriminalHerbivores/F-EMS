@@ -193,7 +193,7 @@ public class LctreController {
 		
 		if(resultArr_1 !=null){
 			for (int i = 0; i < resultArr_1.length; i++) { 
-				if(resultArr_1[i] !=null&&resultArr_2[i] ==null){	// 관심만 추가한 경우
+				if(resultArr_1[i] !=null){	// 관심만 추가한 경우
 					intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 					

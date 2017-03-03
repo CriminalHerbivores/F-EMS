@@ -121,6 +121,7 @@ public class ReqstController {
 			System.out.println("============== 11111111111 reqstVO.getRe_Lctre_No() "+reqstVO.getRe_Lctre_No());
 			try {
 				reqstService.deleteReqst(reqstVO,lctre_SearchVO);
+				intrst_ListService.deleteIntrst_List(intrst_ListVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -128,6 +129,7 @@ public class ReqstController {
 		}
 		if(resultArr_1!=null&&resultArr_2 == null){
 		for (int i = 0; i < resultArr_1.length; i++) {
+			//if(resultArr_1[i] != null && resultArr_2[i] == null){
 			intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 			try {
@@ -135,7 +137,8 @@ public class ReqstController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}	
+			}
+		//}	
 		}
 		return url;
 	}
