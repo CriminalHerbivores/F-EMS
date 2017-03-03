@@ -24,25 +24,74 @@
 body {
 	/* background: #D4F4FA; */
 }
-/* .tb-border table {
-  border-collapse:collapse;
-}   */
-/* .fix-top {
-  position: fixed;
-  top:0%;
-}
-.fix-mid {
-  position: fixed;
-  top:12%;
-  
-}
-tbody .tb-border{
-	position:relative;
-}
-.tbtb tbody{
-	margin-top:23.3%;
-} */
 </style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#selectCkBox").click(function(){
+		
+		 //var userId = $("#userId").val();
+		 
+		    // name이 같은 체크박스의 값들을 배열에 담는다.
+		    var arrLctre_Knd = [];
+		    $("input[name='knd_Lctre_Knd']:checked").each(function(i) {
+		    	arrLctre_Knd.push($(this).val());
+		    });
+		     
+		    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
+		    var allData = { "checkLctre_Knd": arrLctre_Knd };
+		     
+		    $.ajax({
+		        url:'<%=request.getContextPath()%>/course/courseAble',
+		        type:'GET',
+		        data: allData,
+		        success:function(data){
+		            alert("완료!");
+		            window.opener.location.reload();
+		            self.close();
+		        },
+		        error:function(jqXHR, textStatus, errorThrown){
+		            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		            self.close();
+		        }
+		    });
+		    
+		    //---------------------------------------------------------------------
+		    
+		    var arrCompl_Se = [];
+		    $("input[name='lu_Compl_Se']:checked").each(function(i) {
+		    	arrCompl_Se.push($(this).val());
+		    });
+		     
+		    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
+		    var allData = { "checkCompl_Se": arrCompl_Se };
+		     
+		    $.ajax({
+		        url:'<%=request.getContextPath()%>/course/courseAble',
+		        type:'GET',
+		        data: allData,
+		        success:function(data){
+		            alert("완료!");
+		            window.opener.location.reload();
+		            self.close();
+		        },
+		        error:function(jqXHR, textStatus, errorThrown){
+		            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		            self.close();
+		        }
+		    });
+		    
+		    
+		    
+		    
+	});	// click
+
+});
+
+</script>
+
+
 
 </head>
 <body class="course-list-l-top">
@@ -53,8 +102,8 @@ tbody .tb-border{
 	<table class="def-table-full">
 	<thead class="def-table-full fix-top">
 	<tr><td class="text-right">
-	<label><input type="checkbox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
-	<label><input type="checkbox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
+	<label><input type="checkbox" id="selectCkBox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" id="selectCkBox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
+	<label><input type="checkbox" id="selectCkBox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" id="selectCkBox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
 	<!-- </td></tr>
 	<tr><td class="text-right">	 -->			<select name="key" class="combobox-md custom-form-control">
 					<option value="lu_Lctre_Nm">강의명</option>
@@ -63,7 +112,7 @@ tbody .tb-border{
 					<option value="lu_Lctre_Code">강의코드</option>
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
+					<button class="def-btn btn-search btn-color" onclick="submitForm(this.form)"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button>
 					<input type="button" class="def-btn btn-search btn-color" id="courseDetailBtn" value="상세검색" onClick="disp()">&nbsp;&nbsp;
       <div class="non-disp">
       	<jsp:include page="courseDetailSearch.jsp" />

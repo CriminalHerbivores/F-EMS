@@ -117,7 +117,8 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseAble",method=RequestMethod.GET)
-	public String courseAbleForm(Model model, HttpServletRequest request, SearchVO searchVO) {
+	public String courseAbleForm(@RequestParam(value="checkLctre_Knd[]") String knd_Lctre_Knd, @RequestParam(value="checkCompl_Se[]") String lu_Compl_Se,
+			Model model, HttpServletRequest request, SearchVO searchVO) {
 		String url = "course_registration/courseAble";
 		
 		String tpage = request.getParameter("tpage");
@@ -133,13 +134,20 @@ public class LctreController {
 			searchVO.setValue("");
 		if(searchVO.getKey()==null)
 			searchVO.setKey("lu_Lctre_Nm");
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ넣기 전111111 "+searchVO.getKnd_Lctre_Knd());
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ넣기 전111111 "+searchVO.getLu_Compl_Se());
+		//searchVO.setKnd_Lctre_Knd(knd_Lctre_Knd);
+		//searchVO.setLu_Compl_Se(lu_Compl_Se);
+		
 		
 		List<Lctre_SearchVO> openLctreList=null; 
 		String paging=null;
 		
 		int view_rows = 10; //페이지의 개수
 		int counts = 10; //한 페이지에 나타낼 개수
-		
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ"+searchVO.getKnd_Lctre_Knd());
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ"+searchVO.getLu_Compl_Se());
+
 		try {
 			int totalRecord = lctreService.countLctreList(Integer.parseInt(tpage), searchVO);
 			paging = callPaging.pageNumber(Integer.parseInt(tpage)
@@ -147,10 +155,11 @@ public class LctreController {
 					,view_rows,counts);
 			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord,view_rows,counts);
 			openLctreList = lctreService.openLctreList(searchVO,rows[1], rows[0]);
+			System.out.println("-==================="+searchVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("으으ㅡㅡㅡㅡㅡㅡ"+searchVO.getKnd_Lctre_Knd());
 		model.addAttribute("openLctreList", openLctreList);
 		int n = openLctreList.size();
 		model.addAttribute("openLctreListSize", n);
