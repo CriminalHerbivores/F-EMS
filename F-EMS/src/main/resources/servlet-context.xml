@@ -53,15 +53,17 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
-			<beans:bean id="decoInterceptor" 
-				class="com.uni.fems.deco.DecoInterceptor" />
+			<beans:bean id="decoInterceptor" class="com.uni.fems.interceptor.DecoInterceptor" />
 		</interceptor>
 		<interceptor>
 			<mapping path="/**/manageLctre" />
 			<mapping path="/**/courseList" />
 			<mapping path="/**/evlScope" />
-			<beans:bean id="eventInterceptor" 
-				class="com.uni.fems.event.EventInterceptor" />
+			<beans:bean id="eventInterceptor" class="com.uni.fems.interceptor.EventInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/lctre/**" />
+			<beans:bean id="lctreInterceptor" class="com.uni.fems.interceptor.LctreInterceptor" />
 		</interceptor>
 	</interceptors>
 		

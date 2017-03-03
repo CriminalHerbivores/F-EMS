@@ -44,9 +44,8 @@
 </body>
 
 <!--  ============= css =============  -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/accordion.css">
@@ -90,14 +89,11 @@
 
 <!--  ============= js =============  -->
 	
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
 	<!--  ============= js ============= 
 <%-- <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script> --%>
