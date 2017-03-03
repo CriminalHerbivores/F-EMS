@@ -1,0 +1,202 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+body{
+	text-align: center;
+	background: #00ECB9;
+  font-family: Malgun Gothic;	/* sans-serif; */
+  font-weight: 100;
+}
+h1{
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+#clockdiv{
+	font-family: Malgun Gothic;	/* sans-serif; */
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #00BF96;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: #00816A;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+</style>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+function getTimeRemaining(endtime) {
+	  var t = Date.parse(endtime) - Date.parse(new Date());
+	  var seconds = Math.floor((t / 1000) % 60);
+	  var minutes = Math.floor((t / 1000 / 60) % 60);
+	/*   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+	  var days = Math.floor(t / (1000 * 60 * 60 * 24)); */
+	  return {
+	    'total': t,
+	    /* 'days': days,
+	    'hours': hours, */
+	    'minutes': minutes,
+	    'seconds': seconds
+	  };
+	}
+
+	function initializeClock(id, endtime) {
+	  var clock = document.getElementById(id);
+	  /* var daysSpan = clock.querySelector('.days');
+	  var hoursSpan = clock.querySelector('.hours'); */
+	  var minutesSpan = clock.querySelector('.minutes');
+	  var secondsSpan = clock.querySelector('.seconds');
+
+	  function updateClock() {
+	    var t = getTimeRemaining(endtime);
+
+	    /* daysSpan.innerHTML = t.days;
+	    hoursSpan.innerHTML = ('0' + t.hours).slice(-2); */
+	    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+	    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+	    if (t.total <= 0) {
+	      clearInterval(timeinterval);
+	      	alert('시험이 종료되었습니다.')
+	      	submitForm(this.form);
+	    }
+	  }
+
+	  updateClock();
+	  var timeinterval = setInterval(updateClock, 1000);
+	}
+
+	var deadline = new Date(Date.parse(new Date()) + 1 * 05 * 1000);
+	initializeClock('clockdiv', deadline);
+		
+	
+});
+</script>
+<sec:authorize access="hasRole('ROLE_STD')">
+<script>
+history.pushState(null, null, location.href); 
+window.onpopstate = function(event) { 
+history.go(1); 
+}
+</script>
+</sec:authorize>
+	
+</head>
+
+<body>
+<sec:authorize access="hasRole('ROLE_STD')">
+<h1>Countdown Clock</h1>
+<div id="clockdiv">
+  <!-- <div>
+    <span class="days"></span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours"></span>
+    <div class="smalltext">Hours</div>
+  </div> -->
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+</sec:authorize>
+<table style="width:100%;" class="non-border margin-auto">
+<tr><td>
+  <form name="formm" method="post">
+	<table class="def-table-auto tb-border table-hover" id="testtable">
+		<tr>
+			<td style="padding-top: 0;padding-bottom: 0; width:700px; ">	
+				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
+					<tr>
+						<th>시험명</th>
+							<td style="width:80%;"> ${tpNm } 
+							<input type="hidden" name="an_Tp_No" value="${tpNo }">
+							</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+			</td>
+		</tr>
+	
+		<tr>
+			<th style="width:80%;">문제</th>
+			<th>정답</th>
+		</tr>
+		
+		<c:forEach var="Qlist" items="${Qlist }" >
+		<tr>
+			<td>
+				${Qlist.te_Ques}
+				<input type="hidden" name="queNo" value="${Qlist.te_Ques_No }">
+			</td>
+			<td>
+			<sec:authorize access="hasRole('ROLE_PRO')">
+				${Qlist.te_Ca }
+			</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_STD')">	
+				<input type="text" class="def-input-text-md custom-form-control" name="answer">
+			</sec:authorize>
+				<%-- ${Qlist.te_Ca} --%>			
+			</td>
+		</tr>
+		</c:forEach>
+			<tbody></tbody>
+		
+		
+	</table>
+		<sec:authorize access="hasRole('ROLE_STD')">
+			<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="제출" onclick="submitForm(this.form);">
+		</sec:authorize>
+		
+		
+		<sec:authorize access="hasRole('ROLE_PRO')">
+		<div style="float:right;">
+			<a href="updateTest?tpNo=${tpNo }&tpNm=${tpNm}"><input type="button" class="def-btn btn-md btn-color" value="수정"></a>
+			<a href="deleteTest?tpNo=${tpNo }"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
+			<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.back()">
+		</div>
+		</sec:authorize>
+	</form>
+</td></tr>
+</table>
+
+</body>
+</html>
