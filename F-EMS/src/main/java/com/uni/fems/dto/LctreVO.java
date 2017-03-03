@@ -44,6 +44,6 @@ public class LctreVO implements Serializable{
 	private String lc_Lctre_Evl_Score;   // 강의 평가 점수
 	private String lc_Split;   // 분반
 	
-
+	private String lu_lctre_nm; //강의 이름
 	
 }

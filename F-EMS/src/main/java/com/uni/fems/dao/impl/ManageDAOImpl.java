@@ -6,6 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.ManageDAO;
 import com.uni.fems.dto.Bbs_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.ManageVO;
 
 /**
@@ -43,5 +44,17 @@ public class ManageDAOImpl implements ManageDAO {
 	public List<Bbs_ListVO> getBbsList(String name) throws SQLException {
 		List<Bbs_ListVO> bbsListVO = client.queryForList("getBbsList",name);
 		return bbsListVO;
+	}
+
+	@Override
+	public List<LctreVO> getStdntList(String loginUser) throws SQLException {
+		List<LctreVO> list = client.queryForList("getStdntList",loginUser);
+		return list;
+	}
+
+	@Override
+	public List<LctreVO> getProfsrList(String loginUser) throws SQLException {
+		List<LctreVO> list = client.queryForList("getProfsrList",loginUser);
+		return list;
 	}
 }

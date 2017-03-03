@@ -1,4 +1,4 @@
-package com.uni.fems.event;
+package com.uni.fems.interceptor;
 
 import java.sql.Timestamp;
 
@@ -47,7 +47,7 @@ public class EventInterceptor extends HandlerInterceptorAdapter{
 		
 		if(today.compareTo(vo.getEvt_Start())<0 || today.compareTo(vo.getEvt_End())>0){
 			flag = false;
-			response.sendRedirect(request.getContextPath()+"/event");
+			response.sendRedirect(request.getContextPath()+"/anth");
 		}
 		
 		return flag;

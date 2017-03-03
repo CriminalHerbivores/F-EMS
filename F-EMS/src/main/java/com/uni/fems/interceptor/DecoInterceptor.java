@@ -1,4 +1,4 @@
-package com.uni.fems.deco;
+package com.uni.fems.interceptor;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.uni.fems.dto.Bbs_ListVO;
+import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.ManageVO;
 
 /**
@@ -46,5 +47,26 @@ public interface ManageDAO {
 	 * </pre>
 	 */
 	List<Bbs_ListVO> getBbsList(String name) throws SQLException;
-
+	/**
+	 * <pre>
+	 * 학생의 수강 목록을 가져옴
+	 * </pre>
+	 * <pre>
+	 * @param loginUser
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<LctreVO> getStdntList(String loginUser) throws SQLException;
+	/**
+	 * <pre>
+	 * 교수의 수강 목록을 가져옴
+	 * </pre>
+	 * <pre>
+	 * @param loginUser
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<LctreVO> getProfsrList(String loginUser) throws SQLException;
 }

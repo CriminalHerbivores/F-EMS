@@ -36,6 +36,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <decorator:head />
+
+<script type="text/javascript">
+$(function(){
+	function lctreSelected(){
+		var sel = location.protocol+"//"+location.host + location.pathname + "?table_Nm=";
+		sel += $('#lctreList>option:selected').val();
+		location.href=sel;
+	}
+	$('#lctreList').change(lctreSelected);
+	$('#lctreList>option:selected').val();
+})
+</script>
+
 </head>
 <body>
 
@@ -52,9 +65,7 @@
 	<div class="row content">
 
 <!-- 좌측 메뉴 -->
-<c:if test="${manageVO.mng_Left_Menu_Use_Ennc=='y'||'Y'}">
-	<jsp:include page="left_menu.jsp"/>
-</c:if>
+	<jsp:include page="lec_menu.jsp"/>
 <!-- 좌측 메뉴 끝 -->
 
 	<c:choose>
@@ -123,11 +134,6 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.easing.1.3.js"></script>
-	<!--  ============= js ============= 
-<%-- <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script> --%>
-<!-- <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
 <!-- //////////////////////////////////// -->
 
