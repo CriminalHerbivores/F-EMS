@@ -14,8 +14,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	
 <script>
+
 $(function(){
-	$('#addrow').click(function(){
+	$('#Jaddrow').click(function(){
 		$('#testtable > tbody:last').append('<tr><td><input type="text" class="def-input-text-full custom-form-control" name="addQue" ></td><td><input type="text" class="def-input-text-md custom-form-control" name="addCa"> <input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
 	});
 });
@@ -45,16 +46,21 @@ function deleteQues(qno){
 	});
 };
 
-
-
-
 </script>
+<!-- datepicker 부분  -->
+<script>
+  
+  $(function() {
+    $("#Start_Dt, #End_Dt").datepicker();
+  });
+  
+</script>
+<!-- ---------------- -->
 </head>
 <body>
-<table style="width:100%;" class="non-border margin-auto">
-<tr><td>
+<h2>시험 수정</h2><br/>
   <form name="formm" method="post">
-	<table class="def-table-auto tb-border table-hover" id="testtable">
+	<table class="def-table-full tb-border table-hover" id="testtable">
 		<tr>
 			<td style="padding-top: 0;padding-bottom: 0; width:700px; ">	
 				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
@@ -65,10 +71,17 @@ function deleteQues(qno){
 							<input type="hidden" name="tp_No" value="${tpNo}">
 							</td>
 					</tr>
+					<tr>
+						<th>응시가능기간</th>
+						<td><input type="text" id="Start_Dt" name="tp_Start_Dt" class="def-input-text-md custom-form-control" value="${tpVO.tp_Start_Dt}"> &nbsp; ~ &nbsp;
+						<input type="text" id="End_Dt" name="tp_End_Dt" value="${tpVO.tp_End_Dt}"  class="def-input-text-md custom-form-control">
+						</td>
+					</tr>
 				</table>
 			</td>
 			<td>
-			<input type="button" id="addrow" class="def-btn btn-md btn-color" value="+추가">
+				<input type="button" id="Jaddrow" class="def-btn btn-md btn-color" value="+주관식">
+				<input type="button" id="Gaddrow" class="def-btn btn-md btn-color" value="+객관식">
 			</td>
 		</tr>
 	
@@ -99,15 +112,13 @@ function deleteQues(qno){
 	</table>
 		
 		<sec:authorize access="hasRole('ROLE_PRO')">
-		<div style="float:right;">
+<table class="def-table-full"><tr><td style="text-align: right;">
 			<input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
 			<a href="deleteTest?tpNo=${tpNo }"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
 			<input type="button" class="def-btn btn-md btn-color" value="취소" onclick="history.back()">
-		</div>
+</td></tr></table>
 		</sec:authorize>
 	</form>
-</td></tr>
-</table>
 	
 </body>
 </html>

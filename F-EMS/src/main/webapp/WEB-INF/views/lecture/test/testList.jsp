@@ -21,6 +21,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 <script>
 $(document).ready(function(){
 	var ar = [];
@@ -39,7 +40,7 @@ $(document).ready(function(){
 		$.each(data, function(key,value){
 			var aa = "."+key;
 			var temp = "";
-			temp += '<select name="" onchange="location.href=this.value">';
+			temp += '<select name="" class="combobox-md custom-form-control" onchange="location.href=this.value">';
 			temp += '<option value="">선택</option>';
 			$.each(value,function(k,v){
 				temp += '<option value="'+'<%=request.getContextPath()%>/lctre/completedTest?stdNm='+v+'&tpNo='+key+'">'+v+'</option>'
@@ -59,21 +60,14 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-
-
-<div class="container">
-<table class="non-border margin-auto">
-<tr><td>
-<div class="text-center">
-  <h2>온라인 시험 게시판</h2>
- <hr />
- </div>
-  <table class="def-table-auto tb-border table-hover">
+  <h2>온라인 시험 게시판</h2><br/>
+  <table class="def-table-full tb-border table-hover">
       <tr>
       	<th>No</th>
-        <th style="width:600px;">시험명</th>
+        <th style="width:450px;">시험명</th>
         <th>출제자</th>
         <th>출제날짜</th>
+        <th>응시기간</th>
     <sec:authorize access="hasRole('ROLE_STD')">       
         <th>응시여부</th>
     </sec:authorize>
@@ -94,6 +88,7 @@ $(document).ready(function(){
       		</td>
       		<td>${testlist.tp_Profsr_No} </td>
       		<td><fmt:formatDate value="${testlist.tp_Dt}" /> </td>
+      		<td>${testlist.tp_Start_Dt } ~ ${testlist.tp_End_Dt }</td>
       		<td>${testlist.countAnswerSTD} / </td>
       		<td>
       			<div class="${testlist.tp_No}"></div>
@@ -103,14 +98,15 @@ $(document).ready(function(){
       		<td>${testlist.tp_No }</td>
       	 	<td>${testlist.tp_Nm}</td>
       		<td>${testlist.tp_Profsr_No} </td>
-      		<td>${testlist.tp_Dt} </td>
+      		<td><fmt:formatDate value="${testlist.tp_Dt}" /> </td>
       	</sec:authorize>
 	   		
       		<%-- <td><a href="detailNotice?no=${testlist.nb_Bbs_No}&tpage=${tpage}">
-      		 ${notice.nb_Sj} </a>
+      		 ${notice.nb_Sj} </a>	
       		</td> --%>
       <!--학생 응시 / 완료 가리기  -->
 		      	<sec:authorize access="hasRole('ROLE_STD')">
+		      	<td>${testlist.tp_Start_Dt } ~ ${testlist.tp_End_Dt }</td>
 			<td>
 		      		<c:set var="testtpNo" value="${testlist.tp_No}" />
 		      	    <c:set var="doneLoop" value="false"/>
@@ -130,6 +126,12 @@ $(document).ready(function(){
 		      			</c:forEach>	
 		      			
 		      			<c:choose>
+		      				<c:when test="${flaglist[status.index] =='end' }">
+		      				<input type="button" class="def-btn btn-sm btn-gray" value="마감">
+		      				</c:when>
+		      				<c:when test="${flaglist[status.index] =='wait' }">
+		      				<input type="button" class="def-btn btn-sm btn-gray" value="대기">
+		      				</c:when>
 		      				<c:when test="${result =='already'}">
 		      				<input type="button" class="def-btn btn-sm btn-gray" value="완료">
 		      				</c:when>
@@ -149,13 +151,10 @@ $(document).ready(function(){
      
   </table>
   <sec:authorize access="hasRole('ROLE_PRO')">
-	  <div id="buttons" style="float:right">
+<table class="def-table-full"><tr><td style="text-align: right;">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeTestForm();">
-	  </div>
+</td></tr></table>
 </sec:authorize>
-</td></tr>  
-</table>	  
-</div>
  
 </body>
 </html>
