@@ -51,8 +51,8 @@
 	<table class="def-table-full"><tr><td style="text-align: right;">
 		<input type="text" name="sit_Subjct" class="def-input-text-lg custom-form-control"/>
 		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
-	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
-	<a href="stdTuitionList"><input type="button" value="등록금 납부 내역 조회" class="def-btn btn-color"></a>
+	<a href="<%=request.getContextPath() %>/admin/toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
+	<a href="<%=request.getContextPath() %>/sklstf/stdTuitionList"><input type="button" value="등록금 납부 내역 조회" class="def-btn btn-color"></a>
 	</td></tr></table>
 	</form>
 </body>
