@@ -19,6 +19,13 @@
 	margin: 0px;
 	padding: 0px;
 }
+/* input text에 border 안보이게 */
+.text-non-border
+{
+border: 0px solid #fff !important
+
+}
+
 a.select a:hover{	/* hover 밑줄 안 생기도록 */
 	text-decoration: none;
 }
