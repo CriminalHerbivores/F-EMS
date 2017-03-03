@@ -17,7 +17,30 @@
 
 $(function(){
 	$('#Jaddrow').click(function(){
-		$('#testtable > tbody:last').append('<tr><td><input type="text" class="def-input-text-full custom-form-control" name="addQue" ></td><td><input type="text" class="def-input-text-md custom-form-control" name="addCa"> <input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
+		$('#testtable > tbody:last').append(
+				'<tr><td><input type="text" class="def-input-text-full custom-form-control" name="addques" placeholder="주관식 문제를 입력하세요." ></td>'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No1" value="" >'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No2" value="" >'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No3" value="" >'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No4" value="" >'
+				+'<td><input type="text" class="def-input-text-md custom-form-control" name="addca">'
+				+'<input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제">'
+				+'</td></tr>');
+	});
+	$('#Gaddrow').click(function(){
+		$('#testtable > tbody:last').append(
+				'<tr><td><input type="text" class="def-input-text-full custom-form-control" name="addques" placeholder="객관식 문제를 입력하세요.">'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No1" value="1. " >'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No2" value="2. " >'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No3" value="3. " >'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No4" value="4. " >'
+				+'</td><td><select name="addca" class="combobox-sm custom-form-control">'
+				+'<option value="1">1</option>'
+				+'<option value="2">2</option>'
+				+'<option value="3">3</option>'
+				+'<option value="4">4</option>'
+				+'</select>'
+				+'<input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
 	});
 });
 
@@ -89,45 +112,47 @@ function deleteQues(qno){
 			<th style="width:80%;">문제</th>
 			<th>정답</th>
 		</tr>
-		
 
 		<c:forEach var="Qlist" items="${Qlist }" >
-		<form method="post">
 		<tr id="${Qlist.te_Ques_No }">
 		<c:choose>
 			<c:when test="${empty Qlist.te_No1 }">
 				<td>
-					<input type="text" class="def-input-text-full custom-form-control" name="te_Ques" value="${Qlist.te_Ques }">
+					<input type="text" class="def-input-text-full custom-form-control" name="ques" value="${Qlist.te_Ques }">
 				</td>
 				<td>
 					<input type="text" class="def-input-text-md custom-form-control" name="ca" value="${Qlist.te_Ca }">
 					<input type="hidden" id="queNo" name="queNo" value="${Qlist.te_Ques_No }">
 					<input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="deleteQues(${Qlist.te_Ques_No });">
+						<input type="hidden" class="def-input-text-full custom-form-control" name="no1" value= "${Qlist.te_No1 }">
+						<input type="hidden" class="def-input-text-full custom-form-control" name="no2" value= "${Qlist.te_No2 }">
+						<input type="hidden" class="def-input-text-full custom-form-control" name="no3" value= "${Qlist.te_No3 }">
+						<input type="hidden" class="def-input-text-full custom-form-control" name="no4" value= "${Qlist.te_No4 }">
 				</td>
 			</c:when>
+			
 			<c:otherwise>
 				<td>
-					<input type="text" class="def-input-text-full custom-form-control" name="te_Ques" value="${Qlist.te_Ques }">
-					<input type="text" class="def-input-text-full custom-form-control" name="te_No1" value= "${Qlist.te_No1 }">
-					<input type="text" class="def-input-text-full custom-form-control" name="te_No2" value= "${Qlist.te_No2 }">
-					<input type="text" class="def-input-text-full custom-form-control" name="te_No3" value= "${Qlist.te_No3 }">
-					<input type="text" class="def-input-text-full custom-form-control" name="te_No4" value= "${Qlist.te_No4 }">
+						<input type="text" class="def-input-text-full custom-form-control" name="ques" value="${Qlist.te_Ques }">
+						<input type="text" class="def-input-text-full custom-form-control" name="no1" value= "${Qlist.te_No1 }">
+						<input type="text" class="def-input-text-full custom-form-control" name="no2" value= "${Qlist.te_No2 }">
+						<input type="text" class="def-input-text-full custom-form-control" name="no3" value= "${Qlist.te_No3 }">
+						<input type="text" class="def-input-text-full custom-form-control" name="no4" value= "${Qlist.te_No4 }">
 				</td>
 				<td>
-				<select name="ca" class="combobox-sm custom-form-control">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-				</select>
-				<input type="hidden" id="queNo" name="queNo" value="${Qlist.te_Ques_No }">
-				<input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="deleteQues(${Qlist.te_Ques_No });">
-			</td>
+					<select name="ca" class="combobox-sm custom-form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<input type="hidden" id="queNo" name="queNo" value="${Qlist.te_Ques_No }">
+					<input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="deleteQues(${Qlist.te_Ques_No });">
+				</td>
 			</c:otherwise>
+			
 		</c:choose>
 		</tr>
-		</form>
-
 		</c:forEach>
 			<tbody></tbody>
 		
