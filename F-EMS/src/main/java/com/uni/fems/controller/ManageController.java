@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,16 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uni.fems.common.Paging;
 import com.uni.fems.dto.EventVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
+import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
@@ -28,6 +32,7 @@ import com.uni.fems.service.EventService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Sklstf_AtrtyService;
 import com.uni.fems.service.Subjct_Info_TableService;
+import com.uni.fems.service.TuitionService;
 import com.uni.fems.service.UsersService;
 
 /**
@@ -64,6 +69,8 @@ public class ManageController {
 	private UsersService usersService;
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private TuitionService tuitionService;
 	
 	/**
 	 * <pre>
@@ -557,6 +564,97 @@ public class ManageController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return url;
+	}
+	
+
+	/**
+	 * <pre>
+	 * 등록금 목록을 조회
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="tuitionList")
+	public String tuitionList(@Value("")String sit_Subjct, String tpage, Model model){
+		String url="manager/tuition/tuitionList";
+		if(tpage==null) tpage="1";
+		model.addAttribute("tpage",tpage);
+		
+		ArrayList<UserSubjctVO> list = new ArrayList<UserSubjctVO>();
+		String paging = "";
+		int count = 0;
+		try {
+			count = tuitionService.countSubjctByName(sit_Subjct);
+			paging = new Paging().pageNumber(Integer.parseInt(tpage), count, "tuitionList", "&sit_Subjct="+sit_Subjct);
+			list = tuitionService.selectSubjctByName(Integer.parseInt(tpage), count, sit_Subjct);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("tuitionList",list);
+		model.addAttribute("paging",paging);
+		return url;
+	}
+	/**
+	 * <pre>
+	 * 학생에게 등록금을 고지 
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="toStdTuition")
+	public String toStdTuition(@Value("")String sit_Subjct, String tpage){
+		String url="redirect:../sklstf/stdTuitionList?tpage="+tpage;
+		try {
+			tuitionService.toStdTuition();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return url;
+	}
+	/**
+	 * <pre>
+	 * 학과번호로 등록금을 업데이트 함
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="updateSubTuition", method = RequestMethod.GET)
+	public String upTuition(String sit_Subjct_Code, Model model){
+		String url="manager/tuition/updateSubTuition";
+		
+		UserSubjctVO sub = new UserSubjctVO();
+		try {
+			sub = tuitionService.selectSubjctByCode(sit_Subjct_Code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("tut",sub);
+		return url;
+	}
+	/**
+	 * <pre>
+	 * 학과번호로 등록금을 업데이트 함
+	 * </pre>
+	 * <pre>
+	 * @param subVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="updateSubTuition", method = RequestMethod.POST)
+	public String updateTuition(Subjct_Info_TableVO subVO){
+		String url="redirect:tuitionList";
+		
+		try {
+			tuitionService.updateTuition(subVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return url;
 	}
 }

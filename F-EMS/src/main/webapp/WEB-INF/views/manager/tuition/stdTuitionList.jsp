@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
 * <pre>
 * 
@@ -78,8 +79,10 @@
 		</select>
 		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
 		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
-	<a href="toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
-	<a href="tuitionList"><input type="button" value="등록금 정보 조회" class="def-btn btn-color"></a>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<a href="<%=request.getContextPath() %>/admin/toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
+	<a href="<%=request.getContextPath() %>/admin/tuitionList"><input type="button" value="등록금 정보 조회" class="def-btn btn-color"></a>
+	</sec:authorize>
 	</td></tr></table>
 	</form>
 </td></tr></table>

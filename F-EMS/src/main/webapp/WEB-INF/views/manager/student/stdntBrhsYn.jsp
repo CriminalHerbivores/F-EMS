@@ -43,21 +43,21 @@
 		<td>
 			<c:choose>
 				<c:when test="${std.st_Brhs_At=='신청'}">
-					<select name="st_Brhs_At">
+					<select name="st_Brhs_At" class="combobox-md custom-form-control">
 						<option value="신청" selected>신청</option>
 						<option value="승인">승인</option>
 						<option value="거부">거부</option>
 					</select>
 				</c:when>
 				<c:when test="${std.st_Brhs_At=='거부'}">
-					<select name="st_Brhs_At">
+					<select name="st_Brhs_At" class="combobox-md custom-form-control">
 						<option value="신청">신청</option>
 						<option value="승인">승인</option>
 						<option value="거부" selected>거부</option>
 					</select>
 				</c:when>
 				<c:when test="${std.st_Brhs_At=='승인'}">
-				<select name="st_Brhs_At">
+				<select name="st_Brhs_At" class="combobox-md custom-form-control">
 						<option value="신청">신청</option>
 						<option value="승인" selected>승인</option>
 						<option value="거부">거부</option>
