@@ -34,6 +34,7 @@
 
 <form name="formm">
 <div class="text-right">
+<input type="hidden" name="table_Nm" value=${lctre_Video_Gnt.table_Nm }>
   <select name="key" class="combobox-md custom-form-control">
   	<option value="lv_Sj">제목</option>
   	<option value="lv_Cn">내용</option>

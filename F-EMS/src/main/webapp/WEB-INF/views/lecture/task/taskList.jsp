@@ -27,6 +27,7 @@
 
 <form name="formm">
 <table class="def-table-full"><tr><td style="text-align: left;">
+<input type="hidden" name="table_Nm" value=${lctre_Task_Gnt.table_Nm }>
   <select name="key" class="combobox-md custom-form-control">
   	<option value="lt_Sj">제목</option>
   	<option value="lt_Cn">내용</option>
