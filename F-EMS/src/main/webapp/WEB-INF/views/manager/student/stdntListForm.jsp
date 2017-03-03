@@ -21,6 +21,15 @@
 </head>
 <body>
 	<h2>학생 관리</h2><br/>
+<table class="def-table-full"><tr><td style="text-align: left;">
+		<select name="key" class="combobox-md custom-form-control">
+			<option value="st_Stdnt_No">학생 번호</option>
+			<option value="st_Subjct_Code">학과</option>
+			<option value="st_Nm">이름</option>
+			<option value="st_Ihidnum">생년월일</option>
+		</select>&nbsp;&nbsp; <input type="text" name="value" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
+		<input type="button" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color" value="조회">
+</td></tr></table>
 <table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>학번</th>
@@ -45,13 +54,6 @@
 	</table>
 	<form name="searchForm">
 	<table class="def-table-full"><tr><td style="text-align: right;">
-		<select name="key" class="combobox-md custom-form-control">
-			<option value="st_Stdnt_No">학생 번호</option>
-			<option value="st_Subjct_Code">학과</option>
-			<option value="st_Nm">이름</option>
-			<option value="st_Ihidnum">생년월일</option>
-		</select>&nbsp;&nbsp; <input type="text" name="value" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
-		<input type="button" onclick="searchMe(this.form)" class="def-btn btn-sm btn-color" value="조회">&nbsp;&nbsp;
 		<a href="<%=request.getContextPath()%>/sklstf/stdntInsert"><input type="button" class="def-btn btn-sm btn-color" value="등록"></a>
 	</td></tr></table>
 	</form>

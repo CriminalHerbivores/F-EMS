@@ -92,7 +92,7 @@ public class CommentController {
                      +data.getBc_Comnt_No()
                      +"\" " 
                      +"class=\"deleteComment\" name=\"deleteComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"삭제\"></a>"
-                  + "<div>  ->"
+                  + "<div>"
                      + data.getBc_Comnt_Content()
                      +"</div></div>";
         	   	}else{
@@ -102,13 +102,13 @@ public class CommentController {
     	                 + data.getBc_User_Id()
     	                 + "  /  " + "작성 날짜 : "
     	              + data.getBc_Writng_Dt().toString()
-    	              + "<div>  ->"
+    	              + "<div class=\"text-left\">"
     	                 + data.getBc_Comnt_Content()
     	                 +"</div></div><br>";
     	   	}    
 		}
 		
-		comment += paging;
+		comment += "<hr><div class=\"text-center\">"+paging+"</div>";
 		
 		return comment;
 		
@@ -287,33 +287,32 @@ public class CommentController {
 	                     + "\">아이디 : "
 	                     + data.getBc_User_Id()
 	                     + "  /  " + "작성 날짜 : "
-	                  + replyTime.substring(0,replyTime.length()-2)
-	                  + "<div>"
-		               + "<textarea rows=\"3\" cols=\"60\" id=\"comment_update\" name=\"comment_update\">"+data.getBc_Comnt_Content()+"</textarea>"
-		                 +"</div></div>"
-		                 
-		                 +"<a href=\"\" id=\""
-		                 +data.getBc_Comnt_No()
-		                 +"\" " 
-		                 +"class=\"realupdateComment\" name=\"realupdateComment\"> <input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"수정완료\"></a>"
-		              +"<a href=\"\" id=\""
-		              +data.getBc_Comnt_No()
-		                 +"\" " 
-		                 +"class=\"cancelComment\" name=\"cancelComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"취소\"></a><br>";
+	                     + replyTime.substring(0,replyTime.length()-2)
+	                     + "<div>"
+		                 + "<textarea rows=\"3\" cols=\"60\" id=\"comment_update\" name=\"comment_update\" class=\"text-left def-input-text-full custom-form-control\">"+data.getBc_Comnt_Content()+"</textarea>"
+		                 + "</div></div>"
+		                 + "<a href=\"\" id=\""
+		                 + data.getBc_Comnt_No()
+		                 + "\" " 
+		                 + "class=\"realupdateComment\" name=\"realupdateComment\"> <input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"수정완료\"></a>"
+		                 + "<a href=\"\" id=\""
+		                 + data.getBc_Comnt_No()
+		                 + "\" " 
+		                 + "class=\"cancelComment\" name=\"cancelComment\"><input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"취소\"></a><br>";
 	        	   	}else{
 	        	   		comment += "<div id=\""
 	    	                 + data.getBc_Comnt_No()   
 	    	                 + "\">아이디 : "
 	    	                 + data.getBc_User_Id()
 	    	                 + "  /  " + "작성 날짜 : "
-	    	              + data.getBc_Writng_Dt().toString()
-	    	              + "<div>  ->"
+	    	                 + data.getBc_Writng_Dt().toString()
+	    	                 + "<div >"
 	    	                 + data.getBc_Comnt_Content()
 	    	                 +"</div></div><br><br>";
 	    	   	}    
 			}
 			
-			comment += paging;
+			comment += "<div class=\"text-center\">"+paging+"</div>";
 			
 			return comment;
 			
@@ -373,23 +372,3 @@ public class CommentController {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-

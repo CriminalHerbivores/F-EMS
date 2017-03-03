@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
@@ -14,9 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
 	var bbs_no = ${bbs_List_Gnt.bb_Bbs_No}
@@ -217,56 +216,65 @@ $(document).on('click','.realupdateComment',function(e){
 
 </script>
 
-
-
-
-
-
 </head>
 <body>
-<div id="detailBbs_Gnt" style="float:left;">
+<h2>${bbs_List_Gnt.bl_Bbs_Nm }</h2><br/>
 	<form name="formm" method="post" action="detailBbs_Gnt">
-		<h2>${bbs_List_Gnt.bl_Bbs_Nm }</h2>
-		<hr>
-		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
+		<table class="def-table-full tb-border" style="text-align:left;">
 			<tr>
-				<th>제목</th>
+				<th width="170px">제목</th>
 				<td colspan="3" style="text-align: left;">${bbs_List_Gnt.bb_Sj}</td>
 			</tr>
 			<tr>
 				<th>작성날짜</th>
 				<td style="text-align: left;">${bbs_List_Gnt.bb_Writng_dt}</td>
-				<th>조회수</th>
+				<th width="100">조회수</th>
 				<td style="text-align: left;">${bbs_List_Gnt.bb_Rdcnt}</td>
 			</tr>
 			<c:forEach var="flpth" items="${flpthList }">
 				<tr>
 					<th>파일첨부</th>
-<%-- 					<td colspan="3" style="text-align: left;"><a href="file/notice?filename=${flpth.bf_File_Nm }">${flpth.bf_File_Nm}</a></td> --%>
 					<td colspan="3" style="text-align: left;"><a href="<%=request.getContextPath() %>/download/file/list?filename=${flpth.bf_File_Nm}">${flpth.bf_File_Nm}</a></td>
 				</tr>
 			</c:forEach>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly">${bbs_List_Gnt.bb_Cn }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly" style="width:100%;" class="text-non-border">${bbs_List_Gnt.bb_Cn }</textarea><br></td>
 			</tr>
-
+			<tr>
+				<td class="text-right" colspan="4">
+				<!--버튼들  -->
+				<a href="updateBbs_Gnt?bb_Bbs_No=${bbs_List_Gnt.bb_Bbs_No}&bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}"> <input
+					type="button" value="수정" class="def-btn btn-md btn-color">
+				</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
+					data-toggle="modal" value="삭제"> <a
+					href="bbsList?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&tpage=${tpage}"> <input
+					type="button" class="def-btn btn-md btn-color" value="목록">
+				</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+				<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no" name="bbs_no">
+				<input type="hidden" value="${loginUser}" id="loginUser">
+				<textarea rows="3" cols="60" id="comment_content" id="comment_content" name="comment_content" class="text-non-border def-input-text-full custom-form-control"></textarea>
+				</td>
+				<td width="100">
+				<input type="button" value="확인" class="def-btn btn-md btn-color" id="btnSave" onclick="commm_go();">
+			</tr>
+			<tr>
+				<td colspan="4">
+				<c:if test="${returnSec>='2' }">
+				<div id="comment" class="text-left">
+				</div>
+				</c:if>
+				</td>
+			</tr>
 		</table>
-			<!--버튼들  -->
-	<div id="buttons" style="float: right">
-		<a href="updateBbs_Gnt?bb_Bbs_No=${bbs_List_Gnt.bb_Bbs_No}&bb_Bbs_No=${bbs_Gnt.bb_Bbs_No}&bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}&tpage=${tpage}"> <input
-			type="button" value="수정" class="def-btn btn-md btn-color">
-		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> <a
-			href="bbsList?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&tpage=${tpage}"> <input
-			type="button" class="def-btn btn-md btn-color" value="목록">
-		</a>
-	</div>
-		<br><br>
 		<!-- 댓글부분 -->
-<div style="float:left;">
+<%-- <div style="float:left;">
 <c:choose>
-  	<c:when test="${returnSec>='2' }">
+<c:when test="${returnSec>='2' }">
 		<textarea rows="3" cols="60" id="comment_content" id="comment_content"
 			name="comment_content"></textarea>
 		<input type="button" value="확인" class="def-btn btn-sm btn-color" id="btnSave" onclick="commm_go();">
@@ -276,11 +284,9 @@ $(document).on('click','.realupdateComment',function(e){
 	 <c:otherwise>
 	 </c:otherwise> 
 	</c:choose>
-</div>
+</div> --%>
 	</form>
-
-
-</div>
+<br/><br/><br/>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">
@@ -304,9 +310,6 @@ $(document).on('click','.realupdateComment',function(e){
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>
 </html>
