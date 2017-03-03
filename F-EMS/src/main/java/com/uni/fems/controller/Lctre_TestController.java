@@ -1,6 +1,5 @@
 package com.uni.fems.controller;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -407,6 +406,22 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//점수 구해서 심어야 함
+		
+		
+		double totalScore = 0;
+		double eachScore = 100/queList.size();
+		for(int i=0;i<queList.size();i++){
+			if(queList.get(i).getTe_Ca().equals(answerList.get(i).getAn_Ans()))
+				totalScore +=eachScore;
+		}
+			
+			System.out.println("============================================"+totalScore);
+			
+
+		
+		model.addAttribute("totalScore", totalScore);
 		model.addAttribute("stdNm",stdNm);
 		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("queList", queList);
