@@ -182,8 +182,20 @@ history.go(1);
 			<sec:authorize access="hasRole('ROLE_PRO')">
 				${Qlist.te_Ca }
 			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_STD')">	
+			<sec:authorize access="hasRole('ROLE_STD')">
+			<c:choose>
+			<c:when test="${empty Qlist.te_No1 }">
 				<input type="text" class="def-input-text-md custom-form-control" name="answer">
+			</c:when>
+			<c:otherwise>
+				<select name="answer" class="combobox-sm custom-form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+			</c:otherwise>
+			</c:choose>
 			</sec:authorize>
 				<%-- ${Qlist.te_Ca} --%>			
 			</td>
