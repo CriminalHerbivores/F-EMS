@@ -16,23 +16,19 @@
 <title></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
 </head>
 <body>
-<div id="detailBbs_Gnt" style="float:left;">
+		<h2>강의 과제 게시판</h2><br/>
 	<form name="formm" method="post" action="detailBbs_Gnt">
-		<h2>강의 과제 게시판</h2>
-		<hr>
-		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
+		<table class="def-table-full tb-border" style="text-align:left;">
 			<tr>
-				<th>제목</th>
+				<th width="170px">제목</th>
 				<td colspan="3" style="text-align: left;">${lctre_Task_Gnt.lt_Sj}</td>
 			</tr>
 			<tr>
 				<th>작성날짜</th>
 				<td style="text-align: left;">${lctre_Task_Gnt.lt_Writng_Dt}</td>
-				<th>작성자</th>
+				<th width="100">작성자</th>
 				<td style="text-align: left;">${lctre_Task_Gnt.lt_Stdnt_No}</td>
 			</tr>
 				<tr>
@@ -41,25 +37,22 @@
 				</tr>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ld_Cn" readonly="readonly">${lctre_Task_Gnt.lt_Cn }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ld_Cn" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Task_Gnt.lt_Cn }</textarea><br></td>
 			</tr>
-
+			<tr>
+				<td colspan="4" class="text-right">
+				<a href="updateLctre_Task?lt_Bbs_No=${lctre_Task_Gnt.lt_Bbs_No}&table_Nm=${lctre_Task_Gnt.table_Nm}&tpage=${tpage}"> <input
+					type="button" value="수정" class="def-btn btn-md btn-color">
+				</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
+					data-toggle="modal" value="삭제"> <a
+					href="taskList?tpage=${tpage}&table_Nm=${lctre_Task_Gnt.table_Nm }"> <input
+					type="button" class="def-btn btn-md btn-color" value="목록">
+				</a>
+				</td>
+			</tr>
 		</table>
 		<br>
-		<!-- 댓글부분 -->
 	</form>
-
-	<!--버튼들  -->
-	<div id="buttons" style="float: right">
-		<a href="updateLctre_Task?lt_Bbs_No=${lctre_Task_Gnt.lt_Bbs_No}&table_Nm=${lctre_Task_Gnt.table_Nm}&tpage=${tpage}"> <input
-			type="button" value="수정" class="def-btn btn-md btn-color">
-		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> <a
-			href="taskList?tpage=${tpage}&table_Nm=${lctre_Task_Gnt.table_Nm }"> <input
-			type="button" class="def-btn btn-md btn-color" value="목록">
-		</a>
-	</div>
-</div>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">
