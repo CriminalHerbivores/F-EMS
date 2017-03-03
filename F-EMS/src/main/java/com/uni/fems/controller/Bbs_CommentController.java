@@ -86,7 +86,7 @@ public class Bbs_CommentController {
                      +"\" " 
                      +"class=\"deleteComment\" name=\"deleteComment\">"
                      + "<input type=\"button\" class=\"def-btn btn-sm btn-color\" value=\"삭제\"></a>"
-                  + "<div>  ->"
+                  + "<div>"
                      + data.getBc_Comnt_Content()
                      +"</div></div>";
         	   	}else{
@@ -96,13 +96,13 @@ public class Bbs_CommentController {
     	                 + data.getBc_User_Id()
     	                 + "  /  " + "작성 날짜 : "
     	              + data.getBc_Writng_Dt().toString()
-    	              + "<div>  ->"
+    	              + "<div>"
     	                 + data.getBc_Comnt_Content()
     	                 +"</div></div><br>";
     	   	}    
 		}
 		
-		comment += paging;
+		comment += "<hr><div class=\"text-center\">"+paging+"</div>";
 		
 		return comment;
 		
@@ -312,13 +312,13 @@ public class Bbs_CommentController {
 	    	                 + data.getBc_User_Id()
 	    	                 + "  /  " + "작성 날짜 : "
 	    	              + data.getBc_Writng_Dt().toString()
-	    	              + "<div>  ->"
+	    	              + "<div>"
 	    	                 + data.getBc_Comnt_Content()
 	    	                 +"</div></div><br><br>";
 	    	   	}    
 			}
 			
-			comment += paging;
+			comment += "<hr><div class=\"text-center\">"+paging+"</div>";
 			
 			return comment;
 			

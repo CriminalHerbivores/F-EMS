@@ -75,17 +75,13 @@
 				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
 				<!-- Footer -->
 				<div class="modal-footer" style="text-align: center;">
-					<a href="deleteLctre_Task?tpage=${tpage}&table_Nm=${lctre_Task_Gnt.table_Nm }& lt_Bbs_No=${lctre_Task_Gnt.lt_Bbs_No}"> <!--삭제 모달  -->
+					<a href="deleteLctre_Task?tpage=${tpage}&table_Nm=${lctre_Task_Gnt.table_Nm}&lt_Bbs_No=${lctre_Task_Gnt.lt_Bbs_No}"> <!--삭제 모달  -->
 						<input type="button" class="btn btn-default" value="예">
-					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
-						value="아니오">
+					</a> <input type="button" class="btn btn-default" data-dismiss="modal" value="아니오">
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>
 </html>

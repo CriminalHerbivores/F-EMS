@@ -68,7 +68,11 @@ hr태그 학생>성적조회 참고
 <hr>
 
 <h2>제목2</h2><br/>
-
+<!-- 
+소분류는 선택사항
+학생>장학금 참고
+ -->
+<h4>소분류</h4>
 <!-- 일반 양식 : 참고는 회원정보조회 -->
 <table class="def-table-full tb-border table-hover">
 	<tr>

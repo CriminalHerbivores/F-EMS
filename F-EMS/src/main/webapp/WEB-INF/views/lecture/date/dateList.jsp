@@ -23,26 +23,20 @@
   <script src="<%=request.getContextPath()%>/resources/js/bbs_gnt.js"></script>
 </head>
 <body>
-
-<div class="container">
-<table class="non-border margin-auto">
-<tr><td>
-<div class="text-center">
-  <h2>강의 자료 게시판</h2>
- <hr />
+  <h2>강의 자료 게시판</h2><br/>
 
 <form name="formm">
-<div class="text-right">
+<table class="def-table-full"><tr><td style="text-align: left;">
+	<input type="hidden" name="table_Nm" value="${lctre_Date_Gnt.table_Nm}">
   <select name="key" class="combobox-md custom-form-control">
   	<option value="ld_Sj">제목</option>
   	<option value="ld_Cn">내용</option>
   </select>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
-</div>
- </form>
- </div>
-  <table class="def-table-auto tb-border table-hover">
+</td></tr></table>
+</form>
+<table class="def-table-full tb-border table-hover">
       <tr>
         <th>No</th>
         <th style="width:500px;">제목</th>
@@ -68,10 +62,10 @@
      
   </table>
   <sec:authorize access="hasRole('ROLE_PRO')">
-	  <div id="buttons" style="float:right">
+	  <table class="def-table-full"><tr><td style="text-align: right;">
 	  	<a href="writeLctre_Date?table_Nm=${lctre_Date_Gnt.table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
-	  </div>
+	  </td></tr></table>
 	  </sec:authorize>
 </td></tr>  
 </table>	  
