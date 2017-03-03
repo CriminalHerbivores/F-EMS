@@ -22,6 +22,10 @@
 	<form name="formm" method="POST">
 		<h2>학적 관리</h2>
 		<br />
+<table class="def-table-full"><tr><td style="text-align: left;">
+<input type="text" name="key" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
+<input type="button" value="조회" onclick="submitForm(this.form);" class="def-btn btn-sm btn-color">
+</td></tr></table>
 		<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>학번</th>
@@ -82,8 +86,6 @@
 			<option value="조기졸업">조기졸업</option>
 			<option value="졸업연기">졸업연기</option>
 		</select>&nbsp;&nbsp; 
-		<input type="text" name="key" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
-		<input type="button" value="조회" onclick="submitForm(this.form);" class="def-btn btn-sm btn-color">&nbsp;&nbsp;
 		<input type="button" onClick="submitForm(this.form);" value="등록" class="def-btn btn-sm btn-color"/>
 		</td></tr></table>
 	</form>

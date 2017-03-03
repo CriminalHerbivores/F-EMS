@@ -80,16 +80,20 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 
 		Lctre_Notice_GntVO lctre_Notice_Gnt = new Lctre_Notice_GntVO();
 		lctre_Notice_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("ln_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("ln_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		System.out.println("++++++++++++++++++++++"+searchVO.toString());
+		if(searchVO.getKey().equals("ln_Sj")){
 			lctre_Notice_Gnt.setLn_Sj(searchVO.getValue());
 			lctre_Notice_Gnt.setLn_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("ln_Cn")){
+			System.out.println("++++++++++++++++++++++"+searchVO.toString());
+		}else if(searchVO.getKey().equals("ln_Cn")){
 			lctre_Notice_Gnt.setLn_Sj("%");
 			lctre_Notice_Gnt.setLn_Cn(searchVO.getValue());
-		}else{
-			lctre_Notice_Gnt.setLn_Sj("%");
-			lctre_Notice_Gnt.setLn_Cn("%");
+			System.out.println("++++++++++++++++++++++"+searchVO.toString());
 		}
+		
 		model.addAttribute("lctre_Notice_Gnt", lctre_Notice_Gnt);
 		
 		List<Lctre_NoticeVO> lctre_NoticeList = null;

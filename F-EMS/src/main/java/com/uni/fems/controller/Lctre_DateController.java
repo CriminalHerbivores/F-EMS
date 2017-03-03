@@ -110,8 +110,6 @@ public class Lctre_DateController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_DateList", lctre_DateList);
-		int n = lctre_DateList.size();
-		model.addAttribute("lctre_DateListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -263,9 +261,8 @@ public class Lctre_DateController implements ApplicationContextAware{
 	@RequestMapping(value="/updateLctre_Date", method=RequestMethod.POST)
 	public String updateBbs_Gnt(@RequestParam int tpage, @RequestParam("uploadfile")MultipartFile uploadfile,
 			Lctre_Date_GntVO lctre_Date_Gnt, Lctre_FlpthVO lctre_FlpthVO, HttpSession session, HttpServletRequest request, Model model){
-		String url = "redirect:detailLctre_Date?"
-				+ "table_Nm="+lctre_Date_Gnt.getTable_Nm()
-				+ "&lb_Bbs_No="+lctre_Date_Gnt.getLd_Bbs_No()
+		String url = "redirect:detailLctre_Date?ld_Bbs_No="+lctre_Date_Gnt.getLd_Bbs_No()
+				+ "&table_Nm="+lctre_Date_Gnt.getTable_Nm()
 				+ "&tpage="+tpage;
 		
 		if(!uploadfile.isEmpty()){

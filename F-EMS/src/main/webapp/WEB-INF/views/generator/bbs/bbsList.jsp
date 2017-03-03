@@ -23,16 +23,9 @@
   <script src="<%=request.getContextPath()%>/resources/js/bbs_gnt.js"></script>
 </head>
 <body>
-
-<div class="container">
-<table class="non-border margin-auto">
-<tr><td>
-<div class="text-center">
-  <h2>${bbs_List_Gnt.bl_Bbs_Nm}</h2>
- <hr />
-
+  <h2>${bbs_List_Gnt.bl_Bbs_Nm}</h2><br/>
 <form name="formm">
-<div class="text-right">
+<table class="def-table-full"><tr><td style="text-align: left;">
   <select name="key" class="combobox-md custom-form-control">
   	<option value="bb_Sj">제목</option>
   	<option value="bb_Cn">내용</option>
@@ -40,10 +33,9 @@
   <input type="hidden" name="bl_Bbs_No" value=${bbs_List_Gnt.bl_Bbs_No }>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
-</div>
+</td></tr></table>
  </form>
- </div>
-  <table class="def-table-auto tb-border table-hover">
+  <table class="def-table-full tb-border table-hover">
       <tr>
         <th>No</th>
         <th style="width:500px;">제목</th>
@@ -83,10 +75,10 @@
   	
   <c:choose>
   	<c:when test="${returnSec>='3' }">
-	  <div id="buttons" style="float:right">
+<table class="def-table-full"><tr><td style="text-align: right;">
 	  	<a href="writeBbs_Gnt?bl_Bbs_No=${bbs_List_Gnt.bl_Bbs_No}&bl_Bbs_Nm=${bbs_List_Gnt.bl_Bbs_Nm}&bl_Table_Nm=${bbs_List_Gnt.bl_Table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
-	  </div>
+</td></tr></table>
 	 </c:when>
 	 <c:otherwise>
 	 </c:otherwise> 

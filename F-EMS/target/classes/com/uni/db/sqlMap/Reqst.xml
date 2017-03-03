@@ -15,12 +15,9 @@
 	
 	<!-- 수강신청 완료 목록 조회 -->
 	<select id="selectReqst" parameterClass="str" resultClass="lctre_Search">
-		SELECT * FROM lctre_view, reqst,intrst_list
+		SELECT * FROM lctre_view, reqst
 		WHERE re_Lctre_No=lc_Lctre_No
-   		and in_Lctre_No=lc_Lctre_No
-   		and re_Stdnt_No=in_Stdnt_No
    		and re_Stdnt_No=#re_Stdnt_No# 
-   		and in_Stdnt_No=#in_Stdnt_No#
  		and lc_Lctrbgn_Dt between (select add_months(sysdate,-4) from dual) and (select add_months(sysdate,1) from dual)
 		and lc_Open_At='y'
 		order by lc_Lctre_Code asc

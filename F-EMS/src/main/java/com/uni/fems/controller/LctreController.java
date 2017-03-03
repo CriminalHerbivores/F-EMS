@@ -122,6 +122,7 @@ public class LctreController {
 	@RequestMapping(value="/courseAble",method=RequestMethod.GET)
 	public String courseAbleForm( //@RequestParam(value="checkLctre_Knd[]") List<String> knd_Lctre_Knd, @RequestParam(value="checkCompl_Se[]") List<String> lu_Compl_Se,
 			Model model, HttpServletRequest request, SearchVO searchVO) {
+
 		String url = "course_registration/courseAble";
 		
 		String tpage = request.getParameter("tpage");

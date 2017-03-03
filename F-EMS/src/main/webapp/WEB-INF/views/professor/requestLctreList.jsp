@@ -14,6 +14,14 @@
 <body>
 
 <h2>개설 강의</h2><br/>
+	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
+	<form name="searchForm">
+	<table class="def-table-full"><tr><td style="text-align: left;">
+	<input type="text" placeholder="교수번호" name="pr_Profsr_No" class="def-input-text-lg custom-form-control"/>
+	<input type="submit" value="검색" class="def-btn btn-search btn-color"/>
+	</td></tr></table>
+	</form>
+	</sec:authorize>
 <table class="def-table-full tb-border table-hover">
 	<tr>
 		<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
@@ -46,14 +54,5 @@
 	</tr>
 </table>
 	
-	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
-	<form name="searchForm">
-	<table class="def-table-full"><tr><td style="text-align: right;">
-	<input type="text" placeholder="교수번호" name="pr_Profsr_No" class="def-input-text-lg custom-form-control"/>
-	<input type="submit" value="검색" class="def-btn btn-search btn-color"/>
-	</td></tr></table>
-	</form>
-	</sec:authorize>
-
 </body>
 </html>

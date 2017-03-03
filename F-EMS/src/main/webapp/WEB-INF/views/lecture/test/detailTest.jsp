@@ -17,6 +17,7 @@ body{
   font-family: Malgun Gothic;	/* sans-serif; */
   font-weight: 100;
 }
+
 h1{
   color: #396;
   font-weight: 100;
@@ -98,7 +99,7 @@ function getTimeRemaining(endtime) {
 	  var timeinterval = setInterval(updateClock, 1000);
 	}
 
-	var deadline = new Date(Date.parse(new Date()) + 1 * 05 * 1000);
+	var deadline = new Date(Date.parse(new Date()) + 1 * 15 * 1000);
 	initializeClock('clockdiv', deadline);
 		
 	
@@ -116,6 +117,7 @@ history.go(1);
 </head>
 
 <body>
+<h2>시험</h2><br/>
 <sec:authorize access="hasRole('ROLE_STD')">
 <h1>Countdown Clock</h1>
 <div id="clockdiv">
@@ -137,34 +139,43 @@ history.go(1);
   </div>
 </div>
 </sec:authorize>
-<table style="width:100%;" class="non-border margin-auto">
-<tr><td>
   <form name="formm" method="post">
-	<table class="def-table-auto tb-border table-hover" id="testtable">
+	<table class="def-table-full tb-border table-hover" id="testtable">
 		<tr>
-			<td style="padding-top: 0;padding-bottom: 0; width:700px; ">	
+			<td colspan="3" style="padding-top: 0;padding-bottom: 0; width:500px; ">	
 				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 					<tr>
 						<th>시험명</th>
-							<td style="width:80%;"> ${tpNm } 
+							<td style="width:70%;"> ${tpNm } 
 							<input type="hidden" name="an_Tp_No" value="${tpNo }">
 							</td>
+							<th>출제자</th>
+					</tr>
+						<tr>
+						<th>응시가능기간</th>
+						<td>${tpVO.tp_Start_Dt} &nbsp; ~ &nbsp; ${tpVO.tp_End_Dt}
+						</td>
+						<td>${tpVO.tp_Profsr_No} </td>
 					</tr>
 				</table>
-			</td>
-			<td>
 			</td>
 		</tr>
 	
 		<tr>
-			<th style="width:80%;">문제</th>
+			<th>No</th>
+			<th style="width:70%;">문제</th>
 			<th>정답</th>
 		</tr>
 		
-		<c:forEach var="Qlist" items="${Qlist }" >
+		<c:forEach var="Qlist" items="${Qlist }" varStatus="status" >
 		<tr>
-			<td>
+		<td>${status.count}</td>
+			<td style="text-align: left;">
 				${Qlist.te_Ques}
+				<c:if test="${not empty Qlist.te_No1 }"><br>${Qlist.te_No1 }</c:if>
+				<c:if test="${not empty Qlist.te_No2 }"><br>${Qlist.te_No2 }</c:if>
+				<c:if test="${not empty Qlist.te_No3 }"><br>${Qlist.te_No3 }</c:if>
+				<c:if test="${not empty Qlist.te_No4 }"><br>${Qlist.te_No4 }</c:if>
 				<input type="hidden" name="queNo" value="${Qlist.te_Ques_No }">
 			</td>
 			<td>
@@ -182,6 +193,8 @@ history.go(1);
 		
 		
 	</table>
+		<table class="def-table-full"><tr><td style="text-align: right;">
+		
 		<sec:authorize access="hasRole('ROLE_STD')">
 			<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="제출" onclick="submitForm(this.form);">
 		</sec:authorize>
@@ -194,9 +207,9 @@ history.go(1);
 			<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.back()">
 		</div>
 		</sec:authorize>
+		</td></tr></table>
+		
 	</form>
-</td></tr>
-</table>
 
 </body>
 </html>

@@ -207,6 +207,7 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_Task_Gnt",lctre_Task_Gnt);
+		System.out.println(lctre_Task_Gnt.toString()+"++++++++++++++++++++++++++++++++");
 		model.addAttribute("tpage",tpage);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;

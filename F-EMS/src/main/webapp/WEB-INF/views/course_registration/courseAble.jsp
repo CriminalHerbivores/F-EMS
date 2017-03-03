@@ -28,11 +28,12 @@ body {
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+<%-- 
 $(document).ready(function(){
 	
 	// 체크박스로 체크하는 것에 따라 적용
 	//http://zero-gravity.tistory.com/241
-	<%-- $("#selectCkBox").click(function(){
+	$("#selectCkBox").click(function(){
 		
 		 //var userId = $("#userId").val();
 		 
@@ -117,6 +118,8 @@ function go_searchLctre(){
 	
 	document.formm.submit();
 }
+
+
 
 </script>
 
