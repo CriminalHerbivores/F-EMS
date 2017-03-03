@@ -36,7 +36,7 @@
 							<th style="width:9%;">응시자</th>
 								<td>${stdNm}</td>
 							<th>점수</th>
-								<td>몇점</td>
+								<td>${totalScore }</td>
 						</tr>
 					</table>
 				</td>
@@ -53,7 +53,20 @@
 		<c:forEach var="queList" items="${queList }" varStatus="status" >
 				<tr>
 					<td>${status.count }</td>
-					<td>${queList.te_Ques }</td>
+				<c:choose>
+					<c:when test="${empty queList.te_No1 }">
+						<td>${queList.te_Ques }</td>
+					</c:when>
+					<c:otherwise>
+						<td style="text-align: left;">
+							${queList.te_Ques}
+							<c:if test="${not empty queList.te_No1 }"><br>${queList.te_No1 }</c:if>
+							<c:if test="${not empty queList.te_No2 }"><br>${queList.te_No2 }</c:if>
+							<c:if test="${not empty queList.te_No3 }"><br>${queList.te_No3 }</c:if>
+							<c:if test="${not empty queList.te_No4 }"><br>${queList.te_No4 }</c:if>
+						</td>
+					</c:otherwise>
+					</c:choose>
 					<td>${queList.te_Ca }</td>
 					<td>${answerList[status.index].an_Ans}</td>
 				<c:choose>

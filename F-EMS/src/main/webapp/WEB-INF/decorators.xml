@@ -21,7 +21,11 @@
 		<pattern>/layout_type/access**</pattern>
 		<pattern>/index</pattern>
 	</decorator>
-		
+	
+	<decorator name="lec" page="lecdecorator.jsp">
+		<pattern>/lctre/**</pattern>
+	</decorator>
+	
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>

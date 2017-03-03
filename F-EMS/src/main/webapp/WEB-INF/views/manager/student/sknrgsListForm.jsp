@@ -23,6 +23,17 @@
 		<h2>학적 관리</h2>
 		<br />
 <table class="def-table-full"><tr><td style="text-align: left;">
+		<select name="skn_Type" class="combobox-md custom-form-control">
+			<option value="선택">선택</option>
+			<option value="입학">입학</option>
+			<option value="휴학">휴학</option>
+			<option value="복학">복학</option>
+			<option value="졸업">졸업</option>
+			<option value="제적">제적</option>
+			<option value="퇴학">퇴학</option>
+			<option value="조기졸업">조기졸업</option>
+			<option value="졸업연기">졸업연기</option>
+		</select>&nbsp;&nbsp; 
 <input type="text" name="key" class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
 <input type="button" value="조회" onclick="submitForm(this.form);" class="def-btn btn-sm btn-color">
 </td></tr></table>
@@ -33,6 +44,7 @@
 				<th>이름</th>
 				<th>신청 사유</th>
 				<th>학적 변동</th>
+				<th>파일</th>
 				<th>승인여부</th>
 			</tr>
 			<c:forEach var="sknrgs" items="${sknrgsVOList}">
@@ -42,6 +54,7 @@
 					<td>${sknrgs.st_Nm}</td>
 					<td>${sknrgs.skn_Content}</td>
 					<td>${sknrgs.skn_Type}</td>
+					<a href="<%=request.getContextPath() %>/download/file/list?filename=${sknrgs.skn_File}">${sknrgs.skn_File}
 					<td>
 					<input type="hidden" name="skn_No" value="${sknrgs.skn_No}"> 
 					<c:choose>
@@ -75,17 +88,6 @@
 			</tr>
 		</table>
 		<table class="def-table-full"><tr><td style="text-align: right;">
-		<select name="skn_Type" class="combobox-md custom-form-control">
-			<option value="선택">선택</option>
-			<option value="입학">입학</option>
-			<option value="휴학">휴학</option>
-			<option value="복학">복학</option>
-			<option value="졸업">졸업</option>
-			<option value="제적">제적</option>
-			<option value="퇴학">퇴학</option>
-			<option value="조기졸업">조기졸업</option>
-			<option value="졸업연기">졸업연기</option>
-		</select>&nbsp;&nbsp; 
 		<input type="button" onClick="submitForm(this.form);" value="등록" class="def-btn btn-sm btn-color"/>
 		</td></tr></table>
 	</form>
