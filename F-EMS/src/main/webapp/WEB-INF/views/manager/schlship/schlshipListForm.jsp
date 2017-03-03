@@ -21,6 +21,12 @@
 </head>
 <body>
 		<h2>장학금 관리</h2><br/>
+<form name="search">
+<table class="def-table-full"><tr><td style="text-align: left;">
+<input type="text"  name="key" class="def-input-text-lg custom-form-control" placeholder="장학금명">&nbsp;&nbsp;
+<input type="button" class="def-btn btn-sm btn-color" value="조회">&nbsp;&nbsp;
+</td></tr></table>
+</form>
 		<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>장학금 명</th>
@@ -48,13 +54,9 @@
 				<td colspan="7" style="text-align: center;">${paging}</td>
 			</tr>
 		</table>
-<form name="search">
 <table class="def-table-full"><tr><td style="text-align: right;">
-<input type="text"  name="key" class="def-input-text-lg custom-form-control" placeholder="장학금명">&nbsp;&nbsp;
-<input type="button" class="def-btn btn-sm btn-color" value="조회">&nbsp;&nbsp;
 <input type="button" class="def-btn btn-sm btn-color" value="등록하기" onclick="writeschlshipForm()">
 <a href="<%=request.getContextPath()%>/sklstf/requestschlship"><input type="button" value="장학금 신청 내역" class="def-btn btn-sm btn-color"></a>
 </td></tr></table>
-</form>
 </body>
 </html>

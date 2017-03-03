@@ -16,23 +16,29 @@
 <title></title>
 </head>
 <body>
-
-	    <h2> 공지 게시판 </h2>
-		<form name="formm" method="post" enctype="multipart/form-data">
-			<fieldset>	
-			    <label>제목</label>
-			    <input type="text" id="title" name="nb_Sj"  size="64" ><br>
-				<label>내용</label>
-			    <textarea id="content" rows="8" cols="65" name="nb_Cn"></textarea><br>
-			    <input type="file" name="uploadfile">
-			</fieldset>   
-		<div class="clear"></div>
-		 <div id="buttons" style="float:right">
+<h2> 공지 게시판 </h2><br/>
+<form name="formm" method="post" enctype="multipart/form-data">
+<table class="def-table-full tb-border table-hover">
+	<tr>
+		<th>제목</th>
+		<td><input type="text" name="nb_Sj" value="" class="def-input-text-full custom-form-control"></td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td><textarea rows="8" cols="65" name="nb_Cn" class="def-input-text-full custom-form-control">${notice.nb_Cn }</textarea></td>
+	</tr>
+	<tr>
+		<th>첨부파일</th>
+		<td>
+		   <input type="file" name="uploadfile">
+		</td>
+	</tr>
+</table>
+<table class="def-table-full"><tr><td style="text-align: right;">
 			<input type="button" value="등록" class="def-btn btn-md btn-color" onclick="submitNotice(this.form);" > 
 			<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="history.go(-1)">	
-		  </div>
-		  
-		</form>
+</td></tr></table>
+</form>
 		
 </body>
 </html>

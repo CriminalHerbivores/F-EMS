@@ -244,9 +244,9 @@ $(document).on('click','.realupdateComment',function(e){
 <body>
 	<h2>공지 게시판</h2><br/>
 	<form name="formm" method="post" action="notice_bbs">
-		<table class="def-table-full tb-border" style="width:750px; text-align:left;">
+		<table class="def-table-full tb-border" style="text-align:left;">
 			<tr>
-				<th>제목</th>
+				<th width="170px">제목</th>
 				<td colspan="3" style="text-align: left;">${notice.nb_Sj}</td>
 			</tr>
 			<tr>
@@ -263,12 +263,12 @@ $(document).on('click','.realupdateComment',function(e){
 			</c:forEach>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly" class="def-input-text-full custom-form-control">${notice.nb_Cn }</textarea><br></td>
+				<td colspan="3" class="text-left"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly" style="width:100%;" class="text-non-border">${notice.nb_Cn }</textarea><br></td>
 			</tr>
 			<tr>
 				<td class="text-right" colspan="4">
 				<!--버튼들  -->
-				<sec:authorize access="hasRole('ROLE_STF')">
+				<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 					<a href="updateNotice?no=${notice.nb_Bbs_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn btn-md btn-color"></a> 
 					<input type="button" class="def-btn btn-md btn-color" data-target="#layerpop" data-toggle="modal" value="삭제">
 				</sec:authorize>
@@ -279,20 +279,20 @@ $(document).on('click','.realupdateComment',function(e){
 				<td colspan="3">
 				<input type="hidden" value="${notice.nb_Bbs_No }" id="bbs_no" name="bbs_no">
 				<input type="hidden" value="${loginUser}" id="loginUser">
-				<textarea rows="3" cols="60" id="comment_content" id="comment_content" name="comment_content" class="def-input-text-full custom-form-control"></textarea>
+				<textarea rows="3" cols="60" id="comment_content" id="comment_content" name="comment_content" class="text-non-border def-input-text-full custom-form-control"></textarea>
 				</td>
 				<td width="100">
 				<input type="button" value="확인" class="def-btn btn-md btn-color" id="btnSave" onclick="commm_go();">
 			</tr>
 			<tr>
 				<td colspan="4">
-				<div id="comment">
+				<div id="comment" class="text-left">
 				</div>
 				</td>
 			</tr>
 		</table>
 	</form>
-
+<br/><br/><br/>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">

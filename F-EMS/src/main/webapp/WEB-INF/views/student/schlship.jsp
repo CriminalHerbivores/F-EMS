@@ -21,8 +21,7 @@
 <title></title>
 </head>
 <body>
-	<h3>장학금</h3><br/>
-	<h4>기준년도 학기</h4>
+	<h2>장학금</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th width=150px>신청년도</th>
@@ -39,7 +38,8 @@
 		</tr>
 	</table>
 	<br/>
-	<h4>신청 가능 장학금</h4>
+	<hr>
+	<h2>신청 가능 장학금</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>장학금 명</th>
@@ -70,7 +70,8 @@
 		</c:forEach>
 	</table>
 	<br/>
-	<h4>장학금 신청 내역</h4>
+	<hr>
+	<h2>장학금 신청 내역</h2><br/>
 	<table class="def-table-full tb-border table-hover">
 		<tr>
 			<th>장학금 명</th>

@@ -35,7 +35,7 @@ $(function(){
 </head>
 <body>
 <table class="non-border margin-auto"><tr><td>
-	<h2>학과 정보 조회</h2>
+	<h2>학과 정보 조회</h2><br/>
 	<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
 		<tr>

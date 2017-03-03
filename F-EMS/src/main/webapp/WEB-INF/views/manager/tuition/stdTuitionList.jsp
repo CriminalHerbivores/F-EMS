@@ -23,8 +23,19 @@
 <title></title>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
 	<h2>등록금 납부 내역 조회</h2><br/>
+<form name="searchForm">
+	<table class="def-table-full"><tr><td style="text-align: left;">
+		<!-- <input type="date" name="tu_Dt"> -->
+		<select name="key" class="combobox-md custom-form-control">
+			<option value="sit_Subjct">학과</option>
+			<option value="tu_Stdnt_No">학생</option>
+		</select>
+		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
+		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
+	</td></tr></table>
+	</form>
+<table class="non-border margin-auto"><tr><td>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>단과</th>
@@ -70,21 +81,12 @@
 		<td colspan="8">${paging}</td>
 	</tr>
 	</table>
-	<form name="searchForm">
 	<table class="def-table-full"><tr><td style="text-align: right;">
-		<!-- <input type="date" name="tu_Dt"> -->
-		<select name="key" class="combobox-md custom-form-control">
-			<option value="sit_Subjct">학과</option>
-			<option value="tu_Stdnt_No">학생</option>
-		</select>
-		<input type="text" name="value" class="def-input-text-lg custom-form-control"/>
-		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a href="<%=request.getContextPath() %>/admin/toStdTuition?tpage=${tpage}"><input type="button" value="등록금 고지" class="def-btn btn-color"></a>
 	<a href="<%=request.getContextPath() %>/admin/tuitionList"><input type="button" value="등록금 정보 조회" class="def-btn btn-color"></a>
 	</sec:authorize>
 	</td></tr></table>
-	</form>
 </td></tr></table>
 </body>
 </html>
