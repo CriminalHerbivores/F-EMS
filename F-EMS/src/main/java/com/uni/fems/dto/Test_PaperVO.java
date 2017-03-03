@@ -36,8 +36,8 @@ public class Test_PaperVO implements Serializable {
 	private Timestamp tp_Dt;   // 날짜
 	private int countAnswerSTD; // 시험본학생수
 	private String nameAnswerSTD; //시험본학생이름
-	private Date tp_Start_Dt; // 시작날짜
-	private Date tp_End_Dt; // 끝날짜
+	private Timestamp tp_Start_Dt; // 시작날짜
+	private Timestamp tp_End_Dt; // 끝날짜
 	
 
 }

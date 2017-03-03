@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,19 +82,27 @@ public class Lctre_TestController {
 		}
 
 		
-		List<Boolean> flaglist = new ArrayList<Boolean>();
-		boolean flag;
+		List<String> flaglist = new ArrayList<String>();
+		String flag="";
 		for(Test_PaperVO test : testlist){
-			Date today = new Date(System.currentTimeMillis());
-				if(today.compareTo(test.getTp_Start_Dt())<0 || today.compareTo(test.getTp_End_Dt())>1){
-					 flag = false;
+			Timestamp today = new Timestamp(System.currentTimeMillis());
+			Timestamp start = test.getTp_Start_Dt();
+			Timestamp end = test.getTp_End_Dt();
+			System.out.println("============"+today);
+			System.out.println("============"+start);
+			System.out.println("============"+end);
+				if(today.compareTo(start)<0 ){
+					 flag = "wait";
 					 flaglist.add(flag);
+				}else if(today.compareTo(end)>0){
+					flag="end";
+					flaglist.add(flag);
 				}else{
-					flag = true;
+					flag = "possible";
 					flaglist.add(flag);
 				}
 		}
-		
+		System.out.println("===================="+flaglist);
 		model.addAttribute("flaglist", flaglist);
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
@@ -109,18 +118,21 @@ public class Lctre_TestController {
 	
 	@RequestMapping(value="/writeTest", method=RequestMethod.POST)
 	public String writeTest(TestVO testVO, Test_PaperVO test_paperVO, HttpServletRequest request,String[] ques, String[] ca,
-							Date Start_Dt, Date End_Dt){
+							String start_Dt, String end_Dt, String start_Dt2, String end_Dt2){
 		String url ="redirect:testList";
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
+		
+		String st = start_Dt+" "+start_Dt2+":00.0";
+		String en = end_Dt+" "+end_Dt2+":00.0";
+		
 		test_paperVO.setTp_Lctre_No(50);
 		test_paperVO.setTp_Profsr_No(loginUser);
-		test_paperVO.setTp_Start_Dt(Start_Dt);
-		test_paperVO.setTp_End_Dt(End_Dt);
+		test_paperVO.setTp_Start_Dt(java.sql.Timestamp.valueOf(st));
+		test_paperVO.setTp_End_Dt(java.sql.Timestamp.valueOf(en));
 		try {
 			test_paperSvc.insertTestPaper(test_paperVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -131,7 +143,6 @@ public class Lctre_TestController {
 			try {
 				testSvc.insertTest(testVO);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

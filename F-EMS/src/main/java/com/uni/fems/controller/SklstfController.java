@@ -445,95 +445,6 @@ public class SklstfController {
 	
 	/**
 	 * <pre>
-	 * 등록금 목록을 조회
-	 * </pre>
-	 * <pre>
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value="tuitionList")
-	public String tuitionList(@Value("")String sit_Subjct, String tpage, Model model){
-		String url="manager/tuition/tuitionList";
-		if(tpage==null) tpage="1";
-		model.addAttribute("tpage",tpage);
-		
-		ArrayList<UserSubjctVO> list = new ArrayList<UserSubjctVO>();
-		String paging = "";
-		int count = 0;
-		try {
-			count = tuitionService.countSubjctByName(sit_Subjct);
-			paging = new Paging().pageNumber(Integer.parseInt(tpage), count, "tuitionList", "&sit_Subjct="+sit_Subjct);
-			list = tuitionService.selectSubjctByName(Integer.parseInt(tpage), count, sit_Subjct);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("tuitionList",list);
-		model.addAttribute("paging",paging);
-		return url;
-	}
-	/**
-	 * <pre>
-	 * 학생에게 등록금을 고지 
-	 * </pre>
-	 * <pre>
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value="toStdTuition")
-	public String toStdTuition(@Value("")String sit_Subjct, String tpage){
-		String url="redirect:stdTuitionList?tpage="+tpage;
-		try {
-			tuitionService.toStdTuition();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return url;
-	}
-	/**
-	 * <pre>
-	 * 학과번호로 등록금을 업데이트 함
-	 * </pre>
-	 * <pre>
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value="updateSubTuition", method = RequestMethod.GET)
-	public String upTuition(String sit_Subjct_Code, Model model){
-		String url="manager/tuition/updateSubTuition";
-		
-		UserSubjctVO sub = new UserSubjctVO();
-		try {
-			sub = tuitionService.selectSubjctByCode(sit_Subjct_Code);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("tut",sub);
-		return url;
-	}
-	/**
-	 * <pre>
-	 * 학과번호로 등록금을 업데이트 함
-	 * </pre>
-	 * <pre>
-	 * @param subVO
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value="updateSubTuition", method = RequestMethod.POST)
-	public String updateTuition(Subjct_Info_TableVO subVO){
-		String url="redirect:tuitionList";
-		
-		try {
-			tuitionService.updateTuition(subVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return url;
-	}
-	/**
-	 * <pre>
 	 * 직원이 학생의 등록금 납부 내역을 조회
 	 * </pre>
 	 * <pre>
@@ -893,20 +804,43 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.GET)
-	public String sknrgListForm(Model model, HttpSession session) {
+	@RequestMapping("/sknrgListForm")
+	public String sknrgListForm(Model model, HttpServletRequest request, HttpSession session) {
 		String url = "manager/student/sknrgsListForm";
-		String skn_Type = (String) session.getAttribute("skn_Type");
-		List<SknrgsViewVO> sknrgsVOList = null;
-		if (skn_Type != null) {
-			skn_Type = "%";
+		String tpage = request.getParameter("tpage");
+		String skn_Type = request.getParameter("skn_Type");
+		String st_Stdnt_No = request.getParameter("st_Stdnt_No");
+		String skn_Useyn = request.getParameter("skn_Useyn");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
 		}
+		model.addAttribute("tpage",tpage);
+		
+		SknrgsViewVO sknrgsView = new SknrgsViewVO();
+		List<SknrgsViewVO> sknrgsVOList = null;
+		if (skn_Type == null) {
+			sknrgsView.setSkn_Type("%");
+			sknrgsView.setSkn_Useyn("%");
+			sknrgsView.setSt_Stdnt_No("%");
+		}else{
+			sknrgsView.setSkn_Type(skn_Type);
+			sknrgsView.setSkn_Useyn(skn_Useyn);
+			sknrgsView.setSt_Stdnt_No(st_Stdnt_No);
+		}
+		String paging = null;
 		try {
-			sknrgsVOList = sknrgs_Svc.getSknrgsType(skn_Type);
+			sknrgsVOList = sknrgs_Svc.listAllSknrgs(Integer.parseInt(tpage), sknrgsView);
+			paging = sknrgs_Svc.pageNumberSknrgs(Integer.parseInt(tpage), sknrgsView);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("sknrgsVOList", sknrgsVOList);
+		int n = sknrgsVOList.size();
+		model.addAttribute("sknrgsVOListSize", n);
+		model.addAttribute("paging", paging);
 		return url;
 	}
 
@@ -922,7 +856,7 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.POST)
+	@RequestMapping(value = "/sknrgListFormk", method = RequestMethod.POST)
 	public String sknrgList(@RequestParam(value = "skn_No") String[] skn_Nos,
 			@RequestParam(value = "skn_Useyn") String[] skn_Useyns,
 			Model model, HttpSession session) {
