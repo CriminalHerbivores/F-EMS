@@ -43,12 +43,12 @@ import com.uni.fems.service.StdntService;
 @RequestMapping("/course")
 public class Intrst_ListController {
 	
-	@Autowired
-	private Intrst_ListService intrst_ListService;
-	@Autowired
-	private ReqstService reqstService;
-	@Autowired
-	private StdntService stdntService;
+//	@Autowired
+//	private Intrst_ListService intrst_ListService;
+//	@Autowired
+//	private ReqstService reqstService;
+//	@Autowired
+//	private StdntService stdntService;
 
 	/**
 	 * <pre>
@@ -60,23 +60,23 @@ public class Intrst_ListController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseInterest",method=RequestMethod.GET)
-	public String courseInterestForm(Model model, HttpSession session, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
-		String url = "course_registration/courseInterest";
-		
-		List<Lctre_SearchVO> lctre_SearchVO=null;
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		try {
-			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
-			lctre_SearchVO=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
-			stdntService.selectStdnt(st_Stdnt_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
-
-		return url;
-	}
+//	@RequestMapping(value="/courseInterest",method=RequestMethod.GET)
+//	public String courseInterestForm(Model model, HttpSession session, Intrst_ListVO intrst_ListVO) throws ServletException, IOException{
+//		String url = "course_registration/courseInterest";
+//		
+//		List<Lctre_SearchVO> lctre_SearchVO=null;
+//		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+//		try {
+//			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
+//			lctre_SearchVO=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
+//			stdntService.selectStdnt(st_Stdnt_No);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
+//
+//		return url;
+//	}
 	
 		
 	/**
@@ -89,77 +89,48 @@ public class Intrst_ListController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseInterest",method=RequestMethod.POST)
-	public String deleteCourseInterest(HttpServletRequest request,
-			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
-		String url = "redirect:courseInterest";
-
-		String stdnt_No = (String) session.getAttribute("loginUser");
-		String[] resultArr = request.getParameterValues("result");
-		String ck_result = request.getParameter("btn_result");
-		if(ck_result.equals("addReqst")){
-			for (int i = 0; i < resultArr.length; i++) {
-
-				reqstVO.setRe_Stdnt_No(stdnt_No);
-				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
-				lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
-				System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
-						+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-				try {
-					reqstService.insertReqst(reqstVO,lctre_SearchVO);
-
-					System.out.println("============222222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
-							+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}else if(ck_result.equals("delIntrst")){
-			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
-				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
-				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
-				try {
-					intrst_ListService.deleteIntrst_List(intrst_ListVO);
-					reqstService.deleteReqst(reqstVO,lctre_SearchVO);	// if로 유효성 걸어주고 싶은데
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		return url;	
-		}
+//	@RequestMapping(value="/courseInterest",method=RequestMethod.POST)
+//	public String deleteCourseInterest(HttpServletRequest request,
+//			HttpSession session, Intrst_ListVO intrst_ListVO, ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException{
+//		String url = "redirect:courseInterest";
+//
+//		String stdnt_No = (String) session.getAttribute("loginUser");
+//		String[] resultArr = request.getParameterValues("result");
+//		String ck_result = request.getParameter("btn_result");
+//		if(ck_result.equals("addReqst")){
+//			for (int i = 0; i < resultArr.length; i++) {
+//
+//				reqstVO.setRe_Stdnt_No(stdnt_No);
+//				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
+//				lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
+//				System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
+//						+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+//				try {
+//					reqstService.insertReqst(reqstVO,lctre_SearchVO);
+//
+//					System.out.println("============222222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
+//							+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}else if(ck_result.equals("delIntrst")){
+//			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
+//				intrst_ListVO.setIn_Stdnt_No(stdnt_No);
+//				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
+//				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
+//				try {
+//					intrst_ListService.deleteIntrst_List(intrst_ListVO);
+//					reqstService.deleteReqst(reqstVO,lctre_SearchVO);	// if로 유효성 걸어주고 싶은데
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//
+//		return url;	
+//		}
 	
 	
-	/**
-	 * <pre>
-	 * 관심강의 목록을 바탕으로 작성되는 임시 시간표
-	 * </pre>
-	 * <pre>
-	 * @param request
-	 * @param session
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/courseTimetable")
-	public String courseTimetableForm(Model model, HttpServletRequest request,
-			HttpSession session, Intrst_ListVO intrst_ListVO) {
-		String url = "course_registration/courseTimetable";
-		List<Lctre_SearchVO> lctre_SearchVO=null;
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		try {
-			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
-			lctre_SearchVO=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
-			stdntService.selectStdnt(st_Stdnt_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
-		
-		
-		return url;
-	}
-	
-	
+
 }
