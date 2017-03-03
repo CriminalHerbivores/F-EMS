@@ -118,7 +118,8 @@ public class Lctre_TestController {
 	
 	@RequestMapping(value="/writeTest", method=RequestMethod.POST)
 	public String writeTest(TestVO testVO, Test_PaperVO test_paperVO, HttpServletRequest request,String[] ques, String[] ca,
-							String start_Dt, String end_Dt, String start_Dt2, String end_Dt2){
+							String start_Dt, String end_Dt, String start_Dt2, String end_Dt2,
+							String[] te_No1,String[] te_No2,String[] te_No3,String[] te_No4){
 		String url ="redirect:testList";
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
@@ -140,11 +141,20 @@ public class Lctre_TestController {
 			testVO.setTe_Ques(ques[i]);
 			testVO.setTe_Ca(ca[i]);
 			
-			try {
-				testSvc.insertTest(testVO);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		if(te_No1!=null)
+			testVO.setTe_No1(te_No1[i]);
+		if(te_No2!=null)
+			testVO.setTe_No2(te_No2[i]);
+		if(te_No3!=null)
+			testVO.setTe_No3(te_No3[i]);
+		if(te_No4!=null)
+			testVO.setTe_No4(te_No4[i]);
+
+		try {
+			testSvc.insertTest(testVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		}
 		return url;
 	}
