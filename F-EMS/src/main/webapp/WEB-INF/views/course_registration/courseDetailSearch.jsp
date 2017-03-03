@@ -5,7 +5,7 @@
 <table class="non-border margin-auto">
 	<tr><td>
 <h2>개설강의 상세검색</h2>
-<form id="formm" name="formm" method="post"><!--  action="requestLctre" > -->
+<form name="formm" method="get"><!--  action="requestLctre" > -->
 <table class="def-table-auto tb-border table-hover">
 <tr><th colspan="4">개설 강의 정보</th></tr>
 	<tr>

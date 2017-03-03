@@ -24,7 +24,7 @@ import lombok.Data;
  * </pre>
  */
  
-@Alias("Search")
+@Alias("search")
 @Data
 public class SearchVO implements Serializable{
 	

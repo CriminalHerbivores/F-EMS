@@ -25,13 +25,15 @@
 
 	<!-- 수강 신청 -->
 	<update id="insertReqst" parameterClass="reqst">
-		MERGE INTO REQST
+		INSERT into REQST(re_Stdnt_No,re_Lctre_No)
+		VALUES(#re_Stdnt_No#,#re_Lctre_No#)
+	</update>
+	<!-- 
+	MERGE INTO REQST
 		USING DUAL
 		on (re_Stdnt_No=#re_Stdnt_No# and re_Lctre_No=#re_Lctre_No#)
 		WHEN NOT MATCHED THEN
-		INSERT (re_Stdnt_No,re_Lctre_No)
-		VALUES(#re_Stdnt_No#,#re_Lctre_No#)
-	</update>
+	 -->
 	
 	<!-- 수강 신청 취소 -->
 	<update id="deleteReqst" parameterClass="reqst">

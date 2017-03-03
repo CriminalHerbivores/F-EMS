@@ -56,11 +56,11 @@ body {
 					<th>제한인원</th>
 				</tr>
 
-	 			<c:forEach items="${lctre_SearchVO}" var="lctre">
-				<tr>
+	 			<c:forEach items="${lctre_SearchVO}" var="lctre" varStatus="status">
+				<tr class="slt_ckbox_${status.index}">
 					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
-						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
+						<label><input type="checkbox" class="input_check_2" id="ck_all_${status.index}"  name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
+						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>  <!-- ${status.count} -->
 					
 					<td class="select_ckbox_1">
 						<label><input type="checkbox" class="input_check_1" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
