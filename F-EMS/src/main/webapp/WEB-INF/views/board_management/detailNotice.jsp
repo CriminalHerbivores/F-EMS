@@ -263,7 +263,10 @@ $(document).on('click','.realupdateComment',function(e){
 			</c:forEach>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" class="text-left"><textarea rows="8" cols="65" name="nb_Cn" readonly="readonly" style="width:100%;" class="text-non-border">${notice.nb_Cn }</textarea><br></td>
+				<td colspan="3" class="text-left">
+				<textarea rows="8" cols="65" name="nb_Cn" readonly="readonly"
+				 style="width:100%;" class="text-non-border">${notice.nb_Cn }</textarea>
+				</td>
 			</tr>
 			<tr>
 				<td class="text-right" colspan="4">

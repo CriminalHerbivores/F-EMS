@@ -16,24 +16,28 @@
 <title></title>
 </head>
 <body>
-
-	    <h2> 강의 과제 게시판 </h2>
-		<form name="formm" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="table_Nm" value="${table_Nm}">
-			<fieldset>	
-			    <label>제목</label>
-			    <input type="text" name="lt_Sj"  size="64" ><br>
-				<label>내용</label>
-			    <textarea rows="8" cols="65" name="lt_Cn"></textarea><br>
-			    <input type="file" name="uploadfile">
-			</fieldset>   
-		<div class="clear"></div>
-		 <div id="buttons" style="float:right">
-			<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitForm(this.form);" > 
+<h2> 강의 과제 게시판 </h2><br/>
+<form name="formm" method="post" enctype="multipart/form-data">
+<table class="def-table-full tb-border table-hover">
+	<tr>
+		<th>제목</th>
+		<td><input type="text" name="lt_Sj" value="" class="def-input-text-full custom-form-control"></td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td><textarea rows="8" cols="65" name="lt_Cn" class="def-input-text-full custom-form-control"></textarea></td>
+	</tr>
+	<tr>
+		<th>첨부파일</th>
+		<td>
+		   <input type="file" name="uploadfile">
+		</td>
+	</tr>
+</table>
+<table class="def-table-full"><tr><td style="text-align: right;">
+<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitForm(this.form);" > 
 			<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="submitForm(this.form);">	
-		  </div>
-		  
-		</form>
-		
+</td></tr></table>
+</form>
 </body>
 </html>
