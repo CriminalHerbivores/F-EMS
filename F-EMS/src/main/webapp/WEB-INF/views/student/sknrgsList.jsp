@@ -3,8 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="sec"
- uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <%--
 * [[개정이력(Modification Information)]]
@@ -83,8 +82,7 @@
 						</tr>
 					</table>
 					<table class="def-table-full"><tr><td style="text-align: right;">
-					<input type="button" class="def-btn btn-sm btn-color" id="selAll"
-						disabled value="신청하기" onclick="submitForm(this.form);">
+					<input type="button" class="def-btn btn-sm btn-color" id="selAll" disabled value="신청하기" onclick="submitForm(this.form);">
 					</td></tr></table>
 				</form>
 			</c:if>
@@ -101,7 +99,7 @@
 		</ul>
 		</td></tr></table>
 		<hr>
-		<h3>학적 변동 내역</h3>
+		<h3>학적 변동 내역</h3><br/>
 		<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>No</th>
