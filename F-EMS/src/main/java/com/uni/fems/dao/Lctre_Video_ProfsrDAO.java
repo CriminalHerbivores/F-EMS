@@ -103,4 +103,7 @@ public interface Lctre_Video_ProfsrDAO {
 	int deleteLctre_Video(Lctre_Video_GntVO lctre_Video_Gnt)
 			throws SQLException;
 
+	int deleteLctre_Video_Stdnt(Lctre_Video_GntVO lctre_Video_Gnt)
+			throws SQLException;
+
 }

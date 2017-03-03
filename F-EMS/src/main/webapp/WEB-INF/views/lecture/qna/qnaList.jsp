@@ -24,7 +24,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/bbs_gnt.js"></script>
 </head>
 <body>
 
@@ -37,6 +36,7 @@
 						<hr />
 
 						<form name="formm">
+						<input type="hidden" name="table_Nm" value=${lctre_Qna_Gnt.table_Nm }>
 							<div class="text-right">
 								<select name="key" class="combobox-md custom-form-control">
 									<option value="lq_Sj">제목</option>
