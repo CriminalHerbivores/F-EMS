@@ -49,17 +49,16 @@
 				<sec:authorize access="hasRole('ROLE_PRO')">
 					<tr>
 						<td colspan="4" style="text-align: center;"><c:choose>
-								<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
 									<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}">
-										<button class="def-btn btn-color">답변 작성</button>
-									</a>
+										<button class="def-btn btn-color">
+								<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
+									답변 작성
 								</c:when>
 								<c:otherwise>
-									<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}">
-										<button class="def-btn btn-color">답변 수정</button>
-									</a>
+									답변 수정
 								</c:otherwise>
 							</c:choose>
+							</button></a>
 							</td>
 					</tr>
 				</sec:authorize>
