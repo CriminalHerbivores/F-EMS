@@ -31,7 +31,7 @@
 		on (in_Stdnt_No=#in_Stdnt_No# and in_Lctre_No=#in_Lctre_No#)
 		WHEN NOT MATCHED THEN
 		insert (in_Stdnt_No,in_Lctre_No) 
-		values (#in_Stdnt_No#,#in_Lctre_No#);
+		values (#in_Stdnt_No#,#in_Lctre_No#)
 	</update>
 	
 	<!-- 관심목록 삭제 -->
