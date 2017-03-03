@@ -23,12 +23,11 @@
 <title></title>
 </head>
 <body>
-
 <table style="width:80%;" class="non-border margin-auto">
 <tr><td>
 	<table class="def-table-auto tb-border table-hover" id="testtable">
 			<tr>
-				<td colspan="4" style="padding-top: 0;padding-bottom: 0;">	
+				<td colspan="5" style="padding-top: 0;padding-bottom: 0;">	
 					<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 						<tr>
 							<th style="width:9%;">시험명</th>
@@ -46,17 +45,19 @@
 	
 			<tr>
 				<th>No</th>
-				<th style="width:80%;">문제</th>
-				<th>응시자 답안</th>
+				<th style="width:60%;">문제</th>
+				<th>정답</th>
+				<th>응시자<br>답안</th>
 				<th>채점</th>
 			</tr>
 		<c:forEach var="queList" items="${queList }" varStatus="status" >
 				<tr>
 					<td>${status.count }</td>
 					<td>${queList.te_Ques }</td>
+					<td>${queList.te_Ca }</td>
 					<td>${answerList[status.index].an_Ans}</td>
 				<c:choose>
-  				  <c:when test="${queList.te_Ca =='${answerList[status.index].anAns' }">
+  				  <c:when test="${queList.te_Ca == answerList[status.index].an_Ans}">
 						<td>O</td>
 				  </c:when>
 				  <c:otherwise>
