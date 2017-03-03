@@ -34,36 +34,31 @@
 		};
 </script>
     
-
-
-    
 </head>
 <body>
-    <div>
-    	<div style="margin-top: 40px; float: left;" id="kCalendar"></div>
-    </div>
-   <div class="scheBox2">
-    <table style="width:500px; height:280px;"class="t_all">
+<h2>학사 일정</h2><br/>
+
+<div>
+<div style="float: left; width: 250px; height:260px;" id="kCalendar"></div>
+</div>
+<div style="float: left; width: 70%;" class="scheBox2">
+    <table class="t_all">
 		<tr>
-			<th class="all_month">
+			<!-- <th class="all_month">
 				<div style="display:inline;" id="year1"></div>년<br>
 				<div style="display:inline;" id="month1"></div>월
-			</th>
+			</th> -->
 			<td class="all_zoom">
 			<div style="display:inline;" id="yearmonth"></div>
-    
-    	<div style="height:280px;" id="monthdata"></div>
-    			</td>
-			</tr>
-		</table>
-    </div>
-    
-    	
-    	<br>
-    	
+    		<div id="monthdata" style="height:210px;"></div>
+    		</td>
+		</tr>
+	</table>
+</div>
 
-
-
+<br/>
+<hr>
+<div style="margin-top: 40px; float: left; width: 100%;">
 <sec:authorize access="hasRole('ROLE_STF')">
 <form name="formm" method="post" action="insertSchdul">
 <table class="def-table-auto tb-border table-hover">
@@ -71,7 +66,7 @@
 	<th>시작날짜</th>
 	<th>종료날짜</th>
 	<th style="width:500px;">일정요약</th>
-	<td rowspan="2"><input type="button" class="def-btn btn-md btn-color" value="추가" onclick="submitForm(this.form);"></td>
+	<td rowspan="2"><input type="button" class="def-btn btn-lg btn-color" value="추가" onclick="submitForm(this.form);"></td>
   </tr>
   <tr>
 	<td>
@@ -95,7 +90,7 @@
   :
 </p>
  -->
-
+<br/>
 <div class="scheBox2">
 	<table class="t_all">
 		<tr>
@@ -111,8 +106,8 @@
 				: &nbsp; ${list1.sd_Schdul_Sumry }
 				
 				<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list1.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-			<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+100000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list1.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+			<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+100000}" data-toggle="modal" value="삭제">
 			</sec:authorize>			
 			<!--모달부분  -->
 			
@@ -202,8 +197,8 @@
 				: &nbsp; ${list2.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list2.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+200000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list2.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+200000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -289,8 +284,8 @@
 				: &nbsp; ${list3.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list3.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+300000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list3.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+300000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -374,8 +369,8 @@
 				: &nbsp; ${list4.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list4.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+400000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list4.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+400000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -459,8 +454,8 @@
 				: &nbsp; ${list5.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list5.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+500000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list5.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+500000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -544,8 +539,8 @@
 				: &nbsp; ${list6.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list6.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+600000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list6.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+600000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -629,8 +624,8 @@
 				: &nbsp; ${list7.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list7.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+700000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list7.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+700000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -714,8 +709,8 @@
 				: &nbsp; ${list8.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list8.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+800000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list8.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+800000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -799,8 +794,8 @@
 				: &nbsp; ${list9.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">	
-				<input type="button" data-target="#${list9.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+900000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list9.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+900000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -884,8 +879,8 @@
 				: &nbsp; ${list10.sd_Schdul_Sumry }
 				
 			<sec:authorize access="hasRole('ROLE_STF')">
-				<input type="button" data-target="#${list10.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1000000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list10.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+1000000}" data-toggle="modal" value="삭제">
 			</sec:authorize>
 			<!--모달부분  -->
 			
@@ -969,8 +964,8 @@
 				: &nbsp; ${list11.sd_Schdul_Sumry }
 				
 		<sec:authorize access="hasRole('ROLE_STF')">		
-				<input type="button" data-target="#${list11.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1100000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list11.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+1100000}" data-toggle="modal" value="삭제">
 		</sec:authorize>
 			<!--모달부분  -->
 			
@@ -1054,8 +1049,8 @@
 				: &nbsp; ${list12.sd_Schdul_Sumry }
 				
 		<sec:authorize access="hasRole('ROLE_STF')">		
-				<input type="button" data-target="#${list12.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-md btn-color">
-				<input type="button" class="def-btn btn-md btn-color" data-target="#${status.index+1200000}" data-toggle="modal" value="삭제">
+				<input type="button" data-target="#${list12.sd_No}" data-toggle="modal" value="수정" class="def-btn btn-sm btn-color">
+				<input type="button" class="def-btn btn-sm btn-color" data-target="#${status.index+1200000}" data-toggle="modal" value="삭제">
 		</sec:authorize>
 			<!--모달부분  -->
 			
@@ -1165,9 +1160,8 @@
 		
 	</table>	
 </div>
-
-
-    
+</div>
+	<br/><br/><br/>
 </body>
 
 </html>
