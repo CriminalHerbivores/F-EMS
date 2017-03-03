@@ -88,6 +88,7 @@ public class Lctre_Video_ProfsrServiceImpl implements Lctre_Video_ProfsrService{
 	}
 	@Override
 	public int deleteLctre_Video(Lctre_Video_GntVO lctre_Video_Gnt) throws SQLException {
+		lctre_Video_ProfsrDAO.deleteLctre_Video_Stdnt(lctre_Video_Gnt);
 		lctre_Video_ProfsrDAO.deleteLctre_Video(lctre_Video_Gnt);
 			if(lctre_Video_Gnt.getLv_Flpth_No() != null)
 			lctre_FlpthDAO.deleteLctre_Flpth_lctre(Integer.parseInt(lctre_Video_Gnt.getLv_Flpth_No()));

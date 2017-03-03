@@ -266,7 +266,7 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/updateLctre_Qna_Reply", method=RequestMethod.GET)
+	@RequestMapping(value="/updateLctre_Qna_Replys", method=RequestMethod.GET)
 	public String updateBbs_Gnt_ReplyForm(Lctre_Qna_GntVO lctre_Qna_Gnt,@RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="lecture/qna/updateLctre_Qna_Reply";
 		Lctre_QnaVO lctre_Qna = null;
@@ -297,7 +297,7 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/updateLctre_Qna_Reply", method=RequestMethod.POST)
+	@RequestMapping(value="/updateLctre_Qna_Replys", method=RequestMethod.POST)
 	public String updateBbs_Gnt_Reply(@RequestParam int tpage,Lctre_Qna_GntVO lctre_Qna_Gnt, HttpSession session, HttpServletRequest request, Model model){
 		String url = "redirect:detailLctre_Qna?"
 				+ "table_Nm="+lctre_Qna_Gnt.getTable_Nm()

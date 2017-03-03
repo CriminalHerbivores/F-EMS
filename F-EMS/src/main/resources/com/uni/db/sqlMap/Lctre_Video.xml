@@ -47,6 +47,9 @@
 		delete from LCTRE_V$table_Nm$ where LV_BBS_NO=#lv_Bbs_No#
 	</update>
 	
+	<update id="deleteLctre_Video_Stdnt" parameterClass="lctre_video_gnt">
+		delete from LCTRE_W$table_Nm$ where lw_Video_Bbs_No=#lv_Bbs_No#
+	</update>
 	
 	
 </sqlMap>

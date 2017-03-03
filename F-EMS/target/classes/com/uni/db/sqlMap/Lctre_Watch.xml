@@ -29,7 +29,7 @@
 		  W.LW_STDNT_NO,
 		  W.LW_VIDEO_BBS_NO,
 		  W.LW_WATCH_TIME,
-		  W.LW_ATTRNDANCE
+		  W.LW_ATTENDANCE
 		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
 		ON(V.LV_BBS_NO = W.LW_VIDEO_BBS_NO)
 		where V.LV_SJ like '%$lv_Sj$%' 
@@ -56,7 +56,7 @@
 		  W.LW_STDNT_NO,
 		  W.LW_VIDEO_BBS_NO,
 		  W.LW_WATCH_TIME,
-		  W.LW_ATTRNDANCE
+		  W.LW_ATTENDANCE
 		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
 		ON(V.LV_BBS_NO = W.LW_VIDEO_BBS_NO)
 		where V.LV_BBS_NO = #lv_Bbs_No#
@@ -64,14 +64,16 @@
 	</select>
 	
 	<update id="insertLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">
-		insert into LCTRE_V$table_Nm$(W.LW_BBS_NO, W.LW_STDNT_NO, W.LW_VIDEO_BBS_NO, W.LW_WATCH_TIME, W.LW_ATTRNDANCE) 
+		insert into LCTRE_W$table_Nm$(LW_BBS_NO, LW_STDNT_NO, LW_VIDEO_BBS_NO, LW_WATCH_TIME, LW_ATTENDANCE) 
 		values(((select max(LW_BBS_NO) from LCTRE_W$table_Nm$)+1),#lw_Stdnt_No#,#lw_Video_Bbs_No#,#lw_Watch_Time#,#lw_Attendance#)
 	</update>
 	
 	<update id="updateLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">
-		update LCTRE_W$table_Nm$ set LW_WATCH_TIME=#lw_Watch_Time#,LW_ATTRNDANCE=#lw_Attendance#
+		update LCTRE_W$table_Nm$ set LW_WATCH_TIME=#lw_Watch_Time#,LW_ATTENDANCE=#lw_Attendance#
 		where LW_BBS_NO=#lw_Bbs_No#
 	</update>
+	
+	
 	
 	
 	

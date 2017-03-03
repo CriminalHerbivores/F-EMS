@@ -44,6 +44,7 @@
 				<th>이름</th>
 				<th>신청 사유</th>
 				<th>학적 변동</th>
+				<th>파일</th>
 				<th>승인여부</th>
 			</tr>
 			<c:forEach var="sknrgs" items="${sknrgsVOList}">
@@ -53,6 +54,7 @@
 					<td>${sknrgs.st_Nm}</td>
 					<td>${sknrgs.skn_Content}</td>
 					<td>${sknrgs.skn_Type}</td>
+					<a href="<%=request.getContextPath() %>/download/file/list?filename=${sknrgs.skn_File}">${sknrgs.skn_File}
 					<td>
 					<input type="hidden" name="skn_No" value="${sknrgs.skn_No}"> 
 					<c:choose>

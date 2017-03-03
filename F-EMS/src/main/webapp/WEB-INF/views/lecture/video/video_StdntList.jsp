@@ -40,6 +40,7 @@
 
 <form name="formm">
 <div class="text-right">
+<input type="hidden" name="table_Nm" value=${lctre_Video_Gnt.table_Nm }>
   <select name="key" class="combobox-md custom-form-control">
   	<option value="lv_Sj">제목</option>
   	<option value="lv_Cn">내용</option>
@@ -55,6 +56,7 @@
         <th style="width:400px;">제목</th>
         <th>기간</th>
         <th>시간(분)</th>
+        <th>출결</th>
       </tr>
       
       <c:forEach var="lctre_Video" items="${lctre_VideoList }">
@@ -76,12 +78,13 @@
                        type="number" value="${lctre_Video.lv_Time/60}" />
 				<c:out value="${j}" />:${lctre_Video.lv_Time%60}
 			</td>
+			<td> ${lctre_Video.lw_Attendance}</td>
       	</tr>
       	
       	</c:if>
       </c:forEach>
       	<tr>
-      		<td colspan="4" style="text-align: center;">${paging }</td>
+      		<td colspan="5" style="text-align: center;">${paging }</td>
       	</tr>
       	</table>
 </td>

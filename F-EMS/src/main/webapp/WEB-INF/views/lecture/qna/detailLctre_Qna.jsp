@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
@@ -44,23 +45,23 @@
 				<th>답변</th>
 				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
 			</tr>
+
 				<sec:authorize access="hasRole('ROLE_PRO')">
-			<tr>
-				<td colspan="4" style="text-align: center;">
-				<a href="updateLctre_Qna_Reply?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> 
-				<button class="def-btn btn-color">
-				<c:choose>
-					<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
-						답변 작성
-					</c:when>
-					<c:otherwise>
-						답변 수정
-					</c:otherwise>
-				</c:choose>
-				</button>
-				</a>
-				</td>
-			</tr>
+					<tr>
+						<td colspan="4" style="text-align: center;"><c:choose>
+								<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
+									<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}">
+										<button class="def-btn btn-color">답변 작성</button>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}">
+										<button class="def-btn btn-color">답변 수정</button>
+									</a>
+								</c:otherwise>
+							</c:choose>
+							</td>
+					</tr>
 				</sec:authorize>
 			<tr>
 				<td class="text-right" colspan="4">
@@ -91,8 +92,10 @@
 				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
 				<!-- Footer -->
 				<div class="modal-footer" style="text-align: center;">
-					<a href="deleteLctre_Qna?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }&lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}"> <!--삭제 모달  -->
-						<input type="button" class="btn btn-default" value="예">
+					<a
+						href="deleteLctre_Qna?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }&lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}">
+						<!--삭제 모달  --> <input type="button" class="btn btn-default"
+						value="예">
 					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
 						value="아니오">
 				</div>
