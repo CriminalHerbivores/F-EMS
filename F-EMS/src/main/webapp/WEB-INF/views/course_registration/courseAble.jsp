@@ -143,11 +143,11 @@ function go_searchLctre(){
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
 					<button class="def-btn btn-search btn-color" onclick="go_searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button></form>
-					
+		<form name="forrrm" method="get">			
 					<input type="button" class="def-btn btn-search btn-color" id="courseDetailBtn" value="상세검색" onClick="disp()">&nbsp;&nbsp;
       <div class="non-disp">
       	<jsp:include page="courseDetailSearch.jsp" />
-      </div>
+      </div></form>
 					
 	</td></tr></thead>
 	</table>
@@ -175,16 +175,33 @@ function go_searchLctre(){
 					<th>제한인원</th>
 				</tr>
 				</thead>
+				
+				
+				
+<%-- 				<%
+List commentList = new ArrayList();
+
+for (int i = 0; i < 5; i++) {
+Map commentsMap = new HashMap();
+commentsMap.put("no", i + 1);
+commentsMap.put("name", "이름" + (i + 1));
+commentList.add(commentsMap);
+}
+
+request.setAttribute("comments", commentList);
+%> --%>
+				
+				
 				<tbody>
 				<!-- 체크박스 forEach안에서 행마다 연결되게 가능할까? -->
-				<c:forEach items="${openLctreList}" var="lctre">
-				<tr>
-					<td class="select_ckbox_1 select_ckbox_5">	
-						<label><input type="checkbox" class="input_check_1 input_check_5" name="result_1" value="${lctre.lc_Lctre_No}" />관심
+				<c:forEach items="${openLctreList}" var="lctre" varStatus="status" >
+				<tr class="slt_ckbox_${status.index}">
+					<td class="select_ckbox_1 select_ckbox_5" id="lc_${status.index}">	
+						<label><input type="checkbox" class="input_check_1 input_check_5 " name="result_1" value="${lctre.lc_Lctre_No}" />관심
 						<input type="hidden" name="in_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 					
-					<td class="select_ckbox_2 select_ckbox_5">
-						<label><input type="checkbox" class="input_check_2" id="check_all_5" name="result_2" value="${lctre.lc_Lctre_No}" />수강
+					<td class="select_ckbox_2 select_ckbox_5" id="re_${status.index}">
+						<label><input type="checkbox" class="input_check_2 input_check_5 " id="ck_all_${status.index}" name="result_2" value="${lctre.lc_Lctre_No}" />수강
 						<input type="hidden" name="re_Lctre_No" value="${lctre.lc_Lctre_No}"/></label></td>
 					<td>${lctre.lc_Lctre_No}</td>	
 					<td>${lctre.sit_Subjct}</td>

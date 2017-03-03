@@ -78,7 +78,7 @@ public class ReqstController {
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
-
+		System.out.println("ReqstController====================   "+lctre_SearchVO);
 		return url;
 	}
 	

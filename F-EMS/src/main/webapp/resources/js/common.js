@@ -180,7 +180,87 @@ $(document).ready(function(){
 		else  $(".select_ckbox_5 input").prop('checked', false);
 	});
 	
-});
+
+//---------------------------------------------
+	
+	/* 나중에 시간나는대로 이걸로 고치기->> script for in */
+/*	   var array = ['0', '1', '2', '3','4','5','6','7','8','9','10'];
+	
+	 for(var i in array){
+	     // alert(array[i]);
+	
+	
+	$("#ck_all_[i]").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_[i] input").prop('checked', true);
+		else  $(".slt_ckbox_[i] input").prop('checked', false);
+	});
+
+	 }*/
+	
+	
+	$("#ck_all_0").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_0 input").prop('checked', true);
+		else  $(".slt_ckbox_0 input").prop('checked', false);
+	});
+	
+	$("#ck_all_1").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_1 input").prop('checked', true);
+		else  $(".slt_ckbox_1 input").prop('checked', false);
+	});
+	
+	$("#ck_all_2").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_2 input").prop('checked', true);
+		else  $(".slt_ckbox_2 input").prop('checked', false);
+	});
+	
+	$("#ck_all_3").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_3 input").prop('checked', true);
+		else  $(".slt_ckbox_3 input").prop('checked', false);
+	});
+	
+	$("#ck_all_4").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_4 input").prop('checked', true);
+		else  $(".slt_ckbox_4 input").prop('checked', false);
+	});
+	
+	$("#ck_all_5").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_5 input").prop('checked', true);
+		else  $(".slt_ckbox_5 input").prop('checked', false);
+	});
+
+	$("#ck_all_6").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_6 input").prop('checked', true);
+		else  $(".slt_ckbox_6 input").prop('checked', false);
+	});
+	
+	$("#ck_all_7").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_7 input").prop('checked', true);
+		else  $(".slt_ckbox_7 input").prop('checked', false);
+	});
+	
+	$("#ck_all_8").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_8 input").prop('checked', true);
+		else  $(".slt_ckbox_8 input").prop('checked', false);
+	});
+	
+	$("#ck_all_9").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ckbox_9 input").prop('checked', true);
+		else  $(".slt_ckbox_9 input").prop('checked', false);
+	});
+
+//---------------------------------------------
+});	// close ready
 
 
 

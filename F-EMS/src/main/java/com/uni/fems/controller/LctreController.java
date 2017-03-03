@@ -3,7 +3,10 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -134,19 +137,12 @@ public class LctreController {
 			searchVO.setValue("");
 		if(searchVO.getKey()==null)
 			searchVO.setKey("lu_Lctre_Nm");
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ넣기 전111111 "+searchVO.getKnd_Lctre_Knd());
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ넣기 전111111 "+searchVO.getLu_Compl_Se());
-		//searchVO.setKnd_Lctre_Knd(knd_Lctre_Knd);
-		//searchVO.setLu_Compl_Se(lu_Compl_Se);
-		
 		
 		List<Lctre_SearchVO> openLctreList=null; 
 		String paging=null;
 		
 		int view_rows = 10; //페이지의 개수
 		int counts = 10; //한 페이지에 나타낼 개수
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ"+searchVO.getKnd_Lctre_Knd());
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ"+searchVO.getLu_Compl_Se());
 
 		try {
 			int totalRecord = lctreService.countLctreList(Integer.parseInt(tpage), searchVO);
@@ -159,8 +155,8 @@ public class LctreController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ 종류 : "+searchVO.getKnd_Lctre_Knd());
-		System.out.println("으으ㅡㅡㅡㅡㅡㅡ이수구분 : "+searchVO.getLu_Compl_Se());
+		
+		
 		model.addAttribute("openLctreList", openLctreList);
 		int n = openLctreList.size();
 		model.addAttribute("openLctreListSize", n);
@@ -196,7 +192,7 @@ public class LctreController {
 		
 		if(resultArr_1 !=null){
 			for (int i = 0; i < resultArr_1.length; i++) { 
-				if(resultArr_1[i] !=null){	// 관심만 추가한 경우
+				if(resultArr_1[i] !=null&&resultArr_2[i] ==null){	// 관심만 추가한 경우
 					intrst_ListVO.setIn_Stdnt_No(stdnt_No);
 					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 					
