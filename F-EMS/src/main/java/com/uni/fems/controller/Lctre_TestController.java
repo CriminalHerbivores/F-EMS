@@ -82,8 +82,8 @@ public class Lctre_TestController {
 		}
 
 		
-		List<Boolean> flaglist = new ArrayList<Boolean>();
-		boolean flag;
+		List<String> flaglist = new ArrayList<String>();
+		String flag="";
 		for(Test_PaperVO test : testlist){
 			Timestamp today = new Timestamp(System.currentTimeMillis());
 			Timestamp start = test.getTp_Start_Dt();
@@ -91,11 +91,14 @@ public class Lctre_TestController {
 			System.out.println("============"+today);
 			System.out.println("============"+start);
 			System.out.println("============"+end);
-				if(today.compareTo(start)<0 || today.compareTo(end)>0){
-					 flag = false;
+				if(today.compareTo(start)<0 ){
+					 flag = "wait";
 					 flaglist.add(flag);
+				}else if(today.compareTo(end)>0){
+					flag="end";
+					flaglist.add(flag);
 				}else{
-					flag = true;
+					flag = "possible";
 					flaglist.add(flag);
 				}
 		}
