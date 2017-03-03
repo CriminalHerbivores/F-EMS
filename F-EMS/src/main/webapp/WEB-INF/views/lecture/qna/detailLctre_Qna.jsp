@@ -21,13 +21,11 @@
 
 </head>
 <body>
-<div id="detailBbs_Gnt" style="float:left;">
+		<h2>강의 질의응답 게시판</h2><br/>
 	<form name="formm" method="post" action="detailBbs_Gnt">
-		<h2>강의 질의응답 게시판</h2>
-		<hr>
-		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
+		<table class="def-table-full tb-border" style="text-align:left;">
 			<tr>
-				<th>제목</th>
+				<th width="170px">제목</th>
 				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Sj}</td>
 				<th>작성자</th>
 				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Stdnt_No}</td>
@@ -35,16 +33,16 @@
 			<tr>
 				<th>작성날짜</th>
 				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Writng_Dt}</td>
-				<th>조회수</th>
+				<th width="100">조회수</th>
 				<td style="text-align: left;">${lctre_Qna_Gnt.lq_Rdcnt}</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ln_Cn" readonly="readonly">${lctre_Qna_Gnt.lq_Cn }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="ln_Cn" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Cn }</textarea><br></td>
 			</tr>
 			<tr>
 				<th>답변</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
+				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
 			</tr>
 				<sec:authorize access="hasRole('ROLE_PRO')">
 			<tr>
@@ -64,27 +62,20 @@
 				</td>
 			</tr>
 				</sec:authorize>
-
+			<tr>
+				<td class="text-right" colspan="4">
+				<!--버튼들  -->
+				<sec:authorize access="hasRole('ROLE_STD')">
+				<a href="updateLctre_Qna?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn btn-md btn-color"> </a> 
+				<input type="button" class="def-btn btn-md btn-color" data-target="#layerpop" data-toggle="modal" value="삭제"> 
+				</sec:authorize>
+				<a href="qnaList?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }"> 
+				<input type="button" class="def-btn btn-md btn-color" value="목록">
+				</a>
+				</td>
+			</tr>
 		</table>
-		<br>
-	</form>
-
-	<!--버튼들  -->
-	<div id="buttons" style="float: right">
-	<sec:authorize access="hasRole('ROLE_STD')">
-		<a href="updateLctre_Qna?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> <input
-			type="button" value="수정" class="def-btn btn-md btn-color">
-		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
-			data-toggle="modal" value="삭제"> 
-			</sec:authorize>
-			<a
-			href="qnaList?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }"> 
-			
-			<input
-			type="button" class="def-btn btn-md btn-color" value="목록">
-		</a>
-	</div>
-</div>
+		<br><br><br>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">
