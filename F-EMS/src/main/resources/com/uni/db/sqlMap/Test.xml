@@ -22,7 +22,9 @@
 	</update>
 	
 	<update id="updateTest" parameterClass="test">
-		update test set te_ques=#te_Ques#, te_ca=#te_Ca# where te_ques_no=#te_Ques_No#
+		update test set te_ques=#te_Ques#, te_ca=#te_Ca#, 
+		te_no1=#te_No1#,te_no2=#te_No2#,te_no3=#te_No3#,te_no4=#te_No4#
+		 where te_ques_no=#te_Ques_No#
 	</update>
 	
 	<update id="deleteTest" parameterClass="int">

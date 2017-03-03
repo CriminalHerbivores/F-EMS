@@ -19,10 +19,30 @@
 <script>
 $(function(){
 	$('#Jaddrow').click(function(){
-		$('#testtable > tbody:last').append('<tr><td><input type="text" class="def-input-text-full custom-form-control" name="ques" placeholder="주관식 문제를 입력하세요." ></td><td><input type="text" class="def-input-text-md custom-form-control" name="ca"> <input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
+		$('#testtable > tbody:last').append(
+				'<tr><td><input type="text" class="def-input-text-full custom-form-control" name="ques" placeholder="주관식 문제를 입력하세요." ></td>'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No1" value="" >'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No2" value="" >'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No3" value="" >'
+				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No4" value="" >'
+				+'<td><input type="text" class="def-input-text-md custom-form-control" name="ca">'
+				+'<input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제">'
+				+'</td></tr>');
 	});
 	$('#Gaddrow').click(function(){
-		$('#testtable > tbody:last').append('<tr><td><input type="text" class="def-input-text-full custom-form-control" name="ques" placeholder="객관식 문제를 입력하세요."><input type="text" class="def-input-text-full custom-form-control" name="te_No1" value="1. " ><input type="text" class="def-input-text-full custom-form-control" name="te_No2" value="2. " ><input type="text" class="def-input-text-full custom-form-control" name="te_No3" value="3. " ><input type="text" class="def-input-text-full custom-form-control" name="te_No4" value="4. " ></td><td><input type="text" class="def-input-text-md custom-form-control" name="ca"> <input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
+		$('#testtable > tbody:last').append(
+				'<tr><td><input type="text" class="def-input-text-full custom-form-control" name="ques" placeholder="객관식 문제를 입력하세요.">'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No1" value="1. " >'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No2" value="2. " >'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No3" value="3. " >'
+				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No4" value="4. " >'
+				+'</td><td><select name="ca" class="combobox-sm custom-form-control">'
+				+'<option value="1">1</option>'
+				+'<option value="2">2</option>'
+				+'<option value="3">3</option>'
+				+'<option value="4">4</option>'
+				+'</select>'
+				+'<input type="button" class="def-btn btn-sm btn-color" onclick="deltest(this);" value="삭제"></td></tr>');
 	});
 });
 function deltest(obj){
@@ -72,7 +92,7 @@ function deltest(obj){
 				<input type="button" id="Gaddrow" class="def-btn btn-md btn-color" value="+객관식">
 			</td>
 		</tr>
-	
+
 		<tr>
 			<th style="width:80%;">문제</th>
 			<th>정답</th>
@@ -93,8 +113,8 @@ function deltest(obj){
 		
 	</table>
 	<table class="def-table-full"><tr><td style="text-align: right;">
-		<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form);">
 		<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="취소" onclick="history.go(-1);">
+		<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form);">
 	</td></tr></table>
 	</form>
 </body>

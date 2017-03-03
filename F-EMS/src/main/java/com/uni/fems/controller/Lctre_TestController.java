@@ -141,14 +141,22 @@ public class Lctre_TestController {
 			testVO.setTe_Ques(ques[i]);
 			testVO.setTe_Ca(ca[i]);
 			
-		if(te_No1!=null)
+		if(te_No1!=null){
+			if(te_No1[i]!=null)
 			testVO.setTe_No1(te_No1[i]);
-		if(te_No2!=null)
+		}
+		if(te_No2!=null){
+			if(te_No2[i]!=null)
 			testVO.setTe_No2(te_No2[i]);
-		if(te_No3!=null)
+		}
+		if(te_No3!=null){
+			if(te_No3[i]!=null)
 			testVO.setTe_No3(te_No3[i]);
-		if(te_No4!=null)
+		}
+		if(te_No4!=null){
+			if(te_No4[i]!=null)
 			testVO.setTe_No4(te_No4[i]);
+		}
 
 		try {
 			testSvc.insertTest(testVO);
@@ -248,8 +256,9 @@ public class Lctre_TestController {
 	
 	@RequestMapping(value="/updateTest", method=RequestMethod.POST)
 	public String updateTest(HttpServletRequest request, TestVO testVO, Test_PaperVO test_paperVO,
-							String[] que, String[] ca, String tpNm,String queNo[],
-							String[] addQue, String[] addCa, String tp_No
+							String[] ca, String tpNm,String[] queNo,
+							String[] addQue, String[] addCa, String tp_No,
+							String[] te_Ques,String[] te_No1,String[] te_No2,String[] te_No3, String[] te_No4
 							){
 		
 		String url = "redirect:testList";
@@ -264,13 +273,16 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(que!=null)
-		for(int i=0;i<que.length;i++){
+		System.out.println("==========================="+te_Ques.length);
+		if(te_Ques!=null)
+		for(int i=0;i<te_Ques.length;i++){
 		testVO.setTe_Ques_No(queNo[i]);
-		testVO.setTe_Ques(que[i]);
+		testVO.setTe_Ques(te_Ques[i]);
 		testVO.setTe_Ca(ca[i]);
-			
+		testVO.setTe_No1(te_No1[i]);
+		testVO.setTe_No2(te_No2[i]);
+		testVO.setTe_No3(te_No3[i]);
+		testVO.setTe_No4(te_No4[i]);
 		try {
 			testSvc.updateTest(testVO);
 		} catch (SQLException e) {

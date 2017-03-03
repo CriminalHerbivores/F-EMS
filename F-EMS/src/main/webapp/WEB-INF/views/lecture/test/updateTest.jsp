@@ -94,14 +94,37 @@ function deleteQues(qno){
 		<c:forEach var="Qlist" items="${Qlist }" >
 		<form method="post">
 		<tr id="${Qlist.te_Ques_No }">
-			<td>
-				<input type="text" class="def-input-text-full custom-form-control"  name="que" value="${Qlist.te_Ques }">
-			</td>
-			<td>
-				<input type="text" class="def-input-text-md custom-form-control" name="ca" value="${Qlist.te_Ca }">
+		<c:choose>
+			<c:when test="${empty Qlist.te_No1 }">
+				<td>
+					<input type="text" class="def-input-text-full custom-form-control" name="te_Ques" value="${Qlist.te_Ques }">
+				</td>
+				<td>
+					<input type="text" class="def-input-text-md custom-form-control" name="ca" value="${Qlist.te_Ca }">
+					<input type="hidden" id="queNo" name="queNo" value="${Qlist.te_Ques_No }">
+					<input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="deleteQues(${Qlist.te_Ques_No });">
+				</td>
+			</c:when>
+			<c:otherwise>
+				<td>
+					<input type="text" class="def-input-text-full custom-form-control" name="te_Ques" value="${Qlist.te_Ques }">
+					<input type="text" class="def-input-text-full custom-form-control" name="te_No1" value= "${Qlist.te_No1 }">
+					<input type="text" class="def-input-text-full custom-form-control" name="te_No2" value= "${Qlist.te_No2 }">
+					<input type="text" class="def-input-text-full custom-form-control" name="te_No3" value= "${Qlist.te_No3 }">
+					<input type="text" class="def-input-text-full custom-form-control" name="te_No4" value= "${Qlist.te_No4 }">
+				</td>
+				<td>
+				<select name="ca" class="combobox-sm custom-form-control">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
 				<input type="hidden" id="queNo" name="queNo" value="${Qlist.te_Ques_No }">
 				<input type="button" class="def-btn btn-sm btn-color" value="삭제" onclick="deleteQues(${Qlist.te_Ques_No });">
 			</td>
+			</c:otherwise>
+		</c:choose>
 		</tr>
 		</form>
 
