@@ -16,8 +16,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -241,16 +240,10 @@ $(document).on('click','.realupdateComment',function(e){
 
 </script>
 
-
-
-
-
-
 </head>
 <body>
-<div id="detailNotice" style="float:left;">
+	<h2>공지 게시판</h2><br/>
 	<form name="formm" method="post" action="notice_bbs">
-		<h2>공지 게시판</h2>
 		<hr>
 		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
 			<tr>
