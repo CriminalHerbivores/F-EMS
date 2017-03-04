@@ -54,6 +54,7 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 			List<LctreVO> lctreList = (List<LctreVO>) session.getAttribute("lctreList");
 			String url = request.getContextPath()+request.getServletPath()+"?table_Nm="+lctreList.get(0).getLc_Lctre_No();
 			response.sendRedirect(url);
+			return false;
 		}
 		return super.preHandle(request, response, handler);
 	}
