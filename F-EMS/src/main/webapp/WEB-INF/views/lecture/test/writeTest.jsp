@@ -67,6 +67,7 @@ function deltest(obj){
 <body>
 <h2>시험 출제</h2><br/>
   <form name="formm" method="post">
+  <input type="hidden" name="table_Nm" value="${table_Nm}">
 	<table class="def-table-full tb-border table-hover" id="testtable">
 		<tr>
 			<td style="padding-top: 0;padding-bottom: 0">	

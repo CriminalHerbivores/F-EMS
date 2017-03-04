@@ -84,7 +84,7 @@ $(document).ready(function(){
       			<input type="hidden" name="no" value="${testlist.tp_No}">
       		</td>
       		<td>
-      			<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">${testlist.tp_Nm}</a>
+      			<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}&table_Nm=${table_Nm}">${testlist.tp_Nm}</a>
       		</td>
       		<td>${testlist.tp_Profsr_No} </td>
       		<td><fmt:formatDate value="${testlist.tp_Dt}" /> </td>
@@ -136,7 +136,7 @@ $(document).ready(function(){
 		      				<input type="button" class="def-btn btn-sm btn-gray" value="완료">
 		      				</c:when>
 		      				<c:otherwise>
-		      				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}">
+		      				<a href="detailTest?tpNo=${testlist.tp_No }&tpNm=${testlist.tp_Nm}&table_Nm=${table_Nm}">
 		      				<input type="button" class="def-btn btn-sm btn-color" value="응시"> </a>
 		      				</c:otherwise>
 		      			</c:choose>
@@ -152,7 +152,9 @@ $(document).ready(function(){
   </table>
   <sec:authorize access="hasRole('ROLE_PRO')">
 <table class="def-table-full"><tr><td style="text-align: right;">
-	  	<input type="button" class="def-btn btn-md btn-color" value="등록" onclick="writeTestForm();">
+	  	<a href="writeTest?tpNo=${testlist.tp_No}&tpNm=${testlist.tp_Nm}&table_Nm=${table_Nm}">
+	  	<input type="button" class="def-btn btn-md btn-color" value="등록">
+	  	</a>
 </td></tr></table>
 </sec:authorize>
  

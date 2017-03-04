@@ -101,28 +101,29 @@ public class Lctre_TestController {
 		model.addAttribute("flaglist", flaglist);
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
-		
+		model.addAttribute("table_Nm",table_Nm);
 		return url;
 	}
 	
 	@RequestMapping(value="/writeTest", method=RequestMethod.GET)
-	public String writeTestForm(){
+	public String writeTestForm(int table_Nm,Model model){
 		String url = "lecture/test/writeTest";
+		model.addAttribute("table_Nm",table_Nm);
 		return url;
 	}
 	
 	@RequestMapping(value="/writeTest", method=RequestMethod.POST)
 	public String writeTest(TestVO testVO, Test_PaperVO test_paperVO, HttpServletRequest request,String[] ques, String[] ca,
 							String start_Dt, String end_Dt, String start_Dt2, String end_Dt2,
-							String[] te_No1,String[] te_No2,String[] te_No3,String[] te_No4){
-		String url ="redirect:testList";
+							String[] te_No1,String[] te_No2,String[] te_No3,String[] te_No4, int table_Nm){
+		String url ="redirect:testList?table_Nm="+table_Nm;
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
 		
 		String st = start_Dt+" "+start_Dt2+":00.0";
 		String en = end_Dt+" "+end_Dt2+":00.0";
 		
-		test_paperVO.setTp_Lctre_No(50);
+		test_paperVO.setTp_Lctre_No(table_Nm);
 		test_paperVO.setTp_Profsr_No(loginUser);
 		test_paperVO.setTp_Start_Dt(java.sql.Timestamp.valueOf(st));
 		test_paperVO.setTp_End_Dt(java.sql.Timestamp.valueOf(en));
@@ -136,33 +137,37 @@ public class Lctre_TestController {
 			testVO.setTe_Ques(ques[i]);
 			testVO.setTe_Ca(ca[i]);
 			
-		if(te_No1!=null){
-			if(te_No1[i]!=null)
-			testVO.setTe_No1(te_No1[i]);
-		}
-		if(te_No2!=null){
-			if(te_No2[i]!=null)
-			testVO.setTe_No2(te_No2[i]);
-		}
-		if(te_No3!=null){
-			if(te_No3[i]!=null)
-			testVO.setTe_No3(te_No3[i]);
-		}
-		if(te_No4!=null){
-			if(te_No4[i]!=null)
-			testVO.setTe_No4(te_No4[i]);
-		}
-
-		try {
-			testSvc.insertTest(testVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			try{
+				if(te_No1!=null){
+					if(te_No1[i]!=null)
+						testVO.setTe_No1(te_No1[i]);
+				}
+				if(te_No2!=null){
+					if(te_No2[i]!=null)
+						testVO.setTe_No2(te_No2[i]);
+				}
+				if(te_No3!=null){
+					if(te_No3[i]!=null)
+						testVO.setTe_No3(te_No3[i]);
+				}
+				if(te_No4!=null){
+					if(te_No4[i]!=null)
+						testVO.setTe_No4(te_No4[i]);
+				}
+			} catch(ArrayIndexOutOfBoundsException e){
+				
+			}
+	
+			try {
+				testSvc.insertTest(testVO);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return url;
 	}
 	@RequestMapping(value="/detailTest")
-	public String detailTest(Model model,String tpNo,String tpNm, HttpServletRequest request){
+	public String detailTest(Model model,String tpNo,String tpNm,int table_Nm, HttpServletRequest request){
 		String url = "lecture/test/detailTest";
 		
 		List<TestVO> Qlist = null;
@@ -171,23 +176,21 @@ public class Lctre_TestController {
 			Qlist = testSvc.listAllTest(Integer.parseInt(tpNo));
 			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(tpNo));
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("tpNm", tpNm);
 		model.addAttribute("tpNo", tpNo);
 		model.addAttribute("Qlist", Qlist);
-		
+		model.addAttribute("table_Nm",table_Nm);
 		return url;
 	}
 	
 	@RequestMapping(value="/detailTest", method=RequestMethod.POST)
-	public String writeTest(HttpServletRequest request, AnswerVO answerVO, String[] answer, String[] queNo){
-		String url="redirect:testList";
+	public String writeTest(HttpServletRequest request, AnswerVO answerVO, String[] answer, String[] queNo, int table_Nm){
+		String url="redirect:testList?table_Nm="+table_Nm;
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
 		
@@ -200,33 +203,29 @@ public class Lctre_TestController {
 			try {
 				answerSvc.insertAnswer(answerVO);
 			} catch (SQLException e) {
-				// TODO Auto-gener	ated catch block
 				e.printStackTrace();
 			}
 		}
-			
 		return url;
 		
 	}
 	
 	@RequestMapping(value="/deleteTest")
-	public String deleteTest(String tpNo){
-		String url="redirect:testList";
+	public String deleteTest(String tpNo,int table_Nm){
+		String url="redirect:testList?table_Nm="+table_Nm;
 		
 		try {
 			test_paperSvc.deleteTestPaper(Integer.parseInt(tpNo));
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return url;
 	}
 	
 	@RequestMapping(value="/updateTest", method=RequestMethod.GET)
-	public String updateTestForm(Model model,String tpNo, String tpNm){
+	public String updateTestForm(Model model,String tpNo, String tpNm, int table_Nm){
 		String url="lecture/test/updateTest";
 		
 		List<TestVO> Qlist = null;
@@ -235,16 +234,15 @@ public class Lctre_TestController {
 			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(tpNo));
 			Qlist = testSvc.listAllTest(Integer.parseInt(tpNo));
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("Qlist", Qlist);
 		model.addAttribute("tpNm", tpNm.trim());
 		model.addAttribute("tpNo", tpNo);
+		model.addAttribute("table_Nm",table_Nm);
 		return url;
 	}
 	
@@ -254,11 +252,11 @@ public class Lctre_TestController {
 							String[] addCa, String tp_No,
 							String[] ques,String[] no1,String[] no2,String[] no3, String[] no4,
 							String[] te_No1,String[] te_No2,String[] te_No3,String[] te_No4,
-							String[] addques, String[] addca
+							String[] addques, String[] addca, int table_Nm
 							){
 		
 		
-		String url = "redirect:testList";
+		String url = "redirect:testList?table_Nm="+table_Nm;
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
 		
@@ -276,7 +274,7 @@ public class Lctre_TestController {
 		testVO.setTe_Ques_No(queNo[i]);
 		testVO.setTe_Ques(ques[i]);
 		testVO.setTe_Ca(ca[i]);
-		
+		try{
 		if(no1!=null){
 			if(no1[i]!=null)
 				testVO.setTe_No1(no1[i]);
@@ -293,11 +291,12 @@ public class Lctre_TestController {
 			if(no4[i]!=null)
 				testVO.setTe_No4(no4[i]);
 		}
-		
+		} catch(ArrayIndexOutOfBoundsException e){
+			
+		}
 		try {
 			testSvc.updateTest(testVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -344,15 +343,11 @@ public class Lctre_TestController {
 	@ResponseBody
 	public String deleteQues(@RequestBody Map<String,Object> jsonMap){
 		String queNo =  jsonMap.get("queNo")+"";
-		
-		
 			try {
 				testSvc.deleteTest(Integer.parseInt(queNo));
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return queNo;
@@ -370,10 +365,8 @@ public class Lctre_TestController {
 				nameList = answerSvc.nameAnswerSTD(Integer.parseInt(tpno));
 				map.put(tpno, nameList);
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -382,7 +375,7 @@ public class Lctre_TestController {
 	}
 	
 	@RequestMapping(value="/completedTest")
-	public String completedTest(Model model, String stdNm, String tpNo){
+	public String completedTest(Model model, String stdNm, String tpNo, int table_Nm){
 		String url="lecture/test/completedTest";
 		AnswerVO answerVO = new AnswerVO();
 		answerVO.setAn_Stdnt_No(stdNm);
@@ -396,12 +389,8 @@ public class Lctre_TestController {
 			queList = testSvc.listAllTest(Integer.parseInt(tpNo));
 			answerList = answerSvc.completeAnswer(answerVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//점수 구해서 심어야 함
-		
 		
 		double totalScore = 0;
 		double eachScore = 100/queList.size();
@@ -409,20 +398,13 @@ public class Lctre_TestController {
 			if(queList.get(i).getTe_Ca().equals(answerList.get(i).getAn_Ans()))
 				totalScore +=eachScore;
 		}
-			
-			
-
 		
 		model.addAttribute("totalScore", totalScore);
 		model.addAttribute("stdNm",stdNm);
 		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("queList", queList);
 		model.addAttribute("answerList", answerList);
-		
-		
+		model.addAttribute("table_Nm",table_Nm);
 		return url;
 	}
-	
-	
-
 }
