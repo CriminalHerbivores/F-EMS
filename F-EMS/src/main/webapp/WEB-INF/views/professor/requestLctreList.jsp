@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h2>개설 강의</h2><br/>
+<h2>${title}</h2><br/>
 	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 	<form name="searchForm">
 	<table class="def-table-full"><tr><td style="text-align: left;">
@@ -53,6 +53,10 @@
 		</sec:authorize>
 	</tr>
 </table>
-	
+
+<table class="def-table-full"><tr><td style="text-align: right;">
+	${button}
+</td></tr></table>
+
 </body>
 </html>
