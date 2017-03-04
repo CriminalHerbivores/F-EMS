@@ -19,7 +19,7 @@ body{
 }
 
 h1{
-  color: #396;
+  color: #555;
   font-weight: 100;
   font-size: 40px;
   margin: 40px 0px 20px;
@@ -27,7 +27,7 @@ h1{
 
 #clockdiv{
 	font-family: Malgun Gothic;	/* sans-serif; */
-	color: #fff;
+	color: #555;
 	display: inline-block;
 	font-weight: 100;
 	text-align: center;
@@ -35,16 +35,15 @@ h1{
 }
 
 #clockdiv > div{
-	padding: 10px;
+	padding: 0;
 	border-radius: 3px;
-	background: #00BF96;
+/* 	background: #00BF96; */
 	display: inline-block;
 }
 
 #clockdiv div > span{
-	padding: 15px;
 	border-radius: 3px;
-	background: #00816A;
+ 	background: white;
 	display: inline-block;
 }
 
@@ -91,7 +90,7 @@ function getTimeRemaining(endtime) {
 	    if (t.total <= 0) {
 	      clearInterval(timeinterval);
 	      	alert('시험이 종료되었습니다.')
-	      	submitForm(this.form);
+	      	/* submitForm(this.form); */
 	    }
 	  }
 
@@ -99,7 +98,7 @@ function getTimeRemaining(endtime) {
 	  var timeinterval = setInterval(updateClock, 1000);
 	}
 
-	var deadline = new Date(Date.parse(new Date()) + 1 * 15 * 1000);
+	var deadline = new Date(Date.parse(new Date()) + 50 * 60 * 1000);
 	initializeClock('clockdiv', deadline);
 		
 	
@@ -118,31 +117,36 @@ history.go(1);
 
 <body>
 <h2>시험</h2><br/>
-<sec:authorize access="hasRole('ROLE_STD')">
-<h1>Countdown Clock</h1>
-<div id="clockdiv">
-  <!-- <div>
-    <span class="days"></span>
-    <div class="smalltext">Days</div>
-  </div>
-  <div>
-    <span class="hours"></span>
-    <div class="smalltext">Hours</div>
-  </div> -->
-  <div>
-    <span class="minutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="seconds"></span>
-    <div class="smalltext">Seconds</div>
-  </div>
-</div>
-</sec:authorize>
   <form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover" id="testtable">
 		<tr>
-			<td colspan="3" style="padding-top: 0;padding-bottom: 0; width:500px; ">	
+			<td>
+			<sec:authorize access="hasRole('ROLE_STD')">
+				<table  class="def-table-auto tb-border table-hover" >
+					<tr><th>남은시간</th></tr>
+					<tr>
+						<td>
+							<div id="clockdiv">
+							  <!-- <div>
+							    <span class="days"></span>
+							    <div class="smalltext">Days</div>
+							  </div>
+							  <div>
+							    <span class="hours"></span>
+							    <div class="smalltext">Hours</div>
+							  </div> -->
+							  <div>
+							    <span class="minutes"></span>
+							  	<span class="minutes">:</span>
+							    <span class="seconds"></span>
+							  </div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</sec:authorize>
+			</td>
+			<td colspan="2" style="padding-top: 0;padding-bottom: 0; width:500px; ">	
 				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 					<tr>
 						<th>시험명</th>
