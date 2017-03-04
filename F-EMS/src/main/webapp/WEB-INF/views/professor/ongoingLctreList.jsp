@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h2>진행 강의</h2><br/>
+<h2>진행 중인 강의</h2><br/>
 	<sec:authorize access="hasRole('ROLE_STF')">
 	<form name="searchForm">
 	<table class="def-table-full"><tr><td style="text-align: left;">

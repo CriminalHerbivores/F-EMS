@@ -103,6 +103,9 @@
 		<isNotNull prepend="and" property="lc_Period">
 		extract(year from(lc_Lctrbgn_Dt)) like '%'||#lc_Period#||'%'
 		</isNotNull>
+		<isNotNull prepend="and" property="lc_Term">
+		lc_Term like #lc_Term#
+		</isNotNull>
 	</select>
 	
 	<!-- 강의 검색 개수 :: 교수 검색과 개설 여부 -->
@@ -120,6 +123,9 @@
 		</isLessThan>
 		<isNotNull prepend="and" property="lc_Period">
 		extract(year from(lc_Lctrbgn_Dt)) like '%'||#lc_Period#||'%'
+		</isNotNull>
+		<isNotNull prepend="and" property="lc_Term">
+		lc_Term like #lc_Term#
 		</isNotNull>
 	</select>
 </sqlMap>

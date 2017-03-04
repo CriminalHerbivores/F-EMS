@@ -314,7 +314,7 @@ public class ProfsrController {
 		}
 		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
-		
+		model.addAttribute("title","강의 이력");
 		return url;
 	}
 

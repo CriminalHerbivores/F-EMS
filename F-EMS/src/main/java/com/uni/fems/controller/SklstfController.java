@@ -729,7 +729,6 @@ public class SklstfController {
 		return url;
 	}
 	
-	
 	/**
 	 * <pre>
 	 * 장학금 신청 내역을 조회
@@ -1084,42 +1083,7 @@ public class SklstfController {
 		model.addAttribute("tpage", tpage);
 		return url;
 	}
-	
-	/**
-	 * <pre>
-	 * 직원의 교수 이력 조회
-	 * </pre>
-	 * <pre>
-	 * @param tpage
-	 * @param lctre_SearchVO
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/profsrLctreList")
-	public String profsrHistory(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
-		//String url="manager/profsr/profsrHistory";
-		String url="professor/requestLctreList";
-		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
-		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
-		lctre_SearchVO.setLc_Open_At("y");
-		String paging = "";
-		if(tpage==null) tpage="1";
-		int totalRecord = 0;
-		try {
-			totalRecord = lctreService.countLctre(lctre_SearchVO);
-			paging = callPaging.pageNumber(
-					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
-					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
-			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
-			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("lctre_SearchVO",list);
-		model.addAttribute("paging",paging);
-		return url;
-	}
-	
+
 	/**
 	 * <pre>
 	 * 교수의 재직 상태 조회 (미완성)
@@ -1152,4 +1116,79 @@ public class SklstfController {
 		model.addAttribute("paging",paging);
 		return url;
 	}
+	
+	/**
+	 * <pre>
+	 * 직원의 교수 이력 조회
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_SearchVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/profsrLctreList")
+	public String profsrHistory(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
+		//String url="manager/profsr/profsrHistory";
+		String url="professor/requestLctreList";
+		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
+		lctre_SearchVO.setLc_Open_At("y");
+		String paging = "";
+		if(tpage==null) tpage="1";
+		int totalRecord = 0;
+		try {
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String button = "";
+		button = "<a href=\"profsrRequestLectre\">"
+				+"<input type=\"button\" value=\"개설강의\" class=\"def-btn btn-sm btn-color\">"
+				+"</a>";
+		model.addAttribute("button",button);
+		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("paging",paging);
+		model.addAttribute("title","기존강의");
+		return url;
+	}
+	
+	@RequestMapping("/profsrRequestLectre")
+	public String profsrRequest(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
+		String url="professor/requestLctreList";
+		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
+		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
+		lctre_SearchVO.setLc_Open_At("n");
+		int[] day = supporter.getDay();
+		lctre_SearchVO.setLc_Period(day[0]+"");
+		lctre_SearchVO.setLc_Term(day[3]+"");
+		String paging = "";
+		if(tpage==null) tpage="1";
+		int totalRecord = 0;
+		try {
+			totalRecord = lctreService.countLctre(lctre_SearchVO);
+			paging = callPaging.pageNumber(
+					Integer.parseInt(tpage), totalRecord, callPaging.lastPath(request)
+					, "&pr_Profsr_No="+lctre_SearchVO.getPr_Profsr_No());
+			int[] rows = callPaging.row(Integer.parseInt(tpage), totalRecord);
+			list = lctreService.selectLctre(lctre_SearchVO, rows[1], rows[0]);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String button = "";
+		button = "<a href=\"profsrLctreList\">"
+				+"<input type=\"button\" value=\"기존강의\" class=\"def-btn btn-sm btn-color\">"
+				+"</a>";
+		model.addAttribute("button",button);
+		model.addAttribute("lctre_SearchVO",list);
+		model.addAttribute("paging",paging);
+		model.addAttribute("title","개설강의");
+		return url;
+	}
+	
 }
