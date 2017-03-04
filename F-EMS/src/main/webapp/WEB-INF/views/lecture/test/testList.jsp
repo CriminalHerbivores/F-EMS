@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!--  [[개정이력(Modification Information)]]       -->
 <!--  수정일               수정자            수정내용               -->
@@ -42,8 +43,9 @@ $(document).ready(function(){
 			var temp = "";
 			temp += '<select name="" class="combobox-md custom-form-control" onchange="location.href=this.value">';
 			temp += '<option value="">선택</option>';
+			var bb = $("#table_Nm").val();
 			$.each(value,function(k,v){
-				temp += '<option value="'+'<%=request.getContextPath()%>/lctre/completedTest?stdNm='+v+'&tpNo='+key+'">'+v+'</option>'
+				temp += '<option value="'+'<%=request.getContextPath()%>/lctre/completedTest?stdNm='+v+'&tpNo='+key+'&table_Nm='+bb+'">'+v+'</option>'
 			});
 			temp += '</select>';
 			$(aa).html(temp);
@@ -61,10 +63,11 @@ $(document).ready(function(){
 </head>
 <body>
   <h2>온라인 시험 게시판</h2><br/>
+  <input type="hidden" value="${table_Nm}" id="table_Nm">
   <table class="def-table-full tb-border table-hover">
       <tr>
       	<th>No</th>
-        <th style="width:450px;">시험명</th>
+        <th>시험명</th>
         <th>출제자</th>
         <th>출제날짜</th>
         <th>응시기간</th>
@@ -88,7 +91,7 @@ $(document).ready(function(){
       		</td>
       		<td>${testlist.tp_Profsr_No} </td>
       		<td><fmt:formatDate value="${testlist.tp_Dt}" /> </td>
-      		<td>${testlist.tp_Start_Dt } ~ ${testlist.tp_End_Dt }</td>
+      		<td>${fn:substring(testlist.tp_Start_Dt,0,16)} ~ ${fn:substring(testlist.tp_End_Dt,0,16)}</td>
       		<td>${testlist.countAnswerSTD} / </td>
       		<td>
       			<div class="${testlist.tp_No}"></div>
@@ -152,11 +155,11 @@ $(document).ready(function(){
   </table>
   <sec:authorize access="hasRole('ROLE_PRO')">
 <table class="def-table-full"><tr><td style="text-align: right;">
-	  	<a href="writeTest?tpNo=${testlist.tp_No}&tpNm=${testlist.tp_Nm}&table_Nm=${table_Nm}">
+	  	<a href="writeTest?table_Nm=${table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록">
 	  	</a>
 </td></tr></table>
 </sec:authorize>
- 
+ <br/><br/><br/>
 </body>
 </html>

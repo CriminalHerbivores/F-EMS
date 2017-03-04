@@ -37,7 +37,14 @@
 		<!-- ////////////////// -->
 	<select id="lctreList" name="lctre" class="combobox-md custom-form-control">
 		<c:forEach items="${lctreList}" var="lctre" varStatus="status">
+			<c:choose>
+			<c:when test="${lctre.lc_Lctre_No == table_Nm}">
+			<option value="${lctre.lc_Lctre_No}" selected>${lctre.lu_lctre_nm}</option>
+			</c:when>
+			<c:otherwise>
 			<option value="${lctre.lc_Lctre_No}">${lctre.lu_lctre_nm}</option>
+			</c:otherwise>
+			</c:choose>
 		</c:forEach>
 	</select>
 		<ul class="accordion-menu_1" id="accordionMenu1_1">

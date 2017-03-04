@@ -23,6 +23,7 @@
 <title></title>
 </head>
 <body>
+<h2>시험 결과 확인</h2><br/>
 <table style="width:80%;" class="non-border margin-auto">
 <tr><td>
 	<table class="def-table-auto tb-border table-hover" id="testtable">
@@ -82,5 +83,10 @@
 	</table>
 </td></tr>
 </table>
+
+<table class="def-table-full"><tr><td style="text-align: right;">
+	  	<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.go(-1);">
+</td></tr></table>
+
 </body>
 </html>
