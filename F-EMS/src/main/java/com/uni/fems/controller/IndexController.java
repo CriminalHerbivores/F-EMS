@@ -243,12 +243,6 @@ public class IndexController {
 		return pw;
 	}
 	
-	@RequestMapping("event")
-	public String event(){
-		String url="notEvent";
-		return url;
-	}
-	
 	// 관리자
 	// /////////////////////////////////////////////////////////////////////////
 
@@ -433,5 +427,18 @@ public class IndexController {
 		model.addAttribute("lctre_SearchVO", lctre_SearchVO);
 		return url;
 	}	
-
+	
+	// 에러페이지 //////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping("event")
+	public String event(){
+		String url="error/notEvent";
+		return url;
+	}
+	
+	@RequestMapping("auth")
+	public String notPage(){
+		String url = "error/notAuth";
+		return url;
+	}
 }

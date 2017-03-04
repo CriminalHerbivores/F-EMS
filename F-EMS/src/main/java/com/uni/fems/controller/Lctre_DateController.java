@@ -86,7 +86,7 @@ public class Lctre_DateController implements ApplicationContextAware{
 			tpage="1";
 		}
 		model.addAttribute("tpage",tpage);
-
+		System.out.println("searchVO : "+searchVO);
 		Lctre_Date_GntVO lctre_Date_Gnt = new Lctre_Date_GntVO();
 		lctre_Date_Gnt.setTable_Nm(table_Nm);
 		if(searchVO != null ||searchVO.getKey().equals("ld_Sj")){

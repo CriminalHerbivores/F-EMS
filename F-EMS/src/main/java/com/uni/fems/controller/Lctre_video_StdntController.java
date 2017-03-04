@@ -70,10 +70,11 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 	
 
 	@RequestMapping("/video_StdntList")
-	public String Lctre_Video_StdntList(Model model,HttpServletRequest request, SearchVO searchVO) throws ServletException, IOException{
+	public String Lctre_Video_StdntList(Model model,HttpServletRequest request, HttpSession session, SearchVO searchVO) throws ServletException, IOException{
 		String url= "lecture/video/video_StdntList";
 		String tpage = request.getParameter("tpage");
 		String table_Nm = request.getParameter("table_Nm");
+		String loginUser = (String)session.getAttribute("loginUser");
 		
 		if (tpage ==null){
 			tpage= "1";
@@ -84,7 +85,8 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 		
 		Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt = new Lctre_Watch_Video_GntVO();
 		lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
-		lctre_Watch_Video_Gnt.setLw_Stdnt_No("bbb");
+		lctre_Watch_Video_Gnt.setLw_Stdnt_No(loginUser);
+//		lctre_Watch_Video_Gnt.setLw_Stdnt_No("bbb");
 		if(searchVO != null ||searchVO.getKey().equals("lv_Sj")){
 			lctre_Watch_Video_Gnt.setLv_Sj(searchVO.getValue());
 			lctre_Watch_Video_Gnt.setLv_Cn("%");
@@ -170,8 +172,8 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			
 			HttpSession session = request.getSession();
 			String loginUser = (String) session.getAttribute("loginUser");
-//			String lw_Stdnt_No = loginUser;
-			String lw_Stdnt_No = "bbb";
+			String lw_Stdnt_No = loginUser;
+//			String lw_Stdnt_No = "bbb";
 			String table_Nm = (String)jsonMap.get("table_Nm");
 			String lv_Bbs_No = (String)jsonMap.get("lv_Bbs_No");
 			int lw_Watch_Time = (int)((double)jsonMap.get("lw_Watch_Time"));
@@ -217,6 +219,7 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			
 			try {
 				if(lctre_Watch_Video_Gnt.getLw_Bbs_No() == null || lctre_Watch_Video_Gnt.getLw_Bbs_No().equals("")){
+					lctre_Watch_Video_Gnt.setLw_Video_Bbs_No(lv_Bbs_No);
 					lctre_Watch_Video_Gnt.setLw_Stdnt_No(lw_Stdnt_No);
 					lctre_Video_StdntSvc.insertLctre_Video(lctre_Watch_Video_Gnt);
 				}else{

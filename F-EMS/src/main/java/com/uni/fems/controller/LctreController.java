@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -149,8 +151,7 @@ public class LctreController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/courseList",method=RequestMethod.GET)
-	public String courseAbleForm( //@RequestParam(value="checkLctre_Knd[]") List<String> knd_Lctre_Knd, @RequestParam(value="checkCompl_Se[]") List<String> lu_Compl_Se,
-			Model model, HttpServletRequest request, HttpSession session) throws ServletException, IOException{
+	public String courseList(Model model, HttpServletRequest request, HttpSession session) throws ServletException, IOException{
 		
 		String url = "course_registration/courseList";
 		String st_Stdnt_No = (String) session.getAttribute("loginUser");
@@ -222,7 +223,7 @@ public class LctreController {
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_SearchVO",lctre_SearchVO_3);
-		System.out.println("ReqstController====================   "+lctre_SearchVO_3);
+		//System.out.println("ReqstController====================   "+lctre_SearchVO_3);
 		
 		
 		//=============================================================================================================================================
@@ -270,32 +271,36 @@ public class LctreController {
 	 * @throws IOException
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseList", produces = "application/text; charset=utf8")
+	@RequestMapping(value="/insertCourse", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String insertCourse(Model model, SearchVO searchVO,HttpServletRequest request, HttpSession session) 
-			throws ServletException, IOException, SQLIntegrityConstraintViolationException{
-		String url = "redirect:courseList";
+	public String insertCourse(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String loginUser = "Guest";
+		
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
 		
 		ReqstVO reqstVO= new ReqstVO();
 		Intrst_ListVO intrst_ListVO=new Intrst_ListVO();
 		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
 		
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr_1= request.getParameterValues("result_1");	// 관심
 		String[] resultArr_2= request.getParameterValues("result_2");	// 수강
 		
 		if(resultArr_1 !=null){
 			for (int i = 0; i < resultArr_1.length; i++) { 
 				if(resultArr_1[i] !=null){	// 관심만 추가한 경우
-					intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
+					intrst_ListVO.setIn_Stdnt_No(loginUser);
 					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 					
-					System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
-							+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+					//System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 
 					try {
 						intrst_ListService.insertIntrst_List(intrst_ListVO);	
-						System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+						//System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -305,8 +310,8 @@ public class LctreController {
 		if(resultArr_2 !=null){
 		for (int i = 0; i < resultArr_2.length; i++) { 
 			if(resultArr_2[i] !=null){	// 강의 추가한 경우
-				System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-			reqstVO.setRe_Stdnt_No(st_Stdnt_No);
+				//System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+			reqstVO.setRe_Stdnt_No(loginUser);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			lctre_SearchVO.setLc_Lctre_No(reqstVO.getRe_Lctre_No());
 			lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
@@ -314,11 +319,11 @@ public class LctreController {
 
 			try {
 				reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
-				System.out.println("===================555555555 reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-				System.out.println("===================66666666  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+				//System.out.println("===================555555555 reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+				//System.out.println("===================66666666  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 				
 				intrst_ListService.insertIntrst_List(intrst_ListVO);
-				System.out.println("===================77777777  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+				//System.out.println("===================77777777  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 			} catch (SQLException e) {
 				e.printStackTrace();
 
@@ -330,7 +335,7 @@ public class LctreController {
 		}
 			}
 		
-		return url;
+		return null;
 	}
 	
 	
@@ -344,38 +349,42 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseList", produces = "application/text; charset=utf8")
+	@RequestMapping(value="/courseInterest", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String deleteCourseInterest(HttpServletRequest request, HttpSession session) throws ServletException, IOException{
-		String url = "redirect:courseList";
+	public String courseInterest(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String loginUser = "Guest";
+		
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
 		
 		Intrst_ListVO intrst_ListVO=new Intrst_ListVO();
 		ReqstVO reqstVO= new ReqstVO();
 		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
 		
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
 		String[] resultArr = request.getParameterValues("result");
 		String ck_result = request.getParameter("btn_result");
 		if(ck_result.equals("addReqst")){
 			for (int i = 0; i < resultArr.length; i++) {
 
-				reqstVO.setRe_Stdnt_No(st_Stdnt_No);
+				reqstVO.setRe_Stdnt_No(loginUser);
 				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
 				lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
-				System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
-						+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+				//System.out.println("============1111111  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No() +" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 				try {
 					reqstService.insertReqst(reqstVO,lctre_SearchVO);
 
-					System.out.println("============222222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()
-							+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+					//System.out.println("============222222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No() +" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}else if(ck_result.equals("delIntrst")){
 			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
-				intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
+				intrst_ListVO.setIn_Stdnt_No(loginUser);
 				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
 				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
 				try {
@@ -387,7 +396,7 @@ public class LctreController {
 			}
 		}
 
-		return url;	
+		return null;	
 		}	
 	
 	
@@ -404,12 +413,18 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value="/courseList",produces = "application/text; charset=utf8")
+	@RequestMapping(value="/courseComplete",produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String deleteCourseComplete(HttpServletRequest request, HttpSession session) throws ServletException, IOException{
-		String url = "redirect:courseList";
+	public String courseComplete(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		HttpSession session = request.getSession();
+		String loginUser = "Guest";
+		
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
+		
+		//String loginUser = (String) session.getAttribute("loginUser");
 		
 		ReqstVO reqstVO= new ReqstVO();;
 		Intrst_ListVO intrst_ListVO= new Intrst_ListVO();
@@ -424,13 +439,13 @@ public class LctreController {
 		
 		if((resultArr_1==null&&resultArr_2!=null)||(resultArr_1!=null&&resultArr_2!=null)){
 		for (int i = 0; i < resultArr_2.length; i++) { 
-			reqstVO.setRe_Stdnt_No(st_Stdnt_No);
+			reqstVO.setRe_Stdnt_No(loginUser);
 			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
+			intrst_ListVO.setIn_Stdnt_No(loginUser);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
 			//reqstVO.setRe_Lctre_No(intrst_ListVO.getIn_Lctre_No());
 			lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
-			System.out.println("============== 11111111111 reqstVO.getRe_Lctre_No() "+reqstVO.getRe_Lctre_No());
+			//System.out.println("============== 11111111111 reqstVO.getRe_Lctre_No() "+reqstVO.getRe_Lctre_No());
 			try {
 				reqstService.deleteReqst(reqstVO,lctre_SearchVO);
 				intrst_ListService.deleteIntrst_List(intrst_ListVO);
@@ -442,7 +457,7 @@ public class LctreController {
 		if(resultArr_1!=null&&resultArr_2 == null){
 		for (int i = 0; i < resultArr_1.length; i++) {
 			//if(resultArr_1[i] != null && resultArr_2[i] == null){
-			intrst_ListVO.setIn_Stdnt_No(st_Stdnt_No);
+			intrst_ListVO.setIn_Stdnt_No(loginUser);
 			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 			try {
 				intrst_ListService.deleteIntrst_List(intrst_ListVO);	
@@ -452,20 +467,8 @@ public class LctreController {
 			}
 		//}	
 		}
-		return url;
+		return null;
 	}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

@@ -62,6 +62,9 @@ public class Lctre_video_ProfsrController implements ApplicationContextAware{
 	@Autowired
 	private Lctre_Video_ProfsrService lctre_VideoSvc;
 	
+	@Autowired
+	private Lctre_Video_StdntService lctre_Video_StdntSvc;
+	
 	/**
 	 * <pre>
 	 * 제너레이터 게시판의 리스트를 출력해준다
@@ -86,7 +89,7 @@ public class Lctre_video_ProfsrController implements ApplicationContextAware{
 		if (loginRole=="ROLE_PRO" || loginRole.equals("ROLE_PRO")){
 			url = "lecture/video/video_ProfsrList";
 		}else if (loginRole=="ROLE_STD" || loginRole.equals("ROLE_STD")){
-			url = "lecture/video/video_ProfsrList";
+			return "redirect:video_StdntList?table_Nm="+table_Nm;
 		}
 		
 		if (tpage ==null){
@@ -319,6 +322,7 @@ public class Lctre_video_ProfsrController implements ApplicationContextAware{
 		try {
 			System.out.println("lctre_Video_Gnt : "+lctre_Video_Gnt);
 			lctre_VideoSvc.deleteLctre_Video(lctre_Video_Gnt);
+//			lctre_Video_StdntSvc
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

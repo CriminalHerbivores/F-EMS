@@ -15,19 +15,58 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="Manage" type="com.uni.fems.dto.ManageVO" />
 	<typeAlias alias="bbs_listvo" type="com.uni.fems.dto.Bbs_ListVO" />
+	<typeAlias alias="lctreVO" type="com.uni.fems.dto.LctreVO" />
 	
 	<!-- <select id="selectManage" parameterClass="str" resultClass="Manage">
 		select * from Manage 
 		where mng_Univ_Nm=#mng_Univ_Nm# 
 	</select> -->
 	
+	<!-- 학교 정보 가져오기 -->
 	<select id="getManage" resultClass="Manage">
 		select * from Manage 
 	</select>
 	
+	<!-- 메뉴 가져오기 -->
 	<select id="getBbsList" parameterClass="str" resultClass="bbs_listvo">
 		select * from bbs_list
 		where bl_use_ennc='y'
 		and bl_table_nm like #name#||'%'
 	</select>
+	
+	<!-- 학생 강의 메뉴 가져오기 -->
+	<select id="getStdntList" parameterClass="str" resultClass="lctreVO">
+		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
+		from reqst rq, lctre lc
+		where LC_OPEN_AT = 'y'
+		and LC_LCTRE_EVL_SCORE  = 0
+		and (select extract(year from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
+		and (case when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
+				       when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2
+				       else 1
+		   end) = (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
+				       when (extract(month from(sysdate)) between 8 and 12) THEN 2
+				       else 1
+			  end)
+		and rq.RE_LCTRE_NO = lc.LC_LCTRE_NO
+		and rq.RE_STDNT_NO = #loginUser#
+	</select>
+	
+	<!-- 교수 강의 메뉴 가져오기 -->
+	<select id="getProfsrList" parameterClass="str" resultClass="lctreVO">
+		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
+		from lctre lc
+		where LC_OPEN_AT = 'y'
+		and LC_LCTRE_EVL_SCORE  = 0
+		and (select extract(year from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
+		and (case when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
+		       when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2
+		       else 1
+		  end) = (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
+		       when (extract(month from(sysdate)) between 8 and 12) THEN 2
+		       else 1
+		  end)
+		and lc_profsr_no = #loginUser#
+	</select>
+	
 </sqlMap>

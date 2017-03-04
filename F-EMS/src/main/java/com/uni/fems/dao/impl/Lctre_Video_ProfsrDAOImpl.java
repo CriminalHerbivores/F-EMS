@@ -71,6 +71,12 @@ public class Lctre_Video_ProfsrDAOImpl implements Lctre_Video_ProfsrDAO {
 		int result = client.update("deleteLctre_Video_Profsr", lctre_Video_Gnt);
 		return result;
 	}
+	
+	@Override
+	public int deleteLctre_Video_Stdnt(Lctre_Video_GntVO lctre_Video_Gnt) throws SQLException {
+		int result = client.update("deleteLctre_Video_Stdnt", lctre_Video_Gnt);
+		return result;
+	}
 
 	
 }

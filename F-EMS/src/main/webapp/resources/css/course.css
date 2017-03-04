@@ -44,11 +44,11 @@
 
 .course-list-l-top {
 	width: 100%;
-	min-height:520px;
-	height: 60%;
+	height:520px;
+	/* height: 60%; */
 	padding: 10px;
 	border: 0px;
-	overflow: auto;
+	overflow-y:scroll;
 	align: top;
 }
 
@@ -64,8 +64,8 @@
 
 .course-list-r-top {
 	width: 100%;
-	min-height:520px;
-	height: 60%;
+	height:520px;
+	/* height: 60%; */
 	padding: 10px;
 	border: 0px;
 	overflow: auto;

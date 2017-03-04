@@ -19,7 +19,9 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
 
 /* 시간표 띄우기 */
 function op_timeTable(){
@@ -44,26 +46,126 @@ function go_searchLctre(){
 }
 
 /* 개설강의 목록에서 추가 */
-function add_Intrst_reqst(form){
+function add_Intrst_reqst(){
+	var userId = $("#userId").val();
+	
+	// name이 같은 체크박스의 값들을 배열에 담는다.
+    var resultVal_1 = [];
+    $("input[name='result_1']:checked").each(function(i) {
+    	resultVal_1.push($(this).val());
+    });
+	
+    var resultVal_2 = [];
+    $("input[name='result_2']:checked").each(function(i) {
+    	resultVal_2.push($(this).val());
+    });
+	
+    var allData = { "userId": userId, "ckArray_1": resultVal_1, "ckArray_2": resultVal_2 };
+	
+    
+    $.ajax({
+        url:"<%=request.getContextPath()%>/course/insertCourse",
+        type:'post',
+        data: allData,
+        success:function(data){
+            alert("완료!");
+            window.opener.location.reload();
+            self.close();
+            
+            
+            
+            $.each(results, function(index) {
+                // your logic goes here.
+            })
+            
+            
+            
+            
+            
+            
+            
+            
+            //$('#insertCourse table > tbody').prepend(data);
+			
+           // $('#insertCourse table > tbody:last').find('tr:first').before(data); 
+            
+            //location.reload(); 
+            
+            
+           // $('#insertCourse tr:first').after('<tr><td>first</td></tr>');
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        },
+        error:function(jqXHR, textStatus, errorThrown){
+            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+            self.close();
+        }
+    });
+    
+    
+    
+    
+    
+    
+    
+	
+/* 
+	var intrstLctre = document.openLctreListForm.getElementsByName("result_1").val();
+	var reqstLctre = document.openLctreListForm.getElementsByName("result_2").val();
+	if(intrstLctre=="" && reqstLctre==""){
+		//document.getElementById("click_false").innerHTML = " 선택된 항목 없음<br>";
+		setInterval(function(){ 
+			document.getElementById("click_false").innerHTML = " 선택된 항목 없음<br>";
+		}, 5000);
+		return;
+	}
+	
+	// re_Lctre_No_1 in_Lctre_No_1
+	var add_reqstLctre = $('#re_Lctre_No_1').val();
+	var add_intrstLctre = $('#in_Lctre_No_1').val();
+	
+	 */
+	
 	alert("수강신청");
-	document.openLctreListForm.submit();
 }
 
 /* 수강완료 목록 */
-function del_intrst_reqst(form){
+function del_intrst_reqst(){
+	//courseComplete
+	
+	
 	alert("수강취소");
 	document.completeForm.submit();
 }
 
 /* 관심목록에서 수강신청 */
-function add_reqst(form){
+function add_reqst(){
+	
+	
+	//courseInterest
+	
+	
+	
+	
+	
+	
 	alert(document.intrstLctreForm.value);
 	document.getElementById("click_rst").innerHTML = "수강신청 좀 제발<br>";
 	document.intrstLctreForm.submit();
 }
 
 /* 관심목록에서 관심 삭제 */
-function del_intrst(form){
+function del_intrst(){
+	
+	
+	
 /*     var a="이것도 테스트!<br>";
     var b="선택 항목 없음!<br>"
     
@@ -82,6 +184,9 @@ function del_intrst(form){
     
    
 }
+
+
+
 
 
 </script>
@@ -165,9 +270,10 @@ function del_intrst(form){
 	
 	
 	<form name="openLctreListForm" method="post">
-			<table class="def-table-full tb-border table-hover">
+			<p id="click_false">&nbsp;</p>
+			<table class="def-table-full tb-border table-hover" id="insertCourse">
 				<thead class="def-table-full fix-mid">
-				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_Intrst_reqst(this.form)"></th>
+				<tr><th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 추가" onclick="add_Intrst_reqst()"></th>
 				<th colspan="11"><h4>개설 강의 목록</h4></th></tr>
 				<tr>
 					<th><label><input type="checkbox" id="check_all_1" class="input_check_1" />관심강의</label></th>
@@ -186,17 +292,17 @@ function del_intrst(form){
 				</tr>
 				</thead>
 				
-				<tbody>
+				<tbody>  
 				<!-- 체크박스 forEach안에서 행마다 연결되게 가능할까? -->
 				<c:forEach items="${openLctreList}" var="openLctre" varStatus="status" >
 				<tr class="slt_ckbox_${status.index}">
 					<td class="select_ckbox_1 select_ckbox_5" id="lc_${status.index}">	
 						<label><input type="checkbox" class="input_check_1 input_check_5 " name="result_1" value="${openLctre.lc_Lctre_No}" />관심
-						<input type="hidden" name="in_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
+						<input type="hidden" id="in_Lctre_No_1" name="in_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
 					
 					<td class="select_ckbox_2 select_ckbox_5" id="re_${status.index}">
 						<label><input type="checkbox" class="input_check_2 input_check_5 " id="ck_all_${status.index}" name="result_2" value="${openLctre.lc_Lctre_No}" />수강
-						<input type="hidden" name="re_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
+						<input type="hidden" id="re_Lctre_No_1" name="re_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
 					<td>${openLctre.lc_Lctre_No}</td>	
 					<td>${openLctre.sit_Subjct}</td>
 					<td>${openLctre.lu_Lctre_Code}-${openLctre.lc_Split}</td>
@@ -225,7 +331,7 @@ function del_intrst(form){
 <div class="text-center">
 			<table  class="def-table-full tb-border table-hover">
 				<tr>
-					<th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_intrst_reqst(this.form)"></th>
+					<th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_intrst_reqst()"></th>
 					<th colspan="11"><h4>수강 신청 완료 목록</h4></th>
 				</tr>
 				<tr>
@@ -247,11 +353,11 @@ function del_intrst(form){
 	 			<c:forEach items="${lctre_SearchVO}" var="lctre" varStatus="status">
 				<tr class="slt_ckbox_${status.index}">
 					<td class="select_ckbox_2">
-						<label><input type="checkbox" class="input_check_2" id="ck_all_${status.index}"  name="result_1" value="${lctre.in_Lctre_No}" />삭제</label>
+						<label><input type="checkbox" class="input_check_2" id="ck_all_${status.index}"  name="result_3" value="${lctre.in_Lctre_No}" />삭제</label>
 						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>  <!-- ${status.count} -->
 					
 					<td class="select_ckbox_1">
-						<label><input type="checkbox" class="input_check_1" name="result_2" value="${lctre.re_Lctre_No}" />취소</label>
+						<label><input type="checkbox" class="input_check_1" name="result_4" value="${lctre.re_Lctre_No}" />취소</label>
 						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
 					<td>${lctre.lc_Lctre_No}</td>
 					<td>${lctre.sit_Subjct}</td>
@@ -299,8 +405,8 @@ function del_intrst(form){
 					</tr>
 				</c:forEach>
 		</table>
-		<button class="def-btn ckbtn-color" value="addReqst" name="btn_result" onclick="add_reqst(this.form)">수강신청</button>&nbsp;&nbsp;
-		<button class="def-btn ckbtn-gray" value="delIntrst" name="btn_result" onclick="del_intrst(this.form)">관심삭제</button>
+		<button class="def-btn ckbtn-color" value="addReqst" name="btn_result" onclick="add_reqst()">수강신청</button>&nbsp;&nbsp;
+		<button class="def-btn ckbtn-gray" value="delIntrst" name="btn_result" onclick="del_intrst()">관심삭제</button>
 
 		</div>
 <p id="click_rst">&nbsp;</p>
