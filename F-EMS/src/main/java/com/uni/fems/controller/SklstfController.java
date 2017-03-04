@@ -1158,6 +1158,18 @@ public class SklstfController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 개설 신청 강의 내역 조회
+	 * </pre>
+	 * <pre>
+	 * @param tpage
+	 * @param lctre_SearchVO
+	 * @param request
+	 * @param model
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping("/profsrRequestLectre")
 	public String profsrRequest(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
 		String url="professor/requestLctreList";
