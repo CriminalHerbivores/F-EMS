@@ -47,21 +47,28 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 				response.sendRedirect(request.getContextPath()+"/auth");
 				return false;
 			}
-			if(list==null){
+			if(list==null || list.isEmpty()){
 				response.sendRedirect(request.getContextPath()+"/auth");
 				return false;
 			}
 			session.setAttribute("lctreList", list);
 		}
+		if(request.getMethod().toString().equals("GET")){
 		if(request.getParameter("table_Nm")==null || request.getParameter("table_Nm").isEmpty()){
 			List<LctreVO> lctreList = (List<LctreVO>) session.getAttribute("lctreList");
 			if(lctreList==null || lctreList.isEmpty()){
 				response.sendRedirect(request.getContextPath()+"/auth");
 				return false;
 			}
-			String url = request.getContextPath()+request.getServletPath()+"?table_Nm="+lctreList.get(0).getLc_Lctre_No();
+			String url = "";
+			if(request.getRequestURL().indexOf("?")<0){
+				url=request.getContextPath()+request.getServletPath()+"?table_Nm="+lctreList.get(0).getLc_Lctre_No();
+			}else{
+				url=request.getContextPath()+request.getServletPath()+"&table_Nm="+lctreList.get(0).getLc_Lctre_No();
+			}
 			response.sendRedirect(url);
 			return false;
+		}
 		}
 		return super.preHandle(request, response, handler);
 	}

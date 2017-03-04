@@ -37,7 +37,14 @@
 		<!-- ////////////////// -->
 	<select id="lctreList" name="lctre" class="combobox-md custom-form-control">
 		<c:forEach items="${lctreList}" var="lctre" varStatus="status">
+			<c:choose>
+			<c:when test="${lctre.lc_Lctre_No == table_Nm}">
+			<option value="${lctre.lc_Lctre_No}" selected>${lctre.lu_lctre_nm}</option>
+			</c:when>
+			<c:otherwise>
 			<option value="${lctre.lc_Lctre_No}">${lctre.lu_lctre_nm}</option>
+			</c:otherwise>
+			</c:choose>
 		</c:forEach>
 	</select>
 		<ul class="accordion-menu_1" id="accordionMenu1_1">
@@ -48,13 +55,13 @@
 				<div>
 					<ul class="sub sub_meun">
 						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=${table_Nm}">공지게시판</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=${table_Nm}">자료게시판</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=${table_Nm}">질의응답게시판</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=${table_Nm}">과제 게시판</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=${table_Nm}">동영상게시판</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=${table_Nm}">시청여부 게시판</a></li></div>
-						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/testList?table_Nm=${table_Nm}">온라인 시험 게시판</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=${table_Nm}">공지</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=${table_Nm}">자료</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=${table_Nm}">질의응답</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=${table_Nm}">과제</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=${table_Nm}">동영상</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=${table_Nm}">시청여부</a></li></div>
+						<div class="inherit-size"><li class="sub-menu-li-1"><a href="<%=request.getContextPath()%>/lctre/testList?table_Nm=${table_Nm}">온라인 시험</a></li></div>
 					</ul>
 				</div>
 			</li>

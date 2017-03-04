@@ -120,12 +120,12 @@ history.go(1);
   <form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover" id="testtable">
 		<tr>
-			<td>
+			<td colspan="3" style="padding-top: 0;padding-bottom: 0; width:500px; ">	
+				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 			<sec:authorize access="hasRole('ROLE_STD')">
-				<table  class="def-table-auto tb-border table-hover" >
-					<tr><th>남은시간</th></tr>
 					<tr>
-						<td>
+						<th>남은 시간</th>
+						<td colspan="2">
 							<div id="clockdiv">
 							  <!-- <div>
 							    <span class="days"></span>
@@ -143,19 +143,15 @@ history.go(1);
 							</div>
 						</td>
 					</tr>
-				</table>
 			</sec:authorize>
-			</td>
-			<td colspan="2" style="padding-top: 0;padding-bottom: 0; width:500px; ">	
-				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 					<tr>
 						<th>시험명</th>
-							<td style="width:70%;"> ${tpNm } 
+							<td style="width:70%;"> ${tpNm} 
 							<input type="hidden" name="an_Tp_No" value="${tpNo }">
 							</td>
 							<th>출제자</th>
 					</tr>
-						<tr>
+					<tr>
 						<th>응시가능기간</th>
 						<td>${tpVO.tp_Start_Dt} &nbsp; ~ &nbsp; ${tpVO.tp_End_Dt}
 						</td>
@@ -218,8 +214,8 @@ history.go(1);
 		
 		<sec:authorize access="hasRole('ROLE_PRO')">
 		<div style="float:right;">
-			<a href="updateTest?tpNo=${tpNo }&tpNm=${tpNm}"><input type="button" class="def-btn btn-md btn-color" value="수정"></a>
-			<a href="deleteTest?tpNo=${tpNo }"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
+			<a href="updateTest?tpNo=${tpNo }&tpNm=${tpNm}&table_Nm=${table_Nm}"><input type="button" class="def-btn btn-md btn-color" value="수정"></a>
+			<a href="deleteTest?tpNo=${tpNo}&table_Nm=${table_Nm}"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
 			<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.back()">
 		</div>
 		</sec:authorize>

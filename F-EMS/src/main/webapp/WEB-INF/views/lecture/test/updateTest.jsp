@@ -162,7 +162,7 @@ function deleteQues(qno){
 		<sec:authorize access="hasRole('ROLE_PRO')">
 <table class="def-table-full"><tr><td style="text-align: right;">
 			<input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
-			<a href="deleteTest?tpNo=${tpNo }"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
+			<a href="deleteTest?tpNo=${tpNo }&table_Nm=${table_Nm}"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
 			<input type="button" class="def-btn btn-md btn-color" value="취소" onclick="history.back()">
 </td></tr></table>
 		</sec:authorize>
