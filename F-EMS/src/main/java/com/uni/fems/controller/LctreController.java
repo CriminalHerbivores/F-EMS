@@ -259,6 +259,47 @@ public class LctreController {
 	
 	/**
 	 * <pre>
+	 * 개설강의 목록을 불러오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * </pre>
+	 */
+	public String getopenLctre(List<Lctre_SearchVO> lctre_SearchVO){
+		String row="";	// 한 행에 값 넣어서 리턴
+		//String tpage = request.getParameter("tpage");
+		
+		//String result=lctre_SearchVO
+		
+//		for(Lctre_SearchVO data : lctre_SearchVO){
+//			row+= "<tr class=\"slt_ckbox_${status.index}\"><td class=\"select_ckbox_1 select_ckbox_5\" id=\"lc_${status.index}\"> "
+//				+"<label><input type=\"checkbox\" class=\"input_check_1 input_check_5\" name=\"result_1\" value=\""+data.getLc_Lctre_No()+"/>관심"	
+//				+"<input type=\"hidden\" name=\"in_Lctre_No\" value=\""+data.getLc_Lctre_No()+"/></label></td>"	
+//				+"<td class=\"select_ckbox_2 select_ckbox_5\" id=\"re_${status.index}\">"	
+//				+"<label><input type=\"checkbox\" class=\"input_check_2 input_check_5 \" id=\"ck_all_${status.index}\" name=\"result_2\" value=\""+data.getLc_Lctre_No()+" />수강"	
+//				+"<input type=\"hidden\" name=\"re_Lctre_No\" value=\""+data.getLc_Lctre_No()+"/></label></td>"
+//				+"<td>"+data.getLc_Lctre_No()+"</td>"
+//				+"<td>"+data.getSit_Subjct()+"</td>"
+//				
+//				+"<td>"+data.getLu_Lctre_Code()+"-"+data.getLc_Split()+"</td>"
+//				+"<td>"+data.getSit_Subjct()+"</td>"
+//				+"<td>"+data.getSit_Subjct()+"</td>"
+//				+"<td>"+data.getSit_Subjct()+"</td>"
+//				+"<td>"+data.getSit_Subjct()+"</td>"
+//				+"<td><a href=\"<%=request.getContextPath() %>/course/lectrePlan?lc_Lctre_No=+"+data.getLc_Lctre_No()+"&tpage="+tpage+">"+data.getLu_Lctre_Nm()+"</a></td>"
+//				+"<td>"+data.getLu_Grade()+"</td>"
+//				+"<td>"+data.getLu_Compl_Se()+"</td>"+"/"+"<td>"+data.getKnd_Lctre_Knd()+"</td>"
+//				+"<td>"+data.getPr_Nm()+"</td>"
+//				+"<td>"+data.getLu_Pnt()+"</td>"
+//				+"<td>"+data.getLc_Lctre_Time()+"</td>"
+//				+"<td>"+data.getLr_Accept_Nmpr()+"</td></tr>";
+//		}
+		return row;
+	}
+	
+	
+	/**
+	 * <pre>
 	 * 개설강의 목록에서 수강신청,관심강의 추가가 가능한 로직
 	 * </pre>
 	 * <pre>
@@ -276,7 +317,9 @@ public class LctreController {
 	public String insertCourse(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
-		String loginUser = "Guest";
+		String loginUser = "";
+		String tpage = request.getParameter("tpage");
+		
 		
 		if(((String) session.getAttribute("loginUser"))!=null){
 			loginUser = ((String) session.getAttribute("loginUser"));
@@ -304,38 +347,34 @@ public class LctreController {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-				}
+			}
 		}
 			
 		if(resultArr_2 !=null){
-		for (int i = 0; i < resultArr_2.length; i++) { 
-			if(resultArr_2[i] !=null){	// 강의 추가한 경우
-				//System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-			reqstVO.setRe_Stdnt_No(loginUser);
-			reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
-			lctre_SearchVO.setLc_Lctre_No(reqstVO.getRe_Lctre_No());
-			lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
-			System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-
-			try {
-				reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
-				//System.out.println("===================555555555 reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-				//System.out.println("===================66666666  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-				
-				intrst_ListService.insertIntrst_List(intrst_ListVO);
-				//System.out.println("===================77777777  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
-			} catch (SQLException e) {
-				e.printStackTrace();
-
-			}
-			
-			}
-
+			for (int i = 0; i < resultArr_2.length; i++) { 
+				if(resultArr_2[i] !=null){	// 강의 추가한 경우
+						//System.out.println("===================33333333  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+					reqstVO.setRe_Stdnt_No(loginUser);
+					reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
+					lctre_SearchVO.setLc_Lctre_No(reqstVO.getRe_Lctre_No());
+					lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
+					System.out.println("===================4444444  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+		
+						try {
+							reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+							//System.out.println("===================555555555 reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+							//System.out.println("===================66666666  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+							intrst_ListService.insertIntrst_List(intrst_ListVO);
+							//System.out.println("===================77777777  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+							
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				}
 			}
 		}
-			}
-		
-		return null;
+		return getopenLctre(null);
 	}
 	
 	
