@@ -40,4 +40,9 @@ public class ManageServiceImpl implements ManageService {
 		return list;
 	}
 
+	@Override
+	public int insertUniv(ManageVO manageVO) throws SQLException {
+		return manageDAO.insertUniv(manageVO);
+	}
+
 }

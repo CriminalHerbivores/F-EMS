@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.dto.EventVO;
+import com.uni.fems.dto.ManageVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
@@ -29,6 +30,7 @@ import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
+import com.uni.fems.service.ManageService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Sklstf_AtrtyService;
 import com.uni.fems.service.Subjct_Info_TableService;
@@ -71,6 +73,8 @@ public class ManageController {
 	private EventService eventService;
 	@Autowired
 	private TuitionService tuitionService;
+	@Autowired
+	private ManageService manageSvc;
 	
 	/**
 	 * <pre>
@@ -367,11 +371,35 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/step1Add")
+	@RequestMapping(value="/step1Add", method=RequestMethod.GET)
 	public String step1Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step1Add";	
+		String url = "admin/layout_control/step1Add";
 		return url;
 	}
+	/**
+	 * <pre>
+	 * 대학 정보 등록 post
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @param manageVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/step1Add", method=RequestMethod.POST)
+	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO) {
+		String url = "redirect:step2Add";
+		try {
+			manageSvc.insertUniv(manageVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return url;
+	}
+	
+	
 	
 	/**
 	 * <pre>
@@ -450,9 +478,10 @@ public class ManageController {
 	 */
 	@RequestMapping("/step1Modify")
 	public String step1Modify(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step1Modify";	
+		String url = "admin/layout_control/step1Modify";
 		return url;
 	}
+	
 		
 	/**
 	 * <pre>
@@ -469,8 +498,6 @@ public class ManageController {
 		String url = "admin/layout_control/step2Modify";	
 		return url;
 	}
-	
-	
 	
 		
 	/**

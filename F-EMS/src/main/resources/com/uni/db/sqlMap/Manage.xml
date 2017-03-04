@@ -22,6 +22,15 @@
 		where mng_Univ_Nm=#mng_Univ_Nm# 
 	</select> -->
 	
+	<!-- 학교 등록하기 -->
+	<update id="insertUniv" parameterClass="Manage">
+		insert into manage(mng_Univ_Nm,mng_Univ_Eng_Nm,mng_Univ_Logo,mng_Post_No,mng_Adres1,mng_Adres2,mng_Tlphon_No,mng_Fax_No,mng_Email,mng_Cpyr,mng_Cpyr,
+		mng_Left_Menu_Use_Ennc,mng_Main_Color,mng_Sub_Color1,mng_Sub_Color2,mng_Reltv_Evl_Rate,mng_Main_Txtclr,mng_Sub_Txtclr1,mng_Sub_Txtclr2,mng_Univ_Img)
+		values(#mng_Univ_Nm#,#mng_Univ_Eng_Nm#,#mng_Univ_Logo#,#mng_Post_No#,#mng_Adres1#,#mng_Adres2#,#mng_Tlphon_No#,#mng_Fax_No#,#mng_Email#,#mng_Cpyr#,
+		#mng_Layout_Knd#,#mng_Left_Menu_Use_Ennc#,#mng_Main_Color#,#mng_Sub_Color1#,#mng_Sub_Color2#,#mng_Reltv_Evl_Rate#,#mng_Main_Txtclr#,#mng_Sub_Txtclr1#,#mng_Sub_Txtclr2#,#mng_Univ_Img#)
+	</update>
+	
+	
 	<!-- 학교 정보 가져오기 -->
 	<select id="getManage" resultClass="Manage">
 		select * from Manage 

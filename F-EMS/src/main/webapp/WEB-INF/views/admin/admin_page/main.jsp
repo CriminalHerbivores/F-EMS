@@ -27,6 +27,7 @@
 <div class="admin-dropdown">
   <button class="admin-dropbtn">레이아웃 설정</button>
   <div class="admin-dropdown-content">
+  	<a href="<%=request.getContextPath()%>/admin/step1Add">대학 추가하기!!!</a>
     <a href="<%=request.getContextPath()%>/admin/step1Modify">대학 정보 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step2Modify">메뉴 사용 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step3Modify">레이아웃 선택</a>
