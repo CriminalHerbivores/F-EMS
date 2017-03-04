@@ -36,7 +36,7 @@
 							<th style="width:9%;">응시자</th>
 								<td>${stdNm}</td>
 							<th>점수</th>
-								<td>몇점</td>
+								<td>${totalScore }</td>
 						</tr>
 					</table>
 				</td>
