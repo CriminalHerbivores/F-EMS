@@ -67,17 +67,14 @@ function add_Intrst_reqst(){
         url:"<%=request.getContextPath()%>/course/insertCourse",
         type:'post',
         data: allData,
-        success:function(data){
+        success:function(i,data){
             alert("완료!");
             window.opener.location.reload();
             self.close();
             
             
             
-            $.each(results, function(index) {
-                // your logic goes here.
-            })
-            
+            $("table.table").append("<tr><td>" + data.member_id + "</td><td>" + data.comment + "</td></tr>");
             
             
             
