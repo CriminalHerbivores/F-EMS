@@ -64,7 +64,7 @@ public class Lctre_TestController {
 	}
 
 	@RequestMapping("/testList")
-	public String testList(Model model,HttpServletRequest request){
+	public String testList(Model model,HttpServletRequest request,int table_Nm){
 		String url = "lecture/test/testList";
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
@@ -73,7 +73,7 @@ public class Lctre_TestController {
 		List<AnswerVO> answerList = null;
 		List<String> answeredSTD = null;
 		try {
-			testlist = test_paperSvc.listAllTestPapaer(50);
+			testlist = test_paperSvc.listAllTestPapaer(table_Nm);
 			answerList = answerSvc.listAllAnswer(loginUser);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -87,9 +87,6 @@ public class Lctre_TestController {
 			Timestamp today = new Timestamp(System.currentTimeMillis());
 			Timestamp start = test.getTp_Start_Dt();
 			Timestamp end = test.getTp_End_Dt();
-			System.out.println("============"+today);
-			System.out.println("============"+start);
-			System.out.println("============"+end);
 				if(today.compareTo(start)<0 ){
 					 flag = "wait";
 					 flaglist.add(flag);
@@ -101,7 +98,6 @@ public class Lctre_TestController {
 					flaglist.add(flag);
 				}
 		}
-		System.out.println("===================="+flaglist);
 		model.addAttribute("flaglist", flaglist);
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
@@ -245,7 +241,6 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("============================"+tpVO.toString());
 		model.addAttribute("tpVO", tpVO);
 		model.addAttribute("Qlist", Qlist);
 		model.addAttribute("tpNm", tpNm.trim());
@@ -262,7 +257,6 @@ public class Lctre_TestController {
 							String[] addques, String[] addca
 							){
 		
-		System.out.println(no1[0]);
 		
 		String url = "redirect:testList";
 		HttpSession session = request.getSession();
@@ -276,7 +270,6 @@ public class Lctre_TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("==========================="+ques.length);
 		
 		if(ques!=null)
 		for(int i=0;i<ques.length;i++){
@@ -417,7 +410,6 @@ public class Lctre_TestController {
 				totalScore +=eachScore;
 		}
 			
-			System.out.println("============================================"+totalScore);
 			
 
 		
