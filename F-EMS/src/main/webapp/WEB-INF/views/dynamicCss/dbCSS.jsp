@@ -197,3 +197,31 @@ border:1px solid ${manageVO.mng_Sub_Color2};
 	
 }
 
+
+<%-- ///////////////////////////////////////////////////////////////// --%>
+
+.accordion-menu_1>li {	<%-- 아코디언 메뉴 상위 --%>
+    overflow:hidden;
+    border:1px solid ${manageVO.mng_Main_Color};
+    cursor:pointer;
+   border-radius:8px;
+   margin-bottom: 10px;
+   <%--border-top-right-radius:8px;	--%>
+}
+
+.accordion-menu_1 li ul.sub li.select {
+    background-color:${manageVO.mng_Sub_Color2};	<%-- 좌측메뉴 서브영역 마우스 선택상태 --%>
+    color:${manageVO.mng_Sub_Txtclr2};
+}
+
+.accordion-menu_1 li .main-title {
+    background-color:${manageVO.mng_Sub_Color1};	<%-- 색상:좌측 메뉴 상위 영역 --%>
+    color:${manageVO.mng_Sub_Txtclr1};
+    padding:10px;	
+    vertical-align:middle;
+    position:relative;
+    z-index:100;
+    <%-- border-radius:6px; --%>	
+}
+
+
