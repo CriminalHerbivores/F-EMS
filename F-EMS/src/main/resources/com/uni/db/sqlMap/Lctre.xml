@@ -142,4 +142,15 @@
 		lc_Term like #lc_Term#
 		</isNotNull>
 	</select>
+	
+	<update id="updateSplit" parameterClass="lctre_Search">
+		update lctre
+		set 
+			lc_split=trim(to_char((select nvl((max(lc_split)+1),0) from lctre where lc_lctre_code = #lc_Lctre_Code#
+		and (case when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
+		when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2 else 1 end) 
+		= (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
+		when (extract(month from(sysdate)) between 8 and 12) THEN 2 else 1 end)),'00'))
+		where lc_Lctre_No=#lc_Lctre_No#
+	</update>
 </sqlMap>
