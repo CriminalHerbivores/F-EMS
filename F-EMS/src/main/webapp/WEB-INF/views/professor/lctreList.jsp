@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<h2>강의 개설 요청</h2><br/>
+<h2>강의 조회</h2><br/>
 	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 	<form name="searchForm">
 	<table class="def-table-full"><tr><td style="text-align: left;">
@@ -33,15 +33,11 @@
 		<th>개설학기</th>
 		<th>개설여부</th>
 	</tr>
-	<!-- 로그인한 교수가 개설요청한 강의목록 가져오기 -->
 	<c:forEach items="${lctre_SearchVO}" var="lctre">
 	<tr>
 		<td>${lctre.lc_Lctre_Code} - ${lctre.lc_Split}</td>
-		<sec:authorize access="hasRole('ROLE_PRO')">
 		<td><a href="detailLctre?lc_Lctre_No=${lctre.lc_Lctre_No}">${lctre.lu_Lctre_Nm}</a></td>
-		</sec:authorize>
 		<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
-		<td><a href="updateLctre?lc_Lctre_No=${lctre.lc_Lctre_No}">${lctre.lu_Lctre_Nm}</a></td>
 		<td>${lctre.pr_Profsr_No}</td>
 		</sec:authorize>
 		<td>${fn:substring(lctre.lc_Lctrbgn_Dt,0,4)} - ${lctre.lc_Term}</td><!-- 개설일 년도 가져와야 할거같음 -->
@@ -59,7 +55,7 @@
 </table>
 
 <table class="def-table-full"><tr><td style="text-align: right;">
-	<a href="profsrLctreList"><input type="button" value="기존강의" class="def-btn btn-sm btn-color"></a>
+	<a href="profsrRequestLectre"><input type="button" value="개설강의" class="def-btn btn-sm btn-color"></a>
 </td></tr></table>
 
 </body>

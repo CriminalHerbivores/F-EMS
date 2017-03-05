@@ -146,7 +146,16 @@ public interface Lctre_GntDAO {
 	 * </pre>
 	 */
 	void insertLctreTable_Watch(String table_nm) throws SQLException;
-
+	
+	/**<pre>
+	 * 강의 제너레이터 삭제
+	 * </pre>
+	 * <pre>
+	 * @param lctre_Table_Nm
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void dropLctre_Table(String table_nm) throws SQLException;
 
 	
 }
