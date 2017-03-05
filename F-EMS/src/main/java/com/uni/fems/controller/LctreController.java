@@ -266,7 +266,7 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	public List<Lctre_SearchVO> getopenLctre(){
+	public List<Lctre_SearchVO> getOpenLctre(){
 		
 		List<Lctre_SearchVO> openLctreList = new ArrayList<>();
 		for(int i=0; i<openLctreList.size(); i++){
@@ -289,38 +289,9 @@ public class LctreController {
 		}
 		
 		return openLctreList;
-		
-			
-		//String row="";	// 한 행에 값 넣어서 리턴
-		//String tpage = request.getParameter("tpage");
-		
-		//String result=lctre_SearchVO
-		
-//		for(Lctre_SearchVO data : lctre_SearchVO){
-//			row+= "<tr class=\"slt_ckbox_${status.index}\"><td class=\"select_ckbox_1 select_ckbox_5\" id=\"lc_${status.index}\"> "
-//				+"<label><input type=\"checkbox\" class=\"input_check_1 input_check_5\" name=\"result_1\" value=\""+data.getLc_Lctre_No()+"/>관심"	
-//				+"<input type=\"hidden\" name=\"in_Lctre_No\" value=\""+data.getLc_Lctre_No()+"/></label></td>"	
-//				+"<td class=\"select_ckbox_2 select_ckbox_5\" id=\"re_${status.index}\">"	
-//				+"<label><input type=\"checkbox\" class=\"input_check_2 input_check_5 \" id=\"ck_all_${status.index}\" name=\"result_2\" value=\""+data.getLc_Lctre_No()+" />수강"	
-//				+"<input type=\"hidden\" name=\"re_Lctre_No\" value=\""+data.getLc_Lctre_No()+"/></label></td>"
-//				+"<td>"+data.getLc_Lctre_No()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				
-//				+"<td>"+data.getLu_Lctre_Code()+"-"+data.getLc_Split()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td><a href=\"<%=request.getContextPath() %>/course/lectrePlan?lc_Lctre_No=+"+data.getLc_Lctre_No()+"&tpage="+tpage+">"+data.getLu_Lctre_Nm()+"</a></td>"
-//				+"<td>"+data.getLu_Grade()+"</td>"
-//				+"<td>"+data.getLu_Compl_Se()+"</td>"+"/"+"<td>"+data.getKnd_Lctre_Knd()+"</td>"
-//				+"<td>"+data.getPr_Nm()+"</td>"
-//				+"<td>"+data.getLu_Pnt()+"</td>"
-//				+"<td>"+data.getLc_Lctre_Time()+"</td>"
-//				+"<td>"+data.getLr_Accept_Nmpr()+"</td></tr>";
-//		}
-//		return row;
 	}
+
+	
 	
 	
 	/**
@@ -399,7 +370,7 @@ public class LctreController {
 				}
 			}
 		}
-		return getopenLctre();
+		return getOpenLctre();
 	}
 	
 	
@@ -460,7 +431,7 @@ public class LctreController {
 			}
 		}
 
-		return getopenLctre();	
+		return getOpenLctre();	
 		}	
 	
 	
@@ -531,7 +502,7 @@ public class LctreController {
 			}
 		//}	
 		}
-		return getopenLctre();
+		return getOpenLctre();
 	}	
 	
 	
