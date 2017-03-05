@@ -141,6 +141,14 @@
 
 
 		<!-- ////////////////////////////////////////////////////////// -->
+		
+		<!-- SMS : json-simple -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		
 		<!-- spring-orm 3.2.9 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
