@@ -90,5 +90,9 @@ public class Lctre_GntDAOImpl implements Lctre_GntDAO {
 	public void insertLctreTable_Watch(String table_nm)throws SQLException{
 		client.insert("insertLctreTable_Watch", table_nm);
 	}
+	@Override
+	public void dropLctre_Table(String table_nm) throws SQLException {
+		client.update("dropLctreTable", table_nm);
+	}
 
 }

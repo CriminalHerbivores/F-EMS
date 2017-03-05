@@ -3,6 +3,7 @@ package com.uni.fems.dao;
 import java.sql.SQLException;
 
 import com.uni.fems.dto.KindVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 
 /**
  * <pre>
@@ -40,6 +41,6 @@ public interface KindDAO {
 	 * @param knd_Lctre_No
 	 * @throws SQLException
 	 */
-	void updateKind(int knd_Lctre_No) throws SQLException;
+	void updateKind(Lctre_SearchVO knd_Lctre_No) throws SQLException;
 	
 }

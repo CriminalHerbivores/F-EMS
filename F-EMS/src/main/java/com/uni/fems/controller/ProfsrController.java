@@ -262,16 +262,14 @@ public class ProfsrController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/updateLctre", method = RequestMethod.POST)
-	String lctreUpdate(Model model, LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, int knd_Lctre_No) throws ServletException, IOException {
+	String lctreUpdate(Lctre_SearchVO lctreVO) throws ServletException, IOException {
 		String url = "redirect:openLctreList";
 		
 		try {
-			lctreService.updateLctre(lctreVO,lctre_ActplnVO,knd_Lctre_No);
+			lctreService.updateLctre(lctreVO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("lctreVO", lctreVO);
-		model.addAttribute("lctre_ActplnVO", lctre_ActplnVO);
 
 		return url;
 	}
@@ -364,7 +362,35 @@ public class ProfsrController {
 		
 		return url;
 	}
-	
+
+	/**
+	 * <pre>
+	 * 직원이 개설 강의 및 강의계획서 조회
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/detailLctre")
+	String detailLctre(Model model, int lc_Lctre_No) throws ServletException, IOException {
+		String url = "professor/detailLctre";
+		Lctre_SearchVO vo = new Lctre_SearchVO();
+		
+		try {
+			vo = lctreService.getDetailLctre(lc_Lctre_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(vo.toString());
+		model.addAttribute("lctre_SearchVO", vo);
+		return url;
+	}
+
 	/**
 	 * <pre>
 	 * 진행 중인 강의의 성적 관리

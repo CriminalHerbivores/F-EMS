@@ -3,6 +3,7 @@ package com.uni.fems.dao;
 import java.sql.SQLException;
 
 import com.uni.fems.dto.Lctre_ActplnVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 
 /**
  * <pre>
@@ -49,6 +50,6 @@ public interface Lctre_ActplnDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO) throws SQLException;	//강의계획서 수정
+	void updateLctre_Actpl(Lctre_SearchVO lctre_ActplnVO) throws SQLException;	//강의계획서 수정
 
 }
