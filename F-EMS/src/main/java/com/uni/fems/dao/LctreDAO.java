@@ -141,6 +141,16 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 */
 	void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
-	
+	/**
+	 * <pre>
+	 * 분반을 설정
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 }
 

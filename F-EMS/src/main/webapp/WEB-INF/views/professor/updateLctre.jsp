@@ -247,7 +247,7 @@
 	 <a href="profsrLctreList?pr_Profsr_No=${lctre_SearchVO.pr_Profsr_No}"><input type="button" class="def-btn btn-md btn-color"  value="교수이력조회"></a>&nbsp;&nbsp;
 	 <c:choose>
 	 <c:when test="${lctre_SearchVO.lc_Open_At =='n'}"> 
-	 <a href="allowLctre?lc_Lctre_No=${lctre_SearchVO.lc_Lctre_No}"><input type="button" class="def-btn btn-md btn-color"  value="개설승인"></a>&nbsp;&nbsp;
+	 <a href="allowLctre?lc_Lctre_No=${lctre_SearchVO.lc_Lctre_No}&lc_Lctre_Code=${lctre_SearchVO.lc_Lctre_Code}"><input type="button" class="def-btn btn-md btn-color"  value="개설승인"></a>&nbsp;&nbsp;
 	 </c:when>
 	 <c:when test="${lctre_SearchVO.lc_Open_At =='y'}"> 
 	 <a href="refuseLctre?lc_Lctre_No=${lctre_SearchVO.lc_Lctre_No}"><input type="button" class="def-btn btn-md btn-color"  value="개설거부"></a>&nbsp;&nbsp;

@@ -123,11 +123,24 @@ public interface LctreService {
 	int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 
 	/**
+	 * <pre>
 	 * 개설 강의 승인
+	 * </pre>
+	 * <pre>
 	 * @param lc_Lctre_No
 	 * @throws SQLException
+	 * <pre>
 	 */
 	void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
-	
-	
+	/**
+	 * <pre>
+	 * 분반을 설정
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 }
