@@ -112,6 +112,12 @@ public class LctreServiceImpl implements LctreService {
 	@Override
 	public void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		lctreDAO.allowLctre(lctre_SearchVO);
+		lctreDAO.updateSplit(lctre_SearchVO);
+	}
+
+	@Override
+	public void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		lctreDAO.updateSplit(lctre_SearchVO);
 	}
 
 

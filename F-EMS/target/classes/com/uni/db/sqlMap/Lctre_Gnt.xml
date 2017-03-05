@@ -96,8 +96,8 @@
 		)
 	</update>
 	<insert id="insertLctreTable_Date" parameterClass="str">
-		insert into LCTRE_D$table_Nm$(LD_BBS_NO,LD_SJ,LD_CN,LD_WRITNG_DT,LD_RDCNT,LD_FLPTH_NO) 
-		values(0,'강의 생성','자료 게시판이 생성되었습니다.',sysdate,0,null)
+		insert into LCTRE_D$table_Nm$(LD_BBS_NO,LD_SJ,LD_CN,LD_WRITNG_DT,LD_RDCNT) 
+		values(0,'강의 생성','자료 게시판이 생성되었습니다.',sysdate,0)
 	</insert>
 	<insert id="insertLctreTable_Notice" parameterClass="str">
 		insert into LCTRE_N$table_Nm$(LN_BBS_NO,LN_SJ,LN_CN,LN_WRITNG_DT,LN_RDCNT) 
@@ -108,8 +108,8 @@
 		values(0,null,'강의 생성','질의 응답 게시판이 생성되었습니다.',null,sysdate,0)
 	</insert>
 	<insert id="insertLctreTable_Task" parameterClass="str">
-		insert into LCTRE_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,LT_WRITNG_DT,LD_FLPTH_NO) 
-		values(0,null,'강의 생성','과제 게시판이 생성되었습니다.',sysdate,null)
+		insert into LCTRE_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,LT_WRITNG_DT) 
+		values(0,null,'강의 생성','과제 게시판이 생성되었습니다.',sysdate)
 	</insert>
 	<insert id="insertLctreTable_Video" parameterClass="str">
 		insert into LCTRE_V$table_Nm$(LV_BBS_NO,LV_SJ,LV_CN,LV_start_DT,LV_End_DT,LV_Time,LV_FLPTH_NO) 

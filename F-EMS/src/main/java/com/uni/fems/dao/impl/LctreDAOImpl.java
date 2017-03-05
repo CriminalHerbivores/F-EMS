@@ -121,6 +121,10 @@ public class LctreDAOImpl implements LctreDAO {
 	public void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		client.update("allowLctre",lctre_SearchVO);
 	}
+	@Override
+	public void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		client.update("updateSplit",lctre_SearchVO);
+	}
 	
 	
 }
