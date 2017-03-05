@@ -269,7 +269,8 @@
 		p:client-ref="sqlMapClient" />
 
 	<bean id="lctre_ActplnService" class="com.uni.fems.service.impl.Lctre_ActplnServiceImpl"
-		p:lctre_ActplnDAO-ref="lctre_ActplnDAO" p:lctre_GntDAO-ref="lctre_GntDAO" />
+		p:lctre_ActplnDAO-ref="lctre_ActplnDAO" 
+		p:lctre_GntDAO-ref="lctre_GntDAO" />
 
 	<bean id="usersDAO" class="com.uni.fems.dao.impl.UsersDAOImpl"
 		p:client-ref="sqlMapClient" />

@@ -72,8 +72,22 @@
 	
 	
 	<!-- 강의 수정 -->
-	<update id="updateLctre" parameterClass="lctre">
-		update lctre set lc_Profsr_No=#lc_Profsr_No#,lc_Lctrbgn_Dt=#lc_Lctrbgn_Dt#,lc_Lctre_Nmpr=#lc_Lctre_Nmpr#,lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,lc_Lctre_Time=#lc_Lctre_Time#,lc_Lctrum_No=#lc_Lctrum_No#,lc_Open_At=#lc_Open_At#,lc_Lctre_Org=#lc_Lctre_Org#,lc_Lctre_Evl_Score=#lc_Lctre_Evl_Score#,lc_Split=#lc_Split#
+	<update id="updateLctre" parameterClass="lctre_Search">
+		update lctre 
+		set 
+			lc_Wik_Lctre_Dayweek=#lc_Wik_Lctre_Dayweek#,
+			lc_Lctre_Time=#lc_Lctre_Time#,
+			lc_Open_At=#lc_Open_At#,
+			lc_Lctre_Org=#lc_Lctre_Org#,
+			lc_Lctrum_No=#lc_Lctrum_No#
+		where lc_Lctre_No=#lc_Lctre_No#
+	</update>
+	
+	<!-- 강의 개설 승인 -->
+	<update id="allowLctre" parameterClass="lctre_Search">
+		update lctre 
+		set 
+			lc_Open_At=#lc_Open_At#
 		where lc_Lctre_No=#lc_Lctre_No#
 	</update>
 	

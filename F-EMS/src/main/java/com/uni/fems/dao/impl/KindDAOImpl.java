@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.KindDAO;
 import com.uni.fems.dto.KindVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 
 /**
  * <pre>
@@ -35,7 +36,7 @@ public class KindDAOImpl implements KindDAO {
 	}
 
 	@Override
-	public void updateKind(int knd_Lctre_No) throws SQLException {
+	public void updateKind(Lctre_SearchVO knd_Lctre_No) throws SQLException {
 		client.update("updateKind",knd_Lctre_No);
 	}
 	

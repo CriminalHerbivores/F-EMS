@@ -135,6 +135,14 @@ hr태그 학생>성적조회 참고
 		</td>
 	</tr>
 </table>
+
+<!-- 왼쪽과 오른쪽에 버튼을 한꺼번에 쓰고 싶을때 -->
+<input type="button" class="def-btn btn-md btn-color"  value="교수이력조회">&nbsp;&nbsp; 
+<div class="float-right">
+<input type="button" class="def-btn btn-md btn-color"  value="수정">&nbsp;&nbsp; 
+<input type="button" class="def-btn btn-md btn-gray"  value="취소"><br />
+</div>
+
 <br/><br/><br/>
 </body>
 </html>
