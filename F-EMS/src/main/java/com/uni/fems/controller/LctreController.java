@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -265,8 +266,32 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	public String getopenLctre(List<Lctre_SearchVO> lctre_SearchVO){
-		String row="";	// 한 행에 값 넣어서 리턴
+	public List<Lctre_SearchVO> getopenLctre(){
+		
+		List<Lctre_SearchVO> openLctreList = new ArrayList<>();
+		for(int i=0; i<openLctreList.size(); i++){
+			Lctre_SearchVO vo=new Lctre_SearchVO();
+			vo.getLc_Lctrum_No();
+			vo.getSit_Subjct();
+			vo.getLu_Lctre_Code();
+			vo.getLc_Split();
+			vo.getLu_Lctre_Nm();
+			vo.getLu_Grade();
+			vo.getLu_Compl_Se();
+			vo.getKnd_Lctre_Knd();
+			vo.getPr_Nm();
+			vo.getLu_Pnt();
+			vo.getLc_Lctre_Time();
+			vo.getLc_Lctre_Nmpr();
+			vo.getLr_Accept_Nmpr();
+			
+			openLctreList.add(vo);
+		}
+		
+		return openLctreList;
+		
+			
+		//String row="";	// 한 행에 값 넣어서 리턴
 		//String tpage = request.getParameter("tpage");
 		
 		//String result=lctre_SearchVO
@@ -294,7 +319,7 @@ public class LctreController {
 //				+"<td>"+data.getLc_Lctre_Time()+"</td>"
 //				+"<td>"+data.getLr_Accept_Nmpr()+"</td></tr>";
 //		}
-		return row;
+//		return row;
 	}
 	
 	
@@ -314,7 +339,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/insertCourse", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String insertCourse(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+	public List<Lctre_SearchVO> insertCourse(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "";
@@ -374,7 +399,7 @@ public class LctreController {
 				}
 			}
 		}
-		return getopenLctre(null);
+		return getopenLctre();
 	}
 	
 	
@@ -390,7 +415,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseInterest", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String courseInterest(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+	public List<Lctre_SearchVO> courseInterest(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "Guest";
@@ -435,7 +460,7 @@ public class LctreController {
 			}
 		}
 
-		return null;	
+		return getopenLctre();	
 		}	
 	
 	
@@ -454,7 +479,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseComplete",produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String courseComplete(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+	public List<Lctre_SearchVO> courseComplete(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "Guest";
@@ -506,7 +531,7 @@ public class LctreController {
 			}
 		//}	
 		}
-		return null;
+		return getopenLctre();
 	}	
 	
 	
