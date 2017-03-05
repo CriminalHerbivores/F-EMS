@@ -52,9 +52,11 @@ function go_searchLctre(){
 /* <1구역> 개설강의 목록에서 추가 */
 function add_Intrst_reqst(){
 
-	 $.ajax({
+	  $.ajax({
 	        url:'<%=request.getContextPath()%>/course/insertCourse',
+	        contentType:'application/json; charset=utf-8',
 	        type:'post',
+	        dataType: 'json',
 	        data: {
 	        	result_1: $('#result_1').val(), 
 	        	result_2: $('result_2').val(), 
@@ -107,7 +109,9 @@ function add_Intrst_reqst(){
 	    		            /* 관심등록 목록 */
 		$.ajax({
 	    		        url:'<%=request.getContextPath()%>/course/courseInterest',
+	    		        contentType:'application/json; charset=utf-8',
 	    		        type:'post',
+	    		        dataType: 'json',
 	    		        data: {
 	    		        	in_Lctre_No: $('#in_Lctre_No').val(),
 	    		    		lu_Lctre_Code: $('#lu_Lctre_Code').val(),
@@ -143,7 +147,9 @@ function add_Intrst_reqst(){
 		   /* 수강신청 완료 목록 */
 	    		 $.ajax({
 	    		        url:'<%=request.getContextPath()%>/course/courseComplete',
+	    		        contentType:'application/json; charset=utf-8',
 	    		        type:'post',
+	    		        dataType: 'json',
 	    		        data: {
 	    		        	resultVal_3: $('#result_3').val(), 
 	    		    		resultVal_4: $('result_4').val(), 
@@ -200,37 +206,8 @@ function add_Intrst_reqst(){
 	    		   
 	    		   
 	    	//==================================================================================================	   
-	    		   
-	    		   
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	alert("수강신청");
-}
+		alert("수강신청");
+	}
 
 
 
@@ -636,10 +613,11 @@ function del_intrst(){
 				</tr></thead>
 				<tbody>
 				<c:forEach items="${intrstLctreList}" var="intrst">
-					<tr id="intrstList_tr"><td>${intrst.in_Lctre_No}</td>
-					<td class="select_ckbox_6">
-						<label><input type="checkbox" class="input_check_6" name="result" value="${intrst.in_Lctre_No}" />
-						${intrst.lu_Lctre_Code }-${intrst.lc_Split }</label></td>
+					<tr id="intrstList_tr">
+						<td class="select_ckbox_6">
+							<label><input type="checkbox" class="input_check_6" name="result" value="${intrst.in_Lctre_No}" />
+							${intrst.lu_Lctre_Code }-${intrst.lc_Split }</label></td>
+						<td>${intrst.in_Lctre_No}</td>
 						<td><a href="#" >${intrst.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
 					</tr>
 				</c:forEach>

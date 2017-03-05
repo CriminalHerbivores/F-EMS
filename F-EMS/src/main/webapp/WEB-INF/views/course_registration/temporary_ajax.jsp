@@ -20,6 +20,7 @@ function add_Intrst_reqst(){
             /* 개설강의목록 */
     $.ajax({
         url:'<%=request.getContextPath()%>/course/insertCourse',
+        contentType:'application/json; charset=utf-8',
         type:'post',
         dataType: 'json',
         data: {
@@ -74,6 +75,7 @@ function add_Intrst_reqst(){
     		            /* 관심등록 목록 */
 	$.ajax({
     		        url:'<%=request.getContextPath()%>/course/courseInterest',
+    		        contentType:'application/json; charset=utf-8',
     		        type:'post',
     		        dataType: 'json',
     		        data: {
@@ -111,6 +113,7 @@ function add_Intrst_reqst(){
 	   /* 수강신청 완료 목록 */
     		 $.ajax({
     		        url:'<%=request.getContextPath()%>/course/courseComplete',
+    		        contentType:'application/json; charset=utf-8',
     		        type:'post',
     		        dataType: 'json',
     		        data: {
