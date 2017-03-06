@@ -26,19 +26,14 @@
 /* 시간표 띄우기 */
 function op_timeTable(){
 	
-	document.topLctreForm.submit();
-/*  	swal({
-		title : "Are you sure?",
-		text : "You will not be able to recover this imaginary file!",
-		type : "warning",
-		showCancelButton : true,
-		confirmButtonColor : "#DD6B55",
-		confirmButtonText : "닫기",
-		closeOnConfirm : false
-	}, function (){
-		swal("Deleted!", "Your imaginary file has been deleted.", "success");
-	});  */ 
+	/* document.topLctreForm.submit(); */
+/* 	swal({   title: "<small>시간표</small>!",   
+		text: "A custom <span style="color:#F8BB86">html<span> message.",   
+		html: true });
 }
+ */
+
+
 
 /* 개설강의 목록에서 검색하기 */
 function go_searchLctre(){
@@ -48,7 +43,7 @@ function go_searchLctre(){
 
 
 
-<%-- 
+
 
 /* 관심추가 */
 function add_IntrstLctre(){
@@ -221,7 +216,7 @@ function add_IntrstLctre(){
 /* 기존에 하던거... */
 
 /* 개설강의 목록에서 추가 */
-function add_Intrst_reqst(){
+<%-- function add_Intrst_reqst(){
 	var userId = $("#userId").val();
 	
 	// name이 같은 체크박스의 값들을 배열에 담는다.
@@ -332,7 +327,7 @@ function add_Intrst_reqst(){
 <td>${openLctre.lc_Lctre_Time}</td>
 <td>${openLctre.lc_Lctre_Nmpr}</td>
 <td>${openLctre.lr_Accept_Nmpr}</td> 
-    
+     --%>
     
     
     
@@ -406,7 +401,7 @@ function del_reqstLctre(){
     
    
 }
- --%>
+ 
 
 
 
@@ -447,8 +442,8 @@ function del_reqstLctre(){
 				<button class="def-btn float-right">Logout</button></a>
 						</c:otherwise>
 					</c:choose>
-					<input type="button" class="def-btn btn-md btn-color"
-						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()" value="시간표">&nbsp;&nbsp;
+					<a href="<%=request.getContextPath()%>/course/courseTimetable"><input type="button" class="def-btn btn-md btn-color"
+						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()" value="시간표"></a>&nbsp;&nbsp;
 					<input type="button" class="def-btn btn-md btn-gray" onclick="go.history(-1)" value="이전" >
 				</div>
 			</div>

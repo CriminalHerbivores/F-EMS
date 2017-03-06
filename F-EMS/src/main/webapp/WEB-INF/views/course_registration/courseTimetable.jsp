@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.uni.fems.dto.Lctre_SearchVO"%>
+
 <%--
  * <pre>
  * 관심강의 혹은 수강신청완료한 강의들을 시간표로 보여주는 JSP
@@ -23,40 +25,62 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	
-	var lc_Wik_Lctre_Dayweek = $("input[name='lc_Wik_Lctre_Dayweek']").val();
-	var lc_Lctre_Time = $("input[name='lc_Lctre_Time']").val();
-	var lc_Lctrum_No = $("input[name='lc_Lctrum_No']").val();
-	var lu_Lctre_Nm = $("input[name='lu_Lctre_Nm']").val();
-	var bd_Nm = $("input[name='bd_Nm']").val();
-	var pr_Nm = $("input[name='pr_Nm']").val();
-	var lc_Lctre_No = $("input[name='lc_Lctre_No']").val();
-	var lc_Lctre_Code = $("input[name='lc_Lctre_Code']").val();
-	var lc_Split = $("input[name='lc_Split']").val();
+		
+		var lc_Wik_Lctre_Dayweek = $("input[name='lc_Wik_Lctre_Dayweek']").val();
+		var lc_Lctre_Time = $("input[name='lc_Lctre_Time']").val();
+		var lc_Lctrum_No = $("input[name='lc_Lctrum_No']").val();
+		var lu_Lctre_Nm = $("input[name='lu_Lctre_Nm']").val();
+		var bd_Nm = $("input[name='bd_Nm']").val();
+		var pr_Nm = $("input[name='pr_Nm']").val();
+		var lc_Lctre_No = $("input[name='lc_Lctre_No']").val();
+		var lc_Lctre_Code = $("input[name='lc_Lctre_Code']").val();
+		var lc_Split = $("input[name='lc_Split']").val();
 
-	var timeTbValues=[];
-	$("input[class='TimeTale']").each(function(i) {
-		timeTbValues.push($(this).val());
-    });
+		
+		var timeTbValues=[];
 	
-	var allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, "lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, "bd_Nm": bd_Nm, "pr_Nm": pr_Nm, "lc_Lctre_No": lc_Lctre_No, "lc_Lctre_Code": lc_Lctre_Code, "lc_Split": lc_Split}
+	
+	$("input[class='TimeTable']").each(function(i) {
+/* var timeTb ={
+			lc_Wik_Lctre_Dayweek : $("input[name='lc_Wik_Lctre_Dayweek']").val(),
+			lc_Lctre_Time : $("input[name='lc_Lctre_Time']").val(),
+			lc_Lctrum_No : $("input[name='lc_Lctrum_No']").val(),
+			lu_Lctre_Nm : $("input[name='lu_Lctre_Nm']").val(),
+			bd_Nm : $("input[name='bd_Nm']").val(),
+			pr_Nm : $("input[name='pr_Nm']").val(),
+			lc_Lctre_No : $("input[name='lc_Lctre_No']").val(),
+			lc_Lctre_Code : $("input[name='lc_Lctre_Code']").val(),
+			lc_Split : $("input[name='lc_Split']").val()
+		}; */
+		
+		 var allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, 
+						"lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, 
+						"bd_Nm": bd_Nm, "pr_Nm": pr_Nm, "lc_Lctre_No": lc_Lctre_No, 
+						"lc_Lctre_Code": lc_Lctre_Code, "lc_Split": lc_Split}
+				
+		timeTbValues.push(allData); 	/* $(this).val() */
 
-// 요일 처리
-var str=lc_Wik_Lctre_Dayweek;
-var arr = str.split("/");
-var arr1 = arr[0];
-var arr2 = arr[1];
+		
+		
+		
+		// 요일 처리
+		var str=allData.lc_Wik_Lctre_Dayweek;
+		var arr = str.split("/");
+		var arr1 = arr[0];
+		var arr2 = arr[1];
+		
+		var period1=lc_Lctre_Time.split("/")[0].split(",")[0]+"-"+lc_Lctre_Time.split("/")[0].split(",")[1]
+		var period2=lc_Lctre_Time.split("/")[1].split(",")[0]+"-"+lc_Lctre_Time.split("/")[1].split(",")[1]
+		
+		// 강의실 처리
+		var roomNm=lc_Lctrum_No.split("-")[1];
+		
+		var bdNm=bd_Nm.slice(0,1).concat("",bd_Nm.split(" ")[1].slice(0,1)).concat("-",roomNm);
+		
+		//---------------------------------------
+		var rst1 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm+pr_Nm+"<br>";
+		var rst2 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm+pr_Nm+"<br>";
 
-var period1=lc_Lctre_Time.split("/")[0].split(",")[0]+"-"+lc_Lctre_Time.split("/")[0].split(",")[1]
-var period2=lc_Lctre_Time.split("/")[1].split(",")[0]+"-"+lc_Lctre_Time.split("/")[1].split(",")[1]
-
-// 강의실 처리
-var roomNm=lc_Lctrum_No.split("-")[1];
-
-var bdNm=bd_Nm.slice(0,1).concat("",bd_Nm.split(" ")[1].slice(0,1)).concat("-",roomNm);
-
-//---------------------------------------
-var rst1 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm+pr_Nm+"<br>";
-var rst2 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm+pr_Nm+"<br>";
 
 /* var thArray = new Array();
 var contentArray = new Array();
@@ -417,7 +441,7 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 
 });
 
-	
+});
 </script>
 
 </head>
@@ -425,15 +449,31 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 <form id="formm" name="formm">
 <div class="margin-auto">
 	<c:forEach items="${lctre_SearchVO}" var="timeTb">
-		<input type="hidden" class="TimeTale" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
-		<input type="hidden" class="TimeTale" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
-		<input type="hidden" class="TimeTale" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">
-		<input type="hidden" class="TimeTale" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}">
-		<input type="hidden" class="TimeTale" name="bd_Nm" value="${timeTb.bd_Nm}">
-		<input type="hidden" class="TimeTale" name="pr_Nm" value="${timeTb.pr_Nm}">
-		<input type="hidden" class="TimeTale" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}">
-		<input type="hidden" class="TimeTale" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}">
-		<input type="hidden" class="TimeTale" name="lc_Split" value="${timeTb.lc_Split}">
+	 
+<%--  <%
+		var allData= {"lc_Wik_Lctre_Dayweek": '${timeTb.lc_Wik_Lctre_Dayweek}', "lc_Lctre_Time": '${timeTb.lc_Lctre_Time}', 
+						"lc_Lctrum_No": '${timeTb.lc_Lctrum_No}', "lu_Lctre_Nm": '${timeTb.lu_Lctre_Nm}', 
+						"bd_Nm": '${timeTb.bd_Nm}', "pr_Nm": '${timeTb.pr_Nm}', "lc_Lctre_No": '${timeTb.lc_Lctre_No}', 
+						"lc_Lctre_Code": '${timeTb.lc_Lctre_Code}', "lc_Split": '${timeTb.lc_Split}'}
+				
+		timeTbValues.push(allData);
+	 %>  --%>
+	
+<%-- 	<%
+		Lctre_SearchVO vo= new Lctre_SearchVO();
+		vo.setLc_Wik_Lctre_Dayweek();
+	
+	%> --%>
+	
+		<input type="hidden" class="TimeTable" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
+		<input type="hidden" class="TimeTable" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
+		<input type="hidden" class="TimeTable" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">
+		<input type="hidden" class="TimeTable" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}">
+		<input type="hidden" class="TimeTable" name="bd_Nm" value="${timeTb.bd_Nm}">
+		<input type="hidden" class="TimeTable" name="pr_Nm" value="${timeTb.pr_Nm}">
+		<input type="hidden" class="TimeTable" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}">
+		<input type="hidden" class="TimeTable" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}">
+		<input type="hidden" class="TimeTable" name="lc_Split" value="${timeTb.lc_Split}">
 	</c:forEach>
 	
 	<h1>시간표 (${loginUser}&nbsp;&nbsp;<%-- ${lctre_SearchVO.st_Nm} --%>)</h1>
