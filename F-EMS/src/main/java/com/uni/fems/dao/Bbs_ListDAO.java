@@ -87,7 +87,7 @@ public interface Bbs_ListDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int updateBbs_Atrty(Bbs_AtrtyVO bbs_AtrtyVO) throws SQLException;
+	int updateBbs_Atrty(Bbs_List_AtrtyVO bbs_AtrtyVO) throws SQLException;
 
 	/**
 	 * <pre>
@@ -99,7 +99,7 @@ public interface Bbs_ListDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int updateBbs_List(Bbs_ListVO bbs_ListVO) throws SQLException;
+	int updateBbs_List(Bbs_List_AtrtyVO bbs_ListVO) throws SQLException;
 
 	/**
 	 * <pre>
