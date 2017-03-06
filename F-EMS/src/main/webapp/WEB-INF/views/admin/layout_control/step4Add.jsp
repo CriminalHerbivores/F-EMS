@@ -39,20 +39,19 @@
 	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
 			
-			<table class="tb-layout out-border">
-				<tr><td>메인 컬러</td>
+			<table class="def-table-full tb-border table-hover tr-child-color">
+				<tr><th>메인 컬러</th>
 									<td><input type="color" name="mng_Main_Color" value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
-					<td>텍스트 컬러</td>
+					<th>텍스트 컬러</th>
 									<td><input type="color" name="mng_Main_Txtclr" value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td></tr>
-				<tr><td>보조 컬러1</td>
+				<tr><th>보조 컬러1</th>
 									<td><input type="color" name="mng_Sub_Color1" value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
-					<td>텍스트 보조1 </td>
+					<th>텍스트 보조1 </th>
 									<td><input type="color" name="mng_Sub_Txtclr1" value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td></tr>
-				<tr><td>보조 컬러2</td>
+				<tr><th>보조 컬러2</th>
 									<td><input type="color" name="mng_Sub_Color2" value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
-					<td>텍스트 보조2</td>
+					<th>텍스트 보조2</th>
 									<td><input type="color" name="mng_Sub_Txtclr2" value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td></tr>					
-				<tr><td>대학 이미지</td><td colspan="5"><div class="preview-layout margin-auto">여기에 미리보기</div></td></tr>
 			</table>			
 			
 

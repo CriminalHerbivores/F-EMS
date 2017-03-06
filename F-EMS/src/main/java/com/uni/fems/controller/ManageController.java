@@ -410,9 +410,9 @@ public class ManageController {
 			
 			//파일 집어넣기
 			if(!uploadlogo.isEmpty()){
-				FilesVO vo = new FileDownload().uploadFile(uploadlogo);
-				String filePath = "/resources/images/";
-				manageVO.setMng_Univ_Logo(filePath+vo.getFl_File_Nm());
+				String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+				FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
+				manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
 			}
 			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
 			
@@ -498,9 +498,9 @@ public class ManageController {
 		
 		
 		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
-		if(uploadUnivImg!=null){
-			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg);
-			String filePath = "/resources/images/";
+		if(!uploadUnivImg.isEmpty()){
+			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
 			manageVO.setMng_Univ_Img(filePath+vo.getFl_File_Nm());
 		}
 		try {
