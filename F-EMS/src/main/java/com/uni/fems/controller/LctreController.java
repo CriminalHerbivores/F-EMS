@@ -138,7 +138,7 @@ public class LctreController {
 		model.addAttribute("st_No",intrst_ListVO.getIn_Stdnt_No());
 		return url;
 	}
-	
+	// 형기가 한 것
 	@RequestMapping(value ="initData", method = RequestMethod.POST)
 	public @ResponseBody List<Lctre_SearchVO> initData(@RequestBody Intrst_ListVO intrst_ListVO) {
 		List<Lctre_SearchVO> list=null;
