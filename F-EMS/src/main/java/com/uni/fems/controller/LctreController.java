@@ -135,7 +135,6 @@ public class LctreController {
 		}
 		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
 		
-		
 		return url;
 	}
 	

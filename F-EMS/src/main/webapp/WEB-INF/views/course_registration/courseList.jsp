@@ -25,8 +25,9 @@
 
 /* 시간표 띄우기 */
 function op_timeTable(){
- 
-	swal({
+	
+	document.topLctreForm.submit();
+/*  	swal({
 		title : "Are you sure?",
 		text : "You will not be able to recover this imaginary file!",
 		type : "warning",
@@ -36,7 +37,7 @@ function op_timeTable(){
 		closeOnConfirm : false
 	}, function (){
 		swal("Deleted!", "Your imaginary file has been deleted.", "success");
-	}); 
+	});  */ 
 }
 
 /* 개설강의 목록에서 검색하기 */
@@ -47,7 +48,7 @@ function go_searchLctre(){
 
 
 
-
+<%-- 
 
 /* 관심추가 */
 function add_IntrstLctre(){
@@ -218,7 +219,7 @@ function add_IntrstLctre(){
 
 
 /* 기존에 하던거... */
-<%-- 
+
 /* 개설강의 목록에서 추가 */
 function add_Intrst_reqst(){
 	var userId = $("#userId").val();
@@ -355,7 +356,7 @@ function add_Intrst_reqst(){
 	 */
 	
 	alert("수강신청");
-} --%>
+}
 
 /* 수강신청 */
 function add_reqstLctre(){
@@ -405,7 +406,7 @@ function del_reqstLctre(){
     
    
 }
-
+ --%>
 
 
 
@@ -418,6 +419,7 @@ function del_reqstLctre(){
 
 	<!-- 상단바 시작 -->
 	<nav class="navbar top-navbar-inverse" id="topnav">
+	<form name="topLctreForm" method="get">
 		<div class="container-fluid" id="toptable">
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
@@ -442,17 +444,15 @@ function del_reqstLctre(){
 				</c:when>
 						<c:otherwise>
 							<span>${loginUser}</span>&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/logout"><button
-									class="def-btn float-right">Logout</button></a>
+				<button class="def-btn float-right">Logout</button></a>
 						</c:otherwise>
 					</c:choose>
-					<a href="<%=request.getContextPath()%>/course/courseTimetable">
-					<button type="button" class="def-btn btn-md btn-color"
-						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button></a>&nbsp;&nbsp;
+					<input type="button" class="def-btn btn-md btn-color"
+						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()" value="시간표">&nbsp;&nbsp;
 					<input type="button" class="def-btn btn-md btn-gray" onclick="go.history(-1)" value="이전" >
 				</div>
 			</div>
-		</div>
+		</div></form>
 	</nav>
 	<!-- 상단바 끝 -->
 	

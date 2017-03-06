@@ -22,6 +22,7 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
+	
 	var lc_Wik_Lctre_Dayweek = $("input[name='lc_Wik_Lctre_Dayweek']").val();
 	var lc_Lctre_Time = $("input[name='lc_Lctre_Time']").val();
 	var lc_Lctrum_No = $("input[name='lc_Lctrum_No']").val();
@@ -33,7 +34,7 @@ $(document).ready(function () {
 	var lc_Split = $("input[name='lc_Split']").val();
 
 	var timeTbValues=[];
-	$("input[id='TimeTale']").each(function(i) {
+	$("input[class='TimeTale']").each(function(i) {
 		timeTbValues.push($(this).val());
     });
 	
@@ -422,24 +423,17 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 </head>
 <body>
 <form id="formm" name="formm">
+<div class="margin-auto">
 	<c:forEach items="${lctre_SearchVO}" var="timeTb">
-	
-	<%-- <div style="margin:auto">[${timeTb.lc_Lctre_No}]&nbsp;&nbsp;
-	${timeTb.lu_Lctre_Nm}&nbsp;&nbsp;
-	<input type="button" value="${timeTb.lc_Lctre_No}" onclick="return resultLctre('${timeTb.lc_Wik_Lctre_Dayweek}','${timeTb.lc_Lctre_Time}','${timeTb.lc_Lctrum_No}','${timeTb.lu_Lctre_Nm}','${timeTb.bd_Nm}','${timeTb.pr_Nm}','${timeTb.lc_Lctre_No}','${timeTb.lc_Lctre_Code}','${timeTb.lc_Split}')" ><br/>
-	,'${timeTb.bd_Nm}','${timeTb.pr_Nm}'
-	</div> --%>
-	
-	<input type="hidden" id="TimeTale" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}"><br/>
-	<input type="hidden" id="TimeTale" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}"><br/>
-	<input type="hidden" id="TimeTale" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}"><br/>
-	<input type="hidden" id="TimeTale" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}"><br/>
-	<input type="hidden" id="TimeTale" name="bd_Nm" value="${timeTb.bd_Nm}"><br/>
-	<input type="hidden" id="TimeTale" name="pr_Nm" value="${timeTb.pr_Nm}"><br/>
-	<input type="hidden" id="TimeTale" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}"><br/>
-	<input type="hidden" id="TimeTale" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}"><br/>
-	<input type="hidden" id="TimeTale" name="lc_Split" value="${timeTb.lc_Split}"><br/>
-		
+		<input type="hidden" class="TimeTale" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
+		<input type="hidden" class="TimeTale" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
+		<input type="hidden" class="TimeTale" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">
+		<input type="hidden" class="TimeTale" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}">
+		<input type="hidden" class="TimeTale" name="bd_Nm" value="${timeTb.bd_Nm}">
+		<input type="hidden" class="TimeTale" name="pr_Nm" value="${timeTb.pr_Nm}">
+		<input type="hidden" class="TimeTale" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}">
+		<input type="hidden" class="TimeTale" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}">
+		<input type="hidden" class="TimeTale" name="lc_Split" value="${timeTb.lc_Split}">
 	</c:forEach>
 	
 	<h1>시간표 (${loginUser}&nbsp;&nbsp;<%-- ${lctre_SearchVO.st_Nm} --%>)</h1>
@@ -596,7 +590,7 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 	<th>21:00</th>
 	</tr>
 	</table>
-
+</div>
 </form>
 </body>
 </html>
