@@ -394,7 +394,8 @@ public class ManageController {
 	 */
 	@RequestMapping(value="/step1Add", method=RequestMethod.POST)
 	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
-						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2) {
+						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2,
+						String faxNo1, String faxNo2, String faxNo3) {
 		
 		String url = "redirect:step2Add";
 		
@@ -410,13 +411,14 @@ public class ManageController {
 			
 			//파일 집어넣기
 			if(!uploadlogo.isEmpty()){
-				FilesVO vo = new FileDownload().uploadFile(uploadlogo);
-				String filePath = "/resources/images/";
-				manageVO.setMng_Univ_Logo(filePath+vo.getFl_File_Nm());
+				String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+				FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
+				manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
 			}
 			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
-			
+			String faxNo = faxNo1+"-"+faxNo2+"-"+faxNo3;
 			manageVO.setMng_Tlphon_No(phoneNo);
+			manageVO.setMng_Fax_No(faxNo);
 			session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
 		try {
 			if(deleteVO!=null)
@@ -498,10 +500,10 @@ public class ManageController {
 		
 		
 		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
-		if(uploadUnivImg!=null){
-			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg);
-			String filePath = "/resources/images/";
-			manageVO.setMng_Univ_Img(filePath+vo.getFl_File_Nm());
+		if(!uploadUnivImg.isEmpty()){
+			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
+			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
 		}
 		try {
 			manageSvc.updateLayout(manageVO);

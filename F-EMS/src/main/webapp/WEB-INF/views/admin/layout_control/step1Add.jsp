@@ -89,9 +89,16 @@ border:0;
 					<option value="017">017</option>
 					<option value="018">018</option>
 					<option value="019">019</option>
-				</select> 
-				<input type="text" name="phoneNo1" class="def-input-text-sm custom-form-control"  value="${fn:split(manageVO.mng_Tlphon_No, '-')[1]}">
-				<input type="text" name="phoneNo2" class="def-input-text-sm custom-form-control" value="${fn:split(manageVO.mng_Tlphon_No, '-')[2]}"></td></tr> 
+				</select>&nbsp; 
+				- &nbsp;<input type="text" name="phoneNo1" class="def-input-text-sm custom-form-control"  value="${fn:split(manageVO.mng_Tlphon_No, '-')[1]}">&nbsp;-&nbsp;
+				<input type="text" name="phoneNo2" class="def-input-text-sm custom-form-control" value="${fn:split(manageVO.mng_Tlphon_No, '-')[2]}"></td></tr>
+				<tr><th>팩스번호</th>
+				<td>
+				<input type="text" name="faxNo1" class="def-input-text-sm custom-form-control" value="${fn:split(manageVO.mng_Fax_No, '-')[0]}">-
+				<input type="text" name="faxNo2" class="def-input-text-sm custom-form-control" value="${fn:split(manageVO.mng_Fax_No, '-')[1]}">-
+				<input type="text" name="faxNo3" class="def-input-text-sm custom-form-control" value="${fn:split(manageVO.mng_Fax_No, '-')[2]}">
+				</td>
+				</tr>	 
 				<tr><th>저작권 : </th><td><input type="text" name="mng_Cpyr" class="def-input-text-full custom-form-control" value="${manageVO.mng_Cpyr}"></td></tr>
 </table>
 
