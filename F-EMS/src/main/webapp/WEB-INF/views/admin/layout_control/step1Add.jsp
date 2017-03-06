@@ -32,7 +32,7 @@ border:0;
 <body>
 <article>
 
-<form id="step1Add" method="post" name="formm">
+<form id="step1Add" method="post" name="formm" enctype="multipart/form-data">
 	
 	
 	<!-- 상단 -->
@@ -58,10 +58,11 @@ border:0;
 		<div class="set-layout-center">
 <table class="def-table-full tb-border table-hover tr-child-color">
 		<tr><th>대학 이름 : </th><td><input type="text" name="mng_Univ_Nm" class="def-input-text-lg custom-form-control"></td></tr>
+		<input type="hidden" name="univNm" value="">
 		<tr><th>대학 영문 이름 : </th><td><input type="text" name="mng_Univ_Eng_Nm" class="def-input-text-lg custom-form-control"></td></tr>
-		<tr><th>대학 로고 등록 : </th><td> ※ 첨부 파일 이미지 크기는 170*15px 권장 <input type="file" name="mng_Univ_Logo" ></td></tr> 
-		<tr><th>우편번호 : </th><td><input type="text" name="mng_Post_No" class="def-input-text-md custom-form-control"><input type="button" class="def-btn" value="검색"></td></tr>
-		<tr><th>주소 : </th><td><input type="text" name="mng_Adres1" class="def-input-text-lg custom-form-control"> <input type="text" name="mng_Adres2" class="def-input-text-xlg custom-form-control" ></td></tr>
+		<tr><th>대학 로고 등록 : </th><td> ※ 첨부 파일 이미지 크기는 170*15px 권장 <input type="file" name="uploadlogo" ></td></tr> 
+		<tr><th>우편번호 : </th><td><input type="text" name="mng_Post_No" id="zipNum" class="def-input-text-md custom-form-control"><input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td></tr>
+		<tr><th>주소 : </th><td><input type="text" name="mng_Adres1" class="def-input-text-lg custom-form-control" id="addres1" readonly> <input type="text" name="mng_Adres2" class="def-input-text-xlg custom-form-control" ></td></tr>
 		<tr><th>전화번호 : </th><td><select name="mng_Tlphon_No" class="combobox-sm custom-form-control">
 					<option value="02">02</option>
 					<option value="031">031</option>

@@ -16,15 +16,11 @@
 <title></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
 </head>
 <body>
-<div id="detailBbs_Gnt" style="float:left;">
+<h2>강의 과제 게시판</h2><br/>
 	<form name="formm" method="post" action="detailBbs_Gnt">
-		<h2>강의 과제 게시판</h2>
-		<hr>
-		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
+<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>제목</th>
 				<td colspan="3" style="text-align: left;">${lctre_Video_Gnt.lv_Sj}</td>
@@ -50,9 +46,9 @@
 		<br>
 		<!-- 댓글부분 -->
 	</form>
-
+<br/><br/><br/>
 	<!--버튼들  -->
-	<div id="buttons" style="float: right">
+<table class="def-table-full"><tr><td style="text-align: right;">
 		<a href="updateLctre_Video?lv_Bbs_No=${lctre_Video_Gnt.lv_Bbs_No}&table_Nm=${lctre_Video_Gnt.table_Nm}&tpage=${tpage}"> <input
 			type="button" value="수정" class="def-btn btn-md btn-color">
 		</a> <input type="button" class="def-btn btn-md btn-color" data-target="#layerpop"
@@ -60,8 +56,8 @@
 			href="videoList?tpage=${tpage}&table_Nm=${lctre_Video_Gnt.table_Nm }"> <input
 			type="button" class="def-btn btn-md btn-color" value="목록">
 		</a>
-	</div>
-</div>
+</td></tr></table>
+<br/><br/><br/>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">

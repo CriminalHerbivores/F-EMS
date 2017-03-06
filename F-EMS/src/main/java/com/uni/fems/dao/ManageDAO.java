@@ -39,6 +39,26 @@ public interface ManageDAO {
 	ManageVO getManage() throws SQLException;
 	/**
 	 * <pre>
+	 * Manage테이블 가장 마지막 ROW 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ManageVO getlastUniv() throws SQLException;
+	/**
+	 * <pre>
+	 * 학교정보를 수정하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int updateUniv(ManageVO manageVO) throws SQLException;
+	/**
+	 * <pre>
 	 * 게시판 리스트를 가져옴
 	 * </pre>
 	 * <pre>
@@ -81,4 +101,16 @@ public interface ManageDAO {
 	 * </pre>
 	 */
 	int insertUniv(ManageVO manageVO ) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 대학 정보를 삭제하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param univNm
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int deleteUniv(Object univNm) throws SQLException;
 }

@@ -21,7 +21,7 @@
 </head>
 <body>
 <article>
-<form id="step3Add" action="/fems/admin/step4Add" method="post" name="formm">
+<form id="step3Add" method="post" name="formm">
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
@@ -38,15 +38,15 @@
 	<div class="col-sm-8 margin-auto"> 
 		<div class="set-layout-center">
 			<table class="tb-layout out-border text-center">
-				<tr><td><label>1. Login형 <input type="radio" id="imgCheck" name="layout-select" value="layout_login" /></label>
-				</td><td><label>2.복합형 <input type="radio" id="imgCheck" name="layout-select" value="layout_multi" checked="checked"/></label></td></tr>
+				<tr><td><label>1. Login형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="1" /></label>
+				</td><td><label>2.복합형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="2" checked="checked"/></label></td></tr>
 				<tr><td>
 						<img src="<%=request.getContextPath()%>/resources/images/layout_login.png" title="blr" id="blr" class="" />
 						</td><td>
 						<img src="<%=request.getContextPath()%>/resources/images/layout_multi.png" title="blr" id="blr" class="" />
 						</td></tr>
-				<tr><td><label>3. 게시판형 <input type="radio" id="imgCheck" name="layout-select" value="layout_board" /></label>
-				</td><td><label>4. 메뉴 강조형 <input type="radio" id="imgCheck" name="layout-select" value="layout_menu" /></label></td></tr>
+				<tr><td><label>3. 게시판형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="3" /></label>
+				</td><td><label>4. 메뉴 강조형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="4" /></label></td></tr>
 				<tr><td>
 					<img src="<%=request.getContextPath()%>/resources/images/layout_board.png" title="blr" id="blr" class="" />
 				</td><td>
@@ -62,7 +62,7 @@
 <div class="col-sm-2 sidenav">			
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step4Add()">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="submitForm(this.form);">
 	</div>
 	</div>
 
