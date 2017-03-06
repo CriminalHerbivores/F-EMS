@@ -36,7 +36,8 @@ border:0;
 <article>
 
 <form id="step1Add" method="post" name="formm" enctype="multipart/form-data">
-	
+	<input type="hidden" name="mng_Univ_Logo_Ori" value="${manageVO.mng_Univ_Logo}">
+	<input type="hidden" name="mng_Univ_Img_Ori" value="${manageVO.mng_Univ_Img}">
 	
 	<!-- 상단 -->
   <div class="set-layout">
