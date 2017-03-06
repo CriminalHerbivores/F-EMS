@@ -54,6 +54,7 @@
 	
 	<update id="updateBbs_List" parameterClass="bbs_list_atrtyvo">
 		update bbs_list set 
+		bl_Bbs_Nm=#bl_Bbs_Nm#,
 		bl_use_ennc=#bl_Use_Ennc#  
 		where bl_bbs_no=#bl_Bbs_No#
 	</update>
