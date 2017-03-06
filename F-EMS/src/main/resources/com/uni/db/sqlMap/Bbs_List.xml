@@ -24,6 +24,10 @@
 		select count(*) from bbs_list_view where bl_bbs_nm like '%'||#value#||'%' order by bl_bbs_no
 	</select>
 	
+	<select id="getBbs_List" parameterClass="bbs_list_atrtyvo" resultClass="bbs_list_atrtyvo">
+		select * from bbs_list_view where bl_table_nm like #bl_Table_Nm#||'%'
+	</select>	
+	
 	<select id="getBbs_List_Atrty" parameterClass="int" resultClass="bbs_list_atrtyvo">
 		select * from bbs_list_view where bl_bbs_no = #bl_Bbs_No#
 	</select>	

@@ -93,6 +93,13 @@ public class Bbs_ListDAOImpl implements Bbs_ListDAO {
 			throws SQLException {
 		return client.update("insertBbs_Comment_Table_Gnt", name);
 	}
+
+	@Override
+	public List<Bbs_List_AtrtyVO> getBbs_List(Bbs_List_AtrtyVO vo)
+			throws SQLException {
+		List<Bbs_List_AtrtyVO> list = client.queryForList("getBbs_List",vo);
+		return list;
+	}
 	
 	
 }
