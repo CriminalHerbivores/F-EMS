@@ -44,6 +44,7 @@ public interface Intrst_ListDAO {
 	 * </pre>
 	 * <pre>
 	 * @param intrst_ListVO
+	 * @return 
 	 * @throws SQLException
 	 */
 	void insertIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException;

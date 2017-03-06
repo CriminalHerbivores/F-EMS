@@ -23,7 +23,7 @@
 </head>
 <body>
 		<h2>강의 질의응답 게시판</h2><br/>
-	<form name="formm" method="post" action="detailBbs_Gnt">
+	<form name="formm" method="post">
 		<table class="def-table-full tb-border" style="text-align:left;">
 			<tr>
 				<th width="170px">제목</th>
@@ -43,31 +43,38 @@
 			</tr>
 			<tr>
 				<th>답변</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
+				<td colspan="3" style="text-align: left;">
+				<sec:authorize access="hasRole('ROLE_STD')">
+				<textarea rows="8" cols="65" name="lq_Reply" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_PRO')">
+				<textarea rows="8" cols="65" name="lq_Reply" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea>
+				</sec:authorize>
+				</td>
 			</tr>
 
 				<sec:authorize access="hasRole('ROLE_PRO')">
 					<tr>
-						<td colspan="4" style="text-align: center;"><c:choose>
-									<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}">
-										<button class="def-btn btn-color">
-								<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
-									답변 작성
-								</c:when>
-								<c:otherwise>
-									답변 수정
-								</c:otherwise>
-							</c:choose>
-							</button></a>
-							</td>
+						<td colspan="4" style="text-align: center;">
+						<c:choose>
+						<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
+						<input type="submit" class="def-btn btn-color" value="답변 작성">
+						</c:when>
+						<c:otherwise>
+						<input type="submit" class="def-btn btn-color" value="답변 수정">
+						</c:otherwise>
+						</c:choose>
+						</td>
 					</tr>
 				</sec:authorize>
 			<tr>
 				<td class="text-right" colspan="4">
 				<!--버튼들  -->
 				<sec:authorize access="hasRole('ROLE_STD')">
+				<c:if test="${loginUser == lctre_Qna_Gnt.lq_Stdnt_No}">
 				<a href="updateLctre_Qna?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn btn-md btn-color"> </a> 
-				<input type="button" class="def-btn btn-md btn-color" data-target="#layerpop" data-toggle="modal" value="삭제"> 
+				<input type="button" class="def-btn btn-md btn-color" data-target="#layerpop" data-toggle="modal" value="삭제">
+				</c:if>
 				</sec:authorize>
 				<a href="qnaList?tpage=${tpage}&table_Nm=${lctre_Qna_Gnt.table_Nm }"> 
 				<input type="button" class="def-btn btn-md btn-color" value="목록">
@@ -75,6 +82,7 @@
 				</td>
 			</tr>
 		</table>
+		</form>
 		<br><br><br>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">

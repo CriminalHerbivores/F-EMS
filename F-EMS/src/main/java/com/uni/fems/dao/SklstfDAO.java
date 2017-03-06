@@ -96,6 +96,17 @@ public interface SklstfDAO {
 	 */
 	void joinAdmin(SklstfVO sklstfVO) throws SQLException;
 	
+	/**
+	 * <pre>
+	 * 직원 탈퇴
+	 * </pre>
+	 * <pre>
+	 * @param stf_Sklstf_No
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void deleteSklstf(String stf_Sklstf_No) throws SQLException;
+	
 
 	
 }

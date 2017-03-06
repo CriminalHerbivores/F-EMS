@@ -45,7 +45,6 @@ public class Bbs_Comment_GntServiceImpl implements Bbs_Comment_GntService{
 
 	@Override
 	public List<Bbs_Comment_GntVO> getBbs_Comment_Gnt(Bbs_List_Comment_GntVO bbs_List_Comment_Gnt, int tpage) throws SQLException{
-		System.out.println("service bbs_List_Comment_Gnt : "+bbs_List_Comment_Gnt);
 		int totalRecord = bbs_Comment_GntDAO.totalBbs_Comment_Gnt(bbs_List_Comment_Gnt);
 		return bbs_Comment_GntDAO.getBbs_Comment_Gnt(bbs_List_Comment_Gnt, tpage, totalRecord);
 	}

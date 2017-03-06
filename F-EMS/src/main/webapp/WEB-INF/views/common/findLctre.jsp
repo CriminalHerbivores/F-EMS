@@ -83,7 +83,7 @@ function resultLctre(lu_Lctre_Nm,sit_Subjct,lu_Lctre_Code,lu_Compl_Se,lu_Pnt,lu_
 <body>
 <div id="popup">
   <h1>강의 검색</h1>
-  <form method=post name=formm action="findLctre">
+  <form method=post name=formm>
     강의명 : <input name="lu_Lctre_Nm" type="text">
             <input type="submit" value="찾기"  class="submit">
   </form>

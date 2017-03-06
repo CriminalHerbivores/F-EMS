@@ -44,5 +44,13 @@ public class Lctre_Watch_Video_GntVO implements Serializable {
 	private String lw_Video_Bbs_No;	//동영상 게시판 번호
 	private String lw_Watch_Time;		//동영상 시청 시간
 	private String lw_Attendance;	//출결 사항
+	
+	private String lc_Lctre_No; //강의번호
+	private String lc_Lctre_Code; //강의코드
+	private String lc_Split; //분반
+	private String lc_Lctre_Nm; //강의이름
+	private String lc_Profsr_No; //교수번호
+	private String pr_Nm; //교수이름
+	private String re_Stdnt_No; //학생번호
 
 }

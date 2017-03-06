@@ -100,6 +100,11 @@ public class SklstfServiceImpl implements SklstfService {
 	}
 	
 
+	// 직원 탈퇴
+	@Override
+	public void deleteSklstf(String stf_Sklstf_No) throws SQLException {
+		sklstfDAO.deleteSklstf(stf_Sklstf_No);
+	}
 }
 
 

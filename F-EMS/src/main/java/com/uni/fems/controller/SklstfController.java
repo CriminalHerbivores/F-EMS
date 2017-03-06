@@ -149,6 +149,30 @@ public class SklstfController {
 		
 		return url;
 	}
+	
+	/**
+	 * <pre>
+	 * 직원 한명의 정보를 업데이트
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/deleteSklstf")
+	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
+		String url = "redirect:sklstfList?&tpage="+tpage;
+		
+		try {
+			sklstfService.deleteSklstf(stf_Sklstf_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
+	
+	
 
 	// 학생 ///////////////////////////////////////////////////////////////////////////
 	
@@ -166,17 +190,7 @@ public class SklstfController {
 		return url;
 	}
 	
-/*	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO){
-		String url = "redirect:/index";
-		try {
-			stdntService.insertStdnt(stdntVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return url;
-	}*/
+
 	
 	/**
 	 * <pre>
@@ -197,7 +211,6 @@ public class SklstfController {
 			
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
-			System.out.println(fileDownload.filePath+"/"+vo.getFl_File_Nm());
 			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N");	//배열 명 입력
 			ro.setStartRow(2);
 			
@@ -207,10 +220,8 @@ public class SklstfController {
 				if(map.get("A").equals("")|| map.get("A")==null){
 					continue;
 				}
-				System.out.println("A : "+map.get("A"));
 				stdntVO.setSt_Stdnt_No(map.get("A")); // 학생번호
 				stdntVO.setSt_Subjct_Code(map.get("B")); //학과코드
-				System.out.println("B : "+stdntVO.getSt_Subjct_Code());
 				stdntVO.setSt_Pw(map.get("C")); //비밀번호
 				stdntVO.setSt_Nm(map.get("D")); //이름
 				stdntVO.setSt_Eng_Nm(map.get("E")); //영문이름
@@ -291,8 +302,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("stdntList", stdntList);
-		int n = stdntList.size();
-		model.addAttribute("stdntListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -544,8 +553,6 @@ public class SklstfController {
 			schlshipVO.setSs_File(vo.getFl_File_Nm());
 		}
 		
-		System.out.println(schlshipVO.toString());
-		
 		try {
 			schlshipService.insertSchlship(schlshipVO);
 		} catch (IllegalStateException e) {
@@ -596,8 +603,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("schlshipList", schlshipList);
-		int n = schlshipList.size();
-		model.addAttribute("schlshipListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 
@@ -842,8 +847,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("sknrgsVOList", sknrgsVOList);
-		int n = sknrgsVOList.size();
-		model.addAttribute("sknrgsVOListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 	}
@@ -997,8 +1000,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("profsrList", profsrList);
-		int n = profsrList.size();
-		model.addAttribute("profsrListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -1220,10 +1221,11 @@ public class SklstfController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(vo.toString());
 		model.addAttribute("lctre_SearchVO", vo);
 		return url;
 	}
+	
+	
 
 	/**
 	 * <pre>
@@ -1321,5 +1323,30 @@ public class SklstfController {
 		}
 		
 		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 강의 계획서 정보를 엑셀파일로 다운받는다.
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/LctreExcel")
+	String lctreExcel(Model model, HttpServletRequest request) throws ServletException, IOException {
+		Lctre_ActplnVO vo = new Lctre_ActplnVO();
+		List<Lctre_SearchVO> lctre_SearchList = null;
+		
+		//강의 리스트 받아오기
+		
+		
+		
+		model.addAttribute("lctre_SearchList", lctre_SearchList);
+		return "listExcel";
 	}
 }

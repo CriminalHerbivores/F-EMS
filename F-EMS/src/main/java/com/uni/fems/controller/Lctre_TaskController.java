@@ -89,16 +89,17 @@ public class Lctre_TaskController implements ApplicationContextAware{
 
 		Lctre_Task_GntVO lctre_Task_Gnt = new Lctre_Task_GntVO();
 		lctre_Task_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("lt_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("lt_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("lt_Sj")){
 			lctre_Task_Gnt.setLt_Sj(searchVO.getValue());
 			lctre_Task_Gnt.setLt_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lt_Cn")){
+		}else if(searchVO.getKey().equals("lt_Cn")){
 			lctre_Task_Gnt.setLt_Sj("%");
 			lctre_Task_Gnt.setLt_Cn(searchVO.getValue());
-		}else{
-			lctre_Task_Gnt.setLt_Sj("%");
-			lctre_Task_Gnt.setLt_Cn("%");
 		}
+		
 		model.addAttribute("lctre_Task_Gnt", lctre_Task_Gnt);
 		
 		List<Lctre_TaskVO> lctre_TaskList = null;
@@ -110,8 +111,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_TaskList", lctre_TaskList);
-		int n = lctre_TaskList.size();
-		model.addAttribute("lctre_TaskListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -207,7 +206,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_Task_Gnt",lctre_Task_Gnt);
-		System.out.println(lctre_Task_Gnt.toString()+"++++++++++++++++++++++++++++++++");
 		model.addAttribute("tpage",tpage);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;
@@ -304,7 +302,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 				+ "table_Nm="+lctre_Task_Gnt.getTable_Nm()
 				+ "&tpage="+tpage;
 		
-		System.out.println("lctre_Task_Gnt : "+lctre_Task_Gnt);
 		try {
 			lctre_TaskSvc.deleteLctre_Task(lctre_Task_Gnt);
 		} catch (SQLException e) {

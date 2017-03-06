@@ -35,9 +35,7 @@ public class SklstfDAOImpl implements SklstfDAO {
 	}
 	@Override
 	public SklstfVO getSklstf(String stf_Sklstf_No) throws SQLException {
-		System.out.println("1:stf_Sklstf_No : "+stf_Sklstf_No);
 		SklstfVO sklstfVo = (SklstfVO) client.queryForObject("getSklstf", stf_Sklstf_No);
-		System.out.println("2-stf_Sklstf_No : "+stf_Sklstf_No);
 		return sklstfVo;
 	}
 	@Override
@@ -77,6 +75,9 @@ public class SklstfDAOImpl implements SklstfDAO {
 		client.insert("joinAdmin",sklstfVO);
 	}
 	
-
+	@Override
+	public void deleteSklstf(String stf_Sklstf_No) throws SQLException {
+		client.update("deleteSklstf", stf_Sklstf_No);
+	}
 	
 }

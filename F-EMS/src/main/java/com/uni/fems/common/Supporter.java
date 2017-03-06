@@ -1,6 +1,7 @@
 package com.uni.fems.common;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -9,6 +10,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
@@ -17,6 +19,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 
 import com.uni.fems.dto.request.MessageRequest;
+import com.uni.fems.sms.Coolsms;
 
 /**
  * <pre>
@@ -33,6 +36,10 @@ import com.uni.fems.dto.request.MessageRequest;
  * 2017. 2. 22.      JAR       최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
+ */
+/**
+ * @author rlawl
+ *
  */
 public class Supporter {
 	
@@ -105,4 +112,30 @@ public class Supporter {
 		}
 		return uDay;
 	}
+	
+	
+	/**
+	 * <pre>
+	 * 전송할 문자의 내용화 받는 발신자의 번호를 입력받아 문자 메시지를 전송해준다.
+	 * </pre>
+	 * <pre>
+	 * @param message
+	 * @param hp
+	 * </pre>
+	 */
+	public void smsSend(String message, String Moblphon){
+    	
+    	String api_key = "NCS5880CE7517EC8";
+        String api_secret = "C9684A6058C858F7BCF422DC8FB64C75";
+        Coolsms coolsms = new Coolsms(api_key, api_secret);
+    
+        HashMap<String, String> set = new HashMap<String, String>();
+        set.put("to", Moblphon); // 수신번호
+        set.put("from", "01074571287"); // 발신번호 
+        set.put("text", message); // 문자내용
+        set.put("type", "sms"); // 문자 타입
+
+        JSONObject result = coolsms.send(set); // 보내기
+        
+    }
 }

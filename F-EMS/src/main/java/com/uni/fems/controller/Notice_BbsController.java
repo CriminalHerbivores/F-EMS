@@ -119,8 +119,6 @@ public class Notice_BbsController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("noticeList", noticeList);
-		int n = noticeList.size();
-		model.addAttribute("noticeListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		

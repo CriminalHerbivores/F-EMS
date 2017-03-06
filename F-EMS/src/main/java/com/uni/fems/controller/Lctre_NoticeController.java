@@ -83,15 +83,12 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 		
 		if(searchVO.getKey()==null) searchVO.setKey("ln_Sj");
 		if(searchVO.getValue()==null) searchVO.setValue("");
-		System.out.println("++++++++++++++++++++++"+searchVO.toString());
 		if(searchVO.getKey().equals("ln_Sj")){
 			lctre_Notice_Gnt.setLn_Sj(searchVO.getValue());
 			lctre_Notice_Gnt.setLn_Cn("%");
-			System.out.println("++++++++++++++++++++++"+searchVO.toString());
 		}else if(searchVO.getKey().equals("ln_Cn")){
 			lctre_Notice_Gnt.setLn_Sj("%");
 			lctre_Notice_Gnt.setLn_Cn(searchVO.getValue());
-			System.out.println("++++++++++++++++++++++"+searchVO.toString());
 		}
 		
 		model.addAttribute("lctre_Notice_Gnt", lctre_Notice_Gnt);
@@ -105,12 +102,11 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_NoticeList", lctre_NoticeList);
-		int n = lctre_NoticeList.size();
-		model.addAttribute("lctre_NoticeListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
 	}
+	
 	
 	/**
 	 * <pre>
@@ -175,7 +171,6 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 	@RequestMapping(value="/detailLctre_Notice")
 	public String detailLctre_Notice(Lctre_Notice_GntVO lctre_Notice_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="lecture/notice/detailLctre_Notice";
-		System.out.println("lctre_Notice_Gnt : "+lctre_Notice_Gnt);
 		Lctre_NoticeVO lctre_Notice = null;
 		try {
 			lctre_Notice = lctre_NoticeSvc.getLctre_Notice(lctre_Notice_Gnt);

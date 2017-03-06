@@ -55,6 +55,16 @@ public interface ManageService {
 	List<Bbs_ListVO> getBbsList(String name) throws SQLException;
 	/**
 	 * <pre>
+	 * Manage테이블 가장 마지막 ROW 가져오는 메서드
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	ManageVO getlastUniv() throws SQLException;
+	/**
+	 * <pre>
 	 * 학생의 수강 목록을 가져옴
 	 * </pre>
 	 * <pre>
@@ -87,4 +97,39 @@ public interface ManageService {
 	 * </pre>
 	 */
 	int insertUniv(ManageVO manageVO ) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 대학 정보를 삭제하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param object
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int deleteUniv(Object object) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 대학 layout(step3) 수정하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int updateLayout(ManageVO manageVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 대학 Color(step4) 수정하는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param manageVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int updateColor(ManageVO manageVO) throws SQLException;
 }
