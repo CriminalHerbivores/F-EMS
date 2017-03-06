@@ -76,5 +76,10 @@
 		values(#stf_Sklstf_No#,#stf_Pw#,#stf_Email#,#stf_Useyn#)
 	</update>
 	
+	<!-- 직원 달퇴-->
+	<update id="deleteSklstf" parameterClass="str">
+		update sklstf set stf_Useyn='0' where stf_Sklstf_No = #stf_Sklstf_No#
+	</update>
+	
 	
 </sqlMap>
