@@ -42,7 +42,9 @@ public List<Lctre_SearchVO> selectIntrst_List(String in_Stdnt_No) throws SQLExce
 // 관심 강의 추가
 @Override
 public void insertIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException {
+	
 	intrst_ListDAO.insertIntrst_List(intrst_ListVO);
+	 
 }
 
 // 관심 강의 삭제
