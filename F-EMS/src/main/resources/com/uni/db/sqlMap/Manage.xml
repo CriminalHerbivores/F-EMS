@@ -33,7 +33,7 @@
 	
 	<!-- 학교 정보 가져오기 -->
 	<select id="getManage" resultClass="Manage">
-		select * from Manage 
+		select * from Manage where rownum=1
 	</select>
 	
 	<!-- 메뉴 가져오기 -->
