@@ -25,19 +25,15 @@
 
 /* 시간표 띄우기 */
 function op_timeTable(){
- 
-	swal({
-		title : "Are you sure?",
-		text : "You will not be able to recover this imaginary file!",
-		type : "warning",
-		showCancelButton : true,
-		confirmButtonColor : "#DD6B55",
-		confirmButtonText : "닫기",
-		closeOnConfirm : false
-	}, function (){
-		swal("Deleted!", "Your imaginary file has been deleted.", "success");
-	}); 
+	
+	/* document.topLctreForm.submit(); */
+/* 	swal({   title: "<small>시간표</small>!",   
+		text: "A custom <span style="color:#F8BB86">html<span> message.",   
+		html: true });
 }
+ */
+
+
 
 /* 개설강의 목록에서 검색하기 */
 function go_searchLctre(){
@@ -59,31 +55,11 @@ function add_IntrstLctre(){
 	// 한건의 tr 태그가 하나의 javascript 객체 형성
 	// 여러건의 tr 태그, 즉 javascript 객체들이 하나의 배열 형성
 			var row = {
-	        	result_1: $('#result_1').val(), 
-	        	result_2: $('result_2').val(), 
-	    		lc_Lctre_No: $('#lc_Lctre_No').val(),
-	    		sit_Subjct: $('#sit_Subjct').val(),
-	    		lu_Lctre_Code: $('#lu_Lctre_Code').val(),
-	    		lc_Split: $('#lc_Split').val(),
-	    		lu_Lctre_Nm: $('#lu_Lctre_Nm').val(),
-	    		lu_Grade: $('#lu_Grade').val(),
-	    		lu_Compl_Se: $('#lu_Compl_Se').val(),
-	    		knd_Lctre_Knd: $('#knd_Lctre_Knd').val(),
-	    		pr_Nm: $('#pr_Nm').val(),
-	    		lu_Pnt: $('#lu_Pnt').val(),
-	    		lc_Lctre_Time: $('#lc_Lctre_Time').val(),
-	    		lc_Lctre_Nmpr: $('#lc_Lctre_Nmpr').val(),
-	    		lr_Accept_Nmpr: $('#lr_Accept_Nmpr').val()
-	        }
+	        	in_Stdnt_No: $('.in_Stdnt_No').val(),
+	    		in_Lctre_No: $('.in_Lctre_No').val()
+	        };
 		array.push(row);
 	});
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -105,21 +81,24 @@ function add_IntrstLctre(){
 	            	
 	            	var row="";
 	            	row+= '<tr class="slt_ckbox_${status.index}">'
-	            		+'<td class="select_ckbox_1 select_ckbox_5" id="lc_${status.index}"><label><input type="checkbox" class="input_check_1 input_check_5 " name="result_1" value="'+res.lc_Lctre_No+'" />관심</label></td>'
-						+'<td class="select_ckbox_2 select_ckbox_5" id="re_${status.index}"><label><input type="checkbox" class="input_check_2 input_check_5 " id="ck_all_${status.index}" name="result_2" value="'+res.lc_Lctre_No+'" />수강</label></td>'
-	            		+'<td>'+res.lc_Lctre_No+'</td>'	
-	            		+'<td>'+res.sit_Subjct+'</td>'
-			            +'<td>'+res.lu_Lctre_Code+'-'+res.lc_Split+'</td>'
-	            		+'<td>'
-	            		+'<a href="'+<%=request.getContextPath() %>+'/course/lectrePlan?lc_Lctre_No='+res.lc_Lctre_No+'&tpage=${tpage}">'
-	            		+res.lu_Lctre_Nm+'</a></td>' 	
-	            		+'<td>'+res.lu_Grade+'</td>'
-			            +'<td>'+res.lu_Compl_Se+'/'+res.knd_Lctre_Knd+'</td>'
-	            		+'<td>'+res.pr_Nm+'</td>'
-	            		+'<td>'+res.lu_Pnt+'</td>'
-	            		+'<td>'+res.lc_Lctre_Time+'</td>'
-	            		+'<td>'+res.lc_Lctre_Nmpr+'</td>'
-	            		+'<td>'+res.lr_Accept_Nmpr+'</td></tr>';
+	            		+'<td class="select_ckbox_1 select_ckbox_5" id="lc_${status.index}"><label><input type="checkbox" class="input_check_1 input_check_5 " name="result_1" value="'+res.lc_Lctre_No+'" />관심</label><input type="hidden" id="userId" class="in_Stdnt_No" value="'+loginUser+'"></td>'
+						+'<td class="select_ckbox_2 select_ckbox_5" id="re_${status.index}"><label><input type="checkbox" class="input_check_2 input_check_5 " id="ck_all_${status.index}" name="result_2" value="'+res.lc_Lctre_No+'" />수강</label><input type="hidden" id="userId" class="in_Stdnt_No" value="'+loginUser+'"></td>'
+	            		+'<label><input type="checkbox" class="input_check_1 result_1" name="result_1" value="${openLctre.lc_Lctre_No}"/>관심'
+						+'<input type="hidden" name="in_Lctre_No" value="'+res.lc_Lctre_No+'"/></label></td>'
+						+'<td class="select_ckbox_2" id="re_${status.index}">'
+						+'<label><input type="checkbox" class="input_check_2 result_2" id="ck_all_${status.index}" name="result_2" value="${openLctre.lc_Lctre_No}" />수강'
+						+'<input type="hidden" name="re_Lctre_No" value="'+res.lc_Lctre_No+'"/></label></td>'
+						+'<td>'+res.lc_Lctre_No+'</td>'	
+	            		+'<td>${openLctre.sit_Subjct}</td>'
+	            		+'<td>${openLctre.lu_Lctre_Code}-${openLctre.lc_Split}</td>'
+	            		+'<td><a href="<%=request.getContextPath() %>/course/lectrePlan?lc_Lctre_No=${openLctre.lc_Lctre_No}&tpage=${tpage}">${openLctre.lu_Lctre_Nm}</a></td>'
+	            		+'<td>${openLctre.lu_Grade }</td>'
+	            		+'<td>${openLctre.lu_Compl_Se}/${openLctre.knd_Lctre_Knd}</td>'
+	            		+'<td>${openLctre.pr_Nm}</td>'
+	            		+'<td>${openLctre.lu_Pnt}</td>'
+	            		+'<td>${openLctre.lc_Lctre_Time}</td>'
+	            		+'<td>${openLctre.lc_Lctre_Nmpr}</td>'
+	            		+'<td>${openLctre.lr_Accept_Nmpr}</td>';
 	            });
 	        },
 	        
@@ -235,9 +214,9 @@ function add_IntrstLctre(){
 
 
 /* 기존에 하던거... */
-<%-- 
+
 /* 개설강의 목록에서 추가 */
-function add_Intrst_reqst(){
+<%-- function add_Intrst_reqst(){
 	var userId = $("#userId").val();
 	
 	// name이 같은 체크박스의 값들을 배열에 담는다.
@@ -348,7 +327,7 @@ function add_Intrst_reqst(){
 <td>${openLctre.lc_Lctre_Time}</td>
 <td>${openLctre.lc_Lctre_Nmpr}</td>
 <td>${openLctre.lr_Accept_Nmpr}</td> 
-    
+     --%>
     
     
     
@@ -372,7 +351,7 @@ function add_Intrst_reqst(){
 	 */
 	
 	alert("수강신청");
-} --%>
+}
 
 /* 수강신청 */
 function add_reqstLctre(){
@@ -422,7 +401,7 @@ function del_reqstLctre(){
     
    
 }
-
+ 
 
 
 
@@ -435,6 +414,7 @@ function del_reqstLctre(){
 
 	<!-- 상단바 시작 -->
 	<nav class="navbar top-navbar-inverse" id="topnav">
+	<form name="topLctreForm" method="get">
 		<div class="container-fluid" id="toptable">
 			<div class="navbar-header" style="width: 100%;">
 				<table id="topnav-table" style="width: 100%;">
@@ -459,17 +439,15 @@ function del_reqstLctre(){
 				</c:when>
 						<c:otherwise>
 							<span>${loginUser}</span>&nbsp;&nbsp;
-				<a href="<%=request.getContextPath()%>/logout"><button
-									class="def-btn float-right">Logout</button></a>
+				<button class="def-btn float-right">Logout</button></a>
 						</c:otherwise>
 					</c:choose>
-					<a href="<%=request.getContextPath()%>/course/courseTimetable">
-					<button type="button" class="def-btn btn-md btn-color"
-						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()">시간표</button></a>&nbsp;&nbsp;
+					<a href="<%=request.getContextPath()%>/course/courseTimetable"><input type="button" class="def-btn btn-md btn-color"
+						id="openmodal" data-toggle="modal" data-target="#myModal" onclick="op_timeTable()" value="시간표"></a>&nbsp;&nbsp;
 					<input type="button" class="def-btn btn-md btn-gray" onclick="go.history(-1)" value="이전" >
 				</div>
 			</div>
-		</div>
+		</div></form>
 	</nav>
 	<!-- 상단바 끝 -->
 	
@@ -484,7 +462,6 @@ function del_reqstLctre(){
 	<thead class="def-table-full fix-top">
 	<tr><td class="text-right">
 <form name="searchForm" method="get">
-	<input type="hidden" id="userId" value="${loginUser}">
 	<label><input type="checkbox" id="selectCkBox" name="lu_Compl_Se" value="전공" >전공</label>&nbsp;&nbsp;<label><input type="checkbox" id="selectCkBox" name="lu_Compl_Se" value="교양" >교양</label>&nbsp;&nbsp;
 	<label><input type="checkbox" id="selectCkBox" name="knd_Lctre_Knd" value="일반" >일반</label>&nbsp;&nbsp;<label><input type="checkbox" id="selectCkBox" name="knd_Lctre_Knd" value="사이버" >사이버</label>&nbsp;&nbsp;
 	
@@ -533,14 +510,16 @@ function del_reqstLctre(){
 				
 				<tbody>  
 				<c:forEach items="${openLctreList}" var="openLctre" varStatus="status" >
-				<tr class="slt_ckbox_${status.index}" id="openList_tr">
+				<tr class="slt_ckbox_${status.index}">
 					<td class="select_ckbox_1" id="lc_${status.index}">	
 						<label><input type="checkbox" class="input_check_1 result_1" name="result_1" value="${openLctre.lc_Lctre_No}"/>관심
-						<input type="hidden" name="in_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
+						<input type="hidden" name="in_Lctre_No" class="in_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label>
+						<input type="hidden" id="userId" class="in_Stdnt_No" value="${loginUser}"></td>
 					
 					<td class="select_ckbox_2" id="re_${status.index}">
 						<label><input type="checkbox" class="input_check_2 result_2" id="ck_all_${status.index}" name="result_2" value="${openLctre.lc_Lctre_No}" />수강
-						<input type="hidden" name="re_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
+						<input type="hidden" name="re_Lctre_No" class="re_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label>
+						<input type="hidden" id="userId" class="re_Stdnt_No" value="${loginUser}"></td>
 					<td>${openLctre.lc_Lctre_No}</td>	
 					<td>${openLctre.sit_Subjct}</td>
 					<td>${openLctre.lu_Lctre_Code}-${openLctre.lc_Split}</td>
@@ -550,7 +529,7 @@ function del_reqstLctre(){
 					<td>${openLctre.pr_Nm}</td>
 					<td>${openLctre.lu_Pnt}</td>
 					<td>${openLctre.lc_Lctre_Time}</td>
-					<td>${openLctre.lc_Lctre_Nmpr}<input type="hidden" id="lc_Lctre_Nmpr" value="${openLctre.lc_Lctre_Nmpr}"/></td>
+					<td>${openLctre.lc_Lctre_Nmpr}</td>
 					<td>${openLctre.lr_Accept_Nmpr}</td> 
 				</tr>
 			</c:forEach>

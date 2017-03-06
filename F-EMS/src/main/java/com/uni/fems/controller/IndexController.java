@@ -338,7 +338,7 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "/findZipNum", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String findZipNum(Model model, @RequestParam(value="dong",defaultValue="대흥동")String dong)
+	public String findZipNum(Model model, @RequestParam(value="dong",defaultValue="대흥")String dong)
 			throws ServletException, IOException {
 
 		String url = "common/findZipNum"; 
