@@ -45,4 +45,19 @@ public class ManageServiceImpl implements ManageService {
 		return manageDAO.insertUniv(manageVO);
 	}
 
+	@Override
+	public int deleteUniv(Object univNm) throws SQLException {
+		return manageDAO.deleteUniv(univNm);
+	}
+
+	@Override
+	public ManageVO getlastUniv() throws SQLException {
+		return manageDAO.getlastUniv();
+	}
+
+	@Override
+	public int updateUniv(ManageVO manageVO) throws SQLException {
+		return manageDAO.updateUniv(manageVO);
+	}
+
 }

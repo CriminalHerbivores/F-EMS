@@ -47,7 +47,7 @@ public class AaaController {
 				e.printStackTrace();
 			}
 			session.setAttribute("noticeBBS", noticeList);
-		
+			
 		return url;
 		
 	}

@@ -70,7 +70,7 @@
 <table class="def-table-full"><tr><td style="text-align: right;">
 	<a href="sklstfUpdate?stf_Sklstf_No=${sklstfVO.stf_Sklstf_No}&tpage=${tpage}"> <input type="button" value="수정" class="def-btn btn-sm btn-color""> </a>
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-	<input type="button" class="def-btn btn-sm btn-color" data-target="#layerpop" data-toggle="modal" value="삭제">
+	<input type="button" class="def-btn btn-sm btn-color" data-target="#layerpop" data-toggle="modal" value="탈퇴">
 	<a href="sklstfList?&tpage=${tpage}"> <input type="button" class="def-btn btn-sm btn-color" value="목록"> </a>
 	</sec:authorize>
 </td></tr></table>
@@ -83,7 +83,7 @@
         <!-- 닫기(x) 버튼 -->
         <button type="button" class="close" data-dismiss="modal">×</button>
         <!-- header title -->
-        <h4 class="modal-title" style="text-align: center">삭제확인</h4>
+        <h4 class="modal-title" style="text-align: center">탈퇴확인</h4>
       </div>
       <!-- body -->
       <div class="modal-body" style="text-align: center">

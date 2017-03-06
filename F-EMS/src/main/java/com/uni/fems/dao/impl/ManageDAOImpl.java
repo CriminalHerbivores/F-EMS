@@ -62,4 +62,19 @@ public class ManageDAOImpl implements ManageDAO {
 	public int insertUniv(ManageVO manageVO) throws SQLException {
 		return client.update("insertUniv", manageVO);
 	}
+
+	@Override
+	public int deleteUniv(Object univNm) throws SQLException {
+		return client.update("deleteUniv", univNm);
+	}
+
+	@Override
+	public ManageVO getlastUniv() throws SQLException {
+		return (ManageVO) client.queryForObject("getlastUniv","");
+	}
+
+	@Override
+	public int updateUniv(ManageVO manageVO) throws SQLException {
+		return client.update("updateUniv", manageVO);
+	}
 }

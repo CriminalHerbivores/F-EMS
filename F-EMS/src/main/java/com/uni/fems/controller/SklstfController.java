@@ -149,6 +149,30 @@ public class SklstfController {
 		
 		return url;
 	}
+	
+	/**
+	 * <pre>
+	 * 직원 한명의 정보를 업데이트
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/deleteSklstf")
+	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
+		String url = "redirect:sklstfList?&tpage="+tpage;
+		
+		try {
+			sklstfService.deleteSklstf(stf_Sklstf_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
+	
+	
 
 	// 학생 ///////////////////////////////////////////////////////////////////////////
 	
@@ -166,17 +190,7 @@ public class SklstfController {
 		return url;
 	}
 	
-/*	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO){
-		String url = "redirect:/index";
-		try {
-			stdntService.insertStdnt(stdntVO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return url;
-	}*/
+
 	
 	/**
 	 * <pre>
@@ -1224,6 +1238,8 @@ public class SklstfController {
 		model.addAttribute("lctre_SearchVO", vo);
 		return url;
 	}
+	
+	
 
 	/**
 	 * <pre>
@@ -1321,5 +1337,30 @@ public class SklstfController {
 		}
 		
 		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 강의 계획서 정보를 엑셀파일로 다운받는다.
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/LctreExcel")
+	String lctreExcel(Model model, HttpServletRequest request) throws ServletException, IOException {
+		Lctre_ActplnVO vo = new Lctre_ActplnVO();
+		List<Lctre_SearchVO> lctre_SearchList = null;
+		
+		//강의 리스트 받아오기
+		
+		
+		
+		model.addAttribute("lctre_SearchList", lctre_SearchList);
+		return "listExcel";
 	}
 }

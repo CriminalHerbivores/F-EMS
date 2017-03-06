@@ -53,10 +53,13 @@ $(document).on('click','#end',function(e){
        data:JSON.stringify(data),
        type:'post',
        success : function(data){
-           self.close();
+    	   var go = $('input[name="table_Nm"]').val();
+           location.href="video_StdntList?table_Nm="+go;
      },
        error:function(error){
-       alert("오류났음");   
+    	   swal({
+    		   title: "동영상 시청이 제대로 이루어지지 않았습니다.",
+    		});
        }
     });
 });
@@ -65,11 +68,10 @@ $(document).on('click','#end',function(e){
 </script>
 </head>
 <body>
-<div id="detailBbs_Gnt" style="float:left;">
-	<form name="formm" method="post" action="detailBbs_Gnt">
-		<h2>강의 동영상 게시판</h2>
-		<hr>
-		<table class="def-table-full tb-border table-hover" style="width:750px; text-align:left;">
+<h2>강의 동영상 게시판</h2><br/>
+<form name="formm" method="post" action="detailBbs_Gnt">
+<input type="hidden" name="table_Nm" value="${lctre_Video_Gnt.table_Nm}">
+<table class="def-table-full tb-border table-hover">
 			<tr>
 				<th>제목</th>
 				<td colspan="3" style="text-align: left;">${lctre_Video_Gnt.lv_Sj}</td>
@@ -95,7 +97,7 @@ $(document).on('click','#end',function(e){
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3">
+				<td colspan="4">
 				 <span class="days"></span>
 				 <span class="hours"></span>
 				 <span class="minutes"></span>
@@ -108,12 +110,11 @@ $(document).on('click','#end',function(e){
 	</form>
 
 	<!--버튼들  -->
-	<div id="buttons" style="float: right">
-		<input id="test" type="button" value="test" class="def-btn btn-md btn-color">
+	  <table class="def-table-full"><tr><td style="text-align: right;">
+		<!-- <input id="test" type="button" value="test" class="def-btn btn-md btn-color"> -->
 		<input id="end" type="button" value="종료" class="def-btn btn-md btn-color">
-	</div>
-</div>
-	
+	  </td></tr></table>
+<br/><br/><br/>
 
 
 

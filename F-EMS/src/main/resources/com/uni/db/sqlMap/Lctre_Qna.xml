@@ -45,12 +45,14 @@
 	</update>
 	
 	<update id="updateLctre_Qna_Reply" parameterClass="lctre_qna_gnt" >
-		update Lctre_Q$table_Nm$ set LQ_REPLY=#lq_Reply#
+		update Lctre_Q$table_Nm$ 
+		set LQ_REPLY=#lq_Reply#
 		where LQ_BBS_NO=#lq_Bbs_No#
 	</update>
 	
 	<update id="countLctre_Qna" parameterClass="lctre_qna_gnt" >
-		update Lctre_Q$table_Nm$ set LQ_RDCNT=#lq_Rdcnt#
+		update Lctre_Q$table_Nm$ 
+		set LQ_RDCNT=#lq_Rdcnt#
 		where LQ_BBS_NO=#lq_Bbs_No#
 	</update>
 	
