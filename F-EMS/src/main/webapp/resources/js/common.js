@@ -180,8 +180,12 @@ $(document).ready(function(){
 		else  $(".select_ckbox_5 input").prop('checked', false);
 	});
 	
-
-//---------------------------------------------
+	$("#check_all_6").click(function(){
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) $(".select_ckbox_6 input").prop('checked', true);
+		else  $(".select_ckbox_6 input").prop('checked', false);
+	});
+	//---------------------------------------------	
 	
 	/* 나중에 시간나는대로 이걸로 고치기->> script for in */
 /*	   var array = ['0', '1', '2', '3','4','5','6','7','8','9','10'];
@@ -260,6 +264,94 @@ $(document).ready(function(){
 	});
 
 //---------------------------------------------
+	$("#all_ckeck_1").click(function(){
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) $(".select_ck_1 input").prop('checked', true);
+		else  $(".select_ck_1 input").prop('checked', false);
+	});
+	$("#all_ckeck_2").click(function(){
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) $(".select_ck_2 input").prop('checked', true);
+		else  $(".select_ck_2 input").prop('checked', false);
+	});
+	$("#all_ckeck_3").click(function(){ // 하나 체크로 1,2 모두 체크하게 할 경우
+		var chk = $(this).is(":checked");//.attr('checked');
+		if(chk) {
+		$(".select_ck_1 input").prop('checked', true);
+		$(".select_ck_2 input").prop('checked', true);
+		$("#all_ckeck_1").prop('checked', true);
+		$("#all_ckeck_2").prop('checked', true);
+		}
+		else  {
+			$(".select_ck_1 input").prop('checked', false);
+			$(".select_ck_2 input").prop('checked', false);
+			$("#all_ckeck_1").prop('checked', false);
+			$("#all_ckeck_2").prop('checked', false);
+		}
+	});
+//---------------------------------------------
+	
+	$("#all_ck_0").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_0 input").prop('checked', true);
+		else  $(".slt_ck_0 input").prop('checked', false);
+	});
+	
+	$("#all_ck_1").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_1 input").prop('checked', true);
+		else  $(".slt_ck_1 input").prop('checked', false);
+	});
+	
+	$("#all_ck_2").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_2 input").prop('checked', true);
+		else  $(".slt_ck_2 input").prop('checked', false);
+	});
+	
+	$("#all_ck_3").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_3 input").prop('checked', true);
+		else  $(".slt_ck_3 input").prop('checked', false);
+	});
+	
+	$("#all_ck_4").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_4 input").prop('checked', true);
+		else  $(".slt_ck_4 input").prop('checked', false);
+	});
+	
+	$("#all_ck_5").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_5 input").prop('checked', true);
+		else  $(".slt_ck_5 input").prop('checked', false);
+	});
+
+	$("#all_ck_6").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_6 input").prop('checked', true);
+		else  $(".slt_ck_6 input").prop('checked', false);
+	});
+	
+	$("#all_ck_7").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_7 input").prop('checked', true);
+		else  $(".slt_ck_7 input").prop('checked', false);
+	});
+	
+	$("#all_ck_8").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_8 input").prop('checked', true);
+		else  $(".slt_ck_8 input").prop('checked', false);
+	});
+	
+	$("#all_ck_9").click(function(){
+		var chk = $(this).is(":checked");
+		if(chk) $(".slt_ck_9 input").prop('checked', true);
+		else  $(".slt_ck_9 input").prop('checked', false);
+	});
+//---------------------------------------------	
+	
 });	// close ready
 
 
