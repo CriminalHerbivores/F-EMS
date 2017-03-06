@@ -31,6 +31,7 @@
 <a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdnt_ProfsrForm" class="no-uline">학생 교수 배정</a>
 <a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a>
 <a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록</a>
 <a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 관리</a>
