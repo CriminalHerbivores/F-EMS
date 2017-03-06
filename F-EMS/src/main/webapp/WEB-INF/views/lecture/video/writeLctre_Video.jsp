@@ -25,30 +25,38 @@
 </script>
 </head>
 <body>
+<h2> 강의 동영상 게시판 </h2><br/>
+<form name="formm" method="post" enctype="multipart/form-data">
 
-	    <h2> 강의 동영상 게시판 </h2>
-		<form name="formm" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="table_Nm" value="${table_Nm}">
-			<fieldset>	
-			    <label>제목</label>
-			    <input type="text" name="lv_Sj"  size="64" ><br>
-				<label>내용</label>
-			    <textarea rows="8" cols="64" name="lv_Cn"></textarea><br>
-			    <label>시작   날짜</label>
-			    <input type="text" id="lv_Start_Dt" name="lv_Start_Dt" class="def-input-text-md custom-form-control">
-			    <label>마지막 날짜</label>
-			    <input type="text" id="lv_End_Dt" name="lv_End_Dt" class="def-input-text-md custom-form-control">
-			    <label>시청   길이</label>
-			    <input type="text" name="lv_Time" class="def-input-text-md custom-form-control"><br>
-			    <input type="file" name="uploadfile">
-			</fieldset>   
-		<div class="clear"></div>
-		 <div id="buttons" style="float:right">
-			<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitForm(this.form);" > 
-			<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="submitForm(this.form);">	
-		  </div>
-		  
-		</form>
-		
+<input type="hidden" name="table_Nm" value="${table_Nm}">
+<table class="def-table-full tb-border table-hover">
+	<tr>
+		<th>제목</th>
+		<td colspan="3"><input type="text" name="lv_Sj" class="def-input-text-full custom-form-control"></td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td colspan="3"><textarea rows="8" cols="64" name="lv_Cn" class="def-input-text-full custom-form-control"></textarea></td>
+	</tr>
+	<tr>
+		<th>시작   날짜</th>
+		<td><input type="text" id="lv_Start_Dt" name="lv_Start_Dt" class="def-input-text-full custom-form-control"></td>
+		<th>마지막 날짜</th>
+		<td><input type="text" id="lv_End_Dt" name="lv_End_Dt" class="def-input-text-full custom-form-control"></td>
+	</tr>
+	<tr>
+		<th>시청   길이</th>
+		<td><input type="text" name="lv_Time" placeholder="분 단위" class="def-input-text-full custom-form-control"></td>
+		<th>업로드</th>
+		<td><input type="file" name="uploadfile"></td>
+	</tr>
+</table>
+<table class="def-table-full"><tr><td style="text-align: right;">
+	<input type="button"  value="등록" class="def-btn btn-md btn-color" onclick="submitForm(this.form);" > 
+	<input type="button"  value="목록"  class="def-btn btn-md btn-color"  onclick="history.go(-1);">	
+</td></tr></table>
+  
+</form>
+
 </body>
 </html>

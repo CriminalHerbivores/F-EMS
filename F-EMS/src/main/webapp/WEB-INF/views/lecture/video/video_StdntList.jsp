@@ -30,16 +30,9 @@
 	</script>
 </head>
 <body>
-
-<div class="container">
-<table class="non-border margin-auto">
-<tr><td>
-<div class="text-center">
-  <h2>강의 동영상 게시판</h2>
- <hr />
-
+  <h2>강의 동영상 게시판</h2><br/>
 <form name="formm">
-<div class="text-right">
+<table class="def-table-full"><tr><td style="text-align: left;">
 <input type="hidden" name="table_Nm" value=${lctre_Video_Gnt.table_Nm }>
   <select name="key" class="combobox-md custom-form-control">
   	<option value="lv_Sj">제목</option>
@@ -47,10 +40,9 @@
   </select>
   <input type="text" class="def-input-text-lg custom-form-control" name="value">
   <input type="button" class="def-btn btn-search btn-color" value="조회" onclick="submitForm(this.form);">
-</div>
- </form>
- </div>
-  <table class="def-table-auto tb-border table-hover">
+</td></tr></table>
+</form>
+<table class="def-table-full tb-border table-hover">
       <tr>
         <th>No</th>
         <th style="width:400px;">제목</th>
@@ -63,8 +55,9 @@
       <c:if test="${lctre_Video.lv_Start_Dt <= Date}">
       	<tr>
       		<td> ${lctre_Video.lv_Bbs_No}</td>
-      		<td><a href="#" onclick="detailLctre_Video('${lctre_Video.lv_Bbs_No}','${lctre_Video_Gnt.table_Nm}','${lctre_Video_Gnt.lw_Stdnt_No}');">
-      		 ${lctre_Video.lv_Sj} </a>
+      		<td>
+      		<%-- <a href="#" onclick="detailLctre_Video('${lctre_Video.lv_Bbs_No}','${lctre_Video_Gnt.table_Nm}','${lctre_Video_Gnt.lw_Stdnt_No}');">${lctre_Video.lv_Sj} </a> --%>
+      		<a href="detailLctre_Video_Stdnt?lv_Bbs_No=${lctre_Video.lv_Bbs_No}&table_Nm=${lctre_Video_Gnt.table_Nm}&lw_Stdnt_No=${lctre_Video_Gnt.lw_Stdnt_No}">${lctre_Video.lv_Sj}</a>
       		</td>
       		<td><fmt:formatDate value="${lctre_Video.lv_Start_Dt}"/>
       		~
@@ -87,9 +80,6 @@
       		<td colspan="5" style="text-align: center;">${paging }</td>
       	</tr>
       	</table>
-</td>
-</tr>
-</table>
-</div>
+<br/><br/><br/>
 </body>
 </html>

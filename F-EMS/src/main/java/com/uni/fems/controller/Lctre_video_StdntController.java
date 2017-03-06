@@ -202,7 +202,10 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			Date date = new Date(System.currentTimeMillis());
 			
 			long times = date.getTime()	- lctre_Watch_Video_Gnt.getLv_End_Dt().getTime();
-			 
+			
+			if(lctre_Watch_Video_Gnt.getLw_Attendance()==null || lctre_Watch_Video_Gnt.getLw_Attendance().isEmpty())
+				lctre_Watch_Video_Gnt.setLw_Attendance("0");
+			
 			if(times < 0){
 				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Attendance())<0){
 					lctre_Watch_Video_Gnt.setLw_Attendance("출석");

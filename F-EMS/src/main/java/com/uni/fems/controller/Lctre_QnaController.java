@@ -101,8 +101,6 @@ public class Lctre_QnaController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_QnaList", lctre_QnaList);
-		int n = lctre_QnaList.size();
-		model.addAttribute("lctre_QnaListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -146,8 +144,7 @@ public class Lctre_QnaController implements ApplicationContextAware{
 								throws ServletException, IOException{
 		String url = "redirect:qnaList";
 
-		//		String loginUser = (String)session.getAttribute("loginUser");
-		String loginUser = "bbb";
+		String loginUser = (String)session.getAttribute("loginUser");
 		lctre_Qna_Gnt.setLq_Stdnt_No(loginUser);
 		
 		try {
@@ -173,7 +170,7 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	 * </pre>
 	 */
 	@RequestMapping(value="/detailLctre_Qna", method=RequestMethod.GET)
-	public String detailLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
+	public String detailLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model){
 		String url="lecture/qna/detailLctre_Qna";
 		System.out.println("lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		Lctre_QnaVO lctre_Qna = null;
@@ -208,25 +205,17 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	 * </pre>
 	 */
 	@RequestMapping(value="/detailLctre_Qna", method=RequestMethod.POST)
-	public String detailLctre_QnaAnswer(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
-		String url="redirect:qnaList?tpage="+tpage;
-		System.out.println("lctre_Qna_Gnt : "+lctre_Qna_Gnt);
-		Lctre_QnaVO lctre_Qna = null;
+	public String updateBbsReply(@RequestParam int tpage,Lctre_Qna_GntVO lctre_Qna_Gnt){
+		String url = "redirect:qnaList?"
+				+ "table_Nm="+lctre_Qna_Gnt.getTable_Nm()
+				+ "&tpage="+tpage;
+		
 		try {
-			lctre_Qna = lctre_QnaSvc.getLctre_Qna(lctre_Qna_Gnt);
-			lctre_Qna_Gnt.setLq_Stdnt_No(lctre_Qna.getLq_Stdnt_No());
-			lctre_Qna_Gnt.setLq_Cn(lctre_Qna.getLq_Cn());
-			lctre_Qna_Gnt.setLq_Sj(lctre_Qna.getLq_Sj());
-			lctre_Qna_Gnt.setLq_Reply(lctre_Qna.getLq_Reply());
-			lctre_Qna_Gnt.setLq_Writng_Dt(lctre_Qna.getLq_Writng_Dt());
-			lctre_Qna_Gnt.setLq_Rdcnt(lctre_Qna.getLq_Rdcnt()+1);
-			lctre_QnaSvc.countLctre_Qna(lctre_Qna_Gnt);
+			lctre_QnaSvc.updateLctre_Qna_Reply(lctre_Qna_Gnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("2lctre_Qna_Gnt : "+lctre_Qna_Gnt);
-		model.addAttribute("lctre_Qna_Gnt",lctre_Qna_Gnt);
-		model.addAttribute("tpage",tpage);
+		
 		return url;
 	}
 	
