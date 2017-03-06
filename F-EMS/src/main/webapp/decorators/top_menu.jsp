@@ -113,15 +113,18 @@
 								<a href="#">강의</a>
 							</button>
 							<div class="menu-dropdown-content">
-
 <a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
-<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">시청여부 게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지</a>
+<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료</a>
+<a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제</a>
+<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답</a>
+<sec:authorize access="hasRole('ROLE_PRO')">
+<a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상 강의</a>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_STD')">
+<a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">동영상 강의</a>
+</sec:authorize>
+<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험</a>
 							</div>
 						</div>
 					</sec:authorize>

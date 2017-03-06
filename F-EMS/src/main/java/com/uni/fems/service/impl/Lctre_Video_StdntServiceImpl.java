@@ -51,7 +51,7 @@ public class Lctre_Video_StdntServiceImpl implements Lctre_Video_StdntService{
 	@Override
 	public String pageNumber(int tpage,Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
 		int totalRecord = lctre_Video_StdntDAO.totalLctre_Video(lctre_Watch_Video_Gnt);
-		String page = new Paging().pageNumber(tpage,totalRecord,"taskList", "&table_Nm="+lctre_Watch_Video_Gnt.getTable_Nm());
+		String page = new Paging().pageNumber(tpage,totalRecord,"video_StdntList", "&table_Nm="+lctre_Watch_Video_Gnt.getTable_Nm());
 		return page;
 	}
 	

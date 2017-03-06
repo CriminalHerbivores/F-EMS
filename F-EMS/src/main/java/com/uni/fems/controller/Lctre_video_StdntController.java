@@ -87,15 +87,15 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 		lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
 		lctre_Watch_Video_Gnt.setLw_Stdnt_No(loginUser);
 //		lctre_Watch_Video_Gnt.setLw_Stdnt_No("bbb");
-		if(searchVO != null ||searchVO.getKey().equals("lv_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("lv_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("lv_Sj")){
 			lctre_Watch_Video_Gnt.setLv_Sj(searchVO.getValue());
 			lctre_Watch_Video_Gnt.setLv_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lv_Cn")){
+		}else if(searchVO.getKey().equals("lv_Cn")){
 			lctre_Watch_Video_Gnt.setLv_Sj("%");
 			lctre_Watch_Video_Gnt.setLv_Cn(searchVO.getValue());
-		}else{
-			lctre_Watch_Video_Gnt.setLv_Sj("%");
-			lctre_Watch_Video_Gnt.setLv_Cn("%");
 		}
 		model.addAttribute("lctre_Video_Gnt", lctre_Watch_Video_Gnt);
 		
@@ -108,8 +108,6 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_VideoList", lctre_VideoList);
-		int n = lctre_VideoList.size();
-		model.addAttribute("lctre_VideoListSize", n);
 		model.addAttribute("paging", paging);
 		model.addAttribute("Date", new Date(System.currentTimeMillis()));
 		return url;

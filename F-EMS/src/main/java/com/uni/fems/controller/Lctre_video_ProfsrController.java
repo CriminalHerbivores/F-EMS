@@ -101,16 +101,17 @@ public class Lctre_video_ProfsrController implements ApplicationContextAware{
 		
 		Lctre_Video_GntVO lctre_Video_Gnt = new Lctre_Video_GntVO();
 		lctre_Video_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("lv_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("lv_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("lv_Sj")){
 			lctre_Video_Gnt.setLv_Sj(searchVO.getValue());
 			lctre_Video_Gnt.setLv_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lv_Cn")){
+		}else if(searchVO.getKey().equals("lv_Cn")){
 			lctre_Video_Gnt.setLv_Sj("%");
 			lctre_Video_Gnt.setLv_Cn(searchVO.getValue());
-		}else{
-			lctre_Video_Gnt.setLv_Sj("%");
-			lctre_Video_Gnt.setLv_Cn("%");
 		}
+		
 		model.addAttribute("lctre_Video_Gnt", lctre_Video_Gnt);
 		
 		List<Lctre_VideoVO> lctre_VideoList = null;

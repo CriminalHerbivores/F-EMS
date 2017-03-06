@@ -89,16 +89,17 @@ public class Lctre_TaskController implements ApplicationContextAware{
 
 		Lctre_Task_GntVO lctre_Task_Gnt = new Lctre_Task_GntVO();
 		lctre_Task_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("lt_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("lt_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("lt_Sj")){
 			lctre_Task_Gnt.setLt_Sj(searchVO.getValue());
 			lctre_Task_Gnt.setLt_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lt_Cn")){
+		}else if(searchVO.getKey().equals("lt_Cn")){
 			lctre_Task_Gnt.setLt_Sj("%");
 			lctre_Task_Gnt.setLt_Cn(searchVO.getValue());
-		}else{
-			lctre_Task_Gnt.setLt_Sj("%");
-			lctre_Task_Gnt.setLt_Cn("%");
 		}
+		
 		model.addAttribute("lctre_Task_Gnt", lctre_Task_Gnt);
 		
 		List<Lctre_TaskVO> lctre_TaskList = null;
