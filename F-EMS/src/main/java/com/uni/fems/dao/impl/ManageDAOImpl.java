@@ -74,7 +74,12 @@ public class ManageDAOImpl implements ManageDAO {
 	}
 
 	@Override
-	public int updateUniv(ManageVO manageVO) throws SQLException {
-		return client.update("updateUniv", manageVO);
+	public int updateLayout(ManageVO manageVO) throws SQLException {
+		return client.update("updateLayout", manageVO);
+	}
+	
+	@Override
+	public int updateColor(ManageVO manageVO) throws SQLException {
+		return client.update("updateColor", manageVO);
 	}
 }

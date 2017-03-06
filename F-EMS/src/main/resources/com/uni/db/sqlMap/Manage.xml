@@ -3,12 +3,12 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
-<!--  [[개정이력(Modification Information)]]        -->
-<!--  수정일       수정자      수정내용             -->
-<!--  ==========   ======    ==============         -->
-<!--  $2017.01.24    KJH       최초작성             -->
-<!--  $2017.02.15    KJH       추가작성             -->
-<!--  Copyright (c) 2017 by DDIT All right reserved -->
+<!-- [[개정이력(Modification Information)]] -->
+<!-- 수정일 수정자 수정내용 -->
+<!-- ========== ====== ============== -->
+<!-- $2017.01.24 KJH 최초작성 -->
+<!-- $2017.02.15 KJH 추가작성 -->
+<!-- Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Manage">
 	<typeAlias alias="str" type="java.lang.String" />
@@ -16,84 +16,100 @@
 	<typeAlias alias="Manage" type="com.uni.fems.dto.ManageVO" />
 	<typeAlias alias="bbs_listvo" type="com.uni.fems.dto.Bbs_ListVO" />
 	<typeAlias alias="lctreVO" type="com.uni.fems.dto.LctreVO" />
-	
-	<!-- <select id="selectManage" parameterClass="str" resultClass="Manage">
-		select * from Manage 
-		where mng_Univ_Nm=#mng_Univ_Nm# 
-	</select> -->
-	
+
+	<!-- <select id="selectManage" parameterClass="str" resultClass="Manage"> 
+		select * from Manage where mng_Univ_Nm=#mng_Univ_Nm# </select> -->
+
 	<!-- 학교 등록하기 -->
 	<update id="insertUniv" parameterClass="Manage">
-		insert into manage(mng_Univ_Nm,mng_Univ_Eng_Nm,mng_Univ_Logo,mng_Post_No,mng_Adres1,mng_Adres2,mng_Tlphon_No,mng_Fax_No,mng_Email,mng_Cpyr,mng_Layout_Knd,
+		insert into
+		manage(mng_Univ_Nm,mng_Univ_Eng_Nm,mng_Univ_Logo,mng_Post_No,mng_Adres1,mng_Adres2,mng_Tlphon_No,mng_Fax_No,mng_Email,mng_Cpyr,mng_Layout_Knd,
 		mng_Left_Menu_Use_Ennc,mng_Main_Color,mng_Sub_Color1,mng_Sub_Color2,mng_Reltv_Evl_Rate,mng_Main_Txtclr,mng_Sub_Txtclr1,mng_Sub_Txtclr2,mng_Univ_Img)
 		values(#mng_Univ_Nm#,#mng_Univ_Eng_Nm#,#mng_Univ_Logo#,#mng_Post_No#,#mng_Adres1#,#mng_Adres2#,#mng_Tlphon_No#,#mng_Fax_No#,#mng_Email#,#mng_Cpyr#,
 		#mng_Layout_Knd#,#mng_Left_Menu_Use_Ennc#,#mng_Main_Color#,#mng_Sub_Color1#,#mng_Sub_Color2#,#mng_Reltv_Evl_Rate#,#mng_Main_Txtclr#,#mng_Sub_Txtclr1#,#mng_Sub_Txtclr2#,#mng_Univ_Img#)
 	</update>
-	
-	<!-- 학교 삭제하기  -->
+
+	<!-- 학교 삭제하기 -->
 	<update id="deleteUniv" parameterClass="str">
-		delete from manage where mng_univ_nm=#mng_Univ_Nm#
+		delete from manage where
+		mng_univ_nm=#mng_Univ_Nm#
 	</update>
-	
-	<!-- 가장 마지막 행 가져오기(지우기 위해)  -->
+
+	<!-- 가장 마지막 행 가져오기(지우기 위해) -->
 	<select id="getlastUniv" resultClass="Manage">
-		SELECT * FROM (SELECT * FROM manage ORDER BY ROWNUM DESC) WHERE ROWNUM = 1
+		SELECT * FROM (SELECT *
+		FROM manage ORDER BY ROWNUM DESC) WHERE ROWNUM = 1
 	</select>
-	
-	<update id="updateUniv" parameterClass="Manage">
-		update manage set mng_Univ_Nm=#mng_Univ_Nm#,mng_Univ_Eng_Nm=#mng_Univ_Eng_Nm#,mng_Univ_Logo=#mng_Univ_Logo#,mng_Post_No=#mng_Post_No#,mng_Adres1=#mng_Adres1#,mng_Adres2=#mng_Adres2#,
-						  mng_Tlphon_No=#mng_Tlphon_No#,mng_Fax_No=#mng_Fax_No#,mng_Email=#mng_Email#,mng_Cpyr=#mng_Cpyr#,mng_Layout_Knd=#mng_Layout_Knd#,mng_Left_Menu_Use_Ennc=#mng_Left_Menu_Use_Ennc#,
-						  mng_Main_Color=#mng_Main_Color#,mng_Sub_Color1=#mng_Sub_Color1#,mng_Sub_Color2=#mng_Sub_Color2#,mng_Reltv_Evl_Rate=#mng_Reltv_Evl_Rate#,mng_Main_Txtclr=#mng_Main_Txtclr#,
-						  mng_Sub_Txtclr1=#mng_Sub_Txtclr1#,mng_Sub_Txtclr2=#mng_Sub_Txtclr2#,mng_Univ_Img=#mng_Univ_Img# 
-						  where mng_Univ_Nm=#mng_Univ_Nm#
+
+	<!--Layout update(step3)  -->
+	<update id="updateLayout" parameterClass="Manage">
+		update manage set mng_Layout_Knd=#mng_Layout_Knd#,mng_Left_Menu_Use_Ennc=#mng_Left_Menu_Use_Ennc#,mng_Univ_Img=#mng_Univ_Img# where mng_Univ_Nm=#mng_Univ_Nm#
 	</update>
 	
-	
+	<!--Color update(step4)  -->
+	<update id="updateColor" parameterClass="Manage">
+		update manage set
+		mng_Main_Color=#mng_Main_Color#,mng_Sub_Color1=#mng_Sub_Color1#,mng_Sub_Color2=#mng_Sub_Color2#,mng_Main_Txtclr=#mng_Main_Txtclr#,
+		mng_Sub_Txtclr1=#mng_Sub_Txtclr1#,mng_Sub_Txtclr2=#mng_Sub_Txtclr2# 
+		where mng_Univ_Nm=#mng_Univ_Nm#
+	</update>
+
 	<!-- 학교 정보 가져오기 -->
 	<select id="getManage" resultClass="Manage">
-		select * from Manage where rownum=1
+		select * from Manage where
+		rownum=1
 	</select>
-	
+
 	<!-- 메뉴 가져오기 -->
 	<select id="getBbsList" parameterClass="str" resultClass="bbs_listvo">
-		select * from bbs_list
+		select
+		* from bbs_list
 		where bl_use_ennc='y'
 		and bl_table_nm like #name#||'%'
 	</select>
-	
+
 	<!-- 학생 강의 메뉴 가져오기 -->
 	<select id="getStdntList" parameterClass="str" resultClass="lctreVO">
-		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
-		from reqst rq, lctre lc
+		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where
+		lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
+		from reqst rq, lctre
+		lc
 		where LC_OPEN_AT = 'y'
-		and LC_LCTRE_EVL_SCORE  = 0
-		and (select extract(year from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
-		and (case when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
-				       when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2
-				       else 1
-		   end) = (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
-				       when (extract(month from(sysdate)) between 8 and 12) THEN 2
-				       else 1
-			  end)
+		and LC_LCTRE_EVL_SCORE = 0
+		and (select
+		extract(year from sysdate) from dual) = extract(year from
+		LC_LCTRBGN_DT)
+		and (case when (extract(month from(lc_lctrbgn_dt))
+		between 2 and 7) THEN 1
+		when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2
+		else 1
+		end) = (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
+		when (extract(month from(sysdate)) between 8 and 12) THEN 2
+		else 1
+		end)
 		and rq.RE_LCTRE_NO = lc.LC_LCTRE_NO
 		and rq.RE_STDNT_NO = #loginUser#
 	</select>
-	
+
 	<!-- 교수 강의 메뉴 가져오기 -->
 	<select id="getProfsrList" parameterClass="str" resultClass="lctreVO">
-		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
+		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where
+		lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
 		from lctre lc
-		where LC_OPEN_AT = 'y'
-		and LC_LCTRE_EVL_SCORE  = 0
-		and (select extract(year from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
-		and (case when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
-		       when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2
-		       else 1
-		  end) = (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
-		       when (extract(month from(sysdate)) between 8 and 12) THEN 2
-		       else 1
-		  end)
+		where
+		LC_OPEN_AT = 'y'
+		and LC_LCTRE_EVL_SCORE = 0
+		and (select extract(year
+		from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
+		and (case
+		when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
+		when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2
+		else 1
+		end) = (case when (extract(month from(sysdate)) between 2 and 7) THEN 1
+		when (extract(month from(sysdate)) between 8 and 12) THEN 2
+		else 1
+		end)
 		and lc_profsr_no = #loginUser#
 	</select>
-	
+
 </sqlMap>

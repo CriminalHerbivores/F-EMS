@@ -116,11 +116,6 @@ public class Bbs_GntController implements ApplicationContextAware{
 			returnSec = AtrytyVO.getBa_Stdnt();
 		}
 		
-/*		System.out.println("============================="+AtrytyVO.toString());
-		System.out.println("============================="+loginRole);
-		System.out.println("============================="+returnSec);
-		System.out.println("============================="+returnSec);*/
-		
 		 session.setAttribute("returnSec", returnSec);
 		
 		if (tpage ==null){
@@ -184,7 +179,6 @@ public class Bbs_GntController implements ApplicationContextAware{
 	@RequestMapping(value="/writeBbs_Gnt", method=RequestMethod.GET)
 	public String writeBbs_GntForm(Model model, Bbs_List_GntVO bbs_List_Gnt) throws ServletException, IOException {
 		String url="generator/bbs/writeBbs_Gnt";
-		System.out.println("bbs_List_Gnt : "+bbs_List_Gnt);
 		model.addAttribute("bbs_List_Gnt", bbs_List_Gnt);
 		return url;
 	}
@@ -340,7 +334,6 @@ public class Bbs_GntController implements ApplicationContextAware{
 				+ "&bl_Bbs_Nm="+bbs_List_Gnt.getBl_Bbs_Nm()
 				+ "&bl_Table_Nm="+bbs_List_Gnt.getBl_Table_Nm()
 				+ "&tpage="+tpage;
-		System.out.println("bbs_List_Gnt : "+bbs_List_Gnt);
 		String loginUser = (String) session.getAttribute("loginUser");
 		bbs_List_Gnt.setBb_Sklstf_No(loginUser);
 		

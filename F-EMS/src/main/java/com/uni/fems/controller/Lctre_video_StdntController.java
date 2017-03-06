@@ -139,7 +139,6 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("lctre_Watch_Video_Gnt : "+lctre_Watch_Video_Gnt);
 		lctre_Watch_Video_Gnt.setTable_Nm(table_Nm);
 		model.addAttribute("lctre_Video_Gnt",lctre_Watch_Video_Gnt);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
@@ -177,11 +176,6 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			String table_Nm = (String)jsonMap.get("table_Nm");
 			String lv_Bbs_No = (String)jsonMap.get("lv_Bbs_No");
 			int lw_Watch_Time = (int)((double)jsonMap.get("lw_Watch_Time"));
-			
-			System.out.println("table_Nm : "+table_Nm);
-			System.out.println("lv_Bbs_No : "+lv_Bbs_No);
-			System.out.println("lw_Stdnt_No : "+lw_Stdnt_No);
-			System.out.println("lw_Watch_Time : "+lw_Watch_Time);
 			
 			Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt = new Lctre_Watch_Video_GntVO();
 			

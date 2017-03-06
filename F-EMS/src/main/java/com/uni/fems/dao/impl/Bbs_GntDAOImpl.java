@@ -57,7 +57,6 @@ public class Bbs_GntDAOImpl implements Bbs_GntDAO{
 	
 
 		int[] rows = p.row(tpage, totalRecord);
-		System.out.println(" rows[1], rows[0] : "+ rows[1]+rows[0]);
 		List<Bbs_GntVO> listAllBbs_Gnt = client.queryForList("listAllBbs_Gnt",bbs_list_gnt, rows[1], rows[0]);
 		return listAllBbs_Gnt;
 	}

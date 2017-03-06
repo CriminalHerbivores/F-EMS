@@ -84,13 +84,10 @@ public class BuildingController {
 		String url = "redirect:buildingInsert";
 		try {
 			buildingService.insertBuilding(buildingVO);
-			System.out.println(buildingVO.getBd_Useyn()+"=============================11111111111111111111111111");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(buildingVO.getBd_Useyn()+"=============================22222222222222222");
 		model.addAttribute("buildingVO",buildingVO);
-		System.out.println(buildingVO.getBd_Useyn()+"=============================333333333333333333333333333");
 		return url;
 	}
 
@@ -113,19 +110,14 @@ public class BuildingController {
 		
 		List<BuildingVO> BuildingList = null;
 				
-		System.out.println("========================1111111111  null");
-
 		if(buildingVO.getBd_Useyn()==null){
 			buildingVO.setBd_Useyn("y");
 		}
 	
-			System.out.println("======================== null");
 		try {
-			System.out.println("======================== 111111111   buildingVO.getBd_Useyn()  "+buildingVO.getBd_Useyn());
 			BuildingList = buildingService.selectUseBuilding(buildingVO);
 			if(buildingVO.getBd_Useyn()==null){
 			}
-			System.out.println("======================== 22222222222   buildingVO.getBd_Useyn()  "+buildingVO.getBd_Useyn());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e){
@@ -156,7 +148,6 @@ public class BuildingController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("buildingVO"+buildingVO);
 		model.addAttribute("buildingVO",buildingVO);
 
 		return url;

@@ -32,6 +32,7 @@ import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
+import com.uni.fems.service.BaskinService;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
 import com.uni.fems.service.ManageService;
@@ -397,13 +398,6 @@ public class ManageController {
 		
 		String url = "redirect:step2Add";
 		
-		//파일 집어넣기
-		if(!uploadlogo.isEmpty()){
-			FilesVO vo = new FileDownload().uploadFile(uploadlogo);
-			String filePath = "/resources/images/";
-			manageVO.setMng_Univ_Logo(filePath+vo.getFl_File_Nm());
-		}
-		
 		//지울 vo
 		ManageVO deleteVO = new ManageVO();
 			try {
@@ -412,13 +406,21 @@ public class ManageController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		
+			
+			
+			//파일 집어넣기
+			if(!uploadlogo.isEmpty()){
+				FilesVO vo = new FileDownload().uploadFile(uploadlogo);
+				String filePath = "/resources/images/";
+				manageVO.setMng_Univ_Logo(filePath+vo.getFl_File_Nm());
+			}
 			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
+			
 			manageVO.setMng_Tlphon_No(phoneNo);
 			session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
 		try {
-			/*if(deleteVO!=null)
-				manageSvc.deleteUniv(deleteVO.getMng_Univ_Nm());*/
+			if(deleteVO!=null)
+				manageSvc.deleteUniv(deleteVO.getMng_Univ_Nm());
 				manageSvc.insertUniv(manageVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -490,12 +492,19 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.POST)
-	public String step3Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO) {
+	public String step3Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
+					@RequestParam("uploadUnivImg")MultipartFile uploadUnivImg) {
 		String url = "redirect:step4Add";
 		
+		
 		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
+		if(uploadUnivImg!=null){
+			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg);
+			String filePath = "/resources/images/";
+			manageVO.setMng_Univ_Img(filePath+vo.getFl_File_Nm());
+		}
 		try {
-			manageSvc.updateUniv(manageVO);
+			manageSvc.updateLayout(manageVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -513,7 +522,7 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/step4Add")
+	@RequestMapping(value="/step4Add", method=RequestMethod.GET)
 	public String step4Add(HttpServletRequest request,HttpSession session) {
 		String url = "admin/layout_control/step4Add";	
 		return url;
@@ -530,9 +539,18 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/layoutPreview")
-	public String layoutPreview(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/layoutPreview";	
+	@RequestMapping(value="/step4Add", method=RequestMethod.POST)
+	public String layoutPreview(HttpServletRequest request,HttpSession session,ManageVO manageVO) {
+		String url = "redirect:main";
+		
+		manageVO.setMng_Univ_Nm((String)session.getAttribute("sessionUniv"));
+		try {
+			manageSvc.updateColor(manageVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return url;
 	}
 	

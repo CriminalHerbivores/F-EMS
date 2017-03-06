@@ -185,7 +185,6 @@ public class Bbs_CommentController {
 		
 		List<Bbs_Comment_GntVO> commentList = null;
 		try {
-			System.out.println("bbs_List_Comment_GntVO : "+bbs_List_Comment_GntVO);
 			bbs_Comment_GntSvc.insertBbs_Comment_Gnt(bbs_List_Comment_GntVO);
 			commentList = bbs_Comment_GntSvc.getBbs_Comment_Gnt(bbs_List_Comment_GntVO, cpage);
 			paging = bbs_Comment_GntSvc.pageNumber(cpage,bbs_List_Comment_GntVO);

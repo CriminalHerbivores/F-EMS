@@ -207,7 +207,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_Task_Gnt",lctre_Task_Gnt);
-		System.out.println(lctre_Task_Gnt.toString()+"++++++++++++++++++++++++++++++++");
 		model.addAttribute("tpage",tpage);
 		model.addAttribute("lctre_Flpth",lctre_Flpth);
 		return url;
@@ -304,7 +303,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 				+ "table_Nm="+lctre_Task_Gnt.getTable_Nm()
 				+ "&tpage="+tpage;
 		
-		System.out.println("lctre_Task_Gnt : "+lctre_Task_Gnt);
 		try {
 			lctre_TaskSvc.deleteLctre_Task(lctre_Task_Gnt);
 		} catch (SQLException e) {
