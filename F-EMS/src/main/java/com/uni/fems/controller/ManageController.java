@@ -394,7 +394,8 @@ public class ManageController {
 	 */
 	@RequestMapping(value="/step1Add", method=RequestMethod.POST)
 	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
-						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2) {
+						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2,
+						String faxNo1, String faxNo2, String faxNo3) {
 		
 		String url = "redirect:step2Add";
 		
@@ -415,8 +416,9 @@ public class ManageController {
 				manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
 			}
 			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
-			
+			String faxNo = faxNo1+"-"+faxNo2+"-"+faxNo3;
 			manageVO.setMng_Tlphon_No(phoneNo);
+			manageVO.setMng_Fax_No(faxNo);
 			session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
 		try {
 			if(deleteVO!=null)
