@@ -24,23 +24,42 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
+	var data = "${st_No}";
+	var dataList = {'in_Stdnt_No':data};
 	
-		
-		var lc_Wik_Lctre_Dayweek = $("input[name='lc_Wik_Lctre_Dayweek']").val();
-		var lc_Lctre_Time = $("input[name='lc_Lctre_Time']").val();
-		var lc_Lctrum_No = $("input[name='lc_Lctrum_No']").val();
-		var lu_Lctre_Nm = $("input[name='lu_Lctre_Nm']").val();
-		var bd_Nm = $("input[name='bd_Nm']").val();
-		var pr_Nm = $("input[name='pr_Nm']").val();
-		var lc_Lctre_No = $("input[name='lc_Lctre_No']").val();
-		var lc_Lctre_Code = $("input[name='lc_Lctre_Code']").val();
-		var lc_Split = $("input[name='lc_Split']").val();
+		$.ajax({
+			contentType:'application/json',
+			dataType:'json',
+			url:'initData',
+			type:'post',
+			data:JSON.stringify(dataList),
+			success:function(result){
+				$.each(result,function(i){
+					setData(result[i]);
+				});
+				
+			}
+			
+		})
+})
+</script>
 
-		
+<script>	
 		var timeTbValues=[];
-	
-	
-	$("input[class='TimeTable']").each(function(i) {
+	/* 	<c:forEach items="${lctre_SearchVO}" var="timeTb">
+		
+		<input type="hidden" class="TimeTable" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
+		<input type="hidden" class="TimeTable" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
+		<input type="hidden" class="TimeTable" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">
+		<input type="hidden" class="TimeTable" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}">
+		<input type="hidden" class="TimeTable" name="bd_Nm" value="${timeTb.bd_Nm}">
+		<input type="hidden" class="TimeTable" name="pr_Nm" value="${timeTb.pr_Nm}">
+		<input type="hidden" class="TimeTable" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}">
+		<input type="hidden" class="TimeTable" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}">
+		<input type="hidden" class="TimeTable" name="lc_Split" value="${timeTb.lc_Split}">
+	</c:forEach> */
+	function setData(result){
+	$.each(result,function(i) {
 /* var timeTb ={
 			lc_Wik_Lctre_Dayweek : $("input[name='lc_Wik_Lctre_Dayweek']").val(),
 			lc_Lctre_Time : $("input[name='lc_Lctre_Time']").val(),
@@ -53,18 +72,27 @@ $(document).ready(function () {
 			lc_Split : $("input[name='lc_Split']").val()
 		}; */
 		
-		 var allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, 
-						"lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, 
-						"bd_Nm": bd_Nm, "pr_Nm": pr_Nm, "lc_Lctre_No": lc_Lctre_No, 
-						"lc_Lctre_Code": lc_Lctre_Code, "lc_Split": lc_Split}
-				
+			var lc_Wik_Lctre_Dayweek = result.lc_Wik_Lctre_Dayweek;
+			var lc_Lctre_Time = result.lc_Lctre_Time;
+			var lc_Lctrum_No = result.lc_Lctrum_No;
+			var lu_Lctre_Nm = result.lu_Lctre_Nm;
+			var bd_Nm = result.bd_Nm;
+			var pr_Nm = result.pr_Nm;
+			var lc_Lctre_No =result.lc_Lctre_No;
+			var lc_Lctre_Code = result.lc_Lctre_Code;
+			var lc_Split = result.lc_Split;
+			
+			allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, 
+					"lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, 
+					"bd_Nm": bd_Nm, "pr_Nm": pr_Nm, "lc_Lctre_No": lc_Lctre_No, 
+					"lc_Lctre_Code": lc_Lctre_Code, "lc_Split": lc_Split}
+		 var allData = new Array();
+		 
+		
 		timeTbValues.push(allData); 	/* $(this).val() */
 
-		
-		
-		
 		// 요일 처리
-		var str=allData.lc_Wik_Lctre_Dayweek;
+		var str= lc_Wik_Lctre_Dayweek;
 		var arr = str.split("/");
 		var arr1 = arr[0];
 		var arr2 = arr[1];
@@ -438,43 +466,16 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 		$("td:eq(64)").html(rst2);
 	}	
 }
+	
+})
+	}
 
-});
-
-});
 </script>
 
 </head>
 <body>
 <form id="formm" name="formm">
 <div class="margin-auto">
-	<c:forEach items="${lctre_SearchVO}" var="timeTb">
-	 
-<%--  <%
-		var allData= {"lc_Wik_Lctre_Dayweek": '${timeTb.lc_Wik_Lctre_Dayweek}', "lc_Lctre_Time": '${timeTb.lc_Lctre_Time}', 
-						"lc_Lctrum_No": '${timeTb.lc_Lctrum_No}', "lu_Lctre_Nm": '${timeTb.lu_Lctre_Nm}', 
-						"bd_Nm": '${timeTb.bd_Nm}', "pr_Nm": '${timeTb.pr_Nm}', "lc_Lctre_No": '${timeTb.lc_Lctre_No}', 
-						"lc_Lctre_Code": '${timeTb.lc_Lctre_Code}', "lc_Split": '${timeTb.lc_Split}'}
-				
-		timeTbValues.push(allData);
-	 %>  --%>
-	
-<%-- 	<%
-		Lctre_SearchVO vo= new Lctre_SearchVO();
-		vo.setLc_Wik_Lctre_Dayweek();
-	
-	%> --%>
-	
-		<input type="hidden" class="TimeTable" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
-		<input type="hidden" class="TimeTable" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
-		<input type="hidden" class="TimeTable" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">
-		<input type="hidden" class="TimeTable" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}">
-		<input type="hidden" class="TimeTable" name="bd_Nm" value="${timeTb.bd_Nm}">
-		<input type="hidden" class="TimeTable" name="pr_Nm" value="${timeTb.pr_Nm}">
-		<input type="hidden" class="TimeTable" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}">
-		<input type="hidden" class="TimeTable" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}">
-		<input type="hidden" class="TimeTable" name="lc_Split" value="${timeTb.lc_Split}">
-	</c:forEach>
 	
 	<h1>시간표 (${loginUser}&nbsp;&nbsp;<%-- ${lctre_SearchVO.st_Nm} --%>)</h1>
 	<table class="def-table-full tb-border">

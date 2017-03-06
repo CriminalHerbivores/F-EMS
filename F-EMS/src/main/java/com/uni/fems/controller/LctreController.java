@@ -133,11 +133,24 @@ public class LctreController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("======================"+lctre_SearchVO);
 		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
-		
+		model.addAttribute("st_No",intrst_ListVO.getIn_Stdnt_No());
 		return url;
 	}
 	
+	@RequestMapping(value ="initData", method = RequestMethod.POST)
+	public @ResponseBody List<Lctre_SearchVO> initData(@RequestBody Intrst_ListVO intrst_ListVO) {
+		List<Lctre_SearchVO> list=null;
+		try {
+			list=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(list);
+		return list;
+	}
 	
 	
 	/**
@@ -334,8 +347,8 @@ public class LctreController {
 					}
 			}
 		}
-		return null;
-		
+		}
+		return "";
 	}
 
 	/**
@@ -349,7 +362,7 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	public List<Lctre_SearchVO> insertLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+/*	public List<Lctre_SearchVO> insertLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "";
@@ -386,7 +399,7 @@ public class LctreController {
 		
 		return null;
 		
-	}
+	}*/
 	
 	/**
 	 * <pre>
