@@ -172,7 +172,6 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	@RequestMapping(value="/detailLctre_Qna", method=RequestMethod.GET)
 	public String detailLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model){
 		String url="lecture/qna/detailLctre_Qna";
-		System.out.println("lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		Lctre_QnaVO lctre_Qna = null;
 		try {
 			lctre_Qna = lctre_QnaSvc.getLctre_Qna(lctre_Qna_Gnt);
@@ -186,7 +185,6 @@ public class Lctre_QnaController implements ApplicationContextAware{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("2lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		model.addAttribute("lctre_Qna_Gnt",lctre_Qna_Gnt);
 		model.addAttribute("tpage",tpage);
 		return url;

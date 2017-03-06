@@ -34,7 +34,6 @@ public class Lctre_NoticeDAOImpl implements Lctre_NoticeDAO {
 	
 	@Override
 	public List<Lctre_NoticeVO> listAllLctre_Notice(Lctre_Notice_GntVO lctre_Notice_Gnt, int tpage, int totalRecord) throws SQLException {
-		System.out.println("list lctre_Notice_Gnt : "+lctre_Notice_Gnt);
 		Paging p = new Paging();
 		int[] rows = p.row(tpage, totalRecord);
 		List<Lctre_NoticeVO> listAllLctre_Notice = client.queryForList("listAllLctre_Notice",lctre_Notice_Gnt, rows[1], rows[0]);
@@ -43,7 +42,6 @@ public class Lctre_NoticeDAOImpl implements Lctre_NoticeDAO {
 
 	@Override
 	public int totalLctre_Notice(Lctre_Notice_GntVO lctre_Notice_Gnt) throws SQLException{
-		System.out.println("total lctre_Notice_Gnt : "+lctre_Notice_Gnt);
 		int total_pages = 0;
 		total_pages = (Integer) client.queryForObject("totalLctre_Notice",lctre_Notice_Gnt);
 		return total_pages;

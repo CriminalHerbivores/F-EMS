@@ -320,7 +320,6 @@ public class Lctre_video_ProfsrController implements ApplicationContextAware{
 				+ "&tpage="+tpage;
 		
 		try {
-			System.out.println("lctre_Video_Gnt : "+lctre_Video_Gnt);
 			lctre_VideoSvc.deleteLctre_Video(lctre_Video_Gnt);
 //			lctre_Video_StdntSvc
 		} catch (SQLException e) {

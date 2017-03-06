@@ -55,7 +55,6 @@ public class Bbs_ListDAOImpl implements Bbs_ListDAO {
 	public Bbs_List_AtrtyVO getBbs_List_Atrty(int bl_Bbs_No)throws SQLException {
 		
 		Bbs_List_AtrtyVO bbs_List_AtrtyVO = (Bbs_List_AtrtyVO) client.queryForObject("getBbs_List_Atrty", bl_Bbs_No); 
-		System.out.println("bbs_List_AtrtyVO : "+bbs_List_AtrtyVO);
 		return bbs_List_AtrtyVO;
 	}
 	@Override
@@ -70,7 +69,6 @@ public class Bbs_ListDAOImpl implements Bbs_ListDAO {
 	@Override
 	public int insertBbs_List_Atrty(Bbs_List_AtrtyVO bbs_List_AtrtyVO)
 			throws SQLException {
-		System.out.println("bbs_List_AtrtyVO : "+bbs_List_AtrtyVO);
 		client.update("insertBbs_List_Atrty1", bbs_List_AtrtyVO);
 		return client.update("insertBbs_List_Atrty2", bbs_List_AtrtyVO);
 	}

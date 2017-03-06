@@ -120,7 +120,6 @@ public class SknrgsController {
 	public String sknrgListForm(Model model, HttpSession session) {
 		String url = "manager/student/sknrgsListForm";
 		String skn_Type = (String) session.getAttribute("skn_Type");
-		System.out.println("skn_Typen : " + skn_Type);
 		List<SknrgsViewVO> sknrgsVOList = null;
 		if (skn_Type != null) {
 			skn_Type = "%";
@@ -128,7 +127,6 @@ public class SknrgsController {
 
 		try {
 			sknrgsVOList = sknrgs_Svc.getSknrgsType(skn_Type);
-			System.out.println("sknrgsVOList : " + sknrgsVOList);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

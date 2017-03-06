@@ -78,7 +78,6 @@ public class ReqstController {
 //			e.printStackTrace();
 //		}
 //		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
-//		System.out.println("ReqstController====================   "+lctre_SearchVO);
 //		return url;
 //	}
 	
@@ -117,7 +116,6 @@ public class ReqstController {
 //			intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_2[i]));
 //			//reqstVO.setRe_Lctre_No(intrst_ListVO.getIn_Lctre_No());
 //			lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
-//			System.out.println("============== 11111111111 reqstVO.getRe_Lctre_No() "+reqstVO.getRe_Lctre_No());
 //			try {
 //				reqstService.deleteReqst(reqstVO,lctre_SearchVO);
 //				intrst_ListService.deleteIntrst_List(intrst_ListVO);

@@ -211,17 +211,14 @@ public class ProfsrController {
 		String url = "redirect:openLctreList";//교수가 강의개설 요청 끝난 후 어떻게 할지 해야할듯, 개설한 강의 목록을 보게할지 등등
 		String pr_Profsr_No = (String) session.getAttribute("loginUser");
 		//int knd_Lctre_No=0;
-		System.out.println("=========111111111111 kindVO "+kindVO);
 		try {
 			profsrService.selectProfsr(pr_Profsr_No);
 			lctreService.openLctre(lctreVO,lctre_ActplnVO,kindVO);
-			System.out.println("=========222222222222222222 kindVO "+kindVO);
 			//kindService.insertKind(knd_Lctre_No);
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
-		System.out.println("=========33333333333 kindVO "+kindVO);
 		return url;
 	}
 
@@ -386,7 +383,6 @@ public class ProfsrController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(vo.toString());
 		model.addAttribute("lctre_SearchVO", vo);
 		return url;
 	}
