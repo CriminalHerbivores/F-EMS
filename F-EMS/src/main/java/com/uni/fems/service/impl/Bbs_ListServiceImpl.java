@@ -72,5 +72,11 @@ public class Bbs_ListServiceImpl implements Bbs_ListService {
 		bbs_ListDAO.insertBbs_Comment_Table_Gnt(bbs_List_AtrtyVO.getBl_Table_Nm());
 		return bbs_ListDAO.insertBbs_List_Atrty(bbs_List_AtrtyVO);
 	}
+	@Override
+	public List<Bbs_List_AtrtyVO> getBbs_List(Bbs_List_AtrtyVO vo)
+			throws SQLException {
+		List<Bbs_List_AtrtyVO> list = bbs_ListDAO.getBbs_List(vo);
+		return list;
+	}
 
 }
