@@ -501,7 +501,7 @@ public class ManageController {
 		if(!uploadUnivImg.isEmpty()){
 			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
 			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
-			manageVO.setMng_Univ_Img(filePath+vo.getFl_File_Nm());
+			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
 		}
 		try {
 			manageSvc.updateLayout(manageVO);
