@@ -77,6 +77,9 @@ public class SklstfDAOImpl implements SklstfDAO {
 		client.insert("joinAdmin",sklstfVO);
 	}
 	
-
+	@Override
+	public void deleteSklstf(String stf_Sklstf_No) throws SQLException {
+		client.update("deleteSklstf", stf_Sklstf_No);
+	}
 	
 }

@@ -32,7 +32,7 @@ border:0;
 <body>
 <article>
 
-<form id="step1Add" action="/fems/admin/step2Add" method="post" name="formm">
+<form id="step1Add" method="post" name="formm">
 	
 	
 	<!-- 상단 -->
@@ -56,18 +56,13 @@ border:0;
 	<!-- 중앙 -->
 	<div class="col-sm-8 text-center"> 
 		<div class="set-layout-center">
-		<table class="tb-layout out-border">
-		<tr><td>대학 이름 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
-		<tr><td>대학 영문 이름 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
-		<tr><td>대학 로고 등록 : </td><td><input type="text" class="def-input-text-lg custom-form-control"><input type="button" class="def-btn btn-sm btn-gray" value="찾기"></td></tr> 
-		<tr><td></td><td>※ 첨부 파일 이미지 크기는 200*50px 권장</td></tr>
-		<tr><td></td><td>
-			<div class="preview-logo">
-			
-			</div></td></tr>
-		<tr><td>우편번호 : </td><td><input type="text" class="def-input-text-md custom-form-control"><input type="button" class="def-btn btn-sm btn-gray" value="검색"></td></tr>
-		<tr><td>주소 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
-		<tr><td>전화번호 : </td><td><select name="선택" class="combobox-sm custom-form-control">
+<table class="def-table-full tb-border table-hover tr-child-color">
+		<tr><th>대학 이름 : </th><td><input type="text" name="mng_Univ_Nm" class="def-input-text-lg custom-form-control"></td></tr>
+		<tr><th>대학 영문 이름 : </th><td><input type="text" name="mng_Univ_Eng_Nm" class="def-input-text-lg custom-form-control"></td></tr>
+		<tr><th>대학 로고 등록 : </th><td> ※ 첨부 파일 이미지 크기는 170*15px 권장 <input type="file" name="mng_Univ_Logo" ></td></tr> 
+		<tr><th>우편번호 : </th><td><input type="text" name="mng_Post_No" class="def-input-text-md custom-form-control"><input type="button" class="def-btn" value="검색"></td></tr>
+		<tr><th>주소 : </th><td><input type="text" name="mng_Adres1" class="def-input-text-lg custom-form-control"> <input type="text" name="mng_Adres2" class="def-input-text-xlg custom-form-control" ></td></tr>
+		<tr><th>전화번호 : </th><td><select name="mng_Tlphon_No" class="combobox-sm custom-form-control">
 					<option value="02">02</option>
 					<option value="031">031</option>
 					<option value="032">032</option>
@@ -89,10 +84,10 @@ border:0;
 					<option value="017">017</option>
 					<option value="018">018</option>
 					<option value="019">019</option>
-				</select>&nbsp;-&nbsp;
-				<input type="text" class="def-input-text-sm custom-form-control">&nbsp;-&nbsp;
-				<input type="text" class="def-input-text-sm custom-form-control"></td></tr> 
-				<tr><td>저작권 : </td><td><input type="text" class="def-input-text-lg custom-form-control"></td></tr>
+				</select> 
+				<input type="text" name="phoneNo1" class="def-input-text-sm custom-form-control">
+				<input type="text" name="phoneNo2" class="def-input-text-sm custom-form-control"></td></tr> 
+				<tr><th>저작권 : </th><td><input type="text" name="mng_Cpyr" class="def-input-text-full custom-form-control"></td></tr>
 </table>
 
 			</div>
@@ -101,7 +96,7 @@ border:0;
 <div class="col-sm-2 sidenav">		
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="go_step2Add()">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="submitForm(this.form);">
 	</div>
 	</div>
 

@@ -115,7 +115,7 @@ function commm_go(){
 	     success : function(data){
 	    	   $('#comment_content').val('');
 		       $('div #comment').empty();
-	        $('div #comment').append(data);
+	        $('div #comment').append(data);	//data에서 html소스로 받음
 	     },
 	      error : function() {
 	         alert('댓글 등록 실패');

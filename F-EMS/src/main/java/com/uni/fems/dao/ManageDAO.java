@@ -69,4 +69,16 @@ public interface ManageDAO {
 	 * </pre>
 	 */
 	List<LctreVO> getProfsrList(String loginUser) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 대학을 등록하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param manageVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int insertUniv(ManageVO manageVO ) throws SQLException;
 }

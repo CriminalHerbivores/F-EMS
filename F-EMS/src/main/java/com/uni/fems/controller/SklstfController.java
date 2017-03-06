@@ -27,6 +27,8 @@ import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.FilesVO;
+import com.uni.fems.dto.LctreVO;
+import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.PymntVO;
@@ -42,6 +44,7 @@ import com.uni.fems.dto.WorkVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.LctreService;
+import com.uni.fems.service.Lctre_ActplnService;
 import com.uni.fems.service.ProfsrService;
 import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SklstfService;
@@ -94,6 +97,8 @@ public class SklstfController {
 	private TuitionService tuitionService;
 	@Autowired
 	private WorkService workService;
+	@Autowired
+	private Lctre_ActplnService lctre_ActplnSvc;
 	
 	private WebApplicationContext context = null;
 	
@@ -1130,7 +1135,7 @@ public class SklstfController {
 	@RequestMapping("/profsrLctreList")
 	public String profsrHistory(String tpage, Lctre_SearchVO lctre_SearchVO, HttpServletRequest request, Model model){
 		//String url="manager/profsr/profsrHistory";
-		String url="professor/requestLctreList";
+		String url="professor/lctreList";
 		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
 		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
 		lctre_SearchVO.setLc_Open_At("y");
@@ -1147,11 +1152,6 @@ public class SklstfController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		String button = "";
-		button = "<a href=\"profsrRequestLectre\">"
-				+"<input type=\"button\" value=\"개설강의\" class=\"def-btn btn-sm btn-color\">"
-				+"</a>";
-		model.addAttribute("button",button);
 		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
 		model.addAttribute("title","기존강의");
@@ -1175,7 +1175,6 @@ public class SklstfController {
 		String url="professor/requestLctreList";
 		List<Lctre_SearchVO> list = new ArrayList<Lctre_SearchVO>();
 		if(lctre_SearchVO.getPr_Profsr_No()==null) lctre_SearchVO.setPr_Profsr_No("");
-		lctre_SearchVO.setLc_Open_At("n");
 		int[] day = supporter.getDay();
 		lctre_SearchVO.setLc_Period(day[0]+"");
 		lctre_SearchVO.setLc_Term(day[3]+"");
@@ -1192,15 +1191,135 @@ public class SklstfController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		String button = "";
-		button = "<a href=\"profsrLctreList\">"
-				+"<input type=\"button\" value=\"기존강의\" class=\"def-btn btn-sm btn-color\">"
-				+"</a>";
-		model.addAttribute("button",button);
 		model.addAttribute("lctre_SearchVO",list);
 		model.addAttribute("paging",paging);
 		model.addAttribute("title","개설강의");
 		return url;
 	}
+
+	/**
+	 * <pre>
+	 * 직원이 개설 강의 및 강의계획서 조회
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/detailLctre")
+	String detailLctre(Model model, int lc_Lctre_No) throws ServletException, IOException {
+		String url = "professor/detailLctre";
+		Lctre_SearchVO vo = new Lctre_SearchVO();
+		
+		try {
+			vo = lctreService.getDetailLctre(lc_Lctre_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(vo.toString());
+		model.addAttribute("lctre_SearchVO", vo);
+		return url;
+	}
+
+	/**
+	 * <pre>
+	 * 직원이 개설 강의 및 강의계획서 수정하는 폼
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/updateLctre", method = RequestMethod.GET)
+	String lctreUpdateForm(Model model, int lc_Lctre_No) throws ServletException, IOException {
+		String url = "professor/updateLctre";
+		Lctre_SearchVO vo = new Lctre_SearchVO();
+		
+		try {
+			vo = lctreService.getDetailLctre(lc_Lctre_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("lctre_SearchVO", vo);
+		return url;
+	}
+
+	/**
+	 * <pre>
+	 * 직원이 개설 강의 및 강의계획서 수정하는 로직
+	 * </pre>
+	 * <pre>
+	 * @param lctreVO
+	 * @param lctre_ActplnVO
+	 * @param model
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value = "/updateLctre", method = RequestMethod.POST)
+	String lctreUpdate(Lctre_SearchVO lctreVO) throws ServletException, IOException {
+		String url = "redirect:profsrRequestLectre";
+		lctreVO.setLc_Open_At("n");
+		
+		try {
+			lctreService.updateLctre(lctreVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
 	
+	/**
+	 * 강의 개설을 승인
+	 * @param model
+	 * @param lc_Lctre_No
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/allowLctre")
+	String allowLctre(Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException {
+		String url = "redirect:profsrRequestLectre";
+		lctre_SearchVO.setLc_Open_At("y");
+		try {
+			lctreService.allowLctre(lctre_SearchVO);
+			lctre_ActplnSvc.insertLctre_Table(lctre_SearchVO.getLc_Lctre_No()+"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
+	/**
+	 * 강의 개설을 거절
+	 * @param model
+	 * @param lc_Lctre_No
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/refuseLctre")
+	String refuseLctre(Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException {
+		String url = "redirect:profsrRequestLectre";
+		lctre_SearchVO.setLc_Open_At("n");
+		try {
+			lctreService.allowLctre(lctre_SearchVO);
+			lctre_ActplnSvc.dropLctre_Table(lctre_SearchVO.getLc_Lctre_No()+"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
 }

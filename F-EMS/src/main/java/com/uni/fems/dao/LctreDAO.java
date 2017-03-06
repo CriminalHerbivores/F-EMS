@@ -97,7 +97,7 @@ public interface LctreDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateLctre(LctreVO lctreVO) throws SQLException;	//강의 수정
+	void updateLctre(Lctre_SearchVO lctreVO) throws SQLException;	//강의 수정
 	
 	
 	/**
@@ -135,9 +135,22 @@ public interface LctreDAO {
 	 * </pre>
 	 */
 	int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
-	
-
-
-	
+	/**
+	 * 개설 강의 승인
+	 * @param lc_Lctre_No
+	 * @throws SQLException
+	 */
+	void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 분반을 설정
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 }
 

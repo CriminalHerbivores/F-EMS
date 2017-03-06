@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.dao.Lctre_ActplnDAO;
 import com.uni.fems.dto.Lctre_ActplnVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 
 /**
  * <pre>
@@ -40,8 +41,8 @@ public class Lctre_ActplnDAOImpl implements Lctre_ActplnDAO {
 	
 	// 교수가 강의계획서 수정
 	@Override
-	public void updateLctre_Actpl(Lctre_ActplnVO lctre_ActplnVO)
+	public void updateLctre_Actpl(Lctre_SearchVO lctre_ActplnVO)
 			throws SQLException {
-		client.update("updateLctre_Actpl",lctre_ActplnVO);
+		client.update("updateLctre_Actpln",lctre_ActplnVO);
 	}
 }

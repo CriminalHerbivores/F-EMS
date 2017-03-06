@@ -85,12 +85,12 @@ public class LctreServiceImpl implements LctreService {
 
 	// 교수가 강의 수정
 	@Override
-	public void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, int knd_Lctre_No)
+	public void updateLctre(Lctre_SearchVO lctreVO)
 			throws SQLException {
 		
 		lctreDAO.updateLctre(lctreVO);
-		lctre_ActplnDAO.updateLctre_Actpl(lctre_ActplnVO);
-		kindDAO.updateKind(knd_Lctre_No);
+		lctre_ActplnDAO.updateLctre_Actpl(lctreVO);
+		//kindDAO.updateKind(lctreVO);
 		
 	}
 
@@ -107,6 +107,17 @@ public class LctreServiceImpl implements LctreService {
 	public int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		int totalRecord = lctreDAO.countLctre(lctre_SearchVO);
 		return totalRecord;
+	}
+
+	@Override
+	public void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		lctreDAO.allowLctre(lctre_SearchVO);
+		lctreDAO.updateSplit(lctre_SearchVO);
+	}
+
+	@Override
+	public void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		lctreDAO.updateSplit(lctre_SearchVO);
 	}
 
 

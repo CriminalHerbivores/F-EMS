@@ -94,7 +94,7 @@ public interface LctreService {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	void updateLctre(LctreVO lctreVO, Lctre_ActplnVO lctre_ActplnVO, int knd_Lctre_No) throws SQLException;
+	void updateLctre(Lctre_SearchVO lctreVO) throws SQLException;
 	
 	
 	/**
@@ -122,7 +122,25 @@ public interface LctreService {
 	 */
 	int countLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 
-		
-	
-	
+	/**
+	 * <pre>
+	 * 개설 강의 승인
+	 * </pre>
+	 * <pre>
+	 * @param lc_Lctre_No
+	 * @throws SQLException
+	 * <pre>
+	 */
+	void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 분반을 설정
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 }

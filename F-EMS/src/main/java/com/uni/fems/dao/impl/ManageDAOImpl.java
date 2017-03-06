@@ -57,4 +57,9 @@ public class ManageDAOImpl implements ManageDAO {
 		List<LctreVO> list = client.queryForList("getProfsrList",loginUser);
 		return list;
 	}
+
+	@Override
+	public int insertUniv(ManageVO manageVO) throws SQLException {
+		return client.update("insertUniv", manageVO);
+	}
 }

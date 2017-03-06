@@ -92,7 +92,7 @@ public class LctreDAOImpl implements LctreDAO {
 	
 	// 교수가 강의 수정
 	@Override
-	public void updateLctre(LctreVO lctreVO) throws SQLException {
+	public void updateLctre(Lctre_SearchVO lctreVO) throws SQLException {
 		client.update("updateLctre",lctreVO);
 	}
 	
@@ -117,27 +117,14 @@ public class LctreDAOImpl implements LctreDAO {
 		int totalRecord = (int) client.queryForObject("countLctre",lctre_SearchVO);
 		return totalRecord;
 	}
+	@Override
+	public void allowLctre(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		client.update("allowLctre",lctre_SearchVO);
+	}
+	@Override
+	public void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		client.update("updateSplit",lctre_SearchVO);
+	}
 	
 	
 }
-
- class Paging2 extends Paging{
-	static int view_rows = 5; // 페이지의 개수
-	static int counts = 10; // 한 페이지에 나타낼 개수
-	
-	public int[] row2(int tpage, int totalRecord){
-		int startRow = -1;
-		int endRow = -1;
-
-		startRow = (tpage - 1) * counts ;
-		endRow = startRow + counts - 1;
-		
-		if (endRow > totalRecord)
-			endRow = totalRecord;
-		
-		int[] rows = {counts,startRow,endRow};
-		return rows;
-	}
-
-	
- }

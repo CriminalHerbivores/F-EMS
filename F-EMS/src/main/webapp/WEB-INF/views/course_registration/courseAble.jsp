@@ -83,8 +83,8 @@ function add_reqst(form){
 	
 	
 }
-function go_searchLctre(){
-	
+/* function go_searchLctre(){
+	 */
 	
 <%-- 	 var userId = $("#userId").val();
 	 
@@ -116,8 +116,8 @@ function go_searchLctre(){
 	
 	
 	
-	document.formm.submit();
-}
+/* 	document.formm.submit();
+} */
 
 
 
@@ -145,7 +145,7 @@ function go_searchLctre(){
 					<option value="lu_Lctre_Code">강의코드</option>
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
-					<button class="def-btn btn-search btn-color" onclick="go_searchLctre()"><i class="glyphicon glyphicon-search"></i>&nbsp;조회</button></form>
+					<input type="button" class="def-btn btn-search btn-color" onclick="go_searchLctre()" value="조회"></form>
 		<form name="forrrm" method="get">			
 					<input type="button" class="def-btn btn-search btn-color" id="courseDetailBtn" value="상세검색" onClick="disp()">&nbsp;&nbsp;
       <div class="non-disp">
