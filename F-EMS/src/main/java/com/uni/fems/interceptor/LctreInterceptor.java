@@ -56,9 +56,8 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 		}
 		List<LctreVO> lctreList = (List<LctreVO>) session.getAttribute("lctreList");
 		if(request.getMethod().toString().equals("GET")){
-			String param = request.getParameter("table_Nm").trim();
 			//강의번호가 없을 시 가장 첫번째 강의로 이동
-			if(param==null || param.isEmpty()){
+			if(request.getParameter("table_Nm")==null || request.getParameter("table_Nm").isEmpty()){
 				if(lctreList==null || lctreList.isEmpty()){
 					response.sendRedirect(request.getContextPath()+"/auth");
 					return false;
@@ -75,7 +74,7 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 				//강의권한이 없을 시 권한 없음으로 이동
 				boolean flag = false;
 				for(LctreVO vo : lctreList){
-					if((vo.getLc_Lctre_No()+"").equals(param)){
+					if((vo.getLc_Lctre_No()+"").equals(request.getParameter("table_Nm"))){
 						flag = true;
 					}
 					if(!flag){

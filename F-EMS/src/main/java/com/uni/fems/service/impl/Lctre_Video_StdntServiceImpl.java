@@ -1,6 +1,7 @@
 package com.uni.fems.service.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.fems.common.Paging;
@@ -78,6 +79,13 @@ public class Lctre_Video_StdntServiceImpl implements Lctre_Video_StdntService{
 	@Override
 	public int updateLctre_Video(Lctre_Watch_Video_GntVO lctre_Watch_Video_Gnt) throws SQLException {
 		return lctre_Video_StdntDAO.updateLctre_Video(lctre_Watch_Video_Gnt);
+	}
+	@Override
+	public List<Lctre_Watch_Video_GntVO> lctre_watch_video_gnt(
+			Lctre_Watch_Video_GntVO vo) throws SQLException {
+		List<Lctre_Watch_Video_GntVO> list = new ArrayList<Lctre_Watch_Video_GntVO>();
+		list = lctre_Video_StdntDAO.lctre_watch_video_gnt(vo);
+		return list;
 	}
 
 }

@@ -1,14 +1,12 @@
 package com.uni.fems.dao.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.common.Paging;
-import com.uni.fems.dao.Lctre_Video_ProfsrDAO;
 import com.uni.fems.dao.Lctre_Video_StdntDAO;
-import com.uni.fems.dto.Lctre_VideoVO;
-import com.uni.fems.dto.Lctre_Video_GntVO;
 import com.uni.fems.dto.Lctre_Watch_Video_GntVO;
 
 /**
@@ -67,4 +65,13 @@ public class Lctre_Video_StdntDAOImpl implements Lctre_Video_StdntDAO {
 		int result = client.update("updateLctre_Video_Stdnt", lctre_Watch_Video_Gnt);
 		return result;
 	}
+
+	@Override
+	public List<Lctre_Watch_Video_GntVO> lctre_watch_video_gnt(
+			Lctre_Watch_Video_GntVO vo) throws SQLException {
+		List<Lctre_Watch_Video_GntVO> list = new ArrayList<Lctre_Watch_Video_GntVO>();
+		list = client.queryForList("attendance",vo);
+		return list;
+	}
+	
 }
