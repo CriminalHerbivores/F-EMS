@@ -41,7 +41,7 @@ $(document).ready(function () {
 	
 	
 	$("input[class='TimeTable']").each(function(i) {
-/* var timeTb ={
+	/*  var timeTb ={
 			lc_Wik_Lctre_Dayweek : $("input[name='lc_Wik_Lctre_Dayweek']").val(),
 			lc_Lctre_Time : $("input[name='lc_Lctre_Time']").val(),
 			lc_Lctrum_No : $("input[name='lc_Lctrum_No']").val(),
@@ -51,7 +51,7 @@ $(document).ready(function () {
 			lc_Lctre_No : $("input[name='lc_Lctre_No']").val(),
 			lc_Lctre_Code : $("input[name='lc_Lctre_Code']").val(),
 			lc_Split : $("input[name='lc_Split']").val()
-		}; */
+		};  */
 		
 		 var allData= {"lc_Wik_Lctre_Dayweek": lc_Wik_Lctre_Dayweek, "lc_Lctre_Time": lc_Lctre_Time, 
 						"lc_Lctrum_No": lc_Lctrum_No, "lu_Lctre_Nm": lu_Lctre_Nm, 
@@ -64,7 +64,7 @@ $(document).ready(function () {
 		
 		
 		// 요일 처리
-		var str=allData.lc_Wik_Lctre_Dayweek;
+		var str=timeTbValues.lc_Wik_Lctre_Dayweek;
 		var arr = str.split("/");
 		var arr1 = arr[0];
 		var arr2 = arr[1];
@@ -449,22 +449,6 @@ if(period2.split("-")[0]=="13"||period2.split("-")[1]=="13"){
 <form id="formm" name="formm">
 <div class="margin-auto">
 	<c:forEach items="${lctre_SearchVO}" var="timeTb">
-	 
-<%--  <%
-		var allData= {"lc_Wik_Lctre_Dayweek": '${timeTb.lc_Wik_Lctre_Dayweek}', "lc_Lctre_Time": '${timeTb.lc_Lctre_Time}', 
-						"lc_Lctrum_No": '${timeTb.lc_Lctrum_No}', "lu_Lctre_Nm": '${timeTb.lu_Lctre_Nm}', 
-						"bd_Nm": '${timeTb.bd_Nm}', "pr_Nm": '${timeTb.pr_Nm}', "lc_Lctre_No": '${timeTb.lc_Lctre_No}', 
-						"lc_Lctre_Code": '${timeTb.lc_Lctre_Code}', "lc_Split": '${timeTb.lc_Split}'}
-				
-		timeTbValues.push(allData);
-	 %>  --%>
-	
-<%-- 	<%
-		Lctre_SearchVO vo= new Lctre_SearchVO();
-		vo.setLc_Wik_Lctre_Dayweek();
-	
-	%> --%>
-	
 		<input type="hidden" class="TimeTable" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
 		<input type="hidden" class="TimeTable" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
 		<input type="hidden" class="TimeTable" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">

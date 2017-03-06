@@ -306,10 +306,8 @@ public class LctreController {
 	public String insertInterest(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
-		//String tpage = request.getParameter("tpage");
 		
 		String loginUser = "";
-		//List<Lctre_SearchVO> list=null;
 		
 		if(((String) session.getAttribute("loginUser"))!=null){
 			loginUser = ((String) session.getAttribute("loginUser"));
@@ -325,10 +323,8 @@ public class LctreController {
 					intrst_ListVO.setIn_Stdnt_No(loginUser);
 					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
 					
-
 					try {
 						intrst_ListService.insertIntrst_List(intrst_ListVO);	
-						//System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}

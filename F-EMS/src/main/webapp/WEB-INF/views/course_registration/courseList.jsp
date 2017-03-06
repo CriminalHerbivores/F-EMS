@@ -533,7 +533,7 @@ function del_reqstLctre(){
 					<td>${openLctre.lr_Accept_Nmpr}</td> 
 				</tr>
 			</c:forEach>
-			<tr><td colspan="13" style="text-align: center;">${paging }</td></tr>				
+			<tr><td colspan="13" style="text-align: center;">${paging}</td></tr>				
 					</tbody>
 			</table></div>
 	</form>
