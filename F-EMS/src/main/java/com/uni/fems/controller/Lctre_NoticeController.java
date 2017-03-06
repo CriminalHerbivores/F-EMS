@@ -112,6 +112,40 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 		
 	}
 	
+	@RequestMapping("/excel")
+	public String excel(Model model,HttpServletRequest request) throws ServletException, IOException{
+		String tpage = request.getParameter("tpage");
+		String table_Nm = request.getParameter("table_Nm");
+		System.out.println("엑셀이 안나오네.......");
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+
+		Lctre_Notice_GntVO lctre_Notice_Gnt = new Lctre_Notice_GntVO();
+		lctre_Notice_Gnt.setTable_Nm(table_Nm);
+		
+			lctre_Notice_Gnt.setLn_Cn("%");
+			lctre_Notice_Gnt.setLn_Sj("%");
+		
+		
+		List<Lctre_NoticeVO> lctre_NoticeList = null;
+		String paging = null;
+		try {
+			lctre_NoticeList = lctre_NoticeSvc.listAllLctre_Notice(Integer.parseInt(tpage), lctre_Notice_Gnt);
+			paging = lctre_NoticeSvc.pageNumber(Integer.parseInt(tpage), lctre_Notice_Gnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_NoticeList", lctre_NoticeList);
+		int n = lctre_NoticeList.size();
+		model.addAttribute("lctre_NoticeListSize", n);
+		model.addAttribute("paging", paging);
+		return "productListExcel";
+		
+	}
+	
 	/**
 	 * <pre>
 	 * 공지 게시판 작성 폼을 띄우기 위한 메서드

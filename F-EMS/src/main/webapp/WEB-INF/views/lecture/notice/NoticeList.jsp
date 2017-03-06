@@ -64,6 +64,8 @@
 <table class="def-table-full"><tr><td style="text-align: right;">
 	  	<a href="writeLctre_Notice?table_Nm=${lctre_Notice_Gnt.table_Nm}">
 	  	<input type="button" class="def-btn btn-md btn-color" value="등록"></a>
+	  	<a href="excel?table_Nm=${lctre_Notice_Gnt.table_Nm}">
+	  	<input type="button" class="def-btn btn-md btn-color" value="엑셀"></a>
 </td></tr></table>
 </sec:authorize>
 
