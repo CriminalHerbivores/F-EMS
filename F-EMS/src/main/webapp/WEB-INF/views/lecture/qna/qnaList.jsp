@@ -26,9 +26,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h2>강의 질의응답 게시판</h2>
+	<h2>강의 질의응답 게시판</h2><br/>
 
-	<form name="formm">
+	<form name="formm" method="post">
 		<table class="def-table-full">
 			<tr>
 				<td style="text-align: left;"><select name="key"

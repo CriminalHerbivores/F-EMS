@@ -103,8 +103,6 @@ public class SchlshipController {
 			e.printStackTrace();
 		}
 		model.addAttribute("schlshipList", schlshipList);
-		int n = schlshipList.size();
-		model.addAttribute("schlshipListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 

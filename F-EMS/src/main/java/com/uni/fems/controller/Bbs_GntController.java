@@ -157,8 +157,6 @@ public class Bbs_GntController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("bbs_GntList", bbs_GntList);
-		int n = bbs_GntList.size();
-		model.addAttribute("bbs_GntListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
