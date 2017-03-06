@@ -32,7 +32,7 @@
 		p:order="0" 
 	/>
 	<beans:bean id="download" class="com.uni.fems.common.DownloadView" />
- 	<beans:bean id="productListExcel" class="com.uni.fems.common.ProductListExcelView" />
+ 	<beans:bean id="listExcel" class="com.uni.fems.common.ListExcelView" />
 	<!-- <beans:bean id="productListPdf" class="com.test.board.view.ProductListPdfView" /> -->
 	
 	<beans:bean id="multipartResolver"		
