@@ -23,7 +23,8 @@
 </head>
 <body>
 		<h2>강의 질의응답 게시판</h2><br/>
-	<form name="formm" method="post" action="detailBbs_Gnt">
+	<form name="formm" method="post">
+	<input type="hidden" name="table_Nm" value="${table_Nm}">
 		<table class="def-table-full tb-border" style="text-align:left;">
 			<tr>
 				<th width="170px">제목</th>
@@ -43,23 +44,30 @@
 			</tr>
 			<tr>
 				<th>답변</th>
-				<td colspan="3" style="text-align: left;"><textarea rows="8" cols="65" name="lq_Reply" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea><br></td>
+				<td colspan="3" style="text-align: left;">
+				<sec:authorize access="hasRole('ROLE_STR')">
+				<textarea rows="8" cols="65" name="lq_Reply" readonly="readonly" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_PRO')">
+				<textarea rows="8" cols="65" name="lq_Reply" style="width:100%;" class="text-non-border">${lctre_Qna_Gnt.lq_Reply }</textarea>
+				</sec:authorize>
+				</td>
 			</tr>
 
 				<sec:authorize access="hasRole('ROLE_PRO')">
 					<tr>
-						<td colspan="4" style="text-align: center;"><c:choose>
-									<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}">
-										<button class="def-btn btn-color">
-								<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
-									답변 작성
-								</c:when>
-								<c:otherwise>
-									답변 수정
-								</c:otherwise>
-							</c:choose>
-							</button></a>
-							</td>
+						<td colspan="4" style="text-align: center;">
+						<a href="updateLctre_Qna_Replys?lq_Bbs_No=${lctre_Qna_Gnt.lq_Bbs_No}&table_Nm=${lctre_Qna_Gnt.table_Nm}&tpage=${tpage}"><button class="def-btn btn-color">
+						<c:choose>
+						<c:when test="${empty lctre_Qna_Gnt.lq_Reply}">
+						답변 작성
+						</c:when>
+						<c:otherwise>
+						답변 수정
+						</c:otherwise>
+						</c:choose>
+						</button></a>
+						</td>
 					</tr>
 				</sec:authorize>
 			<tr>
@@ -75,6 +83,7 @@
 				</td>
 			</tr>
 		</table>
+		</form>
 		<br><br><br>
 	<!--모달부분  -->
 	<div class="modal fade" id="layerpop">

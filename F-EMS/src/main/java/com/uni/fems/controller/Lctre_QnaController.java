@@ -172,9 +172,44 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	 * @return url
 	 * </pre>
 	 */
-	@RequestMapping(value="/detailLctre_Qna")
+	@RequestMapping(value="/detailLctre_Qna", method=RequestMethod.GET)
 	public String detailLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
 		String url="lecture/qna/detailLctre_Qna";
+		System.out.println("lctre_Qna_Gnt : "+lctre_Qna_Gnt);
+		Lctre_QnaVO lctre_Qna = null;
+		try {
+			lctre_Qna = lctre_QnaSvc.getLctre_Qna(lctre_Qna_Gnt);
+			lctre_Qna_Gnt.setLq_Stdnt_No(lctre_Qna.getLq_Stdnt_No());
+			lctre_Qna_Gnt.setLq_Cn(lctre_Qna.getLq_Cn());
+			lctre_Qna_Gnt.setLq_Sj(lctre_Qna.getLq_Sj());
+			lctre_Qna_Gnt.setLq_Reply(lctre_Qna.getLq_Reply());
+			lctre_Qna_Gnt.setLq_Writng_Dt(lctre_Qna.getLq_Writng_Dt());
+			lctre_Qna_Gnt.setLq_Rdcnt(lctre_Qna.getLq_Rdcnt()+1);
+			lctre_QnaSvc.countLctre_Qna(lctre_Qna_Gnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("2lctre_Qna_Gnt : "+lctre_Qna_Gnt);
+		model.addAttribute("lctre_Qna_Gnt",lctre_Qna_Gnt);
+		model.addAttribute("tpage",tpage);
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 답변 작성
+	 * </pre>
+	 * <pre>
+	 * @param lctre_Qna_Gnt
+	 * @param tpage
+	 * @param model
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/detailLctre_Qna", method=RequestMethod.POST)
+	public String detailLctre_QnaAnswer(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model, HttpServletRequest request){
+		String url="redirect:qnaList?tpage="+tpage;
 		System.out.println("lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		Lctre_QnaVO lctre_Qna = null;
 		try {
