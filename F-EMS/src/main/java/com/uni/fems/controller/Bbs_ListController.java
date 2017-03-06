@@ -4,15 +4,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.Lctre_ActplnService;
+import com.uni.fems.service.ManageService;
 
 /**
  * <pre>
@@ -31,7 +36,7 @@ import com.uni.fems.service.Lctre_ActplnService;
  * </pre>
  */
 @Controller
-@RequestMapping("/bbs_list")
+@RequestMapping("/admin")
 public class Bbs_ListController{
 	private WebApplicationContext context = null;
 
@@ -39,6 +44,8 @@ public class Bbs_ListController{
 	private Bbs_ListService bbs_ListSvc;
 	@Autowired
 	private Lctre_ActplnService lctre_ActplnSvc;
+	@Autowired
+	private ManageService manageService;
 	
 	/**
 	 * <pre>
@@ -94,17 +101,45 @@ public class Bbs_ListController{
 	 * 
 	 */
 	@RequestMapping("insertTable")
-	public String insertTable(Model model, Bbs_List_AtrtyVO bbs_List_AtrtyVO) {
+	public String insertTable(HttpSession session, Bbs_List_AtrtyVO bbs_List_AtrtyVO) {
 		String url = "redirect:generatorList";
-
+		bbs_List_AtrtyVO.setBl_Table_Nm(bbs_List_AtrtyVO.getBa_Alpha()+System.currentTimeMillis());
+		List<Bbs_ListVO> bbsList=null;
 		try {
 			bbs_ListSvc.insertBbs_List_Atrty(bbs_List_AtrtyVO);
+			bbsList=manageService.getBbsList("t");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		session.setAttribute("bbsList", bbsList);
 		return url;
 
+	}
+	
+	/**
+	 * <pre>
+	 * 게시판 정보 수정 폼
+	 * </pre>
+	 * <pre>
+	 * @param model
+	 * @param bbs_List_AtrtyVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="updateTable", method = RequestMethod.GET)
+	public String updateTable(Model model, Bbs_List_AtrtyVO bbs_List_AtrtyVO) {
+		String url = "/school_management/updateGenerator";
+		Bbs_List_AtrtyVO vo = new Bbs_List_AtrtyVO();
+		try {
+			vo = bbs_ListSvc.getBbs_List_Atrty(bbs_List_AtrtyVO.getBl_Bbs_No());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		vo.setBa_Alpha(bbs_List_AtrtyVO.getBa_Alpha());
+		System.out.println(bbs_List_AtrtyVO.toString());
+		
+		model.addAttribute("bbs_List_AtrtyVO",vo);
+		return url;
 	}
 	
 	/**
@@ -117,18 +152,19 @@ public class Bbs_ListController{
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("updateTable")
-	public String updateTable(Model model, Bbs_List_AtrtyVO bbs_List_AtrtyVO) {
-		String url = "/school_management/updateGenerator";
-
+	@RequestMapping(value="updateTable", method = RequestMethod.POST)
+	public String updateBbsTable(HttpSession session, Bbs_List_AtrtyVO bbs_List_AtrtyVO) {
+		String url = "redirect:generatorList";
+		List<Bbs_ListVO> bbsList=null;
 		try {
-			bbs_ListSvc.insertBbs_List_Atrty(bbs_List_AtrtyVO);
+			bbs_ListSvc.updateBbs_List(bbs_List_AtrtyVO);
+			bbsList=manageService.getBbsList("t");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		session.setAttribute("bbsList", bbsList);
 
 		return url;
-
 	}
 	
 	/**

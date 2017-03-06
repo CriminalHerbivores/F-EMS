@@ -45,7 +45,7 @@ public interface Bbs_ListService {
 	 * @throws SQLException
 	 * <pre>
 	 */
-	int updateBbs_Atrty(Bbs_AtrtyVO bbs_AtrtyVO) throws SQLException;
+	int updateBbs_Atrty(Bbs_List_AtrtyVO bbs_AtrtyVO) throws SQLException;
 
 	/**<pre>
 	 * 게시판 리스트 수정
@@ -56,7 +56,7 @@ public interface Bbs_ListService {
 	 * @throws SQLException
 	 * <pre>
 	 */
-	int updateBbs_List(Bbs_ListVO bbs_ListVO) throws SQLException;
+	int updateBbs_List(Bbs_List_AtrtyVO bbs_ListVO) throws SQLException;
 
 	/**<pre>
 	 * 게시판 리스트와 관계 입력
