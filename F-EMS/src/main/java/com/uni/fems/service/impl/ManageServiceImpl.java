@@ -56,8 +56,13 @@ public class ManageServiceImpl implements ManageService {
 	}
 
 	@Override
-	public int updateUniv(ManageVO manageVO) throws SQLException {
-		return manageDAO.updateUniv(manageVO);
+	public int updateLayout(ManageVO manageVO) throws SQLException {
+		return manageDAO.updateLayout(manageVO);
+	}
+	
+	@Override
+	public int updateColor(ManageVO manageVO) throws SQLException {
+		return manageDAO.updateColor(manageVO);
 	}
 
 }

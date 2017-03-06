@@ -21,7 +21,7 @@
 </head>
 <body>
 <article>
-<form id="step4Add" action="/fems/admin/layoutPreview" method="post" name="formm">
+<form id="step4Add" method="post" name="formm">
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
@@ -40,19 +40,19 @@
 		<div class="set-layout-center">
 			
 			<table class="tb-layout out-border">
-				<tr><td>메인 컬러</td><td>R:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td>G:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td>B:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td><input type="color" name="favcolor" value="#ff0000">&nbsp;&nbsp;<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용"></td></tr>
-				<tr><td>보조 컬러1</td><td>R:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td>G:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td>B:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td><input type="color" name="favcolor" value="#00ff00">&nbsp;&nbsp;<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용"></td></tr>
-				<tr><td>보조 컬러2</td><td>R:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td>G:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td>B:&nbsp;<input type="text" class="def-input-text-sm custom-form-control" value=""></td>
-									<td><input type="color" name="favcolor" value="#0000ff">&nbsp;&nbsp;<input type="submit" class="def-ckbtn btn-sm ckbtn-gray" value="적용"></td></tr>					
-				<tr><td colspan="5"><div class="preview-layout margin-auto">여기에 미리보기</div></td></tr>
+				<tr><td>메인 컬러</td>
+									<td><input type="color" name="mng_Main_Color" value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
+					<td>텍스트 컬러</td>
+									<td><input type="color" name="mng_Main_Txtclr" value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td></tr>
+				<tr><td>보조 컬러1</td>
+									<td><input type="color" name="mng_Sub_Color1" value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
+					<td>텍스트 보조1 </td>
+									<td><input type="color" name="mng_Sub_Txtclr1" value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td></tr>
+				<tr><td>보조 컬러2</td>
+									<td><input type="color" name="mng_Sub_Color2" value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
+					<td>텍스트 보조2</td>
+									<td><input type="color" name="mng_Sub_Txtclr2" value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td></tr>					
+				<tr><td>대학 이미지</td><td colspan="5"><div class="preview-layout margin-auto">여기에 미리보기</div></td></tr>
 			</table>			
 			
 
@@ -63,7 +63,7 @@
 <div class="col-sm-2 sidenav">			
 <div class="set-layout-side">
 	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="layoutPreview()">
+	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="submitForm(this.form)">
 	</div>
 	</div>
 
