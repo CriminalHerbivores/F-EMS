@@ -111,8 +111,6 @@ public class Lctre_TaskController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_TaskList", lctre_TaskList);
-		int n = lctre_TaskList.size();
-		model.addAttribute("lctre_TaskListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		

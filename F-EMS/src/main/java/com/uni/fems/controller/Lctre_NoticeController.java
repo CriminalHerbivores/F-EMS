@@ -102,8 +102,6 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_NoticeList", lctre_NoticeList);
-		int n = lctre_NoticeList.size();
-		model.addAttribute("lctre_NoticeListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		

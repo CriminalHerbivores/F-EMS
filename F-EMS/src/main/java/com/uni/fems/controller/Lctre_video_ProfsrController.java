@@ -123,8 +123,6 @@ public class Lctre_video_ProfsrController implements ApplicationContextAware{
 			e.printStackTrace();
 		}
 		model.addAttribute("lctre_VideoList", lctre_VideoList);
-		int n = lctre_VideoList.size();
-		model.addAttribute("lctre_VideoListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
