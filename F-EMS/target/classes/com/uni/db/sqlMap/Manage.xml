@@ -24,10 +24,28 @@
 	
 	<!-- 학교 등록하기 -->
 	<update id="insertUniv" parameterClass="Manage">
-		insert into manage(mng_Univ_Nm,mng_Univ_Eng_Nm,mng_Univ_Logo,mng_Post_No,mng_Adres1,mng_Adres2,mng_Tlphon_No,mng_Fax_No,mng_Email,mng_Cpyr,mng_Cpyr,
+		insert into manage(mng_Univ_Nm,mng_Univ_Eng_Nm,mng_Univ_Logo,mng_Post_No,mng_Adres1,mng_Adres2,mng_Tlphon_No,mng_Fax_No,mng_Email,mng_Cpyr,mng_Layout_Knd,
 		mng_Left_Menu_Use_Ennc,mng_Main_Color,mng_Sub_Color1,mng_Sub_Color2,mng_Reltv_Evl_Rate,mng_Main_Txtclr,mng_Sub_Txtclr1,mng_Sub_Txtclr2,mng_Univ_Img)
 		values(#mng_Univ_Nm#,#mng_Univ_Eng_Nm#,#mng_Univ_Logo#,#mng_Post_No#,#mng_Adres1#,#mng_Adres2#,#mng_Tlphon_No#,#mng_Fax_No#,#mng_Email#,#mng_Cpyr#,
 		#mng_Layout_Knd#,#mng_Left_Menu_Use_Ennc#,#mng_Main_Color#,#mng_Sub_Color1#,#mng_Sub_Color2#,#mng_Reltv_Evl_Rate#,#mng_Main_Txtclr#,#mng_Sub_Txtclr1#,#mng_Sub_Txtclr2#,#mng_Univ_Img#)
+	</update>
+	
+	<!-- 학교 삭제하기  -->
+	<update id="deleteUniv" parameterClass="str">
+		delete from manage where mng_univ_nm=#mng_Univ_Nm#
+	</update>
+	
+	<!-- 가장 마지막 행 가져오기(지우기 위해)  -->
+	<select id="getlastUniv" resultClass="Manage">
+		SELECT * FROM (SELECT * FROM manage ORDER BY ROWNUM DESC) WHERE ROWNUM = 1
+	</select>
+	
+	<update id="updateUniv" parameterClass="Manage">
+		update manage set mng_Univ_Nm=#mng_Univ_Nm#,mng_Univ_Eng_Nm=#mng_Univ_Eng_Nm#,mng_Univ_Logo=#mng_Univ_Logo#,mng_Post_No=#mng_Post_No#,mng_Adres1=#mng_Adres1#,mng_Adres2=#mng_Adres2#,
+						  mng_Tlphon_No=#mng_Tlphon_No#,mng_Fax_No=#mng_Fax_No#,mng_Email=#mng_Email#,mng_Cpyr=#mng_Cpyr#,mng_Layout_Knd=#mng_Layout_Knd#,mng_Left_Menu_Use_Ennc=#mng_Left_Menu_Use_Ennc#,
+						  mng_Main_Color=#mng_Main_Color#,mng_Sub_Color1=#mng_Sub_Color1#,mng_Sub_Color2=#mng_Sub_Color2#,mng_Reltv_Evl_Rate=#mng_Reltv_Evl_Rate#,mng_Main_Txtclr=#mng_Main_Txtclr#,
+						  mng_Sub_Txtclr1=#mng_Sub_Txtclr1#,mng_Sub_Txtclr2=#mng_Sub_Txtclr2#,mng_Univ_Img=#mng_Univ_Img# 
+						  where mng_Univ_Nm=#mng_Univ_Nm#
 	</update>
 	
 	

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,9 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
 import com.uni.fems.dto.EventVO;
+import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.ManageVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
@@ -388,10 +392,34 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step1Add", method=RequestMethod.POST)
-	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO) {
+	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
+						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2) {
+		
 		String url = "redirect:step2Add";
+		
+		//파일 집어넣기
+		if(!uploadlogo.isEmpty()){
+			FilesVO vo = new FileDownload().uploadFile(uploadlogo);
+			String filePath = "/resources/images/";
+			manageVO.setMng_Univ_Logo(filePath+vo.getFl_File_Nm());
+		}
+		
+		//지울 vo
+		ManageVO deleteVO = new ManageVO();
+			try {
+				deleteVO = manageSvc.getlastUniv();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
+			manageVO.setMng_Tlphon_No(phoneNo);
+			session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
 		try {
-			manageSvc.insertUniv(manageVO);
+			/*if(deleteVO!=null)
+				manageSvc.deleteUniv(deleteVO.getMng_Univ_Nm());*/
+				manageSvc.insertUniv(manageVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -411,11 +439,28 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/step2Add")
+	@RequestMapping(value="/step2Add", method=RequestMethod.GET)
 	public String step2Add(HttpServletRequest request,HttpSession session) {
 		String url = "admin/layout_control/step2Add";	
 		return url;
 	}
+	
+	/**
+	 * <pre>
+	 * 메뉴 게시판 추가, 설정, 사용안함, 권한부여 단계
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/step2Add", method=RequestMethod.POST)
+	public String step2Add2(HttpServletRequest request,HttpSession session) {
+		String url = "redirect:step3Add";	
+		return url;
+	}
+	
 	
 	/**
 	 * <pre>
@@ -427,9 +472,34 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/step3Add")
+	@RequestMapping(value="/step3Add", method=RequestMethod.GET)
 	public String step3Add(HttpServletRequest request,HttpSession session) {
 		String url = "admin/layout_control/step3Add";	
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 레이아웃 선택 단계 POST
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @param manageVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping(value="/step3Add", method=RequestMethod.POST)
+	public String step3Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO) {
+		String url = "redirect:step4Add";
+		
+		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
+		try {
+			manageSvc.updateUniv(manageVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return url;
 	}
 	
