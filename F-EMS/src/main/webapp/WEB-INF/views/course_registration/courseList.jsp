@@ -472,12 +472,12 @@ function del_intrst(){
 					<option value="lu_Lctre_Code">강의코드</option>
 				</select>&nbsp;&nbsp;
 					<input type="text" class="def-input-text-md custom-form-control" name="value">&nbsp;&nbsp;
-					<input type="button" class="def-btn btn-search btn-color" onclick="go_searchLctre()" value="조회"></form>
-		<form name="detailSearchForm" method="get">			
+					<input type="button" class="def-btn btn-search btn-color" onclick="go_searchLctre()" value="조회"></form></td>
+		<td><form name="detailSearchForm" method="get">			
 					<input type="button" class="def-btn btn-search btn-color" id="courseDetailBtn" value="상세검색" onClick="disp()">&nbsp;&nbsp;
-      <div class="non-disp">
+      <span class="non-disp">
       	<jsp:include page="courseDetailSearch.jsp" />
-      </div></form>
+      </span></form>
 					
 	</td></tr></thead>
 	</table>
