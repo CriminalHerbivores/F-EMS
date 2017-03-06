@@ -302,8 +302,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("stdntList", stdntList);
-		int n = stdntList.size();
-		model.addAttribute("stdntListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		
@@ -605,8 +603,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("schlshipList", schlshipList);
-		int n = schlshipList.size();
-		model.addAttribute("schlshipListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 
@@ -851,8 +847,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("sknrgsVOList", sknrgsVOList);
-		int n = sknrgsVOList.size();
-		model.addAttribute("sknrgsVOListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 	}
@@ -1006,8 +1000,6 @@ public class SklstfController {
 			e.printStackTrace();
 		}
 		model.addAttribute("profsrList", profsrList);
-		int n = profsrList.size();
-		model.addAttribute("profsrListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 		

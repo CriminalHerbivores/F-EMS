@@ -69,18 +69,9 @@ $(function(){
 	<jsp:include page="lec_menu.jsp"/>
 <!-- 좌측 메뉴 끝 -->
 
-	<c:choose>
-	<c:when test="${manageVO.mng_Left_Menu_Use_Ennc=='y'||'Y'}">
 		<div class="custom-col-sm-8 sidenav text-left">
 			<decorator:body />
 		</div>
-	</c:when>
-	<c:otherwise>
-		<div class="custom-col-sm-10 sidenav text-left">
-		<decorator:body />
-		</div>
-	</c:otherwise>	
-	</c:choose>	
 	</div>
 </div>
 <!-- 본문 끝 -->

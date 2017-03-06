@@ -80,16 +80,17 @@ public class Lctre_QnaController implements ApplicationContextAware{
 
 		Lctre_Qna_GntVO lctre_Qna_Gnt = new Lctre_Qna_GntVO();
 		lctre_Qna_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("lq_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("lq_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("lq_Sj")){
 			lctre_Qna_Gnt.setLq_Sj(searchVO.getValue());
 			lctre_Qna_Gnt.setLq_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lq_Cn")){
+		}else if(searchVO.getKey().equals("lq_Cn")){
 			lctre_Qna_Gnt.setLq_Sj("%");
 			lctre_Qna_Gnt.setLq_Cn(searchVO.getValue());
-		}else{
-			lctre_Qna_Gnt.setLq_Sj("%");
-			lctre_Qna_Gnt.setLq_Cn("%");
 		}
+		
 		model.addAttribute("lctre_Qna_Gnt", lctre_Qna_Gnt);
 		
 		List<Lctre_QnaVO> lctre_QnaList = null;
