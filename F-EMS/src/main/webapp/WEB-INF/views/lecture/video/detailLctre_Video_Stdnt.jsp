@@ -97,6 +97,12 @@ $(document).on('click','#end',function(e){
 				</td>
 			</tr>
 			<tr>
+				<th>내용</th>
+				<td colspan="3" style="text-align: left;">
+					${lctre_Video_Gnt.lv_Cn}
+				</td>
+			</tr>
+			<tr>
 				<td colspan="4">
 				 <span class="days"></span>
 				 <span class="hours"></span>

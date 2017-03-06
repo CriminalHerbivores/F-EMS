@@ -4,77 +4,112 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 
-<!--  [[개정이력(Modification Information)]]        -->
-<!--  수정일       수정자      수정내용             -->
-<!--  ==========   ======    ==============         -->
-<!--  $2017.02.19    KJS       최초작성             -->
-<!--  Copyright (c) 2017 by DDIT All right reserved -->
+<!-- [[개정이력(Modification Information)]] -->
+<!-- 수정일 수정자 수정내용 -->
+<!-- ========== ====== ============== -->
+<!-- $2017.02.19 KJS 최초작성 -->
+<!-- Copyright (c) 2017 by DDIT All right reserved -->
 <sqlMap namespace="Lctre_Watch">
 
-  	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="lctre_watch" type="com.uni.fems.dto.Lctre_WatchVO" />
 	<typeAlias alias="lctre_watch_video_gnt" type="com.uni.fems.dto.Lctre_Watch_Video_GntVO" />
-	
-	<select id="listAllLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt" resultClass="lctre_watch_video_gnt">
-		select 
-		  V.LV_BBS_NO,
-		  V.LV_SJ,
-		  V.LV_CN,
-		  V.LV_START_DT,
-		  V.LV_END_DT,
-		  V.LV_TIME,
-		  V.LV_FLPTH_NO,
-		  W.LW_BBS_NO,
-		  W.LW_STDNT_NO,
-		  W.LW_VIDEO_BBS_NO,
-		  W.LW_WATCH_TIME,
-		  W.LW_ATTENDANCE
-		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
-		ON(V.LV_BBS_NO = W.LW_VIDEO_BBS_NO)
-		where V.LV_SJ like '%$lv_Sj$%' 
+
+	<select id="listAllLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt"
+		resultClass="lctre_watch_video_gnt">
+		select
+		V.LV_BBS_NO,
+		V.LV_SJ,
+		V.LV_CN,
+		V.LV_START_DT,
+		V.LV_END_DT,
+		V.LV_TIME,
+		V.LV_FLPTH_NO,
+		W.LW_BBS_NO,
+		W.LW_STDNT_NO,
+		W.LW_VIDEO_BBS_NO,
+		W.LW_WATCH_TIME,
+		W.LW_ATTENDANCE
+		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM
+		LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
+		ON(V.LV_BBS_NO =
+		W.LW_VIDEO_BBS_NO)
+		where V.LV_SJ like '%$lv_Sj$%'
 		and V.LV_CN like '%$lv_Cn$%'
 		order by V.LV_BBS_NO desc
 	</select>
-	
-	<select id="totalLctre_Video_Stdntss" parameterClass="lctre_watch_video_gnt" resultClass="int">
-		select count(*) from LCTRE_V$table_Nm$ 
-		where LV_SJ like '%$lv_Sj$%' 
-		and LV_CN like '%$lv_Cn$%' 
+
+	<select id="totalLctre_Video_Stdntss" parameterClass="lctre_watch_video_gnt"
+		resultClass="int">
+		select count(*) from LCTRE_V$table_Nm$
+		where LV_SJ like '%$lv_Sj$%'
+		and LV_CN like '%$lv_Cn$%'
 	</select>
-	
-	<select id="getLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt" resultClass="lctre_watch_video_gnt">
-		select 
-		  V.LV_BBS_NO,
-		  V.LV_SJ,
-		  V.LV_CN,
-		  V.LV_START_DT,
-		  V.LV_END_DT,
-		  V.LV_TIME,
-		  V.LV_FLPTH_NO,
-		  W.LW_BBS_NO,
-		  W.LW_STDNT_NO,
-		  W.LW_VIDEO_BBS_NO,
-		  W.LW_WATCH_TIME,
-		  W.LW_ATTENDANCE
-		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
-		ON(V.LV_BBS_NO = W.LW_VIDEO_BBS_NO)
+
+	<select id="getLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt"
+		resultClass="lctre_watch_video_gnt">
+		select
+		V.LV_BBS_NO,
+		V.LV_SJ,
+		V.LV_CN,
+		V.LV_START_DT,
+		V.LV_END_DT,
+		V.LV_TIME,
+		V.LV_FLPTH_NO,
+		W.LW_BBS_NO,
+		W.LW_STDNT_NO,
+		W.LW_VIDEO_BBS_NO,
+		W.LW_WATCH_TIME,
+		W.LW_ATTENDANCE
+		FROM LCTRE_V$table_Nm$ V LEFT OUTER JOIN (SELECT * FROM
+		LCTRE_W$table_Nm$ WHERE LW_STDNT_NO='$lw_Stdnt_No$') W
+		ON(V.LV_BBS_NO =
+		W.LW_VIDEO_BBS_NO)
 		where V.LV_BBS_NO = #lv_Bbs_No#
-		order by V.LV_BBS_NO desc
+		order by V.LV_BBS_NO
+		desc
 	</select>
-	
+
 	<update id="insertLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">
-		insert into LCTRE_W$table_Nm$(LW_BBS_NO, LW_STDNT_NO, LW_VIDEO_BBS_NO, LW_WATCH_TIME, LW_ATTENDANCE) 
-		values(((select max(LW_BBS_NO) from LCTRE_W$table_Nm$)+1),#lw_Stdnt_No#,#lw_Video_Bbs_No#,#lw_Watch_Time#,#lw_Attendance#)
+		insert into
+		LCTRE_W$table_Nm$(LW_BBS_NO, LW_STDNT_NO, LW_VIDEO_BBS_NO,
+		LW_WATCH_TIME, LW_ATTENDANCE)
+		values(((select max(LW_BBS_NO) from
+		LCTRE_W$table_Nm$)+1),#lw_Stdnt_No#,#lw_Video_Bbs_No#,#lw_Watch_Time#,#lw_Attendance#)
 	</update>
-	
+
 	<update id="updateLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">
-		update LCTRE_W$table_Nm$ set LW_WATCH_TIME=#lw_Watch_Time#,LW_ATTENDANCE=#lw_Attendance#
-		where LW_BBS_NO=#lw_Bbs_No#
+		update
+		LCTRE_W$table_Nm$ set
+		LW_WATCH_TIME=#lw_Watch_Time#,LW_ATTENDANCE=#lw_Attendance#
+		where
+		LW_BBS_NO=#lw_Bbs_No#
 	</update>
-	
-	
-	
-	
-	
+
+	<select id="attendance" parameterClass="lctre_watch_video_gnt" resultClass="lctre_watch_video_gnt">
+		select 
+		  lc.lc_lctre_no,
+		  lc_lctre_code,
+		  lc_split,
+		  lc_profsr_no,
+		  (select lu_lctre_nm from lctre_unq_no lu where lc.lc_lctre_code = lu.lu_lctre_code) as lc_lctre_nm,
+		  (select pr_nm from profsr pr where pr.pr_profsr_no=lc.lc_profsr_no) as pr_nm,
+		  to_char(lw_att/(select nvl(count(*),0) from lctre_v$table_Nm$)*100,'990.00') lw_Attendance
+		from lctre lc, reqst re, 
+		(select LW_STDNT_NO, nvl(count(case when LW_ATTENDANCE='출석' then 1 end),0) as lw_att 
+			from lctre_w$table_Nm$ group by LW_STDNT_NO) att
+		where lc.lc_lctre_no=re.re_lctre_no
+		and att.LW_STDNT_NO=re.RE_STDNT_NO
+		<isNotNull prepend="and" property="re_Stdnt_No">
+			re.RE_STDNT_NO = #re_Stdnt_No#
+		</isNotNull>
+		<isNotNull prepend="and" property="lc_Profsr_No">
+			lc.lc_Profsr_No = #lc_Profsr_No#
+		</isNotNull>
+		<isNotNull prepend="and" property="lc_Lctre_No">
+			lc.lc_lctre_no = #lc_Lctre_No#
+		</isNotNull>
+	</select>
+
 </sqlMap>

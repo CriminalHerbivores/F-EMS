@@ -70,7 +70,7 @@
 
 	<!-- 학생 강의 메뉴 가져오기 -->
 	<select id="getStdntList" parameterClass="str" resultClass="lctreVO">
-		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where
+		select lc.*, (select lu_lctre_nm from lctre_unq_no lu where
 		lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
 		from reqst rq, lctre
 		lc
@@ -93,7 +93,7 @@
 
 	<!-- 교수 강의 메뉴 가져오기 -->
 	<select id="getProfsrList" parameterClass="str" resultClass="lctreVO">
-		select lc_Lctre_No, (select lu_lctre_nm from lctre_unq_no lu where
+		select lc.*, (select lu_lctre_nm from lctre_unq_no lu where
 		lc.lc_lctre_code=lu.lu_lctre_code) as lu_lctre_nm
 		from lctre lc
 		where

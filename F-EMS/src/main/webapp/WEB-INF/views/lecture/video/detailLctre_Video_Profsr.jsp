@@ -42,6 +42,12 @@
 					<video id="myVideo" src="<%=request.getContextPath() %>/resources/files/${lctre_Flpth.lf_Flpth}" controls width="600pt" height="500pt" ></video>
 				</td>
 			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="3" style="text-align: left;">
+					${lctre_Video_Gnt.lv_Cn}
+				</td>
+			</tr>
 		</table>
 		<br>
 		<!-- 댓글부분 -->
