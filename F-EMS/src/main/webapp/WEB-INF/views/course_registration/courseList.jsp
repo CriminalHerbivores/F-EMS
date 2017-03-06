@@ -49,15 +49,16 @@ function go_searchLctre(){
 
 
 
-/* <1구역> 개설강의 목록에서 추가 */
-function add_Intrst_reqst(){
+/* 관심추가 */
+function add_IntrstLctre(){
+	// 체크를 한 tr 태그들을 목록화
+	var array = [];
 
-	  $.ajax({
-	        url:'<%=request.getContextPath()%>/course/insertCourse',
-	        contentType:'application/json; charset=utf-8',
-	        type:'post',
-	        dataType: 'json',
-	        data: {
+	$(".result_1:checked").each(function(){
+		$(this).closest("tr");
+	// 한건의 tr 태그가 하나의 javascript 객체 형성
+	// 여러건의 tr 태그, 즉 javascript 객체들이 하나의 배열 형성
+			var row = {
 	        	result_1: $('#result_1').val(), 
 	        	result_2: $('result_2').val(), 
 	    		lc_Lctre_No: $('#lc_Lctre_No').val(),
@@ -73,7 +74,29 @@ function add_Intrst_reqst(){
 	    		lc_Lctre_Time: $('#lc_Lctre_Time').val(),
 	    		lc_Lctre_Nmpr: $('#lc_Lctre_Nmpr').val(),
 	    		lr_Accept_Nmpr: $('#lr_Accept_Nmpr').val()
-	        },
+	        }
+		array.push(row);
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 만들어진 배열을 json 형태로 변환
+	var data = JSON.stringify(array);
+
+	  $.ajax({
+	        url:'<%=request.getContextPath()%>/course/insertCourse',
+	        contentType:'application/json; charset=utf-8',
+	        type:'post',
+	        dataType: 'json',
+	        data: data,
+	        contentType:"application/json",
 	        success:function(res){
 	            $('#openList_tr').remove();	/* 모든 <tr>요로 삭제 후 새로 리스트 불러오는걸로... */
 	            
@@ -351,8 +374,8 @@ function add_Intrst_reqst(){
 	alert("수강신청");
 } --%>
 
-/* 수강완료 목록 */
-function del_intrst_reqst(){
+/* 수강신청 */
+function add_reqstLctre(){
 	//courseComplete
 	
 	
@@ -360,8 +383,8 @@ function del_intrst_reqst(){
 	document.completeForm.submit();
 }
 
-/* 관심목록에서 수강신청 */
-function add_reqst(){
+/* 관심삭제 */
+function del_IntrstLctre(){
 	
 	
 	//courseInterest
@@ -376,8 +399,8 @@ function add_reqst(){
 	document.intrstLctreForm.submit();
 }
 
-/* 관심목록에서 관심 삭제 */
-function del_intrst(){
+/* 수강취소 */
+function del_reqstLctre(){
 	
 	
 	
@@ -512,11 +535,11 @@ function del_intrst(){
 				<c:forEach items="${openLctreList}" var="openLctre" varStatus="status" >
 				<tr class="slt_ckbox_${status.index}" id="openList_tr">
 					<td class="select_ckbox_1" id="lc_${status.index}">	
-						<label><input type="checkbox" class="input_check_1 " name="result_1" value="${openLctre.lc_Lctre_No}" id="result_1"/>관심
+						<label><input type="checkbox" class="input_check_1 result_1" name="result_1" value="${openLctre.lc_Lctre_No}"/>관심
 						<input type="hidden" name="in_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
 					
 					<td class="select_ckbox_2" id="re_${status.index}">
-						<label><input type="checkbox" class="input_check_2 " id="ck_all_${status.index}" name="result_2" value="${openLctre.lc_Lctre_No}" id="result_2"/>수강
+						<label><input type="checkbox" class="input_check_2 result_2" id="ck_all_${status.index}" name="result_2" value="${openLctre.lc_Lctre_No}" />수강
 						<input type="hidden" name="re_Lctre_No" value="${openLctre.lc_Lctre_No}"/></label></td>
 					<td>${openLctre.lc_Lctre_No}</td>	
 					<td>${openLctre.sit_Subjct}</td>
