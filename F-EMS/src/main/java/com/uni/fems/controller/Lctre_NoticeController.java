@@ -112,6 +112,7 @@ public class Lctre_NoticeController implements ApplicationContextAware{
 		
 	}
 	
+	
 	/**
 	 * <pre>
 	 * 공지 게시판 작성 폼을 띄우기 위한 메서드
