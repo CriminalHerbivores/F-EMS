@@ -48,7 +48,7 @@ public interface Intrst_ListService {
 	 * @return 
 	 * @throws SQLException
 	 */
-	void insertIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException;
+	void insertIntrst_List(Intrst_ListVO[] intrst_ListVO) throws SQLException;
 	
 	
 	/**
@@ -60,6 +60,6 @@ public interface Intrst_ListService {
 	 * @param in_Lctre_No
 	 * @throws SQLException
 	 */
-	void deleteIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException;
+	void deleteIntrst_List(Intrst_ListVO[] intrst_ListVO) throws SQLException;
 	
 }
