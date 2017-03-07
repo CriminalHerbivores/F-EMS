@@ -3,9 +3,6 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -17,27 +14,19 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.uni.fems.common.FileDownload;
-import com.uni.fems.dto.Bbs_Comment_GntVO;
-import com.uni.fems.dto.Bbs_List_Comment_GntVO;
-import com.uni.fems.dto.FilesVO;
-import com.uni.fems.dto.Lctre_VideoVO;
-import com.uni.fems.dto.Lctre_Video_GntVO;
+import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.Lctre_FlpthVO;
 import com.uni.fems.dto.Lctre_Watch_Video_GntVO;
 import com.uni.fems.dto.SearchVO;
-import com.uni.fems.service.Lctre_Video_ProfsrService;
+import com.uni.fems.service.GradeService;
 import com.uni.fems.service.Lctre_Video_StdntService;
 
 /**
@@ -67,6 +56,8 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 	
 	@Autowired
 	private Lctre_Video_StdntService lctre_Video_StdntSvc;
+	@Autowired
+	private GradeService gradeService;
 	
 
 	@RequestMapping("/video_StdntList")
@@ -197,15 +188,14 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 			
 			if(lctre_Watch_Video_Gnt.getLw_Attendance()==null || lctre_Watch_Video_Gnt.getLw_Attendance().isEmpty())
 				lctre_Watch_Video_Gnt.setLw_Attendance("0");
-			
 			if(times < 0){
-				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Attendance())<0){
+				if(lctre_Watch_Video_Gnt.getLv_Time() - lw_Watch_Time<0){
 					lctre_Watch_Video_Gnt.setLw_Attendance("출석");
 				}else{
 					lctre_Watch_Video_Gnt.setLw_Attendance("");
 				}
 			}else{
-				if(lctre_Watch_Video_Gnt.getLv_Time() - Integer.parseInt(lctre_Watch_Video_Gnt.getLw_Watch_Time())<0){
+				if(lctre_Watch_Video_Gnt.getLv_Time() - lw_Watch_Time<0){
 					lctre_Watch_Video_Gnt.setLw_Attendance("지각");
 				}else{
 					lctre_Watch_Video_Gnt.setLw_Attendance("결석");
@@ -224,6 +214,29 @@ public class Lctre_video_StdntController implements ApplicationContextAware{
 				e.printStackTrace();
 			}
 			
+			//출석률 가져옴
+			Lctre_Watch_Video_GntVO att = new Lctre_Watch_Video_GntVO();
+			att.setRe_Stdnt_No(loginUser);
+			att.setLc_Lctre_No(lctre_Watch_Video_Gnt.getTable_Nm());
+			att.setTable_Nm(table_Nm);
+			try {
+				att = lctre_Video_StdntSvc.attendance(att);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			//성적입력
+			GradeVO grade = new GradeVO();
+			grade.setKey("gd_Task_Score");
+			grade.setValue(att.getLw_Attendance());
+			grade.setGd_Stdnt_No(loginUser);
+			grade.setGd_Lctre_No(Integer.parseInt(lctre_Watch_Video_Gnt.getTable_Nm()));
+			
+			try {
+				gradeService.updateOneGrade(grade);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			return "null";
 			
 		} 

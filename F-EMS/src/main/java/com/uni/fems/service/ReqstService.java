@@ -47,7 +47,19 @@ public interface ReqstService {
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void insertReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	void insertReqst(ReqstVO[] reqstVO) throws SQLException;
+	
+	
+	/**
+	 * <pre>
+	 * 수강신청시 인원수 업데이트
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void insertReqstNum(Lctre_SearchVO[] lctre_SearchVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -57,7 +69,18 @@ public interface ReqstService {
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void deleteReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	void deleteReqst(ReqstVO[] reqstVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 수강 취소시 인원수 업데이트
+	 * </pre>
+	 * <pre>
+	 * @param lctre_SearchVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void deleteReqstNum(Lctre_SearchVO[] lctre_SearchVO) throws SQLException;
 	
 	
 	/**

@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%--
  * <pre>
  * F-EMS로 대학 웹페이지를 개설할 때 제안되는 메인 레이아웃을 선택하는 JSP
@@ -18,69 +23,125 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('select').change(function(){
+		var v = $(this).val();
+		var path = "";
+		var p = $(this).closest("tr");
+		var c = $(p).find('.mnCours');
+		if(v=="noticeList"){
+			$(c).html('공지사항<input type="hidden" value="notice_bbs/noticeList" name="mn_Cours">');
+		}else if(v=="schdulList"){
+			$(c).html('학사일정<input type="hidden" value="schafs_schdul/schdulList" name="mn_Cours">');
+		}else if(v=="lct"){
+			$(c).html('강의<input type="hidden" value="lctreList" name="mn_Cours">');
+		}else if(v=="notice"){
+			var temp = $("#noticeB").html();
+			$(c).html(temp);
+		}else if(v=="bbs"){
+			var temp = $("#bbsB").html();
+			$(c).html(temp);
+		}else if(v=="etc"){
+			$(c).html('<input type="text" name="mn_Cours" class="def-input-text-full custom-form-control">');
+		}else{
+			$(c).html("");
+		}
+	});
+})
+</script>
 </head>
 <body>
-<article>
+<table class="def-table-full"><tr><td>
 <form id="step3Add" method="post" enctype="multipart/form-data" name="formm">
+	<table class="def-table-full tb-border table-hover tr-child-color">
+	<tr>
+		<td><a href="step1Add">STEP 1</a></td>
+		<td><a href="step2Add">STEP 2</a></td>
+		<td><a href="step3Add">STEP 3</a></td>
+		<td><a href="<%=request.getContextPath()%>/">INDEX</a></td>
+	</tr>
+	</table>
+	<br/>
+<h2>메뉴 관리</h2><br/>
+	<table class="def-table-full tb-border table-hover tr-child-color">
+		<tr>
+			<th width="50%">레이아웃 형태</th>
+			<td>
+				<input type="hidden" name="mng_Layout_Knd" value="${manageVO.mng_Layout_Knd}">
+				<c:choose>
+				<c:when test="${manageVO.mng_Layout_Knd eq 1}">
+				로그인형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 2}">
+				복합형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 3}">
+				게시판형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 4}">
+				메뉴형
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+	</table>
 	
-	<div class="set-layout">
-	<div class="set-layout-top">
-	<img src="<%=request.getContextPath()%>/resources/images/step3.png"><br/>
-	<h1>STEP3. 레이아웃 선택</h1>
+	<div class="menuSe">
+	
+	<table class="def-table-full tb-border table-hover tr-child-color">
+	<tr>
+		<th width="50px">No</th>
+		<th width="300px">구분코드</th>
+		<th>경로</th>
+	</tr>
+	<c:forEach items="${menuList}" var="mL" varStatus="status">
+	<tr>
+		<td>${status.count}<input type="hidden" name="mn_No" value="${status.count}"></td>
+		<td>
+			<select name="mn_Se_Code" class="combobox-lg custom-form-control">
+				<option value="">사용안함</option>
+				<c:forEach items="${menuSe}" var="mns">
+				<c:choose>
+				<c:when test="${mns.ms_Se_Code == mL.mn_Se_Code}">
+				<option value="${mns.ms_Se_Code}" selected>${mns.ms_Type}</option>
+				</c:when>
+				<c:otherwise>
+				<option value="${mns.ms_Se_Code}">${mns.ms_Type}</option>
+				</c:otherwise>
+				</c:choose>
+				</c:forEach>
+			</select>
+		</td>
+		<td class="mnCours">${mL.mn_Cours}</td>
+	</tr>
+	</c:forEach>
+	</table>
 	</div>
 	
-	<div class="col-sm-2 sidenav">
-	<div class="set-layout-side">
-	<!-- 여기 화살표 넣을거임 -->
-<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="history.go(-1);">	</div>
-	</div>
-	
-	<div class="col-sm-8 margin-auto"> 
-		<div class="set-layout-center">
-			<table class="def-table-full tb-border table-hover tr-child-color">
-				<tr><th><label>1. Login형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="1" /></label>
-				</th><th><label>2.복합형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="2" checked="checked"/></label></th></tr>
-				<tr>
-				<td>
-						<img src="<%=request.getContextPath()%>/resources/images/layout_login.png" title="blr" id="blr" class="" />
-						</td><td>
-						<img src="<%=request.getContextPath()%>/resources/images/layout_multi.png" title="blr" id="blr" class="" />
-						</td></tr>
-				<tr><th><label>3. 게시판형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="3" /></label>
-				</th><th><label>4. 메뉴 강조형 <input type="radio" id="imgCheck" name="mng_Layout_Knd" value="4" /></label></th></tr>
-				<tr><td>
-					<img src="<%=request.getContextPath()%>/resources/images/layout_board.png" title="blr" id="blr" class="" />
-				</td><td>
-					<img src="<%=request.getContextPath()%>/resources/images/layout_menu.png" title="blr" id="blr" class="" />
-				</td></tr>
-				<tr>
-					<th>좌측메뉴 사용유무</th>
-						<td>예<input type="radio" name="mng_Left_Menu_Use_Ennc" value="y" checked> &nbsp;&nbsp;
-							아니오 <input type="radio" name="mng_Left_Menu_Use_Ennc" value="n">
-					</td>
-				</tr>
-					<tr>
-						<th>대학 이미지</th>
-						<td><input type="file" name="uploadUnivImg" value="${manageVO.mng_Univ_Logo}" ></td>
-					</tr>
-					
-			</table>
-			
-			
-		</div>
-	</div>	
-		
-
-<div class="col-sm-2 sidenav">			
-<div class="set-layout-side">
-	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="submitForm(this.form);">
-	</div>
-	</div>
-
-</div>
-
+<table class="def-table-full"><tr><td style="text-align: right;">
+	<input type="submit" value="등록" class="def-btn btn-md btn-color">
+</td></tr></table>
 </form>
-</article>
+	
+	<div id="noticeB" class="non-disp">
+	<select name="mn_Cours" class="combobox-lg custom-form-control">
+		<c:forEach items="${noticeBBS}" var="bbs">
+		<option value="bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</option>
+		</c:forEach>
+	</select>
+	</div>
+	<div id="bbsB" class="non-disp">
+	<select name="mn_Cours" class="combobox-lg custom-form-control">
+		<c:forEach items="${bbsList}" var="bbs">
+		<option value="bbs_gnt/bbsList?bl_Bbs_No=${bbs.bl_Bbs_No}">${bbs.bl_Bbs_Nm}</option>
+		</c:forEach>
+	</select>
+	</div>
+</td></tr></table>
+<br/><br/><br/>
 </body>
 </html>

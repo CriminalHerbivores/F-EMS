@@ -25,7 +25,7 @@
 	
 	<div class="set-layout">
 	<div class="set-layout-top">
-	<img src="<%=request.getContextPath()%>/resources/images/step4.png"><br/>
+	<img src="<%=request.getContextPath()%>/resources/images/step4.png"><br/><br/><br/>
 	<h1>STEP4. 컬러 테마 설정</h1>
 	</div>
 	

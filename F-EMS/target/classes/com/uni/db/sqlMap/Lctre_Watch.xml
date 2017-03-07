@@ -75,8 +75,8 @@
 		insert into
 		LCTRE_W$table_Nm$(LW_BBS_NO, LW_STDNT_NO, LW_VIDEO_BBS_NO,
 		LW_WATCH_TIME, LW_ATTENDANCE)
-		values(((select max(LW_BBS_NO) from
-		LCTRE_W$table_Nm$)+1),#lw_Stdnt_No#,#lw_Video_Bbs_No#,#lw_Watch_Time#,#lw_Attendance#)
+		values(nvl((select max(LW_BBS_NO)+1 from LCTRE_W$table_Nm$),0),
+		#lw_Stdnt_No#,#lw_Video_Bbs_No#,#lw_Watch_Time#,#lw_Attendance#)
 	</update>
 
 	<update id="updateLctre_Video_Stdnt" parameterClass="lctre_watch_video_gnt">

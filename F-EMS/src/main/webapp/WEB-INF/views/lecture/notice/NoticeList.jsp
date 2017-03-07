@@ -44,7 +44,7 @@
         <th>작성날짜</th>
         <th>조회수</th>
       </tr>
-      <c:forEach var="lctre_Notice" items="${lctre_NoticeList }">
+      <c:forEach var="lctre_Notice" items="${lctre_NoticeList}">
       	<tr>
       		<td> ${lctre_Notice.ln_Bbs_No}</td>
       		<td><a href="detailLctre_Notice?ln_Bbs_No=${lctre_Notice.ln_Bbs_No}&table_Nm=${lctre_Notice_Gnt.table_Nm}&tpage=${tpage}">
@@ -52,7 +52,6 @@
       		</td>
       		<td><fmt:formatDate value="${lctre_Notice.ln_Writng_Dt}" /> </td>
       		<td> ${lctre_Notice.ln_Rdcnt}</td> <!-- 조회수 -->
-      		
       	</tr>
       </c:forEach>
       	<tr>

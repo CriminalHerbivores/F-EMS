@@ -21,7 +21,7 @@
 		select * from Lctre_Q$table_Nm$ 
 		where LQ_SJ like '%$lq_Sj$%' 
 		and LQ_CN like '%$lq_Cn$%' 
-		order by LQ_BBS_NO desc
+		order by skn_No desc
 	</select>
 	
 	<select id="totalLctre_Qna" parameterClass="lctre_qna_gnt" resultClass="int">
@@ -36,7 +36,7 @@
 	
 	<update id="insertLctre_Qna" parameterClass="lctre_qna_gnt" >
 		insert into Lctre_Q$table_Nm$(LQ_BBS_NO,LQ_STDNT_NO,LQ_SJ,LQ_CN,LQ_WRITNG_DT,LQ_RDCNT) 
-		values(((select max(LQ_BBS_NO) from Lctre_Q$table_Nm$)+1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0)
+		values(nvl((select max(LQ_BBS_NO)+1 from Lctre_Q$table_Nm$),1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0)
 	</update>
 	
 	<update id="updateLctre_Qna" parameterClass="lctre_qna_gnt" >

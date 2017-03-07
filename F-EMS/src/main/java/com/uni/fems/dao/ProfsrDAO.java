@@ -80,4 +80,35 @@ public interface ProfsrDAO {
 	 */
 	void updateProfsr(ProfsrVO profsrVO) throws SQLException;
 	void updatePw(ProfsrVO profsrVO) throws SQLException;
+
+	/**
+	 * 교수 리스트 출력
+	 * @param profarVO
+	 * @param tpage
+	 * @param totalRecord
+	 * @return
+	 * @throws SQLException
+	 */
+	List<ProfsrVO> selectAllProfsrList2(ProfsrVO profarVO, int tpage,
+			int totalRecord) throws SQLException;
+	/**
+	 * 교수 리스트 개수 출력
+	 * @param profarVO
+	 * @return
+	 * @throws SQLException
+	 */
+	int countProfsrList2(ProfsrVO profarVO) throws SQLException;
+
+	
+	/**
+	 * <pre>
+	 * 교수코드 만드는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param subjctNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	String createProfsrNo(ProfsrVO profsrVO) throws SQLException;
 }

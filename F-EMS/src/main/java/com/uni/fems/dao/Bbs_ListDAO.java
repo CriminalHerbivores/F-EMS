@@ -87,7 +87,7 @@ public interface Bbs_ListDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int updateBbs_Atrty(Bbs_AtrtyVO bbs_AtrtyVO) throws SQLException;
+	int updateBbs_Atrty(Bbs_List_AtrtyVO bbs_AtrtyVO) throws SQLException;
 
 	/**
 	 * <pre>
@@ -99,7 +99,7 @@ public interface Bbs_ListDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int updateBbs_List(Bbs_ListVO bbs_ListVO) throws SQLException;
+	int updateBbs_List(Bbs_List_AtrtyVO bbs_ListVO) throws SQLException;
 
 	/**
 	 * <pre>
@@ -128,5 +128,16 @@ public interface Bbs_ListDAO {
 	int insertBbs_Table_Gnt(String name) throws SQLException;
 
 	int insertBbs_Comment_Table_Gnt(String name) throws SQLException;
-
+	
+	/**
+	 * <pre>
+	 * 게시판 리스트 가져옴
+	 * </pre>
+	 * <pre>
+	 * @param vo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	List<Bbs_List_AtrtyVO> getBbs_List(Bbs_List_AtrtyVO vo) throws SQLException;
 }

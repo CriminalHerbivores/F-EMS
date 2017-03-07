@@ -106,7 +106,27 @@ public interface SklstfDAO {
 	 * </pre>
 	 */
 	void deleteSklstf(String stf_Sklstf_No) throws SQLException;
+	/**
+	 * <pre>
+	 * 직원 복귀
+	 * </pre>
+	 * <pre>
+	 * @param stf_Sklstf_No
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void returnSklstf(String stf_Sklstf_No) throws SQLException;
 	
-
+	/**
+	 * <pre>
+	 *  관리자 직원등록 시 직원번호 제조할때 필요한 메서드
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	String createSklstfNo(SklstfVO sklstfVO) throws SQLException;
 	
 }

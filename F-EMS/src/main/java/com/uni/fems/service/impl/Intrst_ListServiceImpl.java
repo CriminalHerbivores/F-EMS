@@ -41,16 +41,21 @@ public List<Lctre_SearchVO> selectIntrst_List(String in_Stdnt_No) throws SQLExce
 
 // 관심 강의 추가
 @Override
-public void insertIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException {
+public void insertIntrst_List(Intrst_ListVO[] intrst_ListVO) throws SQLException {
 	
-	intrst_ListDAO.insertIntrst_List(intrst_ListVO);
+	for(int i=0; i<intrst_ListVO.length;i++){
+		intrst_ListDAO.insertIntrst_List(intrst_ListVO[i]);
+	}
 	 
 }
 
 // 관심 강의 삭제
 @Override
-public void deleteIntrst_List(Intrst_ListVO intrst_ListVO) throws SQLException {
-	intrst_ListDAO.deleteIntrst_List(intrst_ListVO);
+public void deleteIntrst_List(Intrst_ListVO[] intrst_ListVO) throws SQLException {
+	
+	for(int i=0; i<intrst_ListVO.length;i++){
+		intrst_ListDAO.deleteIntrst_List(intrst_ListVO[i]);
+	}
 }
  
  

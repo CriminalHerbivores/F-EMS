@@ -11,6 +11,7 @@
  * --------     --------    ----------------------
  * 2017.01.24      KJH        최초작성
  * 2017.02.22      KJH        추가작성
+ * 2017.03.07      KJS        추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  --%>
 <!DOCTYPE html>
@@ -38,6 +39,7 @@
 					<th>생년월일</th>
 					<th>연락처</th>
 					<th>구분</th>
+					<th>탈퇴</th>
 				</tr>
 				
 				<c:forEach items="${sklstfList}" var="subjct">
@@ -57,11 +59,12 @@
 					<c:otherwise>직원</c:otherwise>
 					</c:choose>
 					</td>
+					<td><a href="deleteSklstf?stf_Sklstf_No=${subjct.stf_Sklstf_No}&tpage=${tpage}"><input type="button" value="탈퇴" class="def-btn btn-sm btn-color"></a></td>
 					
 				</tr>
 			</c:forEach>
 				<tr>
-      		<td colspan="8" style="text-align: center;">${paging }</td>
+      		<td colspan="9" style="text-align: center;">${paging }</td>
       	</tr>
 </table>
 <table class="def-table-full"><tr><td style="text-align: right;">

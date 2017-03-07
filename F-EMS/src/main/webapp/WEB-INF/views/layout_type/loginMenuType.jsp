@@ -99,10 +99,10 @@ ${loginUser} </td>
 
 </form>
   <tr><td colspan="5">
-		<table class="def-table-full tb-border" style="width:100% !important;">
-		<tr><td class="login-menu-gray"><div>메뉴1</div></td><td  class="login-menu"><div>메뉴2</div></td><td class="login-menu-gray"><div>메뉴3</div></td><td class="login-menu"><div>메뉴4</div></td><td class="login-menu-gray"><div>메뉴5</div></td></tr>	
-		<tr><td class="login-menu"><div>메뉴6</div></td><td  class="login-menu-gray"><div>메뉴7</div></td><td class="login-menu"><div>메뉴8</div></td><td class="login-menu-gray"><div>메뉴9</div></td><td class="login-menu"><div>메뉴10</div></td></tr>	
-		<tr><td class="login-menu-gray"><div>메뉴11</div></td><td  class="login-menu"><div>메뉴12</div></td><td class="login-menu-gray"><div>메뉴13</div></td><td class="login-menu"><div>메뉴14</div></td><td class="login-menu-gray"><div>메뉴15</div></td></tr>	
+		<table class="def-table-full tb-border td-odd-even" style="width:100% !important;">
+		<tr><td><div>메뉴1</div></td><td  class="login-menu"><div>메뉴2</div></td><td><div>메뉴3</div></td><td class="login-menu"><div>메뉴4</div></td><td><div>메뉴5</div></td></tr>	
+		<tr><td class="login-menu"><div>메뉴6</div></td><td><div>메뉴7</div></td><td class="login-menu"><div>메뉴8</div></td><td><div>메뉴9</div></td><td class="login-menu"><div>메뉴10</div></td></tr>	
+		<tr><td><div>메뉴11</div></td><td  class="login-menu"><div>메뉴12</div></td><td><div>메뉴13</div></td><td class="login-menu"><div>메뉴14</div></td><td><div>메뉴15</div></td></tr>	
 	</table></td></tr></table>
 	</div>
 	
