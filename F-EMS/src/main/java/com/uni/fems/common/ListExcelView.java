@@ -35,6 +35,11 @@ public class ListExcelView extends AbstractExcelView {
 		}
 	}
 
+	/**
+	 * 엑셀 안의 페이지 만들기
+	 * @param workbook
+	 * @return
+	 */
 	private HSSFSheet createFirstSheet(HSSFWorkbook workbook) {
 		HSSFSheet sheet = workbook.createSheet();// sheet생성
 		workbook.setSheetName(0, "강의 정보"); // (sheet순번, sheet제목)
@@ -43,6 +48,10 @@ public class ListExcelView extends AbstractExcelView {
 		return sheet;
 	}
 
+	/**
+	 * 엑셀의 첫번째 줄 만들기
+	 * @param sheet
+	 */
 	private void createColumnLabel(HSSFSheet sheet) {
 		HSSFRow firstRow = sheet.createRow(0); // 시작행 설정
 		HSSFCell cell = null;
@@ -59,6 +68,12 @@ public class ListExcelView extends AbstractExcelView {
 
 	}
 
+	/**
+	 * 엑셀의 2번쨰 줄부터 리스트 값 넣기
+	 * @param sheet
+	 * @param lctre_Search
+	 * @param rowNum
+	 */
 	private void createProductListkRow(HSSFSheet sheet,
 			Lctre_SearchVO lctre_Search, int rowNum) {
 		HSSFRow row = sheet.createRow(rowNum); // 행추가 (행번호)

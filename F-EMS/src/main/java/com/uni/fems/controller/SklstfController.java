@@ -3,18 +3,17 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import lombok.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,6 @@ import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.FilesVO;
-import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
@@ -37,9 +35,7 @@ import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
-import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.TuitionVO;
-import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.dto.WorkVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
@@ -150,27 +146,7 @@ public class SklstfController {
 		return url;
 	}
 	
-	/**
-	 * <pre>
-	 * 직원 한명의 정보를 업데이트
-	 * </pre>
-	 * <pre>
-	 * @param sklstfVO
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/deleteSklstf")
-	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
-		String url = "redirect:sklstfList?&tpage="+tpage;
-		
-		try {
-			sklstfService.deleteSklstf(stf_Sklstf_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return url;
-	}
+	
 	
 	
 
@@ -204,7 +180,7 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO, @RequestParam String subjct_Code, @RequestParam("f")MultipartFile uploadfile, Model model){
+	String stdntInsert(StdntVO stdntVO,@RequestParam("f")MultipartFile uploadfile, Model model){
 		String url = "redirect:stdntInsert";
 		if(!uploadfile.isEmpty()){
 			FilesVO vo = fileDownload.uploadFile(uploadfile);
@@ -243,6 +219,21 @@ public class SklstfController {
 				//stdntVO.setSt_Profsr_No(map.get("R")); //교수번호
 				//stdntVO.setSt_Grdtn_Dt(map.get("S")); //졸업일자
 				
+				Calendar calendar = Calendar.getInstance();
+				String year = calendar.get(Calendar.YEAR)+"";
+				stdntVO.setCreateNo(year+stdntVO.getSt_Subjct_Code());
+				String stdntNo = "";
+				try {
+					stdntNo = stdntService.createStdntNo(stdntVO);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				if(stdntNo.length()==1){
+					stdntNo += "001";
+				}
+				
+				stdntVO.setSt_Pw(stdntVO.getSt_Ihidnum().substring(6));
+				stdntVO.setSt_Stdnt_No(stdntVO.getCreateNo()+stdntNo);
 				try {
 					stdntService.insertStdnt(stdntVO);
 				} catch (SQLException e) {
@@ -251,10 +242,22 @@ public class SklstfController {
 			}
 			
 		}else{
+			Calendar calendar = Calendar.getInstance();
+			String year = calendar.get(Calendar.YEAR)+"";
+			stdntVO.setCreateNo(year+stdntVO.getSt_Subjct_Code());
+			String stdntNo = "";
 			try {
-				stdntVO.setSt_Stdnt_No(supporter.getDay()[0]+subjct_Code+stdntVO.getSt_Stdnt_No());
-				stdntVO.setSt_Subjct_Code(subjct_Code);
-				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
+				stdntNo = stdntService.createStdntNo(stdntVO);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			if(stdntNo.length()==1){
+				stdntNo += "001";
+			}
+			
+			stdntVO.setSt_Pw(stdntVO.getSt_Ihidnum().substring(6));
+			stdntVO.setSt_Stdnt_No(stdntVO.getCreateNo()+stdntNo);
+			try {
 				stdntService.insertStdnt(stdntVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -392,6 +395,22 @@ public class SklstfController {
 		model.addAttribute("tpage",tpage);
 		return url;
 		
+	}
+	
+	/**
+	 * <pre>
+	 * 학생에게 담당 교수를 지정해주는 폼
+	 * </pre>
+	 * <pre>
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/stdnt_ProfsrForm")
+	public String stdnt() throws ServletException, IOException{
+		String url="manager/student/stdnt_ProfsrForm";
+		return url;
 	}
 	
 	// 기숙사 ////////////////////////////////////////////////////////////////////
@@ -918,9 +937,11 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.POST)
-	String profsrInsert(ProfsrVO profsrVO, @RequestParam("f")MultipartFile uploadfile, Model model) {
+	String profsrInsert(ProfsrVO profsrVO, @RequestParam("f")MultipartFile uploadfile, Model model
+						) {
 		String url = "redirect:profsrInsert";
-		if(!uploadfile.isEmpty()){
+		
+		if(!uploadfile.isEmpty()){ //단체등록
 			FilesVO vo = fileDownload.uploadFile(uploadfile);
 			
 			ReadOption ro = new ReadOption();
@@ -945,6 +966,22 @@ public class SklstfController {
 				profsrVO.setPr_Adres2(map.get("K")); //주소2
 				profsrVO.setPr_Email(map.get("L")); //이메일
 				
+
+				Calendar calendar = Calendar.getInstance();
+				String year = calendar.get(Calendar.YEAR)+"";
+				profsrVO.setCreateNo(year+profsrVO.getPsa_Subjct_Code());
+				String profNo = "";
+				try {
+					profNo = profsrService.createProfsrNo(profsrVO);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				if(profNo.length()==1){
+					profNo += "001";
+				}
+				
+				profsrVO.setPr_Pw(profsrVO.getPr_Ihidnum().substring(6));
+				profsrVO.setPr_Profsr_No(profsrVO.getCreateNo()+profNo);
 				try {
 					profsrService.insertProfsr(profsrVO);
 				} catch (SQLException e) {
@@ -952,7 +989,22 @@ public class SklstfController {
 				}
 			}
 			
-		}else{
+		}else{ //일반등록
+			Calendar calendar = Calendar.getInstance();
+			String year = calendar.get(Calendar.YEAR)+"";
+			profsrVO.setCreateNo(year+profsrVO.getPsa_Subjct_Code());
+			String profNo = "";
+			try {
+				profNo = profsrService.createProfsrNo(profsrVO);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			if(profNo.length()==1){
+				profNo += "001";
+			}
+			
+			profsrVO.setPr_Pw(profsrVO.getPr_Ihidnum().substring(6));
+			profsrVO.setPr_Profsr_No(profsrVO.getCreateNo()+profNo);
 			try {
 				profsrService.insertProfsr(profsrVO);
 			} catch (SQLException e) {

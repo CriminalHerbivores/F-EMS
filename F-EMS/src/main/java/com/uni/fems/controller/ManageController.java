@@ -3,10 +3,10 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,7 +32,6 @@ import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
-import com.uni.fems.service.BaskinService;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
 import com.uni.fems.service.ManageService;
@@ -56,6 +55,7 @@ import com.uni.fems.service.UsersService;
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
  * 2017.02.22.     KJH       추가작성
+ * 2017.03.07.     KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -80,6 +80,8 @@ public class ManageController {
 	private TuitionService tuitionService;
 	@Autowired
 	private ManageService manageSvc;
+	@Autowired
+	private FileDownload fileDownload;
 	
 	/**
 	 * <pre>
@@ -109,6 +111,7 @@ public class ManageController {
 		if(searchVO.getKey()==null)
 			searchVO.setKey("stf_Nm");
 		
+		searchVO.setUseyn("1");
 		List<UserSubjctVO> sklstfList=null;
 		String paging = null;
 		try {
@@ -123,6 +126,50 @@ public class ManageController {
 		model.addAttribute("paging", paging);
 		return url;
 		
+	}
+	
+	/**
+	 * <pre>
+	 * 탈퇴 직원 목록 조회
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/deleteSklstfList")
+	public String deletesklstfList(Model model,HttpServletRequest request, SearchVO searchVO) 
+			throws ServletException, IOException {
+		String url = "admin/sklstf/deleteSklstfList";	
+		String tpage = request.getParameter("tpage");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("stf_Nm");
+		
+		searchVO.setUseyn("0");
+		List<UserSubjctVO> sklstfList=null;
+		String paging = null;
+		try {
+			sklstfList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
+			paging = sklstfService.pageNumber2(Integer.parseInt(tpage),searchVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("sklstfList", sklstfList);
+		int n = sklstfList.size();
+		model.addAttribute("sklstfListSize", n);
+		model.addAttribute("paging", paging);
+		return url;
 	}
 	
 	/**
@@ -152,15 +199,16 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/sklstfInsert", method=RequestMethod.POST)
-	public String sklstfInsert(Model model, @RequestParam String file,HttpSession session, SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) 
+	public String sklstfInsert(Model model, @RequestParam("f")MultipartFile file,HttpSession session, SklstfVO sklstfVo, Sklstf_AtrtyVO sklstf_AtrtyVO) 
 			throws ServletException, IOException{
-		String url = "redirect:sklstfList";	
+		String url = "redirect:sklstfInsert";	
 		//ArrayList<UserSubjctVO> userSubjctVO = null;
 		//String sit_Subjct=null;
 		
-		if(file != null && !file.equals("")){
+		if(!file.isEmpty()){
+			FilesVO vo = fileDownload.uploadFile(file);
 			ReadOption ro = new ReadOption();
-			ro.setFilePath(file);		//경로 입력
+			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
 			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N");	//배열 명 입력
 			ro.setStartRow(2);
 			
@@ -181,21 +229,51 @@ public class ManageController {
 				sklstfVo.setStf_Adres2(map.get("L"));
 				sklstfVo.setStf_Email(map.get("M"));
 				sklstfVo.setStf_Useyn(map.get("N"));
+				
+				Calendar calendar = Calendar.getInstance();
+				String year = calendar.get(Calendar.YEAR)+"";
+				sklstfVo.setCreateNo(year+sklstfVo.getStf_Subject_Code());
+				String sklstfNo = "";
 				try {
-					sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+					sklstfNo = sklstfService.createSklstfNo(sklstfVo);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				if(sklstfNo.length()==1){
+					sklstfNo += "001";
+				}
+				
+				sklstfVo.setStf_Pw(sklstfVo.getStf_Ihidnum().substring(6));
+				sklstfVo.setStf_Sklstf_No(sklstfVo.getCreateNo()+sklstfNo);
+				sklstfVo.setStf_Useyn("1");
+				sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+				try {
 					sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
-						//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
-						//System.out.println("if : sit_Subjct:================= "+sit_Subjct);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			
 			}
 		}else{
+			Calendar calendar = Calendar.getInstance();
+			String year = calendar.get(Calendar.YEAR)+"";
+			sklstfVo.setCreateNo(year+sklstfVo.getStf_Subject_Code());
+			String sklstfNo = "";
 			try {
-				sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+				sklstfNo = sklstfService.createSklstfNo(sklstfVo);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			if(sklstfNo.length()==1){
+				sklstfNo += "001";
+			}
+			
+			sklstfVo.setStf_Pw(sklstfVo.getStf_Ihidnum().substring(6));
+			sklstfVo.setStf_Sklstf_No(sklstfVo.getCreateNo()+sklstfNo);
+			sklstfVo.setStf_Useyn("1");
+			sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+			try {
 				sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
-				//userSubjctVO=subjct_Info_TableService.selectSubjctByName(sit_Subjct);
-				//System.out.println("else : sit_Subjct:================= "+sit_Subjct);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -301,6 +379,49 @@ public class ManageController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 직원 탈퇴
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/deleteSklstf")
+	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
+		String url = "redirect:sklstfList?&tpage="+tpage;
+		
+		try {
+			sklstfService.deleteSklstf(stf_Sklstf_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 직원 복귀
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/returnSklstf")
+	public String sklstfreturn(String stf_Sklstf_No, @RequestParam int tpage){
+		String url = "redirect:deleteSklstfList?&tpage="+tpage;
+		
+		try {
+			sklstfService.returnSklstf(stf_Sklstf_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
 	
 	/**
 	 * <pre>

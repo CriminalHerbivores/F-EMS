@@ -461,4 +461,55 @@ public class Paging {
 		return str;
 	}
 	
+	
+	/**
+	 * ajax를 이용한 페이지 만들기
+	 * @param tpage
+	 * @param totalRecord
+	 * @param path
+	 * @param key
+	 * @return
+	 * @throws SQLException
+	 */
+	public String ajaxpageNumber(int tpage, int totalRecord, String path, String key) 
+			throws SQLException {
+		
+		if(key==null){
+			key="";
+		}
+		
+		int page_count = totalRecord / counts;
+
+		if (totalRecord % counts != 0)
+			page_count++;
+
+		int page = tpage;
+		if (tpage % view_rows == 0)
+			page--;
+
+		int start_page = page - (page % view_rows) + 1;
+		int end_page = start_page + (view_rows - 1);
+
+		if (end_page > page_count)
+			end_page = page_count;
+
+		String str = "";
+		
+		if (start_page > view_rows) {
+			str += "<a href='#' onclick='"+path+"(\"" + key + "\")'>&lt;&lt;</a>&nbsp;&nbsp;";
+			str += "<a href='#' onclick='"+path+"(\"" + (start_page - 1) + key + "\")'>&lt;</a>&nbsp;&nbsp;";
+		}
+		for (int i = start_page; i <= end_page; i++) {
+			if (i == tpage) {
+				str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+			} else {
+				str += "<a href='#' onclick='"+path+"(\"" + i + key + "\")'>[" + i + "]</a>&nbsp;&nbsp;";
+			}
+		}
+		if (page_count > end_page) {
+			str += "<a href='#' onclick='"+path+"(\"" + (end_page + 1) + key + "\")'> &gt; </a>&nbsp;&nbsp;";
+			str += "<a href='#' onclick='"+path+"(\"" + page_count + key + "\")'> &gt; &gt; </a>&nbsp;&nbsp;";
+		}
+		return str;
+	}
 }

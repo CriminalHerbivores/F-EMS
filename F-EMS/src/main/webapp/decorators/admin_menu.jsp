@@ -30,6 +30,7 @@
    <button class="admin-dropbtn">관리자/직원 관리</button>
   <div class="admin-dropdown-content">
     <a href="<%=request.getContextPath()%>/admin/sklstfList">직원 조회</a>
+    <a href="<%=request.getContextPath()%>/admin/deleteSklstfList">탈퇴 직원 조회</a>
     <a href="<%=request.getContextPath()%>/admin/sklstfInsert">직원 등록</a>
     <a href="<%=request.getContextPath()%>/admin/sklstfAtrtyList">관리자 설정</a>
   </div>

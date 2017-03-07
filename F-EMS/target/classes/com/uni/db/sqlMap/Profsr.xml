@@ -7,6 +7,7 @@
 <!--  수정일              수정자        수정내용               -->
 <!--  ==========   ======    ==============        -->
 <!--  2017.01.24.   JAR      최초작성               -->
+<!--  2017.01.26.   KJS      추가작성               -->
 <!--  2017.02.15.   JAR      추가작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
@@ -29,6 +30,10 @@
 	<!-- 교수 한명 출력 -->
 	<select id="selectProfsr" parameterClass="str" resultClass="profsr">
 		select * from profsr_view where pr_profsr_no = #pr_profsr_no#
+	</select>
+
+	<select id="createProfsrNo" parameterClass="profsr" resultClass="str">
+	select '0'||trim(to_char((select substr(max(to_number(pr_Profsr_No))+1,-3) from Profsr where pr_profsr_no like #createNo#||'%'), '000')) from dual
 	</select>
 
 	<update id="insertProfsr" parameterClass="profsr">
@@ -82,4 +87,21 @@
 		set pr_Pw = #pr_Pw#
 		where pr_Profsr_No = #pr_Profsr_No#
 	</update>
+	
+	<!-- 학생조회 -->
+	<select id="selectAllProfsrList2" parameterClass="profsr" resultClass="profsr">
+		select * from Profsr_view
+		where pr_Profsr_No like '%$pr_Profsr_No$%'
+		and pr_Nm like '%$pr_Nm$%'
+		and sit_Subjct like '%$sit_Subjct$%'
+	</select>
+	
+	<!-- 학생 개수 조회 -->
+	<select id="countProfsrList2" parameterClass="profsr" resultClass="int">
+		select count(*) from Profsr_view
+		where pr_Profsr_No like '%$pr_Profsr_No$%'
+		and pr_Nm like '%$pr_Nm$%'
+		and sit_Subjct like '%$sit_Subjct$%'
+	</select>
+	
 </sqlMap>
