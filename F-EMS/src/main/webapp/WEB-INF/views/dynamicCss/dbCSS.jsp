@@ -215,10 +215,9 @@ border:1px solid ${manageVO.mng_Sub_Color2};
 
 
 <%--/////////////////// layout.css ///////////////////--%>
-.td-odd td:hover, td-odd-even:hover{
-	background: ${manageVO.mng_Sub_Color1};
-	color: ${manageVO.mng_Sub_Txtclr1};
-	
+ .td-odd-even tr td:hover, .td-odd td:hover {
+	background : ${manageVO.mng_Sub_Color1} !important;
+	color : ${manageVO.mng_Sub_Txtclr1};
 }
 
 
