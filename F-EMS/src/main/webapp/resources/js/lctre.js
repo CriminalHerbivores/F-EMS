@@ -29,3 +29,11 @@ function go_search_detail(form){
 	//document.frm.action = "product";
 	document.formm.submit();
 }
+
+function profsrExcel(form){
+	var pr_Profsr_No = $("#Profsr_No").val()
+	$("#Profsr_No").val();
+	alert($("#Profsr_No").val());
+	location.href="LctreExcel?pr_Profsr_No="
+		+pr_Profsr_No;
+}

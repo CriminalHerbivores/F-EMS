@@ -123,19 +123,24 @@ public class Supporter {
 	 * @param hp
 	 * </pre>
 	 */
-	public void smsSend(String message, String Moblphon){
+	public String smsSend(String message, String Moblphon){
     	
     	String api_key = "NCS5880CE7517EC8";
         String api_secret = "C9684A6058C858F7BCF422DC8FB64C75";
         Coolsms coolsms = new Coolsms(api_key, api_secret);
-    
+        String msg = "";
+        if(message != null || Moblphon != null){
         HashMap<String, String> set = new HashMap<String, String>();
         set.put("to", Moblphon); // 수신번호
         set.put("from", "01074571287"); // 발신번호 
         set.put("text", message); // 문자내용
         set.put("type", "sms"); // 문자 타입
-
         JSONObject result = coolsms.send(set); // 보내기
+        msg = "성공";
+        }else{
+        	msg = "실패";
+        }
+		return msg;
         
     }
 }

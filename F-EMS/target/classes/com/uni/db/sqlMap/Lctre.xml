@@ -153,4 +153,25 @@
 		when (extract(month from(sysdate)) between 8 and 12) THEN 2 else 1 end)),'00'))
 		where lc_Lctre_No=#lc_Lctre_No#
 	</update>
+	
+	<!-- 강의 검색 :: 교수 검색과 개설 여부 -->
+	<select id="selectLctreExcel" parameterClass="lctre_Search" resultClass="lctre_Search">
+		select * from lctre_View
+		where la_Lctre_No like '%%'
+		<isNotNull prepend="and" property="pr_Profsr_No">
+		pr_profsr_no like '%'||#pr_Profsr_No#||'%'
+		</isNotNull>
+		<isNotNull prepend="and" property="lc_Open_At">
+		lc_Open_At like '%'||#lc_Open_At#||'%'
+		</isNotNull>
+		<isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
+		LC_LCTRE_EVL_SCORE = 0
+		</isLessThan>
+		<isNotNull prepend="and" property="lc_Period">
+		extract(year from(lc_Lctrbgn_Dt)) like '%'||#lc_Period#||'%'
+		</isNotNull>
+		<isNotNull prepend="and" property="lc_Term">
+		lc_Term like #lc_Term#
+		</isNotNull>
+	</select>
 </sqlMap>

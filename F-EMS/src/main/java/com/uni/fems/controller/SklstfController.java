@@ -3,18 +3,17 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import lombok.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,6 @@ import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.FilesVO;
-import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_ActplnVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
@@ -37,9 +35,7 @@ import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.SknrgsVO;
 import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.dto.StdntVO;
-import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.TuitionVO;
-import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.dto.WorkVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
@@ -67,6 +63,7 @@ import com.uni.fems.service.WorkService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.03.03.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -150,27 +147,7 @@ public class SklstfController {
 		return url;
 	}
 	
-	/**
-	 * <pre>
-	 * 직원 한명의 정보를 업데이트
-	 * </pre>
-	 * <pre>
-	 * @param sklstfVO
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/deleteSklstf")
-	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
-		String url = "redirect:sklstfList?&tpage="+tpage;
-		
-		try {
-			sklstfService.deleteSklstf(stf_Sklstf_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return url;
-	}
+	
 	
 	
 
@@ -204,7 +181,7 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/stdntInsert", method = RequestMethod.POST)
-	String stdntInsert(StdntVO stdntVO, @RequestParam String subjct_Code, @RequestParam("f")MultipartFile uploadfile, Model model){
+	String stdntInsert(StdntVO stdntVO,@RequestParam("f")MultipartFile uploadfile, Model model){
 		String url = "redirect:stdntInsert";
 		if(!uploadfile.isEmpty()){
 			FilesVO vo = fileDownload.uploadFile(uploadfile);
@@ -243,6 +220,21 @@ public class SklstfController {
 				//stdntVO.setSt_Profsr_No(map.get("R")); //교수번호
 				//stdntVO.setSt_Grdtn_Dt(map.get("S")); //졸업일자
 				
+				Calendar calendar = Calendar.getInstance();
+				String year = calendar.get(Calendar.YEAR)+"";
+				stdntVO.setCreateNo(year+stdntVO.getSt_Subjct_Code());
+				String stdntNo = "";
+				try {
+					stdntNo = stdntService.createStdntNo(stdntVO);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				if(stdntNo.length()==1){
+					stdntNo += "001";
+				}
+				
+				stdntVO.setSt_Pw(stdntVO.getSt_Ihidnum().substring(6));
+				stdntVO.setSt_Stdnt_No(stdntVO.getCreateNo()+stdntNo);
 				try {
 					stdntService.insertStdnt(stdntVO);
 				} catch (SQLException e) {
@@ -251,10 +243,22 @@ public class SklstfController {
 			}
 			
 		}else{
+			Calendar calendar = Calendar.getInstance();
+			String year = calendar.get(Calendar.YEAR)+"";
+			stdntVO.setCreateNo(year+stdntVO.getSt_Subjct_Code());
+			String stdntNo = "";
 			try {
-				stdntVO.setSt_Stdnt_No(supporter.getDay()[0]+subjct_Code+stdntVO.getSt_Stdnt_No());
-				stdntVO.setSt_Subjct_Code(subjct_Code);
-				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
+				stdntNo = stdntService.createStdntNo(stdntVO);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			if(stdntNo.length()==1){
+				stdntNo += "001";
+			}
+			
+			stdntVO.setSt_Pw(stdntVO.getSt_Ihidnum().substring(6));
+			stdntVO.setSt_Stdnt_No(stdntVO.getCreateNo()+stdntNo);
+			try {
 				stdntService.insertStdnt(stdntVO);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -392,6 +396,22 @@ public class SklstfController {
 		model.addAttribute("tpage",tpage);
 		return url;
 		
+	}
+	
+	/**
+	 * <pre>
+	 * 학생에게 담당 교수를 지정해주는 폼
+	 * </pre>
+	 * <pre>
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/stdnt_ProfsrForm")
+	public String stdnt() throws ServletException, IOException{
+		String url="manager/student/stdnt_ProfsrForm";
+		return url;
 	}
 	
 	// 기숙사 ////////////////////////////////////////////////////////////////////
@@ -813,32 +833,37 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/sknrgListForm")
+	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.GET)
 	public String sknrgListForm(Model model, HttpServletRequest request, HttpSession session) {
 		String url = "manager/student/sknrgsListForm";
 		String tpage = request.getParameter("tpage");
 		String skn_Type = request.getParameter("skn_Type");
-		String st_Stdnt_No = request.getParameter("st_Stdnt_No");
+		String Stdnt_No = request.getParameter("Stdnt_No");
 		String skn_Useyn = request.getParameter("skn_Useyn");
 		
-		if (tpage ==null){
+		if (tpage ==null || tpage.equals(""))
 			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
+		if (skn_Type == null || skn_Type.equals("")) 
+			skn_Type = "%";
+		if(Stdnt_No == null || Stdnt_No.equals(""))
+			Stdnt_No = "%";
+		if(skn_Useyn == null || skn_Useyn.equals(""))
+			skn_Useyn = "%";
+		
+		model.addAttribute("skn_Type",skn_Type);
+		model.addAttribute("Stdnt_No",Stdnt_No);
+		model.addAttribute("skn_Useyn",skn_Useyn);
 		model.addAttribute("tpage",tpage);
+		
 		
 		SknrgsViewVO sknrgsView = new SknrgsViewVO();
 		List<SknrgsViewVO> sknrgsVOList = null;
-		if (skn_Type == null) {
-			sknrgsView.setSkn_Type("%");
-			sknrgsView.setSkn_Useyn("%");
-			sknrgsView.setSt_Stdnt_No("%");
-		}else{
-			sknrgsView.setSkn_Type(skn_Type);
-			sknrgsView.setSkn_Useyn(skn_Useyn);
-			sknrgsView.setSt_Stdnt_No(st_Stdnt_No);
-		}
+		sknrgsView.setSkn_Type(skn_Type);
+		sknrgsView.setSkn_Useyn(skn_Useyn);
+		sknrgsView.setSt_Stdnt_No(Stdnt_No);
+		System.out.println(skn_Type);
+		System.out.println(Stdnt_No);
+		System.out.println(skn_Useyn);
 		String paging = null;
 		try {
 			sknrgsVOList = sknrgs_Svc.listAllSknrgs(Integer.parseInt(tpage), sknrgsView);
@@ -863,15 +888,18 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/sknrgListFormk", method = RequestMethod.POST)
+	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.POST)
 	public String sknrgList(@RequestParam(value = "skn_No") String[] skn_Nos,
 			@RequestParam(value = "skn_Useyn") String[] skn_Useyns,
 			Model model, HttpSession session) {
 		String url = "redirect:sknrgListForm";
-
+		System.out.println("skn_Nos : "+skn_Nos.toString());
+		System.out.println("skn_Useyns : "+skn_Useyns.toString());
 		SknrgsVO sknrgsVO = new SknrgsVO();
 		try {
 			for (int i = 0; i < skn_Nos.length; i++) {
+				System.out.println("skn_Nos : "+skn_Nos[i]);
+				System.out.println("skn_Useyns : "+skn_Useyns[i]);
 				sknrgsVO.setSkn_No(Integer.parseInt(skn_Nos[i]));
 				sknrgsVO.setSkn_Useyn(skn_Useyns[i]);
 				try {
@@ -918,9 +946,11 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping(value = "/profsrInsert", method = RequestMethod.POST)
-	String profsrInsert(ProfsrVO profsrVO, @RequestParam("f")MultipartFile uploadfile, Model model) {
+	String profsrInsert(ProfsrVO profsrVO, @RequestParam("f")MultipartFile uploadfile, Model model
+						) {
 		String url = "redirect:profsrInsert";
-		if(!uploadfile.isEmpty()){
+		
+		if(!uploadfile.isEmpty()){ //단체등록
 			FilesVO vo = fileDownload.uploadFile(uploadfile);
 			
 			ReadOption ro = new ReadOption();
@@ -945,6 +975,22 @@ public class SklstfController {
 				profsrVO.setPr_Adres2(map.get("K")); //주소2
 				profsrVO.setPr_Email(map.get("L")); //이메일
 				
+
+				Calendar calendar = Calendar.getInstance();
+				String year = calendar.get(Calendar.YEAR)+"";
+				profsrVO.setCreateNo(year+profsrVO.getPsa_Subjct_Code());
+				String profNo = "";
+				try {
+					profNo = profsrService.createProfsrNo(profsrVO);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				if(profNo.length()==1){
+					profNo += "001";
+				}
+				
+				profsrVO.setPr_Pw(profsrVO.getPr_Ihidnum().substring(6));
+				profsrVO.setPr_Profsr_No(profsrVO.getCreateNo()+profNo);
 				try {
 					profsrService.insertProfsr(profsrVO);
 				} catch (SQLException e) {
@@ -952,7 +998,22 @@ public class SklstfController {
 				}
 			}
 			
-		}else{
+		}else{ //일반등록
+			Calendar calendar = Calendar.getInstance();
+			String year = calendar.get(Calendar.YEAR)+"";
+			profsrVO.setCreateNo(year+profsrVO.getPsa_Subjct_Code());
+			String profNo = "";
+			try {
+				profNo = profsrService.createProfsrNo(profsrVO);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			if(profNo.length()==1){
+				profNo += "001";
+			}
+			
+			profsrVO.setPr_Pw(profsrVO.getPr_Ihidnum().substring(6));
+			profsrVO.setPr_Profsr_No(profsrVO.getCreateNo()+profNo);
 			try {
 				profsrService.insertProfsr(profsrVO);
 			} catch (SQLException e) {
@@ -1338,15 +1399,24 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping("/LctreExcel")
-	String lctreExcel(Model model, HttpServletRequest request) throws ServletException, IOException {
+	String lctreExcel(Model model, HttpServletRequest request, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException {
 		Lctre_ActplnVO vo = new Lctre_ActplnVO();
 		List<Lctre_SearchVO> lctre_SearchList = null;
 		
 		//강의 리스트 받아오기
-		
+		if(lctre_SearchVO.getPr_Profsr_No()==null) 
+			lctre_SearchVO.setPr_Profsr_No("");
+		lctre_SearchVO.setLc_Open_At("y");
+		try {
+			lctre_SearchList = lctreService.selectLctreExcel(lctre_SearchVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		model.addAttribute("lctre_SearchList", lctre_SearchList);
 		return "listExcel";
 	}
+	
 }

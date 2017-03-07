@@ -47,7 +47,7 @@ public interface ReqstService {
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void insertReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	void insertReqst(ReqstVO[] reqstVO, Lctre_SearchVO[] lctre_SearchVO) throws SQLException;
 	
 	/**
 	 * <pre>
@@ -57,7 +57,7 @@ public interface ReqstService {
 	 * @param reqstVO
 	 * @throws SQLException
 	 */
-	void deleteReqst(ReqstVO reqstVO, Lctre_SearchVO lctre_SearchVO) throws SQLException;
+	void deleteReqst(ReqstVO[] reqstVO, Lctre_SearchVO[] lctre_SearchVO) throws SQLException;
 	
 	
 	/**

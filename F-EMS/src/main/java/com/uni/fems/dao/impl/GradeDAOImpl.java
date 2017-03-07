@@ -46,4 +46,8 @@ public class GradeDAOImpl implements GradeDAO {
 		GradeVO vo = (GradeVO) client.queryForObject("totalGrade",gd_Stdnt_No);
 		return vo;
 	}
+	@Override
+	public void updateOneGrade(GradeVO gradeVO) throws SQLException {
+		client.update("updateOneGrade",gradeVO);
+	}
 }

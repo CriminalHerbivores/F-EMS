@@ -4,4 +4,34 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Menu">
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="menu" type="com.uni.fems.dto.MenuVO" />
+	
+	<!-- 메뉴 가져오기 -->
+	<select id="selectMenu" resultClass="menu" >
+		select * from menu mn,menu_se ms
+		where mn.MN_SE_CODE = ms.MS_SE_CODE
+	</select>
+	
+	<!-- 메뉴 종류 가져오기 -->
+	<select id="selectMenuSe" resultClass="menu" >
+		select * from menu_se ms
+	</select>
+	
+	<!-- 메뉴 추가 -->
+	<update id="insertMenu" parameterClass="menu" >
+		insert menu(mn_No,mn_Se_Code,mn_Cours)
+		values(#mn_No#,#mn_Se_Code#,#mn_Cours#)
+	</update>
+	
+	<!-- 메뉴 수정 -->
+	<update id="updateMenu" parameterClass="menu" >
+		update menu
+		set
+			mn_Se_Code=#mn_Se_Code#,
+			mn_Cours=#mn_Cours#
+		where mn_No = #mn_No#
+	</update>
+	
 </sqlMap>

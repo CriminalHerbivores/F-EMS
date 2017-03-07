@@ -54,12 +54,13 @@ public class Bbs_ListServiceImpl implements Bbs_ListService {
 	}
 
 	@Override
-	public int updateBbs_Atrty(Bbs_AtrtyVO bbs_AtrtyVO) throws SQLException {
+	public int updateBbs_Atrty(Bbs_List_AtrtyVO bbs_AtrtyVO) throws SQLException {
 		return bbs_ListDAO.updateBbs_Atrty(bbs_AtrtyVO);
 	}
 
 	@Override
-	public int updateBbs_List(Bbs_ListVO bbs_ListVO) throws SQLException {
+	public int updateBbs_List(Bbs_List_AtrtyVO bbs_ListVO) throws SQLException {
+		bbs_ListDAO.updateBbs_Atrty(bbs_ListVO);
 		return bbs_ListDAO.updateBbs_List(bbs_ListVO);
 	}
 

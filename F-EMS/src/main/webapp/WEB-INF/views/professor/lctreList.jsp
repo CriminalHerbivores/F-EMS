@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
@@ -18,9 +18,13 @@
 	<sec:authorize access="hasAnyRole('ROLE_STF,ROLE_ADMIN')">
 	<form name="searchForm">
 	<table class="def-table-full"><tr><td style="text-align: left;">
-	<input type="text" placeholder="교수번호" name="pr_Profsr_No" class="def-input-text-lg custom-form-control"/>
+	<input type="text" placeholder="교수번호" id="Profsr_No" name="pr_Profsr_No" class="def-input-text-lg custom-form-control"/>
 	<input type="submit" value="검색" class="def-btn btn-search btn-color"/>
-	</td></tr></table>
+	</td>
+	<td style="text-align: right;">
+	<input type="button" value="Excel출력" onclick="profsrExcel(LctreExcel);" class="def-btn btn-search btn-color"/>
+	</td>
+	</tr></table>
 	</form>
 	</sec:authorize>
 <table class="def-table-full tb-border table-hover">

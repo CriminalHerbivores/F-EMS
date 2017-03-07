@@ -43,17 +43,18 @@
 		values((select max(bl_bbs_no)from bbs_list),#ba_Manage#,#ba_Sklstf#,#ba_Profsr#,#ba_Stdnt#)
 	</update>
 	
-	<update id="updateBbs_Atrty" parameterClass="bbs_atrtyvo">
+	<update id="updateBbs_Atrty" parameterClass="bbs_list_atrtyvo">
 		update bbs_atrty set 
 		ba_manage=#ba_Manage#,
 		ba_sklstf=#ba_Sklstf#,
 		ba_profsr=#ba_Profsr#,
 		ba_stdnt=#ba_Stdnt#  
-		where ba_bbs_no=#ba_Bbs_No#
+		where ba_bbs_no=#bl_Bbs_No#
 	</update>
 	
-	<update id="updateBbs_List" parameterClass="bbs_listvo">
+	<update id="updateBbs_List" parameterClass="bbs_list_atrtyvo">
 		update bbs_list set 
+		bl_Bbs_Nm=#bl_Bbs_Nm#,
 		bl_use_ennc=#bl_Use_Ennc#  
 		where bl_bbs_no=#bl_Bbs_No#
 	</update>
@@ -83,7 +84,7 @@
 	</insert>
 	<update id="insertBbs_Table_Gnt" parameterClass="str">
 		insert into BBS_$bl_Table_Nm$(bb_Bbs_No,bb_Sklstf_No,bb_Sj,bb_Cn,bb_Writng_dt,bb_Rdcnt) 
-		values(0,null,'게시판 생성',sysdate|'부로 게시판이 생성되었습니다',sysdate,0)
+		values(0,null,'게시판 생성',sysdate||'부로 게시판이 생성되었습니다',sysdate,0)
 	</update>
 	<update id="insertBbs_Comment_Table_Gnt" parameterClass="str">
 		insert into COMMENT_$bl_Table_Nm$(bc_comnt_no,bc_bbs_no,bc_user_id,bc_comnt_content,bc_Writng_Dt) 

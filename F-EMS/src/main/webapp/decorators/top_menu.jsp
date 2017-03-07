@@ -31,6 +31,7 @@
 <a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdnt_ProfsrForm" class="no-uline">학생 교수 배정</a>
 <a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a>
 <a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록</a>
 <a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 관리</a>
@@ -39,7 +40,9 @@
 <a href="<%=request.getContextPath() %>/admin/tuitionList">등록금 조회</a>
 </sec:authorize>
 <a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역 조회</a>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a>
+</sec:authorize>
 <a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a>
 <a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 신청 내역</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a>
@@ -150,14 +153,14 @@
 								<a href="#" onclick="op_menu_admin()">관리자</a>
 							</button>
 							<div class="menu-dropdown-content">
+<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
+<a href="<%=request.getContextPath() %>/admin/generatorList" class="no-uline">게시판 관리</a>
 <a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a>								
 <a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a>
 <a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
 <a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
-<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
-<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>
 							</div>
 						</div>
 					</sec:authorize>

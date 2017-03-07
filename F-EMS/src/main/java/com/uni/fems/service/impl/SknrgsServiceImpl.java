@@ -27,6 +27,7 @@ import com.uni.fems.service.SknrgsService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.03.02.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -47,7 +48,7 @@ public class SknrgsServiceImpl implements SknrgsService {
 	@Override
 	public String pageNumberSknrgs(int tpage,SknrgsViewVO sknrgsView) throws SQLException {
 		int totalRecord = sknrgsDAO.totalSknrgs(sknrgsView);
-		String page = new Paging().pageNumber(tpage,totalRecord,"sknrgListForm", "");
+		String page = new Paging().pageNumber(tpage,totalRecord,"sknrgListForm", "&skn_Useyn="+sknrgsView.getSkn_Useyn()+"&skn_Type="+sknrgsView.getSkn_Type()+"&Stdnt_No="+sknrgsView.getSt_Stdnt_No());
 		return page;
 	}
 	

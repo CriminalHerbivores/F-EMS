@@ -35,7 +35,8 @@
 	
 	<update id="insertLctre_Video_Profsr" parameterClass="lctre_video_gnt">
 		insert into LCTRE_V$table_Nm$(LV_BBS_NO,LV_SJ,LV_CN,LV_start_DT,LV_End_DT,LV_Time,LV_FLPTH_NO) 
-		values(((select max(LV_BBS_NO) from LCTRE_V$table_Nm$)+1),#lv_Sj#,#lv_Cn#,#lv_Start_Dt#,#lv_End_Dt#,#lv_Time#,#lv_Flpth_No#)
+		values(nvl((select max(LV_BBS_NO)+1 from LCTRE_V$table_Nm$),1),
+		#lv_Sj#,#lv_Cn#,#lv_Start_Dt#,#lv_End_Dt#,#lv_Time#,#lv_Flpth_No#)
 	</update>
 	
 	<update id="updateLctre_Video_Profsr" parameterClass="lctre_video_gnt">

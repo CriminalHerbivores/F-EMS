@@ -143,13 +143,14 @@
 						<span class="folder main_menu"> </span><a href="#">관리자</a>
 					</div>
 					<ul class="sub sub_meun">
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/generatorList">게시판 관리</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a></li></div>								
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgLogin">로그인형</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMulti">복합형</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgBoard">게시판형</a></li></div>
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a></li></div>
-<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a></li></div>
 					</ul>
 				</li>
 			</sec:authorize>

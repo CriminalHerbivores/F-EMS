@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import com.uni.fems.dao.Sklstf_AtrtyDAO;
 import com.uni.fems.dto.AddressVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ManageVO;
+import com.uni.fems.dto.MenuVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
 import com.uni.fems.dto.UserSubjctVO;
@@ -29,6 +31,7 @@ import com.uni.fems.dto.UsersVO;
 import com.uni.fems.dto.request.MessageRequest;
 import com.uni.fems.service.Lctre_Unq_NoService;
 import com.uni.fems.service.ManageService;
+import com.uni.fems.service.MenuService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Subjct_Info_TableService;
 import com.uni.fems.service.UsersService;
@@ -67,6 +70,8 @@ public class IndexController {
 	private Sklstf_AtrtyDAO sklstf_AtrtyDAO;
 	@Autowired
 	private SklstfService sklstfService;
+	@Autowired
+	private MenuService menuService;
 
 	// css 예시
 	@RequestMapping("/cssExample")
@@ -116,34 +121,29 @@ public class IndexController {
 		String url=null;
 		
 		ManageVO manageVO = (ManageVO) session.getAttribute("manageVO");
-
+		int menu = 1;
 		switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
-		case 1: url = "layout_type/loginLoginType";
+		case 1: url = "layout_type/loginLoginType"; //로그인형
 			break;
-		case 2: url = "layout_type/loginBoardType";
+		case 2: url = "layout_type/loginMultiType"; //복합형
+			menu=5;
 			break;
-		case 3:url = "layout_type/loginMenuType";
+		case 3:url = "layout_type/loginBoardType"; //게시판형
+			menu=4;
 			break;
-		case 4: url = "layout_type/loginMultiType";
+		case 4: url = "layout_type/loginMenuType"; //메뉴형
+			menu=15;
 			break;
 		default: url = "/index";
 		}
 		
-//		if(session.getAttribute("loginUser")!=null){
-//			url="layout_type/loginBoardType";
-//
-//			switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
-//			case 1: url = "layout_type/indexLoginType";
-//				break;
-//			case 2: url = "layout_type/indexBoardType";
-//				break;
-//			case 3:url = "layout_type/indexMenuType";
-//				break;
-//			case 4: url = "layout_type/indexMultiType";
-//				break;
-//			default: url = "/index";
-//			}
-//		}
+		List<MenuVO> menuList = new ArrayList<MenuVO>();
+		try {
+			menuList=menuService.selectMenu(1, menu);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("menuList",menuList);
 		
 		return url;
 	}

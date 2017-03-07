@@ -37,7 +37,7 @@
 	
 	<update id="insertLctre_Notice"  parameterClass="lctre_notice_gnt">
 		insert into LCTRE_N$table_Nm$(LN_BBS_NO,LN_SJ,LN_CN,LN_WRITNG_DT,LN_RDCNT) 
-		values(((select max(LN_BBS_NO) from LCTRE_N$table_Nm$)+1),#ln_Sj#,#ln_Cn#,sysdate,0)
+		values(nvl((select max(LN_BBS_NO)+1 from LCTRE_N$table_Nm$),1),#ln_Sj#,#ln_Cn#,sysdate,0)
 	</update>
 	
 	<update id="updateLctre_Notice"  parameterClass="lctre_notice_gnt">

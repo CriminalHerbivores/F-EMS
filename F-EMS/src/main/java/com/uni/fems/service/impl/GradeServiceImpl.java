@@ -54,6 +54,10 @@ public class GradeServiceImpl implements GradeService {
 		GradeVO vo = gradeDAO.totalGrade(gd_Stdnt_No);
 		return vo;
 	}
+	@Override
+	public void updateOneGrade(GradeVO gradeVO) throws SQLException {
+		gradeDAO.updateOneGrade(gradeVO);
+	}
 }
 
 

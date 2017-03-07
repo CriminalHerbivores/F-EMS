@@ -25,7 +25,7 @@ function delet() {
 </head>
 <body>
 <h2>게시판 생성</h2><br/>
-<form name="frm" method="get" action="<%=request.getContextPath()%>/bbs_list/insertTable">
+<form name="formm" method="get" action="<%=request.getContextPath()%>/bbs_list/insertTable">
 <input type="hidden" name="ba_Manage" value="3">
 <table class="def-table-full tb-border table-hover">
 	<tr>
@@ -68,6 +68,7 @@ function delet() {
 		<th>사용유무</th>
 		<td rowspan="2">
 		<input type="submit" value="추가" class="def-btn btn-md btn-color">
+		<input type="button" value="목록" onclick="history.go(-1)" class="def-btn btn-md btn-color">
 		</td>
 	</tr>
 	<tr>
@@ -76,7 +77,7 @@ function delet() {
 			<label><input type="radio" name="ba_Alpha" value="b"> 학사 </label>
 		</td>
 		<td>
-			<label><input type="radio" name="bl_Use_Ennc" value="y" > 사용 </label> &nbsp;&nbsp; 
+			<label><input type="radio" name="bl_Use_Ennc" value="y" checked> 사용 </label> &nbsp;&nbsp; 
 			<label><input type="radio" name="bl_Use_Ennc" value="n"> 사용안함 </label>
 		</td>
 	</tr>

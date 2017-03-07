@@ -8,6 +8,7 @@
 <!--  ==========   ======    ==============        -->
 <!--  2017.01.24.   JAR      최초작성               -->
 <!--  2017.02.15.   JAR      추가작성               -->
+<!--  2017.03.07.   KJS      추가작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Sknrgs">
@@ -19,14 +20,15 @@
 	
 	<select id="listAllSknrgs" parameterClass="SknrgsView" resultClass="SknrgsView">
 		select * from sknrgs_view
-		where skn_Useyn like #skn_Useyn#
+		where skn_Useyn like '%$skn_Useyn$%'
 		and skn_Type like '%$skn_Type$%'
 		and st_Stdnt_No like '%$st_Stdnt_No$%'
+		order by skn_No desc
 	</select>
 	
 	<select id="totalSknrgs" parameterClass="SknrgsView" resultClass="int">
 		select count(*) from sknrgs_view
-		where skn_Useyn like #skn_Useyn#
+		where skn_Useyn like '%$skn_Useyn$%'
 		and skn_Type like '%$skn_Type$%'
 		and st_Stdnt_No like '%$st_Stdnt_No$%'
 	</select>
@@ -65,7 +67,8 @@
 			skn_Reqst_Dt,
 			skn_Stdnt_No,
 			skn_Content,
-			skn_file
+			skn_file,
+			skn_Useyn
 			)
 		values(
 			skn_seq.nextval,
@@ -73,7 +76,8 @@
 			sysdate,
 			#skn_Stdnt_No#,
 			#skn_Content#,
-			#skn_File#
+			#skn_File#,
+			'o'
 			)
 	</update>
 	
