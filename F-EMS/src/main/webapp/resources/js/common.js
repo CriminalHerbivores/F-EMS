@@ -745,37 +745,6 @@ function submit_test(form){
 			return false;
 		}
 	}
-	
-	
-	function queList(){
-		var ques = document.getElementsByName("ques");
-		var t_f =  false;
-		for(var i=0;i<ques.length;i++){
-			if(ques[i].value==null||ques[i].value==""){
-				 t_f =  true;
-			}else{
-				 t_f = false;
-				 return t_f;
-			}
-		}
-		return t_f;
-	}
-	
-	function caList(){
-		var ca = document.getElementsByName("ca");
-		var t_f =  false;
-		for(var i=0;i<ca.length;i++){
-			if(ca[i].value==null||ca[i].value==""){
-				t_f =  true;
-			}else{
-				t_f = false;
-				return t_f;
-			}
-		}
-		return t_f;
-	}
-
-	
 	var tpNm = $('#tpNm').val().trim(); // 시험명
 	var Start_Dt=$('#Start_Dt').val().trim();//시작날짜
 	var Start_Dt2=$('#Start_Dt2').val().trim();//시작시간
@@ -804,24 +773,97 @@ function submit_test(form){
 		}else if(queExist()){
 			sweetAlert("Oops...", "문제를 등록해 주세요.", "error");
 			return;
-		}else if(queList()){
-			cnt++;
+		}
+		
+		var ques = document.getElementsByName("ques");
+		for(var i=0;i<ques.length;i++){
+		if(ques[i].value==null||ques[i].value==""){
 			sweetAlert("Oops...", "문제를 입력해 주세요.", "error");
-			return;
-		}else if(caList()){
-			cnt++;
-			sweetAlert("Oops...", "정답을 입력해 주세요.", "error");
-			return;
+				return;
+			}
 		}
 		
-		
-		
-		if(cnt > 1){
-			cnt=0;
-			return;
+		var ca = document.getElementsByName("ca");
+		for(var i=0;i<ca.length;i++){
+			if(ca[i].value==null||ca[i].value==""){
+				sweetAlert("Oops...", "정답을 입력해 주세요.", "error");
+				return;
+			}
 		}
 		
+	document.formm.submit();
 	
+}
+
+
+function update_test(form){
+	
+	function queExist(){
+		var ques = document.getElementsByName("ques");
+		if(ques.length==0||ques.length==null){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	var tpNm = $('#tpNm').val().trim(); // 시험명
+	var Start_Dt=$('#Start_Dt').val().trim();//시작날짜
+	var Start_Dt2=$('#Start_Dt2').val().trim();//시작시간
+	var End_Dt=$('#End_Dt').val().trim(); //마감날짜
+	var End_Dt2=$('#End_Dt2').val().trim();//마감시간
+	
+		if(tpNm=="" || tpNm==null){
+			sweetAlert("Oops...", "시험 제목을 입력해 주세요.", "error");
+			return;
+		}else if(Start_Dt=="" || Start_Dt==null){
+			sweetAlert("Oops...", "시험 시작 날짜를 입력해 주세요.", "error");
+			return;
+		}else if(Start_Dt2=="" || Start_Dt2==null){
+			sweetAlert("Oops...", "시험 시작 시간을 입력해 주세요.", "error");
+			return;
+		}else if(End_Dt=="" || End_Dt==null){
+			sweetAlert("Oops...", "시험 마감 날짜를 입력해 주세요.", "error");
+			return;
+		}else if(End_Dt2=="" || End_Dt2==null){
+			sweetAlert("Oops...", "시험 마감 시간을 입력해 주세요.", "error");
+			return;
+		}else if(queExist()){
+			sweetAlert("Oops...", "문제를 등록해 주세요.", "error");
+			return;
+		}
+		
+		var ques = document.getElementsByName("ques");
+		for(var i=0;i<ques.length;i++){
+		if(ques[i].value==null||ques[i].value==""){
+			sweetAlert("Oops...", "문제를 입력해 주세요.", "error");
+				return;
+			}
+		}
+		
+		var ca = document.getElementsByName("ca");
+		for(var i=0;i<ca.length;i++){
+			if(ca[i].value==null||ca[i].value==""){
+				sweetAlert("Oops...", "정답을 입력해 주세요.", "error");
+				return;
+			}
+		}
+		
+		var addques = document.getElementsByName("addques");
+		for(var i=0;i<addques.length;i++){
+		if(addques[i].value==null||addques[i].value==""){
+			sweetAlert("Oops...", "문제를 입력해 주세요.", "error");
+				return;
+			}
+		}
+		
+		var addca = document.getElementsByName("addca");
+		for(var i=0;i<addca.length;i++){
+			if(addca[i].value==null||addca[i].value==""){
+				sweetAlert("Oops...", "정답을 입력해 주세요.", "error");
+				return;
+			}
+		}
+		
 	document.formm.submit();
 	
 }
