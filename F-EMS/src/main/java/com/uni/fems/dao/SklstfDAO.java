@@ -106,6 +106,16 @@ public interface SklstfDAO {
 	 * </pre>
 	 */
 	void deleteSklstf(String stf_Sklstf_No) throws SQLException;
+	/**
+	 * <pre>
+	 * 직원 복귀
+	 * </pre>
+	 * <pre>
+	 * @param stf_Sklstf_No
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void returnSklstf(String stf_Sklstf_No) throws SQLException;
 	
 
 	

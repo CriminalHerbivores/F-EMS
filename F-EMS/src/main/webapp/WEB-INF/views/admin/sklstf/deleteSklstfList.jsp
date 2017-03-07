@@ -9,9 +9,7 @@
  * [[개정이력(Modification Information)]]
  * 수정일        수정자       수정내용
  * --------     --------    ----------------------
- * 2017.01.24      KJH        최초작성
- * 2017.02.22      KJH        추가작성
- * 2017.03.07      KJS        추가작성
+ * 2017.03.07      KJS        최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  --%>
 <!DOCTYPE html>
@@ -39,7 +37,7 @@
 					<th>생년월일</th>
 					<th>연락처</th>
 					<th>구분</th>
-					<th>탈퇴</th>
+					<th>복귀</th>
 				</tr>
 				
 				<c:forEach items="${sklstfList}" var="subjct">
@@ -49,7 +47,7 @@
 					<td>${subjct.coleg_Nm}</td>
 					<td>${subjct.fc_Faculty_Nm}</td>
 					<td>${subjct.sit_Subjct }</td>
-					<td><a href="detailSklstf?no=${subjct.stf_Sklstf_No}&tpage=${tpage}">${subjct.stf_Nm}</a></td>
+					<td>${subjct.stf_Nm}</td>
 					<td>${subjct.stf_Ihidnum}</td>
 					<td>${subjct.stf_Sklstf_Tlphon_No}</td>
 					<%-- <td>${subjct.sa_Atrty}</td> --%>
@@ -59,7 +57,7 @@
 					<c:otherwise>직원</c:otherwise>
 					</c:choose>
 					</td>
-					<td><a href="deleteSklstf?stf_Sklstf_No=${subjct.stf_Sklstf_No}&tpage=${tpage}"><input type="button" value="탈퇴" class="def-btn btn-sm btn-color"></a></td>
+					<td><a href="returnSklstf?stf_Sklstf_No=${subjct.stf_Sklstf_No}&tpage=${tpage}"><input type="button" value="복귀" class="def-btn btn-sm btn-color"></a></td>
 					
 				</tr>
 			</c:forEach>
