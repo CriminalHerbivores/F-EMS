@@ -78,7 +78,7 @@ public class ReqstDAOImpl implements ReqstDAO {
 		return stdntNumOfLctre;
 	}
 	
-	// 한 과목의 수강중인 인원수 한명 변동
+	// 한 과목의 수강중인 인원수 변동
 	@Override
 	public void setNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		client.update("setNumOfStdnt",lctre_SearchVO);

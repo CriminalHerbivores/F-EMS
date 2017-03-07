@@ -318,9 +318,8 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value ="insertInterest", method = RequestMethod.POST)
+	@RequestMapping(value ="insertInterest")
 	public @ResponseBody List<Lctre_SearchVO> insertInterest(@RequestBody Intrst_ListVO[] array, Authentication auth) {
-		
 		String loginUser = auth.getName();
 
 			try {
@@ -343,97 +342,78 @@ public class LctreController {
 		return lctre_SearchVO_2;
 	}
 
+	
 	/**
 	 * <pre>
 	 * 접속한 학생이 수강 과목으로 추가
 	 * </pre>
 	 * <pre>
-	 * @param datas
-	 * @param jsonMap
-	 * @param request
+	 * @param array
+	 * @param array2
+	 * @param auth
 	 * @return
 	 * </pre>
 	 */
-/*	public List<Lctre_SearchVO> insertLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+	@RequestMapping(value="insertReqst")
+	public @ResponseBody List<Lctre_SearchVO> insertLcture(@RequestBody ReqstVO[] array, Authentication auth) {
+		String loginUser = auth.getName();
 		
-		HttpSession session = request.getSession();
-		String loginUser = "";
-		//String tpage = request.getParameter("tpage");
-		List<Lctre_SearchVO> list=null;
-		
-		if(((String) session.getAttribute("loginUser"))!=null){
-			loginUser = ((String) session.getAttribute("loginUser"));
+		try {
+			reqstService.insertReqst(array);	
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
-		ReqstVO reqstVO= new ReqstVO();
-		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
-		
-		String[] resultArr_2= request.getParameterValues("result_2");	// 수강
-		
-		if(resultArr_2 !=null){
-			for (int i = 0; i < resultArr_2.length; i++) { 
-				if(resultArr_2[i] !=null){	// 강의 추가한 경우
-					reqstVO.setRe_Stdnt_No(loginUser);
-					reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
-					lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
-		
-						try {
-							reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
-							
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
+		ReqstVO reqstVO_3=new ReqstVO();
+		List<Lctre_SearchVO> lctre_SearchVO_3= null;
+		try {
+			reqstVO_3.setRe_Stdnt_No(loginUser);
+			lctre_SearchVO_3 = reqstService.selectReqst(reqstVO_3.getRe_Stdnt_No());
+			stdntService.selectStdnt(loginUser);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-
+		return lctre_SearchVO_3;
 		
-		return null;
-		
-	}*/
+	}
 	
+	 
 	/**
 	 * <pre>
 	 * 접속한 학생이 관심과목에서 삭제
 	 * </pre>
 	 * <pre>
-	 * @param datas
-	 * @param jsonMap
-	 * @param request
+	 * @param array
+	 * @param auth
 	 * @return
 	 * </pre>
 	 */
-	public List<Lctre_SearchVO> deleteInterest(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+	@RequestMapping("deleteInterest")
+	public @ResponseBody List<Lctre_SearchVO> deleteInterest(@RequestBody Intrst_ListVO[] array, Authentication auth) {
 		
-//		HttpSession session = request.getSession();
-//		String loginUser = "";
-//		
-//		if(((String) session.getAttribute("loginUser"))!=null){
-//			loginUser = ((String) session.getAttribute("loginUser"));
-//		}
-//		
-//		Intrst_ListVO intrst_ListVO=new Intrst_ListVO();
-//		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
-//		
-//		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
-//		String[] resultArr = request.getParameterValues("result");
-//		String ck_result = request.getParameter("btn_result");
-//		if(ck_result.equals("delIntrst")){
-//			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
-//				intrst_ListVO.setIn_Stdnt_No(loginUser);
-//				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
-//				try {
-//					intrst_ListService.deleteIntrst_List(intrst_ListVO);
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-		
-		return null;
-		
+		String loginUser = auth.getName();
+			try {
+				intrst_ListService.deleteIntrst_List(array);	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		// 선택한 관심목록 삭제 후 다시 관심목록 가져옴
+		Intrst_ListVO intrst_ListVO_2=new Intrst_ListVO();
+		List<Lctre_SearchVO> lctre_SearchVO_2=null;
+		try {
+			intrst_ListVO_2.setIn_Stdnt_No(loginUser);
+			lctre_SearchVO_2=intrst_ListService.selectIntrst_List(intrst_ListVO_2.getIn_Stdnt_No());
+			stdntService.selectStdnt(loginUser);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lctre_SearchVO_2;
 	}
+	
+	
+	
+		
 
 	/**
 	 * <pre>
