@@ -126,5 +126,11 @@ public class LctreDAOImpl implements LctreDAO {
 		client.update("updateSplit",lctre_SearchVO);
 	}
 	
+	// 개설 강의 검색 
+		@Override
+		public List<Lctre_SearchVO> selectLctreExcel(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+			List<Lctre_SearchVO> list = client.queryForList("selectLctreExcel",lctre_SearchVO);
+			return list;
+		}
 	
 }

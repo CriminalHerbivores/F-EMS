@@ -1399,15 +1399,24 @@ public class SklstfController {
 	 * </pre>
 	 */
 	@RequestMapping("/LctreExcel")
-	String lctreExcel(Model model, HttpServletRequest request) throws ServletException, IOException {
+	String lctreExcel(Model model, HttpServletRequest request, Lctre_SearchVO lctre_SearchVO) throws ServletException, IOException {
 		Lctre_ActplnVO vo = new Lctre_ActplnVO();
 		List<Lctre_SearchVO> lctre_SearchList = null;
 		
 		//강의 리스트 받아오기
-		
+		if(lctre_SearchVO.getPr_Profsr_No()==null) 
+			lctre_SearchVO.setPr_Profsr_No("");
+		lctre_SearchVO.setLc_Open_At("y");
+		try {
+			lctre_SearchList = lctreService.selectLctreExcel(lctre_SearchVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		model.addAttribute("lctre_SearchList", lctre_SearchList);
 		return "listExcel";
 	}
+	
 }
