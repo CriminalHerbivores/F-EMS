@@ -65,8 +65,9 @@ function list_get(){
 						<option value="퇴학">퇴학</option>
 						<option value="조기졸업">조기졸업</option>
 						<option value="졸업연기">졸업연기</option>
-				</select>&nbsp;&nbsp; 학번 : <input type="text" name="key"
-					class="def-input-text-lg custom-form-control">&nbsp;&nbsp;
+				</select>&nbsp;&nbsp; 
+				<input type="text" name="key"
+					class="def-input-text-lg custom-form-control" placeholder="학번">&nbsp;&nbsp;
 					<input type="button" value="조회"
 						class="def-btn btn-sm btn-color" onclick="list_get();"></td>
 			</tr></table>
