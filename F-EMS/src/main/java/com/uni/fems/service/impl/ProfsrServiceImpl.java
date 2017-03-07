@@ -10,6 +10,7 @@ import com.uni.fems.dao.LctreDAO;
 import com.uni.fems.dao.ProfsrDAO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.ProfsrService;
 
 /**
@@ -67,6 +68,20 @@ public class ProfsrServiceImpl implements ProfsrService {
 	@Override
 	public void updateProfsr(ProfsrVO profsrVO) throws SQLException {
 		profsrDAO.updateProfsr(profsrVO);
+	}
+	
+	@Override
+	public List<ProfsrVO> selectAllStdntList2(int tpage, ProfsrVO profarVO) throws SQLException {
+		int totalRecord = profsrDAO.countProfsrList2(profarVO);
+		return profsrDAO.selectAllProfsrList2(profarVO, tpage, totalRecord);
+		
+	}
+
+	@Override
+	public String pageNumber2(int tpage,ProfsrVO profarVO) throws SQLException {
+		int totalRecord = profsrDAO.countProfsrList2(profarVO);
+		String page = new Paging().ajaxpageNumber(tpage,totalRecord,"go_ProfsrList","");
+		return page;
 	}
 
 }

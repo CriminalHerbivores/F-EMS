@@ -127,4 +127,31 @@ public interface StdntDAO {
 	 * @throws SQLException
 	 */
 	int countStdntList(StdntVO stdntVO) throws SQLException;
+	
+	
+	/**
+	 * 학생의 조건에 따른 조회기능
+	 * @param stdntVO
+	 * @param tpage
+	 * @param totalRecord
+	 * @return
+	 * @throws SQLException
+	 */
+	List<StdntVO> selectAllStdntList2(StdntVO stdntVO, int tpage,
+			int totalRecord) throws SQLException;
+	
+	
+	/**
+	 * 학생의 조건에 따른 조회의 개수
+	 * @param stdntVO
+	 * @return
+	 * @throws SQLException
+	 */
+	int countStdntList2(StdntVO stdntVO) throws SQLException;
+	/**
+	 * 교수 배정
+	 * @param stdntVO
+	 * @throws SQLException
+	 */
+	void updateSt_Profsr_No(StdntVO stdntVO) throws SQLException;
 }

@@ -394,6 +394,22 @@ public class SklstfController {
 		
 	}
 	
+	/**
+	 * <pre>
+	 * 학생에게 담당 교수를 지정해주는 폼
+	 * </pre>
+	 * <pre>
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping("/stdnt_ProfsrForm")
+	public String stdnt() throws ServletException, IOException{
+		String url="manager/student/stdnt_ProfsrForm";
+		return url;
+	}
+	
 	// 기숙사 ////////////////////////////////////////////////////////////////////
 	
 	/**

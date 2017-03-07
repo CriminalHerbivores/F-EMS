@@ -9,6 +9,7 @@ import com.uni.fems.common.Paging;
 import com.uni.fems.dao.ProfsrDAO;
 import com.uni.fems.dto.ProfsrVO;
 import com.uni.fems.dto.ProfsrVO;
+import com.uni.fems.dto.StdntVO;
 
 public class ProfsrDAOImpl implements ProfsrDAO {
 
@@ -60,4 +61,20 @@ public class ProfsrDAOImpl implements ProfsrDAO {
 	public void updatePw(ProfsrVO profsrVO) throws SQLException {
 		client.update("updatePwProfsr",profsrVO);
 	}
+	
+	@Override
+	public List<ProfsrVO> selectAllProfsrList2(ProfsrVO profarVO, int tpage, int totalRecord) throws SQLException {
+		Paging p = new Paging();
+		int[] rows = p.row(tpage, totalRecord);
+		List<ProfsrVO> listAllLctre_Date = client.queryForList("selectAllProfsrList2",profarVO, rows[1], rows[0]);
+		return listAllLctre_Date;
+	}
+
+	@Override
+	public int countProfsrList2(ProfsrVO profarVO) throws SQLException{
+		int total_pages = 0;
+		total_pages = (Integer) client.queryForObject("countProfsrList2",profarVO);
+		return total_pages;
+	}
+	
 }
