@@ -39,6 +39,6 @@ public class Bbs_List_AtrtyVO implements Serializable{
 	private String ba_Profsr;   // 교수
 	private String ba_Stdnt;   // 학생
 	
-	
+	private String ba_Alpha; //게시판 첫글자
 	
 }

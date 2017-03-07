@@ -414,6 +414,8 @@ public class ManageController {
 				String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
 				FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
 				manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
+			}else{
+				manageVO.setMng_Univ_Logo("/resources/images/"+manageVO.getMng_Univ_Logo_Ori());
 			}
 			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
 			String faxNo = faxNo1+"-"+faxNo2+"-"+faxNo3;
@@ -504,6 +506,8 @@ public class ManageController {
 			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
 			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
 			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
+		}else{
+			manageVO.setMng_Univ_Img(manageVO.getMng_Univ_Img_Ori());
 		}
 		try {
 			manageSvc.updateLayout(manageVO);

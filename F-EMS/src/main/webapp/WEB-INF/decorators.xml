@@ -26,6 +26,10 @@
 		<pattern>/lctre/**</pattern>
 	</decorator>
 	
+	<decorator name="admin" page="admindecorator.jsp">
+		<pattern>/admin/**</pattern>
+	</decorator>
+	
 	<excludes>
 		<pattern>/admin/log**</pattern>
 		<pattern>/**/menu.jsp</pattern>

@@ -73,7 +73,7 @@ function resultSubjct(coleg_Nm,fc_Faculty_Nm,sit_Subjct,sit_Subjct_Code) {
 <body>
 <div id="popup">
   <h1>학과 검색</h1>
-  <form method=post name=formm action="findSubjct">
+  <form method=post name=formm>
     학과명 : <input name="sit_Subjct" type="text">
             <input type="submit" value="찾기"  class="submit">
   </form>
