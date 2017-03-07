@@ -93,17 +93,20 @@
 
 
 
-
-
-
-
-
-
 /* //////////// 메뉴형로그인 ////////////  */
-.login-menu-gray{
+/* .login-menu-gray{
 	height: 80px;
 	background: #ccc;
 	
+} */
+
+.td-odd td:nth-child(odd), .td-odd-even tr:nth-child(odd) td:nth-child(odd), .td-odd-even tr:nth-child(even) td:nth-child(even){
+	background : #ccc;
+}
+
+.td-odd td, .td-odd-even td{
+	height: 80px;
+	width: 20%;
 }
 
 .login-menu{
