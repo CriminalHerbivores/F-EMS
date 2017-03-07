@@ -146,27 +146,7 @@ public class SklstfController {
 		return url;
 	}
 	
-	/**
-	 * <pre>
-	 * 직원 한명의 정보를 업데이트
-	 * </pre>
-	 * <pre>
-	 * @param sklstfVO
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping("/deleteSklstf")
-	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
-		String url = "redirect:sklstfList?&tpage="+tpage;
-		
-		try {
-			sklstfService.deleteSklstf(stf_Sklstf_No);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return url;
-	}
+	
 	
 	
 

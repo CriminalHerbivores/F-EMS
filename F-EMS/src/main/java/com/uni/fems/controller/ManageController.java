@@ -55,6 +55,7 @@ import com.uni.fems.service.UsersService;
  * --------     --------    ----------------------
  * 2017.01.24      KJH            최초작성
  * 2017.02.22.     KJH       추가작성
+ * 2017.03.07.     KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -110,6 +111,7 @@ public class ManageController {
 		if(searchVO.getKey()==null)
 			searchVO.setKey("stf_Nm");
 		
+		searchVO.setUseyn("1");
 		List<UserSubjctVO> sklstfList=null;
 		String paging = null;
 		try {
@@ -124,6 +126,50 @@ public class ManageController {
 		model.addAttribute("paging", paging);
 		return url;
 		
+	}
+	
+	/**
+	 * <pre>
+	 * 탈퇴 직원 목록 조회
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param session
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/deleteSklstfList")
+	public String deletesklstfList(Model model,HttpServletRequest request, SearchVO searchVO) 
+			throws ServletException, IOException {
+		String url = "admin/sklstf/deleteSklstfList";	
+		String tpage = request.getParameter("tpage");
+		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		if(searchVO.getValue()==null)
+			searchVO.setValue("");
+		if(searchVO.getKey()==null)
+			searchVO.setKey("stf_Nm");
+		
+		searchVO.setUseyn("0");
+		List<UserSubjctVO> sklstfList=null;
+		String paging = null;
+		try {
+			sklstfList = sklstfService.listAllSklstf(Integer.parseInt(tpage), searchVO);
+			paging = sklstfService.pageNumber2(Integer.parseInt(tpage),searchVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("sklstfList", sklstfList);
+		int n = sklstfList.size();
+		model.addAttribute("sklstfListSize", n);
+		model.addAttribute("paging", paging);
+		return url;
 	}
 	
 	/**
@@ -333,6 +379,49 @@ public class ManageController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 직원 탈퇴
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/deleteSklstf")
+	public String sklstfdelete(String stf_Sklstf_No, @RequestParam int tpage){
+		String url = "redirect:sklstfList?&tpage="+tpage;
+		
+		try {
+			sklstfService.deleteSklstf(stf_Sklstf_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
+	
+	/**
+	 * <pre>
+	 * 직원 복귀
+	 * </pre>
+	 * <pre>
+	 * @param sklstfVO
+	 * @return
+	 * </pre>
+	 */
+	@RequestMapping("/returnSklstf")
+	public String sklstfreturn(String stf_Sklstf_No, @RequestParam int tpage){
+		String url = "redirect:deleteSklstfList?&tpage="+tpage;
+		
+		try {
+			sklstfService.returnSklstf(stf_Sklstf_No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
 	
 	/**
 	 * <pre>

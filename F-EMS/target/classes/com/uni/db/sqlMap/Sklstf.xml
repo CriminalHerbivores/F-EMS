@@ -7,8 +7,10 @@
 <!--  수정일              수정자        수정내용               -->
 <!--  ==========   ======    ==============        -->
 <!--  2017.01.24.   JAR      최초작성               -->
+<!--  2017.01.26.   KJS      추가작성               -->
 <!--  2017.02.15.   JAR      추가작성               -->
 <!--  2017.02.21.   KJH      추가작성               -->
+<!--  2017.03.07.   KJS      추가작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Sklstf">
@@ -67,11 +69,14 @@
 	<!-- 전체 직원목록의 갯수 -->
 	<select id="totalSklstf" parameterClass="searchvo" resultClass="int">
 		select count(*) from sklstf_view where $key$ like '%'||#value#||'%'
+		and stf_Useyn = #useyn#
 	</select>
 	
 	<!-- 전체 직원 목록 -->
 	<select id="listAllSklstf" parameterClass="searchvo" resultClass="userSubjct">
-		select * from sklstf_view where $key$ like '%'||#value#||'%' order by stf_Sklstf_No desc 
+		select * from sklstf_view where $key$ like '%'||#value#||'%' 
+		and stf_Useyn = #useyn#
+		order by stf_Sklstf_No desc 
 	</select>
 	
 	<!-- 관리자 최초 가입 -->
@@ -83,6 +88,11 @@
 	<!-- 직원 달퇴-->
 	<update id="deleteSklstf" parameterClass="str">
 		update sklstf set stf_Useyn='0' where stf_Sklstf_No = #stf_Sklstf_No#
+	</update>
+	
+	<!-- 직원 복귀-->
+	<update id="returnSklstf" parameterClass="str">
+		update sklstf set stf_Useyn='1' where stf_Sklstf_No = #stf_Sklstf_No#
 	</update>
 	
 	

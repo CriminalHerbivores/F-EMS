@@ -149,6 +149,27 @@ public interface SklstfService {
 	 * </pre>
 	 */
 	String createSklstfNo(SklstfVO sklstfVO) throws SQLException;
+
+	/**
+	 * <pre>
+	 * 직원 복귀
+	 * </pre>
+	 * <pre>
+	 * @param stf_Sklstf_No
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void returnSklstf(String stf_Sklstf_No) throws SQLException;
+
+
+	/**
+	 * 탈퇴 직원 페이지
+	 * @param tpage
+	 * @param searchVO
+	 * @return
+	 * @throws SQLException
+	 */
+	String pageNumber2(int tpage, SearchVO searchVO) throws SQLException;
 	
 
 }
