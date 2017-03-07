@@ -114,7 +114,7 @@ border:0;
 				</tr>
 					<tr>
 						<th>대학 이미지</th>
-						<td class="text-left"> ※ 첨부 파일 이미지 크기는 500*350px 권장 <input type="file" name="uploadUnivImg" value="${manageVO.mng_Univ_Logo}" ></td>
+						<td class="text-left"> ※ 첨부 파일 이미지 크기는 550*350px 권장 <input type="file" name="uploadUnivImg" value="${manageVO.mng_Univ_Logo}" ></td>
 					</tr>
 					
 			</table>

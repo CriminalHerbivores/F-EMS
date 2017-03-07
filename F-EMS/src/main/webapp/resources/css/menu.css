@@ -126,16 +126,18 @@ display: table-cell;
 }
 
 .custom-col-sm-8{
-width:86%;
+/* width:86%; */
+margin-left:170px;
 height: auto; 
 min-height:700px;
 /* background:#EFF7F7; */ /* 색상:중앙 바디 영역 */
 padding : 10px;
-float:right;
+/* float:right; */
 }
 
 .custom-col-sm-2{
-width: 13%;
+/* width: 13%; */
+width:170px;
 background:#fff; /* 색상:좌측 메뉴 영역 */
 float : left;
 padding-top : 10px;
