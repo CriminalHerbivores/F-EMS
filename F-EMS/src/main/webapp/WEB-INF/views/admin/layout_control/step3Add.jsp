@@ -33,9 +33,24 @@
 <h2>메뉴 관리</h2><br/>
 	<table class="def-table-full tb-border table-hover tr-child-color">
 		<tr>
-			<th>레이아웃 형태</th>
+			<th width="50%">레이아웃 형태</th>
 			<td>
-				
+				<c:choose>
+				<c:when test="${manageVO.mng_Layout_Knd eq 1}">
+				로그인형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 2}">
+				복합형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 3}">
+				게시판형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 4}">
+				메뉴형
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+				</c:choose>
 			</td>
 		</tr>
 	</table>

@@ -34,5 +34,6 @@ public class MenuVO implements Serializable {
 	private String mn_Se_Code;   // 구분코드
 	private String mn_Cours;   // 경로
 	
-
+	private String ms_Se_Code;   // 구분코드
+	private String ms_Type;   // 유형
 }

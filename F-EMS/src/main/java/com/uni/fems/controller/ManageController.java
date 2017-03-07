@@ -38,6 +38,7 @@ import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
 import com.uni.fems.service.ManageService;
+import com.uni.fems.service.MenuService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Sklstf_AtrtyService;
 import com.uni.fems.service.Subjct_Info_TableService;
@@ -85,6 +86,8 @@ public class ManageController {
 	private ManageService manageSvc;
 	@Autowired
 	private FileDownload fileDownload;
+	@Autowired
+	private MenuService menuService;
 	
 	/**
 	 * <pre>
@@ -631,8 +634,15 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.GET)
-	public String step3Add(HttpServletRequest request,HttpSession session) {
+	public String step3Add(Model model) {
 		String url = "admin/layout_control/step3Add";	
+		List<MenuVO> list = null;
+		try {
+			list = menuService.selectMenuSe();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("menuSe",list);
 		return url;
 	}
 	
