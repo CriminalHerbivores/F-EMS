@@ -68,9 +68,12 @@
 		<th>교수 전화번호</th>
 		<td><input type="text" class="def-input-text-lg custom-form-control" id="pr_Profsr_Tlphon_No" name="pr_Profsr_Tlphon_No" value="${profsrVO.pr_Profsr_Tlphon_No }"></td>
 	</tr>
+     <tr>
+     	<th colspan="6"> * 엑셀양식을 다운 받아 단체로 등록할 수 있습니다 * </th>
+     </tr>
 	<tr>
       	<th>등록양식</th>
-      	<td><a href="<%=request.getContextPath() %>/download/file/list?filename=교수등록.xlsx">다운로드</a></td>
+      	<td><a href="<%=request.getContextPath() %>/download/file/list?filename=교수등록.xlsx">엑셀양식</a></td>
       	<th>업로드</th>
       	<td colspan="3"><input type="file" name="f"></td>
       </tr>
