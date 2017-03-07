@@ -73,5 +73,12 @@ public class Lctre_Video_StdntDAOImpl implements Lctre_Video_StdntDAO {
 		list = client.queryForList("attendance",vo);
 		return list;
 	}
+
+	@Override
+	public Lctre_Watch_Video_GntVO attendance(Lctre_Watch_Video_GntVO vo)
+			throws SQLException {
+		Lctre_Watch_Video_GntVO att = (Lctre_Watch_Video_GntVO) client.queryForObject("attendance", vo);
+		return att;
+	}
 	
 }

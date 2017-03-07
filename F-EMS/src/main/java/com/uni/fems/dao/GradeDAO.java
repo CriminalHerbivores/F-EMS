@@ -93,4 +93,14 @@ public interface GradeDAO {
 	 * @throws SQLException
 	 */
 	GradeVO totalGrade(String gd_Stdnt_No) throws SQLException;
+	/**
+	 * <pre>
+	 * 성적 입력 하나씩
+	 * </pre>
+	 * <pre>
+	 * @param gradeVO
+	 * @throws SQLException
+	 * </pre>
+	 */
+	void updateOneGrade(GradeVO gradeVO) throws SQLException;
 }
