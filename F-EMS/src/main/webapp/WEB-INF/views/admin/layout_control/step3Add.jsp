@@ -92,6 +92,7 @@ $(function(){
 	
 	<div class="menuSe">
 	
+	<c:if test="${manageVO.mng_Layout_Knd ne 1}">
 	<table class="def-table-full tb-border table-hover tr-child-color">
 	<tr>
 		<th width="50px">No</th>
@@ -121,6 +122,21 @@ $(function(){
 	</tr>
 	</c:forEach>
 	</table>
+	</c:if>
+	
+	<c:choose>
+	<c:when test="${manageVO.mng_Layout_Knd eq 1}">
+	<table class="def-table-full"><tr><td style="text-align: left;">
+	※ 로그인형의 경우 메뉴를 사용할 수 없습니다 ※
+	</td></tr></table>
+	</c:when>
+	<c:when test="${manageVO.mng_Layout_Knd eq 3}">
+	<table class="def-table-full"><tr><td style="text-align: left;">
+	※ 게시판형의 경우 학사와 커뮤니티 메뉴만 사용할 수 있습니다 ※
+	</td></tr></table>
+	</c:when>
+	</c:choose>
+	
 	</div>
 	
 <table class="def-table-full"><tr><td style="text-align: right;">
