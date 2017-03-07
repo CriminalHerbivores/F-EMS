@@ -98,18 +98,25 @@ $(function(){
 		<th width="300px">구분코드</th>
 		<th>경로</th>
 	</tr>
-	<c:forEach begin="1" end="${menuNum}" varStatus="status">
+	<c:forEach items="${menuList}" var="mL" varStatus="status">
 	<tr>
 		<td>${status.count}<input type="hidden" name="mn_No" value="${status.count}"></td>
 		<td>
 			<select name="mn_Se_Code" class="combobox-lg custom-form-control">
-				<option value="" selected>사용안함</option>
+				<option value="">사용안함</option>
 				<c:forEach items="${menuSe}" var="mns">
+				<c:choose>
+				<c:when test="${mns.ms_Se_Code == mL.mn_Se_Code}">
+				<option value="${mns.ms_Se_Code}" selected>${mns.ms_Type}</option>
+				</c:when>
+				<c:otherwise>
 				<option value="${mns.ms_Se_Code}">${mns.ms_Type}</option>
+				</c:otherwise>
+				</c:choose>
 				</c:forEach>
 			</select>
 		</td>
-		<td class="mnCours"><!-- <input type="text" name="mn_Cours" class="def-input-text-full custom-form-control"> --></td>
+		<td class="mnCours">${mL.mn_Cours}</td>
 	</tr>
 	</c:forEach>
 	</table>
