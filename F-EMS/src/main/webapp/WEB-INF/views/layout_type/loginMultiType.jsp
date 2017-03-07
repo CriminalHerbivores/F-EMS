@@ -62,7 +62,18 @@
 		<tr><td><input type="button" class="def-btn btn-sm btn-color" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" class="def-btn btn-sm btn-color" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 		<tr><td colspan="3">
 			<table class="def-table-full tb-border"  style="width:100% !important;">
-				<tr><td class="login-menu-gray">메뉴1</td><td class="login-menu">메뉴2</td><td class="login-menu-gray">메뉴3</td><td class="login-menu">메뉴4</td><td class="login-menu-gray">메뉴5</td></tr>
+				<tr>
+				<c:forEach items="${menuList}" var="mn">
+				<c:choose>
+				<c:when test="${mn.mn_Se_Code=='etc'}">
+				<td class="login-menu"><a href="${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+				</c:when>
+				<c:otherwise>
+				<td class="login-menu"><a href="<%=request.getContextPath()%>/${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+				</c:otherwise>
+				</c:choose>
+				</c:forEach>
+				</tr>
 			</table>		
 		</td></tr>
 	</table>

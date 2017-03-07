@@ -101,6 +101,7 @@ $(function(){
 	<c:forEach items="${menuList}" var="mL" varStatus="status">
 	<tr>
 		<td>${status.count}<input type="hidden" name="mn_No" value="${status.count}"></td>
+		<td><input type="text" name="mn_Nm" value="${mL.mn_Nm}" class="def-input-text-lg custom-form-control"></td>
 		<td>
 			<select name="mn_Se_Code" class="combobox-lg custom-form-control">
 				<option value="">사용안함</option>
