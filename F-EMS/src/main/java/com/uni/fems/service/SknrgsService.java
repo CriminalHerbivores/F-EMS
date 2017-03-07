@@ -21,6 +21,7 @@ import com.uni.fems.dto.request.PageRequest;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.03.02.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
