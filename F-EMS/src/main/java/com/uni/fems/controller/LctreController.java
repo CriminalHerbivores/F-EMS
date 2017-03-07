@@ -93,23 +93,6 @@ public class LctreController {
 		
 		return url;
 	}
-	
-	
-//	/**
-//	 * <pre>
-//	 * 개설강의목록, 수강신청완료목록, 관심강의목록, 신청가능학점을 한번에 확인가능한 메인 폼
-//	 * </pre>
-//	 * <pre>
-//	 * @param request
-//	 * @param session
-//	 * @return
-//	 * </pre>
-//	 */
-//	@RequestMapping(value="/courseList", method=RequestMethod.GET)
-//	public String courseListForm(HttpServletRequest request, HttpSession session) {
-//		String url = "course_registration/courseList";
-//		return url;
-//	}		
 
 	
 	/**
@@ -271,42 +254,6 @@ public class LctreController {
 	}
 	
 	
-	
-	/**
-	 * <pre>
-	 * 개설강의 목록을 불러오는 메서드
-	 * </pre>
-	 * <pre>
-	 * @return
-	 * </pre>
-	 */
-//	public List<Lctre_SearchVO> getOpenLctre(){
-//		
-//		List<Lctre_SearchVO> openLctreList = new ArrayList<>();
-//		for(int i=0; i<openLctreList.size(); i++){
-//			Lctre_SearchVO vo=new Lctre_SearchVO();
-//			vo.getLc_Lctrum_No();
-//			vo.getSit_Subjct();
-//			vo.getLu_Lctre_Code();
-//			vo.getLc_Split();
-//			vo.getLu_Lctre_Nm();
-//			vo.getLu_Grade();
-//			vo.getLu_Compl_Se();
-//			vo.getKnd_Lctre_Knd();
-//			vo.getPr_Nm();
-//			vo.getLu_Pnt();
-//			vo.getLc_Lctre_Time();
-//			vo.getLc_Lctre_Nmpr();
-//			vo.getLr_Accept_Nmpr();
-//			
-//			openLctreList.add(vo);
-//		}
-//		
-//		return openLctreList;
-//	}
-
-	
-	
 	/**
 	 * <pre>
 	 * 접속한 학생이 관심 강의로 추가
@@ -364,6 +311,7 @@ public class LctreController {
 			e.printStackTrace();
 		}
 		
+		// 수강완료목록 가져옴
 		ReqstVO reqstVO_3=new ReqstVO();
 		List<Lctre_SearchVO> lctre_SearchVO_3= null;
 		try {
@@ -373,8 +321,8 @@ public class LctreController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	
 		return lctre_SearchVO_3;
-		
 	}
 	
 	 
@@ -426,34 +374,28 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	public List<Lctre_SearchVO> deleteLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+	@RequestMapping("deleteLcture")
+	public @ResponseBody List<Lctre_SearchVO> deleteLcture(@RequestBody ReqstVO[] array, Authentication auth) {
 		
-//		HttpSession session = request.getSession();
-//		String loginUser = "";
-//		
-//		if(((String) session.getAttribute("loginUser"))!=null){
-//			loginUser = ((String) session.getAttribute("loginUser"));
-//		}
-//		
-//		ReqstVO reqstVO= new ReqstVO();
-//		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
-//		
-//		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
-//		String[] resultArr = request.getParameterValues("result");
-//		String ck_result = request.getParameter("btn_result");
-//		if(ck_result.equals("delIntrst")){
-//			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
-//				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
-//				try {
-//					reqstService.deleteReqst(reqstVO,lctre_SearchVO);	// if로 유효성 걸어주고 싶은데
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
+		String loginUser = auth.getName();
+		try {
+			reqstService.deleteReqst(array);	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-		return null;	
+	// 선택한 관심목록 삭제 후 다시 관심목록 가져옴
+		ReqstVO reqstVO_3=new ReqstVO();
+		List<Lctre_SearchVO> lctre_SearchVO_3= null;
+		try {
+			reqstVO_3.setRe_Stdnt_No(loginUser);
+			lctre_SearchVO_3 = reqstService.selectReqst(reqstVO_3.getRe_Stdnt_No());
+			stdntService.selectStdnt(loginUser);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return lctre_SearchVO_3;
 	}
 	
 	
