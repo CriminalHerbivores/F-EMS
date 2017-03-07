@@ -55,7 +55,7 @@ String ba_Stdnt = bbs_List_AtrtyVO.getBa_Stdnt();
 			<option value="3" <%=ba_Sklstf.equals("3") ? "selected" : "" %>>댓글가능</option>
 			<option value="2" <%=ba_Sklstf.equals("2") ? "selected" : "" %>>쓰기가능</option>
 			<option value="1" <%=ba_Sklstf.equals("1") ? "selected" : "" %>>읽기가능</option>
-			<option value="0" <%=ba_Sklstf.equals("0") ? "selected" : "" %>>접근불가</option>
+			<option value="0" <%=ba_Sklstf.equals("0") ? "selected" : "" %>>이용불가</option>
 		</select>
 		</td>
 		<td>
@@ -63,7 +63,7 @@ String ba_Stdnt = bbs_List_AtrtyVO.getBa_Stdnt();
 			<option value="3" <%=ba_Profsr.equals("3") ? "selected" : "" %>>댓글가능</option>
 			<option value="2" <%=ba_Profsr.equals("2") ? "selected" : "" %>>쓰기가능</option>
 			<option value="1" <%=ba_Profsr.equals("1") ? "selected" : "" %>>읽기가능</option>
-			<option value="0" <%=ba_Profsr.equals("0") ? "selected" : "" %>>접근불가</option>
+			<option value="0" <%=ba_Profsr.equals("0") ? "selected" : "" %>>이용불가</option>
 		</select>
 		</td>
 		<td>
@@ -71,7 +71,7 @@ String ba_Stdnt = bbs_List_AtrtyVO.getBa_Stdnt();
 			<option value="3" <%=ba_Stdnt.equals("3") ? "selected" : "" %>>댓글가능</option>
 			<option value="2" <%=ba_Stdnt.equals("2") ? "selected" : "" %>>쓰기가능</option>
 			<option value="1" <%=ba_Stdnt.equals("1") ? "selected" : "" %>>읽기가능</option>
-			<option value="0" <%=ba_Stdnt.equals("0") ? "selected" : "" %>>접근불가</option>
+			<option value="0" <%=ba_Stdnt.equals("0") ? "selected" : "" %>>이용불가</option>
 		</select>
 		</td>
 	</tr>
