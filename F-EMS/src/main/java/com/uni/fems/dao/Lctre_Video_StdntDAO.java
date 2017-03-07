@@ -24,4 +24,16 @@ public interface Lctre_Video_StdntDAO {
 			throws SQLException;
 	
 	List<Lctre_Watch_Video_GntVO> lctre_watch_video_gnt(Lctre_Watch_Video_GntVO vo) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 출석률 가져오기
+	 * </pre>
+	 * <pre>
+	 * @param vo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	Lctre_Watch_Video_GntVO attendance(Lctre_Watch_Video_GntVO vo) throws SQLException;
 }
