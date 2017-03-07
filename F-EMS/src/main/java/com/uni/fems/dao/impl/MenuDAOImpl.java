@@ -14,7 +14,7 @@ public class MenuDAOImpl implements MenuDAO {
 	}
 	@Override
 	public List<MenuVO> selectMenu(int start, int end) throws SQLException {
-		List<MenuVO> list = client.queryForList("selectMenu");
+		List<MenuVO> list = client.queryForList("selectMenu",start,end);
 		return list;
 	}
 	@Override

@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,19 +21,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.common.Supporter;
+import com.uni.fems.dao.Bbs_ListDAO;
 import com.uni.fems.dao.Sklstf_AtrtyDAO;
 import com.uni.fems.dto.AddressVO;
+import com.uni.fems.dto.Bbs_AtrtyVO;
+import com.uni.fems.dto.Bbs_GntVO;
+import com.uni.fems.dto.Bbs_List_AtrtyVO;
+import com.uni.fems.dto.Bbs_List_GntVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ManageVO;
 import com.uni.fems.dto.MenuVO;
+import com.uni.fems.dto.Notice_BbsVO;
+import com.uni.fems.dto.Schafs_SchdulVO;
+import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.dto.UsersVO;
 import com.uni.fems.dto.request.MessageRequest;
+import com.uni.fems.service.Bbs_AtrtyService;
+import com.uni.fems.service.Bbs_GntService;
 import com.uni.fems.service.Lctre_Unq_NoService;
 import com.uni.fems.service.ManageService;
 import com.uni.fems.service.MenuService;
+import com.uni.fems.service.Notice_BbsService;
+import com.uni.fems.service.Schafs_SchdulService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Subjct_Info_TableService;
 import com.uni.fems.service.UsersService;
@@ -72,7 +86,17 @@ public class IndexController {
 	private SklstfService sklstfService;
 	@Autowired
 	private MenuService menuService;
-
+	@Autowired
+	private Notice_BbsService notice_BbsService;
+	@Autowired
+	private Schafs_SchdulService schdulSvc;
+	@Autowired
+	private Supporter supporter;
+	@Autowired
+	private Bbs_GntService bbs_GntSvc;
+	@Autowired
+	private Bbs_ListDAO bbs_ListSvc;
+	
 	// css 예시
 	@RequestMapping("/cssExample")
 	public String cssExample() {
@@ -104,6 +128,12 @@ public class IndexController {
 		return url;
 	}
 	
+	@RequestMapping("/main")
+	public String main() {
+		String url = "layout_type/loginBoardType";
+		return url;
+	}
+	
 	/**
 	 * <pre>
 	 * 첫 화면으로 이동
@@ -121,28 +151,94 @@ public class IndexController {
 		String url=null;
 		
 		ManageVO manageVO = (ManageVO) session.getAttribute("manageVO");
+		
 		int menu = 1;
 		switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
 		case 1: url = "layout_type/loginLoginType"; //로그인형
 			break;
 		case 2: url = "layout_type/loginMultiType"; //복합형
 			menu=5;
+			List<Notice_BbsVO> nList = null;
+			SearchVO searchVO = new SearchVO();
+			searchVO.setValue("");
+			searchVO.setKey("nb_Sj");
+			try {
+				nList=notice_BbsService.listAllNotice_Bbs(1, searchVO);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			model.addAttribute("nList",nList);
 			break;
 		case 3:url = "layout_type/loginBoardType"; //게시판형
-			menu=4;
+			menu=2;
+			
+			//공지사항
+			List<Notice_BbsVO> nList2 = null;
+			SearchVO searchVO2 = new SearchVO();
+			searchVO2.setValue("");
+			searchVO2.setKey("nb_Sj");
+			try {
+				nList2=notice_BbsService.listAllNotice_Bbs(1, searchVO2);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			model.addAttribute("nList",nList2);
+			//학사일정
+			Calendar calendar = Calendar.getInstance();
+			int month = calendar.get(Calendar.MONTH)+1;
+			List<Schafs_SchdulVO> sch = null;
+			try {
+				sch = schdulSvc.listSchdul(month);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			model.addAttribute("schd",sch);
+			
 			break;
 		case 4: url = "layout_type/loginMenuType"; //메뉴형
 			menu=15;
 			break;
 		default: url = "/index";
 		}
-		
 		List<MenuVO> menuList = new ArrayList<MenuVO>();
 		try {
-			menuList=menuService.selectMenu(1, menu);
+			menuList=menuService.selectMenu(0, menu);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		if(manageVO.getMng_Layout_Knd().equals("3")){
+			for(int i=0;i<menuList.size();i++){
+				if(menuList.get(i).getMn_Se_Code().equals("bbs")){
+					String m = menuList.get(i).getMn_Cours();
+					String bl_Bbs_No = m.substring(m.length()-1,m.length());
+					
+					Bbs_List_AtrtyVO bbs_List_AtrtyVO = null;
+					try {
+						bbs_List_AtrtyVO = bbs_ListSvc.getBbs_List_Atrty(Integer.parseInt(bl_Bbs_No));
+					} catch (NumberFormatException | SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					Bbs_List_GntVO bbs_List_GntVO = new Bbs_List_GntVO();
+					bbs_List_GntVO.setBl_Bbs_No(bbs_List_AtrtyVO.getBl_Bbs_No());
+					bbs_List_GntVO.setBl_Bbs_Nm(bbs_List_AtrtyVO.getBl_Bbs_Nm());
+					bbs_List_GntVO.setBl_Table_Nm(bbs_List_AtrtyVO.getBl_Table_Nm());
+					bbs_List_GntVO.setBb_Sj("%");
+					bbs_List_GntVO.setBb_Cn("%");
+					model.addAttribute("bbs_List_Gnt", bbs_List_GntVO);
+					
+					List<Bbs_GntVO> bbs_GntList = null;
+					try {
+						bbs_GntList = bbs_GntSvc.listAllBbs_Gnt(1, bbs_List_GntVO); 
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					model.addAttribute("list"+i, bbs_GntList);
+				}
+			}
+		}
+		
 		model.addAttribute("menuList",menuList);
 		
 		return url;

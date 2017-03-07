@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,14 +90,18 @@ function deleteQues(qno){
 					<tr>
 						<th>시험명</th>
 							<td style="width:80%;">
-							<input type="text" class="def-input-text-full custom-form-control" name="tp_Nm" value="${tpNm }"> 
+							<input type="text" class="def-input-text-full custom-form-control" id="tpNm" name="tp_Nm" value="${tpNm }"> 
 							<input type="hidden" name="tp_No" value="${tpNo}">
 							</td>
 					</tr>
 					<tr>
 						<th>응시가능기간</th>
-						<td><input type="text" id="Start_Dt" name="tp_Start_Dt" class="def-input-text-md custom-form-control" value="${tpVO.tp_Start_Dt}"> &nbsp; ~ &nbsp;
-						<input type="text" id="End_Dt" name="tp_End_Dt" value="${tpVO.tp_End_Dt}"  class="def-input-text-md custom-form-control">
+						<td>
+						<input type="text" id="Start_Dt" name="start_Dt" class="def-input-text-md custom-form-control" value="${fn:substring(tpVO.tp_Start_Dt,0,10) }">
+						<input type="time" id="Start_Dt2" name="start_Dt2" class="def-input-text-md custom-form-control">
+						&nbsp; ~ &nbsp;
+						<input type="text" id="End_Dt" name="end_Dt" class="def-input-text-md custom-form-control" value="${fn:substring(tpVO.tp_End_Dt,0,10) }">
+						<input type="time" id="End_Dt2" name="end_Dt2" class="def-input-text-md custom-form-control">
 						</td>
 					</tr>
 				</table>
@@ -161,8 +165,7 @@ function deleteQues(qno){
 		
 		<sec:authorize access="hasRole('ROLE_PRO')">
 <table class="def-table-full"><tr><td style="text-align: right;">
-			<input type="button" class="def-btn btn-md btn-color" value="수정" onclick="submitForm(this.form);">
-			<a href="deleteTest?tpNo=${tpNo }&table_Nm=${table_Nm}"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
+			<input type="button" class="def-btn btn-md btn-color" value="수정" onclick="update_test(this.form);">
 			<input type="button" class="def-btn btn-md btn-color" value="취소" onclick="history.back()">
 </td></tr></table>
 		</sec:authorize>

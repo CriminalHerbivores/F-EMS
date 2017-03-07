@@ -38,10 +38,10 @@
 <body>
 <h2>학사 일정</h2><br/>
 
-<div>
-<div style="float: left; width: 250px; height:260px;" id="kCalendar"></div>
+<div style="float: left; width: 250px; margin:10px;">
+<div id="kCalendar"></div>
 </div>
-<div style="float: left; width: 70%;" class="scheBox2">
+<div style="float: left; width: 60%; margin:10px;" class="scheBox2">
     <table class="t_all">
 		<tr>
 			<!-- <th class="all_month">
@@ -56,9 +56,7 @@
 	</table>
 </div>
 
-<br/>
-<hr>
-<div style="margin-top: 40px; float: left; width: 100%;">
+<div style="margin-top: 10px; margin-bottom: 40px; float: left; width: 100%;">
 <sec:authorize access="hasRole('ROLE_STF')">
 <form name="formm" method="post" action="insertSchdul">
 <table class="def-table-auto tb-border table-hover">

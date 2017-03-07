@@ -12,11 +12,13 @@
 	<select id="selectMenu" resultClass="menu" >
 		select * from menu mn,menu_se ms
 		where mn.MN_SE_CODE = ms.MS_SE_CODE
+		order by mn.mn_no
 	</select>
 	
 	<!-- 메뉴 종류 가져오기 -->
 	<select id="selectMenuSe" resultClass="menu" >
 		select * from menu_se ms
+		order by ms.MS_SE_CODE
 	</select>
 	
 	<!-- 메뉴 추가 -->

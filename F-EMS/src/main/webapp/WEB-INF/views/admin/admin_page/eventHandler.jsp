@@ -42,7 +42,7 @@
 </script>
 </head>
 <body>
-<h2>일정 관리</h2>
+<h2>일정 관리</h2><br/>
 <form name="formm" method="post">
 <table class="def-table-full tb-border table-hover">
 	<tr>

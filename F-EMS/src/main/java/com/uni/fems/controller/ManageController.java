@@ -665,7 +665,7 @@ public class ManageController {
 			menu=5;
 			break;
 		case "3": //게시판형
-			menu=4;
+			menu=2;
 			break;
 		case "4": //메뉴형
 			menu=15;
@@ -675,7 +675,7 @@ public class ManageController {
 		
 		List<MenuVO> menuList = new ArrayList<MenuVO>();
 		try {
-			menuList=menuService.selectMenu(1, menu);
+			menuList=menuService.selectMenu(0, menu);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

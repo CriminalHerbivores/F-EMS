@@ -22,8 +22,8 @@ import com.uni.fems.dto.request.PageRequest;
  */
 public class Paging {
 	
-	static int view_rows = 4; // 페이지의 개수
-	static int counts = 5; // 한 페이지에 나타낼 개수
+	static int view_rows = 5; // 페이지의 개수
+	static int counts = 10; // 한 페이지에 나타낼 개수
 	/**
 	 * <pre>
 	 * http://도메인/디렉토리/파일이름.확장자?쿼리키=쿼리값 (request.getRequestURI())
