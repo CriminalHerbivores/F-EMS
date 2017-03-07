@@ -115,6 +115,7 @@ public class Lctre_SearchVO implements Serializable {
 	// 신청목록 Reqst
 	private String re_Stdnt_No;   // 학생 번호
 	private int re_Lctre_No;   // 강의 번호
+	private String re_Lctre_Evl_Scope; //강의 평가 점수
 	
 	// 교수 PROFSR
 	private String pr_Profsr_No;   // 교수 번호
