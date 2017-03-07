@@ -152,5 +152,14 @@ public interface LctreDAO {
 	 * </pre>
 	 */
 	void updateSplit(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+
+	/**
+	 * 엑셀 출력을 위한 리스트
+	 * @param lctre_SearchVO
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Lctre_SearchVO> selectLctreExcel(Lctre_SearchVO lctre_SearchVO)
+			throws SQLException;
 }
 

@@ -120,7 +120,11 @@ public class LctreServiceImpl implements LctreService {
 		lctreDAO.updateSplit(lctre_SearchVO);
 	}
 
-
+	@Override
+	public List<Lctre_SearchVO> selectLctreExcel(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		List<Lctre_SearchVO> list = lctreDAO.selectLctreExcel(lctre_SearchVO);
+		return list;
+	}
 
 
 
