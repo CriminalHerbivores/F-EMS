@@ -84,6 +84,11 @@ public class ProfsrServiceImpl implements ProfsrService {
 		return page;
 	}
 
+	@Override
+	public String createProfsrNo(ProfsrVO profsrVO) throws SQLException {
+		return profsrDAO.createProfsrNo(profsrVO);
+	}
+
 }
 
 

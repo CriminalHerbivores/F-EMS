@@ -61,7 +61,6 @@ public class ProfsrDAOImpl implements ProfsrDAO {
 	public void updatePw(ProfsrVO profsrVO) throws SQLException {
 		client.update("updatePwProfsr",profsrVO);
 	}
-	
 	@Override
 	public List<ProfsrVO> selectAllProfsrList2(ProfsrVO profarVO, int tpage, int totalRecord) throws SQLException {
 		Paging p = new Paging();
@@ -76,5 +75,8 @@ public class ProfsrDAOImpl implements ProfsrDAO {
 		total_pages = (Integer) client.queryForObject("countProfsrList2",profarVO);
 		return total_pages;
 	}
-	
+	@Override
+	public String createProfsrNo(ProfsrVO profsrVO) throws SQLException {
+		return (String) client.queryForObject("createProfsrNo", profsrVO);
+	}
 }

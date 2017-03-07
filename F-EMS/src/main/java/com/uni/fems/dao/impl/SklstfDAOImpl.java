@@ -79,5 +79,9 @@ public class SklstfDAOImpl implements SklstfDAO {
 	public void deleteSklstf(String stf_Sklstf_No) throws SQLException {
 		client.update("deleteSklstf", stf_Sklstf_No);
 	}
+	@Override
+	public String createSklstfNo(SklstfVO sklstfVO) throws SQLException {
+		return (String) client.queryForObject("createSklstfNo", sklstfVO);
+	}
 	
 }

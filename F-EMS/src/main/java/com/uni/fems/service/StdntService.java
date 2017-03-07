@@ -130,4 +130,16 @@ public interface StdntService {
 	 * @throws SQLException
 	 */
 	void updateSt_Profsr_No(StdntVO stdntVO) throws SQLException;
+	/**
+	 * <pre>
+	 * 학생 번호 만드는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param stdntVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	String createStdntNo(StdntVO stdntVO) throws SQLException;
+	
 }

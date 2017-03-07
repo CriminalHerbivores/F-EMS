@@ -110,4 +110,15 @@ public interface ProfsrService {
 	 */
 	String pageNumber2(int tpage, ProfsrVO profarVO) throws SQLException;
 	
+	/**
+	 * <pre>
+	 * 교수코드 만드는 서비스 메서드
+	 * </pre>
+	 * <pre>
+	 * @param subjctNo
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	String createProfsrNo(ProfsrVO profsrVO) throws SQLException;
 }

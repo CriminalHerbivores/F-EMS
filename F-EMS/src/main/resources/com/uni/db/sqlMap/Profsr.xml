@@ -31,6 +31,10 @@
 		select * from profsr_view where pr_profsr_no = #pr_profsr_no#
 	</select>
 
+	<select id="createProfsrNo" parameterClass="profsr" resultClass="str">
+	select '0'||trim(to_char((select substr(max(to_number(pr_Profsr_No))+1,-3) from Profsr where pr_profsr_no like #createNo#||'%'), '000')) from dual
+	</select>
+
 	<update id="insertProfsr" parameterClass="profsr">
 		insert into profsr(
 		pr_Profsr_No,

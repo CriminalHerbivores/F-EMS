@@ -103,4 +103,9 @@ public class StdntServiceImpl implements StdntService {
 		stdntDAO.updateSt_Profsr_No(stdntVO);
 	}
 
+	@Override
+	public String createStdntNo(StdntVO stdntVO) throws SQLException {
+		return stdntDAO.createStdntNo(stdntVO);
+	}
+
 }

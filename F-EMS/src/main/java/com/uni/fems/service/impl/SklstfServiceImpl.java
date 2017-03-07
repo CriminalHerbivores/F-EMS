@@ -105,6 +105,11 @@ public class SklstfServiceImpl implements SklstfService {
 	public void deleteSklstf(String stf_Sklstf_No) throws SQLException {
 		sklstfDAO.deleteSklstf(stf_Sklstf_No);
 	}
+
+	@Override
+	public String createSklstfNo(SklstfVO sklstfVO) throws SQLException {
+		return sklstfDAO.createSklstfNo(sklstfVO);
+	}
 }
 
 
