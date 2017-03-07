@@ -88,5 +88,26 @@ public interface ProfsrService {
 	 * </pre>
 	 */
 	void updateProfsr(ProfsrVO profsrVO) throws SQLException;
+
+
+	/**
+	 * 교수 리스트 출력
+	 * @param tpage
+	 * @param profarVO
+	 * @return
+	 * @throws SQLException
+	 */
+	List<ProfsrVO> selectAllStdntList2(int tpage, ProfsrVO profarVO)
+			throws SQLException;
+
+
+	/**
+	 * 교수 리스트 페이지 출력
+	 * @param tpage
+	 * @param profarVO
+	 * @return
+	 * @throws SQLException
+	 */
+	String pageNumber2(int tpage, ProfsrVO profarVO) throws SQLException;
 	
 }

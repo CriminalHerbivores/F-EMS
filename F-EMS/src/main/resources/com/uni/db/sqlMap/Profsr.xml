@@ -82,4 +82,21 @@
 		set pr_Pw = #pr_Pw#
 		where pr_Profsr_No = #pr_Profsr_No#
 	</update>
+	
+	<!-- 학생조회 -->
+	<select id="selectAllProfsrList2" parameterClass="profsr" resultClass="profsr">
+		select * from Profsr_view
+		where pr_Profsr_No like '%$pr_Profsr_No$%'
+		and pr_Nm like '%$pr_Nm$%'
+		and sit_Subjct like '%$sit_Subjct$%'
+	</select>
+	
+	<!-- 학생 개수 조회 -->
+	<select id="countProfsrList2" parameterClass="profsr" resultClass="int">
+		select count(*) from Profsr_view
+		where pr_Profsr_No like '%$pr_Profsr_No$%'
+		and pr_Nm like '%$pr_Nm$%'
+		and sit_Subjct like '%$sit_Subjct$%'
+	</select>
+	
 </sqlMap>

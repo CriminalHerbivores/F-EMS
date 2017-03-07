@@ -105,4 +105,29 @@ public interface StdntService {
 	 * @throws SQLException
 	 */
 	int countStdntList(StdntVO stdntVO) throws SQLException;
+	
+	/**
+	 * 학생 리스트 출력
+	 * @param tpage
+	 * @param stdntVO
+	 * @return
+	 * @throws SQLException
+	 */
+	List<StdntVO> selectAllStdntList2(int tpage, StdntVO stdntVO)
+			throws SQLException;
+	
+	/**
+	 * 학생 리스트 페이지 출력
+	 * @param tpage
+	 * @param stdntVO
+	 * @return
+	 * @throws SQLException
+	 */
+	String pageNumber2(int tpage, StdntVO stdntVO) throws SQLException;
+	/**
+	 * 교수 배정
+	 * @param stdntVO
+	 * @throws SQLException
+	 */
+	void updateSt_Profsr_No(StdntVO stdntVO) throws SQLException;
 }
