@@ -147,6 +147,30 @@ border:1px solid ${manageVO.mng_Sub_Color2};
 }--%>
 
 
+
+
+
+<%-- ///// 관리자페이지 드롭다운 ///// --%>
+.admin-dropbtn {
+	background-color: ${manageVO.mng_Sub_Color1};
+}
+
+
+ .admin-dropdown-content a {
+	color: ${manageVO.mng_Sub_Txtclr2};
+} 
+
+.admin-dropdown:hover .admin-dropbtn {
+	background-color: ${manageVO.mng_Main_Color};
+}
+
+.admin-dropdown-content a:hover {
+	background-color: ${manageVO.mng_Sub_Color2};
+}
+
+
+
+
 <%--/////////////////// accodion.css ///////////////////--%>
 .main-title a{
 	color: ${manageVO.mng_Sub_Txtclr1} !important;	<%-- 좌측 메뉴 글자 색상 --%>

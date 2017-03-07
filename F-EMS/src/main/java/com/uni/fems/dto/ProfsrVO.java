@@ -43,7 +43,7 @@ public class ProfsrVO implements Serializable{
 	private String pr_Adres1;   // 주소1
 	private String pr_Adres2;   // 주소2
 	private String pr_Email;   // 이메일
-	
+	private String createNo; // 등록용 넘버
 	// Profsr_Subjct_AsnmVO
 	private String psa_Code;   // 교수학과배정코드
 	private String psa_Subjct_Code;   // 학과코드

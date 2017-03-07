@@ -7,7 +7,9 @@
 <!--  수정일              수정자        수정내용               -->
 <!--  ==========   ======    ==============        -->
 <!--  2017.01.24.   JAR      최초작성               -->
+<!--  2017.01.26.   KJS      추가작성               -->
 <!--  2017.02.15.   JAR      추가작성               -->
+<!--  2017.03.07.   KJS      추가작성               -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Stdnt">
@@ -39,6 +41,11 @@
 		<isNotEqual prepend="st_Ihidnum"></isNotEqual>
 	</select> -->
 	
+	<!--학생 등록시 No 만들기 위해  -->	
+<select id="createStdntNo" parameterClass="stdnt" resultClass="str">
+	select '1'||trim(to_char((select substr(max(to_number(st_Stdnt_No))+1,-3) from stdnt where st_Stdnt_No like #createNo#||'%'), '000')) from dual
+	</select>
+
 
 	<update id="insertStdnt" parameterClass="stdnt">
 	insert into stdnt(
@@ -148,4 +155,38 @@
 		st_Brhs_At is not null
 		</isNotNull>
 	</select>
+	
+	<!-- 학생조회 -->
+	<select id="selectAllStdntList2" parameterClass="stdnt" resultClass="stdnt">
+		select * from stdnt_view
+		where st_Stdnt_No like '%$st_Stdnt_No$%'
+		and st_Nm like '%$st_Nm$%'
+		and sit_Subjct like '%$sit_Subjct$%'
+		<isNull prepend="and" property="st_Grdtn_Dt">
+		ST_GRDTN_DT is null
+		</isNull> 
+		<isNotNull prepend="and" property="st_Brhs_At">
+		st_Brhs_At is not null
+		</isNotNull>
+	</select>
+	
+	<!-- 학생 개수 조회 -->
+	<select id="countStdntList2" parameterClass="stdnt" resultClass="int">
+		select count(*) from stdnt_view
+		where st_Stdnt_No like '%$st_Stdnt_No$%'
+		and st_Nm like '%$st_Nm$%'
+		and sit_Subjct like '%$sit_Subjct$%'
+		<isNull prepend="and" property="st_Grdtn_Dt">
+		ST_GRDTN_DT is null
+		</isNull> 
+		<isNotNull prepend="and" property="st_Brhs_At">
+		st_Brhs_At is not null
+		</isNotNull>
+	</select>
+	
+	<update id="updateSt_Profsr_No" parameterClass="stdnt">
+		update stdnt
+		set st_Profsr_No = #st_Profsr_No#
+		where st_Stdnt_No = #st_Stdnt_No#
+	</update>
 </sqlMap>

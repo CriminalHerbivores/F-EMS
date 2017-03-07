@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.uni.fems.common.Paging;
 import com.uni.fems.dao.StdntDAO;
+import com.uni.fems.dto.Lctre_NoticeVO;
+import com.uni.fems.dto.Lctre_Notice_GntVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.StdntService;
 
@@ -80,6 +82,30 @@ public class StdntServiceImpl implements StdntService {
 	public int countStdntList(StdntVO stdntVO) throws SQLException {
 		int totalRecord = stdntDAO.countStdntList(stdntVO);
 		return totalRecord;
+	}
+	
+	@Override
+	public List<StdntVO> selectAllStdntList2(int tpage, StdntVO stdntVO) throws SQLException {
+		int totalRecord = stdntDAO.countStdntList2(stdntVO);
+		return stdntDAO.selectAllStdntList2(stdntVO, tpage, totalRecord);
+		
+	}
+
+	@Override
+	public String pageNumber2(int tpage,StdntVO stdntVO) throws SQLException {
+		int totalRecord = stdntDAO.countStdntList2(stdntVO);
+		String page = new Paging().ajaxpageNumber(tpage,totalRecord,"go_StdntList","");
+		return page;
+	}
+	
+	@Override
+	public void updateSt_Profsr_No(StdntVO stdntVO) throws SQLException {
+		stdntDAO.updateSt_Profsr_No(stdntVO);
+	}
+
+	@Override
+	public String createStdntNo(StdntVO stdntVO) throws SQLException {
+		return stdntDAO.createStdntNo(stdntVO);
 	}
 
 }

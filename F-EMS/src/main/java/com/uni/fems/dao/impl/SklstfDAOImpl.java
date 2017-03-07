@@ -24,6 +24,7 @@ import com.uni.fems.dto.UserSubjctVO;
  * 수정일        수정자           수정내용
  * --------     --------    ----------------------
  * 2017.02.22      KJH            최초작성
+ * 2017.03.07      KJS            추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -78,6 +79,15 @@ public class SklstfDAOImpl implements SklstfDAO {
 	@Override
 	public void deleteSklstf(String stf_Sklstf_No) throws SQLException {
 		client.update("deleteSklstf", stf_Sklstf_No);
+	}
+	@Override
+	public String createSklstfNo(SklstfVO sklstfVO) throws SQLException {
+		return (String) client.queryForObject("createSklstfNo", sklstfVO);
+	}
+	
+	@Override
+	public void returnSklstf(String stf_Sklstf_No) throws SQLException {
+		client.update("returnSklstf", stf_Sklstf_No);
 	}
 	
 }

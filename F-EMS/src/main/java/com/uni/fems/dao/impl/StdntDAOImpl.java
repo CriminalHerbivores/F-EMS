@@ -7,6 +7,8 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.uni.fems.common.Paging;
 import com.uni.fems.dao.StdntDAO;
+import com.uni.fems.dto.Lctre_DateVO;
+import com.uni.fems.dto.Lctre_Date_GntVO;
 import com.uni.fems.dto.StdntVO;
 
 public class StdntDAOImpl implements StdntDAO {
@@ -80,5 +82,27 @@ public class StdntDAOImpl implements StdntDAO {
 	public int countStdntList(StdntVO stdntVO) throws SQLException {
 		int totalRecord = (int) client.queryForObject("countStdntList",stdntVO);
 		return totalRecord;
+	}
+	@Override
+	public List<StdntVO> selectAllStdntList2(StdntVO stdntVO, int tpage, int totalRecord) throws SQLException {
+		Paging p = new Paging();
+		int[] rows = p.row(tpage, totalRecord);
+		List<StdntVO> listAllLctre_Date = client.queryForList("selectAllStdntList2",stdntVO, rows[1], rows[0]);
+		return listAllLctre_Date;
+	}
+
+	@Override
+	public int countStdntList2(StdntVO stdntVO) throws SQLException{
+		int total_pages = 0;
+		total_pages = (Integer) client.queryForObject("countStdntList2",stdntVO);
+		return total_pages;
+	}
+	@Override
+	public void updateSt_Profsr_No(StdntVO stdntVO) throws SQLException {
+		client.update("updateSt_Profsr_No", stdntVO);
+	}
+	@Override
+	public String createStdntNo(StdntVO stdntVO) throws SQLException {
+		return (String) client.queryForObject("createStdntNo", stdntVO);
 	}
 }

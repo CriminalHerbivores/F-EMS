@@ -77,10 +77,10 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 					if((vo.getLc_Lctre_No()+"").equals(request.getParameter("table_Nm"))){
 						flag = true;
 					}
-					if(!flag){
-						response.sendRedirect(request.getContextPath()+"/auth");
-						return false;
-					}
+				}
+				if(!flag){
+					response.sendRedirect(request.getContextPath()+"/auth");
+					return false;
 				}
 			}
 		}

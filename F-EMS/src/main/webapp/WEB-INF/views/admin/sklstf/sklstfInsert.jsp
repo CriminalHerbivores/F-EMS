@@ -196,7 +196,7 @@ function login_go() {
       </tr>
   </table>
 <table class="def-table-full"><tr><td style="text-align: right;">
-   <input type="button" class="def-btn btn-sm btn-color" value="등록" onclick="submit_sklstf()">&nbsp;&nbsp; 
+   <input type="button" class="def-btn btn-sm btn-color" value="등록" onclick="submitForm(this.form)">&nbsp;&nbsp; 
    <input type="button" class="def-btn btn-sm btn-color"  value="취소" onclick="go.history(-1)">
 </td></tr></table>
 </form>

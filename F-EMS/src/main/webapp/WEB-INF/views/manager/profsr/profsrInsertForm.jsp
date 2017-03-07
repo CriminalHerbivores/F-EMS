@@ -76,7 +76,7 @@
       </tr>
 </table>
    <table class="def-table-full"><tr><td style="text-align: right;">
-   <button type="button" class="def-btn btn-sm btn-color" onclick="go_profsr()">등록</button>
+   <button type="button" class="def-btn btn-sm btn-color" onclick="submitForm(this.form)">등록</button>
    <button type="button" class="def-btn btn-sm btn-color" onclick="history.go(-1)">취소</button>
    </td></tr></table>
   </form>
