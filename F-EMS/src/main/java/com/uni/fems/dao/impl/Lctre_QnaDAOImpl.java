@@ -34,7 +34,6 @@ public class Lctre_QnaDAOImpl implements Lctre_QnaDAO {
 	
 	@Override
 	public List<Lctre_QnaVO> listAllLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, int tpage, int totalRecord) throws SQLException {
-		System.out.println("list lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		Paging p = new Paging();
 		int[] rows = p.row(tpage, totalRecord);
 		List<Lctre_QnaVO> listAllLctre_Qna = client.queryForList("listAllLctre_Qna",lctre_Qna_Gnt, rows[1], rows[0]);
@@ -43,7 +42,6 @@ public class Lctre_QnaDAOImpl implements Lctre_QnaDAO {
 
 	@Override
 	public int totalLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt) throws SQLException{
-		System.out.println("total lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		int total_pages = 0;
 		total_pages = (Integer) client.queryForObject("totalLctre_Qna",lctre_Qna_Gnt);
 		return total_pages;

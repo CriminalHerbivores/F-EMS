@@ -72,7 +72,6 @@ public class SknrgsDAOImpl implements SknrgsDAO {
 	
 	@Override
 	public void updateUseynSknrgs(SknrgsVO sknrgs) throws SQLException {
-		System.out.println("sknrgs : "+sknrgs);
 		client.update("updateUseynSknrgs", sknrgs);
 	}
 }

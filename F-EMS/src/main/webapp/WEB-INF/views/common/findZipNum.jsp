@@ -57,7 +57,7 @@ function result(zipNum,sido,gugun,dong) {
 <body>
 <div id="popup">
   <h1>우편번호검색</h1>
-  <form method=post name=formm action="findZipNum">
+  <form method=post name=formm>
     동 이름 : <input name="dong" type="text">
             <input type="submit" value="찾기"  class="submit">
   </form>

@@ -83,6 +83,45 @@ public class FileDownload implements ApplicationContextAware {
 		}
 		return vo;
 	}
+	/**
+	 * <pre>
+	 * 경로와 파일을 입력
+	 * 파일을 업로드하며, 파일의 정보를 반환받는 메소드
+	 * FilesVO에는 
+	 * 
+	 * 파일명 fl_File_Nm
+	 * 파일유형(확장자) fl_File_Type_Code
+	 * 
+	 * 가 담겨서 반환된다.
+	 * </pre>
+	 * <pre>
+	 * @param uploadfile
+	 * @param filePath
+	 * @return
+	 * </pre>
+	 */
+	public FilesVO uploadFile(MultipartFile uploadfile,String filePath) {
+		FilesVO vo = new FilesVO();
+		if (!uploadfile.isEmpty()) {
+			File file = new File(filePath, "$$"
+					+ System.currentTimeMillis()
+					+ uploadfile.getOriginalFilename());
+			String fileName = file.getName();
+			int pos = fileName.lastIndexOf(".");
+			try {
+				uploadfile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			String extension = fileName.substring(pos + 1).toLowerCase();
+
+			vo.setFl_File_Nm(fileName);
+			vo.setFl_File_Type_Code(extension);
+		}
+		return vo;
+	}
 	
 	/**
 	 * <pre>

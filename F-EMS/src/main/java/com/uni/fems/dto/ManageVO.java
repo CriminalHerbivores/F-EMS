@@ -56,4 +56,6 @@ public class ManageVO implements Serializable{
 	
 	private String column1; 
 
+	private String mng_Univ_Logo_Ori;   // 대학로고원본
+	private String mng_Univ_Img_Ori;   // 대학이미지원본
 }

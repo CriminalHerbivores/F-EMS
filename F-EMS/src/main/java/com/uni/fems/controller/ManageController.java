@@ -32,6 +32,7 @@ import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
+import com.uni.fems.service.BaskinService;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
 import com.uni.fems.service.ManageService;
@@ -393,16 +394,10 @@ public class ManageController {
 	 */
 	@RequestMapping(value="/step1Add", method=RequestMethod.POST)
 	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
-						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2) {
+						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2,
+						String faxNo1, String faxNo2, String faxNo3) {
 		
 		String url = "redirect:step2Add";
-		
-		//파일 집어넣기
-		if(!uploadlogo.isEmpty()){
-			FilesVO vo = new FileDownload().uploadFile(uploadlogo);
-			String filePath = "/resources/images/";
-			manageVO.setMng_Univ_Logo(filePath+vo.getFl_File_Nm());
-		}
 		
 		//지울 vo
 		ManageVO deleteVO = new ManageVO();
@@ -412,13 +407,24 @@ public class ManageController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		
+			
+			
+			//파일 집어넣기
+			if(!uploadlogo.isEmpty()){
+				String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+				FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
+				manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
+			}else{
+				manageVO.setMng_Univ_Logo("/resources/images/"+manageVO.getMng_Univ_Logo_Ori());
+			}
 			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
+			String faxNo = faxNo1+"-"+faxNo2+"-"+faxNo3;
 			manageVO.setMng_Tlphon_No(phoneNo);
+			manageVO.setMng_Fax_No(faxNo);
 			session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
 		try {
-			/*if(deleteVO!=null)
-				manageSvc.deleteUniv(deleteVO.getMng_Univ_Nm());*/
+			if(deleteVO!=null)
+				manageSvc.deleteUniv(deleteVO.getMng_Univ_Nm());
 				manageSvc.insertUniv(manageVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -490,12 +496,21 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.POST)
-	public String step3Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO) {
+	public String step3Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
+					@RequestParam("uploadUnivImg")MultipartFile uploadUnivImg) {
 		String url = "redirect:step4Add";
 		
+		
 		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
+		if(!uploadUnivImg.isEmpty()){
+			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
+			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
+		}else{
+			manageVO.setMng_Univ_Img(manageVO.getMng_Univ_Img_Ori());
+		}
 		try {
-			manageSvc.updateUniv(manageVO);
+			manageSvc.updateLayout(manageVO);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -513,7 +528,7 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/step4Add")
+	@RequestMapping(value="/step4Add", method=RequestMethod.GET)
 	public String step4Add(HttpServletRequest request,HttpSession session) {
 		String url = "admin/layout_control/step4Add";	
 		return url;
@@ -530,9 +545,18 @@ public class ManageController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/layoutPreview")
-	public String layoutPreview(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/layoutPreview";	
+	@RequestMapping(value="/step4Add", method=RequestMethod.POST)
+	public String layoutPreview(HttpServletRequest request,HttpSession session,ManageVO manageVO) {
+		String url = "redirect:main";
+		
+		manageVO.setMng_Univ_Nm((String)session.getAttribute("sessionUniv"));
+		try {
+			manageSvc.updateColor(manageVO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return url;
 	}
 	

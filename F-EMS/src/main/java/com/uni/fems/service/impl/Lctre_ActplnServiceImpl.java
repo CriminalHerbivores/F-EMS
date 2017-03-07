@@ -78,9 +78,7 @@ public class Lctre_ActplnServiceImpl implements Lctre_ActplnService {
 //@Override
 //public void insertLctre_Actpln(Lctre_ActplnVO lctre_ActplnVO)
 //		throws SQLException {
-//	System.out.println("==================================================================================Lctre_ActplnServiceImpl  111111111111111");
 //	lctre_ActplnDAO.insertLctre_Actpln(lctre_ActplnVO);
-//	System.out.println("==================================================================================Lctre_ActplnServiceImpl  22222222222222222222");
 //
 //}
  

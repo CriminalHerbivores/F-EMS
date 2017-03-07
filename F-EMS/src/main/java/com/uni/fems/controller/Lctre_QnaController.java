@@ -80,16 +80,17 @@ public class Lctre_QnaController implements ApplicationContextAware{
 
 		Lctre_Qna_GntVO lctre_Qna_Gnt = new Lctre_Qna_GntVO();
 		lctre_Qna_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("lq_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("lq_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("lq_Sj")){
 			lctre_Qna_Gnt.setLq_Sj(searchVO.getValue());
 			lctre_Qna_Gnt.setLq_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("lq_Cn")){
+		}else if(searchVO.getKey().equals("lq_Cn")){
 			lctre_Qna_Gnt.setLq_Sj("%");
 			lctre_Qna_Gnt.setLq_Cn(searchVO.getValue());
-		}else{
-			lctre_Qna_Gnt.setLq_Sj("%");
-			lctre_Qna_Gnt.setLq_Cn("%");
 		}
+		
 		model.addAttribute("lctre_Qna_Gnt", lctre_Qna_Gnt);
 		
 		List<Lctre_QnaVO> lctre_QnaList = null;
@@ -172,7 +173,6 @@ public class Lctre_QnaController implements ApplicationContextAware{
 	@RequestMapping(value="/detailLctre_Qna", method=RequestMethod.GET)
 	public String detailLctre_Qna(Lctre_Qna_GntVO lctre_Qna_Gnt, @RequestParam int tpage, Model model){
 		String url="lecture/qna/detailLctre_Qna";
-		System.out.println("lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		Lctre_QnaVO lctre_Qna = null;
 		try {
 			lctre_Qna = lctre_QnaSvc.getLctre_Qna(lctre_Qna_Gnt);
@@ -186,7 +186,6 @@ public class Lctre_QnaController implements ApplicationContextAware{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("2lctre_Qna_Gnt : "+lctre_Qna_Gnt);
 		model.addAttribute("lctre_Qna_Gnt",lctre_Qna_Gnt);
 		model.addAttribute("tpage",tpage);
 		return url;

@@ -86,19 +86,19 @@ public class Lctre_DateController implements ApplicationContextAware{
 			tpage="1";
 		}
 		model.addAttribute("tpage",tpage);
-		System.out.println("searchVO : "+searchVO);
 		Lctre_Date_GntVO lctre_Date_Gnt = new Lctre_Date_GntVO();
 		lctre_Date_Gnt.setTable_Nm(table_Nm);
-		if(searchVO != null ||searchVO.getKey().equals("ld_Sj")){
+		
+		if(searchVO.getKey()==null) searchVO.setKey("ld_Sj");
+		if(searchVO.getValue()==null) searchVO.setValue("");
+		if(searchVO.getKey().equals("ld_Sj")){
 			lctre_Date_Gnt.setLd_Sj(searchVO.getValue());
 			lctre_Date_Gnt.setLd_Cn("%");
-		}else if(searchVO != null || searchVO.getKey().equals("ld_Cn")){
+		}else if(searchVO.getKey().equals("ld_Cn")){
 			lctre_Date_Gnt.setLd_Sj("%");
 			lctre_Date_Gnt.setLd_Cn(searchVO.getValue());
-		}else{
-			lctre_Date_Gnt.setLd_Sj("%");
-			lctre_Date_Gnt.setLd_Cn("%");
 		}
+		
 		model.addAttribute("lctre_Date_Gnt", lctre_Date_Gnt);
 		
 		List<Lctre_DateVO> lctre_DateList = null;

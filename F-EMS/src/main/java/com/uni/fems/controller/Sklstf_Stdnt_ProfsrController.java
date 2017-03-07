@@ -70,6 +70,7 @@ import com.uni.fems.service.WorkService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.03.07.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -107,7 +108,13 @@ public class Sklstf_Stdnt_ProfsrController {
 	
 	
 	
-	public String getList(List<StdntVO> commentList){
+	/**
+	 * 학생 테이블형태로 출력
+	 * @param commentList
+	 * @param paging
+	 * @return
+	 */
+	public String getStdntList(List<StdntVO> commentList, String paging){
 		String comment="";
 		
 		
@@ -115,20 +122,53 @@ public class Sklstf_Stdnt_ProfsrController {
               comment += "<tr><td>"
               		+ data.getSt_Stdnt_No()
               		+ "</td><td>"
+              		+ "<a href='#' onclick='stdnt_No(\""
+                    + data.getSt_Stdnt_No()
+                    + "\")'>"
               		+ data.getSt_Nm()
+              		+ "</a>"
               		+ "</td><td>"
               		+ data.getSit_Subjct()
               		+ "</td><td>"
               		+ data.getSt_Profsr_No()
               		+ "</td></tr>";
 		}
+		comment += "<tr><td colspan='4' style='text-align: center;'>"+paging+"</td></tr>";
+		return comment;
+		
+	}
+	
+	/**
+	 * 교수 테이블 형태로 출력
+	 * @param commentList
+	 * @param paging
+	 * @return
+	 */
+	public String getProfsrList(List<ProfsrVO> commentList, String paging){
+		String comment="";
+		
+		
+		for(ProfsrVO data : commentList){
+              comment += "<tr><td>"
+              		+ data.getPr_Profsr_No()
+              		+ "</td><td>"
+              		+ data.getPr_Nm()
+              		+ "</td><td>"
+              		+ data.getSit_Subjct()
+              		+ "</td><td>"
+              		+ "<input type='button' value='배정' class='def-btn btn-sm btn-color' onclick='stdnt_Profsr_no(\""
+              		+ data.getPr_Profsr_No()
+              		+ "\")'>"
+              		+ "</td></tr>";
+		}
+		comment += "<tr><td colspan='4' style='text-align: center;'>"+paging+"</td></tr>";
 		return comment;
 		
 	}
 	
 	/**
 	 * <pre>
-	 * 학생에게 담당 교수를 지정해주는 폼
+	 * 학생 리스트 폼출력	 
 	 * </pre>
 	 * <pre>
 	 * @return url
@@ -141,34 +181,94 @@ public class Sklstf_Stdnt_ProfsrController {
 	public String stdnt_Profsr_stdntList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request) throws ServletException, IOException{
 		HttpSession session = request.getSession();
 
-		String st_Stdnt_No = (String)jsonMap.get("key");
+		String st_Stdnt_No = (String)jsonMap.get("st_Stdnt_No");
 		String st_Nm = (String)jsonMap.get("st_Nm");
-		String st_Subjct_Code = (String)jsonMap.get("st_Subjct_Code");
-		String aaa = (String)jsonMap.get("aaa");
-		String key = request.getParameter("st_Stdnt_No");
-		String tpage = request.getParameter("tpage");
-		System.out.println("st_Stdnt_No : "+st_Stdnt_No);
-		System.out.println("st_Nm : "+st_Nm);
-		System.out.println("st_Subjct_Code : "+st_Subjct_Code);
-		System.out.println("aaa : "+aaa);
-		if (key ==null){
-			key = "";
-		}
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		System.out.println("key : "+key);
+		String sit_Subjct = (String)jsonMap.get("sit_Subjct");
+		String tpage = (String)jsonMap.get("tpage");
+		
+		StdntVO stdnt = new StdntVO();
+		stdnt.setSt_Stdnt_No("%");
+		stdnt.setSt_Nm("%");
+		stdnt.setSit_Subjct("%");
+
+		if( st_Stdnt_No != null && !st_Stdnt_No.equals(""))
+			stdnt.setSt_Stdnt_No(st_Stdnt_No);
+		if( st_Nm != null && !st_Nm.equals(""))
+			stdnt.setSt_Nm(st_Nm);
+		if( sit_Subjct != null && !sit_Subjct.equals(""))
+			stdnt.setSit_Subjct(sit_Subjct);
+		
 		List<StdntVO> stdntList = null;
 		String paging = null;
 		try {
-			stdntList = stdntService.selectNameAllPage(Integer.parseInt(tpage), key);
-			paging = stdntService.pageNumber(Integer.parseInt(tpage), key);
+			stdntList = stdntService.selectAllStdntList2(Integer.parseInt(tpage), stdnt);
+			paging = stdntService.pageNumber2(Integer.parseInt(tpage), stdnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return getList(stdntList);
+		return getStdntList(stdntList,paging);
+	}
+	
+	/**
+	 * <pre>
+	 * 교수 리스트 출력
+	 * </pre>
+	 * <pre>
+	 * @return url
+	 * @throws ServletException
+	 * @throws IOException
+	 * </pre>
+	 */
+	@RequestMapping(value="/stdnt_Profsr_ProfsrList",  produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String stdnt_Profsr_ProfsrList(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request) throws ServletException, IOException{
+		HttpSession session = request.getSession();
+
+		String pr_Profsr_No = (String)jsonMap.get("pr_Profsr_No");
+		String pr_Nm = (String)jsonMap.get("pr_Nm");
+		String sit_Subjct = (String)jsonMap.get("sit_Subjct");
+		String tpage = (String)jsonMap.get("tpage");
+
+		ProfsrVO profsr = new ProfsrVO();
+		profsr.setPr_Profsr_No("%");
+		profsr.setPr_Nm("%");
+		profsr.setSit_Subjct("%");
+
+		if( pr_Profsr_No != null && !pr_Profsr_No.equals(""))
+			profsr.setPr_Profsr_No(pr_Profsr_No);
+		if( pr_Nm != null && !pr_Nm.equals(""))
+			profsr.setPr_Nm(pr_Nm);
+		if( sit_Subjct != null && !sit_Subjct.equals(""))
+			profsr.setSit_Subjct(sit_Subjct);
+		
+		List<ProfsrVO> profsrList = null;
+		String paging = null;
+		try {
+			profsrList = profsrService.selectAllStdntList2(Integer.parseInt(tpage), profsr);
+			paging = profsrService.pageNumber2(Integer.parseInt(tpage), profsr);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return getProfsrList(profsrList,paging);
+	}
+	
+	@RequestMapping(value="/insetSt_Profsr_No",  produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String insetSt_Profsr_No(@RequestBody Map<String, Object> jsonMap) throws ServletException, IOException{
+
+		String st_Profsr_No = (String)jsonMap.get("st_Profsr_No");
+		String st_Stdnt_No = (String)jsonMap.get("st_Stdnt_No");
+		
+		StdntVO stdnt = new StdntVO();
+		stdnt.setSt_Profsr_No(st_Profsr_No);
+		stdnt.setSt_Stdnt_No(st_Stdnt_No);
+
+		try {
+			stdntService.updateSt_Profsr_No(stdnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 	
 	

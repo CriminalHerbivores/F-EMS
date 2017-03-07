@@ -32,7 +32,6 @@ public class TuitionDAOImpl implements TuitionDAO {
 	}
 	@Override
 	public void updateTuition(TuitionVO tuitionVO) throws SQLException {
-		System.out.println(tuitionVO.toString());
 		client.update("updateTuition",tuitionVO);
 	}
 	@Override

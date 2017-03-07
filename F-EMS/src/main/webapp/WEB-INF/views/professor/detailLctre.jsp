@@ -78,7 +78,6 @@
 	<%-- <c:forEach items="${lctre_SearchVO}" var="profsr"> --%>
 	 	<th>교수이름</th>
 	 	<td>${lctre_SearchVO.pr_Nm}
-	 	${lctre_SearchVO.pr_Profsr_No}
 	 	</td>   
 	 	
 	 	<th>담당교수전화</th>

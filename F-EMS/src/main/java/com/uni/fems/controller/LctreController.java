@@ -3,6 +3,7 @@ package com.uni.fems.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -132,12 +133,24 @@ public class LctreController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("======================"+lctre_SearchVO);
 		model.addAttribute("lctre_SearchVO",lctre_SearchVO);
-		
-		
+		model.addAttribute("st_No",intrst_ListVO.getIn_Stdnt_No());
 		return url;
 	}
 	
+	@RequestMapping(value ="initData", method = RequestMethod.POST)
+	public @ResponseBody List<Lctre_SearchVO> initData(@RequestBody Intrst_ListVO intrst_ListVO) {
+		List<Lctre_SearchVO> list=null;
+		try {
+			list=intrst_ListService.selectIntrst_List(intrst_ListVO.getIn_Stdnt_No());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(list);
+		return list;
+	}
 	
 	
 	/**
@@ -265,37 +278,214 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	public String getopenLctre(List<Lctre_SearchVO> lctre_SearchVO){
-		String row="";	// 한 행에 값 넣어서 리턴
+//	public List<Lctre_SearchVO> getOpenLctre(){
+//		
+//		List<Lctre_SearchVO> openLctreList = new ArrayList<>();
+//		for(int i=0; i<openLctreList.size(); i++){
+//			Lctre_SearchVO vo=new Lctre_SearchVO();
+//			vo.getLc_Lctrum_No();
+//			vo.getSit_Subjct();
+//			vo.getLu_Lctre_Code();
+//			vo.getLc_Split();
+//			vo.getLu_Lctre_Nm();
+//			vo.getLu_Grade();
+//			vo.getLu_Compl_Se();
+//			vo.getKnd_Lctre_Knd();
+//			vo.getPr_Nm();
+//			vo.getLu_Pnt();
+//			vo.getLc_Lctre_Time();
+//			vo.getLc_Lctre_Nmpr();
+//			vo.getLr_Accept_Nmpr();
+//			
+//			openLctreList.add(vo);
+//		}
+//		
+//		return openLctreList;
+//	}
+
+	
+	
+	/**
+	 * <pre>
+	 * 접속한 학생이 관심 강의로 추가
+	 * </pre>
+	 * <pre>
+	 * @param datas
+	 * @param jsonMap
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	public String insertInterest(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
 		//String tpage = request.getParameter("tpage");
 		
-		//String result=lctre_SearchVO
+		String loginUser = "";
+		//List<Lctre_SearchVO> list=null;
 		
-//		for(Lctre_SearchVO data : lctre_SearchVO){
-//			row+= "<tr class=\"slt_ckbox_${status.index}\"><td class=\"select_ckbox_1 select_ckbox_5\" id=\"lc_${status.index}\"> "
-//				+"<label><input type=\"checkbox\" class=\"input_check_1 input_check_5\" name=\"result_1\" value=\""+data.getLc_Lctre_No()+"/>관심"	
-//				+"<input type=\"hidden\" name=\"in_Lctre_No\" value=\""+data.getLc_Lctre_No()+"/></label></td>"	
-//				+"<td class=\"select_ckbox_2 select_ckbox_5\" id=\"re_${status.index}\">"	
-//				+"<label><input type=\"checkbox\" class=\"input_check_2 input_check_5 \" id=\"ck_all_${status.index}\" name=\"result_2\" value=\""+data.getLc_Lctre_No()+" />수강"	
-//				+"<input type=\"hidden\" name=\"re_Lctre_No\" value=\""+data.getLc_Lctre_No()+"/></label></td>"
-//				+"<td>"+data.getLc_Lctre_No()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				
-//				+"<td>"+data.getLu_Lctre_Code()+"-"+data.getLc_Split()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td>"+data.getSit_Subjct()+"</td>"
-//				+"<td><a href=\"<%=request.getContextPath() %>/course/lectrePlan?lc_Lctre_No=+"+data.getLc_Lctre_No()+"&tpage="+tpage+">"+data.getLu_Lctre_Nm()+"</a></td>"
-//				+"<td>"+data.getLu_Grade()+"</td>"
-//				+"<td>"+data.getLu_Compl_Se()+"</td>"+"/"+"<td>"+data.getKnd_Lctre_Knd()+"</td>"
-//				+"<td>"+data.getPr_Nm()+"</td>"
-//				+"<td>"+data.getLu_Pnt()+"</td>"
-//				+"<td>"+data.getLc_Lctre_Time()+"</td>"
-//				+"<td>"+data.getLr_Accept_Nmpr()+"</td></tr>";
-//		}
-		return row;
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
+		
+		Intrst_ListVO intrst_ListVO=new Intrst_ListVO();
+		
+		String[] resultArr_1= request.getParameterValues("result_1");	// 관심
+		
+		if(resultArr_1 !=null){
+			for (int i = 0; i < resultArr_1.length; i++) { 
+				if(resultArr_1[i] !=null){	// 관심만 추가한 경우
+					intrst_ListVO.setIn_Stdnt_No(loginUser);
+					intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr_1[i]));
+					
+
+					try {
+						intrst_ListService.insertIntrst_List(intrst_ListVO);	
+						//System.out.println("===================222222  reqstVO.getRe_Lctre_No()  "+reqstVO.getRe_Lctre_No()+" // intrst_ListVO.getIn_Lctre_No  "+intrst_ListVO.getIn_Lctre_No()+" 수강인원  "+lctre_SearchVO.getLc_Lctre_No()+" // "+lctre_SearchVO.getLc_Lctre_Nmpr());
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+			}
+		}
+		}
+		return "";
 	}
+
+	/**
+	 * <pre>
+	 * 접속한 학생이 수강 과목으로 추가
+	 * </pre>
+	 * <pre>
+	 * @param datas
+	 * @param jsonMap
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+/*	public List<Lctre_SearchVO> insertLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String loginUser = "";
+		//String tpage = request.getParameter("tpage");
+		List<Lctre_SearchVO> list=null;
+		
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
+		
+		ReqstVO reqstVO= new ReqstVO();
+		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
+		
+		String[] resultArr_2= request.getParameterValues("result_2");	// 수강
+		
+		if(resultArr_2 !=null){
+			for (int i = 0; i < resultArr_2.length; i++) { 
+				if(resultArr_2[i] !=null){	// 강의 추가한 경우
+					reqstVO.setRe_Stdnt_No(loginUser);
+					reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr_2[i]));
+					lctre_SearchVO.setRe_Lctre_No(reqstVO.getRe_Lctre_No());
+		
+						try {
+							reqstService.insertReqst(reqstVO,lctre_SearchVO);	// 수강신청 하면 관심강의에도 등록되도록 하기
+							
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+
+		
+		return null;
+		
+	}*/
+	
+	/**
+	 * <pre>
+	 * 접속한 학생이 관심과목에서 삭제
+	 * </pre>
+	 * <pre>
+	 * @param datas
+	 * @param jsonMap
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	public List<Lctre_SearchVO> deleteInterest(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String loginUser = "";
+		
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
+		
+		Intrst_ListVO intrst_ListVO=new Intrst_ListVO();
+		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
+		
+		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		String[] resultArr = request.getParameterValues("result");
+		String ck_result = request.getParameter("btn_result");
+		if(ck_result.equals("delIntrst")){
+			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
+				intrst_ListVO.setIn_Stdnt_No(loginUser);
+				intrst_ListVO.setIn_Lctre_No(Integer.parseInt(resultArr[i]));
+				try {
+					intrst_ListService.deleteIntrst_List(intrst_ListVO);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return null;
+		
+	}
+
+	/**
+	 * <pre>
+	 * 접속한 학생이 수강신청을 취소
+	 * </pre>
+	 * <pre>
+	 * @param datas
+	 * @param jsonMap
+	 * @param request
+	 * @return
+	 * </pre>
+	 */
+	public List<Lctre_SearchVO> deleteLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String loginUser = "";
+		
+		if(((String) session.getAttribute("loginUser"))!=null){
+			loginUser = ((String) session.getAttribute("loginUser"));
+		}
+		
+		ReqstVO reqstVO= new ReqstVO();
+		Lctre_SearchVO lctre_SearchVO= new Lctre_SearchVO();
+		
+		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
+		String[] resultArr = request.getParameterValues("result");
+		String ck_result = request.getParameter("btn_result");
+		if(ck_result.equals("delIntrst")){
+			for (int i = 0; i < resultArr.length; i++) {	// 관심강의에서 삭제하면 수강신청한 것도 삭제되도록
+				reqstVO.setRe_Lctre_No(Integer.parseInt(resultArr[i]));
+				try {
+					reqstService.deleteReqst(reqstVO,lctre_SearchVO);	// if로 유효성 걸어주고 싶은데
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return null;	
+		
+	}
+	
+	
+	
 	
 	
 	/**
@@ -314,7 +504,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/insertCourse", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String insertCourse(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+	public List<Lctre_SearchVO> insertCourse(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "";
@@ -374,7 +564,7 @@ public class LctreController {
 				}
 			}
 		}
-		return getopenLctre(null);
+		return null;
 	}
 	
 	
@@ -390,7 +580,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseInterest", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String courseInterest(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+	public List<Lctre_SearchVO> courseInterest(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "Guest";
@@ -454,7 +644,7 @@ public class LctreController {
 	 */
 	@RequestMapping(value="/courseComplete",produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String courseComplete(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
+	public List<Lctre_SearchVO> courseComplete(@RequestBody Map<String, Object> jsonMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String loginUser = "Guest";

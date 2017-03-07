@@ -54,12 +54,13 @@ public class Bbs_ListServiceImpl implements Bbs_ListService {
 	}
 
 	@Override
-	public int updateBbs_Atrty(Bbs_AtrtyVO bbs_AtrtyVO) throws SQLException {
+	public int updateBbs_Atrty(Bbs_List_AtrtyVO bbs_AtrtyVO) throws SQLException {
 		return bbs_ListDAO.updateBbs_Atrty(bbs_AtrtyVO);
 	}
 
 	@Override
-	public int updateBbs_List(Bbs_ListVO bbs_ListVO) throws SQLException {
+	public int updateBbs_List(Bbs_List_AtrtyVO bbs_ListVO) throws SQLException {
+		bbs_ListDAO.updateBbs_Atrty(bbs_ListVO);
 		return bbs_ListDAO.updateBbs_List(bbs_ListVO);
 	}
 
@@ -71,6 +72,12 @@ public class Bbs_ListServiceImpl implements Bbs_ListService {
 		bbs_ListDAO.insertBbs_Table_Gnt(bbs_List_AtrtyVO.getBl_Table_Nm());
 		bbs_ListDAO.insertBbs_Comment_Table_Gnt(bbs_List_AtrtyVO.getBl_Table_Nm());
 		return bbs_ListDAO.insertBbs_List_Atrty(bbs_List_AtrtyVO);
+	}
+	@Override
+	public List<Bbs_List_AtrtyVO> getBbs_List(Bbs_List_AtrtyVO vo)
+			throws SQLException {
+		List<Bbs_List_AtrtyVO> list = bbs_ListDAO.getBbs_List(vo);
+		return list;
 	}
 
 }

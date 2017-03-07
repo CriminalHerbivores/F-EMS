@@ -96,7 +96,6 @@ public class SchlshipController {
 		List<SchlshipVO> schlshipList = null;
 		String paging = null;
 		try {
-			System.out.println("11111111111");
 			schlshipList = schlshipService.selectNameAllPage(
 					Integer.parseInt(tpage), key);
 			paging = schlshipService.pageNumber(Integer.parseInt(tpage), key);
@@ -104,8 +103,6 @@ public class SchlshipController {
 			e.printStackTrace();
 		}
 		model.addAttribute("schlshipList", schlshipList);
-		int n = schlshipList.size();
-		model.addAttribute("schlshipListSize", n);
 		model.addAttribute("paging", paging);
 		return url;
 
@@ -177,7 +174,6 @@ public class SchlshipController {
 			IOException {
 		String url = "redirect:schlshipList";
 
-		System.out.println(" schlshipVO : " + schlshipVO);
 		try {
 			schlshipService.updateSchlship(schlshipVO);
 		} catch (SQLException e) {

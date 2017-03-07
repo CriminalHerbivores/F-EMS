@@ -49,14 +49,26 @@ public interface ManageDAO {
 	ManageVO getlastUniv() throws SQLException;
 	/**
 	 * <pre>
-	 * 학교정보를 수정하는 메서드
+	 * 대학 layout(step3) 수정하는 메서드
 	 * </pre>
 	 * <pre>
 	 * @return
 	 * @throws SQLException
 	 * </pre>
 	 */
-	int updateUniv(ManageVO manageVO) throws SQLException;
+	int updateLayout(ManageVO manageVO) throws SQLException;
+	
+	/**
+	 * <pre>
+	 * 대학 Color(step4) 수정하는 메서드
+	 * </pre>
+	 * <pre>
+	 * @param manageVO
+	 * @return
+	 * @throws SQLException
+	 * </pre>
+	 */
+	int updateColor(ManageVO manageVO) throws SQLException;
 	/**
 	 * <pre>
 	 * 게시판 리스트를 가져옴

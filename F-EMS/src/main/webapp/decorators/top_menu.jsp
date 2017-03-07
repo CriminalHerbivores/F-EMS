@@ -114,15 +114,18 @@
 								<a href="#">강의</a>
 							</button>
 							<div class="menu-dropdown-content">
-
 <a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
-<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=test">공지게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=test">자료게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=test">질의응답게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=test">과제게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=test">동영상게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=test">시청여부 게시판</a>
-<a href="<%=request.getContextPath()%>/lctre/testList">온라인 시험 게시판</a>
+<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=${table_Nm}">공지</a>
+<a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=${table_Nm}">자료</a>
+<a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=${table_Nm}">과제</a>
+<a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=${table_Nm}">질의응답</a>
+<sec:authorize access="hasRole('ROLE_PRO')">
+<a href="<%=request.getContextPath()%>/lctre/videoList?table_Nm=${table_Nm}">동영상 강의</a>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_STD')">
+<a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=${table_Nm}">동영상 강의</a>
+</sec:authorize>
+<a href="<%=request.getContextPath()%>/lctre/testList?table_Nm=${table_Nm}">온라인 시험</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -148,14 +151,14 @@
 								<a href="#" onclick="op_menu_admin()">관리자</a>
 							</button>
 							<div class="menu-dropdown-content">
+<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
+<a href="<%=request.getContextPath() %>/admin/generatorList" class="no-uline">게시판 관리</a>
 <a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a>								
 <a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a>
 <a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
 <a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
 <a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
 <a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
-<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
-<a href="<%=request.getContextPath() %>/bbs_list/generator" class="no-uline">게시판 생성</a>
 							</div>
 						</div>
 					</sec:authorize>

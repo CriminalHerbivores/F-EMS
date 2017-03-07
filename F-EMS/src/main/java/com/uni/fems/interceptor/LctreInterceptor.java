@@ -23,6 +23,7 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
+		//메뉴에 강의 목록 띄우기
 		if(session.getAttribute("lctreList")==null){
 			String loginUser = "";
 			if(session.getAttribute("loginUser")==null){
@@ -53,24 +54,36 @@ public class LctreInterceptor extends HandlerInterceptorAdapter {
 			}
 			session.setAttribute("lctreList", list);
 		}
+		List<LctreVO> lctreList = (List<LctreVO>) session.getAttribute("lctreList");
 		if(request.getMethod().toString().equals("GET")){
-		if(request.getParameter("table_Nm")==null || request.getParameter("table_Nm").isEmpty()){
-			List<LctreVO> lctreList = (List<LctreVO>) session.getAttribute("lctreList");
-			if(lctreList==null || lctreList.isEmpty()){
-				response.sendRedirect(request.getContextPath()+"/auth");
+			//강의번호가 없을 시 가장 첫번째 강의로 이동
+			if(request.getParameter("table_Nm")==null || request.getParameter("table_Nm").isEmpty()){
+				if(lctreList==null || lctreList.isEmpty()){
+					response.sendRedirect(request.getContextPath()+"/auth");
+					return false;
+				}
+				String url = "";
+				if(request.getRequestURL().indexOf("?")<0){
+					url=request.getContextPath()+request.getServletPath()+"?table_Nm="+lctreList.get(0).getLc_Lctre_No();
+				}else{
+					url=request.getContextPath()+request.getServletPath()+"&table_Nm="+lctreList.get(0).getLc_Lctre_No();
+				}
+				response.sendRedirect(url);
 				return false;
-			}
-			String url = "";
-			if(request.getRequestURL().indexOf("?")<0){
-				url=request.getContextPath()+request.getServletPath()+"?table_Nm="+lctreList.get(0).getLc_Lctre_No();
 			}else{
-				url=request.getContextPath()+request.getServletPath()+"&table_Nm="+lctreList.get(0).getLc_Lctre_No();
+				//강의권한이 없을 시 권한 없음으로 이동
+				boolean flag = false;
+				for(LctreVO vo : lctreList){
+					if((vo.getLc_Lctre_No()+"").equals(request.getParameter("table_Nm"))){
+						flag = true;
+					}
+				}
+				if(!flag){
+					response.sendRedirect(request.getContextPath()+"/auth");
+					return false;
+				}
 			}
-			response.sendRedirect(url);
-			return false;
-		}
 		}
 		return super.preHandle(request, response, handler);
 	}
-	
 }
