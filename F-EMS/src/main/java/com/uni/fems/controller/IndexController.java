@@ -118,13 +118,13 @@ public class IndexController {
 		ManageVO manageVO = (ManageVO) session.getAttribute("manageVO");
 
 		switch (Integer.parseInt(manageVO.getMng_Layout_Knd())) {// DB의 숫자값에 따라 index 페이지가 달라진다(보험처리)
-		case 1: url = "layout_type/loginLoginType";
+		case 1: url = "layout_type/loginLoginType"; //로그인형
 			break;
-		case 2: url = "layout_type/loginBoardType";
+		case 2: url = "layout_type/loginMultiType"; //복합형
 			break;
-		case 3:url = "layout_type/loginMenuType";
+		case 3:url = "layout_type/loginBoardType"; //게시판형
 			break;
-		case 4: url = "layout_type/loginMultiType";
+		case 4: url = "layout_type/loginMenuType"; //메뉴형
 			break;
 		default: url = "/index";
 		}

@@ -38,18 +38,6 @@
 
 <decorator:head />
 
-<script type="text/javascript">
-$(function(){
-	function lctreSelected(){
-		var sel = location.protocol+"//"+location.host + location.pathname + "?table_Nm=";
-		sel += $('#lctreList>option:selected').val();
-		location.href=sel;
-	}
-	$('#lctreList').change(lctreSelected);
-	$('#lctreList>option:selected').val();
-})
-</script>
-
 </head>
 <body>
 

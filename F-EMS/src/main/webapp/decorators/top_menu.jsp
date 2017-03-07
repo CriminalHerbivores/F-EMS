@@ -40,7 +40,9 @@
 <a href="<%=request.getContextPath() %>/admin/tuitionList">등록금 조회</a>
 </sec:authorize>
 <a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역 조회</a>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a>
+</sec:authorize>
 <a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a>
 <a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 신청 내역</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a>

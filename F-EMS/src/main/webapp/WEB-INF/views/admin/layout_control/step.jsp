@@ -33,19 +33,14 @@ border:0;
 
 </head>
 <body>
+<article>
+
 <form id="step1Add" method="post" name="formm" enctype="multipart/form-data">
 	<input type="hidden" name="mng_Univ_Logo_Ori" value="${manageVO.mng_Univ_Logo}">
 	<input type="hidden" name="mng_Univ_Img_Ori" value="${manageVO.mng_Univ_Img}">
-<table class="def-table-full"><tr><td>
-	<table class="def-table-full tb-border table-hover tr-child-color">
-	<tr>
-		<td><a href="step1Add">STEP 1</a></td>
-		<td><a href="step2Add">STEP 2</a></td>
-		<td><a href="step3Add">STEP 3</a></td>
-	</tr>
-	</table>
-	<br/>
-<h2>대학 정보 설정</h2><br/>
+	<table class="def-table-full"><tr><td>
+	
+<h1>대학 정보 설정</h1><br/>
 	<table class="def-table-full tb-border table-hover tr-child-color">
 		<tr><th>대학 이름</th><td><input type="text" name="mng_Univ_Nm" class="def-input-text-lg custom-form-control" value="${manageVO.mng_Univ_Nm }"></td></tr>
 		<tr><th>대학 영문 이름</th><td><input type="text" name="mng_Univ_Eng_Nm" class="def-input-text-lg custom-form-control" value="${manageVO.mng_Univ_Eng_Nm }"></td></tr>
@@ -134,9 +129,10 @@ border:0;
 			</table>
 <table class="def-table-full"><tr><td style="text-align: right;">
 	<input type="submit" value="등록" class="def-btn btn-md btn-color">
-</td></tr></table>
-</td></tr></table>
+</td></tr></table>	
+			</td></tr></table>	
 <br/><br/><br/>
 </form>
+</article>
 </body>
 </html>

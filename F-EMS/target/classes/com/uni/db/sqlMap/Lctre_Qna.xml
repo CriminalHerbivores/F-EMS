@@ -21,7 +21,7 @@
 		select * from Lctre_Q$table_Nm$ 
 		where LQ_SJ like '%$lq_Sj$%' 
 		and LQ_CN like '%$lq_Cn$%' 
-		order by LQ_BBS_NO desc
+		order by skn_No desc
 	</select>
 	
 	<select id="totalLctre_Qna" parameterClass="lctre_qna_gnt" resultClass="int">

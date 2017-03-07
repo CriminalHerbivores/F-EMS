@@ -22,9 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
+import com.uni.fems.dto.Bbs_ListVO;
+import com.uni.fems.dto.Bbs_List_AtrtyVO;
 import com.uni.fems.dto.EventVO;
 import com.uni.fems.dto.FilesVO;
 import com.uni.fems.dto.ManageVO;
+import com.uni.fems.dto.MenuVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.SklstfVO;
 import com.uni.fems.dto.Sklstf_AtrtyVO;
@@ -35,6 +38,7 @@ import com.uni.fems.excel.ReadOption;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
 import com.uni.fems.service.ManageService;
+import com.uni.fems.service.MenuService;
 import com.uni.fems.service.SklstfService;
 import com.uni.fems.service.Sklstf_AtrtyService;
 import com.uni.fems.service.Subjct_Info_TableService;
@@ -82,6 +86,8 @@ public class ManageController {
 	private ManageService manageSvc;
 	@Autowired
 	private FileDownload fileDownload;
+	@Autowired
+	private MenuService menuService;
 	
 	/**
 	 * <pre>
@@ -516,45 +522,47 @@ public class ManageController {
 	@RequestMapping(value="/step1Add", method=RequestMethod.POST)
 	public String step1Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
 						@RequestParam("uploadlogo")MultipartFile uploadlogo,String phoneNo1, String phoneNo2,
-						String faxNo1, String faxNo2, String faxNo3) {
-		
+						String faxNo1, String faxNo2, String faxNo3,
+						@RequestParam("uploadUnivImg")MultipartFile uploadUnivImg) {
 		String url = "redirect:step2Add";
 		
 		//지울 vo
 		ManageVO deleteVO = new ManageVO();
-			try {
-				deleteVO = manageSvc.getlastUniv();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-			
-			//파일 집어넣기
-			if(!uploadlogo.isEmpty()){
-				String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
-				FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
-				manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
-			}else{
-				manageVO.setMng_Univ_Logo("/resources/images/"+manageVO.getMng_Univ_Logo_Ori());
-			}
-			String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
-			String faxNo = faxNo1+"-"+faxNo2+"-"+faxNo3;
-			manageVO.setMng_Tlphon_No(phoneNo);
-			manageVO.setMng_Fax_No(faxNo);
-			session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
+		try {
+			deleteVO = manageSvc.getlastUniv();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		//파일 집어넣기
+		if(!uploadlogo.isEmpty()){
+			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+			FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
+			manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
+		}else{
+			manageVO.setMng_Univ_Logo("/resources/images/"+manageVO.getMng_Univ_Logo_Ori());
+		}
+		if(!uploadUnivImg.isEmpty()){
+			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
+			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
+		}else{
+			manageVO.setMng_Univ_Img(manageVO.getMng_Univ_Img_Ori());
+		}
+		String phoneNo = manageVO.getMng_Tlphon_No()+"-"+phoneNo1+"-"+phoneNo2;
+		String faxNo = faxNo1+"-"+faxNo2+"-"+faxNo3;
+		manageVO.setMng_Tlphon_No(phoneNo);
+		manageVO.setMng_Fax_No(faxNo);
+		session.setAttribute("sessionUniv", manageVO.getMng_Univ_Nm());
 		try {
 			if(deleteVO!=null)
 				manageSvc.deleteUniv(deleteVO.getMng_Univ_Nm());
 				manageSvc.insertUniv(manageVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return url;
 	}
-	
-	
 	
 	/**
 	 * <pre>
@@ -567,8 +575,21 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step2Add", method=RequestMethod.GET)
-	public String step2Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step2Add";	
+	public String step2Add(Model model) {
+		String url = "admin/layout_control/step2Add";
+		Bbs_List_AtrtyVO vo = new Bbs_List_AtrtyVO();
+		List<Bbs_List_AtrtyVO> bbsListGen = new ArrayList<Bbs_List_AtrtyVO>();
+		List<Bbs_List_AtrtyVO> noticeListGen = new ArrayList<Bbs_List_AtrtyVO>();
+		try {
+			vo.setBl_Table_Nm("b"); //학사 게시판
+			noticeListGen=bbs_ListSvc.getBbs_List(vo);
+			vo.setBl_Table_Nm("t"); //자유 게시판
+			bbsListGen=bbs_ListSvc.getBbs_List(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("bbsListGen",bbsListGen);
+		model.addAttribute("noticeListGen",noticeListGen);
 		return url;
 	}
 	
@@ -583,9 +604,22 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step2Add", method=RequestMethod.POST)
-	public String step2Add2(HttpServletRequest request,HttpSession session) {
-		String url = "redirect:step3Add";	
+	public String insertTable(HttpSession session, Bbs_List_AtrtyVO bbs_List_AtrtyVO) {
+		String url = "redirect:step2Add";
+		bbs_List_AtrtyVO.setBl_Table_Nm(bbs_List_AtrtyVO.getBa_Alpha()+System.currentTimeMillis());
+		List<Bbs_ListVO> bbsList=null;
+		List<Bbs_ListVO> noticeList=null;
+		try {
+			bbs_ListSvc.insertBbs_List_Atrty(bbs_List_AtrtyVO);
+			bbsList=manageSvc.getBbsList("t");
+			noticeList=manageSvc.getBbsList("b");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		session.setAttribute("bbsList", bbsList);
+		session.setAttribute("noticeBBS", noticeList);
 		return url;
+
 	}
 	
 	
@@ -600,8 +634,15 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.GET)
-	public String step3Add(HttpServletRequest request,HttpSession session) {
+	public String step3Add(Model model) {
 		String url = "admin/layout_control/step3Add";	
+		List<MenuVO> list = null;
+		try {
+			list = menuService.selectMenuSe();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("menuSe",list);
 		return url;
 	}
 	
@@ -617,25 +658,24 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.POST)
-	public String step3Add2(HttpServletRequest request,HttpSession session, ManageVO manageVO,
-					@RequestParam("uploadUnivImg")MultipartFile uploadUnivImg) {
-		String url = "redirect:step4Add";
+	public String step3Add2(MenuVO menu) {
+		String url = "redirect:index";
 		
 		
-		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
-		if(!uploadUnivImg.isEmpty()){
-			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
-			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
-			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
-		}else{
-			manageVO.setMng_Univ_Img(manageVO.getMng_Univ_Img_Ori());
-		}
-		try {
-			manageSvc.updateLayout(manageVO);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
+//		if(!uploadUnivImg.isEmpty()){
+//			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";
+//			FilesVO vo = new FileDownload().uploadFile(uploadUnivImg,filePath);
+//			manageVO.setMng_Univ_Img("/resources/images/"+vo.getFl_File_Nm());
+//		}else{
+//			manageVO.setMng_Univ_Img(manageVO.getMng_Univ_Img_Ori());
+//		}
+//		try {
+//			manageSvc.updateLayout(manageVO);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return url;
 	}
 	

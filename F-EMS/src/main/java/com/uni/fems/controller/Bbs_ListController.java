@@ -105,13 +105,16 @@ public class Bbs_ListController{
 		String url = "redirect:generatorList";
 		bbs_List_AtrtyVO.setBl_Table_Nm(bbs_List_AtrtyVO.getBa_Alpha()+System.currentTimeMillis());
 		List<Bbs_ListVO> bbsList=null;
+		List<Bbs_ListVO> noticeList=null;
 		try {
 			bbs_ListSvc.insertBbs_List_Atrty(bbs_List_AtrtyVO);
 			bbsList=manageService.getBbsList("t");
+			noticeList=manageService.getBbsList("b");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		session.setAttribute("bbsList", bbsList);
+		session.setAttribute("noticeBBS", noticeList);
 		return url;
 
 	}
