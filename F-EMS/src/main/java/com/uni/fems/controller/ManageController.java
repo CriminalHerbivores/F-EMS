@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -634,7 +635,7 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.GET)
-	public String step3Add(Model model) {
+	public String step3Add(Model model,HttpSession session) {
 		String url = "admin/layout_control/step3Add";	
 		List<MenuVO> list = null;
 		try {
@@ -643,6 +644,43 @@ public class ManageController {
 			e.printStackTrace();
 		}
 		model.addAttribute("menuSe",list);
+		
+		// 레이아웃 메뉴 숫자
+		ManageVO manageVO=null;
+		if(session.getAttribute("manageVO")==null){
+			try {
+				manageVO=manageSvc.getManage();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("manageVO", manageVO);
+		}else{
+			manageVO = (ManageVO) session.getAttribute("manageVO");
+		}
+		int menu = 0;
+		switch(manageVO.getMng_Layout_Knd()){
+		case "0": break;
+		case "1": //로그인형
+			break;
+		case "2": //복합형
+			menu=5;
+			break;
+		case "3": //게시판형
+			menu=4;
+			break;
+		case "4": //메뉴형
+			menu=15;
+			break;
+		default:break;
+		}
+		
+		List<MenuVO> menuList = new ArrayList<MenuVO>();
+		try {
+			menuList=menuService.selectMenu(1, menu);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("menuList",menuList);
 		return url;
 	}
 	
@@ -658,10 +696,23 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.POST)
-	public String step3Add2(MenuVO menu) {
-		String url = "redirect:index";
+	public String step3Add2(String[] mn_No,String[] mn_Se_Code,String[] mn_Cours) {
+		String url = "redirect:/index";
 		
-		
+		for(int i=0;i<mn_No.length;i++){
+			MenuVO menu = new MenuVO();
+			menu.setMn_No(Integer.parseInt(mn_No[i]));
+			if(mn_Se_Code[i]!=null && !mn_Se_Code[i].isEmpty())
+			menu.setMn_Se_Code(mn_Se_Code[i]);
+			if(mn_Cours[i]!=null && !mn_Cours[i].isEmpty())
+			menu.setMn_Cours(mn_Cours[i]);
+			
+			try {
+				menuService.updateMenu(menu);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 //		manageVO.setMng_Univ_Nm((String) session.getAttribute("sessionUniv"));
 //		if(!uploadUnivImg.isEmpty()){
 //			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";

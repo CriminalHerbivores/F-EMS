@@ -13,7 +13,7 @@ public class MenuDAOImpl implements MenuDAO {
 		this.client=client;
 	}
 	@Override
-	public List<MenuVO> selectMenu() throws SQLException {
+	public List<MenuVO> selectMenu(int start, int end) throws SQLException {
 		List<MenuVO> list = client.queryForList("selectMenu");
 		return list;
 	}

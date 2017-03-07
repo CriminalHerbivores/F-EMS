@@ -42,6 +42,7 @@ border:0;
 		<td><a href="step1Add">STEP 1</a></td>
 		<td><a href="step2Add">STEP 2</a></td>
 		<td><a href="step3Add">STEP 3</a></td>
+		<td><a href="<%=request.getContextPath()%>/">INDEX</a></td>
 	</tr>
 	</table>
 	<br/>
@@ -49,7 +50,7 @@ border:0;
 	<table class="def-table-full tb-border table-hover tr-child-color">
 		<tr><th>대학 이름</th><td><input type="text" name="mng_Univ_Nm" class="def-input-text-lg custom-form-control" value="${manageVO.mng_Univ_Nm }"></td></tr>
 		<tr><th>대학 영문 이름</th><td><input type="text" name="mng_Univ_Eng_Nm" class="def-input-text-lg custom-form-control" value="${manageVO.mng_Univ_Eng_Nm }"></td></tr>
-		<tr><th>대학 로고 등록</th><td> ※ 첨부 파일 이미지 크기는 170*15px 권장 <input type="file" name="uploadlogo" value="${manageVO.mng_Univ_Logo}" ></td></tr> 
+		<tr><th>대학 로고 등록</th><td class="text-left"> ※ 첨부 파일 이미지 크기는 170*40px 권장 <input type="file" name="uploadlogo" value="${manageVO.mng_Univ_Logo}" ></td></tr> 
 		<tr><th>우편번호</th><td><input type="text" name="mng_Post_No" id="zipNum" class="def-input-text-md custom-form-control" value="${manageVO.mng_Post_No}" ><input type="button" class="def-btn btn-search btn-color" value="검색" onclick="searchZipNum()"></td></tr>
 		<tr><th>주소</th><td><input type="text" name="mng_Adres1" class="def-input-text-full custom-form-control" id="addres1" value="${manageVO.mng_Adres1}" readonly> <input type="text" name="mng_Adres2" class="def-input-text-full custom-form-control" value="${manageVO.mng_Adres2}" ></td></tr>
 		<tr><th>전화번호</th><td><select name="mng_Tlphon_No" class="combobox-sm custom-form-control" value="${fn:split(manageVO.mng_Tlphon_No, '-')[0]}">
@@ -113,7 +114,7 @@ border:0;
 				</tr>
 					<tr>
 						<th>대학 이미지</th>
-						<td><input type="file" name="uploadUnivImg" value="${manageVO.mng_Univ_Logo}" ></td>
+						<td class="text-left"> ※ 첨부 파일 이미지 크기는 500*350px 권장 <input type="file" name="uploadUnivImg" value="${manageVO.mng_Univ_Logo}" ></td>
 					</tr>
 					
 			</table>
