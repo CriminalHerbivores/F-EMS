@@ -92,9 +92,9 @@ function add_IntrstLctre(){
 	            console.log("success : "+index);
 	            });
 	            row2+='</tbody></table>';
+	            $("#checkboxArea intrstList").remove();
 	            console.log("row2 : " + row2);
-	            $("#checkboxArea intrstList").empty();
-	            $("#checkboxArea intrstList").html(row2);
+	            //$("#checkboxArea intrstList").html(row2);
 	            //$('#intrstList table > tbody').append(row2);
 	            
 	            // 수강완료 , 학점 - 변화 없음
