@@ -117,7 +117,7 @@
 	</insert>
 	<insert id="insertLctreTable_Watch" parameterClass="str">
 		insert into LCTRE_W$table_Nm$(LW_BBS_NO,LW_STDNT_NO,LW_VIDEO_BBS_NO,LW_Watch_Time,LW_ATTENDANCE) 
-		values(0,null,null,null,0,null)
+		values(0,null,null,0,null)
 	</insert>
 	<update id="dropLctreTable" parameterClass="str">
 		DROP TABLE $name$ CASCADE CONSTRAINTS PURGE
