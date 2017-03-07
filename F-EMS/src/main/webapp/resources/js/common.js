@@ -494,7 +494,7 @@ document.formm.submit();
 
 }
 /*---------------------------------------------------------------------------------*/
-//관리자 -> 직원 or 관리자 등록 시 유효성
+//직원 -> 학생 등록시 유효성
 function submit_stdnt(form){
 	var temp = true;
 if(temp){
@@ -508,7 +508,7 @@ if(temp){
 } */
 	
 //주민등록번호 검증
-var jm_no = document.formm.stf_Ihidnum.value.trim();		
+var jm_no = document.formm.st_Ihidnum.value.trim();		
 var jm_no_ck = /^[0-9]{13}$/;
 if(jm_no==null || jm_no==""){
 	sweetAlert(" ","주민등록번호를 입력해 주세요.", "error");
@@ -534,7 +534,7 @@ if(pwd1 != pwd2){
 	alert("패스워드가 일치하지 않습니다.");
 } */
 // 이름 유효성 검증
-var irum = document.formm.stf_Nm.value.trim();		
+var irum = document.formm.st_Nm.value.trim();		
 var irumck = /^[가-힇]{2,5}$/;		// 한글 2~5자
 if(irum==""){
 	sweetAlert(" ","한글 이름을 입력해 주세요", "error");
@@ -544,7 +544,7 @@ if(irum==""){
 	return;
 }
 //영문이름 유효성 검증
-var en_irum = document.formm.stf_Eng_Nm.value.trim();		
+var en_irum = document.formm.st_Eng_Nm.value.trim();		
 var en_irumck = /^[a-zA-Z]{2,30}$/;		// 영어 2~30자
 if(en_irum==""){
 	sweetAlert(" ","영문 이름을 입력해 주세요", "error");
@@ -554,7 +554,7 @@ if(en_irum==""){
 	return;
 }
 // 이메일 유효성 검증
-var email = document.formm.stf_Email.value.trim();		
+var email = document.formm.st_Email.value.trim();		
 var emailck = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9--]+(\.[a-zA-Z0-9]+){1,2}$/;		// 이메일 형식에 맞게
 if(email==""){
 	sweetAlert(" ","이메일을 입력해 주세요.", "error");
@@ -564,17 +564,17 @@ if(email==""){
 	return;
 }
 //우편번호
-if(document.formm.stf_Post_No.value.trim()==""){
+if(document.formm.st_Post_No.value.trim()==""){
 	sweetAlert(" ","우편번호를 입력해 주세요.", "error");
 	return;
 }
 //나머지 주소 입력
-if(document.formm.stf_Adres2.value==""){
+if(document.formm.st_Adres2.value==""){
 	sweetAlert(" ","상세주소를 입력해 주세요.", "error");
 	return;
 }
 //휴대폰 번호 유효성 검증
-var mobile1 = document.formm.stf_Moblphon_No.value.trim();		
+var mobile1 = document.formm.st_Moblphon_No.value.trim();		
 var mobileck1 = /^(01[16789][1-9][0-9]{6,7})|(010[1-9][0-9]{7})$/;		// 숫자만...010은 뒤에 숫자 8개 와야함
 console.log(mobile1);
 if(mobile1==""||mobile1==null){
@@ -585,7 +585,7 @@ if(mobile1==""||mobile1==null){
 	return;
 }
 //집 번호 유효성 검증
-var mobile3 = document.formm.stf_House_Tlphon_No.value.trim();		
+var mobile3 = document.formm.st_House_Tlphon_No.value.trim();		
 var mobileck3 = /^(0[1-9][0-9]{6,9})$/;
 if(mobile3==""){
 	sweetAlert(" ","집 전화번호를 입력해 주세요", "error");
@@ -594,16 +594,141 @@ if(mobile3==""){
 	sweetAlert(" ","집 전화번호를 양식에 맞게 숫자(8~11자리)로 입력해 주세요", "error");
 	return;
 }
-//직원 전화번호 유효성 검증
-var mobile2 = document.formm.stf_Sklstf_Tlphon_No.value.trim();		
-var mobileck2 = /^(0[1-9][0-9]{6,9})$/;
-if(mobile2==""||mobile2==null){
-	sweetAlert(" ","직원 번호를 입력해 주세요.", "error");
+
+//보호자 이름 유효성 검증
+var protector = document.formm.st_Prtctor_Nm.value.trim();
+var protectorck = /^[a-zA-Z가-힇]{2,15}$/;
+if(protector==""||protector==null){
+	sweetAlert(" ","보호자 이름을 입력해 주세요.", "error");
+	return
+}else if(protectorck.test(protector)==false){
+	sweetAlert(" ","보호자 이름을 영어 또는 한글(2~15자리)로 입력해 주세요.", "error");
+	return
+}
+//가족관계 유효성 검증
+var family = document.formm.st_Family_Relate.value.trim();
+if(family==""||family==null){
+	sweetAlert(" ","가족관계를 입력해 주세요.", "error");
+	return
+}
+
+document.formm.submit();
+
+}
+}
+
+/*---------------------------------------------------------------------------------*/
+//직원 -> 교수 등록시 유효성
+function submit_profsr(form){
+	var temp = true;
+if(temp){
+/* 	
+//id검사 버튼 위에서 안 눌렀을 때를 위한 유효성 검사
+	var stf_Sklstf_No = document.formm.stf_Sklstf_No.value;
+	var stfNo_ck = /^[0-9]{9}$/;		//영소문자로 시작, 영소문, 영대문, 숫자로 8~20글자 사이
+	
+	if(stfNo_ck.test(stf_Sklstf_No)==false){
+		alert("직원번호는 9글자 숫자로 가능");
+} */
+	
+//주민등록번호 검증
+var jm_no = document.formm.pr_Ihidnum.value.trim();		
+var jm_no_ck = /^[0-9]{13}$/;
+if(jm_no==null || jm_no==""){
+	sweetAlert(" ","주민등록번호를 입력해 주세요.", "error");
 	return;
-}else if(mobileck2.test(mobile2)==false){
-	sweetAlert(" ","직원 번호를 양식에 맞게 숫자(8~11자리)로 입력해 주세요", "error");
+}else if(jm_no_ck.test(jm_no)==false || jm_no.length!=13){	
+	sweetAlert(" ","주민등록번호는 숫자(13자리)로만 입력해 주세요.", "error");
 	return;
 }
+//학과 선택
+if(document.formm.sit_Subjct.value.trim()==""){
+	sweetAlert(" ","학과를 등록해 주세요.", "error");
+	return;
+}
+/* // 패스워드1 유효성 검증
+var pwd1 = document.formm.stf_Pw.value;	
+var pwdck = /^[a-zA-Z0-9!~@#$%^&*_+|\=.,;?:`-]{8,20}$/;		//영소문, 영대문, 숫자, 특수문자로 8~20글자 사이
+if(pwdck.test(pwd1)==false){
+	alert("비밀번호는  영소문자, 영대문자, 숫자, 특수문자 8~20글자로 이루어지도록 입력");
+}
+//패스워드1, 2 일치 확인
+var pwd2 = document.formm.stf_Pw_ck.value;		
+if(pwd1 != pwd2){
+	alert("패스워드가 일치하지 않습니다.");
+} */
+//이름 유효성 검증
+var irum = document.formm.pr_Nm.value.trim();		
+var irumck = /^[가-힇]{2,5}$/;		// 한글 2~5자
+if(irum==""){
+	sweetAlert(" ","한글 이름을 입력해 주세요", "error");
+	return;
+}else if(irumck.test(irum)==false){	
+	sweetAlert(" ","한글 이름을 한글 2~5자로 입력해 주세요.", "error");
+	return;
+}
+//영문이름 유효성 검증
+var en_irum = document.formm.pr_Eng_Nm.value.trim();		
+var en_irumck = /^[a-zA-Z]{2,30}$/;		// 영어 2~30자
+if(en_irum==""){
+	sweetAlert(" ","영문 이름을 입력해 주세요", "error");
+	return;
+}else if(en_irumck.test(en_irum)==false){	
+	sweetAlert(" ","영문 이름을 영문 2~30자로 입력해 주세요.", "error");
+	return;
+}
+//이메일 유효성 검증
+var email = document.formm.pr_Email.value.trim();		
+var emailck = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9--]+(\.[a-zA-Z0-9]+){1,2}$/;		// 이메일 형식에 맞게
+if(email==""){
+	sweetAlert(" ","이메일을 입력해 주세요.", "error");
+	return;
+}else if(emailck.test(email)==false){
+	sweetAlert(" ","이메일 양식에 맞게 입력해 주세요.\n 예) example@gmail.com ", "error");
+	return;
+}
+//우편번호
+if(document.formm.pr_Post_No.value.trim()==""){
+	sweetAlert(" ","우편번호를 입력해 주세요.", "error");
+	return;
+}
+//나머지 주소 입력
+if(document.formm.pr_Adres2.value==""){
+	sweetAlert(" ","상세주소를 입력해 주세요.", "error");
+	return;
+}
+//휴대폰 번호 유효성 검증
+var mobile1 = document.formm.pr_Moblphon_No.value.trim();		
+var mobileck1 = /^(01[16789][1-9][0-9]{6,7})|(010[1-9][0-9]{7})$/;		// 숫자만...010은 뒤에 숫자 8개 와야함
+console.log(mobile1);
+if(mobile1==""||mobile1==null){
+	sweetAlert(" ","휴대폰 번호를 입력해 주세요.", "error");
+	return;
+}else if(mobileck1.test(mobile1)==false){
+	sweetAlert(" ","휴대폰 번호를 숫자(11자리)로 입력해 주세요.", "error");
+	return;
+}
+//집 번호 유효성 검증
+var mobile3 = document.formm.pr_House_Tlphon_No.value.trim();		
+var mobileck3 = /^(0[1-9][0-9]{6,9})$/;
+if(mobile3==""){
+	sweetAlert(" ","집 전화번호를 입력해 주세요", "error");
+	return;
+}else if(mobileck3.test(mobile3)==false){
+	sweetAlert(" ","집 전화번호를 양식에 맞게 숫자(8~11자리)로 입력해 주세요", "error");
+	return;
+}
+//교수 전화번호 유효성 검증
+var mobile2 = document.formm.pr_Profsr_Tlphon_No.value.trim();		
+var mobileck2 = /^(0[1-9][0-9]{6,9})$/;
+if(mobile2==""||mobile2==null){
+	sweetAlert(" ","교수 번호를 입력해 주세요.", "error");
+	return;
+}else if(mobileck2.test(mobile2)==false){
+	sweetAlert(" ","교수 번호를 양식에 맞게 숫자(8~11자리)로 입력해 주세요", "error");
+	return;
+}
+
 
 document.formm.submit();
 
