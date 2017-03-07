@@ -99,20 +99,20 @@ ${loginUser} </td>
 
 </form>
   <tr><td colspan="5">
-		<table class="def-table-full tb-border" style="width:100% !important;">
+		<table class="def-table-full tb-border td-odd-even" style="width:100% !important;">
 			<c:forEach items="${menuList}" var="mn" varStatus="status">
-			<c:if test="${status.count/5 eq 1}">
+			<c:if test="${status.count%5 eq 1}">
 			<tr>
 			</c:if>
 			<c:choose>
 			<c:when test="${mn.mn_Se_Code=='etc'}">
-			<td class="login-menu"><a href="${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+			<td><a href="${mn.mn_Cours}">${mn.mn_Nm}</a></td>
 			</c:when>
 			<c:otherwise>
-			<td class="login-menu"><a href="<%=request.getContextPath()%>/${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+			<td><a href="<%=request.getContextPath()%>/${mn.mn_Cours}">${mn.mn_Nm}</a></td>
 			</c:otherwise>
 			</c:choose>
-			<c:if test="${status.count/5 eq 0}">
+			<c:if test="${status.count%5 eq 0}">
 			</tr>
 			</c:if>
 			</c:forEach>
