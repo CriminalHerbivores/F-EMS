@@ -673,7 +673,14 @@ public class ManageController {
 			break;
 		default:break;
 		}
-		model.addAttribute("menuNum",menu);
+		
+		List<MenuVO> menuList = new ArrayList<MenuVO>();
+		try {
+			menuList=menuService.selectMenu(1, menu);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("menuList",menuList);
 		return url;
 	}
 	

@@ -15,7 +15,7 @@ public interface MenuDAO {
 	 * @throws SQLException
 	 * </pre>
 	 */
-	List<MenuVO> selectMenu() throws SQLException;
+	List<MenuVO> selectMenu(int start, int end) throws SQLException;
 	/**
 	 * <pre>
 	 * 메뉴종류 가져오기
