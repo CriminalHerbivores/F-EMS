@@ -117,7 +117,7 @@ $(function(){
 				</c:forEach>
 			</select>
 		</td>
-		<td class="mnCours">${mL.mn_Cours}</td>
+		<td class="mnCours">${mL.mn_Cours}<input type="hidden" name="mn_Cours" value="${mL.mn_Cours}"></td>
 	</tr>
 	</c:forEach>
 	</table>
