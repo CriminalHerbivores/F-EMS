@@ -216,26 +216,24 @@ public class ManageController {
 			FilesVO vo = fileDownload.uploadFile(file);
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
-			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M","N");	//배열 명 입력
+			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L");	//배열 명 입력
 			ro.setStartRow(2);
 			
 			List<Map<String, String>> result = ExcelRead.read(ro);
 			
 			for(Map<String, String> map : result) {
-				sklstfVo.setStf_Sklstf_No(map.get("A"));
-				sklstfVo.setStf_Pw(map.get("B"));
-				sklstfVo.setStf_Subject_Code(map.get("C"));
-				sklstfVo.setStf_Nm(map.get("D"));
-				sklstfVo.setStf_Eng_Nm(map.get("E"));
-				sklstfVo.setStf_Ihidnum(map.get("F"));
-				sklstfVo.setStf_Sklstf_Tlphon_No(map.get("G"));
-				sklstfVo.setStf_Moblphon_No(map.get("H"));
-				sklstfVo.setStf_House_Tlphon_No(map.get("I"));
-				sklstfVo.setStf_Post_No(map.get("J"));
-				sklstfVo.setStf_Adres1(map.get("K"));
-				sklstfVo.setStf_Adres2(map.get("L"));
-				sklstfVo.setStf_Email(map.get("M"));
-				sklstfVo.setStf_Useyn(map.get("N"));
+				sklstfVo.setStf_Ihidnum(map.get("A")); //주민등록번호
+				sklstfVo.setStf_Subject_Code(map.get("B")); //학과코드
+				sklstfVo.setStf_Nm(map.get("C")); //이름
+				sklstfVo.setStf_Eng_Nm(map.get("D")); //영문이름
+				sklstfVo.setStf_Email(map.get("E")); //이메일
+				sklstfVo.setStf_Post_No(map.get("F")); //우편번호
+				sklstfVo.setStf_Adres1(map.get("G")); //주소
+				sklstfVo.setStf_Adres2(map.get("H")); //상세주소
+				sklstfVo.setStf_Moblphon_No(map.get("I")); //폰번호
+				sklstfVo.setStf_House_Tlphon_No(map.get("J")); //집전화
+				sklstfVo.setStf_Sklstf_Tlphon_No(map.get("K")); //직원전화번호
+				sklstf_AtrtyVO.setSa_Atrty(map.get("L")); //권한
 				
 				Calendar calendar = Calendar.getInstance();
 				String year = calendar.get(Calendar.YEAR)+"";
@@ -254,6 +252,7 @@ public class ManageController {
 				sklstfVo.setStf_Sklstf_No(sklstfVo.getCreateNo()+sklstfNo);
 				sklstfVo.setStf_Useyn("1");
 				sklstf_AtrtyVO.setSa_Sklstf_No(sklstfVo.getStf_Sklstf_No());
+				sklstf_AtrtyVO.setSa_Atrty("ROLE_STF");
 				try {
 					sklstfService.insertSklstf(sklstfVo, sklstf_AtrtyVO);
 				} catch (SQLException e) {

@@ -61,15 +61,15 @@
 			</td></tr>
 		<tr><td><input type="button" class="def-btn btn-sm btn-color" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" class="def-btn btn-sm btn-color" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 		<tr><td colspan="3">
-			<table class="def-table-full tb-border"  style="width:100% !important;">
+			<table class="def-table-full tb-border td-odd"  style="width:100% !important;">
 				<tr>
 				<c:forEach items="${menuList}" var="mn">
 				<c:choose>
 				<c:when test="${mn.mn_Se_Code=='etc'}">
-				<td class="login-menu"><a href="${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+				<td><a href="${mn.mn_Cours}">${mn.mn_Nm}</a></td>
 				</c:when>
 				<c:otherwise>
-				<td class="login-menu"><a href="<%=request.getContextPath()%>/${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+				<td><a href="<%=request.getContextPath()%>/${mn.mn_Cours}">${mn.mn_Nm}</a></td>
 				</c:otherwise>
 				</c:choose>
 				</c:forEach>

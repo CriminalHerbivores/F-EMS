@@ -46,7 +46,7 @@ $(function(){
 		}else if(v=="etc"){
 			$(c).html('<input type="text" name="mn_Cours" class="def-input-text-full custom-form-control">');
 		}else{
-			$(c).html("");
+			$(c).html('<input type="hidden" value="#" name="mn_Cours">');
 		}
 	});
 })
@@ -95,6 +95,7 @@ $(function(){
 	<table class="def-table-full tb-border table-hover tr-child-color">
 	<tr>
 		<th width="50px">No</th>
+		<th width="10px">이름</th>
 		<th width="300px">구분코드</th>
 		<th>경로</th>
 	</tr>
@@ -104,7 +105,6 @@ $(function(){
 		<td><input type="text" name="mn_Nm" value="${mL.mn_Nm}" class="def-input-text-lg custom-form-control"></td>
 		<td>
 			<select name="mn_Se_Code" class="combobox-lg custom-form-control">
-				<option value="">사용안함</option>
 				<c:forEach items="${menuSe}" var="mns">
 				<c:choose>
 				<c:when test="${mns.ms_Se_Code == mL.mn_Se_Code}">

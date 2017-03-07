@@ -188,7 +188,7 @@ public class SklstfController {
 			
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
-			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N");	//배열 명 입력
+			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L");	//배열 명 입력
 			ro.setStartRow(2);
 			
 			List<Map<String, String>> result = ExcelRead.read(ro);
@@ -197,20 +197,18 @@ public class SklstfController {
 				if(map.get("A").equals("")|| map.get("A")==null){
 					continue;
 				}
-				stdntVO.setSt_Stdnt_No(map.get("A")); // 학생번호
+				stdntVO.setSt_Ihidnum(map.get("A")); //주민번호
 				stdntVO.setSt_Subjct_Code(map.get("B")); //학과코드
-				stdntVO.setSt_Pw(map.get("C")); //비밀번호
-				stdntVO.setSt_Nm(map.get("D")); //이름
-				stdntVO.setSt_Eng_Nm(map.get("E")); //영문이름
-				stdntVO.setSt_Ihidnum(map.get("F")); //주민번호
-				stdntVO.setSt_Moblphon_No(map.get("G")); //핸드폰번호
-				stdntVO.setSt_House_Tlphon_No(map.get("H")); //집 전화번호
-				stdntVO.setSt_Prtctor_Nm(map.get("I")); //보호자 이름
-				stdntVO.setSt_Family_Relate(map.get("J")); //가족관계
-				stdntVO.setSt_Post_No(map.get("K")); //우편번호
-				stdntVO.setSt_Adres1(map.get("L")); //주소
-				stdntVO.setSt_Adres2(map.get("M")); //상세주소
-				stdntVO.setSt_Email(map.get("N")); //이메일
+				stdntVO.setSt_Nm(map.get("C")); //이름
+				stdntVO.setSt_Eng_Nm(map.get("D")); //영문이름
+				stdntVO.setSt_Email(map.get("E")); //이메일
+				stdntVO.setSt_Post_No(map.get("F")); //우편번호
+				stdntVO.setSt_Adres1(map.get("G")); //주소
+				stdntVO.setSt_Adres2(map.get("H")); //상세주소
+				stdntVO.setSt_Moblphon_No(map.get("I")); //핸드폰번호
+				stdntVO.setSt_House_Tlphon_No(map.get("J")); //집 전화번호
+				stdntVO.setSt_Prtctor_Nm(map.get("L")); //보호자 이름
+				stdntVO.setSt_Family_Relate(map.get("L")); //가족관계
 				
 				stdntVO.setSt_Entsch_Dt(supporter.getDay()[0]+"0302"); //입학일자
 				
@@ -956,24 +954,23 @@ public class SklstfController {
 			ReadOption ro = new ReadOption();
 			ro.setFilePath(fileDownload.filePath+"/"+vo.getFl_File_Nm());		//경로 입력
 			
-			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L");	//배열 명 입력
+			ro.setOutputColumns("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K");	//배열 명 입력
 			ro.setStartRow(2);
 			
 			List<Map<String, String>> result = ExcelRead.read(ro);
 			
 			for(Map<String, String> map : result) {
-				profsrVO.setPr_Profsr_No(map.get("A")); // 교수번호
-				profsrVO.setPr_Pw(map.get("B")); //비밀번호
+				profsrVO.setPr_Ihidnum(map.get("A")); //주민번호
+				profsrVO.setPsa_Subjct_Code(map.get("B")); //학과코드
 				profsrVO.setPr_Nm(map.get("C")); //이름
 				profsrVO.setPr_Eng_Nm(map.get("D")); //영문이름
-				profsrVO.setPr_Ihidnum(map.get("E")); //주민번호
-				profsrVO.setPr_Moblphon_No(map.get("F")); //핸드폰 번호
-				profsrVO.setPr_House_Tlphon_No(map.get("G")); //집 전화번호
-				profsrVO.setPr_Profsr_Tlphon_No(map.get("H")); //교수 전화번호
-				profsrVO.setPr_Post_No(map.get("I")); //우편번호
-				profsrVO.setPr_Adres1(map.get("J")); //주소1
-				profsrVO.setPr_Adres2(map.get("K")); //주소2
-				profsrVO.setPr_Email(map.get("L")); //이메일
+				profsrVO.setPr_Email(map.get("E")); //이메일
+				profsrVO.setPr_Post_No(map.get("F")); //우편번호
+				profsrVO.setPr_Adres1(map.get("G")); //주소1
+				profsrVO.setPr_Adres2(map.get("H")); //주소2
+				profsrVO.setPr_Moblphon_No(map.get("I")); //핸드폰 번호
+				profsrVO.setPr_House_Tlphon_No(map.get("J")); //집 전화번호
+				profsrVO.setPr_Profsr_Tlphon_No(map.get("K")); //교수 전화번호
 				
 
 				Calendar calendar = Calendar.getInstance();
