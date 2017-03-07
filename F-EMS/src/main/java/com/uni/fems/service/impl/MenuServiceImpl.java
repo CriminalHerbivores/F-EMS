@@ -15,8 +15,8 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public List<MenuVO> selectMenu() throws SQLException {
-		List<MenuVO> list = menuDAO.selectMenu();
+	public List<MenuVO> selectMenu(int start, int end) throws SQLException {
+		List<MenuVO> list = menuDAO.selectMenu(start,end);
 		return list;
 	}
 
