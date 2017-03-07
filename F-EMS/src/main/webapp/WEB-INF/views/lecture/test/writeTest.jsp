@@ -20,7 +20,7 @@
 $(function(){
 	$('#Jaddrow').click(function(){
 		$('#testtable > tbody:last').append(
-				'<tr><td><input type="text" class="def-input-text-full custom-form-control" name="ques" placeholder="주관식 문제를 입력하세요." ></td>'
+				'<tr><td><input type="text" class="def-input-text-full custom-form-control"  name="ques" placeholder="주관식 문제를 입력하세요." ></td>'
 				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No1" value="" >'
 				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No2" value="" >'
 				+'<input type="hidden" class="def-input-text-full custom-form-control" name="te_No3" value="" >'
@@ -31,7 +31,7 @@ $(function(){
 	});
 	$('#Gaddrow').click(function(){
 		$('#testtable > tbody:last').append(
-				'<tr><td><input type="text" class="def-input-text-full custom-form-control" name="ques" placeholder="객관식 문제를 입력하세요.">'
+				'<tr><td><input type="text" class="def-input-text-full custom-form-control"  name="ques" placeholder="객관식 문제를 입력하세요.">'
 				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No1" value="1. " >'
 				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No2" value="2. " >'
 				+'<input type="text" class="def-input-text-full custom-form-control" name="te_No3" value="3. " >'
@@ -74,7 +74,7 @@ function deltest(obj){
 				<table class="def-table-auto tb-border table-hover"  style="width:100%;">
 					<tr>
 						<th>시험명</th>
-						<td style="width:80%;"><input type="text" class="def-input-text-full custom-form-control" name="tp_Nm"></td>
+						<td style="width:80%;"><input type="text" class="def-input-text-full custom-form-control" id="tpNm" name="tp_Nm"></td>
 					</tr>
 					<tr>
 						<th>응시가능기간</th>
@@ -115,7 +115,7 @@ function deltest(obj){
 	</table>
 	<table class="def-table-full"><tr><td style="text-align: right;">
 		<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="취소" onclick="history.go(-1);">
-		<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="등록" onclick="submitForm(this.form);">
+		<input style="float:right;" type="button" class="def-btn btn-md btn-color" value="등록" onclick="submit_test(this.form);">
 	</td></tr></table>
 	</form>
 </body>
