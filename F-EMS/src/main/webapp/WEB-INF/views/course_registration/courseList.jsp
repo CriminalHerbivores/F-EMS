@@ -46,9 +46,11 @@ function go_searchLctre(){
 function add_IntrstLctre(){
 	alert("관심추가 시작");
 	// 체크를 한 tr 태그들을 목록화
-	var array = [];
+	var array_1 = [];
+	var array_2 = [];
 	
-	var row = new Array();
+	
+	var row_1 = new Array();
 	
 	$(".result_1:checked").each(function(){
 		var tr = $(this).closest("tr");
@@ -58,13 +60,16 @@ function add_IntrstLctre(){
 		var in_Lctre_No= $(temp).text();
 	// 한건의 tr 태그가 하나의 javascript 객체 형성
 	// 여러건의 tr 태그, 즉 javascript 객체들이 하나의 배열 형성
-		row= { "in_Stdnt_No" : in_Stdnt_No, "in_Lctre_No" : in_Lctre_No };
-		array.push(row);
+		row_1= { "in_Stdnt_No" : in_Stdnt_No, "in_Lctre_No" : in_Lctre_No };
+		array_1.push(row_1);
 		});	// result_1:checked
-		console.log(array);
+		console.log(array_1);
+	
+	
+	
 
 	// 만들어진 배열을 json 형태로 변환
-	var data = JSON.stringify(array);
+	var data = JSON.stringify(array_1);
 
 	  $.ajax({
 	        url:'insertInterest',
@@ -74,22 +79,22 @@ function add_IntrstLctre(){
 	        data: data,
 	        success:function(res){
 	   			// 관심강의 목록
-	            var row2="";
-	            row2 += '<table class="def-table-full tb-border table-hover">'
+	            var tr_row_1="";
+	            tr_row_1 += '<table class="def-table-full tb-border table-hover">'
 				+'<thead><tr><th colspan="3">관심 강의 목록</th></tr>'
 				+'<tr><th><label><input type="checkbox" id="check_all_6" class="input_check_6" />전체 선택</label></th>'
 				+'<th>번호</th><th>강의명</th></tr></thead><tbody>';
 	            $.each(res, function(index,intrst){
-	            	row2 += '<tr id="intrstList_tr"><td class="select_ckbox_1">'
+	            	tr_row_1 += '<tr id="intrstList_tr"><td class="select_ckbox_1">'
 	            	    +'<label><input type="checkbox" class="input_check_6" name="result" value="'+res.in_Lctre_No+'" />'
 	            		+intrst.lu_Lctre_Code+'-'+intrst.lc_Split+'</label></td>'
 	            		+'<td>'+intrst.in_Lctre_No+'</td>'
 	            		+'<td>'+intrst.lu_Lctre_Nm+'</td></tr>';
 	            console.log("success : "+index);
 	            });
-	            row2+='</tbody></table>';
+	            tr_row_1+='</tbody></table>';
 	            $("#intrstList").empty();
-	            $("#intrstList").html(row2);
+	            $("#intrstList").html(tr_row_1);
 	            
 	            // 수강완료 , 학점 - 변화 없음
 	        },	// success
@@ -113,7 +118,7 @@ function del_IntrstLctre(){
 		var tr = $(this).closest("tr");
 		
 		var in_Stdnt_No= "${loginUser}";
-		var temp=$(tr).find('.in_Lctre_No');
+		var temp=$(tr).find('.lctre_No');
 		var in_Lctre_No= $(temp).text();
 	// 한건의 tr 태그가 하나의 javascript 객체 형성
 	// 여러건의 tr 태그, 즉 javascript 객체들이 하나의 배열 형성
@@ -165,52 +170,53 @@ function add_reqstLctre(){
 	alert("수강신청 시작");
 	// 체크를 한 tr 태그들을 목록화
 	var array = [];
-	
 	var row = new Array();
 	
 	$(".result:checked").each(function(){
 		var tr = $(this).closest("tr");
-		
-		var in_Stdnt_No= "${loginUser}";
-		var temp=$(tr).find('.in_Lctre_No');
-		var in_Lctre_No= $(temp).text();
+		var re_Stdnt_No= "${loginUser}";
+		var temp=$(tr).find('.lctre_No');
+		var re_Lctre_No= $(temp).text();
 	// 한건의 tr 태그가 하나의 javascript 객체 형성
 	// 여러건의 tr 태그, 즉 javascript 객체들이 하나의 배열 형성
-		row= { "in_Stdnt_No" : in_Stdnt_No, "in_Lctre_No" : in_Lctre_No };
+		row= { "re_Stdnt_No" : re_Stdnt_No, "re_Lctre_No" : re_Lctre_No };
 		array.push(row);
-		});	// result_1:checked
+	});	// result_1:checked
+	
 		console.log(array);
-
 	// 만들어진 배열을 json 형태로 변환
 	var data = JSON.stringify(array);
-
-	  $.ajax({
-	        url:'insertLcture',
+	
+	  $.ajax({ 
+	        url:'insertReqst',
 	        contentType:'application/json; charset=utf-8',
 	        type:'post',
 	        dataType: 'json',
 	        data: data,
 	        success:function(res){
-	   			// 관심강의 목록
-	            var row2="";
-	            row2 += '<table class="def-table-full tb-border table-hover">'
-				+'<thead><tr><th colspan="3">관심 강의 목록</th></tr>'
-				+'<tr><th><label><input type="checkbox" id="check_all_6" class="input_check_6" />전체 선택</label></th>'
-				+'<th>번호</th><th>강의명</th></tr></thead><tbody>';
-	            $.each(res, function(index,intrst){
-	            	row2 += '<tr id="intrstList_tr"><td class="select_ckbox_1">'
-	            	    +'<label><input type="checkbox" class="input_check_6" name="result" value="'+res.in_Lctre_No+'" />'
-	            		+intrst.lu_Lctre_Code+'-'+intrst.lc_Split+'</label></td>'
-	            		+'<td>'+intrst.in_Lctre_No+'</td>'
-	            		+'<td>'+intrst.lu_Lctre_Nm+'</td></tr>';
-	            console.log("success : "+index);
-	            });
-	            row2+='</tbody></table>';
-	            $("#intrstList").empty();
-	            $("#intrstList").html(row2);
-	            
+	        	
+	        	
+	        	// 관심목록
+// 	        	var row2="";
+// 	            row2 += '<table class="def-table-full tb-border table-hover">'
+// 				+'<thead><tr><th colspan="3">관심 강의 목록</th></tr>'
+// 				+'<tr><th><label><input type="checkbox" id="check_all_6" class="input_check_6" />전체 선택</label></th>'
+// 				+'<th>번호</th><th>강의명</th></tr></thead><tbody>';
+// 	            $.each(res, function(index,intrst){
+// 	            	row2 += '<tr id="intrstList_tr"><td class="select_ckbox_1">'
+// 	            	    +'<label><input type="checkbox" class="input_check_6" name="result" value="'+res.in_Lctre_No+'" />'
+// 	            		+intrst.lu_Lctre_Code+'-'+intrst.lc_Split+'</label></td>'
+// 	            		+'<td>'+intrst.in_Lctre_No+'</td>'
+// 	            		+'<td>'+intrst.lu_Lctre_Nm+'</td></tr>';
+// 	            console.log("success : "+index);
+// 	            });
+// 	            row2+='</tbody></table>';
+// 	            $("#intrstList").empty();
+// 	            $("#intrstList").html(row2);
+	        	
+	        	
+	        	
 	            // 수강완료 
-	            
 	            var row3="";
 	            /* row3 += '<table  class="def-table-full tb-border table-hover"><tr>'
 	            		+'<th colspan="2" class="text-left"><input type="button" class="def-btn ckbtn-color" value="선택 삭제" onclick="del_intrst_reqst()"></th>'
@@ -228,23 +234,21 @@ function add_reqstLctre(){
 			</tr>' */
 			
 	            
-			$.each(res, function(index,intrst){
+			$.each(res, function(index,lctre){
 	            row3 += '<tr class="slt_ck_${status.index}"><td class="select_ck_2">'
-	            		+'<label><input type="checkbox" class="input_ck_2 result_3" id="all_ck_${status.index}"  name="result_3" value="${lctre.in_Lctre_No}" />삭제</label>'
-	            		+'<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>'
-	            		+'<td class="select_ck_1"><label><input type="checkbox" class="input_ck_1 result_4" name="result_4" value="${lctre.re_Lctre_No}" />취소</label>'
-	            		+'<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>'
-	            		+'<td class="lc_Lctre_No">${lctre.lc_Lctre_No}</td>'
-	            		+'<td>${lctre.sit_Subjct}</td>'
-	            		+'<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>'
-	            		+'<td><a href="#" >${lctre.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->'
-	            		+'<td>${lctre.lu_Grade }</td>'
-	            		+'<td>${lctre.lu_Compl_Se}/${lctre.knd_Lctre_Knd}</td>'
-	            		+'<td>${lctre.pr_Nm}</td>'
-	            		+'<td>${lctre.lu_Pnt}</td>'
-	            		+'<td>${lctre.lc_Lctre_Time}</td>'
-	            		+'<td>${lctre.lc_Lctre_Nmpr}</td>'
-	            		+'<td>${lctre.lr_Accept_Nmpr}</td></tr>';
+	            		+'<label><input type="checkbox" class="input_ck_2 result_3" id="all_ck_${status.index}"  name="result_3" value="'+lctre.in_Lctre_No+'" />삭제</label></td>'
+	            		+'<td class="select_ck_1"><label><input type="checkbox" class="input_ck_1 result_4" name="result_4" value="'+lctre.re_Lctre_No+'" />취소</label></td>'
+	            		+'<td class="lc_Lctre_No">'+lctre.lc_Lctre_No+'</td>'
+	            		+'<td>'+lctre.sit_Subjct+'</td>'
+	            		+'<td>'+lctre.lu_Lctre_Code+'-'+lctre.lc_Split+'</td>'
+	            		+'<td><a href="#" >'+lctre.lu_Lctre_Nm+'</a></td> <!-- 강의계획서 조회 넣을것 -->'
+	            		+'<td>'+lctre.lu_Grade+'</td>'
+	            		+'<td>'+lctre.lu_Compl_Se+'/'+lctre.knd_Lctre_Knd+'</td>'
+	            		+'<td>'+lctre.pr_Nm+'</td>'
+	            		+'<td>'+lctre.lu_Pnt+'</td>'
+	            		+'<td>'+lctre.lc_Lctre_Time+'</td>'
+	            		+'<td>'+lctre.lc_Lctre_Nmpr+'</td>'
+	            		+'<td>'+lctre.lr_Accept_Nmpr+'</td></tr>';
 			});
 	            $("#reqstList").empty();
 	            $("#reqstList").html(row3);
@@ -429,11 +433,10 @@ _2" value="${openLctre.lc_Lctre_No}" />수강
 				<tr class="slt_ck_${status.index}">
 					<td class="select_ck_2">
 						<label><input type="checkbox" class="input_ck_2 result_3" id="all_ck_${status.index}"  name="result_3" value="${lctre.in_Lctre_No}" />삭제</label>
-						<input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>  <!-- ${status.count} -->
-					
+						<%-- <input type="hidden" value="${lctre.in_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></td>  <!-- ${status.count} -->
 					<td class="select_ck_1">
 						<label><input type="checkbox" class="input_ck_1 result_4" name="result_4" value="${lctre.re_Lctre_No}" />취소</label>
-						<input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/></td>
+						<%-- <input type="hidden" value="${lctre.re_Lctre_No}"/><input type="hidden" value="${lctre.in_Stdnt_No}"/> --%></td>
 					<td class="lc_Lctre_No">${lctre.lc_Lctre_No}</td>
 					<td>${lctre.sit_Subjct}</td>
 					<td>${lctre.lu_Lctre_Code}-${lctre.lc_Split}</td>
@@ -478,7 +481,7 @@ _2" value="${openLctre.lc_Lctre_No}" />수강
 						<td class="select_ckbox_6">
 							<label><input type="checkbox" class="input_check_6 result" name="result" value="${intrst.in_Lctre_No}" />
 							${intrst.lu_Lctre_Code }-${intrst.lc_Split }</label></td>
-						<td class="in_Lctre_No">${intrst.in_Lctre_No}</td>
+						<td class="lctre_No">${intrst.in_Lctre_No}</td>
 						<td><a href="#" >${intrst.lu_Lctre_Nm }</a></td> <!-- 강의계획서 조회 넣을것 -->
 					</tr>
 				</c:forEach>

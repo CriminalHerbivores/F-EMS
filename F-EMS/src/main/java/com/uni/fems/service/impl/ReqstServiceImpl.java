@@ -33,11 +33,20 @@ public class ReqstServiceImpl implements ReqstService {
 	
 	// 수강 신청 등록
 	@Override
-	public void insertReqst(ReqstVO reqstVO[], Lctre_SearchVO[] lctre_SearchVO) throws SQLException {
+	public void insertReqst(ReqstVO reqstVO[]) throws SQLException {
 		
 		for(int i=0; i<reqstVO.length;i++){
 			reqstDAO.insertReqst(reqstVO[i]);
 			gradeDAO.insertGrade(reqstVO[i]);
+			//reqstDAO.setNumOfStdnt(lctre_SearchVO[i]);	// 수강 신청시 수강중 인원 증가
+		}
+		
+	}
+	// 수강신청시 인원수 증가
+	@Override
+	public void insertReqstNum(Lctre_SearchVO[] lctre_SearchVO) throws SQLException{
+		
+		for(int i=0; i<lctre_SearchVO.length;i++){
 			reqstDAO.setNumOfStdnt(lctre_SearchVO[i]);	// 수강 신청시 수강중 인원 증가
 		}
 		
@@ -45,12 +54,19 @@ public class ReqstServiceImpl implements ReqstService {
 	
 	// 수강 신청 삭제
 	@Override
-	public void deleteReqst(ReqstVO reqstVO[], Lctre_SearchVO[] lctre_SearchVO) throws SQLException {
+	public void deleteReqst(ReqstVO reqstVO[]) throws SQLException {
 		for(int i=0; i<reqstVO.length;i++){
 			reqstDAO.deleteReqst(reqstVO[i]);
 			gradeDAO.deleteGrade(reqstVO[i]);
+		}
+	}
+	
+	@Override
+	public void deleteReqstNum(Lctre_SearchVO[] lctre_SearchVO) throws SQLException{
+		for(int i=0; i<lctre_SearchVO.length;i++){
 			reqstDAO.setNumOfStdnt(lctre_SearchVO[i]);	// 수강 취소시 수강중 인원 감소
 		}
+		
 	}
 
 	// 학생의 개설학기내 수강신청완료한 학점들의 총합

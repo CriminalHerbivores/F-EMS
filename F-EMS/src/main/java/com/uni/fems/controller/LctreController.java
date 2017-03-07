@@ -318,9 +318,8 @@ public class LctreController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value ="insertInterest")//, method = RequestMethod.POST)
+	@RequestMapping(value ="insertInterest")
 	public @ResponseBody List<Lctre_SearchVO> insertInterest(@RequestBody Intrst_ListVO[] array, Authentication auth) {
-		
 		String loginUser = auth.getName();
 
 			try {
@@ -343,40 +342,37 @@ public class LctreController {
 		return lctre_SearchVO_2;
 	}
 
+	
 	/**
 	 * <pre>
 	 * 접속한 학생이 수강 과목으로 추가
 	 * </pre>
 	 * <pre>
-	 * @param datas
-	 * @param jsonMap
-	 * @param request
+	 * @param array
+	 * @param array2
+	 * @param auth
 	 * @return
 	 * </pre>
 	 */
-	//public List<Lctre_SearchVO> insertLcture(@RequestBody Lctre_SearchVO[] datas, Map<String, Object> jsonMap, HttpServletRequest request){
-	@RequestMapping("insertLcture")
-	public @ResponseBody List<Lctre_SearchVO> insertLcture(@RequestBody ReqstVO[] array, @RequestBody Lctre_SearchVO[] array2, Authentication auth) {
-		
+	@RequestMapping(value="insertReqst")
+	public @ResponseBody List<Lctre_SearchVO> insertLcture(@RequestBody ReqstVO[] array, Authentication auth) {
 		String loginUser = auth.getName();
+		
 		try {
-			reqstService.insertReqst(array, array2);	
+			reqstService.insertReqst(array);	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		ReqstVO reqstVO_3=new ReqstVO();
 		List<Lctre_SearchVO> lctre_SearchVO_3= null;
-		//String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		
 		try {
 			reqstVO_3.setRe_Stdnt_No(loginUser);
-			lctre_SearchVO_3=reqstService.selectReqst(reqstVO_3.getRe_Stdnt_No());
+			lctre_SearchVO_3 = reqstService.selectReqst(reqstVO_3.getRe_Stdnt_No());
 			stdntService.selectStdnt(loginUser);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return lctre_SearchVO_3;
 		
 	}
