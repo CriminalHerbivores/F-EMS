@@ -36,7 +36,8 @@
 	
 	<update id="insertLctre_Task" parameterClass="lctre_task_gnt">
 		insert into Lctre_T$table_Nm$(LT_BBS_NO,LT_STDNT_NO,LT_SJ,LT_CN,Lt_WRITNG_DT,Lt_FLPTH_NO) 
-		values(((select max(LT_BBS_NO) from Lctre_T$table_Nm$)+1),#lt_Stdnt_No#,#lt_Sj#,#lt_Cn#,sysdate,#lt_Flpth_No#)
+		values(nvl((select max(LT_BBS_NO)+1 from Lctre_T$table_Nm$),0),
+		#lt_Stdnt_No#,#lt_Sj#,#lt_Cn#,sysdate,#lt_Flpth_No#)
 	</update>
 	
 	<update id="updateLctre_Task" parameterClass="lctre_task_gnt">

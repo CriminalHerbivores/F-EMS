@@ -87,6 +87,12 @@ public class Lctre_Video_StdntServiceImpl implements Lctre_Video_StdntService{
 		list = lctre_Video_StdntDAO.lctre_watch_video_gnt(vo);
 		return list;
 	}
+	@Override
+	public Lctre_Watch_Video_GntVO attendance(Lctre_Watch_Video_GntVO vo)
+			throws SQLException {
+		Lctre_Watch_Video_GntVO att = lctre_Video_StdntDAO.attendance(vo);
+		return att;
+	}
 
 }
 

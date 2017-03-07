@@ -46,7 +46,7 @@
 <form name="formm" method="post">
 <table class="def-table-full tb-border table-hover">
 	<tr>
-		<th>일정명</th>
+		<th width="100">일정명</th>
 		<th>시작일</th>
 		<th>종료일</th>
 		<th>수정</th>
