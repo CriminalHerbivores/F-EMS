@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.AnswerVO;
+import com.uni.fems.dto.GradeVO;
 import com.uni.fems.dto.TestVO;
 import com.uni.fems.dto.Test_PaperVO;
 import com.uni.fems.service.AnswerService;
+import com.uni.fems.service.GradeService;
 import com.uni.fems.service.TestService;
 import com.uni.fems.service.Test_PaperService;
 
@@ -45,6 +47,9 @@ import com.uni.fems.service.Test_PaperService;
 @Controller
 @RequestMapping("/lctre")
 public class Lctre_TestController {
+	
+	@Autowired
+	private GradeService gradeService;
 	
 	@Autowired
 	private TestService testSvc;
@@ -164,6 +169,7 @@ public class Lctre_TestController {
 				e.printStackTrace();
 			}
 		}
+		
 		return url;
 	}
 	@RequestMapping(value="/detailTest")
@@ -188,6 +194,19 @@ public class Lctre_TestController {
 		return url;
 	}
 	
+	/**
+	 * <pre>
+	 * 시험 봄
+	 * </pre>
+	 * <pre>
+	 * @param request
+	 * @param answerVO
+	 * @param answer
+	 * @param queNo
+	 * @param table_Nm
+	 * @return
+	 * </pre>
+	 */
 	@RequestMapping(value="/detailTest", method=RequestMethod.POST)
 	public String writeTest(HttpServletRequest request, AnswerVO answerVO, String[] answer, String[] queNo, int table_Nm){
 		String url="redirect:testList?table_Nm="+table_Nm;
@@ -206,6 +225,53 @@ public class Lctre_TestController {
 				e.printStackTrace();
 			}
 		}
+
+		/////////////////////////// 시험 답안 제출 이후 점수 계산
+		
+		Test_PaperVO tpVO = null;
+		List<TestVO> queList = null;
+		List<AnswerVO> answerList = null;
+		try {
+			tpVO = test_paperSvc.getTestPaper(Integer.parseInt(answerVO.getAn_Tp_No()));
+			queList = testSvc.listAllTest(Integer.parseInt(answerVO.getAn_Tp_No()));
+			answerList = answerSvc.completeAnswer(answerVO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		double totalScore = 0;
+		double eachScore = 100/queList.size();
+		for(int i=0;i<queList.size();i++){
+			if(queList.get(i).getTe_Ca().equals(answerList.get(i).getAn_Ans()))
+				totalScore +=eachScore;
+		}
+		
+		GradeVO gvo = new GradeVO();
+		gvo.setGd_Stdnt_No(loginUser);
+		gvo.setGd_Lctre_No(tpVO.getTp_Lctre_No());
+		List<GradeVO> listG = null;
+		try {
+			listG = gradeService.selectGrade(gvo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(listG!=null && !listG.isEmpty()){
+			gvo = listG.get(0);
+			if(gvo.getGd_Mini_Score()==null)
+				gvo.setGd_Mini_Score("0");
+			totalScore += Double.parseDouble(gvo.getGd_Mini_Score());
+			gvo.setGd_Mini_Score(totalScore+"");
+		}
+		
+		//////성적 등록
+		
+		try {
+			gradeService.updateGrade(gvo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return url;
 		
 	}

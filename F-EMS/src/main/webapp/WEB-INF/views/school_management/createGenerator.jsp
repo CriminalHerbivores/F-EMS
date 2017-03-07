@@ -25,7 +25,7 @@ function delet() {
 </head>
 <body>
 <h2>게시판 생성</h2><br/>
-<form name="frm" method="get" action="<%=request.getContextPath()%>/bbs_list/insertTable">
+<form name="formm" method="get" action="<%=request.getContextPath()%>/bbs_list/insertTable">
 <input type="hidden" name="ba_Manage" value="3">
 <table class="def-table-full tb-border table-hover">
 	<tr>

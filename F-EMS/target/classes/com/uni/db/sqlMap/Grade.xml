@@ -33,6 +33,14 @@
 		and gd_Lctre_No = #gd_Lctre_No#
 	</update>
 	
+	<update id="updateOneGrade" parameterClass="grade">
+		update GRADE
+		set
+			$key$=#value#
+		where gd_Stdnt_No = #gd_Stdnt_No#
+		and gd_Lctre_No = #gd_Lctre_No#
+	</update>
+	
 	<update id="deleteGrade" parameterClass="reqst">
 		delete from GRADE
 		where gd_Stdnt_No = #re_Stdnt_No#
