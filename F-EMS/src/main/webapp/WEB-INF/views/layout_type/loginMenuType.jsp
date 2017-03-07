@@ -100,9 +100,22 @@ ${loginUser} </td>
 </form>
   <tr><td colspan="5">
 		<table class="def-table-full tb-border" style="width:100% !important;">
-		<tr><td class="login-menu-gray"><div>메뉴1</div></td><td  class="login-menu"><div>메뉴2</div></td><td class="login-menu-gray"><div>메뉴3</div></td><td class="login-menu"><div>메뉴4</div></td><td class="login-menu-gray"><div>메뉴5</div></td></tr>	
-		<tr><td class="login-menu"><div>메뉴6</div></td><td  class="login-menu-gray"><div>메뉴7</div></td><td class="login-menu"><div>메뉴8</div></td><td class="login-menu-gray"><div>메뉴9</div></td><td class="login-menu"><div>메뉴10</div></td></tr>	
-		<tr><td class="login-menu-gray"><div>메뉴11</div></td><td  class="login-menu"><div>메뉴12</div></td><td class="login-menu-gray"><div>메뉴13</div></td><td class="login-menu"><div>메뉴14</div></td><td class="login-menu-gray"><div>메뉴15</div></td></tr>	
+			<c:forEach items="${menuList}" var="mn" varStatus="status">
+			<c:if test="${status.count/5 eq 1}">
+			<tr>
+			</c:if>
+			<c:choose>
+			<c:when test="${mn.mn_Se_Code=='etc'}">
+			<td class="login-menu"><a href="${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+			</c:when>
+			<c:otherwise>
+			<td class="login-menu"><a href="<%=request.getContextPath()%>/${mn.mn_Cours}">${mn.mn_Nm}</a></td>
+			</c:otherwise>
+			</c:choose>
+			<c:if test="${status.count/5 eq 0}">
+			</tr>
+			</c:if>
+			</c:forEach>
 	</table></td></tr></table>
 	</div>
 	
