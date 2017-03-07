@@ -58,19 +58,17 @@ import com.uni.fems.service.WorkService;
 
 /**
  * <pre>
- * 직원과 연관된 로직들을 처리하는 컨트롤러
+ * 학생의 교수 배정을 위한 턴트롤러
  * </pre>
- * @author JAR
- * @since 2017. 01. 24.
+ * @author KJS
+ * @since 2017. 03. 06.
  * @version 1.0
  * @see javax.servlet.http.HttpServlet
  * <pre>
  * [[개정이력(Modification Information)]]
  * 수정일             수정자            수정내용
  * --------     --------    ----------------------
- * 2017.01.24.    JAR       최초작성
- * 2017.02.15.    JAR       추가작성
- * 2017.03.07.    KJS       추가작성
+ * 2017.03.07.    KJS       최초작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
