@@ -36,7 +36,7 @@
 	
 	<update id="insertLctre_Qna" parameterClass="lctre_qna_gnt" >
 		insert into Lctre_Q$table_Nm$(LQ_BBS_NO,LQ_STDNT_NO,LQ_SJ,LQ_CN,LQ_WRITNG_DT,LQ_RDCNT) 
-		values(((select max(LQ_BBS_NO) from Lctre_Q$table_Nm$)+1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0)
+		values(nvl((select max(LQ_BBS_NO)+1 from Lctre_Q$table_Nm$),1),#lq_Stdnt_No#,#lq_Sj#,#lq_Cn#,sysdate,0)
 	</update>
 	
 	<update id="updateLctre_Qna" parameterClass="lctre_qna_gnt" >
