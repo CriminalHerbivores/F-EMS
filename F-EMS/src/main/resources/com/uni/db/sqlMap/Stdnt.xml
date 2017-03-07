@@ -168,6 +168,7 @@
 		<isNotNull prepend="and" property="st_Brhs_At">
 		st_Brhs_At is not null
 		</isNotNull>
+		order by st_Stdnt_No desc
 	</select>
 	
 	<!-- 학생 개수 조회 -->

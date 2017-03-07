@@ -63,6 +63,7 @@ import com.uni.fems.service.WorkService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.03.03.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -832,32 +833,37 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping("/sknrgListForm")
+	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.GET)
 	public String sknrgListForm(Model model, HttpServletRequest request, HttpSession session) {
 		String url = "manager/student/sknrgsListForm";
 		String tpage = request.getParameter("tpage");
 		String skn_Type = request.getParameter("skn_Type");
-		String st_Stdnt_No = request.getParameter("st_Stdnt_No");
+		String Stdnt_No = request.getParameter("Stdnt_No");
 		String skn_Useyn = request.getParameter("skn_Useyn");
 		
-		if (tpage ==null){
+		if (tpage ==null || tpage.equals(""))
 			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
+		if (skn_Type == null || skn_Type.equals("")) 
+			skn_Type = "%";
+		if(Stdnt_No == null || Stdnt_No.equals(""))
+			Stdnt_No = "%";
+		if(skn_Useyn == null || skn_Useyn.equals(""))
+			skn_Useyn = "%";
+		
+		model.addAttribute("skn_Type",skn_Type);
+		model.addAttribute("Stdnt_No",Stdnt_No);
+		model.addAttribute("skn_Useyn",skn_Useyn);
 		model.addAttribute("tpage",tpage);
+		
 		
 		SknrgsViewVO sknrgsView = new SknrgsViewVO();
 		List<SknrgsViewVO> sknrgsVOList = null;
-		if (skn_Type == null) {
-			sknrgsView.setSkn_Type("%");
-			sknrgsView.setSkn_Useyn("%");
-			sknrgsView.setSt_Stdnt_No("%");
-		}else{
-			sknrgsView.setSkn_Type(skn_Type);
-			sknrgsView.setSkn_Useyn(skn_Useyn);
-			sknrgsView.setSt_Stdnt_No(st_Stdnt_No);
-		}
+		sknrgsView.setSkn_Type(skn_Type);
+		sknrgsView.setSkn_Useyn(skn_Useyn);
+		sknrgsView.setSt_Stdnt_No(Stdnt_No);
+		System.out.println(skn_Type);
+		System.out.println(Stdnt_No);
+		System.out.println(skn_Useyn);
 		String paging = null;
 		try {
 			sknrgsVOList = sknrgs_Svc.listAllSknrgs(Integer.parseInt(tpage), sknrgsView);
@@ -882,15 +888,18 @@ public class SklstfController {
 	 * @return
 	 * </pre>
 	 */
-	@RequestMapping(value = "/sknrgListFormk", method = RequestMethod.POST)
+	@RequestMapping(value = "/sknrgListForm", method = RequestMethod.POST)
 	public String sknrgList(@RequestParam(value = "skn_No") String[] skn_Nos,
 			@RequestParam(value = "skn_Useyn") String[] skn_Useyns,
 			Model model, HttpSession session) {
 		String url = "redirect:sknrgListForm";
-
+		System.out.println("skn_Nos : "+skn_Nos.toString());
+		System.out.println("skn_Useyns : "+skn_Useyns.toString());
 		SknrgsVO sknrgsVO = new SknrgsVO();
 		try {
 			for (int i = 0; i < skn_Nos.length; i++) {
+				System.out.println("skn_Nos : "+skn_Nos[i]);
+				System.out.println("skn_Useyns : "+skn_Useyns[i]);
 				sknrgsVO.setSkn_No(Integer.parseInt(skn_Nos[i]));
 				sknrgsVO.setSkn_Useyn(skn_Useyns[i]);
 				try {
