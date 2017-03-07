@@ -74,8 +74,31 @@
 	</filter-mapping>
 	
 	
+	<!-- 에러 페이지   -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/errorPage/404Error.jsp</location>
+	</error-page>
 	
-
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/errorPage/500Error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/WEB-INF/views/errorPage/nullError.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/views/errorPage/nullError.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>415</error-code>
+		<location>/WEB-INF/views/errorPage/nullError.jsp</location>
+	</error-page>
 
 </web-app>
 
