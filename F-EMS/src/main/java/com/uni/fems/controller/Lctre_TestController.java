@@ -314,6 +314,7 @@ public class Lctre_TestController {
 	
 	@RequestMapping(value="/updateTest", method=RequestMethod.POST)
 	public String updateTest(HttpServletRequest request, TestVO testVO, Test_PaperVO test_paperVO,
+							String start_Dt, String end_Dt, String start_Dt2, String end_Dt2,
 							String[] ca, String tpNm,String[] queNo,
 							String[] addCa, String tp_No,
 							String[] ques,String[] no1,String[] no2,String[] no3, String[] no4,
@@ -325,6 +326,14 @@ public class Lctre_TestController {
 		String url = "redirect:testList?table_Nm="+table_Nm;
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
+		
+		String st = start_Dt+" "+start_Dt2+":00.0";
+		String en = end_Dt+" "+end_Dt2+":00.0";
+		
+
+		test_paperVO.setTp_Start_Dt(java.sql.Timestamp.valueOf(st));
+		test_paperVO.setTp_End_Dt(java.sql.Timestamp.valueOf(en));
+		
 		
 	
 		

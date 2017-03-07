@@ -215,13 +215,37 @@ history.go(1);
 		<sec:authorize access="hasRole('ROLE_PRO')">
 		<div style="float:right;">
 			<a href="updateTest?tpNo=${tpNo }&tpNm=${tpNm}&table_Nm=${table_Nm}"><input type="button" class="def-btn btn-md btn-color" value="수정"></a>
-			<a href="deleteTest?tpNo=${tpNo}&table_Nm=${table_Nm}"><input type="button" class="def-btn btn-md btn-color" value="삭제"></a>
+			<input type="button" class="def-btn btn-md btn-color" data-target="#layerpop" data-toggle="modal" value="삭제">
 			<input type="button" class="def-btn btn-md btn-color" value="목록" onclick="history.back()">
 		</div>
 		</sec:authorize>
 		</td></tr></table>
 		
 	</form>
+	
+	<!--모달부분  -->
+	<div class="modal fade" id="layerpop">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" style="text-align: center">삭제확인</h4>
+				</div>
+				<!-- body -->
+				<div class="modal-body" style="text-align: center">삭제하시겠습니까?</div>
+				<!-- Footer -->
+				<div class="modal-footer" style="text-align: center;">
+					<a href="deleteTest?tpNo=${tpNo}&table_Nm=${table_Nm}"> <!--삭제 모달  -->
+						<input type="button" class="btn btn-default" value="예">
+					</a> <input type="button" class="btn btn-default" data-dismiss="modal"
+						value="아니오">
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
