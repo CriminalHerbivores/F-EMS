@@ -45,7 +45,7 @@
 			
 			
 			<form action="login" id="loginForm" method="post">
-			<table class="def-table-auto out-border ">
+			<table class="def-table-auto out-border">
 				<tr><td>
 <input type="hidden" name="returl" value="${param.returl }" />
 <input type="text" class="def-input-text-md custom-form-control" name="userid" placeholder="아이디" value="${param.userid }"/>
@@ -61,8 +61,8 @@
 			</td></tr>
 		<tr><td><input type="button" class="def-btn btn-sm btn-color" value="ID찾기" onclick="modal_find_id()"></td><td><input type="button" class="def-btn btn-sm btn-color" value="PW찾기" onclick="modal_find_pw()"></td></tr>
 		<tr><td colspan="3">
-			<table class="def-table-full tb-border"  style="width:100% !important;">
-				<tr><td class="login-menu-gray">메뉴1</td><td class="login-menu">메뉴2</td><td class="login-menu-gray">메뉴3</td><td class="login-menu">메뉴4</td><td class="login-menu-gray">메뉴5</td></tr>
+			<table class="def-table-full tb-border td-odd"  style="width:100% !important;">
+				<tr><td>메뉴1</td><td class="login-menu">메뉴2</td><td>메뉴3</td><td class="login-menu">메뉴4</td><td>메뉴5</td></tr>
 			</table>		
 		</td></tr>
 	</table>

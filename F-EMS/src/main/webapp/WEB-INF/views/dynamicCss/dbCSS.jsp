@@ -215,7 +215,7 @@ border:1px solid ${manageVO.mng_Sub_Color2};
 
 
 <%--/////////////////// layout.css ///////////////////--%>
-.login-menu-gray:hover, .login-menu:hover{
+.td-odd td:hover, td-odd-even:hover{
 	background: ${manageVO.mng_Sub_Color1};
 	color: ${manageVO.mng_Sub_Txtclr1};
 	

@@ -93,19 +93,22 @@
 
 
 
-
-
-
-
-
-
 /* //////////// 메뉴형로그인 ////////////  */
-.login-menu-gray{
+/* .login-menu-gray{
 	height: 80px;
 	background: #ccc;
 	
-}
+} */
 
+.td-odd td:nth-child(odd), .td-odd-even tr:nth-child(odd) td:nth-child(odd), .td-odd-even tr:nth-child(even) td:nth-child(even){
+	background-color: #ccc;
+}
+.td-odd-even
+
+
+.td-odd td:nth-child, .td-odd tr:nth-child{
+	height: 80px;
+}
 
 .login-menu{
 	height: 80px;
