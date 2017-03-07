@@ -75,9 +75,6 @@ function add_IntrstLctre(){
 	        contentType:"application/json",
 	        success:function(res){
 	   			// 관심강의 목록
-	            //$('#intrstList_tr').empty();	/* 모든 <tr>요로 삭제 후 새로 리스트 불러오는걸로... */
-	            //$('#intrstList_tr').remove();	/* 모든 <tr>요로 삭제 후 새로 리스트 불러오는걸로... */
-            	
 	            var row2="";
 	            row2 += '<table class="def-table-full tb-border table-hover">'
 				+'<thead><tr><th colspan="3">관심 강의 목록</th></tr>'
@@ -92,17 +89,14 @@ function add_IntrstLctre(){
 	            console.log("success : "+index);
 	            });
 	            row2+='</tbody></table>';
-	            $("#checkboxArea intrstList").remove();
-	            console.log("row2 : " + row2);
-	            //$("#checkboxArea intrstList").html(row2);
-	            //$('#intrstList table > tbody').append(row2);
+	            $("#intrstList").empty();
+	            $("#intrstList").html(row2);
 	            
 	            // 수강완료 , 학점 - 변화 없음
 	        },	// success
 	        
 	        error:function(jqXHR, textStatus, errorThrown){
 	            alert("실패 \n" + textStatus + " : " + errorThrown);
-	            /* self.close(); */
 	        }
 	    });
 }// function op_timeTable() 
@@ -307,8 +301,8 @@ function add_IntrstLctre(){
 		<div class="course-list-r-bottom">
 	<form name="intrstLctreForm" method="post">
 
-		<div class="text-center" id="checkboxArea intrstList">
-			<table class="def-table-full tb-border table-hover">
+		<div class="text-center" id="intrstList">
+			<table class="def-table-full tb-border table-hover" id="aaaaaaaaaaaaaaaaaa">
 				<thead>
 				<tr><th colspan="3">관심 강의 목록</th></tr>
 				<tr><th><label><input type="checkbox" id="check_all_6" class="input_check_6" />전체 선택</label></th>
