@@ -46,31 +46,9 @@ $(document).ready(function () {
 
 <script>	
 		var timeTbValues=[];
-	/* 	<c:forEach items="${lctre_SearchVO}" var="timeTb">
-		
-		<input type="hidden" class="TimeTable" name="lc_Wik_Lctre_Dayweek" value="${timeTb.lc_Wik_Lctre_Dayweek}">
-		<input type="hidden" class="TimeTable" name="lc_Lctre_Time" value="${timeTb.lc_Lctre_Time}">
-		<input type="hidden" class="TimeTable" name="lc_Lctrum_No" value="${timeTb.lc_Lctrum_No}">
-		<input type="hidden" class="TimeTable" name="lu_Lctre_Nm" value="${timeTb.lu_Lctre_Nm}">
-		<input type="hidden" class="TimeTable" name="bd_Nm" value="${timeTb.bd_Nm}">
-		<input type="hidden" class="TimeTable" name="pr_Nm" value="${timeTb.pr_Nm}">
-		<input type="hidden" class="TimeTable" name="lc_Lctre_No" value="${timeTb.lc_Lctre_No}">
-		<input type="hidden" class="TimeTable" name="lc_Lctre_Code" value="${timeTb.lc_Lctre_Code}">
-		<input type="hidden" class="TimeTable" name="lc_Split" value="${timeTb.lc_Split}">
-	</c:forEach> */
+
 	function setData(result){
 	$.each(result,function(i) {
-/* var timeTb ={
-			lc_Wik_Lctre_Dayweek : $("input[name='lc_Wik_Lctre_Dayweek']").val(),
-			lc_Lctre_Time : $("input[name='lc_Lctre_Time']").val(),
-			lc_Lctrum_No : $("input[name='lc_Lctrum_No']").val(),
-			lu_Lctre_Nm : $("input[name='lu_Lctre_Nm']").val(),
-			bd_Nm : $("input[name='bd_Nm']").val(),
-			pr_Nm : $("input[name='pr_Nm']").val(),
-			lc_Lctre_No : $("input[name='lc_Lctre_No']").val(),
-			lc_Lctre_Code : $("input[name='lc_Lctre_Code']").val(),
-			lc_Split : $("input[name='lc_Split']").val()
-		}; */
 		
 			var lc_Wik_Lctre_Dayweek = result.lc_Wik_Lctre_Dayweek;
 			var lc_Lctre_Time = result.lc_Lctre_Time;
@@ -107,17 +85,8 @@ $(document).ready(function () {
 		//---------------------------------------
 		var rst1 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr1+"( "+period1+" 교시)<br>"+bdNm+pr_Nm+"<br>";
 		var rst2 = "["+lc_Lctre_Code+"-"+lc_Split+"] "+lu_Lctre_Nm+"<br>"+arr2+"( "+period2+" 교시)<br>"+bdNm+pr_Nm+"<br>";
-/* var thArray = new Array();
-var contentArray = new Array();
-$('th').each(function(index) {
-  thArray[index] =    $(this).html();
-})
-$('tr').each(function(indexParent) {
-  contentArray['row'+indexParent] = new Array();
-    $(this).children().each(function(indexChild) {
-      contentArray['row'+indexParent]['col'+indexChild] = $(this).html();
-    });
-}); */
+
+		
 if(period1.split("-")[0]=="1"||period1.split("-")[1]=="1"){
 	if(arr1=="월"){
 		$("td:eq(0)").html(rst1);
