@@ -133,6 +133,7 @@ a#MOVE_TOP_BTN {
 			<td><a href="step1Add">STEP 1</a></td>
 			<td><a href="step2Add">STEP 2</a></td>
 			<td><a href="step3Add">STEP 3</a></td>
+			<td><a href="step4Add">STEP 4</a></td>
 			<td><a href="<%=request.getContextPath()%>/">INDEX</a></td>
 		</tr>
 	</table>
