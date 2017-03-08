@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uni.fems.dto.AnswerVO;
 import com.uni.fems.dto.GradeVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.TestVO;
 import com.uni.fems.dto.Test_PaperVO;
 import com.uni.fems.service.AnswerService;
 import com.uni.fems.service.GradeService;
+import com.uni.fems.service.LctreService;
 import com.uni.fems.service.TestService;
 import com.uni.fems.service.Test_PaperService;
 
@@ -67,6 +69,9 @@ public class Lctre_TestController {
 	public void setAnswerSvc(AnswerService answerSvc) {
 		this.answerSvc = answerSvc;
 	}
+	
+	@Autowired
+	private LctreService lctreService;
 
 	@RequestMapping("/testList")
 	public String testList(Model model,HttpServletRequest request,int table_Nm){
@@ -77,9 +82,11 @@ public class Lctre_TestController {
 		List<Test_PaperVO> testlist = null;
 		List<AnswerVO> answerList = null;
 		List<String> answeredSTD = null;
+		Lctre_SearchVO lctreInfo = null;
 		try {
 			testlist = test_paperSvc.listAllTestPapaer(table_Nm);
 			answerList = answerSvc.listAllAnswer(loginUser);
+			lctreInfo = lctreService.getDetailLctre(table_Nm);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,6 +110,7 @@ public class Lctre_TestController {
 					flaglist.add(flag);
 				}
 		}
+		model.addAttribute("lctreInfo", lctreInfo);
 		model.addAttribute("flaglist", flaglist);
 		model.addAttribute("testlist", testlist);
 		model.addAttribute("answerList", answerList);
