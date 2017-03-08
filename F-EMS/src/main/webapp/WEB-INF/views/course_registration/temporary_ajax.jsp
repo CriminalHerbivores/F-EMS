@@ -67,7 +67,7 @@ function add_Intrst_reqst(){
         },
         
         error:function(jqXHR, textStatus, errorThrown){
-            alert("실패 \n" + textStatus + " : " + errorThrown);
+        	sweetAlert(" ", "실패.", "error");
             self.close();
         }
     });
@@ -101,7 +101,7 @@ function add_Intrst_reqst(){
     		        },
     		        
     		        error:function(jqXHR, textStatus, errorThrown){
-    		            alert("실패 \n" + textStatus + " : " + errorThrown);
+    		        	sweetAlert(" ", "실패.", "error");
     		            self.close();
     		        }
     		    });		    		
@@ -161,7 +161,7 @@ function add_Intrst_reqst(){
     		        },
     		        
     		        error:function(jqXHR, textStatus, errorThrown){
-    		            alert("실패 \n" + textStatus + " : " + errorThrown);
+    		        	sweetAlert(" ", "실패.", "error");
     		            self.close();
     		        }
     		    });		

@@ -91,7 +91,7 @@ function add_IntrstLctre(){
 	        },	// success
 	        
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("실패 \n" + textStatus + " : " + errorThrown);
+	        	sweetAlert(" ", "실패.", "error");
 	        }
 	    });	// ajax (관심 추가)
 		
@@ -197,7 +197,7 @@ function add_IntrstLctre(){
 	        },	// success
 	        
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("실패 \n" + textStatus + " : " + errorThrown);
+	        	sweetAlert(" ", "실패.", "error");
 	        }
 	    });	// ajax (관심 추가)
 
@@ -255,7 +255,7 @@ function del_IntrstLctre(){
 	        },	// success
 	        
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("실패 \n" + textStatus + " : " + errorThrown);
+	        	sweetAlert(" ", "실패.", "error");
 	        }
 	    });
 }	// function del_IntrstLctre()
@@ -381,7 +381,7 @@ function add_reqstLctre(){
 	        },	// success
 	        
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("실패 \n" + textStatus + " : " + errorThrown);
+	        	sweetAlert(" ", "실패.", "error");
 	        }
 	    });
 	
@@ -485,7 +485,7 @@ function del_reqstLctre(){
 	        },	// success
 	        
 	        error:function(jqXHR, textStatus, errorThrown){
-	            alert("실패 \n" + textStatus + " : " + errorThrown);
+	        	sweetAlert(" ", "실패.", "error");
 	        }
 	    });
 	  
@@ -534,7 +534,7 @@ function del_reqstLctre(){
 		        },	// success
 		        
 		        error:function(jqXHR, textStatus, errorThrown){
-		            alert("실패 \n" + textStatus + " : " + errorThrown);
+		        	sweetAlert(" ", "실패.", "error");
 		        }
 		    });
 	  

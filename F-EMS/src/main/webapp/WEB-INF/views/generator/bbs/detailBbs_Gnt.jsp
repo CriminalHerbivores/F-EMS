@@ -35,7 +35,7 @@ $(document).ready(function() {
         $('div #comment').append(data);
      },
        error:function(error){
-       alert("오류났음");   
+    	   sweetAlert(" ", "오류입니다.", "error");   
        }
     });
 });
@@ -61,7 +61,7 @@ $(document).on('click','.pageComment',function(e){
            $('div #comment').append(data);
      },
        error:function(error){
-       alert("오류났음");   
+    	   sweetAlert(" ", "오류입니다.", "error");   
        }
     });
 });
@@ -69,7 +69,7 @@ function commm_go(){
 	
 	var comment_content = $('#comment_content').val();
 	if(comment_content == ""){
-		alert('실패');
+		sweetAlert(" ", "실패.", "error");
 		return;
 	}
 	var bbs_no = $('#bbs_no').val();
@@ -91,7 +91,7 @@ function commm_go(){
 	        $('div #comment').append(data);
 	     },
 	      error : function() {
-	         alert('댓글 등록 실패');
+	    	  sweetAlert(" ", "실패", "error");
 	      }
 	   });
 	}
@@ -129,7 +129,7 @@ $(document).on('click','.deleteComment',function(e){
 				 				$('div #comment').append(data);
 				 			},
 				 			error : function() {
-				 				alert('댓글 삭제 실패');
+				 				sweetAlert(" ", "댓글 삭제 실패.", "error");
 				 			}
 				 		});
 				    swal("삭제되었습니다.");
@@ -156,7 +156,7 @@ $(document).on('click','.cancelComment',function(e){
 	        $('div #comment').append(data);
 	     },
 	       error:function(error){
-	       alert("오류났음");   
+	    	   sweetAlert(" ", "오류입니다.", "error");
 	       }
 	    });
 });
@@ -182,7 +182,7 @@ $(document).on('click', '.updateComment', function(e){
 	        $('div #comment').append(data);
 	     },
 	       error:function(error){
-	       alert("오류났음");   
+	    	   sweetAlert(" ", "오류입니다.", "error");
 	       }
 	    });
 });
@@ -209,7 +209,7 @@ $(document).on('click','.realupdateComment',function(e){
 	        $('div #comment').append(data);
 	     },
 	       error:function(error){
-	       alert("오류났음");   
+	    	   sweetAlert(" ", "오류입니다.", "error");
 	       }
 	    });
 });

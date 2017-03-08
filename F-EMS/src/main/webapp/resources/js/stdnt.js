@@ -4,6 +4,6 @@ function go_stdnt() {
 	if(st_Pw == st_Pw_on){
 		document.formm.submit();
 	}else{
-		alert("비밀번호가 맞지 않습니다.");
+		sweetAlert(" ", "비밀번호가 맞지 않습니다.", "error");
 	}
 }

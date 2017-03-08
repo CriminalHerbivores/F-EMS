@@ -47,7 +47,7 @@ function go_StdntList(num){
 	           
 	     },
 	       error:function(error){
-	       alert("오류났음");   
+	    	   sweetAlert(" ", "오류입니다.", "error");   
 	       }
 	    });
 }
@@ -77,7 +77,7 @@ function go_ProfsrList(num){
 	           $('#profsrListTable').append(head+data);
 	     },
 	       error:function(error){
-	       alert("오류났음");   
+	    	   sweetAlert(" ", "오류입니다.", "error");   
 	       }
 	    });
 }
@@ -101,7 +101,7 @@ function stdnt_Profsr_no(pr_Profsr_No){
 	    	   go_StdntList(tpage)
 	       },
 	       error:function(error){
-	       alert("오류났음");   
+	    	   sweetAlert(" ", "오류입니다.", "error");   
 	       }
 	    });
 	
