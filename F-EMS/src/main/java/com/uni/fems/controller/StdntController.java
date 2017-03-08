@@ -496,20 +496,16 @@ public class StdntController {
 	@RequestMapping(value="/evlScope", method = RequestMethod.POST)
 	public String evlScope(Model model, HttpServletRequest request,
 			HttpSession session) {
-		String url = "redirect:evlScopeList";
-		String tpage = request.getParameter("tpage");
+		String url = "redirect:evlScopeList?tpage="+request.getParameter("tpage");
 		String re_Stdnt_No = request.getParameter("re_Stdnt_No");
 		String re_Lctre_No = request.getParameter("re_Lctre_No");
 		String lc_Lctre_Evl_Score = request.getParameter("lc_Lctre_Evl_Score");
-		System.out.println("re_Stdnt_No : "+re_Stdnt_No);
-		System.out.println("re_Lctre_No : "+re_Lctre_No);
-		System.out.println("lc_Lctre_Evl_Score : "+lc_Lctre_Evl_Score);
 		Lctre_SearchVO lctre_Search = new Lctre_SearchVO();
 		int re_count=0;
 		int re_sum=0;
 		float re_avg=0.0f;
 		int lc_count=0;
-		int lc_sum=0;
+		float lc_sum=0;
 		float lc_avg=0.0f;
 		String[] re_Lctre_Evl_Scopes = {request.getParameter("re_Lctre_Evl_Scope1")
 				,request.getParameter("re_Lctre_Evl_Scope2")
@@ -532,8 +528,11 @@ public class StdntController {
 		if(lc_Lctre_Evl_Score != null && !lc_Lctre_Evl_Score.equals("") && !lc_Lctre_Evl_Score.equals("0")){
 			String[] lc_Lctre_Evl_Scores = lc_Lctre_Evl_Score.split(",");
 			lc_count = Integer.parseInt(lc_Lctre_Evl_Scores[0]);
-			lc_sum = (int)(Float.parseFloat(lc_Lctre_Evl_Scores[1])*lc_count)+re_sum;
+			System.out.println("lc_count : "+lc_count);
+			lc_sum = (Float.parseFloat(lc_Lctre_Evl_Scores[1])*lc_count)+re_avg;
+			System.out.println("lc_sum : "+lc_sum);
 			lc_avg = lc_sum/(lc_count+1f);
+			System.out.println("lc_avg : "+lc_avg);
 			lc_count++;
 		}else{
 			lc_count = 1;

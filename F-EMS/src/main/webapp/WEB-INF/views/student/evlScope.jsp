@@ -130,7 +130,7 @@
 		</tr>
 		</table>
 		<table class="def-table-full"><tr><td style="text-align: right;">
-		<input type="submit"  value="등록" class="def-btn btn-sm btn-color"/>
+		<input type="button"  value="등록" class="def-btn btn-sm btn-color" onclick="go_submit(this.form)"/>
 		</td></tr></table>
 	</form>
 </body>

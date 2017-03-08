@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.uni.fems.common.Supporter;
 import com.uni.fems.dao.StdntDAO;
 import com.uni.fems.dao.Subjct_Info_TableDAO;
 import com.uni.fems.dao.TuitionDAO;
@@ -13,6 +14,7 @@ import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.service.TuitionService;
+import com.uni.fems.sms.SmsSend;
 
 public class TuitionServiceImpl implements TuitionService {
 
@@ -46,6 +48,7 @@ public class TuitionServiceImpl implements TuitionService {
 				tuitionVO.setTu_Stdnt_No(st.getSt_Stdnt_No());
 				tuitionVO.setTu_Tut(vo.getSit_Tut());
 				tuitionDAO.insertTuition(tuitionVO);
+				String sendMsg = new Supporter().smsSend("등록금 고지서를 전송하였습니다. -한국대학교-", st.getSt_Moblphon_No());
 			}
 		}
 	}
