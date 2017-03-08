@@ -62,7 +62,7 @@ public class Lctre_SearchVO implements Serializable {
 	private String lc_Lctrum_No;   // 강의실 번호
 	private String lc_Open_At;   // 개설여부
 	private String lc_Lctre_Org;   // 강의 원본
-	private float lc_Lctre_Evl_Score;   // 강의 평가 점수
+	private String lc_Lctre_Evl_Score;   // 강의 평가 점수
 	private String lc_Split;   // 분반
 	private String lc_Term; //학기
 	private String lc_Period; //개강일 검색용
