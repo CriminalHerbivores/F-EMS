@@ -18,11 +18,11 @@
 <div class="admin-dropdown">
   <button class="admin-dropbtn">레이아웃 설정</button>
   <div class="admin-dropdown-content">
-    <a href="<%=request.getContextPath()%>/admin/step1Add">대학 정보 설정</a>
-    <a href="<%=request.getContextPath()%>/admin/step2Add">메뉴 사용 설정</a>
-    <a href="<%=request.getContextPath()%>/admin/step3Add">레이아웃 선택</a>
+    <a href="<%=request.getContextPath()%>/admin/main">대학 정보</a>
+    <a href="<%=request.getContextPath()%>/admin/step1Add">대학 설정</a>
+    <a href="<%=request.getContextPath()%>/admin/step2Add">메뉴 설정</a>
+    <a href="<%=request.getContextPath()%>/admin/step3Add">메인 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step4Add">컬러 테마 설정</a>
-    <a href="<%=request.getContextPath() %>/admin/generatorList" class="no-uline">게시판 관리</a>
   </div>
  </div> 
   <br/>
