@@ -26,4 +26,9 @@ public class BaskinServiceImpl implements BaskinService{
 		baskin.setBskn_Nm(name);
 		baskinDAO.setBaskin(baskin);
 	}
+
+	@Override
+	public void insertBaskin(BaskinVO baskin) throws SQLException {
+		baskinDAO.insertBaskin(baskin);
+	}
 }

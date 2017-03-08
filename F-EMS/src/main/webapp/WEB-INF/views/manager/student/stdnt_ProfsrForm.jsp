@@ -139,7 +139,7 @@ function stdnt_Profsr_no(pr_Profsr_No){
 			<td colspan="5" style="text-align: center;">${paging }</td>
 		</tr>
 	</table>
-	
+	<hr>
 	<table class="def-table-full">
 		<tr>
 			<td style="text-align: left;"><select id="profsrKey"
@@ -151,7 +151,7 @@ function stdnt_Profsr_no(pr_Profsr_No){
 				class="def-input-text-lg custom-form-control">&nbsp;&nbsp; <input
 				type="button" onclick="go_ProfsrList('1')"
 				class="def-btn btn-sm btn-color" value="조회"></td>
-				<td></td> <td>학생 번호 : <input type="text" id="Stdnt_No" name="st_Stdnt_No"
+				<td></td> <td><input type="text" id="Stdnt_No" name="st_Stdnt_No" placeholder="학생 번호"
 				class="def-input-text-lg custom-form-control"></td>
 		</tr>
 	</table>

@@ -127,9 +127,10 @@ public class Sklstf_Stdnt_ProfsrController {
               		+ "</a>"
               		+ "</td><td>"
               		+ data.getSit_Subjct()
-              		+ "</td><td>"
-              		+ data.getSt_Profsr_No()
-              		+ "</td></tr>";
+              		+ "</td><td>";
+              if(data.getSt_Profsr_No()!=null)
+              comment += data.getSt_Profsr_No();
+              comment += "</td></tr>";
 		}
 		comment += "<tr><td colspan='4' style='text-align: center;'>"+paging+"</td></tr>";
 		return comment;

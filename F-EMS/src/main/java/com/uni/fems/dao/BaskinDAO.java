@@ -9,4 +9,5 @@ public interface BaskinDAO {
 	List<BaskinVO> getBaskin() throws SQLException;
 	void setBaskin(BaskinVO baskin) throws SQLException;
 	String getName() throws SQLException;
+	void insertBaskin(BaskinVO baskin) throws SQLException;
 }
