@@ -8,4 +8,5 @@ import com.uni.fems.dto.BaskinVO;
 public interface BaskinService {
 	List<BaskinVO> getBaskin() throws SQLException;
 	void setBaskin(BaskinVO baskin) throws SQLException;
+	void insertBaskin(BaskinVO baskin) throws SQLException;
 }

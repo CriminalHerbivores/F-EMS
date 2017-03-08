@@ -10,4 +10,5 @@ public class BaskinVO {
 	private String bskn_Main;
 	private String bskn_Sub1;
 	private String bskn_Sub2;
+	private int bskn_No;
 }

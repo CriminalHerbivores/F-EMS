@@ -15,7 +15,7 @@
 	<typeAlias alias="baskin" type="com.uni.fems.dto.BaskinVO" />
 	
 	<select id="getBaskin" resultClass="baskin">
-		select * from Baskin
+		select * from Baskin order by bskn_no desc
 	</select>
 	<update id="setBaskin" parameterClass="baskin">
 		update manage
@@ -28,4 +28,8 @@
 	<select id="getName" resultClass="str">
 		select mng_univ_nm from manage where rownum=1
 	</select>
+	<update id="insertBaskin" parameterClass="baskin">
+		insert into baskin(bskn_No,bskn_Nm,bskn_Main,bskn_Sub1,bskn_Sub2)
+		values((select max(bskn_No)+1 from baskin),#bskn_Nm#,#bskn_Main#,#bskn_Sub1#,#bskn_Sub2#)
+	</update>
 </sqlMap>

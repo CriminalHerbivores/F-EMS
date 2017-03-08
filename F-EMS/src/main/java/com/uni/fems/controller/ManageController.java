@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.common.FileDownload;
@@ -783,6 +784,20 @@ public class ManageController {
 		vo.setMng_Sub_Color1(manageVO.getMng_Sub_Color1());
 		vo.setMng_Sub_Color2(manageVO.getMng_Sub_Color2());
 		session.setAttribute("manageVO", vo);
+		
+		return url;
+	}
+	
+	@RequestMapping(value="/insertColor")
+	@ResponseBody
+	public String insertColor(@RequestBody BaskinVO baskin) {
+		String url = "redirect:step4Add";
+		
+		try {
+			baskinService.insertBaskin(baskin);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return url;
 	}

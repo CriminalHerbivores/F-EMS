@@ -26,4 +26,8 @@ public class BaskinDAOImpl implements BaskinDAO{
 		String name = (String) client.queryForObject("getName");
 		return name;
 	}
+	@Override
+	public void insertBaskin(BaskinVO baskin) throws SQLException {
+		client.update("insertBaskin",baskin);
+	}
 }
