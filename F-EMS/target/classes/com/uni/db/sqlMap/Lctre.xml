@@ -111,9 +111,9 @@
 		<isNotNull prepend="and" property="lc_Open_At">
 		lc_Open_At like '%'||#lc_Open_At#||'%'
 		</isNotNull>
-		<isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
+		<!-- <isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
 		LC_LCTRE_EVL_SCORE = 0
-		</isLessThan>
+		</isLessThan> -->
 		<isNotNull prepend="and" property="lc_Period">
 		extract(year from(lc_Lctrbgn_Dt)) like '%'||#lc_Period#||'%'
 		</isNotNull>
@@ -132,9 +132,9 @@
 		<isNotNull prepend="and" property="lc_Open_At">
 		lc_Open_At like '%'||#lc_Open_At#||'%'
 		</isNotNull>
-		<isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
+		<!-- <isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
 		LC_LCTRE_EVL_SCORE = 0
-		</isLessThan>
+		</isLessThan> -->
 		<isNotNull prepend="and" property="lc_Period">
 		extract(year from(lc_Lctrbgn_Dt)) like '%'||#lc_Period#||'%'
 		</isNotNull>
@@ -164,9 +164,9 @@
 		<isNotNull prepend="and" property="lc_Open_At">
 		lc_Open_At like '%'||#lc_Open_At#||'%'
 		</isNotNull>
-		<isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
+		<!-- <isLessThan prepend="and" property="lc_Lctre_Evl_Score" compareValue="0">
 		LC_LCTRE_EVL_SCORE = 0
-		</isLessThan>
+		</isLessThan> -->
 		<isNotNull prepend="and" property="lc_Period">
 		extract(year from(lc_Lctrbgn_Dt)) like '%'||#lc_Period#||'%'
 		</isNotNull>

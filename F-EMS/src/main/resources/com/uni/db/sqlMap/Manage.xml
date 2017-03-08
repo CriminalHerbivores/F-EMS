@@ -75,7 +75,6 @@
 		from reqst rq, lctre
 		lc
 		where LC_OPEN_AT = 'y'
-		and LC_LCTRE_EVL_SCORE = 0
 		and (select
 		extract(year from sysdate) from dual) = extract(year from
 		LC_LCTRBGN_DT)
@@ -98,9 +97,7 @@
 		from lctre lc
 		where
 		LC_OPEN_AT = 'y'
-		and LC_LCTRE_EVL_SCORE = 0
-		and (select extract(year
-		from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
+		and (select extract(year from sysdate) from dual) = extract(year from LC_LCTRBGN_DT)
 		and (case
 		when (extract(month from(lc_lctrbgn_dt)) between 2 and 7) THEN 1
 		when (extract(month from(lc_lctrbgn_dt)) between 8 and 12) THEN 2

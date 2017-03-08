@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%--
  * <pre>
  * 관리자 메뉴들이 포함되는 관리자 메인 JSP
@@ -20,70 +23,80 @@
 <title></title>
 </head>
 <body>
-
-
-<h2>관리자 페이지</h2>
-
-<div class="admin-dropdown">
-  <button class="admin-dropbtn">레이아웃 설정</button>
-  <div class="admin-dropdown-content">
-    <a href="<%=request.getContextPath()%>/admin/step1Add">대학 정보 설정</a>
-    <a href="<%=request.getContextPath()%>/admin/step2Add">메뉴 사용 설정</a>
-    <a href="<%=request.getContextPath()%>/admin/step3Add">레이아웃 선택</a>
-    <a href="<%=request.getContextPath()%>/admin/step4Add">컬러 테마 설정</a>
-  </div>
- </div> 
-  <br/>
-
-  <div class="admin-dropdown">
-   <button class="admin-dropbtn">관리자/직원 관리</button>
-  <div class="admin-dropdown-content">
-    <a href="<%=request.getContextPath()%>/admin/sklstfList">직원 조회</a>
-    <a href="<%=request.getContextPath()%>/admin/sklstfInsert">직원 등록</a>
-    <a href="<%=request.getContextPath()%>/admin/sklstfAtrtyList">관리자 설정</a>
-  </div>
+<div class="text-center">
+<h2><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Logo}"></h2><br/>
 </div>
-<br/>
-
-  <div class="admin-dropdown">
-   <button class="admin-dropbtn">강의실 관리</button>
-  <div class="admin-dropdown-content">
-    <a href="<%=request.getContextPath()%>/admin/buildingInsert">건물 등록</a>
-    <a href="<%=request.getContextPath()%>/admin/buildingUpdate">건물 수정</a>
-    <a href="<%=request.getContextPath()%>/admin/lctrumInsert">강의실 등록</a>
-    <a href="<%=request.getContextPath()%>/admin/lctrumUpdate">강의실 수정</a>
-    <a href="<%=request.getContextPath()%>/admin/lctrumUseUpdate">강의실 설정</a>
-  </div>
-</div>
-<br/>
-
-  <div class="admin-dropdown">
-   <button class="admin-dropbtn">학부·학과 관리</button>
-  <div class="admin-dropdown-content">
-    <a href="<%=request.getContextPath()%>/admin/subjectInsert">학부·학과 등록</a>
-    <a href="<%=request.getContextPath()%>/adminsubjectUpdate">학부·학과 수정</a>
-    <a href="<%=request.getContextPath()%>/admin/subjectUseUpdate">학부·학과 설정</a>
-  </div>
-</div>
-<br/>
-
-  <div class="admin-dropdown">
-   <button class="admin-dropbtn">강의 관리</button>
-  <div class="admin-dropdown-content">
-    <a href="#">상대평가 설정</a>
-  </div>
-</div>
-<br/>
-
-  <div class="admin-dropdown">
-   <button class="admin-dropbtn">게시판 관리</button>
-  <div class="admin-dropdown-content">
-    <a href="#">메뉴1</a>
-    <a href="#">메뉴2</a>
-  </div>
-</div>
-<br/>
-
-
+	<table class="def-table-full tb-border table-hover tr-child-color">
+		<tr><th width="200px">대학 이름</th><td>${manageVO.mng_Univ_Nm }</td></tr>
+		<tr><th>대학 영문 이름</th><td>${manageVO.mng_Univ_Eng_Nm }</td></tr>
+		<tr><th>우편번호</th><td>${manageVO.mng_Post_No}</td></tr>
+		<tr><th>주소</th><td>${manageVO.mng_Adres1}&nbsp;${manageVO.mng_Adres2}</td></tr>
+		<tr><th>전화번호</th><td>${manageVO.mng_Tlphon_No}</td></tr>
+		<tr><th>팩스번호</th><td>${manageVO.mng_Fax_No}</td></tr>	 
+		<tr><th>저작권</th><td>${manageVO.mng_Cpyr}</td></tr>
+	</table>
+			<hr>
+			<table class="def-table-full tb-border table-hover tr-child-color">
+				<tr><th width="200px">레이아웃
+				</th><td>
+				<c:choose>
+				<c:when test="${manageVO.mng_Layout_Knd eq 1}">
+				로그인형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 2}">
+				복합형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 3}">
+				게시판형
+				</c:when>
+				<c:when test="${manageVO.mng_Layout_Knd eq 4}">
+				메뉴형
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+				</c:choose>
+				</td></tr>
+				<tr>
+					<th>좌측메뉴 사용유무</th>
+					<td>${manageVO.mng_Left_Menu_Use_Ennc}</td>
+				</tr>
+					<tr>
+						<th colspan="2">대학 이미지</th>
+					</tr>
+					<tr>
+						<td colspan="2"><img src="<%=request.getContextPath()%>${manageVO.mng_Univ_Img}"></td>
+					</tr>
+			</table>
+			<hr>
+			<table class="def-table-full tb-border table-hover tr-child-color">
+				<tr><th>메인 컬러</th>
+									<td><input type="color" name="mng_Main_Color" value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
+					<th>텍스트 컬러</th>
+									<td><input type="color" name="mng_Main_Txtclr" value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td></tr>
+				<tr><th>보조 컬러1</th>
+									<td><input type="color" name="mng_Sub_Color1" value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
+					<th>텍스트 보조1 </th>
+									<td><input type="color" name="mng_Sub_Txtclr1" value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td></tr>
+				<tr><th>보조 컬러2</th>
+									<td><input type="color" name="mng_Sub_Color2" value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
+					<th>텍스트 보조2</th>
+									<td><input type="color" name="mng_Sub_Txtclr2" value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td></tr>					
+			</table>
+	<br/><br/>
+	<table class="def-table-full tb-border table-hover tr-child-color">
+	<tr>
+		<th colspan="4"><h3>대학정보 수정</h3></th>
+	</tr>
+	<tr>
+		<td><a href="step1Add">STEP 1</a></td>
+		<td><a href="step2Add">STEP 2</a></td>
+		<td><a href="step3Add">STEP 3</a></td>
+		<td><a href="<%=request.getContextPath()%>/">INDEX</a></td>
+	</tr>
+	<tr>
+		<th colspan="4"></th>
+	</tr>
+	</table>
+<br/><br/><br/><br/><br/>
 </body>
 </html>

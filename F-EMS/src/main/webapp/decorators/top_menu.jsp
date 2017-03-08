@@ -31,20 +31,28 @@
 <a href="<%=request.getContextPath() %>/sklstf/sklstfUpdate" class="no-uline">직원 정보 수정</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntInsert" class="no-uline">학생 등록</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntList" class="no-uline">학생 관리</a>
-<a href="<%=request.getContextPath() %>/sklstf/stdnt_ProfsrForm" class="no-uline">학생 교수 배정</a>
-<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a>
 <a href="<%=request.getContextPath() %>/sklstf/profsrInsert" class="no-uline">교수 등록</a>
 <a href="<%=request.getContextPath() %>/sklstf/profsrList" class="no-uline">교수 관리</a>
-<a href="<%=request.getContextPath() %>/sklstf/profsrLctreList" class="no-uline">교수 이력 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdnt_ProfsrForm" class="no-uline">학생 교수 배정</a>
+							</div>
+						</div>
+						<div class="menu-dropdown">
+							<button class="menu-dropbtn">
+								<a href="#">학교</a>
+							</button>
+							<div class="menu-dropdown-content">
+<a href="<%=request.getContextPath() %>/sklstf/sknrgListForm" class="no-uline">학적 관리</a>
+<a href="<%=request.getContextPath() %>/sklstf/profsrRequestLectre" class="no-uline">개설 강의</a>
+<a href="<%=request.getContextPath() %>/sklstf/profsrLctreList" class="no-uline">강의 조회</a>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <a href="<%=request.getContextPath() %>/admin/tuitionList">등록금 조회</a>
 </sec:authorize>
-<a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역 조회</a>
+<a href="<%=request.getContextPath() %>/sklstf/stdTuitionList">등록금 내역</a>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <a href="<%=request.getContextPath() %>/sklstf/schlshipInsert" class="no-uline">장학금 등록</a>
 </sec:authorize>
 <a href="<%=request.getContextPath() %>/sklstf/schlshipList" class="no-uline">장학금 관리</a>
-<a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 신청 내역</a>
+<a href="<%=request.getContextPath() %>/sklstf/requestschlship" class="no-uline">장학금 내역</a>
 <a href="<%=request.getContextPath() %>/sklstf/stdntBrhs" class="no-uline">기숙사 관리</a>
 							</div>
 						</div>
@@ -99,13 +107,13 @@
 						</div>
 					</div>
 
-					<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ROLE_STD')">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
-								<a href="#">수강신청</a>
+								<a href="<%=request.getContextPath()%>/course/courseList">수강신청</a>
 							</button>
 							<div class="menu-dropdown-content">
-<a href="<%=request.getContextPath()%>/course/courseList">수강신청목록</a>
+<a href="<%=request.getContextPath()%>/course/courseList">수강신청</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -113,11 +121,11 @@
 					<sec:authorize access="isAuthenticated()">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
-								<a href="#">강의</a>
+								<a href="<%=request.getContextPath()%>/lctre/lctreList">강의</a>
 							</button>
 							<div class="menu-dropdown-content">
 <a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
-<a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=${table_Nm}">공지</a>
+<%-- <a href="<%=request.getContextPath()%>/lctre/noticeList?table_Nm=${table_Nm}">공지</a>
 <a href="<%=request.getContextPath()%>/lctre/dateList?table_Nm=${table_Nm}">자료</a>
 <a href="<%=request.getContextPath()%>/lctre/taskList?table_Nm=${table_Nm}">과제</a>
 <a href="<%=request.getContextPath()%>/lctre/qnaList?table_Nm=${table_Nm}">질의응답</a>
@@ -127,7 +135,7 @@
 <sec:authorize access="hasRole('ROLE_STD')">
 <a href="<%=request.getContextPath()%>/lctre/video_StdntList?table_Nm=${table_Nm}">동영상 강의</a>
 </sec:authorize>
-<a href="<%=request.getContextPath()%>/lctre/testList?table_Nm=${table_Nm}">온라인 시험</a>
+<a href="<%=request.getContextPath()%>/lctre/testList?table_Nm=${table_Nm}">온라인 시험</a> --%>
 							</div>
 						</div>
 					</sec:authorize>
@@ -150,17 +158,13 @@
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
-								<a href="#" onclick="op_menu_admin()">관리자</a>
+								<a href="#" onclick="op_menu_admin()">관리</a>
 							</button>
 							<div class="menu-dropdown-content">
-<a href="<%=request.getContextPath() %>/admin/eventHandler">일정 관리</a>
-<a href="<%=request.getContextPath() %>/admin/generatorList" class="no-uline">게시판 관리</a>
-<a href="<%=request.getContextPath() %>/admin/main">관리자 페이지</a>								
-<a href="<%=request.getContextPath() %>/adminJoin">관리자 가입</a>
-<a href="<%=request.getContextPath() %>/lgLogin">로그인형</a>
-<a href="<%=request.getContextPath() %>/lgMulti">복합형</a>
-<a href="<%=request.getContextPath() %>/lgBoard">게시판형</a>
-<a href="<%=request.getContextPath() %>/lgMenu">메뉴강조형</a>
+<a href="<%=request.getContextPath() %>/admin/main">대학 정보</a>								
+<a href="<%=request.getContextPath() %>/admin/generatorList">게시판 관리</a>
+<a href="<%=request.getContextPath() %>/admin/sklstfList">직원 관리</a>
+<a href="<%=request.getContextPath() %>/admin/eventHandler">학교 관리</a>
 							</div>
 						</div>
 					</sec:authorize>
