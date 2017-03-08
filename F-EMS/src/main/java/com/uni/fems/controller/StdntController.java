@@ -306,6 +306,7 @@ public class StdntController {
 			}
 			sknrgs.setSkn_File(file.getName()); // 파일이름
 		}
+		sknrgs.setSkn_Useyn("o");
 		try {
 			sknrgs_Svc.writeSknrgs(sknrgs);
 		} catch (SQLException e) {
