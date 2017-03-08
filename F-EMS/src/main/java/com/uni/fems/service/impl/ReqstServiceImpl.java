@@ -131,5 +131,9 @@ public class ReqstServiceImpl implements ReqstService {
 	public Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException {
 		return reqstDAO.getEvl_Scope(lctre_Search);
 	}
+	@Override	
+	public void updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException{
+		reqstDAO.updateEvl_Scope(lctre_Search);
+	}
 
 }

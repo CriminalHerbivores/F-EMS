@@ -145,6 +145,13 @@ public interface ReqstService {
 	 */
 	Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search)
 			throws SQLException;
+
+	/**
+	 * 강의 평가 입력
+	 * @param lctre_Search
+	 * @throws SQLException
+	 */
+	void updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException;
 	
 	
 	

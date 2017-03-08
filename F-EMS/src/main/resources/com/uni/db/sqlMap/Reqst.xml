@@ -92,4 +92,10 @@
 		and re_Lctre_No = #re_Lctre_No#
 	</select>
 	
+	<update id="updateEvl_Scope" parameterClass="lctre_Search" >
+		update reqst set re_Lctre_Evl_Scope = #re_Lctre_Evl_Scope#
+		where re_Stdnt_No = #re_Stdnt_No#
+		and re_Lctre_No = #re_Lctre_No#
+	</update>
+	
 </sqlMap>

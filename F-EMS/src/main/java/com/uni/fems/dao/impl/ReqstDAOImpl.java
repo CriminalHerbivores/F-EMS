@@ -110,11 +110,14 @@ public class ReqstDAOImpl implements ReqstDAO {
 	
 	@Override  
 	public Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException {
-		System.out.println("Re_Stdnt_No : "+lctre_Search.getRe_Stdnt_No());
-		System.out.println("Re_Lctre_No : "+lctre_Search.getRe_Lctre_No());
 		Lctre_SearchVO lctre_SearchVO = null;
 		lctre_SearchVO = (Lctre_SearchVO) client.queryForObject("getEvl_Scope", lctre_Search);
 		return lctre_SearchVO;
+	}
+	
+	@Override	
+	public int updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException{
+		return client.update("updateEvl_Scope",lctre_Search);
 	}
 	
 }

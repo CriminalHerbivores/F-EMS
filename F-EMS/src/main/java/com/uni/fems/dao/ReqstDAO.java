@@ -131,5 +131,13 @@ public interface ReqstDAO {
 	 */
 	Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search)
 			throws SQLException;
+
+	/**
+	 * 강의 평가 점수 입력
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	int updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException;
 	
 }

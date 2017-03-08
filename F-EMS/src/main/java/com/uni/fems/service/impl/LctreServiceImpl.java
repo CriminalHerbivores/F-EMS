@@ -34,6 +34,7 @@ import com.uni.fems.service.LctreService;
  * 2017.01.24      KJH            최초작성
  * 2017.02.19      KJH            강의등록
  * 2017.02.20      KJH            강의수정
+ * 2017.03.08      KJS            추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -126,6 +127,9 @@ public class LctreServiceImpl implements LctreService {
 		return list;
 	}
 
-
+	@Override
+	public void updatelc_Evl_Score(Lctre_SearchVO lctre_SearchVO) throws SQLException {
+		lctreDAO.updatelc_Evl_Score(lctre_SearchVO);
+	}
 
 }

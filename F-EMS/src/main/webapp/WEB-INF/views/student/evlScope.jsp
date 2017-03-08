@@ -22,6 +22,10 @@
 <body>
 <h2>${lctre_Search.lu_Lctre_Nm } 평가서</h2><br/>
 	<form name="formm" method="post">
+		<input type="hidden" name="tpage" value=${tpage }>
+		<input type="hidden" name="re_Stdnt_No" value=${lctre_Search.re_Stdnt_No }>
+		<input type="hidden" name="re_Lctre_No" value=${lctre_Search.re_Lctre_No }>
+		<input type="hidden" name="lc_Lctre_Evl_Score" value=${lctre_Search.lc_Lctre_Evl_Score }>
 		<table class="def-table-full tb-border table-hover">
 		<tr>
 		<th style="width:600px;">설문항목</th>

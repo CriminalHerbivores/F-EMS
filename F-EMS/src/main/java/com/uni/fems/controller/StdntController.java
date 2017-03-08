@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.uni.fems.common.Paging;
 import com.uni.fems.common.Supporter;
 import com.uni.fems.dto.GradeVO;
+import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.PymntVO;
 import com.uni.fems.dto.SchlshipVO;
 import com.uni.fems.dto.SknrgsVO;
@@ -29,6 +30,8 @@ import com.uni.fems.dto.StdntVO;
 import com.uni.fems.dto.TuitionVO;
 import com.uni.fems.dto.request.PageRequest;
 import com.uni.fems.service.GradeService;
+import com.uni.fems.service.LctreService;
+import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.SchlshipService;
 import com.uni.fems.service.SknrgsService;
 import com.uni.fems.service.StdntService;
@@ -48,6 +51,7 @@ import com.uni.fems.service.TuitionService;
  * --------     --------    ----------------------
  * 2017.01.24.    JAR       최초작성
  * 2017.02.15.    JAR       추가작성
+ * 2017.03.08.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -68,6 +72,10 @@ public class StdntController {
 	private TuitionService tuitionService;
 	@Autowired
 	private GradeService gradeService;
+	@Autowired
+	private ReqstService reqstService;
+	@Autowired
+	private LctreService lctreService;
 	
 	/**
 	 * <pre>
@@ -430,21 +438,122 @@ public class StdntController {
 		return url;
 	}
 	
-	/**
-	 * <pre>
-	 * 강의 평가 (미완성)
-	 * </pre>
-	 * <pre>
-	 * @param session
-	 * @param tpage
-	 * @param ss_Schlship_Code
-	 * @return
-	 * </pre>
-	 */
-	@RequestMapping(value = "/evlScope")
-	public String evlScope(HttpSession session,String tpage,int ss_Schlship_Code){
-		String url="student/evlScope";
+	@RequestMapping("/evlScopeList")
+	public String evlScopeListForm(Model model, HttpServletRequest request,
+			HttpSession session) {
+		String url = "student/evlScopeList";
+		String tpage = request.getParameter("tpage");
+		String st_Stdnt_No = (String) session.getAttribute("loginUser");
 		
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		Lctre_SearchVO lctre_Search = new Lctre_SearchVO();
+		List<Lctre_SearchVO> lctre_SearchList=null;
+		lctre_Search.setRe_Stdnt_No(st_Stdnt_No);
+		
+		String paging ="";
+		try {
+			lctre_SearchList=reqstService.selectEvl_Scope(Integer.parseInt(tpage), lctre_Search);
+			paging = reqstService.pageNumberEvl_Scope(Integer.parseInt(tpage), lctre_Search);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_SearchVO",lctre_SearchList);
+		model.addAttribute("paging", paging);
+		return url;
+	}
+	
+	@RequestMapping(value="/evlScope", method = RequestMethod.GET)
+	public String evlScopeForm(Model model, HttpServletRequest request,String re_Stdnt_No,String re_Lctre_No,
+			HttpSession session) {
+		String url = "student/evlScope";
+		String tpage = request.getParameter("tpage");
+		if (tpage ==null){
+			tpage= "1";
+		} else if(tpage.equals("")){
+			tpage="1";
+		}
+		model.addAttribute("tpage",tpage);
+		
+		Lctre_SearchVO lctre_Search = new Lctre_SearchVO();
+		lctre_Search.setRe_Stdnt_No(re_Stdnt_No);
+		lctre_Search.setRe_Lctre_No(Integer.parseInt(re_Lctre_No));
+		
+		try {
+			lctre_Search=reqstService.getEvl_Scope(lctre_Search);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("lctre_Search",lctre_Search);
+		return url;
+	}
+	
+	@RequestMapping(value="/evlScope", method = RequestMethod.POST)
+	public String evlScope(Model model, HttpServletRequest request,
+			HttpSession session) {
+		String url = "redirect:evlScopeList";
+		String tpage = request.getParameter("tpage");
+		String re_Stdnt_No = request.getParameter("re_Stdnt_No");
+		String re_Lctre_No = request.getParameter("re_Lctre_No");
+		String lc_Lctre_Evl_Score = request.getParameter("lc_Lctre_Evl_Score");
+		System.out.println("re_Stdnt_No : "+re_Stdnt_No);
+		System.out.println("re_Lctre_No : "+re_Lctre_No);
+		System.out.println("lc_Lctre_Evl_Score : "+lc_Lctre_Evl_Score);
+		Lctre_SearchVO lctre_Search = new Lctre_SearchVO();
+		int re_count=0;
+		int re_sum=0;
+		float re_avg=0.0f;
+		int lc_count=0;
+		int lc_sum=0;
+		float lc_avg=0.0f;
+		String[] re_Lctre_Evl_Scopes = {request.getParameter("re_Lctre_Evl_Scope1")
+				,request.getParameter("re_Lctre_Evl_Scope2")
+				,request.getParameter("re_Lctre_Evl_Scope3")
+				,request.getParameter("re_Lctre_Evl_Scope4")
+				,request.getParameter("re_Lctre_Evl_Scope5")
+				,request.getParameter("re_Lctre_Evl_Scope6")
+				,request.getParameter("re_Lctre_Evl_Scope7")
+				,request.getParameter("re_Lctre_Evl_Scope8")
+				,request.getParameter("re_Lctre_Evl_Scope9")
+				,request.getParameter("re_Lctre_Evl_Scope10")
+				,request.getParameter("re_Lctre_Evl_Scope11")
+				,request.getParameter("re_Lctre_Evl_Scope12")
+				,request.getParameter("re_Lctre_Evl_Scope13")};
+		
+		for(int i=0 ; i< re_Lctre_Evl_Scopes.length ; i++){
+			re_sum += Integer.parseInt(re_Lctre_Evl_Scopes[i]);
+		}
+		re_avg = re_sum/13f;
+		if(lc_Lctre_Evl_Score != null && !lc_Lctre_Evl_Score.equals("") && !lc_Lctre_Evl_Score.equals("0")){
+			String[] lc_Lctre_Evl_Scores = lc_Lctre_Evl_Score.split(",");
+			lc_count = Integer.parseInt(lc_Lctre_Evl_Scores[0]);
+			lc_sum = (int)(Float.parseFloat(lc_Lctre_Evl_Scores[1])*lc_count)+re_sum;
+			lc_avg = lc_sum/(lc_count+1f);
+			lc_count++;
+		}else{
+			lc_count = 1;
+			lc_avg = re_avg;
+		}
+		lc_Lctre_Evl_Score = lc_count +  "," + Math.round(lc_avg*100)/100f;
+		String re_Lctre_Evl_Scope = Math.round(re_avg*100)/100f+"";
+		lctre_Search.setLc_Lctre_Evl_Score(lc_Lctre_Evl_Score);
+		lctre_Search.setRe_Lctre_No(Integer.parseInt(re_Lctre_No));
+		lctre_Search.setRe_Stdnt_No(re_Stdnt_No);
+		lctre_Search.setRe_Lctre_Evl_Scope(re_Lctre_Evl_Scope);
+		lctre_Search.setLc_Lctre_No(Integer.parseInt(re_Lctre_No));
+		
+		try {
+			reqstService.updateEvl_Scope(lctre_Search);
+			lctreService.updatelc_Evl_Score(lctre_Search);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return url;
 	}
 	

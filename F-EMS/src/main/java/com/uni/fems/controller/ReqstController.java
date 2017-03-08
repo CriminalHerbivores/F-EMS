@@ -28,6 +28,7 @@ import com.uni.fems.dto.ReqstVO;
 import com.uni.fems.dto.SearchVO;
 import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.Intrst_ListService;
+import com.uni.fems.service.LctreService;
 import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.StdntService;
 
@@ -58,91 +59,11 @@ public class ReqstController {
 	private Intrst_ListService intrst_ListService;
 	@Autowired
 	private StdntService stdntService;
+	@Autowired
+	private LctreService lctreService;
 
 	
-	@RequestMapping("/evlScopeList")
-	public String evlScopeListForm(Model model, HttpServletRequest request,
-			HttpSession session) {
-		String url = "student/evlScopeList";
-		String tpage = request.getParameter("tpage");
-		String st_Stdnt_No = (String) session.getAttribute("loginUser");
-		
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		Lctre_SearchVO lctre_Search = new Lctre_SearchVO();
-		List<Lctre_SearchVO> lctre_SearchList=null;
-		lctre_Search.setRe_Stdnt_No(st_Stdnt_No);
-		
-		String paging ="";
-		try {
-			lctre_SearchList=reqstService.selectEvl_Scope(Integer.parseInt(tpage), lctre_Search);
-			paging = reqstService.pageNumberEvl_Scope(Integer.parseInt(tpage), lctre_Search);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("lctre_SearchVO",lctre_SearchList);
-		model.addAttribute("paging", paging);
-		return url;
-	}
 	
-	@RequestMapping(value="/evlScope", method = RequestMethod.GET)
-	public String evlScopeForm(Model model, HttpServletRequest request,String re_Stdnt_No,String re_Lctre_No,
-			HttpSession session) {
-		String url = "student/evlScope";
-		String tpage = request.getParameter("tpage");
-		System.out.println("re_Stdnt_No : "+re_Stdnt_No);
-		System.out.println("re_Lctre_No : "+re_Lctre_No);
-		if (tpage ==null){
-			tpage= "1";
-		} else if(tpage.equals("")){
-			tpage="1";
-		}
-		model.addAttribute("tpage",tpage);
-		
-		Lctre_SearchVO lctre_Search = new Lctre_SearchVO();
-		lctre_Search.setRe_Stdnt_No(re_Stdnt_No);
-		lctre_Search.setRe_Lctre_No(Integer.parseInt(re_Lctre_No));
-		
-		try {
-			lctre_Search=reqstService.getEvl_Scope(lctre_Search);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("lctre_Search",lctre_Search);
-		return url;
-	}
-	
-	@RequestMapping(value="/evlScope", method = RequestMethod.POST)
-	public String evlScope(Model model, HttpServletRequest request,
-			HttpSession session) {
-		String url = "redirect:evlScopeList";
-		int count=0;
-		int sum=0;
-		String[] re_Lctre_Evl_Scopes = {request.getParameter("re_Lctre_Evl_Scope1")
-				,request.getParameter("re_Lctre_Evl_Scope2")
-				,request.getParameter("re_Lctre_Evl_Scope3")
-				,request.getParameter("re_Lctre_Evl_Scope4")
-				,request.getParameter("re_Lctre_Evl_Scope5")
-				,request.getParameter("re_Lctre_Evl_Scope6")
-				,request.getParameter("re_Lctre_Evl_Scope7")
-				,request.getParameter("re_Lctre_Evl_Scope8")
-				,request.getParameter("re_Lctre_Evl_Scope9")
-				,request.getParameter("re_Lctre_Evl_Scope10")
-				,request.getParameter("re_Lctre_Evl_Scope11")
-				,request.getParameter("re_Lctre_Evl_Scope12")
-				,request.getParameter("re_Lctre_Evl_Scope13")};
-		
-		for(int i=0 ; i< re_Lctre_Evl_Scopes.length ; i++){
-			sum = Integer.parseInt(re_Lctre_Evl_Scopes[i]);
-		}
-		
-		return url;
-	}
 
 	
 	
