@@ -77,7 +77,7 @@
 			#skn_Stdnt_No#,
 			#skn_Content#,
 			#skn_File#,
-			'o'
+			#skn_Useyn#
 			)
 	</update>
 	

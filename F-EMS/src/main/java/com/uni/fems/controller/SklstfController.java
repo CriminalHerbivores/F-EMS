@@ -233,8 +233,15 @@ public class SklstfController {
 				
 				stdntVO.setSt_Pw(stdntVO.getSt_Ihidnum().substring(6));
 				stdntVO.setSt_Stdnt_No(stdntVO.getCreateNo()+stdntNo);
+				SknrgsVO sknrgs = new SknrgsVO();
+				sknrgs.setSkn_Type("입학");
+				sknrgs.setSkn_Useyn("y");
+				sknrgs.setSkn_Content("입학");
+				sknrgs.setSkn_Stdnt_No(stdntVO.getSt_Stdnt_No());
+				sknrgs.setSkn_Reqst_Dt(java.sql.Timestamp.valueOf(supporter.getDay()[0]+"-03-02 00:00:00.0"));
 				try {
 					stdntService.insertStdnt(stdntVO);
+					sknrgs_Svc.writeSknrgs(sknrgs);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -256,8 +263,15 @@ public class SklstfController {
 			
 			stdntVO.setSt_Pw(stdntVO.getSt_Ihidnum().substring(6));
 			stdntVO.setSt_Stdnt_No(stdntVO.getCreateNo()+stdntNo);
+			SknrgsVO sknrgs = new SknrgsVO();
+			sknrgs.setSkn_Type("입학");
+			sknrgs.setSkn_Useyn("y");
+			sknrgs.setSkn_Content("입학");
+			sknrgs.setSkn_Stdnt_No(stdntVO.getSt_Stdnt_No());
+			sknrgs.setSkn_Reqst_Dt(java.sql.Timestamp.valueOf(supporter.getDay()[0]+"-03-02 00:00:00.0"));
 			try {
 				stdntService.insertStdnt(stdntVO);
+				sknrgs_Svc.writeSknrgs(sknrgs);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
