@@ -35,7 +35,6 @@
 		<input type="submit" value="검색" class="def-btn btn-sm btn-color"/>
 	</td></tr></table>
 	</form>
-<table class="non-border margin-auto"><tr><td>
 	<table class="def-table-full tb-border table-hover">
 	<tr>
 		<th>단과</th>
@@ -87,6 +86,6 @@
 	<a href="<%=request.getContextPath() %>/admin/tuitionList"><input type="button" value="등록금 정보 조회" class="def-btn btn-color"></a>
 	</sec:authorize>
 	</td></tr></table>
-</td></tr></table>
+	<br/><br/><br/>
 </body>
 </html>

@@ -34,7 +34,6 @@ $(function(){
 </script>
 </head>
 <body>
-<table class="non-border margin-auto"><tr><td>
 	<h2>학과 정보 조회</h2><br/>
 	<form name="formm" method="post">
 	<table class="def-table-full tb-border table-hover">
@@ -66,13 +65,11 @@ $(function(){
 				<div id="perTut"></div>
 			</td>
 			<td>
-				<input type="button" value="수정" onclick="submitForm(this.form)" class="def-btn btn-sm btn-color">
-				&nbsp;&nbsp;
+				<input type="button" value="수정" onclick="submitForm(this.form)" class="def-btn btn-sm btn-color"><br/>
 				<input type="button" value="목록" onclick="history.go(-1)" class="def-btn btn-sm btn-color">
 			</td>
 		</tr>
 	</table>
 	</form>
-</td></tr></table>
 </body>
 </html>
