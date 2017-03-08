@@ -22,7 +22,8 @@
 	<input type="submit" value="검색" class="def-btn btn-search btn-color"/>
 	</td>
 	<td style="text-align: right;">
-	<input type="button" value="Excel출력" onclick="profsrExcel(LctreExcel);" class="def-btn btn-search btn-color"/>
+	<!-- <input type="button" value="Excel출력" onclick="profsrExcel(LctreExcel);" class="def-btn btn-search btn-color"/> -->
+	<a href="LctreExcel"><input type="button" value="Excel출력" class="def-btn btn-search btn-color"/></a>
 	</td>
 	</tr></table>
 	</form>
