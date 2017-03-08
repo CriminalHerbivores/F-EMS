@@ -22,7 +22,7 @@
     <a href="<%=request.getContextPath()%>/admin/step1Add">대학 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step2Add">메뉴 설정</a>
     <a href="<%=request.getContextPath()%>/admin/step3Add">메인 설정</a>
-    <a href="<%=request.getContextPath()%>/admin/step4Add">컬러 테마 설정</a>
+    <a href="<%=request.getContextPath()%>/admin/step4Add">컬러 테마</a>
   </div>
  </div> 
   <br/>

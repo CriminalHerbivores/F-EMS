@@ -336,6 +336,7 @@ public class ProfsrController {
 		String loginUser = (String) session.getAttribute("loginUser");
 		
 		lctre_SearchVO.setPr_Profsr_No(loginUser);
+		//lctre_SearchVO.setLc_Lctre_Evl_Score(-1);
 		lctre_SearchVO.setLc_Open_At("y");
 		lctre_SearchVO.setLc_Period(supporter.getDay()[0]+"");
 		
