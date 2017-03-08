@@ -42,6 +42,7 @@ border:0;
 		<td><a href="step1Add">STEP 1</a></td>
 		<td><a href="step2Add">STEP 2</a></td>
 		<td><a href="step3Add">STEP 3</a></td>
+		<td><a href="step4Add">STEP 4</a></td>
 		<td><a href="<%=request.getContextPath()%>/">INDEX</a></td>
 	</tr>
 	</table>
@@ -119,20 +120,40 @@ border:0;
 					
 			</table>
 			<hr>
+			<c:choose>
+			<c:when test="${not empty manageVO}">
 			<table class="def-table-full tb-border table-hover tr-child-color">
 				<tr><th>메인 컬러</th>
-									<td><input type="color" name="mng_Main_Color" value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
+					<td><input type="color" name="mng_Main_Color" value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
 					<th>텍스트 컬러</th>
-									<td><input type="color" name="mng_Main_Txtclr" value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td></tr>
+					<td><input type="color" name="mng_Main_Txtclr" value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td></tr>
 				<tr><th>보조 컬러1</th>
-									<td><input type="color" name="mng_Sub_Color1" value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
+					<td><input type="color" name="mng_Sub_Color1" value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
 					<th>텍스트 보조1 </th>
-									<td><input type="color" name="mng_Sub_Txtclr1" value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td></tr>
+					<td><input type="color" name="mng_Sub_Txtclr1" value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td></tr>
 				<tr><th>보조 컬러2</th>
-									<td><input type="color" name="mng_Sub_Color2" value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
+					<td><input type="color" name="mng_Sub_Color2" value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
 					<th>텍스트 보조2</th>
-									<td><input type="color" name="mng_Sub_Txtclr2" value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td></tr>					
+					<td><input type="color" name="mng_Sub_Txtclr2" value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td></tr>					
 			</table>
+			</c:when>
+			<c:otherwise>
+			<table class="def-table-full tb-border table-hover tr-child-color">
+				<tr><th>메인 컬러</th>
+					<td><input type="color" name="mng_Main_Color" value="#063F78">&nbsp;&nbsp;</td>
+					<th>텍스트 컬러</th>
+					<td><input type="color" name="mng_Main_Txtclr" value="#fafafa">&nbsp;&nbsp;</td></tr>
+				<tr><th>보조 컬러1</th>
+					<td><input type="color" name="mng_Sub_Color1" value="#326EA6">&nbsp;&nbsp;</td>
+					<th>텍스트 보조1 </th>
+					<td><input type="color" name="mng_Sub_Txtclr1" value="#f9f9f9">&nbsp;&nbsp;</td></tr>
+				<tr><th>보조 컬러2</th>
+					<td><input type="color" name="mng_Sub_Color2" value="#D8E7F6">&nbsp;&nbsp;</td>
+					<th>텍스트 보조2</th>
+					<td><input type="color" name="mng_Sub_Txtclr2" value="#8a8a8a">&nbsp;&nbsp;</td></tr>					
+			</table>
+			</c:otherwise>
+			</c:choose>
 <table class="def-table-full"><tr><td style="text-align: right;">
 	<input type="submit" value="등록" class="def-btn btn-md btn-color">
 </td></tr></table>

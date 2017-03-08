@@ -18,57 +18,112 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+function colorMainFunc(main,sub1,sub2){
+	console.log(main+sub1+sub2);
+	$('input[name="mng_Main_Color"]').val(main);
+	$('input[name="mng_Sub_Color1"]').val(sub1);
+	$('input[name="mng_Sub_Color2"]').val(sub2);
+}
+function colorTxtFunc(main,sub1,sub2){
+	console.log(main+sub1+sub2);
+	$('input[name="mng_Main_Txtclr"]').val(main);
+	$('input[name="mng_Sub_Txtclr1"]').val(sub1);
+	$('input[name="mng_Sub_Txtclr2"]').val(sub2);
+}
+</script>
 </head>
 <body>
-<article>
-<form id="step4Add" method="post" name="formm">
+	<table class="def-table-full"><tr><td>
+	<table class="def-table-full tb-border table-hover tr-child-color">
+		<tr>
+			<td><a href="step1Add">STEP 1</a></td>
+			<td><a href="step2Add">STEP 2</a></td>
+			<td><a href="step3Add">STEP 3</a></td>
+			<td><a href="<%=request.getContextPath()%>/">INDEX</a></td>
+		</tr>
+	</table>
+	<br/>
+	<h2>컬러 테마 설정</h2>
+	<br />
+				<form id="step4Add" method="post" name="formm">
+	<table class="def-table-full tb-border table-hover tr-child-color">
+		<tr>
+			<th>메인 컬러</th>
+			<td><input type="color" name="mng_Main_Color"
+				value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
+			<th>텍스트 컬러</th>
+			<td><input type="color" name="mng_Main_Txtclr"
+				value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td>
+		</tr>
+		<tr>
+			<th>보조 컬러1</th>
+			<td><input type="color" name="mng_Sub_Color1"
+				value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
+			<th>텍스트 보조1</th>
+			<td><input type="color" name="mng_Sub_Txtclr1"
+				value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td>
+		</tr>
+		<tr>
+			<th>보조 컬러2</th>
+			<td><input type="color" name="mng_Sub_Color2"
+				value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
+			<th>텍스트 보조2</th>
+			<td><input type="color" name="mng_Sub_Txtclr2"
+				value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="4" class="text-right">
+			<input type="submit" value="수정" class="def-btn btn-sm ckbtn-color">
+			</td>
+		</tr>
+	</table>
+				</form>
+	<hr>
+	<table class="def-table-full tb-border">
+	<tr>
+		<th>테마명</th>
+		<th>컬러</th>
+		<th>버튼</th>
+	</tr>
+	<tr>
+		<td>기본 컬러</td>
+		<td>#063F78 - #326EA6 - #D8E7F6</td>
+		<td>
+		<input type="button" value="선택" 
+		onclick="colorMainFunc('#063F78','#326EA6','#D8E7F6');" class="def-ckbtn btn-sm ckbtn-color">
+		<input type="button" value="선택" 
+		onclick="colorTxtFunc('#063F78','#326EA6','#D8E7F6');" class="def-ckbtn btn-sm ckbtn-color">
+		</td>
+	</tr>
+	<tr>
+		<td>기본 폰트 컬러</td>
+		<td>#fafafa - #f9f9f9 - #8a8a8a</td>
+		<td>
+		<input type="button" value="선택" 
+		onclick="colorMainFunc('#fafafa','#f9f9f9','#8a8a8a');" class="def-ckbtn btn-sm ckbtn-color">
+		<input type="button" value="선택" 
+		onclick="colorTxtFunc('#fafafa','#f9f9f9','#8a8a8a');" class="def-ckbtn btn-sm ckbtn-color">
+		</td>
+	</tr>
+	<c:forEach items="${colorList}" var="cL">
+	<tr>
+		<td>${cL.bskn_Nm}</td>
+		<td>${cL.bskn_Main} - ${cL.bskn_Sub1} - ${cL.bskn_Sub2}</td>
+		<td>
+		<input type="button" value="선택" 
+		onclick="colorMainFunc('${cL.bskn_Main}','${cL.bskn_Sub1}','${cL.bskn_Sub2}');" class="def-ckbtn btn-sm ckbtn-color">
+		<input type="button" value="선택" 
+		onclick="colorTxtFunc('${cL.bskn_Main}','${cL.bskn_Sub1}','${cL.bskn_Sub2}');" class="def-ckbtn btn-sm ckbtn-color">
+		</td>
+	</tr>
+	</c:forEach>
+	</table>
 	
-	<div class="set-layout">
-	<div class="set-layout-top">
-	<img src="<%=request.getContextPath()%>/resources/images/step4.png"><br/><br/><br/>
-	<h1>STEP4. 컬러 테마 설정</h1>
-	</div>
-	
-	<div class="col-sm-2 sidenav">
-	<div class="set-layout-side">
-	<!-- 여기 화살표 넣을거임 -->
-<input type="image" src="<%=request.getContextPath()%>/resources/images/left-arrow.png" alt="Submit" onclick="history.go(-1);">	</div>
-	</div>
-	
-	
-	<div class="col-sm-8 margin-auto"> 
-		<div class="set-layout-center">
-			
-			<table class="def-table-full tb-border table-hover tr-child-color">
-				<tr><th>메인 컬러</th>
-									<td><input type="color" name="mng_Main_Color" value="${manageVO.mng_Main_Color}">&nbsp;&nbsp;</td>
-					<th>텍스트 컬러</th>
-									<td><input type="color" name="mng_Main_Txtclr" value="${manageVO.mng_Main_Txtclr}">&nbsp;&nbsp;</td></tr>
-				<tr><th>보조 컬러1</th>
-									<td><input type="color" name="mng_Sub_Color1" value="${manageVO.mng_Sub_Color1}">&nbsp;&nbsp;</td>
-					<th>텍스트 보조1 </th>
-									<td><input type="color" name="mng_Sub_Txtclr1" value="${manageVO.mng_Sub_Txtclr1}">&nbsp;&nbsp;</td></tr>
-				<tr><th>보조 컬러2</th>
-									<td><input type="color" name="mng_Sub_Color2" value="${manageVO.mng_Sub_Color2}">&nbsp;&nbsp;</td>
-					<th>텍스트 보조2</th>
-									<td><input type="color" name="mng_Sub_Txtclr2" value="${manageVO.mng_Sub_Txtclr2}">&nbsp;&nbsp;</td></tr>					
-			</table>			
-			
-
-		</div>
-		</div>
-		
-		
-<div class="col-sm-2 sidenav">			
-<div class="set-layout-side">
-	<!-- 여기 화살표 넣을거임 -->
-	<input type="image" src="<%=request.getContextPath()%>/resources/images/right-arrow.png" alt="Submit" onclick="submitForm(this.form)">
-	</div>
-	</div>
-
-</div>
-
-</form>
-</article>
+	</td></tr></table>
+	<br />
+	<br />
+	<br />
 </body>
 </html>
