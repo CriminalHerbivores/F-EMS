@@ -7,6 +7,7 @@
 <!--  ==========   ======    ==============         -->
 <!--  $2017.01.24    KJH       최초작성             -->
 <!--  $2017.02.20    KJH       추가작성             -->
+<!--  $2017.03.08    KJS       추가작성             -->
 <!--  Copyright (c) 2017 by DDIT All right reserved -->
 
 <sqlMap namespace="Reqst">
@@ -74,4 +75,21 @@
 		and <![CDATA[ lc_Lctre_Nmpr < (select lr_Accept_Nmpr from lctrum, lctre where lr_Lctrum_No=lc_Lctrum_No and lc_Lctre_No=#re_Lctre_No#) ]]>
 	</update>
 
+	<!-- ==================== 수강 항목 평점 넣기 ==================== -->
+	<select id="selectEvl_Scope" resultClass="lctre_Search" parameterClass="lctre_Search">
+		select * from course_view
+		where re_Stdnt_No=#re_Stdnt_No#
+		order by re_Lctre_Evl_Scope desc
+	</select>
+	<select id="totalEvl_Scope" parameterClass="lctre_Search" resultClass="int">
+		select count(*) from course_view
+		where re_Stdnt_No=#re_Stdnt_No#
+	</select>
+	
+	<select id="getEvl_Scope" resultClass="lctre_Search" parameterClass="lctre_Search">
+		select * from course_view
+		where re_Stdnt_No= #re_Stdnt_No#
+		and re_Lctre_No = #re_Lctre_No#
+	</select>
+	
 </sqlMap>

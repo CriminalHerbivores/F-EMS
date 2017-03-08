@@ -4,10 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.ReqstDAO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
+import com.uni.fems.dto.SearchVO;
+import com.uni.fems.dto.UserSubjctVO;
 
 
 /**
@@ -23,6 +26,7 @@ import com.uni.fems.dto.ReqstVO;
  * 수정일        수정자         수정내용
  * --------     --------    ----------------------
  * 2017. 2. 20.    KJH       최초작성
+ * 2017. 3. 08.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -83,5 +87,34 @@ public class ReqstDAOImpl implements ReqstDAO {
 	public void setNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException {
 		client.update("setNumOfStdnt",lctre_SearchVO);
 	}	
+	
+	//----------------------------------------------------------------------------------
+	
+	@Override
+	public List<Lctre_SearchVO> selectEvl_Scope(Lctre_SearchVO lctre_Search, int tpage, int totalRecord) throws SQLException {
+		Paging p = new Paging();
+		
+		int[] rows = p.row(tpage, totalRecord);
+		
+		List<Lctre_SearchVO> lctre_SearchList = null;
+		lctre_SearchList = client.queryForList("selectEvl_Scope",lctre_Search,rows[1], rows[0]);	
+		return lctre_SearchList;
+	}
+	
+	@Override	
+	public int totalEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException{
+		int total_pages = 0;
+		total_pages = (Integer) client.queryForObject("totalEvl_Scope",lctre_Search);
+		return total_pages;
+	}
+	
+	@Override  
+	public Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException {
+		System.out.println("Re_Stdnt_No : "+lctre_Search.getRe_Stdnt_No());
+		System.out.println("Re_Lctre_No : "+lctre_Search.getRe_Lctre_No());
+		Lctre_SearchVO lctre_SearchVO = null;
+		lctre_SearchVO = (Lctre_SearchVO) client.queryForObject("getEvl_Scope", lctre_Search);
+		return lctre_SearchVO;
+	}
 	
 }
