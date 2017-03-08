@@ -544,7 +544,7 @@ public class ManageController {
 			FilesVO vo = new FileDownload().uploadFile(uploadlogo,filePath);
 			manageVO.setMng_Univ_Logo("/resources/images/"+vo.getFl_File_Nm());
 		}else{
-			manageVO.setMng_Univ_Logo("/resources/images/"+manageVO.getMng_Univ_Logo_Ori());
+			manageVO.setMng_Univ_Logo(manageVO.getMng_Univ_Logo_Ori());
 		}
 		if(!uploadUnivImg.isEmpty()){
 			String filePath = "D:/F-EMS/F-EMS/F-EMS/src/main/webapp/resources/images/";

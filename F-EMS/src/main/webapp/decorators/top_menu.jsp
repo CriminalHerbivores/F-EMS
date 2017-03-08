@@ -82,6 +82,7 @@
 <a href="<%=request.getContextPath() %>/stdnt/stdntDetail" class="no-uline">학생 정보 조회</a>
 <a href="<%=request.getContextPath() %>/stdnt/stdntUpdate" class="no-uline">학생 정보 수정</a>
 <a href="<%=request.getContextPath() %>/stdnt/sknrgsList" class="no-uline">학적 조회</a>
+<a href="<%=request.getContextPath() %>/stdnt/evlScopeList" class="no-uline">강의 평가</a>
 <a href="<%=request.getContextPath() %>/stdnt/viewGrade" class="no-uline">성적 조회</a>
 <a href="<%=request.getContextPath() %>/stdnt/fromStdTuition" class="no-uline">등록금 조회</a>
 <a href="<%=request.getContextPath() %>/stdnt/schlshipList" class="no-uline">장학금 조회</a>

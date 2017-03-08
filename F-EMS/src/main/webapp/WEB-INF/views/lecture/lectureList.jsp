@@ -29,6 +29,9 @@
 	</tr>
 	</c:forEach>
 </table>
+<table class="def-table-full"><tr><td style="text-align: right;">
+	<a href="<%=request.getContextPath() %>/stdnt/evlScopeList"><input type="button" value="강의평가" class="def-btn btn-sm btn-color"></a>
+</td></tr></table>
 <br/><br/><br/>
 </body>
 </html>
