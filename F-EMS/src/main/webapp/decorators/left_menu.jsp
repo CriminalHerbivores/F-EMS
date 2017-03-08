@@ -104,13 +104,13 @@
 				</ul>
 			</li>
 
-			<sec:authorize access="isAuthenticated()">
+			<sec:authorize access="hasRole('ROLE_STD')">
 				<li>
 					<div class="main-title">
-						<span class="folder main_menu"> </span><a href="<%=request.getContextPath()%>/course/courseList">수강신청</a>
+						<span class="folder main_menu"> </span><a href="#">수강신청</a>
 					</div>
 					<ul class="sub sub_meun">
-<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/course/courseList">수강신청목록</a></li></div>
+<div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/course/courseList">수강신청</a></li></div>
 					</ul>
 				</li>
 			</sec:authorize>
@@ -118,7 +118,7 @@
 			<sec:authorize access="isAuthenticated()">
 				<li>
 					<div class="main-title">
-						<span class="folder main_menu"> </span><a href="<%=request.getContextPath()%>/lctre/lctreList">강의</a>
+						<span class="folder main_menu"> </span><a href="#">강의</a>
 					</div>
 					<ul class="sub sub_meun">
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li></div>
@@ -149,7 +149,7 @@
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li>
 					<div class="main-title">
-						<span class="folder main_menu"> </span><a href="#">관리자</a>
+						<span class="folder main_menu"> </span><a href="#">관리</a>
 					</div>
 					<ul class="sub sub_meun">
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath() %>/admin/main">대학 정보</a></li></div>

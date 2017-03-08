@@ -107,13 +107,13 @@
 						</div>
 					</div>
 
-					<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ROLE_STD')">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
 								<a href="<%=request.getContextPath()%>/course/courseList">수강신청</a>
 							</button>
 							<div class="menu-dropdown-content">
-<a href="<%=request.getContextPath()%>/course/courseList">수강신청목록</a>
+<a href="<%=request.getContextPath()%>/course/courseList">수강신청</a>
 							</div>
 						</div>
 					</sec:authorize>
@@ -158,7 +158,7 @@
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<div class="menu-dropdown">
 							<button class="menu-dropbtn">
-								<a href="#" onclick="op_menu_admin()">관리자</a>
+								<a href="#" onclick="op_menu_admin()">관리</a>
 							</button>
 							<div class="menu-dropdown-content">
 <a href="<%=request.getContextPath() %>/admin/main">대학 정보</a>								
