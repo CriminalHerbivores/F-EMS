@@ -76,7 +76,7 @@ $(document).ready(function(){
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_PRO')">
     	<th>응시자수</th>
-    	<th>상세정보</th>
+    	<th>응시자 답안</th>
     </sec:authorize>
       </tr>
       
@@ -92,7 +92,7 @@ $(document).ready(function(){
       		<td>${testlist.tp_Profsr_No} </td>
       		<td><fmt:formatDate value="${testlist.tp_Dt}" /> </td>
       		<td>${fn:substring(testlist.tp_Start_Dt,0,16)} ~ ${fn:substring(testlist.tp_End_Dt,0,16)}</td>
-      		<td>${testlist.countAnswerSTD} / </td>
+      		<td>${testlist.countAnswerSTD} / ${lctreInfo.lc_Lctre_Nmpr }</td>
       		<td>
       			<div class="${testlist.tp_No}"></div>
       		</td>

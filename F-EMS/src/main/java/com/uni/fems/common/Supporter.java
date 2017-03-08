@@ -132,7 +132,7 @@ public class Supporter {
         if(message != null || Moblphon != null){
         HashMap<String, String> set = new HashMap<String, String>();
         set.put("to", Moblphon); // 수신번호
-        set.put("from", "01074571287"); // 발신번호 
+        set.put("from", "01094728151"); // 발신번호 
         set.put("text", message); // 문자내용
         set.put("type", "sms"); // 문자 타입
         JSONObject result = coolsms.send(set); // 보내기

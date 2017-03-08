@@ -10,7 +10,7 @@
 <head>
 </head>
 <body>
-
+${manageVO.ksdulksud }
 <!-- 해당 페이지의 제목을 입력한다. -->
 <h2>제목 입력</h2><br/>
 

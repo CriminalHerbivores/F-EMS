@@ -107,7 +107,7 @@
 			<sec:authorize access="hasRole('ROLE_STD')">
 				<li>
 					<div class="main-title">
-						<span class="folder main_menu"> </span><a href="#">수강신청</a>
+						<span class="folder main_menu"> </span><a href="<%=request.getContextPath()%>/course/courseList">수강신청</a>
 					</div>
 					<ul class="sub sub_meun">
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/course/courseList">수강신청</a></li></div>
@@ -118,7 +118,7 @@
 			<sec:authorize access="isAuthenticated()">
 				<li>
 					<div class="main-title">
-						<span class="folder main_menu"> </span><a href="#">강의</a>
+						<span class="folder main_menu"> </span><a href="<%=request.getContextPath()%>/lctre/lctreList">강의</a>
 					</div>
 					<ul class="sub sub_meun">
 <div class="inherit-size"><li class="sub-menu-li"><a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a></li></div>
