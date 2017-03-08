@@ -96,7 +96,7 @@ function commm_go(){
 	
 	var comment_content = $('#comment_content').val();
 	if(comment_content == ""){
-		alert('실패');
+		swal("작성에 실패했습니다.");
 		return;
 	}
 	var bbs_no = $('#bbs_no').val();

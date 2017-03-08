@@ -30,7 +30,6 @@ $(document).on('click','#test',function(e){
   	var secondsSpan = document.getElementById('seconds').value;
   	var date2 = new Date();
   	var date = (date2 - date1 + '${lctre_Video_Gnt.lw_Watch_Time}'*1000) / 1000;
-	alert(date);
 });
 $(document).on('click','#end',function(e){
     e.preventDefault();
