@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.uni.fems.common.FileDownload;
 import com.uni.fems.common.Paging;
+import com.uni.fems.dto.BaskinVO;
 import com.uni.fems.dto.Bbs_ListVO;
 import com.uni.fems.dto.Bbs_List_AtrtyVO;
 import com.uni.fems.dto.EventVO;
@@ -36,6 +37,7 @@ import com.uni.fems.dto.Subjct_Info_TableVO;
 import com.uni.fems.dto.UserSubjctVO;
 import com.uni.fems.excel.ExcelRead;
 import com.uni.fems.excel.ReadOption;
+import com.uni.fems.service.BaskinService;
 import com.uni.fems.service.Bbs_ListService;
 import com.uni.fems.service.EventService;
 import com.uni.fems.service.ManageService;
@@ -89,6 +91,8 @@ public class ManageController {
 	private FileDownload fileDownload;
 	@Autowired
 	private MenuService menuService;
+	@Autowired
+	private BaskinService baskinService;
 	
 	/**
 	 * <pre>
@@ -696,7 +700,7 @@ public class ManageController {
 	 */
 	@RequestMapping(value="/step3Add", method=RequestMethod.POST)
 	public String step3Add2(String[] mn_No,String[] mn_Se_Code,String[] mn_Cours) {
-		String url = "redirect:/index";
+		String url = "redirect:main";
 		
 		for(int i=0;i<mn_No.length;i++){
 			MenuVO menu = new MenuVO();
@@ -740,8 +744,15 @@ public class ManageController {
 	 * </pre>
 	 */
 	@RequestMapping(value="/step4Add", method=RequestMethod.GET)
-	public String step4Add(HttpServletRequest request,HttpSession session) {
-		String url = "admin/layout_control/step4Add";	
+	public String step4Add(Model model) {
+		String url = "admin/layout_control/step4Add";
+		List<BaskinVO> list = null;
+		try {
+			list = baskinService.getBaskin();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("colorList",list);
 		return url;
 	}
 	
@@ -764,9 +775,14 @@ public class ManageController {
 		try {
 			manageSvc.updateColor(manageVO);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		ManageVO vo = (ManageVO) session.getAttribute("manageVO");
+		vo.setMng_Main_Color(manageVO.getMng_Main_Color());
+		vo.setMng_Sub_Color1(manageVO.getMng_Sub_Color1());
+		vo.setMng_Sub_Color2(manageVO.getMng_Sub_Color2());
+		session.setAttribute("manageVO", vo);
 		
 		return url;
 	}
