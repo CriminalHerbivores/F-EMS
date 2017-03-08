@@ -129,8 +129,32 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/main")
-	public String main() {
-		String url = "layout_type/loginBoardType";
+	public String main(Model model) {
+		String url = "layout_type/indexMenuType";
+
+		//공지사항
+		List<Notice_BbsVO> nList2 = null;
+		SearchVO searchVO2 = new SearchVO();
+		searchVO2.setValue("");
+		searchVO2.setKey("nb_Sj");
+		try {
+			nList2=notice_BbsService.listAllNotice_Bbs(1, searchVO2);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		model.addAttribute("nList",nList2);
+		
+		//학사일정
+		Calendar calendar = Calendar.getInstance();
+		int month = calendar.get(Calendar.MONTH)+1;
+		List<Schafs_SchdulVO> sch = null;
+		try {
+			sch = schdulSvc.listSchdul(month);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		model.addAttribute("schd",sch);
+		
 		return url;
 	}
 	

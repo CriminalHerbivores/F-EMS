@@ -120,7 +120,7 @@
 	<div class="custom-col-sm-6 sidenav text-left">
 	<table class="def-table-full out-border">
 			<tr><td width="50%">
-		<table class="def-table-auto tb-border table-hover">
+		<table class="def-table-full tb-border table-hover">
 			<tr><th>공지사항</th></tr>
 			<c:forEach items="${nList}" var="nL" begin="0" end="4">
 			<tr>
@@ -134,17 +134,17 @@
 					</c:otherwise> 
 		       </c:choose>
 			</td>
-			<td>${fn:substring(nL.nb_Writng_Dt,0,10)}</td>
+			<td width="120px">${fn:substring(nL.nb_Writng_Dt,0,10)}</td>
 			</tr>
 			</c:forEach>
 		</table>
 			</td><td width="50%">
-		<table class="def-table-auto tb-border table-hover">
-			<tr><th>학사일정</th></tr>
+		<table class="def-table-full tb-border table-hover">
+			<tr><th colspan="2">학사일정</th></tr>
 			<c:forEach items="${schd}" var="sch" begin="0" end="4">
 			<tr>
-			<td>${fn:substring(sch.sd_Bgndt,0,10)}</td>
-			<td>${fn:substring(sch.sd_Enddt,0,10)}</td>
+			<td width="120px">${fn:substring(sch.sd_Bgndt,0,10)}</td>
+			<td width="120px">${fn:substring(sch.sd_Enddt,0,10)}</td>
 			<td>
 				<c:choose>
 					<c:when test="${fn:length(sch.sd_Schdul_Sumry) > 14}">
@@ -161,22 +161,22 @@
 			<td>
 		<c:if test="${not empty list0}">
 		<table class="def-table-full tb-border table-hover">
-			<c:forEach items="${list0}" var="nL" begin="0" end="4">
-			<tr>
 			<c:forEach items="${menuList}" var="mL" begin="0" end="1">
 			<tr><th>${mL.mn_Nm}</th></tr>
 			</c:forEach>
-			<td>
-				<c:choose>
-					<c:when test="${fn:length(nL.bb_Sj) > 14}">
-					<c:out value="${fn:substring(nL.bb_Sj,0,13)}"/>....
-					</c:when>
-					<c:otherwise>
-					<c:out value="${nL.bb_Sj}"/>
-					</c:otherwise> 
-		       </c:choose>
-			</td>
-			<td>${fn:substring(nL.bb_Writng_dt,0,10)}</td>
+			<c:forEach items="${list0}" var="nL" begin="0" end="4">
+			<tr>
+				<td>
+					<c:choose>
+						<c:when test="${fn:length(nL.bb_Sj) > 14}">
+						<c:out value="${fn:substring(nL.bb_Sj,0,13)}"/>....
+						</c:when>
+						<c:otherwise>
+						<c:out value="${nL.bb_Sj}"/>
+						</c:otherwise> 
+			       </c:choose>
+				</td>
+				<td width="120px">${fn:substring(nL.bb_Writng_dt,0,10)}</td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -185,22 +185,22 @@
 			<td>
 		<c:if test="${not empty list1}">
 		<table class="def-table-full tb-border table-hover">
-			<c:forEach items="${list1}" var="nL" begin="0" end="4">
-			<tr>
 			<c:forEach items="${menuList}" var="mL" begin="1" end="2">
 			<tr><th>${mL.mn_Nm}</th></tr>
 			</c:forEach>
-			<td>
-				<c:choose>
-					<c:when test="${fn:length(nL.bb_Sj) > 14}">
-					<c:out value="${fn:substring(nL.bb_Sj,0,13)}"/>....
-					</c:when>
-					<c:otherwise>
-					<c:out value="${nL.bb_Sj}"/>
-					</c:otherwise> 
-		       </c:choose>
-			</td>
-			<td>${fn:substring(nL.bb_Writng_dt,0,10)}</td>
+			<c:forEach items="${list1}" var="nL" begin="0" end="4">
+			<tr>
+				<td>
+					<c:choose>
+						<c:when test="${fn:length(nL.bb_Sj) > 14}">
+						<c:out value="${fn:substring(nL.bb_Sj,0,13)}"/>....
+						</c:when>
+						<c:otherwise>
+						<c:out value="${nL.bb_Sj}"/>
+						</c:otherwise> 
+			       </c:choose>
+				</td>
+				<td width="120px">${fn:substring(nL.bb_Writng_dt,0,10)}</td>
 			</tr>
 			</c:forEach>
 		</table>
