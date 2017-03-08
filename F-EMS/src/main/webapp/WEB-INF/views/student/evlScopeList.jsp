@@ -29,13 +29,12 @@
 
 	<h2>강의 평가</h2>
 	<br />
-
 	<form name="formm">
 		<table class="def-table-full tb-border table-hover">
 			<tr>
-				<td>강의명</td>
-				<td>점수</td>
-				<td>참여여부</td>
+				<th>강의명</th>
+				<th>점수</th>
+				<th>참여여부</th>
 			</tr>
 			<c:forEach var="lctre_Search" items="${lctre_SearchVO}">
 				<c:choose>
@@ -63,6 +62,8 @@
 			</tr>
 		</table>
 	</form>
-
+<table class="def-table-full"><tr><td style="text-align: right;">
+	<input type="button" value="강의 목록" class="def-btn btn-sm btn-color" onclick="history.go(-1);">
+</td></tr></table>
 </body>
 </html>
