@@ -16,7 +16,6 @@
 
 /* 수강 신청 */
 function add_reqst(form){
-	alert("수강신청");
 	document.formm.submit();
 }
 
@@ -33,7 +32,6 @@ function go_search_detail(form){
 function profsrExcel(form){
 	var pr_Profsr_No = $("#Profsr_No").val()
 	$("#Profsr_No").val();
-	alert($("#Profsr_No").val());
 	location.href="LctreExcel?pr_Profsr_No="
 		+pr_Profsr_No;
 }

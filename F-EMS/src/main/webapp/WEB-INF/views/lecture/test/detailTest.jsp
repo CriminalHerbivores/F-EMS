@@ -89,8 +89,9 @@ function getTimeRemaining(endtime) {
 
 	    if (t.total <= 0) {
 	      clearInterval(timeinterval);
-	      	alert('시험이 종료되었습니다.')
-	      	/* submitForm(this.form); */
+	      sweetAlert(" ", "시험이 종료되었습니다.", "success");
+	      
+	      setTimeout(function(){submitForm(this.form)},1700); 
 	    }
 	  }
 
@@ -98,7 +99,7 @@ function getTimeRemaining(endtime) {
 	  var timeinterval = setInterval(updateClock, 1000);
 	}
 
-	var deadline = new Date(Date.parse(new Date()) + 50 * 60 * 1000);
+	var deadline = new Date(Date.parse(new Date()) + 1 * 10 * 1000);
 	initializeClock('clockdiv', deadline);
 		
 	
