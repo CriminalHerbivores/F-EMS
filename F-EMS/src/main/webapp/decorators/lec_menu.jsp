@@ -35,10 +35,10 @@
 <div class="custom-col-sm-2 sidenav">
 	<div>
 		<!-- ////////////////// -->
-	<select id="lctreList" name="lctre" class="combobox-md custom-form-control">
+	<select id="lctreList" name="lctre" class="combobox-md custom-form-control" style="width:150px">
 		<c:forEach items="${lctreList}" var="lctre" varStatus="status">
 			<c:choose>
-			<c:when test="${lctre.lc_Lctre_No == table_Nm}">
+			<c:when test="${lctre.lc_Lctre_No == param.table_Nm}">
 			<option value="${lctre.lc_Lctre_No}" selected>${lctre.lu_lctre_nm}</option>
 			</c:when>
 			<c:otherwise>
@@ -47,7 +47,7 @@
 			</c:choose>
 		</c:forEach>
 	</select>
-		<ul class="accordion-menu_1" id="accordionMenu1_1">
+		<ul class="accordion-menu_1" id="accordionMenu1_1" style="margin-top:10px">
 			<li>
 				<div class="main-title">
 					<span class="folder main_menu"></span><a href="<%=request.getContextPath()%>/lctre/lctreList">강의목록</a>
