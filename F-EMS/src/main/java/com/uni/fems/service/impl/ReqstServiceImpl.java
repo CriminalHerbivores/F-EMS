@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
 
+import com.uni.fems.common.Paging;
 import com.uni.fems.dao.GradeDAO;
 import com.uni.fems.dao.Intrst_ListDAO;
 import com.uni.fems.dao.ReqstDAO;
@@ -15,8 +16,26 @@ import com.uni.fems.dto.Intrst_ListVO;
 import com.uni.fems.dto.LctreVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
+import com.uni.fems.dto.SknrgsViewVO;
 import com.uni.fems.service.ReqstService;
 
+/**
+ * <pre>
+ * 수강 신청 완료 목록 조회, 추가,삭제하는 DAOImpl
+ * </pre>
+ * @author KJH
+ * @since 2017. 2. 20.
+ * @version 1.0
+ * @see javax.servlet.http.HttpServlet
+ * <pre>
+ * [[개정이력(Modification Information)]]
+ * 수정일        수정자         수정내용
+ * --------     --------    ----------------------
+ * 2017. 2. 20.    KJH       최초작성
+ * 2017. 3. 08.    KJS       추가작성
+ * Copyright (c) 2017 by DDIT All right reserved
+ * </pre>
+ */
 @Data
 public class ReqstServiceImpl implements ReqstService {
 	
@@ -89,6 +108,32 @@ public class ReqstServiceImpl implements ReqstService {
 	public int stdntNumOfLctre(String re_Lctre_No) throws SQLException {
 		int lctreStdntNum = reqstDAO.stdntNumOfLctre(re_Lctre_No);
 		return lctreStdntNum;
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	
+	@Override
+	public List<Lctre_SearchVO> selectEvl_Scope(int tpage, Lctre_SearchVO lctre_Search) throws SQLException {
+		int totalRecord = reqstDAO.totalEvl_Scope(lctre_Search);
+		return reqstDAO.selectEvl_Scope(lctre_Search,tpage, totalRecord);
+		
+	}
+	
+	@Override
+	public String pageNumberEvl_Scope(int tpage,Lctre_SearchVO lctre_Search) throws SQLException {
+		int totalRecord = reqstDAO.totalEvl_Scope(lctre_Search);
+		String page = new Paging().pageNumber(tpage,totalRecord,"sknrgListForm", "");
+		return page;
+	}
+	
+	@Override
+	public Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException {
+		return reqstDAO.getEvl_Scope(lctre_Search);
+	}
+	@Override	
+	public void updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException{
+		reqstDAO.updateEvl_Scope(lctre_Search);
 	}
 
 }
