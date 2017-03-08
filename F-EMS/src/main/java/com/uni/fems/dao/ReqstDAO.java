@@ -21,6 +21,7 @@ import com.uni.fems.dto.ReqstVO;
  * 수정일        수정자         수정내용
  * --------     --------    ----------------------
  * 2017. 2. 20.    KJH       최초작성
+ * 2017. 3. 08.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -102,5 +103,41 @@ public interface ReqstDAO {
 	 * @throws SQLException
 	 */
 	void setNumOfStdnt(Lctre_SearchVO lctre_SearchVO) throws SQLException;
+
+	/**
+	 * 신청 목록 리스트 출력
+	 * @param lctre_Search
+	 * @param tpage
+	 * @param totalRecord
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Lctre_SearchVO> selectEvl_Scope(Lctre_SearchVO lctre_Search,
+			int tpage, int totalRecord) throws SQLException;
+
+	/**
+	 * 신청 목록의 개수 출력
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	int totalEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException;
+
+	/**
+	 * 하나의 리스트 출력
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search)
+			throws SQLException;
+
+	/**
+	 * 강의 평가 점수 입력
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	int updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException;
 	
 }

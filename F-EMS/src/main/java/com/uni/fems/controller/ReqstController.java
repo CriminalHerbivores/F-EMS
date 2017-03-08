@@ -2,6 +2,7 @@ package com.uni.fems.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,13 +16,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uni.fems.dao.ReqstDAO;
 import com.uni.fems.dto.Intrst_ListVO;
 import com.uni.fems.dto.LctreVO;
+import com.uni.fems.dto.Lctre_NoticeVO;
+import com.uni.fems.dto.Lctre_Notice_GntVO;
 import com.uni.fems.dto.Lctre_SearchVO;
 import com.uni.fems.dto.ReqstVO;
+import com.uni.fems.dto.SearchVO;
+import com.uni.fems.dto.StdntVO;
 import com.uni.fems.service.Intrst_ListService;
+import com.uni.fems.service.LctreService;
 import com.uni.fems.service.ReqstService;
 import com.uni.fems.service.StdntService;
 
@@ -38,6 +45,7 @@ import com.uni.fems.service.StdntService;
  * 수정일        수정자       수정내용
  * --------     --------    ----------------------
  * 2017. 2. 21.   KJH         최초작성
+ * 2017.03. 08.   KJS         추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -51,7 +59,20 @@ public class ReqstController {
 	private Intrst_ListService intrst_ListService;
 	@Autowired
 	private StdntService stdntService;
+	@Autowired
+	private LctreService lctreService;
 
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * <pre>

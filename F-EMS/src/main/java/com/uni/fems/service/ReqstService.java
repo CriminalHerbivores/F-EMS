@@ -22,6 +22,7 @@ import com.uni.fems.dto.ReqstVO;
  * 수정일                          수정자               수정내용
  * --------     --------    ----------------------
  * 2017. 2. 21.      USER       최초작성
+ * 2017. 3. 08.    KJS       추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -115,6 +116,42 @@ public interface ReqstService {
 	 * @throws SQLException
 	 */
 	int stdntNumOfLctre(String re_Lctre_No) throws SQLException;
+
+	/**
+	 * 신청 강의 리스트
+	 * @param tpage
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	List<Lctre_SearchVO> selectEvl_Scope(int tpage, Lctre_SearchVO lctre_Search)
+			throws SQLException;
+
+	/**
+	 * 신청 강의 리스트 페이지
+	 * @param tpage
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	String pageNumberEvl_Scope(int tpage, Lctre_SearchVO lctre_Search)
+			throws SQLException;
+
+	/**
+	 * 하나의 리스트 출력
+	 * @param lctre_Search
+	 * @return
+	 * @throws SQLException
+	 */
+	Lctre_SearchVO getEvl_Scope(Lctre_SearchVO lctre_Search)
+			throws SQLException;
+
+	/**
+	 * 강의 평가 입력
+	 * @param lctre_Search
+	 * @throws SQLException
+	 */
+	void updateEvl_Scope(Lctre_SearchVO lctre_Search) throws SQLException;
 	
 	
 	

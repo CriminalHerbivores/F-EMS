@@ -28,6 +28,7 @@ import com.uni.fems.dto.SearchVO;
  * 2017.01.24      KJH            최초작성
  * 2017.02.19      KJH            강의등록
  * 2017.02.20      KJH            강의수정
+ * 2017.03.08      KJS            추가작성
  * Copyright (c) 2017 by DDIT All right reserved
  * </pre>
  */
@@ -152,4 +153,11 @@ public interface LctreService {
 	 */
 	List<Lctre_SearchVO> selectLctreExcel(Lctre_SearchVO lctre_SearchVO)
 			throws SQLException;
+
+	/**
+	 * 강의 평가 입력
+	 * @param lctre_SearchVO
+	 * @throws SQLException
+	 */
+	void updatelc_Evl_Score(Lctre_SearchVO lctre_SearchVO) throws SQLException;
 }
